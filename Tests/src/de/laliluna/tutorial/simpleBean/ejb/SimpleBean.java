@@ -2,6 +2,7 @@ package de.laliluna.tutorial.simpleBean.ejb;
 
 import java.rmi.RemoteException;
 
+import de.laliluna.tutorial.simpleBean.interfaces.SimpleBeanUtil;
 import javax.ejb.EJBException;
 import javax.ejb.EntityBean;
 import javax.ejb.EntityContext;
@@ -22,13 +23,19 @@ import javax.ejb.CreateException;
  * 
  * Below are the xdoclet-related tags needed for this EJB.
  *
- * @ejb.bean name="Simple"
- *           display-name="Name for Simple"
- *           description="Description for Simple"
- *           jndi-name="ejb/Simple"
- *           type="CMP"
- *           cmp-version="2.x"
- *           view-type="both"
+ * @ejb.bean name = "SimpleBean"
+ *           type = "CMP"
+ *           cmp-version = "2.x"
+ *           display-name = "SimpleBean"
+ *           description = "SimpleBean EJB"
+ *           view-type = "both"
+ *           jndi-name = "ejb/SimpleBeanHome"
+ *           local-jndi-name = "ejb/SimpleBeanLocalHome"
+ *      primkey-field = "id"
+ * @ejb.persistence table-name = "tsimplebean"
+ * @jboss.persistence table-name = "tsimplebean"
+ * @ejb:util
+ *      generate="physical"
  */
 public abstract class SimpleBean implements EntityBean {
 
@@ -40,6 +47,38 @@ public abstract class SimpleBean implements EntityBean {
 		// TODO Auto-generated constructor stub
 	}
 
+    /**
+     * @ejb.interface-method view-type = "both"
+     * @ejb.persistence column-name = "fid"
+     * @ejb.pk-field
+     *
+     * @return
+     */
+    public abstract String getId();
+
+    /**
+     * @ejb.interface-method view-type = "both"
+     *
+     * @param name
+     */
+    public abstract void setId(String id);
+
+    /**
+     * @ejb.interface-method view-type = "both"
+     * @ejb.persistence column-name = "fname"
+     *
+     * @return
+     */
+    public abstract String getName();    
+    
+    /**
+     * @ejb.interface-method view-type = "both"
+     *
+     * @param name
+     */
+    public abstract void setName(String name);
+    
+	
 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match
 	 * the signatures of the create<METHOD>(...) methods of the entity bean?s home interface.
@@ -73,7 +112,8 @@ public abstract class SimpleBean implements EntityBean {
 	 * @ejb.create-method
 	 */
 	public String ejbCreate() throws CreateException {
-		return null;
+	    this.setId(SimpleBeanUtil.generateGUID(this));
+	    return null;
 	}
 
 	/**
