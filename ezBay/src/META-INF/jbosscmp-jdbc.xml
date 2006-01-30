@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jbosscmp-jdbc PUBLIC "-//JBoss//DTD JBOSSCMP-JDBC 4.0//EN" "http://www.jboss.org/j2ee/dtd/jbosscmp-jdbc_4_0.dtd">
+
+<jbosscmp-jdbc>
+   <defaults>
+     <datasource>java:/MyDS</datasource>
+     <datasource-mapping>mySQL</datasource-mapping>
+   </defaults>
+
+   <enterprise-beans>
+
+     <!--
+       To add beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called jbosscmp-jdbc-beans.xml
+       that contains the <entity></entity> markup for those beans.
+     -->
+
+      <entity>
+         <ejb-name>Vendeur</ejb-name>
+         <create-table>true</create-table>
+         <remove-table>true</remove-table>
+         <table-name>vendeur</table-name>
+
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>nom</field-name>
+            <column-name>nom</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+      <entity>
+         <ejb-name>Article</ejb-name>
+         <create-table>true</create-table>
+         <remove-table>true</remove-table>
+         <table-name>article</table-name>
+
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>libelle</field-name>
+            <column-name>libelle</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>marque</field-name>
+            <column-name>marque</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>modele</field-name>
+            <column-name>modele</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>prixVente</field-name>
+            <column-name>prixvente</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>anneeFabrication</field-name>
+            <column-name>anneefabrication</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>description</field-name>
+            <column-name>description</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>dateLimite</field-name>
+            <column-name>datelimite</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+   </enterprise-beans>
+
+  <relationships>
+    <ejb-relation>
+      <ejb-relation-name>article-vendeur</ejb-relation-name>
+
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>article est vendu par vendeur</ejb-relationship-role-name>
+          <fk-constraint>true</fk-constraint>
+		  <key-fields/>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>vendeur vend article</ejb-relationship-role-name>
+          <key-fields>
+             <key-field>
+               <field-name>id</field-name>
+               <column-name>vendeur_id</column-name>
+             </key-field>
+          </key-fields>
+
+      </ejb-relationship-role>
+    </ejb-relation>
+     <!-- 
+       To add jboss relationships for beans not managed by XDoclet, add
+       a file to your XDoclet merge directory called jbosscmp-jdbc-relationships.xml that contains
+       the <ejb-relation></ejb-relation> markups for those beans.
+     --> 
+  </relationships>
+
+</jbosscmp-jdbc>
