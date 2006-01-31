@@ -4,14 +4,14 @@
 package ezbay.model.ejb;
 
 /**
- * CMP layer for Vendeur.
+ * CMP layer for Client.
  * @xdoclet-generated at ${TODAY}
  * @copyright The XDoclet Team
  * @author XDoclet
  * @version ${version}
  */
-public abstract class VendeurCMP
-   extends ezbay.model.ejb.VendeurBean
+public abstract class ClientCMP
+   extends ezbay.model.ejb.ClientBean
    implements javax.ejb.EntityBean
 {
 
@@ -34,7 +34,7 @@ public abstract class VendeurCMP
    {
       super.ejbPassivate();
 
-      VendeurDTO = null;
+      ClientDTO = null;
    }
 
    public void setEntityContext(javax.ejb.EntityContext ctx) throws javax.ejb.EJBException
@@ -55,14 +55,14 @@ public abstract class VendeurCMP
 
  /* Value Objects BEGIN */
 
-   private ezbay.model.interfaces.VendeurDTO VendeurDTO = null;
+   private ezbay.model.interfaces.ClientDTO ClientDTO = null;
 
-   public ezbay.model.interfaces.VendeurDTO getVendeurDTO()
+   public ezbay.model.interfaces.ClientDTO getClientDTO()
    {
-      VendeurDTO = new ezbay.model.interfaces.VendeurDTO();
+      ClientDTO = new ezbay.model.interfaces.ClientDTO();
       try
          {
-            VendeurDTO.setId( getId() );
+            ClientDTO.setId( getId() );
 
          }
          catch (Exception e)
@@ -70,7 +70,7 @@ public abstract class VendeurCMP
             throw new javax.ejb.EJBException(e);
          }
 
-	  return VendeurDTO;
+	  return ClientDTO;
    }
 
 /* Value Objects END */

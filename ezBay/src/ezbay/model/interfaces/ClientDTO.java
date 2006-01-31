@@ -4,10 +4,10 @@
 package ezbay.model.interfaces;
 
 /**
- * Value object for Vendeur.
+ * Value object for Client.
  *
  * Notice, this object is used to represent the state of an 
- * Vendeur object. This value object
+ * Client object. This value object
  * Is not connected to the database in any way, it is just a normal object used 
  * as a container for data from an EJB. 
  *
@@ -16,7 +16,7 @@ package ezbay.model.interfaces;
  * @author XDoclet
  * @version ${version}
  */
-public class VendeurDTO
+public class ClientDTO
    extends java.lang.Object
    implements java.io.Serializable, java.lang.Cloneable 
 {
@@ -26,11 +26,11 @@ public class VendeurDTO
 
    private java.lang.String primaryKey;
 
-   public VendeurDTO()
+   public ClientDTO()
    {
    }
 
-   public VendeurDTO( java.lang.String id )
+   public ClientDTO( java.lang.String id )
    {
        setId(id);
 	   primaryKey = this.getId();
@@ -39,7 +39,7 @@ public class VendeurDTO
    /**
     * @deprecated use {@link #clone}
     */
-   public VendeurDTO( VendeurDTO otherValue )
+   public ClientDTO( ClientDTO otherValue )
    {
 	  this.id = otherValue.id;
 	  idHasBeenSet = true;
@@ -103,9 +103,9 @@ public class VendeurDTO
     */
    public boolean isIdentical(Object other)
    {
-          if (other instanceof VendeurDTO)
+          if (other instanceof ClientDTO)
           {
-                 VendeurDTO that = (VendeurDTO) other;
+                 ClientDTO that = (ClientDTO) other;
                  boolean lEquals = true;
                  if( this.id == null )
                  {
@@ -127,11 +127,11 @@ public class VendeurDTO
     public boolean equals(Object other) {
 
         //If it's not the correct type, clearly it isn't equal to this.
-        if (!(other instanceof VendeurDTO)) { 
+        if (!(other instanceof ClientDTO)) { 
             return false;
         }
 
-        return equals((VendeurDTO) other);
+        return equals((ClientDTO) other);
     }
 
     /**
@@ -139,7 +139,7 @@ public class VendeurDTO
      * each check for equality will test all members for equality. We do not check collections for
      * equality however, so you would be wise to not use this if you have collection typed EJB References.
      */
-    public boolean equals(VendeurDTO that) {
+    public boolean equals(ClientDTO that) {
 
         //try to get lucky.
         if (this == that) {
@@ -167,13 +167,13 @@ public class VendeurDTO
     }
 
     public Object clone() throws java.lang.CloneNotSupportedException {
-        VendeurDTO other = (VendeurDTO) super.clone();
+        ClientDTO other = (ClientDTO) super.clone();
 
         return other;
     }
 
-    public ReadOnlyVendeurDTO getReadOnlyVendeurDTO() {
-        return new ReadOnlyVendeurDTO();
+    public ReadOnlyClientDTO getReadOnlyClientDTO() {
+        return new ReadOnlyClientDTO();
     }
 
     public int hashCode(){
@@ -222,11 +222,11 @@ public class VendeurDTO
         return java.util.Collections.unmodifiableSet(input);
     }
 
-    private final class ReadOnlyVendeurDTO 
+    private final class ReadOnlyClientDTO 
     implements java.lang.Cloneable, java.io.Serializable 
     {
-        private VendeurDTO underlying() {
-            return VendeurDTO.this;
+        private ClientDTO underlying() {
+            return ClientDTO.this;
         }
 
        public java.lang.String getId() {
@@ -238,13 +238,13 @@ public class VendeurDTO
         }
 
         public boolean equals(Object o) {
-            if(o instanceof ReadOnlyVendeurDTO) {
-                return this.equals((ReadOnlyVendeurDTO) o);
+            if(o instanceof ReadOnlyClientDTO) {
+                return this.equals((ReadOnlyClientDTO) o);
             }
             return false;
         }
 
-        public boolean equals(ReadOnlyVendeurDTO that) {
+        public boolean equals(ReadOnlyClientDTO that) {
             if(null == that) {
                 return false;
             }

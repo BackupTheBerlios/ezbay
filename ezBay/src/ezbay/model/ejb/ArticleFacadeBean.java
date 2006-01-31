@@ -31,7 +31,7 @@ import ezbay.model.interfaces.VendeurLocalHome;
  * 
  * @ejb.bean name="ArticleFacade" display-name="Name for ArticleFacade"
  *           description="Description for ArticleFacade"
- *           jndi-name="ejb/ArticleFacade" type="Stateless" view-type="remote"
+ *           jndi-name="ejb/ArticleFacade" type="Stateless" view-type="both"
  */
 public class ArticleFacadeBean implements SessionBean {
 

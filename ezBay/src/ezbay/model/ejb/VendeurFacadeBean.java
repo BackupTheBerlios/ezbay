@@ -33,7 +33,7 @@ import ezbay.model.interfaces.VendeurLocalHome;
  *           description="Description for VendeurFacade"
  *           jndi-name="ejb/VendeurFacade"
  *           type="Stateless"
- *           view-type="remote"
+ *           view-type="both"
  */
 public class VendeurFacadeBean implements SessionBean {
 
@@ -81,38 +81,22 @@ public class VendeurFacadeBean implements SessionBean {
 	}
 
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "both"
 	 * @param vendeurDTO
 	 */
-	public VendeurDTO createVendeur(VendeurDTO vendeurDTO) throws Exception {
+	public VendeurDTO createVendeur() throws Exception {
 		try {
 			InitialContext initialContext = new InitialContext();
 			VendeurLocalHome home = (VendeurLocalHome) initialContext.lookup(VendeurLocalHome.JNDI_NAME);
-			VendeurLocal vendeurLocal = home.create(vendeurDTO);
+			VendeurLocal vendeurLocal = home.create();
 			return vendeurLocal.getVendeurDTO();
-		} catch (Exception e) {
-			throw new Exception("Cannot create vendeur", e);
-		}
-	}
-	
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param vendeurDTO
-	 */
-	public void updateVendeur(VendeurDTO vendeurDTO) throws Exception {
-		try {
-			InitialContext initialContext = new InitialContext();
-			VendeurLocalHome home = (VendeurLocalHome) initialContext
-					.lookup(VendeurLocalHome.JNDI_NAME);
-			VendeurLocal vendeurLocal = home.findByPrimaryKey(vendeurDTO.getId());
-			vendeurLocal.updateVendeur(vendeurDTO);
 		} catch (Exception e) {
 			throw new Exception("Cannot create vendeur", e);
 		}
 	}
 
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "both"
 	 * @param 
 	 */
     public void removeVendeur(VendeurDTO vendeurDTO) throws Exception {
@@ -127,7 +111,7 @@ public class VendeurFacadeBean implements SessionBean {
     }	
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "both"
 	 * @param vendeurId
 	 */
 	public VendeurDTO getVendeur(String vendeurId) throws Exception {
@@ -142,7 +126,7 @@ public class VendeurFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "both"
 	 * @param
 	 */
 	public Collection getVendeurs() {
@@ -164,33 +148,9 @@ public class VendeurFacadeBean implements SessionBean {
 		}
 		return tRes;
 	}
-
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param nom
-	 */
-	public Collection getVendeursByNom(String nom) {
-		Collection vendeurs = null;
-		ArrayList tRes = new ArrayList();
-		try {
-			InitialContext initialContext;
-			initialContext = new InitialContext();
-			VendeurLocalHome home = (VendeurLocalHome) initialContext.lookup(VendeurLocalHome.JNDI_NAME);
-			vendeurs = home.findByNom(nom);
-			for (Iterator it = vendeurs.iterator(); it.hasNext(); ) {
-				VendeurLocal vendeurLocal = (VendeurLocal) it.next();
-				tRes.add(vendeurLocal.getVendeurDTO());
-		    }			
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} catch (FinderException e) {
-			e.printStackTrace();
-		}
-		return tRes;
-	}
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "both"
 	 * @param
 	 */
 	public Collection getArticles(VendeurDTO vendeurDTO) {

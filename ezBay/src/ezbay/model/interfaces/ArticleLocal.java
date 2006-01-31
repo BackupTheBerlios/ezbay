@@ -46,12 +46,12 @@ public interface ArticleLocal
 
    public void setDateLimite( java.util.Date dateLimite ) ;
 
-   public ezbay.model.interfaces.ArticleDTO getArticleDTO(  ) ;
-
-   public void updateArticle( ezbay.model.interfaces.ArticleDTO articleDTO ) throws java.lang.Exception;
-
    public ezbay.model.interfaces.VendeurLocal getVendeurLocal(  ) ;
 
    public void setVendeurLocal( ezbay.model.interfaces.VendeurLocal vendeurLocal ) ;
+
+   public ezbay.model.interfaces.ArticleDTO getArticleDTO(  ) ;
+
+   public void updateArticle( ezbay.model.interfaces.ArticleDTO articleDTO ) throws java.lang.Exception;
 
 }

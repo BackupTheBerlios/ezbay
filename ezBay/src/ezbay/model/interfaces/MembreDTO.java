@@ -4,10 +4,10 @@
 package ezbay.model.interfaces;
 
 /**
- * Value object for Vendeur.
+ * Value object for Membre.
  *
  * Notice, this object is used to represent the state of an 
- * Vendeur object. This value object
+ * Membre object. This value object
  * Is not connected to the database in any way, it is just a normal object used 
  * as a container for data from an EJB. 
  *
@@ -16,7 +16,7 @@ package ezbay.model.interfaces;
  * @author XDoclet
  * @version ${version}
  */
-public class VendeurDTO
+public class MembreDTO
    extends java.lang.Object
    implements java.io.Serializable, java.lang.Cloneable 
 {
@@ -24,25 +24,31 @@ public class VendeurDTO
    private java.lang.String id;
    private boolean idHasBeenSet = false;
 
+   private java.lang.String nom;
+   private boolean nomHasBeenSet = false;
+
    private java.lang.String primaryKey;
 
-   public VendeurDTO()
+   public MembreDTO()
    {
    }
 
-   public VendeurDTO( java.lang.String id )
+   public MembreDTO( java.lang.String id,java.lang.String nom )
    {
        setId(id);
+       setNom(nom);
 	   primaryKey = this.getId();
    }
 
    /**
     * @deprecated use {@link #clone}
     */
-   public VendeurDTO( VendeurDTO otherValue )
+   public MembreDTO( MembreDTO otherValue )
    {
 	  this.id = otherValue.id;
 	  idHasBeenSet = true;
+	  this.nom = otherValue.nom;
+	  nomHasBeenSet = true;
 
 	  primaryKey = this.getId();
    }
@@ -76,12 +82,27 @@ public class VendeurDTO
    public boolean idHasBeenSet(){
 	  return idHasBeenSet;
    }
+   public java.lang.String getNom()
+   {
+	  return this.nom;
+   }
+
+   public void setNom( java.lang.String nom )
+   {
+	  this.nom = nom;
+	  nomHasBeenSet = true;
+
+   }
+
+   public boolean nomHasBeenSet(){
+	  return nomHasBeenSet;
+   }
 
    public String toString()
    {
 	  StringBuffer str = new StringBuffer("{");
 
-	  str.append("id=" + getId());
+	  str.append("id=" + getId() + " " + "nom=" + getNom());
 	  str.append('}');
 
 	  return(str.toString());
@@ -103,9 +124,9 @@ public class VendeurDTO
     */
    public boolean isIdentical(Object other)
    {
-          if (other instanceof VendeurDTO)
+          if (other instanceof MembreDTO)
           {
-                 VendeurDTO that = (VendeurDTO) other;
+                 MembreDTO that = (MembreDTO) other;
                  boolean lEquals = true;
                  if( this.id == null )
                  {
@@ -114,6 +135,14 @@ public class VendeurDTO
                  else
                  {
                         lEquals = lEquals && this.id.equals( that.id );
+                 }
+                 if( this.nom == null )
+                 {
+                        lEquals = lEquals && ( that.nom == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.nom.equals( that.nom );
                  }
 
                  return lEquals;
@@ -127,11 +156,11 @@ public class VendeurDTO
     public boolean equals(Object other) {
 
         //If it's not the correct type, clearly it isn't equal to this.
-        if (!(other instanceof VendeurDTO)) { 
+        if (!(other instanceof MembreDTO)) { 
             return false;
         }
 
-        return equals((VendeurDTO) other);
+        return equals((MembreDTO) other);
     }
 
     /**
@@ -139,7 +168,7 @@ public class VendeurDTO
      * each check for equality will test all members for equality. We do not check collections for
      * equality however, so you would be wise to not use this if you have collection typed EJB References.
      */
-    public boolean equals(VendeurDTO that) {
+    public boolean equals(MembreDTO that) {
 
         //try to get lucky.
         if (this == that) {
@@ -162,23 +191,37 @@ public class VendeurDTO
 
         }
 
+        if(this.nom != that.nom) {
+
+            if( this.nom == null || that.nom == null ) {
+                return false;
+            }
+
+            if(!this.nom.equals(that.nom)) {
+                return false;
+            }
+
+        }
+
         return true;
 
     }
 
     public Object clone() throws java.lang.CloneNotSupportedException {
-        VendeurDTO other = (VendeurDTO) super.clone();
+        MembreDTO other = (MembreDTO) super.clone();
 
         return other;
     }
 
-    public ReadOnlyVendeurDTO getReadOnlyVendeurDTO() {
-        return new ReadOnlyVendeurDTO();
+    public ReadOnlyMembreDTO getReadOnlyMembreDTO() {
+        return new ReadOnlyMembreDTO();
     }
 
     public int hashCode(){
 	  int result = 17;
       result = 37*result + ((this.id != null) ? this.id.hashCode() : 0);
+
+      result = 37*result + ((this.nom != null) ? this.nom.hashCode() : 0);
 
 	  return result;
     }
@@ -222,15 +265,19 @@ public class VendeurDTO
         return java.util.Collections.unmodifiableSet(input);
     }
 
-    private final class ReadOnlyVendeurDTO 
+    private final class ReadOnlyMembreDTO 
     implements java.lang.Cloneable, java.io.Serializable 
     {
-        private VendeurDTO underlying() {
-            return VendeurDTO.this;
+        private MembreDTO underlying() {
+            return MembreDTO.this;
         }
 
        public java.lang.String getId() {
               return underlying().id;
+       }
+
+       public java.lang.String getNom() {
+              return underlying().nom;
        }
 
         public int hashCode() {
@@ -238,13 +285,13 @@ public class VendeurDTO
         }
 
         public boolean equals(Object o) {
-            if(o instanceof ReadOnlyVendeurDTO) {
-                return this.equals((ReadOnlyVendeurDTO) o);
+            if(o instanceof ReadOnlyMembreDTO) {
+                return this.equals((ReadOnlyMembreDTO) o);
             }
             return false;
         }
 
-        public boolean equals(ReadOnlyVendeurDTO that) {
+        public boolean equals(ReadOnlyMembreDTO that) {
             if(null == that) {
                 return false;
             }

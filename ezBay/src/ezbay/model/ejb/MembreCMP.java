@@ -4,16 +4,25 @@
 package ezbay.model.ejb;
 
 /**
- * CMP layer for Vendeur.
+ * CMP layer for Membre.
  * @xdoclet-generated at ${TODAY}
  * @copyright The XDoclet Team
  * @author XDoclet
  * @version ${version}
  */
-public abstract class VendeurCMP
-   extends ezbay.model.ejb.VendeurBean
+public abstract class MembreCMP
+   extends ezbay.model.ejb.MembreBean
    implements javax.ejb.EntityBean
 {
+
+   /**
+    * Generated ejbPostCreate for corresponding ejbCreate method.
+    *
+    * @see #ejbCreate(ezbay.model.interfaces.MembreDTO membreDTO)
+    */
+   public void ejbPostCreate(ezbay.model.interfaces.MembreDTO membreDTO)
+   {
+   }
 
    public void ejbLoad() throws javax.ejb.EJBException, java.rmi.RemoteException
    {
@@ -34,7 +43,7 @@ public abstract class VendeurCMP
    {
       super.ejbPassivate();
 
-      VendeurDTO = null;
+      MembreDTO = null;
    }
 
    public void setEntityContext(javax.ejb.EntityContext ctx) throws javax.ejb.EJBException
@@ -55,14 +64,15 @@ public abstract class VendeurCMP
 
  /* Value Objects BEGIN */
 
-   private ezbay.model.interfaces.VendeurDTO VendeurDTO = null;
+   private ezbay.model.interfaces.MembreDTO MembreDTO = null;
 
-   public ezbay.model.interfaces.VendeurDTO getVendeurDTO()
+   public ezbay.model.interfaces.MembreDTO getMembreDTO()
    {
-      VendeurDTO = new ezbay.model.interfaces.VendeurDTO();
+      MembreDTO = new ezbay.model.interfaces.MembreDTO();
       try
          {
-            VendeurDTO.setId( getId() );
+            MembreDTO.setId( getId() );
+            MembreDTO.setNom( getNom() );
 
          }
          catch (Exception e)
@@ -70,7 +80,7 @@ public abstract class VendeurCMP
             throw new javax.ejb.EJBException(e);
          }
 
-	  return VendeurDTO;
+	  return MembreDTO;
    }
 
 /* Value Objects END */
@@ -78,5 +88,9 @@ public abstract class VendeurCMP
    public abstract java.lang.String getId() ;
 
    public abstract void setId( java.lang.String id ) ;
+
+   public abstract java.lang.String getNom() ;
+
+   public abstract void setNom( java.lang.String nom ) ;
 
 }

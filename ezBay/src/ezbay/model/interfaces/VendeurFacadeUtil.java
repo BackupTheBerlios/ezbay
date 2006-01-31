@@ -14,6 +14,8 @@ public class VendeurFacadeUtil
 {
    /** Cached remote home (EJBHome). Uses lazy loading to obtain its value (loaded by getHome() methods). */
    private static ezbay.model.interfaces.VendeurFacadeHome cachedRemoteHome = null;
+   /** Cached local home (EJBLocalHome). Uses lazy loading to obtain its value (loaded by getLocalHome() methods). */
+   private static ezbay.model.interfaces.VendeurFacadeLocalHome cachedLocalHome = null;
 
    private static Object lookupHome(java.util.Hashtable environment, String jndiName, Class narrowTo) throws javax.naming.NamingException {
       // Obtain initial context
@@ -52,6 +54,18 @@ public class VendeurFacadeUtil
    public static ezbay.model.interfaces.VendeurFacadeHome getHome( java.util.Hashtable environment ) throws javax.naming.NamingException
    {
        return (ezbay.model.interfaces.VendeurFacadeHome) lookupHome(environment, ezbay.model.interfaces.VendeurFacadeHome.COMP_NAME, ezbay.model.interfaces.VendeurFacadeHome.class);
+   }
+
+   /**
+    * Obtain local home interface from default initial context
+    * @return Local home interface for VendeurFacade. Lookup using COMP_NAME
+    */
+   public static ezbay.model.interfaces.VendeurFacadeLocalHome getLocalHome() throws javax.naming.NamingException
+   {
+      if (cachedLocalHome == null) {
+            cachedLocalHome = (ezbay.model.interfaces.VendeurFacadeLocalHome) lookupHome(null, ezbay.model.interfaces.VendeurFacadeLocalHome.COMP_NAME, ezbay.model.interfaces.VendeurFacadeLocalHome.class);
+      }
+      return cachedLocalHome;
    }
 
    /** Cached per JVM server IP. */

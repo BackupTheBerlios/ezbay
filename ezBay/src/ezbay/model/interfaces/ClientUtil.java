@@ -4,18 +4,16 @@
 package ezbay.model.interfaces;
 
 /**
- * Utility class for ArticleFacade.
+ * Utility class for Client.
  * @xdoclet-generated at ${TODAY}
  * @copyright The XDoclet Team
  * @author XDoclet
  * @version ${version}
  */
-public class ArticleFacadeUtil
+public class ClientUtil
 {
-   /** Cached remote home (EJBHome). Uses lazy loading to obtain its value (loaded by getHome() methods). */
-   private static ezbay.model.interfaces.ArticleFacadeHome cachedRemoteHome = null;
    /** Cached local home (EJBLocalHome). Uses lazy loading to obtain its value (loaded by getLocalHome() methods). */
-   private static ezbay.model.interfaces.ArticleFacadeLocalHome cachedLocalHome = null;
+   private static ezbay.model.interfaces.ClientLocalHome cachedLocalHome = null;
 
    private static Object lookupHome(java.util.Hashtable environment, String jndiName, Class narrowTo) throws javax.naming.NamingException {
       // Obtain initial context
@@ -35,35 +33,13 @@ public class ArticleFacadeUtil
    // Home interface lookup methods
 
    /**
-    * Obtain remote home interface from default initial context
-    * @return Home interface for ArticleFacade. Lookup using COMP_NAME
-    */
-   public static ezbay.model.interfaces.ArticleFacadeHome getHome() throws javax.naming.NamingException
-   {
-      if (cachedRemoteHome == null) {
-            cachedRemoteHome = (ezbay.model.interfaces.ArticleFacadeHome) lookupHome(null, ezbay.model.interfaces.ArticleFacadeHome.COMP_NAME, ezbay.model.interfaces.ArticleFacadeHome.class);
-      }
-      return cachedRemoteHome;
-   }
-
-   /**
-    * Obtain remote home interface from parameterised initial context
-    * @param environment Parameters to use for creating initial context
-    * @return Home interface for ArticleFacade. Lookup using COMP_NAME
-    */
-   public static ezbay.model.interfaces.ArticleFacadeHome getHome( java.util.Hashtable environment ) throws javax.naming.NamingException
-   {
-       return (ezbay.model.interfaces.ArticleFacadeHome) lookupHome(environment, ezbay.model.interfaces.ArticleFacadeHome.COMP_NAME, ezbay.model.interfaces.ArticleFacadeHome.class);
-   }
-
-   /**
     * Obtain local home interface from default initial context
-    * @return Local home interface for ArticleFacade. Lookup using COMP_NAME
+    * @return Local home interface for Client. Lookup using JNDI_NAME
     */
-   public static ezbay.model.interfaces.ArticleFacadeLocalHome getLocalHome() throws javax.naming.NamingException
+   public static ezbay.model.interfaces.ClientLocalHome getLocalHome() throws javax.naming.NamingException
    {
       if (cachedLocalHome == null) {
-            cachedLocalHome = (ezbay.model.interfaces.ArticleFacadeLocalHome) lookupHome(null, ezbay.model.interfaces.ArticleFacadeLocalHome.COMP_NAME, ezbay.model.interfaces.ArticleFacadeLocalHome.class);
+            cachedLocalHome = (ezbay.model.interfaces.ClientLocalHome) lookupHome(null, ezbay.model.interfaces.ClientLocalHome.JNDI_NAME, ezbay.model.interfaces.ClientLocalHome.class);
       }
       return cachedLocalHome;
    }
@@ -90,7 +66,7 @@ public class ArticleFacadeUtil
                localInetAddress = java.net.InetAddress.getLocalHost();
            }
            catch (java.net.UnknownHostException uhe) {
-               System.err.println("ArticleFacadeUtil: Could not get the local IP address using InetAddress.getLocalHost()!");
+               System.err.println("ClientUtil: Could not get the local IP address using InetAddress.getLocalHost()!");
                // todo: find better way to get around this...
                uhe.printStackTrace();
                return null;

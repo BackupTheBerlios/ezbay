@@ -1,26 +1,20 @@
 package ezbay.model.ejb;
 
 import java.rmi.RemoteException;
-import java.util.Collection;
-import java.util.Date;
 
 import javax.ejb.EJBException;
 import javax.ejb.EntityBean;
 import javax.ejb.EntityContext;
-import javax.ejb.FinderException;
 import javax.ejb.RemoveException;
 
 import javax.ejb.CreateException;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
-import ezbay.model.interfaces.ArticleLocal;
-import ezbay.model.interfaces.ArticleLocalHome;
+import ezbay.model.interfaces.ClientDTO;
+import ezbay.model.interfaces.ClientUtil;
+import ezbay.model.interfaces.MembreDTO;
 import ezbay.model.interfaces.MembreLocal;
+import ezbay.model.interfaces.MembreUtil;
 import ezbay.model.interfaces.VendeurDTO;
-import ezbay.model.interfaces.VendeurLocal;
-import ezbay.model.interfaces.VendeurLocalHome;
-import ezbay.model.interfaces.VendeurUtil;
 
 /**
  * XDoclet-based CMP 2.x entity bean.  This class must be declared
@@ -35,35 +29,30 @@ import ezbay.model.interfaces.VendeurUtil;
  * 
  * Below are the xdoclet-related tags needed for this EJB.
  *
- * @ejb.bean name="Vendeur"
- *           display-name="Name for Vendeur"
- *           description="Description for Vendeur"
- *           jndi-name="ejb/Vendeur"
- *           schema="vendeur"
+ * @ejb.bean name="Client"
+ *           display-name="Name for Client"
+ *           description="Description for Client"
+ *           jndi-name="ejb/Client"
  *           type="CMP"
  *           cmp-version="2.x"
  *           view-type="local"
+ *           schema="client"
  *           primkey-field = "id"
+ *
  * @ejb.persistence 
- * 			table-name = "vendeur"
- * @jboss.persistence table-name = "vendeur" 
+ * 			table-name = "client"
+ * @jboss.persistence table-name = "client" 
  * 			    create-table = "true" 
  *				remove-table = "true"
  * @ejb:util generate="physical"
  * @ejb.value-object match = "*"
- *       
- * @ejb.finder
-* 		signature="java.util.Collection findAll()" 
-* 		query="SELECT Object(a) FROM vendeur AS a"
-* 
-* 
-**/
-public abstract class VendeurBean implements EntityBean {
+ */
+public abstract class ClientBean implements EntityBean {
 
 	/** The entity context */
 	private EntityContext context;
 
-	public VendeurBean() {
+	public ClientBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -79,27 +68,11 @@ public abstract class VendeurBean implements EntityBean {
 	 * @ejb.interface-method view-type = "local"
 	 * @param id
 	 */
-	public abstract void setId(String id);
-
-	/**
-	 * @ejb.interface-method
-	 *   view-type="local"
-	 * @ejb.relation
-	 *   name = "article-vendeur"
-	 *   role-name = "vendeur vend article"
-	 *   @return a Collection of Article
-	 */ 
-	public abstract Collection getArticle();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param Collection of Article
-	 */
-	public abstract void setArticle(Collection article);	
+	public abstract void setId(String id);	
 	
 	/**
 	   * @ejb.interface-method view-type = "local"
-	   * @ejb.relation name = "membre-vendeur" role-name = "un Vendeur est associé a un Membre"
+	   * @ejb.relation name = "membre-client" role-name = "un Client est associé a un Membre"
 	   * @return
 	   */
 	  public abstract MembreLocal getMembreLocal();
@@ -109,14 +82,14 @@ public abstract class VendeurBean implements EntityBean {
 	   * @param membreLocal
 	   */
 	  public abstract void setMembreLocal(MembreLocal membreLocal);		
-	
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param
+		 */
+	    public abstract ClientDTO getClientDTO();	  
+	  
 	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param
-	 */
-    public abstract VendeurDTO getVendeurDTO();
-        
- 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match
 	 * the signatures of the create<METHOD>(...) methods of the entity bean?s home interface.
 	 * The container invokes an ejbCreate<METHOD>(...) method on an entity bean instance
@@ -148,10 +121,11 @@ public abstract class VendeurBean implements EntityBean {
 	 *
 	 * @ejb.create-method
 	 */
-	public String ejbCreate() throws CreateException {
-		String tId = VendeurUtil.generateGUID(this);
+
+	 public String ejbCreate() throws CreateException {
+		String tId = ClientUtil.generateGUID(this);
 		this.setId(tId);
-		return tId;
+		return null;
 	}
 
 	/**
@@ -173,8 +147,8 @@ public abstract class VendeurBean implements EntityBean {
 	 * 
 	 * @throws CreateException Thrown if method fails due to system-level error.
 	 */
-    public void ejbPostCreate() throws javax.ejb.CreateException {
-    }
+	public void ejbPostCreate() throws CreateException {
+	}
 
 	/**
 	 * Set the associated entity context. The container calls this method 
@@ -234,5 +208,5 @@ public abstract class VendeurBean implements EntityBean {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 }

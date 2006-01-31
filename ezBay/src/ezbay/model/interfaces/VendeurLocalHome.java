@@ -16,13 +16,10 @@ public interface VendeurLocalHome
    public static final String COMP_NAME="java:comp/env/ejb/VendeurLocal";
    public static final String JNDI_NAME="VendeurLocal";
 
-   public ezbay.model.interfaces.VendeurLocal create(ezbay.model.interfaces.VendeurDTO vendeurTO)
+   public ezbay.model.interfaces.VendeurLocal create()
       throws javax.ejb.CreateException;
 
    public java.util.Collection findAll()
-      throws javax.ejb.FinderException;
-
-   public java.util.Collection findByNom(java.lang.String nom)
       throws javax.ejb.FinderException;
 
    public ezbay.model.interfaces.VendeurLocal findByPrimaryKey(java.lang.String pk)

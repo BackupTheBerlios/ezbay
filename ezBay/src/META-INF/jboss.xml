@@ -21,6 +21,14 @@
 
       </entity>
       <entity>
+         <ejb-name>Client</ejb-name>
+         <local-jndi-name>ClientLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
          <ejb-name>Article</ejb-name>
          <local-jndi-name>ArticleLocal</local-jndi-name>
 
@@ -28,10 +36,27 @@
         </method-attributes>
 
       </entity>
+      <entity>
+         <ejb-name>Membre</ejb-name>
+         <local-jndi-name>MembreLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
 
       <session>
-         <ejb-name>VendeurFacade</ejb-name>
-         <jndi-name>ejb/VendeurFacade</jndi-name>
+         <ejb-name>MembreFacade</ejb-name>
+         <jndi-name>ejb/MembreFacade</jndi-name>
+         <local-jndi-name>MembreFacadeLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+      </session>
+      <session>
+         <ejb-name>ClientFacade</ejb-name>
+         <jndi-name>ejb/ClientFacade</jndi-name>
+         <local-jndi-name>ClientFacadeLocal</local-jndi-name>
 
         <method-attributes>
         </method-attributes>
@@ -39,6 +64,15 @@
       <session>
          <ejb-name>ArticleFacade</ejb-name>
          <jndi-name>ejb/ArticleFacade</jndi-name>
+         <local-jndi-name>ArticleFacadeLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+      </session>
+      <session>
+         <ejb-name>VendeurFacade</ejb-name>
+         <jndi-name>ejb/VendeurFacade</jndi-name>
+         <local-jndi-name>VendeurFacadeLocal</local-jndi-name>
 
         <method-attributes>
         </method-attributes>

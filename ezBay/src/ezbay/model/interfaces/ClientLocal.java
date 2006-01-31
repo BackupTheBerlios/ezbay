@@ -4,13 +4,13 @@
 package ezbay.model.interfaces;
 
 /**
- * Local interface for Vendeur.
+ * Local interface for Client.
  * @xdoclet-generated at ${TODAY}
  * @copyright The XDoclet Team
  * @author XDoclet
  * @version ${version}
  */
-public interface VendeurLocal
+public interface ClientLocal
    extends javax.ejb.EJBLocalObject
 {
 
@@ -18,14 +18,10 @@ public interface VendeurLocal
 
    public void setId( java.lang.String id ) ;
 
-   public java.util.Collection getArticle(  ) ;
-
-   public void setArticle( java.util.Collection article ) ;
-
    public ezbay.model.interfaces.MembreLocal getMembreLocal(  ) ;
 
    public void setMembreLocal( ezbay.model.interfaces.MembreLocal membreLocal ) ;
 
-   public ezbay.model.interfaces.VendeurDTO getVendeurDTO(  ) ;
+   public ezbay.model.interfaces.ClientDTO getClientDTO(  ) ;
 
 }

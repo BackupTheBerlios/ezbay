@@ -192,6 +192,22 @@ public abstract class ArticleBean implements EntityBean {
 	public abstract void setDateLimite(Date dateLimite);
     
 	/**
+	   * @ejb.interface-method view-type = "local"
+	   * @ejb.relation name = "article-vendeur" role-name = "article est vendu par vendeur"
+	   * @jboss.relation related-pk-field = "id" fk-column = "vendeur_id" 
+	   *                 fk-constraint = "true"
+	   * @return
+	   */
+	  public abstract VendeurLocal getVendeurLocal();
+
+	  /**
+	   * @ejb.interface-method view-type = "local"
+	   * @param vendeurLocal
+	   */
+	  public abstract void setVendeurLocal(VendeurLocal vendeurLocal);	
+	
+	
+	/**
 	 * @ejb.interface-method view-type = "local"
 	 * @param
 	 */
@@ -337,19 +353,4 @@ public abstract class ArticleBean implements EntityBean {
 		// TODO Auto-generated method stub
 
 	}
-	
-	/**
-	   * @ejb.interface-method view-type = "local"
-	   * @ejb.relation name = "article-vendeur" role-name = "article est vendu par vendeur"
-	   * @jboss.relation related-pk-field = "id" fk-column = "vendeur_id" 
-	   *                 fk-constraint = "true"
-	   * @return
-	   */
-	  public abstract VendeurLocal getVendeurLocal();
-
-	  /**
-	   * @ejb.interface-method view-type = "local"
-	   * @param vendeurLocal
-	   */
-	  public abstract void setVendeurLocal(VendeurLocal vendeurLocal);
 }
