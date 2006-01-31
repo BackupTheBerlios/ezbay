@@ -1,12 +1,9 @@
 
 package ezbay.test;
 
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Iterator;
 
 import javax.ejb.CreateException;
@@ -19,7 +16,6 @@ import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
 import ezbay.model.interfaces.ArticleDTO;
-import ezbay.model.interfaces.ArticleFacadeHome;
 import ezbay.model.interfaces.ArticleLocal;
 import ezbay.model.interfaces.ArticleLocalHome;
 import ezbay.model.interfaces.VendeurDTO;
@@ -27,9 +23,6 @@ import ezbay.model.interfaces.VendeurFacade;
 import ezbay.model.interfaces.VendeurFacadeHome;
 import ezbay.model.interfaces.VendeurLocal;
 import ezbay.model.interfaces.VendeurLocalHome;
-import ezbay.model.interfaces.VendeurLocal;
-
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**
@@ -55,10 +48,9 @@ public class VendeurFacadeTest extends TestCase {
 		VendeurFacadeHome facadeHome = (VendeurFacadeHome) PortableRemoteObject.narrow(ref, VendeurFacadeHome.class);
 		this.vendeurFacade = facadeHome.create();
 		
-		vendeurDTOTemoin = new VendeurDTO();
-		vendeurDTOTemoin.setNom("Fan d'Homer");		
+		vendeurDTOTemoin = new VendeurDTO();	
 		//création d'un vendeur par le sessionFacade
-		vendeurDTOCreated = vendeurFacade.createVendeur(vendeurDTOTemoin);
+		vendeurDTOCreated = vendeurFacade.createVendeur();
 	}
 
 	/**
@@ -86,42 +78,6 @@ public class VendeurFacadeTest extends TestCase {
 			e.printStackTrace();
 		}
 	}	
-	
-	public void testGetVendeursByNom() throws RemoteException {
-		Collection vendeursDTO = vendeurFacade.getVendeursByNom(vendeurDTOTemoin.getNom());
-		for (Iterator it = vendeursDTO.iterator(); it.hasNext(); ) {
-			VendeurDTO vendeurDTO = (VendeurDTO) it.next();
-			assertEquals(vendeurDTOTemoin.getNom(),vendeurDTO.getNom());
-		}
-	}
-	
-	public void testUpdateVendeur() throws RemoteException {
-		try {
-			//récupération de l'vendeur créé via facade
-			//vendeurDTOCreated = vendeurFacade.getVendeur(vendeurDTOCreated.getId());
-
-			//modification du témoins
-			vendeurDTOTemoin.setNom("Pur Fan D'Homer");
-			
-			// modification des DTO
-			vendeurDTOCreated.setNom(vendeurDTOTemoin.getNom());
-			
-			//update du DTO par facade
-			vendeurFacade.updateVendeur(vendeurDTOCreated);
-			vendeurDTOCreated = vendeurFacade.getVendeur(vendeurDTOCreated.getId());
-		
-			//test
-			assertEquals(vendeurDTOTemoin.getNom(), vendeurDTOCreated.getNom());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			assertTrue(false);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			assertTrue(false);
-		}
-	}
 	
 	public void testGetArticles() throws RemoteException {
 		try {
@@ -184,7 +140,6 @@ public class VendeurFacadeTest extends TestCase {
 	public boolean equalsDTO(VendeurDTO vendeurDTO1, VendeurDTO vendeurDTO2){
 		boolean tRes = true;
 		tRes = tRes && ( (vendeurDTO1.getId()).equals(vendeurDTO2.getId()) );
-		tRes = tRes && ( (vendeurDTO1.getNom()).equals(vendeurDTO2.getNom()) );
 		return tRes;
 	}
 	

@@ -1,7 +1,5 @@
 package ezbay.test;
 
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.Date;
@@ -11,18 +9,15 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
+import junit.framework.TestCase;
 import ezbay.model.interfaces.ArticleDTO;
 import ezbay.model.interfaces.ArticleFacade;
 import ezbay.model.interfaces.ArticleFacadeHome;
 import ezbay.model.interfaces.ArticleLocal;
 import ezbay.model.interfaces.ArticleLocalHome;
 import ezbay.model.interfaces.VendeurDTO;
-import ezbay.model.interfaces.VendeurFacadeHome;
 import ezbay.model.interfaces.VendeurLocal;
 import ezbay.model.interfaces.VendeurLocalHome;
-
-import junit.framework.Assert;
-import junit.framework.TestCase;
 
 /**
  */
@@ -49,11 +44,8 @@ public class ArticleFacadeTest extends TestCase {
 		Object ref = jndiContext.lookup(ArticleFacadeHome.JNDI_NAME);
 		ArticleFacadeHome facadeHome = (ArticleFacadeHome) PortableRemoteObject.narrow(ref, ArticleFacadeHome.class);
 
-		//création d'un vendeur localement, par VendeurLocalHome
-		VendeurDTO vendeurDTO = new VendeurDTO();
-		vendeurDTO.setNom("Fan d'Homer");
 		VendeurLocalHome vendeurLocalHome = (VendeurLocalHome) jndiContext.lookup(VendeurLocalHome.JNDI_NAME);
-		vendeurLocal = (VendeurLocal) vendeurLocalHome.create(vendeurDTO);		
+		vendeurLocal = (VendeurLocal) vendeurLocalHome.create();		
 		
 		this.articleFacade = facadeHome.create();
 		articleLocalHome = (ArticleLocalHome) jndiContext.lookup(ArticleLocalHome.JNDI_NAME);
