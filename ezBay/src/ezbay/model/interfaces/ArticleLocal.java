@@ -50,6 +50,10 @@ public interface ArticleLocal
 
    public void setVendeurLocal( ezbay.model.interfaces.VendeurLocal vendeurLocal ) ;
 
+   public ezbay.model.interfaces.CategorieLocal getCategorieLocal(  ) ;
+
+   public void setCategorieLocal( ezbay.model.interfaces.CategorieLocal categorieLocal ) ;
+
    public ezbay.model.interfaces.ArticleDTO getArticleDTO(  ) ;
 
    public void updateArticle( ezbay.model.interfaces.ArticleDTO articleDTO ) throws java.lang.Exception;

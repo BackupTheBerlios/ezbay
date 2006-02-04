@@ -23,10 +23,10 @@ public interface MembreFacade
    public void removeMembre( ezbay.model.interfaces.MembreDTO membreDTO )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public void createClient( ezbay.model.interfaces.MembreDTO membreDTO )
+   public void createVendeur( ezbay.model.interfaces.MembreDTO membreDTO )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public void createVendeur( ezbay.model.interfaces.MembreDTO membreDTO )
+   public void createClient( ezbay.model.interfaces.MembreDTO membreDTO )
       throws java.lang.Exception, java.rmi.RemoteException;
 
    public void removeVendeur( ezbay.model.interfaces.MembreDTO membreDTO )

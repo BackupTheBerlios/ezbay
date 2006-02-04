@@ -12,6 +12,7 @@ import javax.ejb.CreateException;
 
 import ezbay.model.interfaces.ArticleDTO;
 import ezbay.model.interfaces.ArticleUtil;
+import ezbay.model.interfaces.CategorieLocal;
 import ezbay.model.interfaces.VendeurLocal;
 
 /**
@@ -207,6 +208,23 @@ public abstract class ArticleBean implements EntityBean {
 	  public abstract void setVendeurLocal(VendeurLocal vendeurLocal);	
 	
 	
+		/**
+	   * @ejb.interface-method view-type = "local"
+	   * @ejb.relation name = "categorie-article" role-name = "Article fait partie d'une Categorie"
+	   * @jboss.relation related-pk-field = "id" fk-column = "categorie_id" 
+	   *                 fk-constraint = "true"
+	   * @return
+	   */
+	  public abstract CategorieLocal getCategorieLocal();
+
+	  /**
+	   * @ejb.interface-method view-type = "local"
+	   * @param categorieLocal
+	   */
+	  public abstract void setCategorieLocal(CategorieLocal categorieLocal);	
+	
+	  
+	  
 	/**
 	 * @ejb.interface-method view-type = "local"
 	 * @param

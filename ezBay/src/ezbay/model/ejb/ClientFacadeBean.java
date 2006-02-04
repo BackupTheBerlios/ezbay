@@ -10,9 +10,13 @@ import javax.naming.InitialContext;
 import ezbay.model.interfaces.ClientDTO;
 import ezbay.model.interfaces.ClientLocal;
 import ezbay.model.interfaces.ClientLocalHome;
+import ezbay.model.interfaces.MembreLocal;
+import ezbay.model.interfaces.MembreLocalHome;
 import ezbay.model.interfaces.VendeurDTO;
 import ezbay.model.interfaces.VendeurLocal;
 import ezbay.model.interfaces.VendeurLocalHome;
+import ezbay.utils.ServiceLocator;
+import ezbay.utils.ServiceLocatorException;
 
 /**
  * XDoclet-based session bean.  The class must be declared
@@ -52,8 +56,7 @@ public class ClientFacadeBean implements SessionBean {
 	 */
 	public ClientDTO createClient() throws Exception {
 		try {
-			InitialContext initialContext = new InitialContext();
-			ClientLocalHome home = (ClientLocalHome) initialContext.lookup(ClientLocalHome.JNDI_NAME);
+			ClientLocalHome home = getEntityHome();
 			ClientLocal clientLocal = home.create();
 			return clientLocal.getClientDTO();
 		} catch (Exception e) {
@@ -102,5 +105,29 @@ public class ClientFacadeBean implements SessionBean {
 	public void replaceWithRealBusinessMethod() throws EJBException {
 		// rename and start putting your business logic here
 	}
+	
+
+    /** Retrieves the local interface of the Customer entity bean. 
+     * @throws Exception */
+	public static ClientLocal getEntity(String id) throws Exception{
+        try {
+        	ClientLocalHome home = getEntityHome();
+            return home.findByPrimaryKey(id);
+        } catch (Exception e) {
+            throw new Exception("Cannot locate Article", e);
+        }
+    }
+    
+     /** Retrieves the local home interface of the Customer intity bean. */
+    public static ClientLocalHome getEntityHome(){
+    	ClientLocalHome home = null;
+    	try {
+	        ServiceLocator locator = ServiceLocator.getInstance();
+			home = (ClientLocalHome) locator.getLocalHome(ClientLocalHome.JNDI_NAME);
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		}
+        return home;
+    }	
 
 }

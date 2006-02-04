@@ -59,6 +59,22 @@
       </session>
 
       <session >
+         <description><![CDATA[Description for CategorieFacade]]></description>
+         <display-name>Name for CategorieFacade</display-name>
+
+         <ejb-name>CategorieFacade</ejb-name>
+
+         <home>ezbay.model.interfaces.CategorieFacadeHome</home>
+         <remote>ezbay.model.interfaces.CategorieFacade</remote>
+         <local-home>ezbay.model.interfaces.CategorieFacadeLocalHome</local-home>
+         <local>ezbay.model.interfaces.CategorieFacadeLocal</local>
+         <ejb-class>ezbay.model.ejb.CategorieFacadeSession</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
          <description><![CDATA[Description for VendeurFacade]]></description>
          <display-name>Name for VendeurFacade</display-name>
 
@@ -271,6 +287,53 @@
       </entity>
 
       <entity >
+         <description><![CDATA[Description for Categorie]]></description>
+         <display-name>Name for Categorie</display-name>
+
+         <ejb-name>Categorie</ejb-name>
+
+         <local-home>ezbay.model.interfaces.CategorieLocalHome</local-home>
+         <local>ezbay.model.interfaces.CategorieLocal</local>
+
+         <ejb-class>ezbay.model.ejb.CategorieCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.String</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>categorie</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>libelle</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+         <query>
+            <query-method>
+               <method-name>findAll</method-name>
+               <method-params>
+               </method-params>
+            </query-method>
+            <ejb-ql><![CDATA[SELECT Object(c) FROM categorie AS c]]></ejb-ql>
+         </query>
+         <query>
+            <description><![CDATA[findByLibelle]]></description>
+            <query-method>
+               <method-name>findByLibelle</method-name>
+               <method-params>
+                  <method-param>java.lang.String</method-param>
+               </method-params>
+            </query-method>
+            <ejb-ql><![CDATA[SELECT DISTINCT OBJECT(c) FROM categorie c WHERE c.libelle = ?1]]></ejb-ql>
+         </query>
+	  <!-- Write a file named ejb-finders-CategorieBean.xml if you want to define extra finders. -->
+
+      </entity>
+
+      <entity >
          <description><![CDATA[Description for Membre]]></description>
          <display-name>Name for Membre</display-name>
 
@@ -316,6 +379,33 @@
 
    <!-- Relationships -->
    <relationships >
+      <ejb-relation >
+         <ejb-relation-name>categorie-article</ejb-relation-name>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>Article fait partie d'une Categorie</ejb-relationship-role-name>
+            <multiplicity>Many</multiplicity>
+            <relationship-role-source >
+               <ejb-name>Article</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>categorieLocal</cmr-field-name>
+            </cmr-field>
+         </ejb-relationship-role>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>Une Categorie possede plusieurs Article</ejb-relationship-role-name>
+            <multiplicity>One</multiplicity>
+            <relationship-role-source >
+               <ejb-name>Categorie</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>articleLocal</cmr-field-name>
+               <cmr-field-type>java.util.Collection</cmr-field-type>
+            </cmr-field>
+         </ejb-relationship-role>
+
+      </ejb-relation>
       <ejb-relation >
          <ejb-relation-name>membre-vendeur</ejb-relation-name>
 

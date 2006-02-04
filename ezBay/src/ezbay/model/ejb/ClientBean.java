@@ -2,19 +2,15 @@ package ezbay.model.ejb;
 
 import java.rmi.RemoteException;
 
+import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.EntityBean;
 import javax.ejb.EntityContext;
 import javax.ejb.RemoveException;
 
-import javax.ejb.CreateException;
-
 import ezbay.model.interfaces.ClientDTO;
 import ezbay.model.interfaces.ClientUtil;
-import ezbay.model.interfaces.MembreDTO;
 import ezbay.model.interfaces.MembreLocal;
-import ezbay.model.interfaces.MembreUtil;
-import ezbay.model.interfaces.VendeurDTO;
 
 /**
  * XDoclet-based CMP 2.x entity bean.  This class must be declared
@@ -207,6 +203,6 @@ public abstract class ClientBean implements EntityBean {
 	public void ejbStore() throws EJBException, RemoteException {
 		// TODO Auto-generated method stub
 
-	}
-
+	}		
+	
 }

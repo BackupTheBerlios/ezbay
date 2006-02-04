@@ -37,6 +37,14 @@
 
       </entity>
       <entity>
+         <ejb-name>Categorie</ejb-name>
+         <local-jndi-name>CategorieLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
          <ejb-name>Membre</ejb-name>
          <local-jndi-name>MembreLocal</local-jndi-name>
 
@@ -65,6 +73,14 @@
          <ejb-name>ArticleFacade</ejb-name>
          <jndi-name>ejb/ArticleFacade</jndi-name>
          <local-jndi-name>ArticleFacadeLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+      </session>
+      <session>
+         <ejb-name>CategorieFacade</ejb-name>
+         <jndi-name>ejb/CategorieFacade</jndi-name>
+         <local-jndi-name>CategorieFacadeLocal</local-jndi-name>
 
         <method-attributes>
         </method-attributes>

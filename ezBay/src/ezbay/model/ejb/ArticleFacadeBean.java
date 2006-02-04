@@ -15,9 +15,14 @@ import javax.naming.NamingException;
 import ezbay.model.interfaces.ArticleDTO;
 import ezbay.model.interfaces.ArticleLocal;
 import ezbay.model.interfaces.ArticleLocalHome;
+import ezbay.model.interfaces.CategorieDTO;
+import ezbay.model.interfaces.CategorieLocal;
+import ezbay.model.interfaces.CategorieLocalHome;
 import ezbay.model.interfaces.VendeurDTO;
 import ezbay.model.interfaces.VendeurLocal;
 import ezbay.model.interfaces.VendeurLocalHome;
+import ezbay.utils.ServiceLocator;
+import ezbay.utils.ServiceLocatorException;
 
 /**
  * XDoclet-based session bean. The class must be declared public according to
@@ -81,11 +86,8 @@ public class ArticleFacadeBean implements SessionBean {
 	 */
 	public ArticleDTO createArticle(ArticleDTO articleDTO, VendeurDTO vendeurDTO) throws Exception {
 		try {
-			InitialContext initialContext = new InitialContext();
-			ArticleLocalHome home = (ArticleLocalHome) initialContext.lookup(ArticleLocalHome.JNDI_NAME);
-			VendeurLocalHome vendeurHome = (VendeurLocalHome) initialContext.lookup(VendeurLocalHome.JNDI_NAME);
-			VendeurLocal vendeurLocal = vendeurHome.findByPrimaryKey(vendeurDTO.getId());
-
+			ArticleLocalHome home = getEntityHome();
+			VendeurLocal vendeurLocal = VendeurFacadeBean.getEntity(vendeurDTO.getId());
 			ArticleLocal articleLocal = home.create(articleDTO, vendeurLocal);			
 			return articleLocal.getArticleDTO();
 		} catch (Exception e) {
@@ -99,9 +101,7 @@ public class ArticleFacadeBean implements SessionBean {
 	 */
 	public void updateArticle(ArticleDTO articleDTO) throws Exception {
 		try {
-			InitialContext initialContext = new InitialContext();
-			ArticleLocalHome home = (ArticleLocalHome) initialContext.lookup(ArticleLocalHome.JNDI_NAME);
-			ArticleLocal articleLocal = home.findByPrimaryKey(articleDTO.getId());
+			ArticleLocal articleLocal = getEntity(articleDTO.getId());
 			articleLocal.updateArticle(articleDTO);
 		} catch (Exception e) {
 			throw new Exception("Cannot create customer", e);
@@ -114,9 +114,7 @@ public class ArticleFacadeBean implements SessionBean {
 	 */
     public void removeArticle(ArticleDTO articleDTO) throws Exception {
 		try {
-			InitialContext initialContext = new InitialContext();
-			ArticleLocalHome home = (ArticleLocalHome) initialContext.lookup(ArticleLocalHome.JNDI_NAME);
-			ArticleLocal articleLocal = home.findByPrimaryKey(articleDTO.getId());
+			ArticleLocal articleLocal = getEntity(articleDTO.getId());
 			articleLocal.remove();
 		}catch (Exception e) {
 			throw new Exception("Cannot remove article", e);
@@ -129,9 +127,7 @@ public class ArticleFacadeBean implements SessionBean {
 	 */
 	public ArticleDTO getArticle(String articleId) throws Exception {
 		try {
-			InitialContext initialContext = new InitialContext();
-			ArticleLocalHome home = (ArticleLocalHome) initialContext.lookup(ArticleLocalHome.JNDI_NAME);
-			ArticleLocal articleLocal = home.findByPrimaryKey(articleId);
+			ArticleLocal articleLocal = getEntity(articleId);
 			return articleLocal.getArticleDTO();
 		} catch (Exception e) {
 			throw new Exception("Cannot get article", e);
@@ -144,15 +140,25 @@ public class ArticleFacadeBean implements SessionBean {
 	 */
 	public VendeurDTO getVendeurDTO(String articleId) throws Exception {
 		try {
-			InitialContext initialContext = new InitialContext();
-			ArticleLocalHome home = (ArticleLocalHome) initialContext.lookup(ArticleLocalHome.JNDI_NAME);
-			ArticleLocal articleLocal = home.findByPrimaryKey(articleId);
+			ArticleLocal articleLocal = getEntity(articleId);
 			return articleLocal.getVendeurLocal().getVendeurDTO();
 		} catch (Exception e) {
 			throw new Exception("Cannot get article", e);
 		}
 	}
 	
+	/**
+	 * @ejb.interface-method view-type = "remote"
+	 * @param articleId
+	 */
+	public CategorieDTO getCategorieDTO(String articleId) throws Exception {
+		try {
+			ArticleLocal articleLocal = getEntity(articleId);
+			return articleLocal.getCategorieLocal().getCategorieDTO();
+		} catch (Exception e) {
+			throw new Exception("Cannot get categorie", e);
+		}
+	}
 	
 	/**
 	 * @ejb.interface-method view-type = "remote"
@@ -162,16 +168,12 @@ public class ArticleFacadeBean implements SessionBean {
 		Collection articles = null;
 		ArrayList tRes = new ArrayList();
 		try {
-			InitialContext initialContext;
-			initialContext = new InitialContext();
-			ArticleLocalHome home = (ArticleLocalHome) initialContext.lookup(ArticleLocalHome.JNDI_NAME);
+			ArticleLocalHome home = getEntityHome();
 			articles = home.findAll();
 			for (Iterator it = articles.iterator(); it.hasNext(); ) {
 				ArticleLocal articleLocal = (ArticleLocal) it.next();
 				tRes.add(articleLocal.getArticleDTO());
 		    }			
-		} catch (NamingException e) {
-			e.printStackTrace();
 		} catch (FinderException e) {
 			e.printStackTrace();
 		}
@@ -180,16 +182,56 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "remote"
-	 * @param
+	 * @param libelle
 	 */
 	public Collection getArticlesByLibelle(String libelle) {
 		Collection articles = null;
 		ArrayList tRes = new ArrayList();
 		try {
-			InitialContext initialContext;
-			initialContext = new InitialContext();
-			ArticleLocalHome home = (ArticleLocalHome) initialContext.lookup(ArticleLocalHome.JNDI_NAME);
+			ArticleLocalHome home = getEntityHome();
 			articles = home.findByLibelle(libelle);
+			for (Iterator it = articles.iterator(); it.hasNext(); ) {
+				ArticleLocal articleLocal = (ArticleLocal) it.next();
+				tRes.add(articleLocal.getArticleDTO());
+		    }			
+		} catch (FinderException e) {
+			e.printStackTrace();
+		}
+		return tRes;
+	}
+
+	/**
+	 * @ejb.interface-method view-type = "remote"
+	 * @param vendeurId
+	 */
+	public Collection getArticlesByVendeur(String vendeurId) {
+		Collection articles = null;
+		ArrayList tRes = new ArrayList();
+		try {
+			VendeurLocalHome vendeurHome = VendeurFacadeBean.getEntityHome();
+			VendeurLocal vendeur = vendeurHome.findByPrimaryKey(vendeurId);
+			articles = vendeur.getArticle() ;
+			for (Iterator it = articles.iterator(); it.hasNext(); ) {
+				ArticleLocal articleLocal = (ArticleLocal) it.next();
+				tRes.add(articleLocal.getArticleDTO());
+		    }			
+		} catch (FinderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return tRes;
+	}	
+	
+	/**
+	 * @ejb.interface-method view-type = "remote"
+	 * @param categorieId
+	 */
+	public Collection getArticlesByCategorie(String categorieId) {
+		Collection articles = null;
+		ArrayList tRes = new ArrayList();
+		try {
+			CategorieLocal categorie = CategorieFacadeBean.getEntity(categorieId);
+			articles = categorie.getArticleLocal();
 			for (Iterator it = articles.iterator(); it.hasNext(); ) {
 				ArticleLocal articleLocal = (ArticleLocal) it.next();
 				tRes.add(articleLocal.getArticleDTO());
@@ -197,8 +239,36 @@ public class ArticleFacadeBean implements SessionBean {
 		} catch (NamingException e) {
 			e.printStackTrace();
 		} catch (FinderException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		return tRes;
 	}
+
+    /** Retrieves the local interface of the Customer entity bean. 
+     * @throws Exception */
+	public static ArticleLocal getEntity(String id) throws Exception{
+        try {
+        	ArticleLocalHome home = getEntityHome();
+            return home.findByPrimaryKey(id);
+        } catch (Exception e) {
+            throw new Exception("Cannot locate Article", e);
+        }
+    }
+    
+     /** Retrieves the local home interface of the Customer intity bean. */
+    public static ArticleLocalHome getEntityHome(){
+    	ArticleLocalHome home = null;
+    	try {
+	        ServiceLocator locator = ServiceLocator.getInstance();
+			home = (ArticleLocalHome) locator.getLocalHome(ArticleLocalHome.JNDI_NAME);
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		}
+        return home;
+    }	
+	
 }

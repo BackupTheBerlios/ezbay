@@ -29,10 +29,19 @@ public interface ArticleFacade
    public ezbay.model.interfaces.VendeurDTO getVendeurDTO( java.lang.String articleId )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public ezbay.model.interfaces.CategorieDTO getCategorieDTO( java.lang.String articleId )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public java.util.Collection getArticles(  )
       throws java.rmi.RemoteException;
 
    public java.util.Collection getArticlesByLibelle( java.lang.String libelle )
+      throws java.rmi.RemoteException;
+
+   public java.util.Collection getArticlesByVendeur( java.lang.String vendeurId )
+      throws java.rmi.RemoteException;
+
+   public java.util.Collection getArticlesByCategorie( java.lang.String categorieId )
       throws java.rmi.RemoteException;
 
 }

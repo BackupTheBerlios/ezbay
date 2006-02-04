@@ -2,24 +2,15 @@ package ezbay.model.ejb;
 
 import java.rmi.RemoteException;
 import java.util.Collection;
-import java.util.Date;
 
+import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.EntityBean;
 import javax.ejb.EntityContext;
-import javax.ejb.FinderException;
 import javax.ejb.RemoveException;
 
-import javax.ejb.CreateException;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
-import ezbay.model.interfaces.ArticleLocal;
-import ezbay.model.interfaces.ArticleLocalHome;
 import ezbay.model.interfaces.MembreLocal;
 import ezbay.model.interfaces.VendeurDTO;
-import ezbay.model.interfaces.VendeurLocal;
-import ezbay.model.interfaces.VendeurLocalHome;
 import ezbay.model.interfaces.VendeurUtil;
 
 /**

@@ -99,6 +99,27 @@
       </entity>
 
       <entity>
+         <ejb-name>Categorie</ejb-name>
+         <create-table>true</create-table>
+         <remove-table>true</remove-table>
+         <table-name>categorie</table-name>
+
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>libelle</field-name>
+            <column-name>libelle</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
+      <entity>
          <ejb-name>Membre</ejb-name>
          <create-table>true</create-table>
          <remove-table>true</remove-table>
@@ -122,6 +143,26 @@
    </enterprise-beans>
 
   <relationships>
+    <ejb-relation>
+      <ejb-relation-name>categorie-article</ejb-relation-name>
+
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>Article fait partie d'une Categorie</ejb-relationship-role-name>
+          <fk-constraint>true</fk-constraint>
+		  <key-fields/>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>Une Categorie possede plusieurs Article</ejb-relationship-role-name>
+          <key-fields>
+             <key-field>
+               <field-name>id</field-name>
+               <column-name>categorie_id</column-name>
+             </key-field>
+          </key-fields>
+
+      </ejb-relationship-role>
+    </ejb-relation>
     <ejb-relation>
       <ejb-relation-name>membre-vendeur</ejb-relation-name>
 

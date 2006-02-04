@@ -16,6 +16,8 @@ import ezbay.model.interfaces.ArticleLocal;
 import ezbay.model.interfaces.VendeurDTO;
 import ezbay.model.interfaces.VendeurLocal;
 import ezbay.model.interfaces.VendeurLocalHome;
+import ezbay.utils.ServiceLocator;
+import ezbay.utils.ServiceLocatorException;
 
 /**
  * XDoclet-based session bean.  The class must be declared
@@ -86,8 +88,7 @@ public class VendeurFacadeBean implements SessionBean {
 	 */
 	public VendeurDTO createVendeur() throws Exception {
 		try {
-			InitialContext initialContext = new InitialContext();
-			VendeurLocalHome home = (VendeurLocalHome) initialContext.lookup(VendeurLocalHome.JNDI_NAME);
+			VendeurLocalHome home = getEntityHome();
 			VendeurLocal vendeurLocal = home.create();
 			return vendeurLocal.getVendeurDTO();
 		} catch (Exception e) {
@@ -101,9 +102,7 @@ public class VendeurFacadeBean implements SessionBean {
 	 */
     public void removeVendeur(VendeurDTO vendeurDTO) throws Exception {
 		try {
-			InitialContext initialContext = new InitialContext();
-			VendeurLocalHome home = (VendeurLocalHome) initialContext.lookup(VendeurLocalHome.JNDI_NAME);
-			VendeurLocal vendeurLocal = home.findByPrimaryKey(vendeurDTO.getId());
+			VendeurLocal vendeurLocal = getEntity(vendeurDTO.getId());
 			vendeurLocal.remove();
 		}catch (Exception e) {
 			throw new Exception("Cannot remove vendeur", e);
@@ -116,9 +115,7 @@ public class VendeurFacadeBean implements SessionBean {
 	 */
 	public VendeurDTO getVendeur(String vendeurId) throws Exception {
 		try {
-			InitialContext initialContext = new InitialContext();
-			VendeurLocalHome home = (VendeurLocalHome) initialContext.lookup(VendeurLocalHome.JNDI_NAME);
-			VendeurLocal vendeurLocal = home.findByPrimaryKey(vendeurId);
+			VendeurLocal vendeurLocal = getEntity(vendeurId);
 			return vendeurLocal.getVendeurDTO();
 		} catch (Exception e) {
 			throw new Exception("Cannot get vendeur", e);
@@ -133,17 +130,13 @@ public class VendeurFacadeBean implements SessionBean {
 		Collection vendeurs = null;
 		ArrayList tRes = new ArrayList();
 		try {
-			InitialContext initialContext;
-			initialContext = new InitialContext();
-			VendeurLocalHome home = (VendeurLocalHome) initialContext.lookup(VendeurLocalHome.JNDI_NAME);
+			VendeurLocalHome home = getEntityHome();
 			vendeurs = home.findAll();
 			for (Iterator it = vendeurs.iterator(); it.hasNext(); ) {
 				VendeurLocal vendeurLocal = (VendeurLocal) it.next();
 				tRes.add(vendeurLocal.getVendeurDTO());
 		    }			
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} catch (FinderException e) {
+		}catch (FinderException e) {
 			e.printStackTrace();
 		}
 		return tRes;
@@ -156,10 +149,7 @@ public class VendeurFacadeBean implements SessionBean {
 	public Collection getArticles(VendeurDTO vendeurDTO) {
 		Collection tRes = new ArrayList();
 		try {
-			InitialContext initialContext;
-			initialContext = new InitialContext();
-			VendeurLocalHome home = (VendeurLocalHome) initialContext.lookup(VendeurLocalHome.JNDI_NAME);
-			VendeurLocal vendeur = home.findByPrimaryKey(vendeurDTO.getId());
+			VendeurLocal vendeur = getEntity(vendeurDTO.getId());
 			Collection articles = vendeur.getArticle();
 			for (Iterator it = articles.iterator(); it.hasNext(); ) {
 				ArticleLocal articleLocal = (ArticleLocal) it.next();
@@ -169,8 +159,35 @@ public class VendeurFacadeBean implements SessionBean {
 			e.printStackTrace();
 		} catch (FinderException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return tRes;		
 	}
 
+
+	   /** Retrieves the local interface of the Customer entity bean. 
+  * @throws Exception */
+	public static VendeurLocal getEntity(String id) throws Exception{
+     try {
+     	VendeurLocalHome home = getEntityHome();
+         return home.findByPrimaryKey(id);
+     } catch (Exception e) {
+         throw new Exception("Cannot locate Article", e);
+     }
+ }
+ 
+  /** Retrieves the local home interface of the Customer intity bean. */
+ public static VendeurLocalHome getEntityHome(){
+ 	VendeurLocalHome home = null;
+ 	try {
+	        ServiceLocator locator = ServiceLocator.getInstance();
+			home = (VendeurLocalHome) locator.getLocalHome(VendeurLocalHome.JNDI_NAME);
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		}
+     return home;
+ }		
+	
 }
