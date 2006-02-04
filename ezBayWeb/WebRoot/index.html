@@ -12,13 +12,16 @@ Les tests ...
 <p>
 	You may pick one or more of the following test suites:
 	<br/>
-	<form action="TestServlet" method="get" name="youPickItForm">
-		<select name="suite" size="2" multiple>
+	<form action="TestServlet" name="youPickItForm">
+		<select name="suite" size="3" multiple>
 			<option value="ezbay.test.ArticleFacadeTest">
 				ezbay.test.ArticleFacadeTest
 			</option>
 			<option value="ezbay.test.VendeurFacadeTest">
 				ezbay.test.VendeurFacadeTest
+			</option>
+			<option value="ezbay.test.CategorieFacadeTest">
+				ezbay.test.CategorieFacadeTest
 			</option>
 		</select>
 		<input type="submit" value="Run" />
