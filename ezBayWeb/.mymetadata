@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="ezBayWeb"
+  id="myeclipse.1138296829984"
+  context-root="/ezBayWeb"
+  j2ee-spec="1.4"
+  archive="ezBayWeb.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+

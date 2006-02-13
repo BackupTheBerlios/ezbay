@@ -11,32 +11,16 @@
 
       <!-- Session Beans -->
       <session >
-         <description><![CDATA[Description for MembreFacade]]></description>
-         <display-name>Name for MembreFacade</display-name>
+         <description><![CDATA[Description for VendeurFacade]]></description>
+         <display-name>Name for VendeurFacade</display-name>
 
-         <ejb-name>MembreFacade</ejb-name>
+         <ejb-name>VendeurFacade</ejb-name>
 
-         <home>ezbay.model.interfaces.MembreFacadeHome</home>
-         <remote>ezbay.model.interfaces.MembreFacade</remote>
-         <local-home>ezbay.model.interfaces.MembreFacadeLocalHome</local-home>
-         <local>ezbay.model.interfaces.MembreFacadeLocal</local>
-         <ejb-class>ezbay.model.ejb.MembreFacadeSession</ejb-class>
-         <session-type>Stateless</session-type>
-         <transaction-type>Container</transaction-type>
-
-      </session>
-
-      <session >
-         <description><![CDATA[Description for ClientFacade]]></description>
-         <display-name>Name for ClientFacade</display-name>
-
-         <ejb-name>ClientFacade</ejb-name>
-
-         <home>ezbay.model.interfaces.ClientFacadeHome</home>
-         <remote>ezbay.model.interfaces.ClientFacade</remote>
-         <local-home>ezbay.model.interfaces.ClientFacadeLocalHome</local-home>
-         <local>ezbay.model.interfaces.ClientFacadeLocal</local>
-         <ejb-class>ezbay.model.ejb.ClientFacadeSession</ejb-class>
+         <home>axlomoso.ezbay.model.interfaces.VendeurFacadeHome</home>
+         <remote>axlomoso.ezbay.model.interfaces.VendeurFacade</remote>
+         <local-home>axlomoso.ezbay.model.interfaces.VendeurFacadeLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.VendeurFacadeLocal</local>
+         <ejb-class>axlomoso.ezbay.model.ejb.VendeurFacadeSession</ejb-class>
          <session-type>Stateless</session-type>
          <transaction-type>Container</transaction-type>
 
@@ -48,11 +32,27 @@
 
          <ejb-name>ArticleFacade</ejb-name>
 
-         <home>ezbay.model.interfaces.ArticleFacadeHome</home>
-         <remote>ezbay.model.interfaces.ArticleFacade</remote>
-         <local-home>ezbay.model.interfaces.ArticleFacadeLocalHome</local-home>
-         <local>ezbay.model.interfaces.ArticleFacadeLocal</local>
-         <ejb-class>ezbay.model.ejb.ArticleFacadeSession</ejb-class>
+         <home>axlomoso.ezbay.model.interfaces.ArticleFacadeHome</home>
+         <remote>axlomoso.ezbay.model.interfaces.ArticleFacade</remote>
+         <local-home>axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ArticleFacadeLocal</local>
+         <ejb-class>axlomoso.ezbay.model.ejb.ArticleFacadeSession</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[Description for ClientFacade]]></description>
+         <display-name>Name for ClientFacade</display-name>
+
+         <ejb-name>ClientFacade</ejb-name>
+
+         <home>axlomoso.ezbay.model.interfaces.ClientFacadeHome</home>
+         <remote>axlomoso.ezbay.model.interfaces.ClientFacade</remote>
+         <local-home>axlomoso.ezbay.model.interfaces.ClientFacadeLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ClientFacadeLocal</local>
+         <ejb-class>axlomoso.ezbay.model.ejb.ClientFacadeSession</ejb-class>
          <session-type>Stateless</session-type>
          <transaction-type>Container</transaction-type>
 
@@ -64,27 +64,27 @@
 
          <ejb-name>CategorieFacade</ejb-name>
 
-         <home>ezbay.model.interfaces.CategorieFacadeHome</home>
-         <remote>ezbay.model.interfaces.CategorieFacade</remote>
-         <local-home>ezbay.model.interfaces.CategorieFacadeLocalHome</local-home>
-         <local>ezbay.model.interfaces.CategorieFacadeLocal</local>
-         <ejb-class>ezbay.model.ejb.CategorieFacadeSession</ejb-class>
+         <home>axlomoso.ezbay.model.interfaces.CategorieFacadeHome</home>
+         <remote>axlomoso.ezbay.model.interfaces.CategorieFacade</remote>
+         <local-home>axlomoso.ezbay.model.interfaces.CategorieFacadeLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.CategorieFacadeLocal</local>
+         <ejb-class>axlomoso.ezbay.model.ejb.CategorieFacadeSession</ejb-class>
          <session-type>Stateless</session-type>
          <transaction-type>Container</transaction-type>
 
       </session>
 
       <session >
-         <description><![CDATA[Description for VendeurFacade]]></description>
-         <display-name>Name for VendeurFacade</display-name>
+         <description><![CDATA[Description for MembreFacade]]></description>
+         <display-name>Name for MembreFacade</display-name>
 
-         <ejb-name>VendeurFacade</ejb-name>
+         <ejb-name>MembreFacade</ejb-name>
 
-         <home>ezbay.model.interfaces.VendeurFacadeHome</home>
-         <remote>ezbay.model.interfaces.VendeurFacade</remote>
-         <local-home>ezbay.model.interfaces.VendeurFacadeLocalHome</local-home>
-         <local>ezbay.model.interfaces.VendeurFacadeLocal</local>
-         <ejb-class>ezbay.model.ejb.VendeurFacadeSession</ejb-class>
+         <home>axlomoso.ezbay.model.interfaces.MembreFacadeHome</home>
+         <remote>axlomoso.ezbay.model.interfaces.MembreFacade</remote>
+         <local-home>axlomoso.ezbay.model.interfaces.MembreFacadeLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.MembreFacadeLocal</local>
+         <ejb-class>axlomoso.ezbay.model.ejb.MembreFacadeSession</ejb-class>
          <session-type>Stateless</session-type>
          <transaction-type>Container</transaction-type>
 
@@ -98,15 +98,170 @@
 
       <!-- Entity Beans -->
       <entity >
+         <description><![CDATA[Description for Membre]]></description>
+         <display-name>Name for Membre</display-name>
+
+         <ejb-name>Membre</ejb-name>
+
+         <local-home>axlomoso.ezbay.model.interfaces.MembreLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.MembreLocal</local>
+
+         <ejb-class>axlomoso.ezbay.model.ejb.MembreCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.String</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>membre</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>nom</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>prenom</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>pseudo</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>password</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>email</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>adresse</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>codePostal</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>ville</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>pays</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>telephoneFixe</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>telephonePortable</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>dateNaissance</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+         <query>
+            <description><![CDATA[findByPseudo]]></description>
+            <query-method>
+               <method-name>findByPseudo</method-name>
+               <method-params>
+                  <method-param>java.lang.String</method-param>
+               </method-params>
+            </query-method>
+            <ejb-ql><![CDATA[SELECT DISTINCT OBJECT(p) FROM membre p WHERE p.pseudo = ?1]]></ejb-ql>
+         </query>
+	  <!-- Write a file named ejb-finders-MembreBean.xml if you want to define extra finders. -->
+
+      </entity>
+
+      <entity >
+         <description><![CDATA[Description for Client]]></description>
+         <display-name>Name for Client</display-name>
+
+         <ejb-name>Client</ejb-name>
+
+         <local-home>axlomoso.ezbay.model.interfaces.ClientLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ClientLocal</local>
+
+         <ejb-class>axlomoso.ezbay.model.ejb.ClientCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.String</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>client</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+	  <!-- Write a file named ejb-finders-ClientBean.xml if you want to define extra finders. -->
+
+      </entity>
+
+      <entity >
+         <description><![CDATA[Description for Categorie]]></description>
+         <display-name>Name for Categorie</display-name>
+
+         <ejb-name>Categorie</ejb-name>
+
+         <local-home>axlomoso.ezbay.model.interfaces.CategorieLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.CategorieLocal</local>
+
+         <ejb-class>axlomoso.ezbay.model.ejb.CategorieCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.String</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>categorie</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>libelle</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+         <query>
+            <query-method>
+               <method-name>findAll</method-name>
+               <method-params>
+               </method-params>
+            </query-method>
+            <ejb-ql><![CDATA[SELECT Object(c) FROM categorie AS c]]></ejb-ql>
+         </query>
+         <query>
+            <description><![CDATA[findByLibelle]]></description>
+            <query-method>
+               <method-name>findByLibelle</method-name>
+               <method-params>
+                  <method-param>java.lang.String</method-param>
+               </method-params>
+            </query-method>
+            <ejb-ql><![CDATA[SELECT DISTINCT OBJECT(c) FROM categorie c WHERE c.libelle = ?1]]></ejb-ql>
+         </query>
+	  <!-- Write a file named ejb-finders-CategorieBean.xml if you want to define extra finders. -->
+
+      </entity>
+
+      <entity >
          <description><![CDATA[Description for Vendeur]]></description>
          <display-name>Name for Vendeur</display-name>
 
          <ejb-name>Vendeur</ejb-name>
 
-         <local-home>ezbay.model.interfaces.VendeurLocalHome</local-home>
-         <local>ezbay.model.interfaces.VendeurLocal</local>
+         <local-home>axlomoso.ezbay.model.interfaces.VendeurLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.VendeurLocal</local>
 
-         <ejb-class>ezbay.model.ejb.VendeurCMP</ejb-class>
+         <ejb-class>axlomoso.ezbay.model.ejb.VendeurCMP</ejb-class>
          <persistence-type>Container</persistence-type>
          <prim-key-class>java.lang.String</prim-key-class>
          <reentrant>False</reentrant>
@@ -131,40 +286,15 @@
       </entity>
 
       <entity >
-         <description><![CDATA[Description for Client]]></description>
-         <display-name>Name for Client</display-name>
-
-         <ejb-name>Client</ejb-name>
-
-         <local-home>ezbay.model.interfaces.ClientLocalHome</local-home>
-         <local>ezbay.model.interfaces.ClientLocal</local>
-
-         <ejb-class>ezbay.model.ejb.ClientCMP</ejb-class>
-         <persistence-type>Container</persistence-type>
-         <prim-key-class>java.lang.String</prim-key-class>
-         <reentrant>False</reentrant>
-         <cmp-version>2.x</cmp-version>
-         <abstract-schema-name>client</abstract-schema-name>
-         <cmp-field >
-            <description><![CDATA[]]></description>
-            <field-name>id</field-name>
-         </cmp-field>
-         <primkey-field>id</primkey-field>
-
-	  <!-- Write a file named ejb-finders-ClientBean.xml if you want to define extra finders. -->
-
-      </entity>
-
-      <entity >
          <description><![CDATA[Description for Article]]></description>
          <display-name>Name for Article</display-name>
 
          <ejb-name>Article</ejb-name>
 
-         <local-home>ezbay.model.interfaces.ArticleLocalHome</local-home>
-         <local>ezbay.model.interfaces.ArticleLocal</local>
+         <local-home>axlomoso.ezbay.model.interfaces.ArticleLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ArticleLocal</local>
 
-         <ejb-class>ezbay.model.ejb.ArticleCMP</ejb-class>
+         <ejb-class>axlomoso.ezbay.model.ejb.ArticleCMP</ejb-class>
          <persistence-type>Container</persistence-type>
          <prim-key-class>java.lang.String</prim-key-class>
          <reentrant>False</reentrant>
@@ -286,82 +416,6 @@
 
       </entity>
 
-      <entity >
-         <description><![CDATA[Description for Categorie]]></description>
-         <display-name>Name for Categorie</display-name>
-
-         <ejb-name>Categorie</ejb-name>
-
-         <local-home>ezbay.model.interfaces.CategorieLocalHome</local-home>
-         <local>ezbay.model.interfaces.CategorieLocal</local>
-
-         <ejb-class>ezbay.model.ejb.CategorieCMP</ejb-class>
-         <persistence-type>Container</persistence-type>
-         <prim-key-class>java.lang.String</prim-key-class>
-         <reentrant>False</reentrant>
-         <cmp-version>2.x</cmp-version>
-         <abstract-schema-name>categorie</abstract-schema-name>
-         <cmp-field >
-            <description><![CDATA[]]></description>
-            <field-name>id</field-name>
-         </cmp-field>
-         <cmp-field >
-            <description><![CDATA[]]></description>
-            <field-name>libelle</field-name>
-         </cmp-field>
-         <primkey-field>id</primkey-field>
-
-         <query>
-            <query-method>
-               <method-name>findAll</method-name>
-               <method-params>
-               </method-params>
-            </query-method>
-            <ejb-ql><![CDATA[SELECT Object(c) FROM categorie AS c]]></ejb-ql>
-         </query>
-         <query>
-            <description><![CDATA[findByLibelle]]></description>
-            <query-method>
-               <method-name>findByLibelle</method-name>
-               <method-params>
-                  <method-param>java.lang.String</method-param>
-               </method-params>
-            </query-method>
-            <ejb-ql><![CDATA[SELECT DISTINCT OBJECT(c) FROM categorie c WHERE c.libelle = ?1]]></ejb-ql>
-         </query>
-	  <!-- Write a file named ejb-finders-CategorieBean.xml if you want to define extra finders. -->
-
-      </entity>
-
-      <entity >
-         <description><![CDATA[Description for Membre]]></description>
-         <display-name>Name for Membre</display-name>
-
-         <ejb-name>Membre</ejb-name>
-
-         <local-home>ezbay.model.interfaces.MembreLocalHome</local-home>
-         <local>ezbay.model.interfaces.MembreLocal</local>
-
-         <ejb-class>ezbay.model.ejb.MembreCMP</ejb-class>
-         <persistence-type>Container</persistence-type>
-         <prim-key-class>java.lang.String</prim-key-class>
-         <reentrant>False</reentrant>
-         <cmp-version>2.x</cmp-version>
-         <abstract-schema-name>membre</abstract-schema-name>
-         <cmp-field >
-            <description><![CDATA[]]></description>
-            <field-name>id</field-name>
-         </cmp-field>
-         <cmp-field >
-            <description><![CDATA[]]></description>
-            <field-name>nom</field-name>
-         </cmp-field>
-         <primkey-field>id</primkey-field>
-
-	  <!-- Write a file named ejb-finders-MembreBean.xml if you want to define extra finders. -->
-
-      </entity>
-
      <!--
        To add entity beans that you have deployment descriptor info for, add
        a file to your XDoclet merge directory called entity-beans.xml that contains
@@ -410,17 +464,6 @@
          <ejb-relation-name>membre-vendeur</ejb-relation-name>
 
          <ejb-relationship-role >
-            <ejb-relationship-role-name>un Vendeur est associé a un Membre</ejb-relationship-role-name>
-            <multiplicity>One</multiplicity>
-            <relationship-role-source >
-               <ejb-name>Vendeur</ejb-name>
-            </relationship-role-source>
-            <cmr-field >
-               <cmr-field-name>membreLocal</cmr-field-name>
-            </cmr-field>
-         </ejb-relationship-role>
-
-         <ejb-relationship-role >
             <ejb-relationship-role-name>A un Membre est associe un Vendeur</ejb-relationship-role-name>
             <multiplicity>One</multiplicity>
             <relationship-role-source >
@@ -428,6 +471,17 @@
             </relationship-role-source>
             <cmr-field >
                <cmr-field-name>vendeurLocal</cmr-field-name>
+            </cmr-field>
+         </ejb-relationship-role>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>un Vendeur est associé a un Membre</ejb-relationship-role-name>
+            <multiplicity>One</multiplicity>
+            <relationship-role-source >
+               <ejb-name>Vendeur</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>membreLocal</cmr-field-name>
             </cmr-field>
          </ejb-relationship-role>
 
@@ -463,17 +517,6 @@
          <ejb-relation-name>membre-client</ejb-relation-name>
 
          <ejb-relationship-role >
-            <ejb-relationship-role-name>un Client est associé a un Membre</ejb-relationship-role-name>
-            <multiplicity>One</multiplicity>
-            <relationship-role-source >
-               <ejb-name>Client</ejb-name>
-            </relationship-role-source>
-            <cmr-field >
-               <cmr-field-name>membreLocal</cmr-field-name>
-            </cmr-field>
-         </ejb-relationship-role>
-
-         <ejb-relationship-role >
             <ejb-relationship-role-name>A un Membre est associe un Client</ejb-relationship-role-name>
             <multiplicity>One</multiplicity>
             <relationship-role-source >
@@ -481,6 +524,17 @@
             </relationship-role-source>
             <cmr-field >
                <cmr-field-name>clientLocal</cmr-field-name>
+            </cmr-field>
+         </ejb-relationship-role>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>un Client est associé a un Membre</ejb-relationship-role-name>
+            <multiplicity>One</multiplicity>
+            <relationship-role-source >
+               <ejb-name>Client</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>membreLocal</cmr-field-name>
             </cmr-field>
          </ejb-relationship-role>
 

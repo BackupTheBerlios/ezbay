@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+  <!-- Form Beans Configuration -->
+  <form-beans>
+    <form-bean name="inscriptionForm" type="axlomoso.ezbay.struts.form.InscriptionForm"/>
+    <form-bean name="articleListForm" type="axlomoso.ezbay.struts.form.ArticleListForm" />
+    <form-bean name="articleEditForm" type="axlomoso.ezbay.struts.form.ArticleEditForm" />
+    <form-bean name="connectForm" type="axlomoso.ezbay.struts.form.ConnectForm" />
+    <form-bean name="myEzBayForm" type="axlomoso.ezbay.struts.form.MyEzBayForm" />
+        
+  </form-beans>
+
+  <!-- Global Forwards Configuration -->
+  <global-forwards>
+    <forward
+      name="inscription"
+      path="/jsp/inscription.jsp"
+      redirect="true" />
+    <forward
+      name="welcome"
+      path="/default.do"
+      redirect="true" />
+    <forward
+      name="connect"
+      path="/jsp/connect.jsp"
+      redirect="true" />
+    <forward
+      name="myEzBay"
+      path="/jsp/myEzBay.jsp"
+      redirect="true" />
+  </global-forwards>
+
+  <!-- Action Mappings Configuration -->
+  <action-mappings>
+    <action path="/inscription"
+    		input="/jsp/inscription.jsp"
+            type="axlomoso.ezbay.struts.action.InscriptionAction"
+            name="inscriptionForm"
+            scope="request"
+            validate="true">
+            <forward
+      name="succes"
+      path="/myEzBay.do?do=showMyEzBay"
+      redirect="true" />
+            <forward name="echec" path="/jsp/inscription.jsp"/>
+    </action>
+    <action forward="/jsp/index.jsp" path="/default" unknown="true"/>
+    <action
+      attribute="articleListForm"
+      input="/jsp/articleList.jsp"
+      name="articleListForm"
+      path="/articleList"
+      scope="request"
+      type="axlomoso.ezbay.struts.action.ArticleListAction" >
+      <forward name="showList" path="/jsp/articleList.jsp" />
+    </action>
+    <action
+      attribute="articleEditForm"
+      name="articleEditForm"
+      parameter="do"
+      path="/articleEdit"
+      scope="request"
+      type="axlomoso.ezbay.struts.action.ArticleEditAction" >
+      <forward name="showEdit" path="/jsp/articleEdit.jsp" />
+      <forward name="showAdd" path="/jsp/articleAdd.jsp" />
+      <forward
+        name="showList"
+        path="/articleList.do"
+        redirect="true" />
+    </action>
+    <action
+      attribute="connectForm"
+      input="/jsp/connect.jsp"
+      name="connectForm"
+      parameter="do"
+      path="/connect"
+      scope="request"
+      type="axlomoso.ezbay.struts.action.ConnectAction" >
+      <forward name="succes" path="/jsp/myEzBay.jsp" />
+      <forward name="echec" path="/jsp/connect.jsp" />
+    </action>
+    <action
+      attribute="myEzBayForm"
+      input="/jsp/myEzBay.jsp"
+      name="myEzBayForm"
+      parameter="do"
+      path="/myEzBay"
+      scope="request"
+      type="axlomoso.ezbay.struts.action.MyEzBayAction" >
+      <forward name="showMyEzBay" path="/jsp/myEzBay.jsp" />
+      <forward name="showConnectForm" path="/jsp/connect.jsp" />
+      <forward name="welcome" path="/jsp/index.jsp" />
+      
+    </action>
+
+       
+  </action-mappings>
+
+  <!-- Message Resources Configuration -->
+  <message-resources
+    parameter="axlomoso.ezbay.struts.ressources.Application"/>
+
+</struts-config>

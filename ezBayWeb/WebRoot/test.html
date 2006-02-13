@@ -1,0 +1,37 @@
+<html>
+<body>
+<p>
+Les tests ...
+	<br/>
+	<form action="TestServlet" method="get" name="youTypeItForm">
+		<input type="text" name="suite" size=60 />
+		<input type="submit" value="Run" />
+	</form>
+</p>
+<hr/>
+<p>
+	You may pick one or more of the following test suites:
+	<br/>
+	<form action="TestServlet" name="youPickItForm">
+		<select name="suite" multiple>
+			<option value="axlomoso.ezbay.test.ArticleFacadeTest">
+				axlomoso.ezbay.test.ArticleFacadeTest
+			</option>
+			<option value="axlomoso.ezbay.test.VendeurFacadeTest">
+				axlomoso.ezbay.test.VendeurFacadeTest
+			</option>
+			<option value="axlomoso.ezbay.test.CategorieFacadeTest">
+				axlomoso.ezbay.test.CategorieFacadeTest
+			</option>
+			<option value="axlomoso.ezbay.test.MembreFacadeTest">
+				axlomoso.ezbay.test.MembreFacadeTest
+			</option>
+		</select>
+		<input type="submit" value="Run" />
+	</form>
+	
+	
+	
+</p>
+</body>
+</html>
