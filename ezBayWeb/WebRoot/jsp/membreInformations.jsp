@@ -68,7 +68,7 @@
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.dateNaissance"/>:</td>
-<td><bean:write name="membreForm" property="dateNaissance" /></td>
+<td><bean:write name="membreForm" property="stringDateNaissance" /></td>
 </tr>
 <tr>
 <td colspan="2">
