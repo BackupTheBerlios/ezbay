@@ -277,11 +277,23 @@ public abstract class MembreBean implements EntityBean {
 	  
 		/**
 		 * @ejb.interface-method view-type = "local"
-		 * @param
+		 * @param membreDTO
 		 */
-	    public void updateMembre(MembreDTO membreDTO) throws Exception {
+	    public String updateMembre(MembreDTO membreDTO) throws Exception {
 	    	this.setNom(membreDTO.getNom());
-	    }	  
+	    	this.setAdresse(membreDTO.getAdresse());
+	    	this.setCodePostal(membreDTO.getCodePostal());
+	    	this.setDateNaissance(membreDTO.getDateNaissance());
+	    	this.setEmail(membreDTO.getEmail());
+	    	this.setPassword(membreDTO.getPassword());
+	    	this.setPays(membreDTO.getPays());
+	    	this.setPrenom(membreDTO.getPrenom());
+	    	//this.setPseudo(membreDTO.getPseudo()); // Ne doit pas être modifié !!
+	    	this.setTelephoneFixe(membreDTO.getTelephoneFixe());
+	    	this.setTelephonePortable(membreDTO.getTelephonePortable());
+	    	this.setVille(membreDTO.getVille());
+	    	return membreDTO.getId();
+	    }
 	  
 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match

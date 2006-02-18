@@ -24,15 +24,31 @@ public class VendeurDTO
    private java.lang.String id;
    private boolean idHasBeenSet = false;
 
+   private java.lang.String nomProprioCB;
+   private boolean nomProprioCBHasBeenSet = false;
+
+   private java.lang.String numCB;
+   private boolean numCBHasBeenSet = false;
+
+   private java.util.Date dateExpirCB;
+   private boolean dateExpirCBHasBeenSet = false;
+
+   private java.lang.String codeSecuCB;
+   private boolean codeSecuCBHasBeenSet = false;
+
    private java.lang.String primaryKey;
 
    public VendeurDTO()
    {
    }
 
-   public VendeurDTO( java.lang.String id )
+   public VendeurDTO( java.lang.String id,java.lang.String nomProprioCB,java.lang.String numCB,java.util.Date dateExpirCB,java.lang.String codeSecuCB )
    {
        setId(id);
+       setNomProprioCB(nomProprioCB);
+       setNumCB(numCB);
+       setDateExpirCB(dateExpirCB);
+       setCodeSecuCB(codeSecuCB);
 	   primaryKey = this.getId();
    }
 
@@ -43,6 +59,14 @@ public class VendeurDTO
    {
 	  this.id = otherValue.id;
 	  idHasBeenSet = true;
+	  this.nomProprioCB = otherValue.nomProprioCB;
+	  nomProprioCBHasBeenSet = true;
+	  this.numCB = otherValue.numCB;
+	  numCBHasBeenSet = true;
+	  this.dateExpirCB = otherValue.dateExpirCB;
+	  dateExpirCBHasBeenSet = true;
+	  this.codeSecuCB = otherValue.codeSecuCB;
+	  codeSecuCBHasBeenSet = true;
 
 	  primaryKey = this.getId();
    }
@@ -76,12 +100,72 @@ public class VendeurDTO
    public boolean idHasBeenSet(){
 	  return idHasBeenSet;
    }
+   public java.lang.String getNomProprioCB()
+   {
+	  return this.nomProprioCB;
+   }
+
+   public void setNomProprioCB( java.lang.String nomProprioCB )
+   {
+	  this.nomProprioCB = nomProprioCB;
+	  nomProprioCBHasBeenSet = true;
+
+   }
+
+   public boolean nomProprioCBHasBeenSet(){
+	  return nomProprioCBHasBeenSet;
+   }
+   public java.lang.String getNumCB()
+   {
+	  return this.numCB;
+   }
+
+   public void setNumCB( java.lang.String numCB )
+   {
+	  this.numCB = numCB;
+	  numCBHasBeenSet = true;
+
+   }
+
+   public boolean numCBHasBeenSet(){
+	  return numCBHasBeenSet;
+   }
+   public java.util.Date getDateExpirCB()
+   {
+	  return this.dateExpirCB;
+   }
+
+   public void setDateExpirCB( java.util.Date dateExpirCB )
+   {
+	  this.dateExpirCB = dateExpirCB;
+	  dateExpirCBHasBeenSet = true;
+
+   }
+
+   public boolean dateExpirCBHasBeenSet(){
+	  return dateExpirCBHasBeenSet;
+   }
+   public java.lang.String getCodeSecuCB()
+   {
+	  return this.codeSecuCB;
+   }
+
+   public void setCodeSecuCB( java.lang.String codeSecuCB )
+   {
+	  this.codeSecuCB = codeSecuCB;
+	  codeSecuCBHasBeenSet = true;
+
+   }
+
+   public boolean codeSecuCBHasBeenSet(){
+	  return codeSecuCBHasBeenSet;
+   }
 
    public String toString()
    {
 	  StringBuffer str = new StringBuffer("{");
 
-	  str.append("id=" + getId());
+	  str.append("id=" + getId() + " " + "nomProprioCB=" + getNomProprioCB() + " " + "numCB=" + getNumCB() + " " + "dateExpirCB=" + getDateExpirCB() + " " + "codeSecuCB=" + getCodeSecuCB());
 	  str.append('}');
 
 	  return(str.toString());
@@ -114,6 +198,38 @@ public class VendeurDTO
                  else
                  {
                         lEquals = lEquals && this.id.equals( that.id );
+                 }
+                 if( this.nomProprioCB == null )
+                 {
+                        lEquals = lEquals && ( that.nomProprioCB == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.nomProprioCB.equals( that.nomProprioCB );
+                 }
+                 if( this.numCB == null )
+                 {
+                        lEquals = lEquals && ( that.numCB == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.numCB.equals( that.numCB );
+                 }
+                 if( this.dateExpirCB == null )
+                 {
+                        lEquals = lEquals && ( that.dateExpirCB == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.dateExpirCB.equals( that.dateExpirCB );
+                 }
+                 if( this.codeSecuCB == null )
+                 {
+                        lEquals = lEquals && ( that.codeSecuCB == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.codeSecuCB.equals( that.codeSecuCB );
                  }
 
                  return lEquals;
@@ -162,6 +278,54 @@ public class VendeurDTO
 
         }
 
+        if(this.nomProprioCB != that.nomProprioCB) {
+
+            if( this.nomProprioCB == null || that.nomProprioCB == null ) {
+                return false;
+            }
+
+            if(!this.nomProprioCB.equals(that.nomProprioCB)) {
+                return false;
+            }
+
+        }
+
+        if(this.numCB != that.numCB) {
+
+            if( this.numCB == null || that.numCB == null ) {
+                return false;
+            }
+
+            if(!this.numCB.equals(that.numCB)) {
+                return false;
+            }
+
+        }
+
+        if(this.dateExpirCB != that.dateExpirCB) {
+
+            if( this.dateExpirCB == null || that.dateExpirCB == null ) {
+                return false;
+            }
+
+            if(!this.dateExpirCB.equals(that.dateExpirCB)) {
+                return false;
+            }
+
+        }
+
+        if(this.codeSecuCB != that.codeSecuCB) {
+
+            if( this.codeSecuCB == null || that.codeSecuCB == null ) {
+                return false;
+            }
+
+            if(!this.codeSecuCB.equals(that.codeSecuCB)) {
+                return false;
+            }
+
+        }
+
         return true;
 
     }
@@ -179,6 +343,14 @@ public class VendeurDTO
     public int hashCode(){
 	  int result = 17;
       result = 37*result + ((this.id != null) ? this.id.hashCode() : 0);
+
+      result = 37*result + ((this.nomProprioCB != null) ? this.nomProprioCB.hashCode() : 0);
+
+      result = 37*result + ((this.numCB != null) ? this.numCB.hashCode() : 0);
+
+      result = 37*result + ((this.dateExpirCB != null) ? this.dateExpirCB.hashCode() : 0);
+
+      result = 37*result + ((this.codeSecuCB != null) ? this.codeSecuCB.hashCode() : 0);
 
 	  return result;
     }
@@ -231,6 +403,22 @@ public class VendeurDTO
 
        public java.lang.String getId() {
               return underlying().id;
+       }
+
+       public java.lang.String getNomProprioCB() {
+              return underlying().nomProprioCB;
+       }
+
+       public java.lang.String getNumCB() {
+              return underlying().numCB;
+       }
+
+       public java.util.Date getDateExpirCB() {
+              return underlying().dateExpirCB;
+       }
+
+       public java.lang.String getCodeSecuCB() {
+              return underlying().codeSecuCB;
        }
 
         public int hashCode() {

@@ -9,6 +9,9 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
+import axlomoso.ezbay.model.interfaces.MembreDTO;
+import axlomoso.ezbay.model.interfaces.VendeurDTO;
+
 /** 
  * MyEclipse Struts
  * Creation date: 02-13-2006
@@ -19,9 +22,10 @@ import org.apache.struts.action.ActionMapping;
 public class MyEzBayForm extends ActionForm {
 
 	// --------------------------------------------------------- Instance Variables
-
+	boolean isVendeur = false;
+	MembreDTO membreDTO = null;
+	VendeurDTO vendeurDTO = null;
 	// --------------------------------------------------------- Methods
-
 	/** 
 	 * Method validate
 	 * @param mapping
@@ -44,6 +48,31 @@ public class MyEzBayForm extends ActionForm {
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 
 		// TODO Auto-generated method stub
+	}
+
+	public boolean getIsVendeur() {
+		return isVendeur;
+	}
+
+	public void setIsVendeur(boolean isVendeur) {
+		this.isVendeur = isVendeur;
+	}
+
+	
+	public VendeurDTO getVendeurDTO() {
+		return vendeurDTO;
+	}
+
+	public void setVendeurDTO(VendeurDTO vendeurDTO) {
+		this.vendeurDTO = vendeurDTO;
+	}
+
+	public MembreDTO getMembreDTO() {
+		return membreDTO;
+	}
+
+	public void setMembreDTO(MembreDTO membreDTO) {
+		this.membreDTO = membreDTO;
 	}
 
 }

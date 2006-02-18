@@ -18,6 +18,22 @@ public interface VendeurLocal
 
    public void setId( java.lang.String id ) ;
 
+   public java.lang.String getNomProprioCB(  ) ;
+
+   public void setNomProprioCB( java.lang.String nomProprioCB ) ;
+
+   public java.lang.String getNumCB(  ) ;
+
+   public void setNumCB( java.lang.String numCB ) ;
+
+   public java.util.Date getDateExpirCB(  ) ;
+
+   public void setDateExpirCB( java.util.Date dateExpirCB ) ;
+
+   public java.lang.String getCodeSecuCB(  ) ;
+
+   public void setCodeSecuCB( java.lang.String codeSecuCB ) ;
+
    public java.util.Collection getArticle(  ) ;
 
    public void setArticle( java.util.Collection article ) ;
@@ -27,5 +43,7 @@ public interface VendeurLocal
    public void setMembreLocal( axlomoso.ezbay.model.interfaces.MembreLocal membreLocal ) ;
 
    public axlomoso.ezbay.model.interfaces.VendeurDTO getVendeurDTO(  ) ;
+
+   public java.lang.String updateVendeur( axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO ) throws java.lang.Exception;
 
 }

@@ -24,7 +24,7 @@
 </font><br>
 <hr width="100%" noshade="true" />
 <html:errors />
-<html:form action="/inscription">
+<html:form action="/membreSave">
 <table>
 <tr>
 <td align="right"><bean:message key="inscription.label.nom"/>:</td>
@@ -36,15 +36,23 @@
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.pseudo"/>:</td>
-<td><html:text property="pseudo" /></td>
+<td>
+	 <logic:empty name="membreForm" property="id"> 
+		<html:text property="pseudo" />
+	 </logic:empty>
+	 <logic:notEmpty name="membreForm" property="id"> 
+		<bean:write name="membreForm" property="pseudo" />
+		<html:hidden property="pseudo" />
+	 </logic:notEmpty>
+</td>
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.password1"/>:</td>
-<td><html:password property="password" /></td>
+<td><html:password property="password" value="" /></td>
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.password2"/>:</td>
-<td><html:password property="password2" /></td>>
+<td><html:password property="password2" value=""/></td>
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.email"/>:</td>
@@ -56,7 +64,7 @@
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.codepostal"/>:</td>
-<td><html:text property="codePostal" /></td>
+<td><html:text property="codePostal" maxlength="5"/></td>
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.ville"/>:</td>
@@ -68,11 +76,11 @@
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.telephonefixe"/>:</td>
-<td><html:text property="telephoneFixe" /></td>
+<td><html:text property="telephoneFixe" maxlength="10"/></td>
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.telephoneportable"/>:</td>
-<td><html:text property="telephonePortable" /></td>
+<td><html:text property="telephonePortable" maxlength="10"/></td>
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.dateNaissance"/>:</td>
@@ -84,7 +92,7 @@
 </td>
 </tr>
 </table>
-
+<html:hidden property="id" />
 </html:form>
 
 </body>

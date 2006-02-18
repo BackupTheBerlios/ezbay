@@ -23,6 +23,7 @@ import org.apache.struts.actions.DispatchAction;
 
 
 import axlomoso.ezbay.struts.form.ConnectForm;
+import axlomoso.ezbay.struts.form.MyEzBayForm;
 import axlomoso.ezbay.delegate.MembreFacadeDelegate;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
@@ -30,8 +31,6 @@ import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.MembreFacade;
 import axlomoso.ezbay.model.interfaces.MembreFacadeHome;
-import axlomoso.ezbay.model.views.MembreView;
-
 /** 
  * MyEclipse Struts
  * Creation date: 02-12-2006
@@ -53,34 +52,25 @@ public class ConnectAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-
-	public ActionForward showConnect(
-			ActionMapping mapping,
-			ActionForm form,
-			HttpServletRequest request,
-			HttpServletResponse response) {
-			ConnectForm connectForm = (ConnectForm) form;
-			System.out.println("execute");
-			return mapping.findForward("showConnect");	
-		}
 	
 	public ActionForward validateConnect(
 			ActionMapping mapping,
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
+		System.out.println("ConnectAction.validateConnect()");
 		ConnectForm connectForm = (ConnectForm) form;
 		ActionErrors erreurs = new ActionErrors();
 		String target = "";
 			try {
 				MembreFacadeDelegate membreDelegate = new MembreFacadeDelegate();
-				MembreView membre = membreDelegate.getMembre(connectForm.getLogin(), connectForm.getPassword());
-				if( membre.getId() == null){
+				MembreDTO membreDTO = membreDelegate.getMembre(connectForm.getLogin(), connectForm.getPassword());
+				if( membreDTO == null){
 					erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("myEzBay.erreur.connexion"));
 					target = "echec";
 				}
-				else{
-					request.getSession().setAttribute("membre",membre);
+				else{					
+					request.getSession().setAttribute("membre",membreDTO);
 					target = "succes";
 				}
 			} catch (RemoteException e) {

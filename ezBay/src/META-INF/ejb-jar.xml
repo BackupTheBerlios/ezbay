@@ -271,6 +271,22 @@
             <description><![CDATA[]]></description>
             <field-name>id</field-name>
          </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>nomProprioCB</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>numCB</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>dateExpirCB</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>codeSecuCB</field-name>
+         </cmp-field>
          <primkey-field>id</primkey-field>
 
          <query>

@@ -16,7 +16,7 @@ public interface VendeurLocalHome
    public static final String COMP_NAME="java:comp/env/ejb/VendeurLocal";
    public static final String JNDI_NAME="VendeurLocal";
 
-   public axlomoso.ezbay.model.interfaces.VendeurLocal create()
+   public axlomoso.ezbay.model.interfaces.VendeurLocal create(axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO)
       throws javax.ejb.CreateException;
 
    public java.util.Collection findAll()

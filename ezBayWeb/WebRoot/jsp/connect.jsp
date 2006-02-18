@@ -27,9 +27,9 @@
 		<%-- create a html form --%>
 		<html:form action="connect">
 				<label for="login"><bean:message key="connect.login"/> : </label><html:text property="login" value=""/>
-				</br>
+				<br>
 				<label for="password"><bean:message key="connect.password"/> : </label><html:password property="password" value=""/>
-				</br>
+				<br>
 			<html:hidden property="do" value="validateConnect" />
 			<br>
 			<%-- submit and back button --%>

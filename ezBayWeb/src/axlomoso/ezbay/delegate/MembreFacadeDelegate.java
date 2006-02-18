@@ -7,12 +7,11 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
+import axlomoso.ezbay.exceptions.PseudoDejaUtiliseException;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.MembreFacade;
 import axlomoso.ezbay.model.interfaces.MembreFacadeHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
-import axlomoso.ezbay.model.views.MembreView;
-import axlomoso.ezbay.model.views.VendeurView;
 
 public class MembreFacadeDelegate {
 
@@ -30,21 +29,27 @@ public class MembreFacadeDelegate {
 		}
 	}
 
-	public MembreView createMembre(MembreDTO membreDTO) throws Exception, RemoteException {
-		MembreDTO tMembreDTO =  membreFacade.createMembre(membreDTO);
-		return this.createMembreView(tMembreDTO);
+	public VendeurDTO getVendeurDTO(String membreId) throws RemoteException {
+		return membreFacade.getVendeurDTO(membreId);
 	}
 	
-	public MembreView getMembre(String membreId) throws Exception, RemoteException {
-		MembreDTO membreDTO = membreFacade.getMembre(membreId);
-		return this.createMembreView(membreDTO);
+	
+	public VendeurDTO saveVendeur(MembreDTO membreDTO, VendeurDTO vendeurDTO) throws Exception, RemoteException {
+		return membreFacade.saveVendeur(membreDTO, vendeurDTO);
 	}
 
-	public MembreView getMembre(String pseudo, String password) throws FinderException, RemoteException {
-		MembreDTO membreDTO = membreFacade.getMembre(pseudo, password);
-		return this.createMembreView(membreDTO);
+	public MembreDTO saveMembre(MembreDTO membreDTO) throws Exception, RemoteException, PseudoDejaUtiliseException {
+		return membreFacade.saveMembre(membreDTO);
+	}
+	
+	public MembreDTO getMembre(String membreId) throws Exception, RemoteException {
+		return membreFacade.getMembre(membreId);
 	}
 
+	public MembreDTO getMembre(String pseudo, String password) throws FinderException, RemoteException {
+		return membreFacade.getMembre(pseudo, password);
+	}
+	
 	public void removeMembre(MembreDTO membreDTO) throws Exception, RemoteException {
 		membreFacade.removeMembre(membreDTO);
 	}
@@ -53,18 +58,4 @@ public class MembreFacadeDelegate {
 		membreFacade.updateMembre(membreDTO);
 	}
 	
-	private MembreView createMembreView(MembreDTO membreDTO) throws RemoteException{
-		MembreView tRes = null;
-		if( membreDTO != null){
-			tRes = new MembreView();
-			VendeurView vendeurView = new VendeurView();
-			VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
-			VendeurDTO vendeurDTO = membreFacade.getVendeurDTO(membreDTO.getId());
-			vendeurView.setVendeurDTO(vendeurDTO);
-			tRes.setMembreDTO(membreDTO);
-			tRes.setVendeurView(vendeurView);
-		}
-		return tRes;
-	}
-
 }

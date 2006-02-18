@@ -139,6 +139,26 @@
             <column-name>id</column-name>
 
         </cmp-field>
+         <cmp-field>
+            <field-name>nomProprioCB</field-name>
+            <column-name>nomProprioCB</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>numCB</field-name>
+            <column-name>numCB</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>dateExpirCB</field-name>
+            <column-name>dateExpirCB</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>codeSecuCB</field-name>
+            <column-name>codeSecuCB</column-name>
+
+        </cmp-field>
 
 <!-- jboss 3.2 features -->
 <!-- optimistic locking does not express the exclusions needed -->

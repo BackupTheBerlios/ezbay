@@ -2,6 +2,7 @@ package axlomoso.ezbay.model.ejb;
 
 import java.rmi.RemoteException;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
@@ -9,6 +10,7 @@ import javax.ejb.EntityBean;
 import javax.ejb.EntityContext;
 import javax.ejb.RemoveException;
 
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.MembreLocal;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurUtil;
@@ -74,6 +76,58 @@ public abstract class VendeurBean implements EntityBean {
 	public abstract void setId(String id);
 
 	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @ejb.persistence column-name = "nomProprioCB"
+	 * @return
+	 */
+	public abstract String getNomProprioCB();
+
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param nomProprioCB
+	 */
+	public abstract void setNomProprioCB(String nomProprioCB);
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @ejb.persistence column-name = "numCB"
+	 * @return
+	 */
+	public abstract String getNumCB();
+
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param numCB
+	 */
+	public abstract void setNumCB(String numCB);
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @ejb.persistence column-name = "dateExpirCB"
+	 * @return
+	 */
+	public abstract Date getDateExpirCB();
+
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param dateExpirCB
+	 */
+	public abstract void setDateExpirCB(Date dateExpirCB);
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @ejb.persistence column-name = "codeSecuCB"
+	 * @return
+	 */
+	public abstract String getCodeSecuCB();
+
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param codeSecuCB
+	 */
+	public abstract void setCodeSecuCB(String codeSecuCB);
+	
+	/**
 	 * @ejb.interface-method
 	 *   view-type="local"
 	 * @ejb.relation
@@ -107,7 +161,20 @@ public abstract class VendeurBean implements EntityBean {
 	 * @param
 	 */
     public abstract VendeurDTO getVendeurDTO();
-        
+
+    
+	/**
+	 * @ejb.interface-method view-type = "local"
+	 * @param vendeurDTO
+	 */
+    public String updateVendeur(VendeurDTO vendeurDTO) throws Exception {
+		this.setNomProprioCB(vendeurDTO.getNomProprioCB());
+		this.setNumCB(vendeurDTO.getNumCB());
+		this.setDateExpirCB(vendeurDTO.getDateExpirCB());
+		this.setCodeSecuCB(vendeurDTO.getCodeSecuCB());
+		return vendeurDTO.getId();
+    }
+    
  	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match
 	 * the signatures of the create<METHOD>(...) methods of the entity bean?s home interface.
@@ -140,9 +207,13 @@ public abstract class VendeurBean implements EntityBean {
 	 *
 	 * @ejb.create-method
 	 */
-	public String ejbCreate() throws CreateException {
+	public String ejbCreate(VendeurDTO vendeurDTO) throws CreateException {
 		String tId = VendeurUtil.generateGUID(this);
 		this.setId(tId);
+		this.setNomProprioCB(vendeurDTO.getNomProprioCB());
+		this.setNumCB(vendeurDTO.getNumCB());
+		this.setDateExpirCB(vendeurDTO.getDateExpirCB());
+		this.setCodeSecuCB(vendeurDTO.getCodeSecuCB());
 		return tId;
 	}
 

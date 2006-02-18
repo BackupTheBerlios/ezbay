@@ -46,7 +46,8 @@ public class ArticleFacadeTest extends TestCase {
 		ArticleFacadeHome facadeHome = (ArticleFacadeHome) PortableRemoteObject.narrow(ref, ArticleFacadeHome.class);
 
 		VendeurLocalHome vendeurLocalHome = (VendeurLocalHome) jndiContext.lookup(VendeurLocalHome.JNDI_NAME);
-		vendeurLocal = (VendeurLocal) vendeurLocalHome.create();		
+		VendeurDTO vendeurDTO = new VendeurDTO();
+		vendeurLocal = (VendeurLocal) vendeurLocalHome.create(vendeurDTO);		
 		
 		this.articleFacade = facadeHome.create();
 		articleLocalHome = (ArticleLocalHome) jndiContext.lookup(ArticleLocalHome.JNDI_NAME);

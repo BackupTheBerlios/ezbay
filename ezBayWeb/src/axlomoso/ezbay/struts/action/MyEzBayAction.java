@@ -3,16 +3,24 @@
 
 package axlomoso.ezbay.struts.action;
 
+import java.rmi.RemoteException;
+
+import javax.ejb.CreateException;
+import javax.ejb.FinderException;
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
+import axlomoso.ezbay.delegate.MembreFacadeDelegate;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
-import axlomoso.ezbay.model.views.MembreView;
+import axlomoso.ezbay.struts.form.ConnectForm;
 import axlomoso.ezbay.struts.form.MyEzBayForm;
 
 /** 
@@ -41,28 +49,48 @@ public class MyEzBayAction extends DispatchAction {
 		ActionForm form,
 		HttpServletRequest request,
 		HttpServletResponse response) {
-		System.out.println("execute");		
+		System.out.println("myEzBayAction.showMyEzBay()");	
 		String target = "";
-		MembreView membre = (MembreView) request.getSession().getAttribute("membre");
-		if(membre == null)
-			target = "showConnectForm";
-		else
-			target = "showMyEzBay";
+		try {
+			MembreFacadeDelegate membreFacadeDelegate = new MembreFacadeDelegate();
+			MyEzBayForm myEzBayForm = (MyEzBayForm) form;
+			MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
+			if(membreDTO == null)
+				target = "showConnectForm";
+			else{
+				myEzBayForm.setMembreDTO(membreDTO);			
+				myEzBayForm.setVendeurDTO(membreFacadeDelegate.getVendeurDTO(membreDTO.getId()));
+				target = "showMyEzBay";
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return (mapping.findForward(target));
 	}
 
+	public ActionForward showInfosVendeur(
+			ActionMapping mapping,
+			ActionForm form,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("myEzBayAction.showInfosVendeur()");
+		// 	A faire : affichage des infos du vendeur
+			return null;
+		}
+	
 	public ActionForward deconnect(
 			ActionMapping mapping,
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
+		System.out.println("myEzBayAction.deconnect()");
 			request.getSession().removeAttribute("membre");
-			System.out.println("deconnect");
 			return (mapping.findForward("welcome"));
 		}
-	
-	
-	
 	
 }
 

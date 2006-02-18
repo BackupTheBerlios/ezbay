@@ -1,4 +1,3 @@
-
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean" %>
@@ -20,11 +19,14 @@
     <meta http-equiv="expires" content="0">    
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
+  			
   </head>
   
 	<body>
+	<H1><bean:message key="articleEdit.title" /></H1>
+	<html:errors />
 		<%-- create a html form --%>
-		<html:form action="articleEdit">
+		<html:form action="articleSave">
 			<%-- print out the form data --%>
 			<table border="1">
 				<tbody>
@@ -42,7 +44,7 @@
 				</tr>
 				<tr>
 				<td><bean:message key="articleEdit.prixVente" /> :</td>
-				<td><html:text property="prixVente" /></td>
+				<td><html:text property="stringPrixVente" /></td>
 				</tr>
 				<tr>
 				<td><bean:message key="articleEdit.anneeFabrication" /> :</td>
@@ -55,7 +57,6 @@
 				</tbody>
 			</table>
 			<%-- set the parameter for the dispatch action --%>
-			<html:hidden property="do" value="saveArticle" />
 			<html:hidden property="id" />
 			<br>
 			<%-- submit and back button --%>

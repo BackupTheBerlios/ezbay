@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowViewLayout Version="1.2">
-  <StrutsActivity path="/inscription.do" location="350,1650" dimension="306,100" />
+  <StrutsActivity path="/membreSave.do" location="350,1650" dimension="306,100" />
   <StrutsActivity path="/default.do" location="50,450" dimension="88,68" />
   <StrutsActivity path="/articleList.do" location="350,450" dimension="302,100" />
-  <StrutsActivity path="/articleEdit.do" location="950,450" dimension="304,100" />
-  <StrutsActivity path="/connect.do" location="50,650" dimension="293,100" />
+  <StrutsActivity path="/article.do" location="1250,1250" dimension="304,100" />
+  <StrutsActivity path="/connect.do" location="1250,50" dimension="293,100" />
   <StrutsActivity path="/myEzBay.do" location="50,150" dimension="301,88" />
-  <StrutsActivity path="inscription;6" location="950,1650" dimension="150,84" />
-  <StrutsActivity path="welcome;6" location="650,650" dimension="106,84" />
-  <StrutsActivity path="connect;6" location="950,650" dimension="136,84" />
-  <StrutsActivity path="myEzBay;6" location="1250,650" dimension="121,84" />
-  <StrutsActivity path="/jsp/myEzBay.jsp" location="350,1450" dimension="132,52" />
-  <StrutsActivity path="/jsp/inscription.jsp" location="50,1650" dimension="140,52" />
+  <StrutsActivity path="/articleSave.do" location="650,1050" dimension="311,100" />
+  <StrutsActivity path="/vendeurSave.do" location="650,1250" dimension="323,100" />
+  <StrutsActivity path="/vendeur.do" location="50,650" dimension="295,100" />
+  <StrutsActivity path="/membre.do" location="650,1450" dimension="294,100" />
+  <StrutsActivity path="welcome;6" location="1550,550" dimension="122,84" />
+  <StrutsActivity path="/jsp/membreEdit.jsp" location="950,1650" dimension="151,52" />
   <StrutsActivity path="/jsp/index.jsp" location="50,850" dimension="112,52" />
   <StrutsActivity path="/jsp/articleList.jsp" location="350,850" dimension="136,52" />
   <StrutsActivity path="/jsp/articleEdit.jsp" location="650,850" dimension="138,52" />
   <StrutsActivity path="/jsp/articleAdd.jsp" location="950,850" dimension="139,52" />
   <StrutsActivity path="/jsp/connect.jsp" location="50,1050" dimension="126,52" />
-  <StrutsActivity path="/jsp/confirmAjoutMembre.jsp" location="650,1250" dimension="202,52" />
-  <StrutsActivity path="/jsp/erreur.jsp" location="950,1250" dimension="118,52" />
-  <StrutsActivity path="/jsp/ajoutMembre.jsp" location="650,1050" dimension="158,52" />
-  <StrutsActivity path="/ajoutMembre.jsp" location="950,1050" dimension="136,52" />
-  <StrutsActivity path="/AjoutMembre.jsp" location="950,250" dimension="137,52" />
-  <StrutsActivity path="/error.jsp" location="650,50" dimension="89,52" />
-  <StrutsActivity path="/ok.jsp" location="950,50" dimension="73,52" />
-  <StrutsActivity path="/jsp/AjoutMembre.jsp" location="350,1050" dimension="159,52" />
-  <StrutsActivity path="/confirmAjoutMembre.jsp" location="50,1250" dimension="180,52" />
+  <StrutsActivity path="/jsp/myEzBay.jsp" location="350,1450" dimension="132,52" />
+  <StrutsActivity path="/jsp/vendeurEdit.jsp" location="1250,650" dimension="149,52" />
+  <StrutsActivity path="/jsp/vendeurArticles.jsp" location="1250,350" dimension="170,52" />
+  <StrutsActivity path="/jsp/vendeurInformations.jsp" location="600,615" dimension="200,52" />
+  <StrutsActivity path="/jsp/membreInformations.jsp" location="50,1250" dimension="202,52" />
+  <StrutsActivity path="/jsp/inscription.jsp" location="50,1650" dimension="140,52" />
+  <StrutsActivity path="/jsp/vendeurAdd.jsp" location="950,650" dimension="150,52" />
+  <StrutsActivity path="/jsp/inscriptionVendeur.jsp" location="1250,1650" dimension="188,52" />
   <StrutsActivity path="/erreur.jsp" location="350,1250" dimension="96,52" />
-  <StrutsActivity path="/jsp/e.jsp" location="50,1450" dimension="89,52" />
   <StrutsActivity path="/jsp/myEzBay" location="1250,850" dimension="111,52" />
   <StrutsActivity path="myEzBay" location="1250,1050" dimension="84,52" />
-  <StrutsActivity path="/form/myEzBay.jsp" location="650,1450" dimension="142,52" />
-  <StrutsActivity path="/myEzBay.jsp" location="950,1450" dimension="110,52" />
   <StrutsActivity path="/jsp/confirmInscription.jsp" location="1250,1450" dimension="184,52" />
-  <StrutsTransition id="/jsp/connect.jsp,null,/connect.do,2" routingType="0">
+  <StrutsActivity path="vendeurAdd.jsp" location="350,1050" dimension="123,52" />
+  <StrutsActivity path="path=&quot;/jsp/membreInformations.jsp&quot;" location="50,1450" dimension="246,52" />
+  <StrutsTransition id="/jsp/vendeurEdit.jsp,null,/vendeurSave.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="176,1076" />
-      <AbsolutePoint location="196,1076" />
-      <AbsolutePoint location="196,750" />
+      <AbsolutePoint location="1250,676" />
+      <AbsolutePoint location="1176,676" />
+      <AbsolutePoint location="1176,1330" />
+      <AbsolutePoint location="973,1330" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="welcome;6,null,/jsp/index.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1611,634" />
+      <AbsolutePoint location="1611,825" />
+      <AbsolutePoint location="136,825" />
+      <AbsolutePoint location="136,850" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/jsp/myEzBay.jsp,null,/myEzBay.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="386,1450" />
-      <AbsolutePoint location="386,1379" />
-      <AbsolutePoint location="-25,1379" />
-      <AbsolutePoint location="-25,224" />
-      <AbsolutePoint location="50,224" />
+      <AbsolutePoint location="416,1450" />
+      <AbsolutePoint location="416,1395" />
+      <AbsolutePoint location="-85,1395" />
+      <AbsolutePoint location="-85,164" />
+      <AbsolutePoint location="50,164" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/articleEdit.do,showList,/articleList.do,1" routingType="0">
+  <StrutsTransition id="/membre.do,showEdit,/jsp/membreEdit.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="950,500" />
-      <AbsolutePoint location="652,500" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/default.do,null,/jsp/index.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="50,484" />
-      <AbsolutePoint location="35,484" />
-      <AbsolutePoint location="35,876" />
-      <AbsolutePoint location="50,876" />
+      <AbsolutePoint location="827,1550" />
+      <AbsolutePoint location="827,1676" />
+      <AbsolutePoint location="950,1676" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/articleList.do,showList,/jsp/articleList.jsp,1" routingType="0">
@@ -69,12 +69,129 @@
       <AbsolutePoint location="471,850" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="welcome;6,null,/default.do,1" routingType="0">
+  <StrutsTransition id="/vendeur.do,succes,/myEzBay.do,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="703,650" />
-      <AbsolutePoint location="703,377" />
-      <AbsolutePoint location="94,377" />
-      <AbsolutePoint location="94,450" />
+      <AbsolutePoint location="170,650" />
+      <AbsolutePoint location="170,238" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/membreSave.do,succesInscription,/myEzBay.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="501,1650" />
+      <AbsolutePoint location="501,630" />
+      <AbsolutePoint location="200,630" />
+      <AbsolutePoint location="200,238" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/myEzBay.do,showConnectForm,/jsp/connect.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,194" />
+      <AbsolutePoint location="-25,194" />
+      <AbsolutePoint location="-25,1076" />
+      <AbsolutePoint location="50,1076" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/membreSave.do,succesUpdate,/membre.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="656,1676" />
+      <AbsolutePoint location="797,1676" />
+      <AbsolutePoint location="797,1550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/articleEdit.jsp,null,/articleSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="749,902" />
+      <AbsolutePoint location="749,1050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/membre.do,showInformations,/jsp/membreInformations.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="797,1450" />
+      <AbsolutePoint location="797,1425" />
+      <AbsolutePoint location="151,1425" />
+      <AbsolutePoint location="151,1302" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/connect.do,echec,/jsp/connect.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1474,150" />
+      <AbsolutePoint location="1474,1007" />
+      <AbsolutePoint location="143,1007" />
+      <AbsolutePoint location="143,1050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/article.do,showEdit,/jsp/articleEdit.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1384,1250" />
+      <AbsolutePoint location="1384,977" />
+      <AbsolutePoint location="719,977" />
+      <AbsolutePoint location="719,902" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/articleSave.do,showList,/articleList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="815,1050" />
+      <AbsolutePoint location="815,530" />
+      <AbsolutePoint location="652,530" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/vendeur.do,showInformations,/jsp/vendeurInformations.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="345,652" />
+      <AbsolutePoint location="600,652" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/membre.do,showInscription,/jsp/membreEdit.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="944,1487" />
+      <AbsolutePoint location="1055,1487" />
+      <AbsolutePoint location="1055,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/article.do,showList,/articleList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1414,1250" />
+      <AbsolutePoint location="1414,500" />
+      <AbsolutePoint location="652,500" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/membreEdit.jsp,null,/membreSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1025,1650" />
+      <AbsolutePoint location="1025,1595" />
+      <AbsolutePoint location="531,1595" />
+      <AbsolutePoint location="531,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/membreSave.do,echec,/jsp/membreEdit.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="656,1717" />
+      <AbsolutePoint location="1025,1717" />
+      <AbsolutePoint location="1025,1702" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/vendeur.do,showArticles,/jsp/vendeurArticles.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="260,650" />
+      <AbsolutePoint location="260,376" />
+      <AbsolutePoint location="1250,376" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/jsp/connect.jsp,null,/connect.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="113,1050" />
+      <AbsolutePoint location="113,917" />
+      <AbsolutePoint location="1444,917" />
+      <AbsolutePoint location="1444,150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/default.do,null,/jsp/index.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,484" />
+      <AbsolutePoint location="35,484" />
+      <AbsolutePoint location="35,795" />
+      <AbsolutePoint location="106,795" />
+      <AbsolutePoint location="106,850" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/jsp/articleList.jsp,null,/articleList.do,2" routingType="0">
@@ -83,113 +200,50 @@
       <AbsolutePoint location="418,550" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/articleEdit.do,showEdit,/jsp/articleEdit.jsp,1" routingType="0">
+  <StrutsTransition id="/vendeur.do,showEdit,/jsp/vendeurEdit.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="950,530" />
-      <AbsolutePoint location="771,530" />
-      <AbsolutePoint location="771,850" />
+      <AbsolutePoint location="345,717" />
+      <AbsolutePoint location="1324,717" />
+      <AbsolutePoint location="1324,702" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/articleEdit.do,showAdd,/jsp/articleAdd.jsp,1" routingType="0">
+  <StrutsTransition id="/article.do,showAdd,/jsp/articleAdd.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="1115,550" />
-      <AbsolutePoint location="1115,876" />
-      <AbsolutePoint location="1089,876" />
+      <AbsolutePoint location="1250,1300" />
+      <AbsolutePoint location="1025,1300" />
+      <AbsolutePoint location="1025,902" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/inscription.do,succes,/jsp/myEzBay.jsp,1" routingType="0">
+  <StrutsTransition id="/vendeurSave.do,succes,/vendeur.do,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="467,1650" />
-      <AbsolutePoint location="467,1502" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/inscription.do,echec,/jsp/inscription.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="350,1717" />
-      <AbsolutePoint location="120,1717" />
-      <AbsolutePoint location="120,1702" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/myEzBay.do,showConnectForm,/jsp/connect.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="50,164" />
-      <AbsolutePoint location="-85,164" />
-      <AbsolutePoint location="-85,977" />
-      <AbsolutePoint location="113,977" />
-      <AbsolutePoint location="113,1050" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="connect;6,null,/jsp/connect.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="950,692" />
-      <AbsolutePoint location="897,692" />
-      <AbsolutePoint location="897,1177" />
-      <AbsolutePoint location="113,1177" />
-      <AbsolutePoint location="113,1102" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/connect.do,succes,/jsp/myEzBay.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="245,750" />
-      <AbsolutePoint location="245,1476" />
-      <AbsolutePoint location="350,1476" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/inscription.do,succes,/myEzBay.do,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="656,1700" />
-      <AbsolutePoint location="867,1700" />
-      <AbsolutePoint location="867,194" />
-      <AbsolutePoint location="351,194" />
+      <AbsolutePoint location="811,1250" />
+      <AbsolutePoint location="811,1195" />
+      <AbsolutePoint location="197,1195" />
+      <AbsolutePoint location="197,750" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/myEzBay.do,welcome,/jsp/index.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="50,194" />
-      <AbsolutePoint location="-55,194" />
-      <AbsolutePoint location="-55,795" />
-      <AbsolutePoint location="106,795" />
-      <AbsolutePoint location="106,850" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/jsp/inscription.jsp,null,/inscription.do,2" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="190,1676" />
-      <AbsolutePoint location="350,1676" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="myEzBay;6,null,/jsp/myEzBay.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="1250,692" />
-      <AbsolutePoint location="1175,692" />
-      <AbsolutePoint location="1175,1409" />
-      <AbsolutePoint location="416,1409" />
-      <AbsolutePoint location="416,1450" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="inscription;6,null,/jsp/inscription.jsp,1" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="1025,1650" />
-      <AbsolutePoint location="1025,1577" />
-      <AbsolutePoint location="120,1577" />
-      <AbsolutePoint location="120,1650" />
+      <AbsolutePoint location="50,224" />
+      <AbsolutePoint location="5,224" />
+      <AbsolutePoint location="5,876" />
+      <AbsolutePoint location="50,876" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/myEzBay.do,showMyEzBay,/jsp/myEzBay.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="200,238" />
-      <AbsolutePoint location="200,595" />
-      <AbsolutePoint location="584,595" />
-      <AbsolutePoint location="584,1476" />
+      <AbsolutePoint location="230,238" />
+      <AbsolutePoint location="230,595" />
+      <AbsolutePoint location="531,595" />
+      <AbsolutePoint location="531,1476" />
       <AbsolutePoint location="482,1476" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/connect.do,echec,/jsp/connect.jsp,1" routingType="0">
+  <StrutsTransition id="/connect.do,succes,/myEzBay.do,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="50,700" />
-      <AbsolutePoint location="5,700" />
-      <AbsolutePoint location="5,1076" />
-      <AbsolutePoint location="50,1076" />
+      <AbsolutePoint location="1396,150" />
+      <AbsolutePoint location="1396,194" />
+      <AbsolutePoint location="351,194" />
     </AutomaticBendpoints>
   </StrutsTransition>
 </FlowViewLayout>

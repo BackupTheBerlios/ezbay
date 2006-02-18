@@ -15,6 +15,15 @@ public abstract class VendeurCMP
    implements javax.ejb.EntityBean
 {
 
+   /**
+    * Generated ejbPostCreate for corresponding ejbCreate method.
+    *
+    * @see #ejbCreate(axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO)
+    */
+   public void ejbPostCreate(axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO)
+   {
+   }
+
    public void ejbLoad() throws javax.ejb.EJBException, java.rmi.RemoteException
    {
       super.ejbLoad();
@@ -63,6 +72,10 @@ public abstract class VendeurCMP
       try
          {
             VendeurDTO.setId( getId() );
+            VendeurDTO.setNomProprioCB( getNomProprioCB() );
+            VendeurDTO.setNumCB( getNumCB() );
+            VendeurDTO.setDateExpirCB( getDateExpirCB() );
+            VendeurDTO.setCodeSecuCB( getCodeSecuCB() );
 
          }
          catch (Exception e)
@@ -78,5 +91,21 @@ public abstract class VendeurCMP
    public abstract java.lang.String getId() ;
 
    public abstract void setId( java.lang.String id ) ;
+
+   public abstract java.lang.String getNomProprioCB() ;
+
+   public abstract void setNomProprioCB( java.lang.String nomProprioCB ) ;
+
+   public abstract java.lang.String getNumCB() ;
+
+   public abstract void setNumCB( java.lang.String numCB ) ;
+
+   public abstract java.util.Date getDateExpirCB() ;
+
+   public abstract void setDateExpirCB( java.util.Date dateExpirCB ) ;
+
+   public abstract java.lang.String getCodeSecuCB() ;
+
+   public abstract void setCodeSecuCB( java.lang.String codeSecuCB ) ;
 
 }

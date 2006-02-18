@@ -14,7 +14,7 @@ public interface VendeurFacadeLocal
    extends javax.ejb.EJBLocalObject
 {
 
-   public axlomoso.ezbay.model.interfaces.VendeurDTO createVendeur(  ) throws java.lang.Exception;
+   public axlomoso.ezbay.model.interfaces.VendeurDTO saveVendeur( axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO ) throws java.lang.Exception;
 
    public void removeVendeur( axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO ) throws java.lang.Exception;
 
@@ -22,6 +22,12 @@ public interface VendeurFacadeLocal
 
    public java.util.Collection getVendeurs(  ) ;
 
-   public java.util.Collection getArticles( axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO ) ;
+   public java.util.Collection getArticles( java.lang.String vendeurId ) ;
+
+   public java.util.Collection getArticlesEnAttente( java.lang.String vendeurId ) ;
+
+   public java.util.Collection getArticlesEnVente( java.lang.String vendeurId ) ;
+
+   public java.util.Collection getArticlesVendus( java.lang.String vendeurId ) ;
 
 }

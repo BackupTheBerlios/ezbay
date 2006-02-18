@@ -18,11 +18,10 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 
-import axlomoso.ezbay.struts.form.ArticleEditForm;
+import axlomoso.ezbay.struts.form.ArticleForm;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
-import axlomoso.ezbay.model.views.ArticleView;
 
 /** 
  * MyEclipse Struts
@@ -31,7 +30,7 @@ import axlomoso.ezbay.model.views.ArticleView;
  * XDoclet definition:
  * @struts.action path="/articleEdit" name="articleEditForm" parameter="do" scope="request" validate="true"
  */
-public class ArticleEditAction extends DispatchAction {
+public class ArticleAction extends DispatchAction {
 
 	// --------------------------------------------------------- Instance Variables
 
@@ -42,7 +41,7 @@ public class ArticleEditAction extends DispatchAction {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		ArticleEditForm articleEditForm = (ArticleEditForm) form;
+		ArticleForm articleEditForm = (ArticleForm) form;
 		/* get id of the book from request */
 		String id = request.getParameter("id");
 		/* load the session facade and get the book by primary key */
@@ -79,33 +78,6 @@ public class ArticleEditAction extends DispatchAction {
 			HttpServletResponse response) {
 		return mapping.findForward("showAdd");
 	}
-	
-	public ActionForward saveArticle(
-			ActionMapping mapping,
-			ActionForm form,
-			HttpServletRequest request,
-			HttpServletResponse response) {
-		ArticleEditForm articleEditForm = (ArticleEditForm) form;
-		/* load the session facade and save the book by primary key	*/
-		try {
-			InitialContext context = new InitialContext();
-			ArticleFacadeHome articleFacadeHome = (ArticleFacadeHome)context.lookup(ArticleFacadeHome.JNDI_NAME);
-			ArticleFacade articleFacade = articleFacadeHome.create();
-			System.out.println("saveArticle");
-			ArticleDTO newArt = articleEditForm.getArticleDTO();
-			newArt.setDateLimite(new Date());
-			articleFacade.updateArticle(newArt);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} catch (CreateException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mapping.findForward("showList");
-	}
-	
+
 }
 

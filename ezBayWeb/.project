@@ -3,6 +3,7 @@
 	<name>ezBayWeb</name>
 	<comment></comment>
 	<projects>
+		<project>ezBay</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

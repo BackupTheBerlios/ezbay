@@ -51,7 +51,7 @@ public class VendeurFacadeTest extends TestCase {
 		
 		vendeurDTOTemoin = new VendeurDTO();	
 		//création d'un vendeur par le sessionFacade
-		vendeurDTOCreated = vendeurFacade.createVendeur();
+		vendeurDTOCreated = vendeurFacade.saveVendeur(vendeurDTOTemoin);
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class VendeurFacadeTest extends TestCase {
 				newArticles.add(articleLocalHome.create(art, vendeurLocal).getArticleDTO());
 			}
 			//récupération des articles du vendeur
-			Collection articlesVendeur = vendeurFacade.getArticles(vendeurDTOCreated);
+			Collection articlesVendeur = vendeurFacade.getArticles(vendeurDTOCreated.getId());
 			//Est-ce que le vendeur possède bien (et uniquement) les articles que l'on vient de créer ?
 			assertEquals(newArticles.size(), articlesVendeur.size()); // meme nombre
 			//Est-ce que tous les articles que l'on vient de créer se trouvent bien dans la liste du vendeur ?
@@ -118,7 +118,7 @@ public class VendeurFacadeTest extends TestCase {
 				articleLocal = articleLocalHome.findByPrimaryKey(articleDTO.getId());
 				articleLocal.remove();
 			}
-			assertTrue(vendeurFacade.getArticles(vendeurDTOCreated).size() == 0);
+			assertTrue(vendeurFacade.getArticles(vendeurDTOCreated.getId()).size() == 0);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

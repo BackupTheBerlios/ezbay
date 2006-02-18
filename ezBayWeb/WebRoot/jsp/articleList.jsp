@@ -9,6 +9,7 @@
 </title>
 </head>
 <body>
+<html:errors/>
 <table border="1">
 <tbody>
 <%-- set the header --%>
@@ -26,7 +27,7 @@
 <tr>
 <%-- article informations --%>
 <td>
-<html:link action="articleEdit.do?do=showEdit" paramName="article" paramProperty="id" paramId="id">Edit</html:link>
+<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:message key="link.modifier" /></html:link>
 </td>
 <td><bean:write name="article" property="libelle" /></td>
 <td><bean:write name="article" property="marque" /></td>
@@ -47,7 +48,7 @@
 <%-- add and back to menu button --%>
  <%-- add and back to menu button --%>
  <html:button property="add" 
- onclick="location.href='articleEdit.do?do=showAdd'">Add a new article
+ onclick="location.href='article.do?do=showEdit'">Add a new article
  </html:button>
  &nbsp;
  <html:button property="back" onclick="location.href='default.do'">Back to menu</html:button>

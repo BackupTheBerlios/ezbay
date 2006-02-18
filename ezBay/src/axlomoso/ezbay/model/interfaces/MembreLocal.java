@@ -76,6 +76,6 @@ public interface MembreLocal
 
    public axlomoso.ezbay.model.interfaces.MembreDTO getMembreDTO(  ) ;
 
-   public void updateMembre( axlomoso.ezbay.model.interfaces.MembreDTO membreDTO ) throws java.lang.Exception;
+   public java.lang.String updateMembre( axlomoso.ezbay.model.interfaces.MembreDTO membreDTO ) throws java.lang.Exception;
 
 }
