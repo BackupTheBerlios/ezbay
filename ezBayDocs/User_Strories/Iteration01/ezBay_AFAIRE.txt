@@ -16,6 +16,15 @@ AXEL :
 	- Affichage Date : afficher date jj/mm/aaaa
 
 SOPHIE : ezBayit01_us03[fiches]
+	tests unitaires pour toutes les classes facadeBean : 
+	articleFacadeBean
+	categorieFacadeBean
+	clientFacadeBean
+	MembreFacadeBean
+	VendeurFacadeBean
+	==> certaines classes de test existent déjà, les compléter, + rajouter celles qui manquent.
+
 LOTFI : ezBayit01_us02[Articles]
+
 MOHAMED : ezBayit01_us05[Membre_desinscription]
 	
