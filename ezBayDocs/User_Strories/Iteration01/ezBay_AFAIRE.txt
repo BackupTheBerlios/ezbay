@@ -1,0 +1,21 @@
+Pour le 20/02/2006
+
+AXEL : 
+	ezBayit01_us04[design]
+	ezBayit01_us01[Membre]
+	vendeur : 
+	- retrait d'articles
+	- modif d'articles
+	- ajout d'articles
+	- liste des articles : 
+		- afficher €
+		- format de la date
+	Membre : 
+	- vérifier données form : 
+		- mail
+	- Affichage Date : afficher date jj/mm/aaaa
+
+SOPHIE : ezBayit01_us03[fiches]
+LOTFI : ezBayit01_us02[Articles]
+MOHAMED : ezBayit01_us05[Membre_desinscription]
+	
