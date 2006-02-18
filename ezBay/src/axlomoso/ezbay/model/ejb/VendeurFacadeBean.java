@@ -97,8 +97,9 @@ public class VendeurFacadeBean implements SessionBean {
 		VendeurDTO tRes = null;
 		boolean exists = false;
 		try {
-			if(vendeurDTO.getId() == null)
+			if(vendeurDTO.getId() == null){
 				exists = false;
+			}
 			else{
 				VendeurLocal vendeurLocal = getEntity(vendeurDTO.getId()); //test de l'existence du vendeur
 				exists = true;
