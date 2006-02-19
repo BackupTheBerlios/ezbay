@@ -3,8 +3,14 @@ package axlomoso.ezbay.utils;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.Globals;
+import org.apache.struts.action.ActionError;
 import org.apache.struts.util.MessageResources;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,6 +43,22 @@ public class Util {
     	Pattern pattern = Pattern.compile(strPattern);
     	Matcher matcher = pattern.matcher(mail);
         return matcher.find();
+    }
+    
+    public Date getStringToDate(String strDate) throws ParseException{
+    	Date tRes = null;
+    	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    	tRes = df.parse(strDate);
+    	return tRes;
+    }
+
+
+    
+    public String getDateToString(Date date){
+    	String tRes = "";
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		tRes = df.format(date); 
+    	return tRes;
     }
     
 }
