@@ -17,10 +17,4 @@ public interface ClientFacade
    public axlomoso.ezbay.model.interfaces.ClientDTO createClient(  )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   /**
-    * An example business method
-    * @throws EJBException Thrown if method fails due to system-level error.    */
-   public void replaceWithRealBusinessMethod(  )
-      throws java.rmi.RemoteException;
-
 }

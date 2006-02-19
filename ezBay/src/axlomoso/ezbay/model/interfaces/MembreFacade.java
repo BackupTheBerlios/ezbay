@@ -17,12 +17,6 @@ public interface MembreFacade
    public axlomoso.ezbay.model.interfaces.MembreDTO saveMembre( axlomoso.ezbay.model.interfaces.MembreDTO membreDTO )
       throws java.lang.Exception, axlomoso.ezbay.exceptions.PseudoDejaUtiliseException, java.rmi.RemoteException;
 
-   public axlomoso.ezbay.model.interfaces.MembreDTO createMembre( axlomoso.ezbay.model.interfaces.MembreDTO membreDTO )
-      throws java.lang.Exception, java.rmi.RemoteException;
-
-   public axlomoso.ezbay.model.interfaces.MembreDTO updateMembre( axlomoso.ezbay.model.interfaces.MembreDTO membreDTO )
-      throws java.lang.Exception, java.rmi.RemoteException;
-
    public axlomoso.ezbay.model.interfaces.MembreDTO getMembre( java.lang.String membreId )
       throws java.lang.Exception, java.rmi.RemoteException;
 
