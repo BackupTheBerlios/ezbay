@@ -35,6 +35,8 @@ public class ArticleForm extends ActionForm {
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private String stringDateLimite = ""; 
 	private String stringPrixVente="";
+	private String vendeurId = "";
+	private String vendeurPseudo = "";
 	// --------------------------------------------------------- Methods
 
 	public String getStringPrixVente() {
@@ -189,6 +191,14 @@ public class ArticleForm extends ActionForm {
 			}
 		}
 		return errors;
+	}
+
+	public String getVendeurId() {
+		return vendeurId;
+	}
+
+	public String getVendeurPseudo() {
+		return vendeurPseudo;
 	}
 
 }
