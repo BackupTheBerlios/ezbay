@@ -18,10 +18,9 @@
 
 <%-- start with an iterate over the array categoriesDTO --%>
 <logic:iterate name="categorieForm" property="listeCategories" id="categorie">
-<tr>
-<td><bean:write name="categorie" property="libelle" /></td>
-</tr>
-
+<br />	
+ 	<html:link action="/categorie.do?do=showArticles"><bean:write name="categorie" property="libelle" /></html:link>
+ <br />
 </logic:iterate>
 <logic:notPresent name="categorie">
 <tr>

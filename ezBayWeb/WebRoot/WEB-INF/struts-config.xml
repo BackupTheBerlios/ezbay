@@ -79,6 +79,7 @@
 		</action>
     <action attribute="categorieForm" name="categorieForm" parameter="do" path="/categorie" scope="request" type="axlomoso.ezbay.struts.action.CategorieAction" validate="false" >
 		<forward name="showCategories" path="/jsp/listeCategorie.jsp" />
+		<forward name="showArticles" path="/jsp/ArticleByCategorie.jsp" />
 	</action>
 	
 	</action-mappings>

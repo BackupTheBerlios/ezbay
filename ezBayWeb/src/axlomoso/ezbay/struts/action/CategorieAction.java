@@ -20,7 +20,9 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import axlomoso.ezbay.delegate.CategorieFacadeDelegate;
+import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
+import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.struts.form.ArticleListForm;
 import axlomoso.ezbay.struts.form.CategorieForm;
@@ -55,6 +57,24 @@ public class CategorieAction extends DispatchAction {
 		
 		
 		return (mapping.findForward("showCategories"));
+	}
+	
+	public ActionForward showArticles(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		System.out.println("CategorieAction.showArticles()");
+		CategorieForm categorieForm = (CategorieForm) form;		
+		ArticleFacadeDelegate articleFacadeDelegate=new ArticleFacadeDelegate();
+		try {
+			
+		categorieForm.setListeCategories(articleFacadeDelegate.getArticlesByLibelle(categorieForm.getLibelle()));
+		}
+		catch(Exception e){
+		   e.printStackTrace();
+		}			
+		
+		
+		return (mapping.findForward("showArticles"));
 	}
 	
 	

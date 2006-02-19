@@ -27,6 +27,7 @@ public class CategorieForm extends ActionForm {
 	// --------------------------------------------------------- Methods
 	private CategorieDTO categorieDTO=new CategorieDTO();
 	private Collection listeCategories=null;
+	private Collection listeArticles=null;
 	/** 
 	 * Method validate
 	 * @param mapping
@@ -73,6 +74,14 @@ public class CategorieForm extends ActionForm {
 
 	public void setListeCategories(Collection listeCategories) {
 		this.listeCategories = listeCategories;
+	}
+
+	public Collection getListeArticles() {
+		return listeArticles;
+	}
+
+	public void setListeArticles(Collection listeArticles) {
+		this.listeArticles = listeArticles;
 	}
 
 }
