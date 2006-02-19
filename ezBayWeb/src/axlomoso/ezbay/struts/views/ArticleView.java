@@ -78,4 +78,12 @@ public class ArticleView {
 		return util.getDateToString(articleDTO.getDateLimite());
 	}
 
+	public ArticleDTO getArticleDTO() {
+		return articleDTO;
+	}
+
+	public void setArticleDTO(ArticleDTO articleDTO) {
+		this.articleDTO = articleDTO;
+	}
+
 }
