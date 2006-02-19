@@ -81,32 +81,69 @@ public class ArticleFacadeBean implements SessionBean {
 
 	}
 
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurDTO
+	 * @throws Exception 
+	 */
+	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO) throws Exception{
+		ArticleDTO tRes = null;
+		boolean exists = false;
+		try {
+			if(articleDTO.getId() == null){
+				exists = false;
+			}
+			else{
+				ArticleLocal articleLocal = getEntity(articleDTO.getId()); //test de l'existence de l'article
+				exists = true;
+			}
+		} catch (FinderException e) {
+			exists = false;
+		}
+		if(exists){
+			// l'article existe : mise à jour.
+			tRes = this.updateArticle(articleDTO);
+		}
+		else{
+			//l'article n'existe pas: création.
+			tRes = this.createArticle(vendeurId, articleDTO);
+		}
+		return tRes;
+	}	
+	
+	
 	/**
 	 * @ejb.interface-method view-type = "remote"
-	 * @param articleDTO
+	 * @param vendeurId, articleDTO
 	 */
-	public ArticleDTO createArticle(ArticleDTO articleDTO, VendeurDTO vendeurDTO) throws Exception {
+	public ArticleDTO createArticle(String vendeurId, ArticleDTO articleDTO) throws Exception {
+		ArticleDTO tRes = null;
 		try {
 			ArticleLocalHome home = getEntityHome();
-			VendeurLocal vendeurLocal = VendeurFacadeBean.getEntity(vendeurDTO.getId());
+			VendeurLocal vendeurLocal = VendeurFacadeBean.getEntity(vendeurId);
 			ArticleLocal articleLocal = home.create(articleDTO, vendeurLocal);			
-			return articleLocal.getArticleDTO();
+			tRes = articleLocal.getArticleDTO();
 		} catch (Exception e) {
 			throw new Exception("Cannot create article", e);
 		}
+		return tRes;
 	}
 
 	/**
 	 * @ejb.interface-method view-type = "remote"
 	 * @param articleDTO
 	 */
-	public void updateArticle(ArticleDTO articleDTO) throws Exception {
+	public ArticleDTO updateArticle(ArticleDTO articleDTO) throws Exception {
+		ArticleDTO tRes = null;
 		try {
 			ArticleLocal articleLocal = getEntity(articleDTO.getId());
-			articleLocal.updateArticle(articleDTO);
+			String id = articleLocal.updateArticle(articleDTO);
+			tRes = getEntity(id).getArticleDTO();
 		} catch (Exception e) {
-			throw new Exception("Cannot create customer", e);
+			throw new Exception("Cannot update article", e);
 		}
+		return tRes;
 	}
 
 	/**
