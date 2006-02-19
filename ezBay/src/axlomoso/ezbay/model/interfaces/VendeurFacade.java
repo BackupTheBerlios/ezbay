@@ -38,4 +38,7 @@ public interface VendeurFacade
    public java.util.Collection getArticlesVendus( java.lang.String vendeurId )
       throws java.rmi.RemoteException;
 
+   public axlomoso.ezbay.model.interfaces.ArticleDTO saveArticle( java.lang.String vendeurId,axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )
+      throws axlomoso.ezbay.exceptions.VendeurInconnuException, java.lang.Exception, java.rmi.RemoteException;
+
 }

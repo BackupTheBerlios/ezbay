@@ -21,11 +21,7 @@ public class ArticleDTO
    implements java.io.Serializable, java.lang.Cloneable 
 {
 
-   /**
-	 * 
-	 */
-	private static final long serialVersionUID = -5931829727890189473L;
-private java.lang.String id;
+   private java.lang.String id;
    private boolean idHasBeenSet = false;
 
    private java.lang.String libelle;

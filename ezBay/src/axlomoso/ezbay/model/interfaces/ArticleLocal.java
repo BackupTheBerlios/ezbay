@@ -56,6 +56,6 @@ public interface ArticleLocal
 
    public axlomoso.ezbay.model.interfaces.ArticleDTO getArticleDTO(  ) ;
 
-   public void updateArticle( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) throws java.lang.Exception;
+   public java.lang.String updateArticle( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) throws java.lang.Exception;
 
 }
