@@ -100,12 +100,7 @@ public class MembreFacadeBean implements SessionBean {
 	}
 
 	
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param membreDTO
-	 * @throws Exception 
-	 */
-	public MembreDTO createMembre(MembreDTO membreDTO) throws Exception{
+	private MembreDTO createMembre(MembreDTO membreDTO) throws Exception{
 		MembreDTO tRes = null;
 		try {
 			MembreLocalHome membreHome = getEntityHome();
@@ -120,12 +115,7 @@ public class MembreFacadeBean implements SessionBean {
 		return tRes;
 	}
 
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param 
-	 * @throws Exception 
-	 */
-    public MembreDTO updateMembre(MembreDTO membreDTO) throws Exception{
+    private MembreDTO updateMembre(MembreDTO membreDTO) throws Exception{
     	MembreDTO tRes = null;
 		MembreLocal membreLocal;
 		membreLocal = getEntity(membreDTO.getId());

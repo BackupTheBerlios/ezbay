@@ -124,7 +124,7 @@ public class VendeurFacadeBean implements SessionBean {
 		return tRes;
 	}
 
-	public VendeurDTO createVendeur(VendeurDTO vendeurDTO) throws CreateException{
+	private VendeurDTO createVendeur(VendeurDTO vendeurDTO) throws CreateException{
     	VendeurLocal vendeur = null;
 		try {
 			VendeurLocalHome vendeurHome = getEntityHome();
@@ -135,7 +135,7 @@ public class VendeurFacadeBean implements SessionBean {
 		return vendeur.getVendeurDTO();
     }
 	
-	public VendeurDTO updateVendeur(VendeurDTO vendeurDTO) throws Exception{
+	private VendeurDTO updateVendeur(VendeurDTO vendeurDTO) throws Exception{
 		VendeurDTO tRes = null;
 		VendeurLocal vendeurLocal;
 		vendeurLocal = getEntity(vendeurDTO.getId());
