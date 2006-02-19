@@ -246,5 +246,12 @@
       <AbsolutePoint location="351,194" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/articleSave.do,showVendeurArticles,/vendeur.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="815,1050" />
+      <AbsolutePoint location="815,687" />
+      <AbsolutePoint location="345,687" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
 </FlowViewLayout>
 
