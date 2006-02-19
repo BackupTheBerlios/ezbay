@@ -34,9 +34,9 @@
 <bean:message key="articleFiche.dateLimite"/>:<bean:write name="articleForm" property="stringDateLimite" /><br />
 <bean:message key="articleFiche.description"/>:<bean:write name="articleForm" property="description" /><br />
 <br /><br />
-<html:link action="/membre.do?do=showMembreFiche"><bean:message key="link.membreFiche"/></html:link><br />
 
 
+<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="vendeurId" paramId="vendeurId"><bean:message key="link.membreFiche"/></html:link>
 
 </td>
 </tr>
