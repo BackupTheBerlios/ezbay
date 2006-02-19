@@ -32,7 +32,9 @@ public class Util {
     }
     
     public boolean checkMailAddress(String mail){
-    	Pattern pattern = Pattern.compile("^([\\w\\d\\-\\.]+)@{1}(([\\w\\d\\-]{1,67})|([\\w\\d\\-]+\\.[\\w\\d\\-]{1,67}))\\.(([a-zA-Z\\d]{2,4})(\\.[a-zA-Z\\d]{2}) )___FCKpd___0quot;");
+    	String strPattern ="^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
+            + "[a-zA-Z0-9\\._-]*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}$";
+    	Pattern pattern = Pattern.compile(strPattern);
     	Matcher matcher = pattern.matcher(mail);
         return matcher.find();
     }
