@@ -7,13 +7,13 @@ AXEL :
 	- retrait d'articles
 	- modif d'articles
 	- ajout d'articles
-	- liste des articles : 
+	- liste des articles : 					==> Lotfi
 		- afficher €
 		- format de la date
 	Membre : 
 	- vérifier données form : 
-		- mail
-	- Affichage Date : afficher date jj/mm/aaaa
+		- mail							==> OK
+	- Affichage Date : afficher date jj/mm/aaaa	==> OK
 
 SOPHIE : ezBayit01_us03[fiches]
 	tests unitaires pour toutes les classes facadeBean : 
