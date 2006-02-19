@@ -8,17 +8,23 @@ import java.util.Iterator;
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.FinderException;
+import javax.ejb.RemoveException;
 import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import axlomoso.ezbay.exceptions.VendeurInconnuException;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.model.interfaces.ArticleFacadeLocal;
+import axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.MembreLocal;
 import axlomoso.ezbay.model.interfaces.MembreLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
+import axlomoso.ezbay.model.interfaces.VendeurFacadeLocal;
+import axlomoso.ezbay.model.interfaces.VendeurFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
 import axlomoso.ezbay.utils.ServiceLocator;
@@ -233,9 +239,49 @@ public class VendeurFacadeBean implements SessionBean {
 		return tRes;	
 	}
 
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurId, ArticleDTO
+	 * @throws VendeurInconnuException 
+	 * @throws Exception 
+	 */
+	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO) throws VendeurInconnuException, Exception{
+		ArticleDTO tRes = null;
+		try {
+			VendeurLocal vendeur = getEntity(vendeurId);
+			ServiceLocator locator = ServiceLocator.getInstance();
+			ArticleFacadeLocalHome articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
+			ArticleFacadeLocal articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
+			tRes = (ArticleDTO) articleFacade.saveArticle(vendeurId, articleDTO);
+			articleFacade.remove();
+			articleFacadeLocalHome = null;
+		} catch (FinderException e) {
+			throw new VendeurInconnuException("Le vendeur " + vendeurId + " n'existe pas !");
+		} catch (ServiceLocatorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		} catch (CreateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		} catch (EJBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		} catch (RemoveException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
+		return tRes;		
+	}
 
-
-	   /** Retrieves the local interface of the Customer entity bean. 
+   /** Retrieves the local interface of the Customer entity bean. 
   * @throws Exception */
 	public static VendeurLocal getEntity(String id) throws FinderException{
      try {
