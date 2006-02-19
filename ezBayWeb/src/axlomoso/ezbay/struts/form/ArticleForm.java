@@ -18,6 +18,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
 
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.utils.Util;
 
 
 /** 
@@ -28,7 +29,8 @@ import axlomoso.ezbay.model.interfaces.ArticleDTO;
  * @struts.form name="articleEditForm"
  */
 public class ArticleForm extends ActionForm {
-
+	
+	private Util util = new Util();
 	// --------------------------------------------------------- Instance Variables
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private String stringDateLimite = ""; 
@@ -60,17 +62,10 @@ public class ArticleForm extends ActionForm {
 	}
 
 	public String getStringDateLimite(){
-		String tRes = "";
+		stringDateLimite = "";
 		if(articleDTO.getDateLimite() != null){
-			Calendar tCal = Calendar.getInstance();
-			tCal.setTime(articleDTO.getDateLimite());
-			tRes = tCal.get(Calendar.DAY_OF_MONTH) + "/" +
-				(tCal.get(Calendar.MONTH) +1) + "/" +
-				tCal.get(Calendar.YEAR);		
-			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-			tRes = df.format(articleDTO.getDateLimite()); 
+			stringDateLimite = util.getDateToString(articleDTO.getDateLimite());
 		}
-		stringDateLimite = tRes;
 		return stringDateLimite;
 	}
 	
@@ -112,15 +107,6 @@ public class ArticleForm extends ActionForm {
 
 	public void setStringDateLimite(String date){
 		stringDateLimite = date;
-		//ActionErrors errors = new ActionErrors();
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-			try {
-				this.setDateLimite(df.parse(stringDateLimite));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				//errors.add("dateNaissance", new ActionError("inscription.erreur.dateNaissance.badFormat"));
-			}
 	}
 	
 	public void setDateLimite(Date dateLimite) {
@@ -193,11 +179,10 @@ public class ArticleForm extends ActionForm {
 		
 		if ((stringDateLimite == null)||(stringDateLimite.length() == 0)) {
 			errors.add("dateLimite", new ActionError("articleEdit.erreurs.dateLimiteVide"));
-		}		else{
-			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		}else{
 			try {
-				df.parse(stringDateLimite);
-				articleDTO.setDateLimite(df.parse(stringDateLimite));
+				Date tDate = util.getStringToDate(stringDateLimite);
+				articleDTO.setDateLimite(tDate);
 			} catch (ParseException e) {
 				// dateFormat incorrect
 				errors.add("dateLimite", new ActionError("articleEdit.erreurs.dateLimiteNonValide"));

@@ -18,6 +18,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
+import axlomoso.ezbay.utils.Util;
 
 /**
  * MyEclipse Struts Creation date: 02-15-2006
@@ -29,15 +30,12 @@ import axlomoso.ezbay.model.interfaces.VendeurDTO;
 public class VendeurForm extends ActionForm {
 
 	// --------------------------------------------------------- Instance
+	private Util util = new Util();
 	// Variables
 	private VendeurDTO vendeurDTO = new VendeurDTO();
-
 	private String stringDateExpirCB = null;
-
 	private Collection articlesEnAttente = null;
-
 	private Collection articlesEnVente = null;
-
 	private Collection articlesVendus = null;
 
 	// --------------------------------------------------------- Methods
@@ -97,17 +95,10 @@ public class VendeurForm extends ActionForm {
 	}
 
 	public String getStringDateExpirCB() {
-		String tRes = "";
-		if (vendeurDTO.getDateExpirCB() != null) {
-			Calendar tCal = Calendar.getInstance();
-			tCal.setTime(vendeurDTO.getDateExpirCB());
-			tRes = tCal.get(Calendar.DAY_OF_MONTH) + "/"
-					+ (tCal.get(Calendar.MONTH) + 1) + "/"
-					+ tCal.get(Calendar.YEAR);
-			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-			tRes = df.format(vendeurDTO.getDateExpirCB());
+		stringDateExpirCB = "";
+		if(vendeurDTO.getDateExpirCB() != null){
+			stringDateExpirCB = util.getDateToString(vendeurDTO.getDateExpirCB());
 		}
-		stringDateExpirCB = tRes;
 		return stringDateExpirCB;
 	}
 
@@ -156,14 +147,12 @@ public class VendeurForm extends ActionForm {
 			errors.add("DateExpirCB", new ActionError(
 					"vendeur.inscription.erreur.dateExpirCB.obligatoire"));
 		} else {
-			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 			try {
-				df.parse(stringDateExpirCB);
-				vendeurDTO.setDateExpirCB(df.parse(stringDateExpirCB));
+				Date tDate = util.getStringToDate(stringDateExpirCB);
+				vendeurDTO.setDateExpirCB(tDate);
 			} catch (ParseException e) {
 				// dateFormat incorrect
-				errors.add("DateExpirCB", new ActionError(
-						"vendeur.inscription.erreur.dateExpirCB.badFormat"));
+				errors.add("stringDateExpirCB", new ActionError("vendeur.inscription.erreur.dateExpirCB.badFormat"));
 			}
 		}
 		return errors;
