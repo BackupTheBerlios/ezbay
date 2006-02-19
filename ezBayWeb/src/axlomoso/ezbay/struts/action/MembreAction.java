@@ -21,6 +21,7 @@ import org.apache.struts.actions.DispatchAction;
 
 import axlomoso.ezbay.delegate.MembreFacadeDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
@@ -80,12 +81,12 @@ public class MembreAction extends DispatchAction {
 		return (mapping.findForward("showEdit"));
 	}
 
-	/**
-	 * @param form
-	 * @param request
-	 * @throws Exception
-	 */
-	
+	public ActionForward showMembreFiche(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		System.out.println("MembreAction.showMembreFiche()");
+		return (mapping.findForward("showMembreFiche"));
+	}
 	
 	
 }
