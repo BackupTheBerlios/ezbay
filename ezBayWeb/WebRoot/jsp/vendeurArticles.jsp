@@ -33,7 +33,7 @@
 
 
 	<H2>
-		<bean:message key="vendeurArticles.articlesEnAttente.titre" />
+		<bean:message key="vendeurArticles.articlesEnAttente.titre" />		
 	</H2>
 <table border="1">
 <tbody>
@@ -63,13 +63,13 @@
 				<bean:write name="article" property="modele" />
 			</td>
 			<td>
-				<bean:write name="article" property="prixVente" />
+				<bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" />
 			</td>
 			<td>
 				<bean:write name="article" property="anneeFabrication" />
 			</td>
 			<td>
-				<bean:write name="article" property="dateLimite" />
+				<bean:write name="article" property="formattedDateLimite" />
 			</td>
 		</tr>
 	</logic:iterate>
@@ -114,13 +114,13 @@
 				<bean:write name="article" property="modele" />
 			</td>
 			<td>
-				<bean:write name="article" property="prixVente" />
+				<bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" />
 			</td>
 			<td>
 				<bean:write name="article" property="anneeFabrication" />
 			</td>
 			<td>
-				<bean:write name="article" property="dateLimite" />
+				<bean:write name="article" property="formattedDateLimite" />
 			</td>
 		</tr>
 	</logic:iterate>
@@ -165,13 +165,13 @@
 				<bean:write name="article" property="modele" />
 			</td>
 			<td>
-				<bean:write name="article" property="prixVente" />
+				<bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" />
 			</td>
 			<td>
 				<bean:write name="article" property="anneeFabrication" />
 			</td>
 			<td>
-				<bean:write name="article" property="dateLimite" />
+				<bean:write name="article" property="formattedDateLimite" />
 			</td>
 		</tr>
 	</logic:iterate>
