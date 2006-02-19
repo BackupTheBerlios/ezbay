@@ -14,9 +14,6 @@ public interface ArticleFacade
    extends javax.ejb.EJBObject
 {
 
-   public axlomoso.ezbay.model.interfaces.ArticleDTO saveArticle( java.lang.String vendeurId,axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )
-      throws java.lang.Exception, java.rmi.RemoteException;
-
    public void removeArticle( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )
       throws java.lang.Exception, java.rmi.RemoteException;
 
