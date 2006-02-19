@@ -33,7 +33,6 @@ public class MembreFacadeDelegate {
 		return membreFacade.getVendeurDTO(membreId);
 	}
 	
-	
 	public VendeurDTO saveVendeur(MembreDTO membreDTO, VendeurDTO vendeurDTO) throws Exception, RemoteException {
 		return membreFacade.saveVendeur(membreDTO, vendeurDTO);
 	}
@@ -52,10 +51,6 @@ public class MembreFacadeDelegate {
 	
 	public void removeMembre(MembreDTO membreDTO) throws Exception, RemoteException {
 		membreFacade.removeMembre(membreDTO);
-	}
-
-	public void updateMembre(MembreDTO membreDTO) throws Exception, RemoteException {
-		membreFacade.updateMembre(membreDTO);
 	}
 	
 }

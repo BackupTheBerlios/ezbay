@@ -60,6 +60,5 @@ public class ArticleFacadeDelegate {
 	public VendeurDTO getVendeurDTO(String articleId) throws Exception, RemoteException {
 		return articleFacade.getVendeurDTO(articleId);
 	}
-
 	
 }
