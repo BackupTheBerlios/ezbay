@@ -24,14 +24,16 @@
   
   <body>
   <h2><bean:message key="membreFiche.title" /></h2><br />
- <bean:message key="membreFiche.pseudo"/>:<bean:write name="membreForm" property="pseudo" /> </body>
-<logic:empty name="membreForm" property="membreDTO">
-pas vendeur
+ <bean:message key="membreFiche.pseudo"/>:<bean:write name="membreForm" property="pseudo" />
+ 
+ 
+<logic:empty name="membreForm" property="vendeurId">
+c'est un acheteur
 </logic:empty>
-<logic:notEmpty name="membreForm" property="membreDTO">
-est vendeur
+<logic:notEmpty name="membreForm" property="vendeurId">
+c'est un vendeur
 </logic:notEmpty>
 
 
-
+ </body>
 </html:html>
