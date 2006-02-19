@@ -113,11 +113,7 @@ public class ArticleFacadeBean implements SessionBean {
 	}	
 	
 	
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param vendeurId, articleDTO
-	 */
-	public ArticleDTO createArticle(String vendeurId, ArticleDTO articleDTO) throws Exception {
+	private ArticleDTO createArticle(String vendeurId, ArticleDTO articleDTO) throws Exception {
 		ArticleDTO tRes = null;
 		try {
 			ArticleLocalHome home = getEntityHome();
@@ -130,11 +126,7 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;
 	}
 
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param articleDTO
-	 */
-	public ArticleDTO updateArticle(ArticleDTO articleDTO) throws Exception {
+	private ArticleDTO updateArticle(ArticleDTO articleDTO) throws Exception {
 		ArticleDTO tRes = null;
 		try {
 			ArticleLocal articleLocal = getEntity(articleDTO.getId());
