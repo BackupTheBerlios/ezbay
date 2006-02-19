@@ -5,6 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.Globals;
 import org.apache.struts.util.MessageResources;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Util {
 	/** 
      * Return the message resources for localization 
@@ -26,5 +29,12 @@ public class Util {
             localizedMessage = "N/A"; 
         } 
         return localizedMessage; 
-    } 
+    }
+    
+    public boolean checkMailAddress(String mail){
+    	Pattern pattern = Pattern.compile("^([\\w\\d\\-\\.]+)@{1}(([\\w\\d\\-]{1,67})|([\\w\\d\\-]+\\.[\\w\\d\\-]{1,67}))\\.(([a-zA-Z\\d]{2,4})(\\.[a-zA-Z\\d]{2}) )___FCKpd___0quot;");
+    	Matcher matcher = pattern.matcher(mail);
+        return matcher.find();
+    }
+    
 }
