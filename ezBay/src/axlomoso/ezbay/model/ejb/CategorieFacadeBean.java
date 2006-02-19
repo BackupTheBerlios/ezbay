@@ -169,6 +169,4 @@ public class CategorieFacadeBean implements SessionBean {
         return home;
     }
 	
-	
-	
 }

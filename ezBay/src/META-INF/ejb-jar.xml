@@ -238,16 +238,6 @@
             </query-method>
             <ejb-ql><![CDATA[SELECT Object(c) FROM categorie AS c]]></ejb-ql>
          </query>
-         <query>
-            <description><![CDATA[findByLibelle]]></description>
-            <query-method>
-               <method-name>findByLibelle</method-name>
-               <method-params>
-                  <method-param>java.lang.String</method-param>
-               </method-params>
-            </query-method>
-            <ejb-ql><![CDATA[SELECT DISTINCT OBJECT(c) FROM categorie c WHERE c.libelle = ?1]]></ejb-ql>
-         </query>
 	  <!-- Write a file named ejb-finders-CategorieBean.xml if you want to define extra finders. -->
 
       </entity>

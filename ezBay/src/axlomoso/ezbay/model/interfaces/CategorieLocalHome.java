@@ -22,9 +22,6 @@ public interface CategorieLocalHome
    public java.util.Collection findAll()
       throws javax.ejb.FinderException;
 
-   public java.util.Collection findByLibelle(java.lang.String libelle)
-      throws javax.ejb.FinderException;
-
    public axlomoso.ezbay.model.interfaces.CategorieLocal findByPrimaryKey(java.lang.String pk)
       throws javax.ejb.FinderException;
 

@@ -18,6 +18,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
 
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.utils.Util;
 
 
@@ -33,13 +34,13 @@ public class ArticleForm extends ActionForm {
 	private Util util = new Util();
 	// --------------------------------------------------------- Instance Variables
 	private ArticleDTO articleDTO = new ArticleDTO();
+	private CategorieDTO categorieDTO = new CategorieDTO();
 	private String stringDateLimite = ""; 
 	private String stringPrixVente="";
 	private String vendeurId = "";
 	private String vendeurPseudo = "";
 	// --------------------------------------------------------- Methods
 
-	
 	
 	public String getStringPrixVente() {
 		if(articleDTO.getPrixVente() != null){
@@ -209,6 +210,14 @@ public class ArticleForm extends ActionForm {
 
 	public String getVendeurPseudo() {
 		return vendeurPseudo;
+	}
+
+	public CategorieDTO getCategorieDTO() {
+		return categorieDTO;
+	}
+
+	public void setCategorieDTO(CategorieDTO categorieDTO) {
+		this.categorieDTO = categorieDTO;
 	}
 }
 

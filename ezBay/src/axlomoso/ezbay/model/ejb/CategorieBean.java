@@ -46,16 +46,13 @@ import axlomoso.ezbay.model.interfaces.VendeurLocal;
  * 			    create-table = "true" 
  *				remove-table = "true"
  * @ejb:util generate="physical"
+ * 
  * @ejb.value-object match = "*"
  *       
  * @ejb.finder
 * 		signature="java.util.Collection findAll()" 
 * 		query="SELECT Object(c) FROM categorie AS c"
-* @ejb.finder
-* 		description="findByLibelle"
-* 		signature="java.util.Collection findByLibelle(java.lang.String libelle)" 
-* 		query="SELECT DISTINCT OBJECT(c) FROM categorie c WHERE c.libelle = ?1"
- */
+*/
 
 public abstract class CategorieBean implements EntityBean {
 
@@ -68,27 +65,27 @@ public abstract class CategorieBean implements EntityBean {
 	}
 
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @ejb.persistence column-name = "id"
 	 * @return
 	 */
 	public abstract String getId();
 
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param id
 	 */
 	public abstract void setId(String id);
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
  	* @ejb.persistence column-name = "libelle"
  	* @return
  	*/
 	public abstract String getLibelle();
 
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param libelle
 	 */
 	public abstract void setLibelle(String libelle);

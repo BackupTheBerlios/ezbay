@@ -39,22 +39,19 @@
 <tbody>
 <%-- set the header --%>
 <tr>
-<td>&nbsp;</td>
 <td><bean:message key="articleList.libelle" /></td>
 <td><bean:message key="articleList.marque" /></td>
 <td><bean:message key="articleList.modele" /></td>
 <td><bean:message key="articleList.prixVente" /></td>
 <td><bean:message key="articleList.anneeFabrication" /></td>
 <td><bean:message key="articleList.dateLimite" /></td>
+<td>&nbsp;</td>
 </tr>
 	<logic:iterate name="vendeurForm" property="articlesEnAttente" id="article">
 		<tr>
 			<%-- article informations --%>
 			<td>
-				<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:message key="link.modifier" /></html:link>
-			</td>
-			<td>
-				<bean:write name="article" property="libelle" />
+				<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
 			</td>
 			<td>
 				<bean:write name="article" property="marque" />
@@ -71,12 +68,15 @@
 			<td>
 				<bean:write name="article" property="formattedDateLimite" />
 			</td>
+			<td>
+				<bean:message key="vendeurArticles.link.retirer" />
+			</td>
 		</tr>
 	</logic:iterate>
 	<logic:notPresent name="article">
 		<tr>
 			<td colspan="5">
-				<bean:message key="articleList.noArticle" />
+				<bean:message key="vendeurArticles.articleEnAttente.noArticle" />
 			</td>
 		</tr>
 	</logic:notPresent>
@@ -90,7 +90,6 @@
 <tbody>
 <%-- set the header --%>
 <tr>
-<td>&nbsp;</td>
 <td><bean:message key="articleList.libelle" /></td>
 <td><bean:message key="articleList.marque" /></td>
 <td><bean:message key="articleList.modele" /></td>
@@ -102,10 +101,7 @@
 		<tr>
 			<%-- article informations --%>
 			<td>
-				<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:message key="link.modifier" /></html:link>
-			</td>
-			<td>
-				<bean:write name="article" property="libelle" />
+				<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
 			</td>
 			<td>
 				<bean:write name="article" property="marque" />
@@ -127,7 +123,7 @@
 	<logic:notPresent name="article">
 		<tr>
 			<td colspan="5">
-				<bean:message key="articleList.noArticle" />
+				<bean:message key="vendeurArticles.articleEnVente.noArticle" />
 			</td>
 		</tr>
 	</logic:notPresent>
@@ -153,7 +149,7 @@
 		<tr>
 			<%-- article informations --%>
 			<td>
-				<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:message key="link.modifier" /></html:link>
+				<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
 			</td>
 			<td>
 				<bean:write name="article" property="libelle" />
@@ -178,7 +174,7 @@
 	<logic:notPresent name="article">
 		<tr>
 			<td colspan="5">
-				<bean:message key="articleList.noArticle" />
+				<bean:message key="vendeurArticles.articleVendus.noArticle" />
 			</td>
 		</tr>
 	</logic:notPresent>

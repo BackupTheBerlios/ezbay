@@ -26,7 +26,6 @@
   <table>
   <tr>
   <td>
-<bean:message key="articleFiche.categorie"/>:<bean:write name="articleForm" property="categorieDTO.libelle" /><br />
 <bean:message key="articleFiche.libelle"/>:<bean:write name="articleForm" property="libelle" /><br />
 <bean:message key="articleFiche.modele"/>:<bean:write name="articleForm" property="marque" /><br />
 <bean:message key="articleFiche.marque"/>:<bean:write name="articleForm" property="modele" /><br />
