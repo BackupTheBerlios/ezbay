@@ -26,21 +26,17 @@
   <table>
   <tr>
   <td>
-  <bean:message key="articleFiche.libelle"/>:<bean:write name="articleForm" property="libelle" /><br />
-  <bean:message key="articleFiche.modele"/>:<bean:write name="articleForm" property="marque" /><br />
-  <bean:message key="articleFiche.marque"/>:<bean:write name="articleForm" property="modele" /><br />
+<bean:message key="articleFiche.libelle"/>:<bean:write name="articleForm" property="libelle" /><br />
+<bean:message key="articleFiche.modele"/>:<bean:write name="articleForm" property="marque" /><br />
+<bean:message key="articleFiche.marque"/>:<bean:write name="articleForm" property="modele" /><br />
 <bean:message key="articleFiche.prixVente"/>:<bean:write name="articleForm" property="prixVente" /><br />
 <bean:message key="articleFiche.anneeFabrication"/>:<bean:write name="articleForm" property="anneeFabrication" /><br />
 <bean:message key="articleFiche.dateLimite"/>:<bean:write name="articleForm" property="stringDateLimite" /><br />
 <bean:message key="articleFiche.description"/>:<bean:write name="articleForm" property="description" /><br />
 <br /><br />
-
-
-<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="vendeurId" paramId="vendeurId"><bean:message key="link.membreFiche"/></html:link>
-
+<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="vendeurId" paramId="vendeurId"><bean:message key="link.membreFiche"/> : <bean:write name="articleForm" property="vendeurPseudo" /> </html:link>
 </td>
 </tr>
-	
 </table>
   </body>
 </html:html>
