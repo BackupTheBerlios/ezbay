@@ -26,4 +26,7 @@ public interface CategorieFacade
    public java.util.Collection getArticlesDTO( java.lang.String categorieId )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.util.Collection getCategories(  )
+      throws java.rmi.RemoteException;
+
 }

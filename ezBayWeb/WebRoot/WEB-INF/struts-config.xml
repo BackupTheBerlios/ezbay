@@ -11,6 +11,7 @@
 		<form-bean name="connectForm" type="axlomoso.ezbay.struts.form.ConnectForm" />
 		<form-bean name="myEzBayForm" type="axlomoso.ezbay.struts.form.MyEzBayForm" />
 		<form-bean name="vendeurForm" type="axlomoso.ezbay.struts.form.VendeurForm" />
+    	<form-bean name="categorieForm" type="axlomoso.ezbay.struts.form.CategorieForm" />
 	</form-beans>
 
 	<!-- Global Forwards Configuration -->
@@ -76,8 +77,10 @@
 			<forward name="showMembreFiche" path="/jsp/membreFiche.jsp" />
 			
 		</action>
-		
-
+    <action attribute="categorieForm" name="categorieForm" parameter="do" path="/categorie" scope="request" type="axlomoso.ezbay.struts.action.CategorieAction" validate="false" >
+		<forward name="showCategories" path="/jsp/listeCategorie.jsp" />
+	</action>
+	
 	</action-mappings>
 
 	<!-- Message Resources Configuration -->

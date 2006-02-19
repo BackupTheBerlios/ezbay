@@ -169,4 +169,24 @@ public class CategorieFacadeBean implements SessionBean {
         return home;
     }
 	
+	/**
+	 * @ejb.interface-method view-type = "remote"
+	 * @param
+	 */
+	public Collection getCategories() {
+		Collection categories = null;
+		ArrayList tRes = new ArrayList();
+		try {
+			CategorieLocalHome home = getEntityHome();
+			categories = home.findAll();
+			for (Iterator it = categories.iterator(); it.hasNext(); ) {
+				CategorieLocal categorieLocal = (CategorieLocal) it.next();
+				tRes.add(categorieLocal.getCategorieDTO());
+		    }			
+		} catch (FinderException e) {
+			e.printStackTrace();
+		}
+		return tRes;
+	}
+	
 }
