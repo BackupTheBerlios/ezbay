@@ -42,6 +42,7 @@ public class ArticleAction extends DispatchAction {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
+		System.out.println("ArticleAction.showEdit()");
 		ArticleForm articleEditForm = (ArticleForm) form;
 		/* get id of the book from request */
 		String id = request.getParameter("id");
@@ -64,6 +65,34 @@ public class ArticleAction extends DispatchAction {
 			e.printStackTrace();
 		}
 		return mapping.findForward("showEdit");	
+	}
+	
+	public ActionForward showArticleFiche(
+			ActionMapping mapping,
+			ActionForm form,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("ArticleAction.showArticleFiche()");
+		ArticleForm articleEditForm = (ArticleForm) form;
+		/* get id of the book from request */
+		String id = request.getParameter("id");
+		/* load the session facade and get the book by primary key */
+		try {
+			InitialContext context = new InitialContext();
+			ArticleFacadeHome articleFacadeHome = (ArticleFacadeHome)context.lookup(ArticleFacadeHome.JNDI_NAME);
+			ArticleFacade articleFacade = articleFacadeHome.create();
+			articleEditForm.setArticleDTO(articleFacade.getArticle(id));
+		} catch (RemoteException e) {
+		e.printStackTrace();
+		} catch (NamingException e) {
+		e.printStackTrace();
+		} catch (CreateException e) {
+		e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mapping.findForward("showArticleFiche");	
 	}
 	
 	public ActionForward deleteArticle(
