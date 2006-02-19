@@ -69,7 +69,7 @@ public class ArticleSaveAction extends Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return mapping.findForward("showList");
+		return mapping.findForward("showVendeurArticles");
 	}
 
 }
