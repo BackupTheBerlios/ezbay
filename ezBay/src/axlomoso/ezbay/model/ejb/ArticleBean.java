@@ -236,7 +236,7 @@ public abstract class ArticleBean implements EntityBean {
 	 * @ejb.interface-method view-type = "local"
 	 * @param
 	 */
-    public void updateArticle(ArticleDTO articleDTO) throws Exception {
+    public String updateArticle(ArticleDTO articleDTO) throws Exception {
     	this.setAnneeFabrication(articleDTO.getAnneeFabrication());
     	this.setDateLimite(articleDTO.getDateLimite());
     	this.setDescription(articleDTO.getDescription());
@@ -244,6 +244,7 @@ public abstract class ArticleBean implements EntityBean {
     	this.setMarque(articleDTO.getMarque());
     	this.setModele(articleDTO.getModele());
     	this.setPrixVente(articleDTO.getPrixVente());
+    	return this.getId();
     }
     
  	/**
