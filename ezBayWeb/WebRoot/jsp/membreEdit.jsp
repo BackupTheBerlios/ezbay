@@ -64,7 +64,7 @@
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.codepostal"/>:</td>
-<td><html:text property="codePostal" maxlength="5"/></td>
+<td><html:text property="codePostal" maxlength="5" size="5"/></td>
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.ville"/>:</td>
@@ -84,7 +84,7 @@
 </tr>
 <tr>
 <td align="right"><bean:message key="inscription.label.dateNaissance"/>:</td>
-<td><html:text property="stringDateNaissance" /></td>
+<td><html:text property="stringDateNaissance" size="10" maxlength="10"/></td>
 </tr>
 <tr>
 <td colspan="2">
