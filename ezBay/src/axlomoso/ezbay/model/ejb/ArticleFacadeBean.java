@@ -287,13 +287,14 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 
     /** Retrieves the local interface of the Customer entity bean. 
+     * @throws FinderException 
      * @throws Exception */
-	public static ArticleLocal getEntity(String id) throws Exception{
+	public static ArticleLocal getEntity(String id) throws FinderException{
         try {
         	ArticleLocalHome home = getEntityHome();
             return home.findByPrimaryKey(id);
-        } catch (Exception e) {
-            throw new Exception("Cannot locate Article", e);
+        } catch (FinderException e) {
+            throw new FinderException("Cannot locate Article" + e.getMessage());
         }
     }
     
