@@ -41,17 +41,10 @@ public class MembreForm extends ActionForm {
 	}
 
 	public String getStringDateNaissance() {
-		String tRes = "";
+		stringDateNaissance = "";
 		if(membreDTO.getDateNaissance() != null){
-			Calendar tCal = Calendar.getInstance();
-			tCal.setTime(membreDTO.getDateNaissance());
-			tRes = tCal.get(Calendar.DAY_OF_MONTH) + "/" +
-				(tCal.get(Calendar.MONTH) +1) + "/" +
-				tCal.get(Calendar.YEAR);		
-			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-			tRes = df.format(membreDTO.getDateNaissance()); 
+			stringDateNaissance = util.getDateToString(membreDTO.getDateNaissance());
 		}
-		stringDateNaissance = tRes;
 		return stringDateNaissance;
 	}
 
@@ -257,10 +250,9 @@ public class MembreForm extends ActionForm {
 			errors.add("dateNaissance", new ActionError("inscription.erreur.dateNaissance.obligatoire"));
 		}
 		else{
-			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 			try {
-				df.parse(stringDateNaissance);
-				membreDTO.setDateNaissance(df.parse(stringDateNaissance));
+				Date tDate = util.getStringToDate(stringDateNaissance);
+				membreDTO.setDateNaissance(tDate);
 			} catch (ParseException e) {
 				// dateFormat incorrect
 				errors.add("dateNaissance", new ActionError("inscription.erreur.dateNaissance.badFormat"));
