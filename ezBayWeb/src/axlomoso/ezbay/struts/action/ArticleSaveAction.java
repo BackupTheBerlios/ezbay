@@ -53,15 +53,13 @@ public class ArticleSaveAction extends Action {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		
-		ArticleForm articleEditForm = (ArticleForm) form;
-		/* load the session facade and save the book by primary key	*/
 		try {
-			InitialContext context = new InitialContext();
-			ArticleFacadeHome articleFacadeHome = (ArticleFacadeHome)context.lookup(ArticleFacadeHome.JNDI_NAME);
-			ArticleFacade articleFacade = articleFacadeHome.create();
-			ArticleDTO newArt = articleEditForm.getArticleDTO();
-			articleFacade.updateArticle(newArt);
+			VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
+			MembreFacadeDelegate membreFacade = new MembreFacadeDelegate();
+			ArticleForm articleEditForm = (ArticleForm) form;
+			MembreDTO membreDTO = (MembreDTO)request.getSession().getAttribute("membre");
+			VendeurDTO vendeurDTO = membreFacade.getVendeurDTO(membreDTO.getId());
+			vendeurFacade.saveArticle(vendeurDTO.getId(), articleEditForm.getArticleDTO());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NamingException e) {
