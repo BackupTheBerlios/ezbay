@@ -50,7 +50,7 @@ public class ArticleAction extends DispatchAction {
 		try {
 			ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
 			ArticleDTO articleDTO = new ArticleDTO();
-			if( id.length() > 0 ){
+			if( (id != null) && (id.length() > 0) ){
 				articleDTO = articleFacade.getArticle(id);
 			}
 			articleEditForm.setArticleDTO(articleDTO);
