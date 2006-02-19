@@ -7,6 +7,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
+import axlomoso.ezbay.exceptions.VendeurInconnuException;
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.MembreFacadeHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurFacade;
@@ -61,6 +63,10 @@ public class VendeurFacadeDelegate {
 
 	public Collection getArticlesVendus(String vendeurId) throws RemoteException {
 		return vendeurFacade.getArticlesVendus(vendeurId);
+	}
+
+	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO) throws VendeurInconnuException, Exception, RemoteException {
+		return vendeurFacade.saveArticle(vendeurId, articleDTO);
 	}
 	
 }
