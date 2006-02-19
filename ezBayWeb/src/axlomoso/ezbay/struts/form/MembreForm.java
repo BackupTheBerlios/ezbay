@@ -15,6 +15,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
 import axlomoso.ezbay.model.interfaces.MembreDTO;
+import axlomoso.ezbay.utils.Util;
 
 /**
  * MyEclipse Struts Creation date: 11-04-2004
@@ -27,9 +28,9 @@ import axlomoso.ezbay.model.interfaces.MembreDTO;
 public class MembreForm extends ActionForm {
 
 	private MembreDTO membreDTO = new MembreDTO();
-
 	private String password2 = null;
 	private String stringDateNaissance = null;
+	private Util util = new Util();
 	
 	public String getPassword2() {
 		return password2;
@@ -207,16 +208,17 @@ public class MembreForm extends ActionForm {
 		if ((membreDTO.getEmail() == null) || (membreDTO.getEmail().length() == 0)) {
 			errors.add("email", new ActionError("inscription.erreur.email.obligatoire"));
 		}
+		else{
+			if(! util.checkMailAddress(membreDTO.getEmail())) errors.add("email", new ActionError("inscription.erreur.email.invalide"));
+		}
 		if ((membreDTO.getAdresse() == null) || (membreDTO.getAdresse().length() == 0)) {
 			errors.add("adresse",new ActionError("inscription.erreur.adresse.obligatoire"));
 		}
 		
-		if (membreDTO.getCodePostal() == null)
-		{
+		if (membreDTO.getCodePostal() == null){
 			errors.add("codePostal", new ActionError("inscription.erreur.codePostal.obligatoire"));
 		}
-		else 
-		{
+		else{
 			try{
 				if ((membreDTO.getCodePostal().length() >5)
 						|| (Integer.parseInt(membreDTO.getCodePostal()) == 0))
