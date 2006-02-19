@@ -39,7 +39,13 @@ public class ArticleForm extends ActionForm {
 	private String vendeurPseudo = "";
 	// --------------------------------------------------------- Methods
 
+	
+	
 	public String getStringPrixVente() {
+		if(articleDTO.getPrixVente() != null){
+			Double d = articleDTO.getPrixVente();
+			stringPrixVente = String.valueOf(d.doubleValue());
+		}
 		return stringPrixVente;
 	}
 
@@ -159,25 +165,18 @@ public class ArticleForm extends ActionForm {
 		if ((articleDTO.getModele() == null) || (articleDTO.getModele().length() == 0)) {
 			errors.add("modele", new ActionError("articleEdit.erreurs.modeleVide"));
 		}
-		if ((this.getStringPrixVente() == null)||(this.getStringPrixVente().length()==0)) {
+		if ((stringPrixVente == null)||(stringPrixVente.length()==0)) {
 			errors.add("prixVente", new ActionError("articleEdit.erreurs.prixVenteVide"));
 		}
 		else{
 			try {				
-					 double d=Double.parseDouble(this.getStringPrixVente());					
+					 Double d = new Double(Double.parseDouble(stringPrixVente));
+					 articleDTO.setPrixVente(d);
 				}				
 			 catch (Exception e) {
-				errors.add("prixformat", new ActionError("articleEdit.erreurs.prixVenteNonValide"));
+				errors.add("prixVente", new ActionError("articleEdit.erreurs.prixVenteNonValide"));
 			}
-		}
-			
-		if (  (articleDTO.getAnneeFabrication() != null) ){
-			int annee = articleDTO.getAnneeFabrication().intValue();
-			Calendar tCal = Calendar.getInstance();
-			int anneeMax = tCal.get(Calendar.YEAR);
-			if( (annee <= 0) || ( annee > anneeMax) )			
-				errors.add("anneeFabrication", new ActionError("articleEdit.erreurs.anneeFabricationNonValide"));
-		}
+		}		
 		
 		if ((stringDateLimite == null)||(stringDateLimite.length() == 0)) {
 			errors.add("dateLimite", new ActionError("articleEdit.erreurs.dateLimiteVide"));
@@ -189,10 +188,21 @@ public class ArticleForm extends ActionForm {
 				// dateFormat incorrect
 				errors.add("dateLimite", new ActionError("articleEdit.erreurs.dateLimiteNonValide"));
 			}
+		}		
+		
+		if (  (articleDTO.getAnneeFabrication() != null) ){
+			int annee = articleDTO.getAnneeFabrication().intValue();
+			Calendar tCal = Calendar.getInstance();
+			int anneeMax = tCal.get(Calendar.YEAR);
+			if( (annee <= 0) || ( annee > anneeMax) )			
+				errors.add("anneeFabrication", new ActionError("articleEdit.erreurs.anneeFabricationNonValide"));
 		}
 		return errors;
 	}
 
+	public void setVendeurId(String vendeurId) {
+		this.vendeurId = vendeurId;
+	}
 	public String getVendeurId() {
 		return vendeurId;
 	}
@@ -200,6 +210,5 @@ public class ArticleForm extends ActionForm {
 	public String getVendeurPseudo() {
 		return vendeurPseudo;
 	}
-
 }
 

@@ -272,7 +272,4 @@ public class MembreForm extends ActionForm {
 	public void setMembreDTO(MembreDTO membreDTO) {
 		this.membreDTO = membreDTO;
 	}
-
-		
-	
 }
