@@ -35,7 +35,11 @@
 <td><bean:write name="article" property="prixVente" /></td>
 <td><bean:write name="article" property="anneeFabrication" /></td>
 <td><bean:write name="article" property="dateLimite" /></td>
+<td>
+<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id"><bean:message key="link.articleFiche" /></html:link>
+</td>
 </tr>
+
 </logic:iterate>
 <logic:notPresent name="article">
 <tr>
