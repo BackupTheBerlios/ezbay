@@ -230,7 +230,6 @@ public class MembreFacadeBean implements SessionBean {
 	public VendeurDTO saveVendeur(MembreDTO membreDTO, VendeurDTO vendeurDTO) throws Exception {
 		VendeurDTO tRes = null;
 		try {
-			System.out.println("MembreFacadeBean.saveVendeur() : vendeurDTO = " + vendeurDTO.toString());
 	        ServiceLocator locator = ServiceLocator.getInstance();
 	        MembreLocal membre = getEntity(membreDTO.getId());
 	        //creation du vendeur
