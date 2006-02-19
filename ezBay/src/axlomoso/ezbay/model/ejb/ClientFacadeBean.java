@@ -95,17 +95,6 @@ public class ClientFacadeBean implements SessionBean {
 		// TODO Auto-generated method stub
 
 	}
-
-	/**
-	 * An example business method
-	 *
-	 * @ejb.interface-method view-type = "remote"
-	 * 
-	 * @throws EJBException Thrown if method fails due to system-level error.
-	 */
-	public void replaceWithRealBusinessMethod() throws EJBException {
-		// rename and start putting your business logic here
-	}
 	
 
     /** Retrieves the local interface of the Customer entity bean. 
