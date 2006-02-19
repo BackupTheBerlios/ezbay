@@ -24,13 +24,15 @@
   
 <body>
     Welcome!
- <br>
+ <br />
  <html:link action="/membre.do?do=showInscription"><bean:message key="link.inscription"/></html:link><br>
- <br>
+ <br />
  <html:link action="/myEzBay.do?do=showMyEzBay">monEzBay</html:link>
- <br>
+ <br />
  <html:link action="/articleList.do">Show the articles list</html:link>
- <br>
+ <br />
  <html:link action="/membreList.do">Show the members list</html:link>
+ <br />
+ <br />
 </body>
 </html:html>
