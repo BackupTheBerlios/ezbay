@@ -29,7 +29,7 @@
 <table>
 <tr>
 <td align="right"><bean:message key="vendeur.label.numCB"/>:</td>
-<td><html:text property="numCB" maxlength="16"/></td>
+<td><html:text property="numCB" maxlength="16" size="16"/></td>
 </tr>
 <tr>
 <td align="right"><bean:message key="vendeur.label.nomProprioCB"/>:</td>
@@ -37,11 +37,11 @@
 </tr>
 <tr>
 <td align="right"><bean:message key="vendeur.label.dateExpirCB"/>:</td>
-<td><html:text property="stringDateExpirCB" /></td>
+<td><html:text property="stringDateExpirCB" maxlength="10" size="10"/></td>
 </tr>
 <tr>
 <td align="right"><bean:message key="vendeur.label.codeSecuCB"/>:</td>
-<td><html:text property="codeSecuCB" maxlength="3" /></td>
+<td><html:text property="codeSecuCB" maxlength="3" size="3"/></td>
 </tr>
 <tr>
 <td colspan="2">
