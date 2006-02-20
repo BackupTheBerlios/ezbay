@@ -27,9 +27,7 @@
 <logic:iterate name="articleListForm" property="articlesDTO" id="article">
 <tr>
 <%-- article informations --%>
-<td>
-<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:message key="link.modifier" /></html:link>
-</td>
+
 <td><bean:write name="article" property="libelle" /></td>
 <td><bean:write name="article" property="marque" /></td>
 <td><bean:write name="article" property="modele" /></td>
