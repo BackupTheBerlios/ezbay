@@ -14,6 +14,6 @@ public interface ArticleFacadeLocal
    extends javax.ejb.EJBLocalObject
 {
 
-   public axlomoso.ezbay.model.interfaces.ArticleDTO saveArticle( java.lang.String vendeurId,axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) throws java.lang.Exception;
+   public axlomoso.ezbay.model.interfaces.ArticleDTO saveArticle( java.lang.String vendeurId,axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO,java.lang.String categorieId ) throws java.lang.Exception;
 
 }
