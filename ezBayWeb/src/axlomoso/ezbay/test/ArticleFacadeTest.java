@@ -120,6 +120,15 @@ public class ArticleFacadeTest extends TestCase {
 		}
 	}*/
 	
+	// ne marche pas
+	/*public void testGetArticlesByCategorie() throws RemoteException {
+		Collection articlesDTO = articleFacade.getArticlesByCategorie(articleLocal.getCategorieLocal().getId());
+		for (Iterator it = articlesDTO.iterator(); it.hasNext(); ) {
+			ArticleDTO articleDTO = (ArticleDTO) it.next();
+			assertEquals(articleDTOTemoin.getLibelle(),articleDTO.getLibelle());
+		}
+	}*/
+	
 	public void testSaveArticle() throws RemoteException {
 		ArticleDTO actualArticle;
 		try {
@@ -157,6 +166,8 @@ public class ArticleFacadeTest extends TestCase {
 			assertEquals(articleDTOTemoin.getLibelle(),articleDTO.getLibelle());
 		}
 	}
+	
+	
 	
 	public boolean equalsDTO(ArticleDTO articleDTO1, ArticleDTO articleDTO2){
 		boolean tRes = true;
