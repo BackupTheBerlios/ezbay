@@ -20,6 +20,8 @@ import org.apache.struts.actions.DispatchAction;
 
 import axlomoso.ezbay.struts.form.ArticleForm;
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
+import axlomoso.ezbay.delegate.CategorieFacadeDelegate;
+import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
@@ -50,11 +52,15 @@ public class ArticleAction extends DispatchAction {
 		/* load the session facade and get the book by primary key */
 		try {
 			ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
+			CategorieFacadeDelegate categorieFacade = new CategorieFacadeDelegate();
 			ArticleDTO articleDTO = new ArticleDTO();
 			if( (id != null) && (id.length() > 0) ){
+				// modification
 				articleDTO = articleFacade.getArticle(id);
+				articleEditForm.setCategorieDTO(articleFacade.getCategorieDTO(id));
 			}
 			articleEditForm.setArticleDTO(articleDTO);
+			articleEditForm.setCategories(categorieFacade.getCategories());
 		} catch (RemoteException e) {
 		e.printStackTrace();
 		} catch (NamingException e) {
@@ -98,6 +104,7 @@ public class ArticleAction extends DispatchAction {
 		}
 		return mapping.findForward("showArticleFiche");	
 	}
+
 	
 	public ActionForward deleteArticle(
 			ActionMapping mapping,

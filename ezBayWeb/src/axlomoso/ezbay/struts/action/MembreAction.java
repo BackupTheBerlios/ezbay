@@ -85,6 +85,8 @@ public class MembreAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		System.out.println("MembreAction.showMembreFiche()");
+		
+		
 		return (mapping.findForward("showMembreFiche"));
 	}
 	
