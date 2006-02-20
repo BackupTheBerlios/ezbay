@@ -16,9 +16,13 @@ import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
+import axlomoso.ezbay.model.interfaces.CategorieFacadeLocal;
+import axlomoso.ezbay.model.interfaces.CategorieFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieLocal;
 import axlomoso.ezbay.model.interfaces.CategorieLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
+import axlomoso.ezbay.model.interfaces.VendeurFacadeLocal;
+import axlomoso.ezbay.model.interfaces.VendeurFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
 import axlomoso.ezbay.utils.ServiceLocator;
@@ -87,7 +91,7 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @param vendeurDTO
 	 * @throws Exception 
 	 */
-	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO) throws Exception{
+	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws Exception{
 		ArticleDTO tRes = null;
 		boolean exists = false;
 		try {
@@ -103,22 +107,26 @@ public class ArticleFacadeBean implements SessionBean {
 		}
 		if(exists){
 			// l'article existe : mise à jour.
-			tRes = this.updateArticle(articleDTO);
+			tRes = this.updateArticle(articleDTO, categorieId);
 		}
 		else{
 			//l'article n'existe pas: création.
-			tRes = this.createArticle(vendeurId, articleDTO);
+			tRes = this.createArticle(vendeurId, articleDTO, categorieId);
 		}
 		return tRes;
 	}	
 	
 	
-	private ArticleDTO createArticle(String vendeurId, ArticleDTO articleDTO) throws Exception {
+	private ArticleDTO createArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws Exception {
 		ArticleDTO tRes = null;
 		try {
 			ArticleLocalHome home = getEntityHome();
 			VendeurLocal vendeurLocal = VendeurFacadeBean.getEntity(vendeurId);
-			ArticleLocal articleLocal = home.create(articleDTO, vendeurLocal);			
+			ArticleLocal articleLocal = home.create(articleDTO, vendeurLocal);
+			//categorie
+	        CategorieLocal categorieLocal = CategorieFacadeBean.getEntity(categorieId);
+	        articleLocal.setCategorieLocal(categorieLocal);
+	        // return
 			tRes = articleLocal.getArticleDTO();
 		} catch (Exception e) {
 			throw new Exception("Cannot create article", e);
@@ -126,11 +134,15 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;
 	}
 
-	private ArticleDTO updateArticle(ArticleDTO articleDTO) throws Exception {
+	private ArticleDTO updateArticle(ArticleDTO articleDTO, String categorieId) throws Exception {
 		ArticleDTO tRes = null;
 		try {
 			ArticleLocal articleLocal = getEntity(articleDTO.getId());
 			String id = articleLocal.updateArticle(articleDTO);
+			//categorie
+	        CategorieLocal categorieLocal = CategorieFacadeBean.getEntity(categorieId);
+	        articleLocal.setCategorieLocal(categorieLocal);
+	        // return
 			tRes = getEntity(id).getArticleDTO();
 		} catch (Exception e) {
 			throw new Exception("Cannot update article", e);
