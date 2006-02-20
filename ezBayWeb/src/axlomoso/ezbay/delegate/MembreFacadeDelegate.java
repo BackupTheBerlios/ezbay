@@ -49,8 +49,4 @@ public class MembreFacadeDelegate {
 		return membreFacade.getMembre(pseudo, password);
 	}
 	
-	public void removeMembre(MembreDTO membreDTO) throws Exception, RemoteException {
-		membreFacade.removeMembre(membreDTO);
-	}
-	
 }
