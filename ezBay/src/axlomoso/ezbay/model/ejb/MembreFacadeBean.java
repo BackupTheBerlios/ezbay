@@ -200,18 +200,6 @@ public class MembreFacadeBean implements SessionBean {
 		}	
 		return tRes;
 	}
-    
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param 
-	 */
-    public void removeMembre(MembreDTO membreDTO) throws Exception {
-    	// 	A FAIRE
-    	/*try {
-		}catch (Exception e) {
-			throw new Exception("Cannot remove vendeur", e);
-		}*/
-    }		
 	
 	/**
 	 * @ejb.interface-method view-type = "remote"
@@ -235,11 +223,7 @@ public class MembreFacadeBean implements SessionBean {
 		return tRes;
 	}
 
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param membreDTO
-	 */
-	public void createClient(MembreDTO membreDTO) throws Exception {
+	private void createClient(MembreDTO membreDTO) throws Exception {
 		try {
 	        ServiceLocator locator = ServiceLocator.getInstance();
 	        //creation du client
@@ -255,29 +239,6 @@ public class MembreFacadeBean implements SessionBean {
 		}
 	}		
 	
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param 
-	 */
-    public void removeVendeur(MembreDTO membreDTO) throws Exception {
-    	// 	A FAIRE
-    	/*try {
-		}catch (Exception e) {
-			throw new Exception("Cannot remove vendeur", e);
-		}*/
-    }
-    
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param 
-	 */
-    public void removeClient(MembreDTO membreDTO) throws Exception {
-    	// 	A FAIRE
-    	/*try {
-		}catch (Exception e) {
-			throw new Exception("Cannot remove vendeur", e);
-		}*/
-    }	
 	
 	/**
 	 * Set the associated session context. The container calls this method 
