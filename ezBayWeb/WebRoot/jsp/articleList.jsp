@@ -9,7 +9,8 @@
 </title>
 </head>
 <body>
-<html:errors/>
+
+<H2><bean:message key="articleList.categorie.titre" /> <bean:write name="articleListForm" property="categorieDTO.libelle" /> </H2>
 <table border="1">
 <tbody>
 <%-- set the header --%>
@@ -23,7 +24,7 @@
 <td><bean:message key="articleList.dateLimite" /></td>
 </tr>
 <%-- start with an iterate over the array articlesDTO --%>
-<logic:iterate name="articleListForm" property="articleViews" id="article">
+<logic:iterate name="articleListForm" property="articlesDTO" id="article">
 <tr>
 <%-- article informations --%>
 <td>
@@ -49,12 +50,6 @@
 </tbody>
 </table>
 <br>
-<%-- add and back to menu button --%>
- <%-- add and back to menu button --%>
- <html:button property="add" 
- onclick="location.href='article.do?do=showEdit'">Add a new article
- </html:button>
- &nbsp;
  <html:button property="back" onclick="location.href='default.do'">Back to menu</html:button>
 </body>
 </html>

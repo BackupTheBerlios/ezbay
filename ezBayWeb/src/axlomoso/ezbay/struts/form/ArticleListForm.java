@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
+import axlomoso.ezbay.model.interfaces.CategorieDTO;
+
 /** 
  * MyEclipse Struts
  * Creation date: 02-12-2006
@@ -21,27 +23,30 @@ import org.apache.struts.action.ActionMapping;
 public class ArticleListForm extends ActionForm {
 
 	// --------------------------------------------------------- Instance Variables
-
+	private Collection articlesDTO = null;
+	private CategorieDTO categorieDTO = null; 
 	// --------------------------------------------------------- Methods
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 968688817928699885L;
-	private Collection articleViews = null;
+
 	/** 
 	 * Method reset
 	 * @param mapping
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		articleViews = new ArrayList();
+		articlesDTO = new ArrayList();
 	}
-	public Collection getArticleViews() {
-		return articleViews;
+	public Collection getArticlesDTO() {
+		return articlesDTO;
 	}
-	public void setArticleViews(Collection articleViews) {
-		this.articleViews = articleViews;
+	public void setArticlesDTO(Collection articlesDTO) {
+		this.articlesDTO = articlesDTO;
+	}
+	public CategorieDTO getCategorieDTO() {
+		return categorieDTO;
+	}
+	public void setCategorieDTO(CategorieDTO categorieDTO) {
+		this.categorieDTO = categorieDTO;
 	}
 
 }

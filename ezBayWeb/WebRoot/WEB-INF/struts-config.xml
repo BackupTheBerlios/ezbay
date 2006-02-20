@@ -34,9 +34,16 @@
 			<forward name="succesInscription" path="/myEzBay.do?do=showMyEzBay" redirect="true" />
 		</action>
 		<action forward="/jsp/index.jsp" path="/default" unknown="true" />
-		<action attribute="articleListForm" input="/jsp/articleList.jsp" name="articleListForm" path="/articleList" scope="request" type="axlomoso.ezbay.struts.action.ArticleListAction">
-			<forward name="showList" path="/jsp/articleList.jsp" />
-		</action>
+		<action
+      attribute="articleListForm"
+      input="/jsp/articleList.jsp"
+      name="articleListForm"
+      parameter="do"
+      path="/articleList"
+      scope="request"
+      type="axlomoso.ezbay.struts.action.ArticleListAction">
+      <forward name="showList" path="/jsp/articleList.jsp" />
+    </action>
 		<action attribute="articleForm" name="articleForm" parameter="do" path="/article" scope="request" validate="false" type="axlomoso.ezbay.struts.action.ArticleAction">
 			<forward name="showEdit" path="/jsp/articleEdit.jsp" />
 			<forward name="showAdd" path="/jsp/articleAdd.jsp" />

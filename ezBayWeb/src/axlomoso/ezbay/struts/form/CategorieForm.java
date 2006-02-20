@@ -23,11 +23,9 @@ import axlomoso.ezbay.model.interfaces.CategorieDTO;
 public class CategorieForm extends ActionForm {
 
 	// --------------------------------------------------------- Instance Variables
-		
-	// --------------------------------------------------------- Methods
-	private CategorieDTO categorieDTO=new CategorieDTO();
 	private Collection listeCategories=null;
-	private Collection listeArticles=null;
+	// --------------------------------------------------------- Methods
+	
 	/** 
 	 * Method validate
 	 * @param mapping
@@ -48,24 +46,6 @@ public class CategorieForm extends ActionForm {
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-
-		// TODO Auto-generated method stub
-	}
-
-	public CategorieDTO getCategorieDTO() {
-		return categorieDTO;
-	}
-
-	public void setCategorieDTO(CategorieDTO categorieDTO) {
-		this.categorieDTO = categorieDTO;
-	}
-
-	public String getLibelle() {
-		return categorieDTO.getLibelle();
-	}
-
-	public void setLibelle(String libelle) {
-		categorieDTO.setLibelle(libelle);
 	}
 
 	public Collection getListeCategories() {
@@ -75,14 +55,5 @@ public class CategorieForm extends ActionForm {
 	public void setListeCategories(Collection listeCategories) {
 		this.listeCategories = listeCategories;
 	}
-
-	public Collection getListeArticles() {
-		return listeArticles;
-	}
-
-	public void setListeArticles(Collection listeArticles) {
-		this.listeArticles = listeArticles;
-	}
-
 }
 

@@ -17,9 +17,12 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.actions.DispatchAction;
 
 
 import axlomoso.ezbay.struts.form.ArticleListForm;
+import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
+import axlomoso.ezbay.delegate.CategorieFacadeDelegate;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
@@ -35,7 +38,7 @@ import axlomoso.ezbay.model.interfaces.VendeurFacadeHome;
  * XDoclet definition:
  * @struts.action path="/articleList" name="articleListForm" input="/jsp/articleList.jsp" scope="request" validate="true"
  */
-public class ArticleListAction extends Action {
+public class ArticleListAction extends DispatchAction {
 
 	// --------------------------------------------------------- Instance Variables
 
@@ -51,7 +54,7 @@ public class ArticleListAction extends Action {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward execute(
+	public ActionForward showAllArticles(
 		ActionMapping mapping,
 		ActionForm form,
 		HttpServletRequest request,
@@ -73,7 +76,7 @@ public class ArticleListAction extends Action {
 			else{
 				// articles du membre
 			}
-			articleListForm.setArticleViews(articleViews);
+			articleListForm.setArticlesDTO(articleViews);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NamingException e) {
@@ -83,6 +86,32 @@ public class ArticleListAction extends Action {
 		}
 			return mapping.findForward("showList");
 		}
+	
+	public ActionForward showArticlesByCategorie(
+			ActionMapping mapping,
+			ActionForm form,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+			ArticleListForm articleListForm = (ArticleListForm) form;
+			String categorieId = request.getParameter("categorieId");
+			try {
+				ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
+				CategorieFacadeDelegate categorieFacade = new CategorieFacadeDelegate();
+				if( categorieId == null ) categorieId = "";
+				Collection articles = articleFacade.getArticlesByCategorie(categorieId);
+				articleListForm.setArticlesDTO(articles);
+				articleListForm.setCategorieDTO(categorieFacade.getCategorie(categorieId));
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			} catch (NamingException e) {
+				e.printStackTrace();
+			} catch (CreateException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+				return mapping.findForward("showList");
+			}
 
 }
 
