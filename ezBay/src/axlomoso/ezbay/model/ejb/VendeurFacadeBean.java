@@ -257,14 +257,14 @@ public class VendeurFacadeBean implements SessionBean {
 	 * @throws VendeurInconnuException 
 	 * @throws Exception 
 	 */
-	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO) throws VendeurInconnuException, Exception{
+	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws VendeurInconnuException, Exception{
 		ArticleDTO tRes = null;
 		try {
 			VendeurLocal vendeur = getEntity(vendeurId);
 			ServiceLocator locator = ServiceLocator.getInstance();
 			ArticleFacadeLocalHome articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
 			ArticleFacadeLocal articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
-			tRes = (ArticleDTO) articleFacade.saveArticle(vendeurId, articleDTO);
+			tRes = (ArticleDTO) articleFacade.saveArticle(vendeurId, articleDTO, categorieId);
 			articleFacade.remove();
 			articleFacadeLocalHome = null;
 		} catch (FinderException e) {
