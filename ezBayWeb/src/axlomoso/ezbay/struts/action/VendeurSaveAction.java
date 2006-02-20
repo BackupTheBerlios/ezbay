@@ -41,17 +41,11 @@ public class VendeurSaveAction extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		System.out.println("VendeurSaveAction.execute()");
-		VendeurForm vendeurForm = (VendeurForm) form;
+		VendeurForm inscriptionVendeurForm = (VendeurForm) form;
 		MembreFacadeDelegate membreDelegate;
 		membreDelegate = new MembreFacadeDelegate();
 		MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
-		VendeurDTO vendeurDTO = new VendeurDTO();
-		vendeurDTO.setNomProprioCB(vendeurForm.getNomProprioCB());
-		vendeurDTO.setNumCB(vendeurForm.getNumCB());
-		vendeurDTO.setDateExpirCB(vendeurForm.getDateExpirCB());
-		vendeurDTO.setCodeSecuCB(vendeurForm.getCodeSecuCB());
-		membreDelegate.saveVendeur(membreDTO, vendeurDTO);
-		membreDelegate.saveVendeur(membreDTO, vendeurForm.getVendeurDTO());
+		membreDelegate.saveVendeur(membreDTO, inscriptionVendeurForm.getVendeurDTO());
 		return (mapping.findForward("succes"));
 	}
 
