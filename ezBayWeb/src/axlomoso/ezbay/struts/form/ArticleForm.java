@@ -40,7 +40,6 @@ public class ArticleForm extends ActionForm {
 	private String stringDateLimite = ""; 
 	private String stringPrixVente="";
 	private String vendeurId = "";
-	private String membreId = "";
 	private String membrePseudo = "";
 	// --------------------------------------------------------- Methods
 
@@ -228,16 +227,8 @@ public class ArticleForm extends ActionForm {
 		this.categories = categories;
 	}
 
-	public String getMembreId() {
-		return membreId;
-	}
-
 	public String getMembrePseudo() {
 		return membrePseudo;
-	}
-
-	public void setMembreId(String membreId) {
-		this.membreId = membreId;
 	}
 
 	public void setMembrePseudo(String membrePseudo) {
