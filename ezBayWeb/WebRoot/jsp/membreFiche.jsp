@@ -8,6 +8,7 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-template" prefix="template" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested" %>
 
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html locale="true">
   <head>
@@ -24,16 +25,8 @@
   
   <body>
   <h2><bean:message key="membreFiche.title" /></h2><br />
- <bean:message key="membreFiche.pseudo"/>:<bean:write name="articleForm" property="membrePseudo" />
- 
- 
-<logic:empty name="articleForm" property="membrePseudo">
-c'est un acheteur
-</logic:empty>
-<logic:notEmpty name="articleForm" property="membrePseudo">
-c'est un vendeur
-</logic:notEmpty>
-
+ <bean:message key="membreFiche.pseudo"/>:<bean:write name="membreForm" property="pseudo" />
+ <br /><br />
 
  </body>
 </html:html>
