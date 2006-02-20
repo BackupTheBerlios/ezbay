@@ -64,6 +64,10 @@
 				<td><bean:message key="articleEdit.dateLimite" /> :</td>
 				<td><html:text property="stringDateLimite" /></td>
 				</tr>
+				<tr>
+				<td><bean:message key="articleEdit.description" /> :</td>
+				<td><html:textarea property="description" rows="10" cols="50" /></td>
+				</tr>
 				</tbody>
 			</table>
 			<%-- set the parameter for the dispatch action --%>
