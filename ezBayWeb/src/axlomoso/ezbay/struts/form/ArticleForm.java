@@ -235,5 +235,13 @@ public class ArticleForm extends ActionForm {
 	public String getMembrePseudo() {
 		return membrePseudo;
 	}
+
+	public void setMembreId(String membreId) {
+		this.membreId = membreId;
+	}
+
+	public void setMembrePseudo(String membrePseudo) {
+		this.membrePseudo = membrePseudo;
+	}
 }
 
