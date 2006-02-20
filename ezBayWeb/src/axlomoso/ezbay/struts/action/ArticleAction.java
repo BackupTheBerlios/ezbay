@@ -20,6 +20,7 @@ import org.apache.struts.actions.DispatchAction;
 
 import axlomoso.ezbay.struts.form.ArticleForm;
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
+import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
@@ -78,10 +79,13 @@ public class ArticleAction extends DispatchAction {
 		String id = request.getParameter("id");
 		/* load the session facade and get the book by primary key */
 		try {
-			InitialContext context = new InitialContext();
-			ArticleFacadeHome articleFacadeHome = (ArticleFacadeHome)context.lookup(ArticleFacadeHome.JNDI_NAME);
-			ArticleFacade articleFacade = articleFacadeHome.create();
+			ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
+			VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
+			String vendeurId=articleFacade.getVendeurDTO(id).getId();
 			articleEditForm.setArticleDTO(articleFacade.getArticle(id));
+			articleEditForm.setVendeurId(vendeurId);
+			articleEditForm.setMembreId(vendeurFacade.getMembre(vendeurId).getId());
+			articleEditForm.setMembrePseudo(vendeurFacade.getMembre(vendeurId).getPseudo());
 		} catch (RemoteException e) {
 		e.printStackTrace();
 		} catch (NamingException e) {
