@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,10 +36,12 @@ public class ArticleForm extends ActionForm {
 	// --------------------------------------------------------- Instance Variables
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private CategorieDTO categorieDTO = new CategorieDTO();
+	private Collection categories = null;
 	private String stringDateLimite = ""; 
 	private String stringPrixVente="";
 	private String vendeurId = "";
-	private String vendeurPseudo = "";
+	private String membreId = "";
+	private String membrePseudo = "";
 	// --------------------------------------------------------- Methods
 
 	
@@ -208,9 +211,6 @@ public class ArticleForm extends ActionForm {
 		return vendeurId;
 	}
 
-	public String getVendeurPseudo() {
-		return vendeurPseudo;
-	}
 
 	public CategorieDTO getCategorieDTO() {
 		return categorieDTO;
@@ -218,6 +218,22 @@ public class ArticleForm extends ActionForm {
 
 	public void setCategorieDTO(CategorieDTO categorieDTO) {
 		this.categorieDTO = categorieDTO;
+	}
+
+	public Collection getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Collection categories) {
+		this.categories = categories;
+	}
+
+	public String getMembreId() {
+		return membreId;
+	}
+
+	public String getMembrePseudo() {
+		return membrePseudo;
 	}
 }
 
