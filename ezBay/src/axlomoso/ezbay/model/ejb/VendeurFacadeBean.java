@@ -173,6 +173,19 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurId
+	 */
+	public MembreDTO getMembre(String vendeurId) throws Exception {
+		try {
+			VendeurLocal vendeurLocal = getEntity(vendeurId);
+			return vendeurLocal.getMembreLocal().getMembreDTO();
+		} catch (Exception e) {
+			throw new Exception("Cannot get membre", e);
+		}
+	}
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
 	 * @param
 	 */
 	public Collection getVendeurs() {
