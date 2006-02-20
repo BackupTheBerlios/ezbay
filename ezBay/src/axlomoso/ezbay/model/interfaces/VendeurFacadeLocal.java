@@ -20,6 +20,8 @@ public interface VendeurFacadeLocal
 
    public axlomoso.ezbay.model.interfaces.VendeurDTO getVendeur( java.lang.String vendeurId ) throws java.lang.Exception;
 
+   public axlomoso.ezbay.model.interfaces.MembreDTO getMembre( java.lang.String vendeurId ) throws java.lang.Exception;
+
    public java.util.Collection getVendeurs(  ) ;
 
    public java.util.Collection getArticles( java.lang.String vendeurId ) ;

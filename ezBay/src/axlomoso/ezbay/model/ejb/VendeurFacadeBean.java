@@ -137,8 +137,7 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	private VendeurDTO updateVendeur(VendeurDTO vendeurDTO) throws Exception{
 		VendeurDTO tRes = null;
-		VendeurLocal vendeurLocal;
-		vendeurLocal = getEntity(vendeurDTO.getId());
+		VendeurLocal vendeurLocal = getEntity(vendeurDTO.getId());
 		String id = vendeurLocal.updateVendeur(vendeurDTO);
 		VendeurLocal vendeurLocalModified = getEntity(id);
 		tRes = vendeurLocalModified.getVendeurDTO();
