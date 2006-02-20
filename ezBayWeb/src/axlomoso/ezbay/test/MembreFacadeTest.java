@@ -41,7 +41,7 @@ public class MembreFacadeTest extends TestCase {
 		membreDTOTemoin = new MembreDTO();	
 		//création d'un vendeur par le sessionFacade
 		membreDTOTemoin.setNom("Homer");
-		membreDTOCreated = membreFacade.createMembre(membreDTOTemoin);
+		//membreDTOCreated = membreFacade.createMembre(membreDTOTemoin);
 	}
 
 	/**
@@ -55,11 +55,27 @@ public class MembreFacadeTest extends TestCase {
 		this.membreFacade = null;
 	}
 	
-	public void testCreateMembre(){
+	public void testSaveMembre(){
+		
 	}
 	
-	public void testCreateVendeur(){
+	public void testGetMembre(){
+		
 	}
 	
+	public void testGetMembreBis(){
+		
+	}
 	
+	public void testMembreExists(){
+		
+	}
+	
+	public void testGetVendeurDTO(){
+		
+	}
+	
+	public void testSaveVendeur(){
+		
+	}
 }
