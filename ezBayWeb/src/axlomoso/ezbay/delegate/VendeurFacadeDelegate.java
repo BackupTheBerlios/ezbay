@@ -78,8 +78,8 @@ public class VendeurFacadeDelegate {
 		return getArticlesDtoToView(articles);
 	}
 
-	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO) throws VendeurInconnuException, Exception, RemoteException {
-		return vendeurFacade.saveArticle(vendeurId, articleDTO);
+	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws VendeurInconnuException, Exception, RemoteException {
+		return vendeurFacade.saveArticle(vendeurId, articleDTO, categorieId);
 	}
 	
 	

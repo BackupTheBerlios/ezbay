@@ -6,6 +6,7 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-template" prefix="template" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested" %>
+<bean:define id="categories" name="categories" type="java.util.Collection" scope="request"/>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html locale="true">
@@ -30,6 +31,15 @@
 			<%-- print out the form data --%>
 			<table border="1">
 				<tbody>
+				<tr>
+				<td><bean:message key="articleEdit.categorie" /> : </td>
+				<td>
+					<html:select property="categorieDTO.id">
+						<html:options collection="categories" property="id" labelProperty="libelle" />
+					</html:select>
+				</td>
+				</tr>
+				
 				<tr>
 				<td><bean:message key="articleEdit.libelle" /> : </td>
 				<td><html:text property="libelle" /></td>

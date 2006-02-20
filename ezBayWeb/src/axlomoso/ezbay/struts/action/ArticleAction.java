@@ -4,7 +4,9 @@
 package axlomoso.ezbay.struts.action;
 
 import java.rmi.RemoteException;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.CreateException;
 import javax.naming.InitialContext;
@@ -60,7 +62,8 @@ public class ArticleAction extends DispatchAction {
 				articleEditForm.setCategorieDTO(articleFacade.getCategorieDTO(id));
 			}
 			articleEditForm.setArticleDTO(articleDTO);
-			articleEditForm.setCategories(categorieFacade.getCategories());
+			Collection categories = categorieFacade.getCategories();
+			request.setAttribute("categories", categories);
 		} catch (RemoteException e) {
 		e.printStackTrace();
 		} catch (NamingException e) {
@@ -68,7 +71,6 @@ public class ArticleAction extends DispatchAction {
 		} catch (CreateException e) {
 		e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return mapping.findForward("showEdit");	
