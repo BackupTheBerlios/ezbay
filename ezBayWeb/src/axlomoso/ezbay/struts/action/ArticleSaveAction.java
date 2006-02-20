@@ -53,10 +53,15 @@ public class ArticleSaveAction extends Action {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
+		
+		System.out.println("ArticleSaveAction.execute()");
+		ArticleForm articleEditForm = (ArticleForm) form;
+		
+		/* load the session facade and save the book by primary key	*/
+
 		try {
 			VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
 			MembreFacadeDelegate membreFacade = new MembreFacadeDelegate();
-			ArticleForm articleEditForm = (ArticleForm) form;
 			MembreDTO membreDTO = (MembreDTO)request.getSession().getAttribute("membre");
 			VendeurDTO vendeurDTO = membreFacade.getVendeurDTO(membreDTO.getId());
 			vendeurFacade.saveArticle(vendeurDTO.getId(), articleEditForm.getArticleDTO());
@@ -69,6 +74,7 @@ public class ArticleSaveAction extends Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//return mapping.findForward("showList");
 		return mapping.findForward("showVendeurArticles");
 	}
 
