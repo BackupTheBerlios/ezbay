@@ -90,7 +90,6 @@ public class ArticleAction extends DispatchAction {
 			String vendeurId=articleFacade.getVendeurDTO(id).getId();
 			articleEditForm.setArticleDTO(articleFacade.getArticle(id));
 			articleEditForm.setVendeurId(vendeurId);
-			articleEditForm.setMembreId(vendeurFacade.getMembre(vendeurId).getId());
 			articleEditForm.setMembrePseudo(vendeurFacade.getMembre(vendeurId).getPseudo());
 		} catch (RemoteException e) {
 		e.printStackTrace();
