@@ -59,6 +59,23 @@ public class CategorieAction extends DispatchAction {
 		return (mapping.findForward("showCategories"));
 	}
 	
+	public ActionForward showCategoriesRecherche(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		System.out.println("CategorieAction.showCategoriesRecherche()");
+		CategorieForm categorieForm = (CategorieForm) form;
+		CategorieFacadeDelegate categorieFacadeDelegate=new CategorieFacadeDelegate();
+		try {
+		categorieForm.setListeCategories(categorieFacadeDelegate.getCategories());
+		}
+		catch(Exception e){
+		   e.printStackTrace();
+		}			
+		
+		
+		return (mapping.findForward("showCategoriesRecherche"));
+	}
+	
 	public ActionForward showArticles(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {

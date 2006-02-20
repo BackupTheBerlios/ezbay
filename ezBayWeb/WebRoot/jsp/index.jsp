@@ -26,7 +26,11 @@
     Welcome!
  <br />
  <html:link action="/membre.do?do=showInscription"><bean:message key="link.inscription"/></html:link><br>
- <br /> 
+ <br />  
+ <br>
+ <a href="rechercheArticle.jsp"><bean:message key="link.Recherche.Article"/></a><br>
+ <br>
+ <br />
  <html:link action="/categorie.do?do=showCategories"><bean:message key="link.categories"/></html:link><br>
  <br />
  <html:link action="/myEzBay.do?do=showMyEzBay">monEzBay</html:link>
