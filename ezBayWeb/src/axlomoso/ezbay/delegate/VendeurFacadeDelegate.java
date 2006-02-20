@@ -9,6 +9,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
+import axlomoso.ezbay.exceptions.ArticleEnVenteException;
+import axlomoso.ezbay.exceptions.ArticleProprietaireException;
+import axlomoso.ezbay.exceptions.ArticleVenduException;
 import axlomoso.ezbay.exceptions.VendeurInconnuException;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
@@ -59,10 +62,6 @@ public class VendeurFacadeDelegate {
 		return vendeurFacade.getVendeurs();
 	}
 
-	public void removeVendeur(VendeurDTO vendeurDTO) throws Exception, RemoteException {
-		vendeurFacade.removeVendeur(vendeurDTO);
-	}
-
 	public Collection getArticlesEnAttente(String vendeurId) throws RemoteException {
 		Collection articles = vendeurFacade.getArticlesEnAttente(vendeurId);
 		return getArticlesDtoToView(articles);
@@ -82,6 +81,9 @@ public class VendeurFacadeDelegate {
 		return vendeurFacade.saveArticle(vendeurId, articleDTO, categorieId);
 	}
 	
+	public void removeArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleEnVenteException, ArticleVenduException, Exception{
+		vendeurFacade.removeArticle(vendeurId, articleId);
+	}
 	
 	/* transforme une liste d'ArticleDTO en une liste d'articleView */
 	private Collection getArticlesDtoToView(Collection articles) {

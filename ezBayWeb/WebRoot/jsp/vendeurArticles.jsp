@@ -69,7 +69,7 @@
 				<bean:write name="article" property="formattedDateLimite" />
 			</td>
 			<td>
-				<bean:message key="vendeurArticles.link.retirer" />
+			<html:link action="/article.do?do=retirerArticle" paramName="article" paramProperty="id" paramId="id"><bean:message key="vendeurArticles.link.retirer" /></html:link>
 			</td>
 		</tr>
 	</logic:iterate>

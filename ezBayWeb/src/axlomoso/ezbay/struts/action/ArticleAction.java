@@ -14,6 +14,8 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -23,11 +25,16 @@ import org.apache.struts.actions.DispatchAction;
 import axlomoso.ezbay.struts.form.ArticleForm;
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.delegate.CategorieFacadeDelegate;
+import axlomoso.ezbay.delegate.MembreFacadeDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
+import axlomoso.ezbay.exceptions.ArticleEnVenteException;
+import axlomoso.ezbay.exceptions.ArticleProprietaireException;
+import axlomoso.ezbay.exceptions.ArticleVenduException;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
+import axlomoso.ezbay.model.interfaces.MembreDTO;
 
 /** 
  * MyEclipse Struts
@@ -48,30 +55,12 @@ public class ArticleAction extends DispatchAction {
 			HttpServletRequest request,
 			HttpServletResponse response) {
 		System.out.println("ArticleAction.showEdit()");
-		ArticleForm articleEditForm = (ArticleForm) form;
-		/* get id of the book from request */
 		String id = request.getParameter("id");
-		/* load the session facade and get the book by primary key */
 		try {
-			ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
-			CategorieFacadeDelegate categorieFacade = new CategorieFacadeDelegate();
-			ArticleDTO articleDTO = new ArticleDTO();
-			if( (id != null) && (id.length() > 0) ){
-				// modification
-				articleDTO = articleFacade.getArticle(id);
-				articleEditForm.setCategorieDTO(articleFacade.getCategorieDTO(id));
-			}
-			articleEditForm.setArticleDTO(articleDTO);
-			Collection categories = categorieFacade.getCategories();
-			request.setAttribute("categories", categories);
-		} catch (RemoteException e) {
-		e.printStackTrace();
-		} catch (NamingException e) {
-		e.printStackTrace();
-		} catch (CreateException e) {
-		e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
+			
+			this.setArticleForm(id, form, request);
+		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
 		return mapping.findForward("showEdit");	
 	}
@@ -82,46 +71,91 @@ public class ArticleAction extends DispatchAction {
 			HttpServletRequest request,
 			HttpServletResponse response) {
 		System.out.println("ArticleAction.showArticleFiche()");
-		ArticleForm articleEditForm = (ArticleForm) form;
-		/* get id of the book from request */
 		String id = request.getParameter("id");
-		/* load the session facade and get the book by primary key */
 		try {
-			ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
-			VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
-			String vendeurId=articleFacade.getVendeurDTO(id).getId();
-			articleEditForm.setArticleDTO(articleFacade.getArticle(id));
-			articleEditForm.setVendeurId(vendeurId);
-			articleEditForm.setMembrePseudo(vendeurFacade.getMembre(vendeurId).getPseudo());
-		} catch (RemoteException e) {
-		e.printStackTrace();
-		} catch (NamingException e) {
-		e.printStackTrace();
-		} catch (CreateException e) {
-		e.printStackTrace();
+			this.setArticleForm(id, form, request);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return mapping.findForward("showArticleFiche");	
 	}
 
-	
-	public ActionForward deleteArticle(
+	public ActionForward retirerArticle(
 			ActionMapping mapping,
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		return null;
+		String id = request.getParameter("id");
+		try {
+			this.setArticleForm(id, form, request);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mapping.findForward("showConfirmRetrait");
 	}
 	
-	public ActionForward showAdd(
+	public ActionForward confirmRetirerArticle(
+			ActionMapping mapping,
+			ActionForm form,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("ArticleAction.confirmRetirerArticle()");
+		String target = "showVendeurArticles";
+		ActionErrors erreurs = new ActionErrors();
+		String articleId = request.getParameter("id");
+			try {
+				MembreFacadeDelegate membreFacade = new MembreFacadeDelegate();
+				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
+				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
+				VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
+				vendeurFacade.removeArticle(vendeurId, articleId);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			} catch (ArticleProprietaireException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.nonProprietaire"));
+				e.printStackTrace();
+			} catch (ArticleEnVenteException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleEnVente"));
+				e.printStackTrace();
+			} catch (ArticleVenduException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleVendu"));
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if (!erreurs.isEmpty()) {
+				saveErrors(request, erreurs);
+				target = "echecDelete";
+			}
+		return mapping.findForward(target);
+	}
+	
+	/* A supprimer */
+	/*public ActionForward showAdd(
 			ActionMapping mapping,
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
 		return mapping.findForward("showAdd");
-	}
+	}*/
+	
+	private void setArticleForm(String articleId, ActionForm form, HttpServletRequest request) throws Exception{
+		ArticleForm articleEditForm = (ArticleForm) form;	
+		ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
+		VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
+		ArticleDTO articleDTO = new ArticleDTO();
+		if( (articleId != null) && (articleId.length() > 0) ){
+			articleDTO = articleFacade.getArticle(articleId);
+			String vendeurId = articleFacade.getVendeurDTO(articleId).getId();
+			articleEditForm.setCategorieDTO(articleFacade.getCategorieDTO(articleId));
+			articleEditForm.setVendeurId(vendeurId);
+			articleEditForm.setMembrePseudo(vendeurFacade.getMembre(vendeurId).getPseudo());
+		}
+		CategorieFacadeDelegate categorieFacade = new CategorieFacadeDelegate();
+		articleEditForm.setArticleDTO(articleDTO);
+		Collection categories = categorieFacade.getCategories();
+		request.getSession().setAttribute("categories", categories);
+	}	
 
 }
 

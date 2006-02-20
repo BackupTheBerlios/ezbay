@@ -14,6 +14,9 @@ import javax.ejb.SessionContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import axlomoso.ezbay.exceptions.ArticleEnVenteException;
+import axlomoso.ezbay.exceptions.ArticleProprietaireException;
+import axlomoso.ezbay.exceptions.ArticleVenduException;
 import axlomoso.ezbay.exceptions.VendeurInconnuException;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeLocal;
@@ -146,19 +149,6 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param 
-	 */
-    public void removeVendeur(VendeurDTO vendeurDTO) throws Exception {
-		/*try {
-			VendeurLocal vendeurLocal = getEntity(vendeurDTO.getId());
-			vendeurLocal.remove();
-		}catch (Exception e) {
-			throw new Exception("Cannot remove vendeur", e);
-		}*/
-    }	
-	
-	/**
-	 * @ejb.interface-method view-type = "both"
 	 * @param vendeurId
 	 */
 	public VendeurDTO getVendeur(String vendeurId) throws Exception {
@@ -225,9 +215,41 @@ public class VendeurFacadeBean implements SessionBean {
 		return tRes;		
 	}
 	
+	private boolean isArticleEnAttente(String articleId) {
+		return !( this.isArticleEnVente(articleId) || this.isArticleVendu(articleId) );
+	}
+	
+	private boolean isArticleEnVente(String articleId) {
+		// A FAIRE : test : l'article est-il en vente ou vendu ?
+		boolean tRes = false;
+		try {
+			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
+			tRes = articleLocal.getArticleDTO().getLibelle().equals("en vente");
+		} catch (FinderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tRes;
+	}
+	
+	private boolean isArticleVendu(String articleId) {
+		// A FAIRE : test : l'article est-il en vente ou vendu ?
+		boolean tRes = false;
+		try {
+			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
+			tRes = articleLocal.getArticleDTO().getLibelle().equals("vendu");
+		} catch (FinderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tRes;
+	}
+	
+	
+	
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurDTO
+	 * @param vendeurId
 	 */
 	public Collection getArticlesEnAttente(String vendeurId) {
 		return this.getArticles(vendeurId);
@@ -235,7 +257,7 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurDTO
+	 * @param vendeurId
 	 */
 	public Collection getArticlesEnVente(String vendeurId) {
 		Collection tRes = new ArrayList(); 
@@ -244,7 +266,7 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurDTO
+	 * @param vendeurId
 	 */
 	public Collection getArticlesVendus(String vendeurId) {
 		Collection tRes = new ArrayList(); 
@@ -292,6 +314,47 @@ public class VendeurFacadeBean implements SessionBean {
 		}
 		return tRes;		
 	}
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurId, ArticleDTO
+	 * @throws ArticleEnVenteException 
+	 * @throws ArticleVenduException 
+	 * @throws VendeurInconnuException 
+	 * @throws Exception 
+	 */
+	public void removeArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleEnVenteException, ArticleVenduException {
+		if( !this.possedeArticle(vendeurId, articleId) ) {
+			throw new ArticleProprietaireException();
+		}
+		else if( this.isArticleEnVente(articleId) ){
+			throw new ArticleEnVenteException();
+		}
+		else if( this.isArticleVendu(articleId) ){
+			throw new ArticleVenduException();
+		}
+		else{
+			ServiceLocator locator = ServiceLocator.getInstance();
+			ArticleFacadeLocalHome articleFacadeLocalHome;
+			try {
+				articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
+				ArticleFacadeLocal articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
+				articleFacade.removeArticle(articleId);
+				articleFacade.remove();
+				articleFacadeLocalHome = null;
+			} catch (ServiceLocatorException e) {
+				e.printStackTrace();
+			} catch (CreateException e) {
+				e.printStackTrace();
+			} catch (EJBException e) {
+				e.printStackTrace();
+			} catch (RemoveException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
    /** Retrieves the local interface of the Customer entity bean. 
   * @throws Exception */
@@ -315,5 +378,26 @@ public class VendeurFacadeBean implements SessionBean {
 		}
      return home;
  }		
+ 
+ 
+	private boolean possedeArticle(String vendeurId, String articleId) {
+		boolean tRes = false;
+		try {
+			VendeurLocal vendeur = getEntity(vendeurId);
+			Collection articles = vendeur.getArticle();
+			for (Iterator it = articles.iterator(); it.hasNext(); ) {
+				ArticleLocal articleLocal = (ArticleLocal) it.next();
+				if( articleLocal.getId().equals(articleId) ){
+					return true;
+				}
+		    }		
+		} catch (FinderException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tRes;		
+	}
 	
 }

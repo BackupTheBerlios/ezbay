@@ -49,6 +49,12 @@
 			<forward name="showAdd" path="/jsp/articleAdd.jsp" />
 			<forward name="showList" path="/articleList.do" redirect="true" />
 			<forward name="showArticleFiche" path="/jsp/articleFiche.jsp" />
+      <forward name="showConfirmRetrait" path="/jsp/articleRetrait.jsp" />
+      <forward
+      name="showVendeurArticles"
+      path="/vendeur.do?do=showArticles"
+      redirect="true" />
+      <forward name="echecDelete" path="/jsp/articleRetrait.jsp" />
 		
 		</action>
 		<action attribute="connectForm" input="/jsp/connect.jsp" name="connectForm" parameter="do" path="/connect" scope="request" type="axlomoso.ezbay.struts.action.ConnectAction">
@@ -61,12 +67,18 @@
 			<forward name="welcome" path="/jsp/index.jsp" />
 
 		</action>
-		<action attribute="articleForm" input="/jsp/articleEdit.jsp" name="articleForm" path="/articleSave" scope="request" type="axlomoso.ezbay.struts.action.ArticleSaveAction">
-			<forward
-      name="showVendeurArticles"
-      path="/vendeur.do?do=showArticles"
-      redirect="true" />
-		</action>
+		<action
+      attribute="articleForm"
+      input="/jsp/articleEdit.jsp"
+      name="articleForm"
+      path="/articleSave"
+      scope="request"
+      type="axlomoso.ezbay.struts.action.ArticleSaveAction">
+      <forward
+        name="showVendeurArticles"
+        path="/vendeur.do?do=showArticles"
+        redirect="true" />
+    </action>
 		
 			<action attribute="vendeurForm" input="/jsp/vendeurEdit.jsp" name="vendeurForm" path="/vendeurSave" scope="request" type="axlomoso.ezbay.struts.action.VendeurSaveAction" validate="true">
 			<forward name="succes" path="/vendeur.do?do=showInformations" redirect="true" />

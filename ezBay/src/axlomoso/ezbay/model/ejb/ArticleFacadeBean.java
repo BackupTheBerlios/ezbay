@@ -151,12 +151,12 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "local"
 	 * @param
 	 */
-    public void removeArticle(ArticleDTO articleDTO) throws Exception {
+    public void removeArticle(String articleId) throws Exception {
 		try {
-			ArticleLocal articleLocal = getEntity(articleDTO.getId());
+			ArticleLocal articleLocal = getEntity(articleId);
 			articleLocal.remove();
 		}catch (Exception e) {
 			throw new Exception("Cannot remove article", e);

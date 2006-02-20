@@ -16,4 +16,6 @@ public interface ArticleFacadeLocal
 
    public axlomoso.ezbay.model.interfaces.ArticleDTO saveArticle( java.lang.String vendeurId,axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO,java.lang.String categorieId ) throws java.lang.Exception;
 
+   public void removeArticle( java.lang.String articleId ) throws java.lang.Exception;
+
 }

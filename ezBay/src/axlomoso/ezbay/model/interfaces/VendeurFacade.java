@@ -17,9 +17,6 @@ public interface VendeurFacade
    public axlomoso.ezbay.model.interfaces.VendeurDTO saveVendeur( axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public void removeVendeur( axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO )
-      throws java.lang.Exception, java.rmi.RemoteException;
-
    public axlomoso.ezbay.model.interfaces.VendeurDTO getVendeur( java.lang.String vendeurId )
       throws java.lang.Exception, java.rmi.RemoteException;
 
@@ -43,5 +40,8 @@ public interface VendeurFacade
 
    public axlomoso.ezbay.model.interfaces.ArticleDTO saveArticle( java.lang.String vendeurId,axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO,java.lang.String categorieId )
       throws axlomoso.ezbay.exceptions.VendeurInconnuException, java.lang.Exception, java.rmi.RemoteException;
+
+   public void removeArticle( java.lang.String vendeurId,java.lang.String articleId )
+      throws axlomoso.ezbay.exceptions.ArticleProprietaireException, axlomoso.ezbay.exceptions.ArticleEnVenteException, axlomoso.ezbay.exceptions.ArticleVenduException, java.rmi.RemoteException;
 
 }
