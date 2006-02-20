@@ -85,8 +85,11 @@ public class MembreAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		System.out.println("MembreAction.showMembreFiche()");
-		
-		
+		MembreForm membreForm = (MembreForm) form;
+		VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
+		String vendeurId = request.getParameter("vendeurId");
+		membreForm.setId(vendeurFacade.getMembre(vendeurId).getId());
+		membreForm.setPseudo(vendeurFacade.getMembre(vendeurId).getPseudo());
 		return (mapping.findForward("showMembreFiche"));
 	}
 	
