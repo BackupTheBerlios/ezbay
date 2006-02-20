@@ -76,7 +76,7 @@
 	<logic:notPresent name="article">
 		<tr>
 			<td colspan="5">
-				<bean:message key="vendeurArticles.articleEnAttente.noArticle" />
+				<bean:message key="vendeurArticles.articlesEnAttente.noArticle" />
 			</td>
 		</tr>
 	</logic:notPresent>
@@ -123,7 +123,7 @@
 	<logic:notPresent name="article">
 		<tr>
 			<td colspan="5">
-				<bean:message key="vendeurArticles.articleEnVente.noArticle" />
+				<bean:message key="vendeurArticles.articlesEnVente.noArticle" />
 			</td>
 		</tr>
 	</logic:notPresent>
@@ -174,7 +174,7 @@
 	<logic:notPresent name="article">
 		<tr>
 			<td colspan="5">
-				<bean:message key="vendeurArticles.articleVendus.noArticle" />
+				<bean:message key="vendeurArticles.articlesVendus.noArticle" />
 			</td>
 		</tr>
 	</logic:notPresent>
