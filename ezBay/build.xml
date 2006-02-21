@@ -1,0 +1,56 @@
+<?xml version='1.0'?>
+<project name="ezbay" default="baseJeuTest" basedir=".">
+	<property name="sqldir" value="dist/sql"/>	
+	<property name="sqldirnocomment" value="dist/sql/nocomment"/>	
+	<property name="sqlfileJeuTest" value="ezbayJeuTest.sql"/>
+	<property name="sqlfileFinal" value="ezbayFinal.sql"/>	
+	<property name="sqldriver" value="com.mysql.jdbc.Driver"/>
+	<property name="sqldriverclasspath" value="C:\J2EE\jboss-4.0.3SP1\server\default\lib\mysql-connector-java-3.1.12-bin.jar"/>
+	<property name="sqlurl" value="jdbc:mysql://localhost/ezbayaxlomoso?autoReconnect=true"/>
+	<property name="sqluser" value="axlomoso"/>	
+	<property name="sqlpassword" value="iloveejb"/>	
+		
+	<target name="baseJeuTest">
+		<copy todir="${sqldirnocomment}">
+		    <fileset dir="${sqldir}">
+		        <include name="${sqlfileJeuTest}"/>
+		    </fileset>
+		    <filterchain>
+		        <striplinecomments>
+		            <comment value="#"/>
+		        </striplinecomments>
+		    </filterchain>
+	    </copy>
+		<sql driver="${sqldriver}"
+			  keepformat= "yes "
+		 	  url="${sqlurl}"
+	  	      password="${sqlpassword}"  
+		 	  userid="${sqluser}"
+		      src="${sqldirnocomment}/${sqlfileJeuTest}"
+		      classpath="${sqldriverclasspath}" />
+		</target>
+	
+	<target name="baseFinal">
+		<copy todir="${sqldirnocomment}">
+		    <fileset dir="${sqldir}">
+		        <include name="${sqlfileFinal}"/>
+		    </fileset>
+		    <filterchain>
+		        <striplinecomments>
+		            <comment value="#"/>
+		        </striplinecomments>
+		    </filterchain>
+	    </copy>
+		
+		<sql driver="${sqldriver}"
+			  keepformat= "yes "
+		 	  url="${sqlurl}"
+	  	      password="${sqlpassword}"  
+		 	  userid="${sqluser}"
+		      src="${sqldirnocomment}/${sqlfileFinal}"
+		      classpath="${sqldriverclasspath}" />
+		</target>
+
+		
+	
+</project>
