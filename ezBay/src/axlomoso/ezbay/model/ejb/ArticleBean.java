@@ -85,9 +85,9 @@ import axlomoso.ezbay.model.interfaces.VendeurLocal;
 * 				categorie as c 
 * 			WHERE 
 * 				(c.id = ?1 and c = p.categorieLocal 
-* 				and p.libelle = ?2 
-* 				and p.marque = ?3 
-* 				and p.modele = ?4 
+* 				and p.libelle LIKE ?2 
+* 				and p.marque LIKE ?3 
+* 				and p.modele LIKE ?4 
 * 				and p.prixVente BETWEEN ?5 AND ?6 
 * 				and p.anneeFabrication >= ?7 
 * 				and p.dateLimite >= ?8)"

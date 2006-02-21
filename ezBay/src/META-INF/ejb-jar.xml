@@ -433,7 +433,7 @@
                   <method-param>java.util.Date</method-param>
                </method-params>
             </query-method>
-            <ejb-ql><![CDATA[SELECT OBJECT(p) FROM article as p, categorie as c WHERE (c.id = ?1 and c = p.categorieLocal and p.libelle = ?2 and p.marque = ?3 and p.modele = ?4 and p.prixVente BETWEEN ?5 AND ?6 and p.anneeFabrication >= ?7 and p.dateLimite >= ?8)]]></ejb-ql>
+            <ejb-ql><![CDATA[SELECT OBJECT(p) FROM article as p, categorie as c WHERE (c.id = ?1 and c = p.categorieLocal and p.libelle LIKE ?2 and p.marque LIKE ?3 and p.modele LIKE ?4 and p.prixVente BETWEEN ?5 AND ?6 and p.anneeFabrication >= ?7 and p.dateLimite >= ?8)]]></ejb-ql>
          </query>
 	  <!-- Write a file named ejb-finders-ArticleBean.xml if you want to define extra finders. -->
 

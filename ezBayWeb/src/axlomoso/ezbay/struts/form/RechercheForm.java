@@ -216,11 +216,15 @@ public class RechercheForm extends ActionForm {
 			this.setAnneeFabrication(new Integer(0));
 		}
 			else{
-			int annee = Integer.parseInt(stringAnneeFabrication);
-			Calendar tCal = Calendar.getInstance();
-			int anneeMax = tCal.get(Calendar.YEAR);
-			if( (annee <= 0) || ( annee > anneeMax) )			
-				errors.add("anneeFabrication", new ActionError("articleEdit.erreurs.anneeFabricationNonValide"));
+				try{
+					int annee = Integer.parseInt(stringAnneeFabrication);
+					Calendar tCal = Calendar.getInstance();
+					int anneeMax = tCal.get(Calendar.YEAR);
+					if( (annee <= 0) || ( annee > anneeMax) )			
+						errors.add("anneeFabrication", new ActionError("articleEdit.erreurs.anneeFabricationNonValide"));					
+				}catch(Exception e){
+					errors.add("anneeFabrication", new ActionError("articleEdit.erreurs.anneeFabricationNonValide"));
+				}
 		}
 		return errors;
 	}
