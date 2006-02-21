@@ -111,4 +111,22 @@ public class CategorieFacadeTest extends TestCase {
 			e.printStackTrace();
 		}
 	}
+	
+	public void testGetCategories() throws RemoteException {
+		try {
+			Collection categories = categorieFacade.getCategories();
+			for (Iterator it = categories.iterator(); it.hasNext(); ) {
+				CategorieLocal categorieLocal = (CategorieLocal) it.next();
+				categorieLocal.getCategorieDTO().getId().equals(categorieDTOCreated.getId());
+				assertEquals(categorieDTOCreated.getId(), categorieLocal.getId());
+				assertEquals(categorieDTOTemoin.getLibelle(), categorieLocal.getLibelle());
+			}	
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
