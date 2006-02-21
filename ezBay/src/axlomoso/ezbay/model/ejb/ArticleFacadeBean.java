@@ -227,15 +227,16 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 * @param
 	 */
-	public Collection getArticles(String libcategorie, String libelle, String marque, String modele, Double prixVente, Integer anneeFabrication, Date dateLimite) {
+	public Collection getArticles(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,Double prixVenteMax, Integer anneeFabrication, Date dateLimite) {
 		Collection articles = null;
 		ArrayList tRes = new ArrayList();
 		try {
 			ArticleLocalHome home = getEntityHome();
-			articles = home.findByFields(libcategorie,libelle,marque,modele,prixVente,anneeFabrication,dateLimite);
+			articles = home.findByFields(libcategorie,libelle,marque,modele,prixVenteMin,prixVenteMax,anneeFabrication,dateLimite);
 			for (Iterator it = articles.iterator(); it.hasNext(); ) {
 				ArticleLocal articleLocal = (ArticleLocal) it.next();
 				tRes.add(articleLocal.getArticleDTO());
+				System.out.println(articleLocal.getArticleDTO().toString());
 		    }			
 		} catch (FinderException e) {
 			e.printStackTrace();
