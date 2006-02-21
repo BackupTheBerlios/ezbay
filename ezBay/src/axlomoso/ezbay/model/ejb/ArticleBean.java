@@ -79,12 +79,12 @@ import axlomoso.ezbay.model.interfaces.VendeurLocal;
 * 		query="SELECT DISTINCT OBJECT(p) FROM article p WHERE p.description LIKE '%?1%'"
 * @ejb.finder
 * 		description="findByFields"
-* 		signature="java.util.Collection findByFields(java.lang.String libcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.util.Date dateLimite)" 
+* 		signature="java.util.Collection findByFields(java.lang.String idcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.util.Date dateLimite)" 
 * 		query="SELECT OBJECT(p) 
 * 			FROM article as p, 
 * 				categorie as c 
 * 			WHERE 
-* 				(c.libelle = ?1 and c = p.categorieLocal 
+* 				(c.id = ?1 and c = p.categorieLocal 
 * 				and p.libelle = ?2 
 * 				and p.marque = ?3 
 * 				and p.modele = ?4 

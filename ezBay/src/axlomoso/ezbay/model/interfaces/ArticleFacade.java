@@ -26,6 +26,9 @@ public interface ArticleFacade
    public java.util.Collection getArticles(  )
       throws java.rmi.RemoteException;
 
+   public java.util.Collection getArticles( java.lang.String libcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.util.Date dateLimite )
+      throws java.rmi.RemoteException;
+
    public java.util.Collection getArticlesByLibelle( java.lang.String libelle )
       throws java.rmi.RemoteException;
 

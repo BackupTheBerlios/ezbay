@@ -43,6 +43,9 @@ public interface ArticleLocalHome
    public java.util.Collection findByDescription(java.lang.String description)
       throws javax.ejb.FinderException;
 
+   public java.util.Collection findByFields(java.lang.String idcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.util.Date dateLimite)
+      throws javax.ejb.FinderException;
+
    public axlomoso.ezbay.model.interfaces.ArticleLocal findByPrimaryKey(java.lang.String pk)
       throws javax.ejb.FinderException;
 
