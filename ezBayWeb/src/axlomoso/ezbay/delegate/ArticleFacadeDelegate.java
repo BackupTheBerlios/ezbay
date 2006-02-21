@@ -13,9 +13,10 @@ import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
+import axlomoso.ezbay.utils.Util;
 
 public class ArticleFacadeDelegate {
-
+	private Util util = new Util();
 	private ArticleFacade articleFacade = null;
 
 	public ArticleFacadeDelegate() throws Exception {
@@ -35,19 +36,19 @@ public class ArticleFacadeDelegate {
 	}
 
 	public Collection getArticles() throws RemoteException {
-		return articleFacade.getArticles();
+		return util.getArticlesDtoToView(articleFacade.getArticles());
 	}
 
 	public Collection getArticlesByCategorie(String categorieId) throws RemoteException {
-		return articleFacade.getArticlesByCategorie(categorieId);
+		return util.getArticlesDtoToView(articleFacade.getArticlesByCategorie(categorieId));
 	}
 
 	public Collection getArticlesByLibelle(String libelle) throws RemoteException {
-		return articleFacade.getArticlesByLibelle(libelle);
+		return util.getArticlesDtoToView(articleFacade.getArticlesByLibelle(libelle));
 	}
 
 	public Collection getArticlesByVendeur(String vendeurId) throws RemoteException {
-		return articleFacade.getArticlesByVendeur(vendeurId);
+		return util.getArticlesDtoToView(articleFacade.getArticlesByVendeur(vendeurId));
 	}
 
 	public CategorieDTO getCategorieDTO(String articleId) throws Exception, RemoteException {
@@ -63,7 +64,7 @@ public class ArticleFacadeDelegate {
 	}
 
 	public Collection getArticles(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,Double prixVenteMax, Integer anneeFabrication, Date dateLimite) throws RemoteException {
-		return articleFacade.getArticles(libcategorie, libelle, marque, modele, prixVenteMin,prixVenteMax, anneeFabrication, dateLimite);
+		return util.getArticlesDtoToView(articleFacade.getArticles(libcategorie, libelle, marque, modele, prixVenteMin,prixVenteMax, anneeFabrication, dateLimite));
 	}
 	
 }
