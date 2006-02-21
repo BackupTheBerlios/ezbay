@@ -6,11 +6,17 @@ import org.apache.struts.Globals;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.util.MessageResources;
 
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.struts.views.ArticleView;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,5 +66,17 @@ public class Util {
 		tRes = df.format(date); 
     	return tRes;
     }
+    
+	/* transforme une liste d'ArticleDTO en une liste d'articleView */
+    public Collection getArticlesDtoToView(Collection articles) {
+		Collection tRes = new ArrayList();
+		for (Iterator it = articles.iterator(); it.hasNext(); ) {
+			ArticleDTO articleDTO = (ArticleDTO) it.next();
+			ArticleView articleView = new ArticleView();
+			articleView.setArticleDTO(articleDTO);
+			tRes.add(articleView);
+	    }		
+		return tRes;
+	}
     
 }
