@@ -22,9 +22,11 @@ import axlomoso.ezbay.model.interfaces.VendeurFacade;
 import axlomoso.ezbay.model.interfaces.VendeurFacadeHome;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.struts.views.ArticleView;
+import axlomoso.ezbay.utils.Util;
 
 public class VendeurFacadeDelegate {
 	private VendeurFacade vendeurFacade = null;
+	private Util util = new Util();
 	
 	public VendeurFacadeDelegate() throws Exception {
 		try {
@@ -64,17 +66,17 @@ public class VendeurFacadeDelegate {
 
 	public Collection getArticlesEnAttente(String vendeurId) throws RemoteException {
 		Collection articles = vendeurFacade.getArticlesEnAttente(vendeurId);
-		return getArticlesDtoToView(articles);
+		return util.getArticlesDtoToView(articles);
 	}
 
 	public Collection getArticlesEnVente(String vendeurId) throws RemoteException {
 		Collection articles = vendeurFacade.getArticlesEnAttente(vendeurId);
-		return getArticlesDtoToView(articles);
+		return util.getArticlesDtoToView(articles);
 	}
 
 	public Collection getArticlesVendus(String vendeurId) throws RemoteException {
 		Collection articles = vendeurFacade.getArticlesEnAttente(vendeurId);
-		return getArticlesDtoToView(articles);
+		return util.getArticlesDtoToView(articles);
 	}
 
 	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws VendeurInconnuException, Exception, RemoteException {
@@ -83,19 +85,6 @@ public class VendeurFacadeDelegate {
 	
 	public void removeArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleEnVenteException, ArticleVenduException, Exception{
 		vendeurFacade.removeArticle(vendeurId, articleId);
-	}
-	
-	/* transforme une liste d'ArticleDTO en une liste d'articleView */
-	private Collection getArticlesDtoToView(Collection articles) {
-		Collection tRes = new ArrayList();
-		for (Iterator it = articles.iterator(); it.hasNext(); ) {
-			ArticleDTO articleDTO = (ArticleDTO) it.next();
-			ArticleView articleView = new ArticleView();
-			articleView.setArticleDTO(articleDTO);
-			tRes.add(articleView);
-	    }		
-		return tRes;
-	}
-	
+	}	
 	
 }
