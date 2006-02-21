@@ -37,6 +37,9 @@
 			&nbsp;
 			<html:submit>Connect</html:submit>	
 			</html:form>
+			<br />
+			<html:link action="/membre.do?do=showInscription"><bean:message key="link.inscription"/></html:link><br>
+ 
 			
 	</body>
 </html:html>
