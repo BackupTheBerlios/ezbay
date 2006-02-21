@@ -79,7 +79,7 @@ import axlomoso.ezbay.model.interfaces.VendeurLocal;
 * 		query="SELECT DISTINCT OBJECT(p) FROM article p WHERE p.description LIKE '%?1%'"
 * @ejb.finder
 * 		description="findByFields"
-* 		signature="java.util.Collection findByFields(java.lang.String idcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.util.Date dateLimite)" 
+* 		signature="java.util.Collection findByFields(java.lang.String idcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVenteMin,java.lang.Double prixVenteMax,java.lang.Integer anneeFabrication,java.util.Date dateLimite)" 
 * 		query="SELECT OBJECT(p) 
 * 			FROM article as p, 
 * 				categorie as c 
@@ -88,9 +88,9 @@ import axlomoso.ezbay.model.interfaces.VendeurLocal;
 * 				and p.libelle = ?2 
 * 				and p.marque = ?3 
 * 				and p.modele = ?4 
-* 				and p.prixVente <= ?5 
-* 				and p.anneeFabrication >= ?6 
-* 				and p.dateLimite >= ?7)"
+* 				and p.prixVente BETWEEN ?5 AND ?6 
+* 				and p.anneeFabrication >= ?7 
+* 				and p.dateLimite >= ?8)"
 */
 public abstract class ArticleBean implements EntityBean {
 
