@@ -1,5 +1,7 @@
 package axlomoso.ezbay.test;
 
+import java.rmi.RemoteException;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
@@ -55,27 +57,27 @@ public class MembreFacadeTest extends TestCase {
 		this.membreFacade = null;
 	}
 	
-	public void testSaveMembre(){
+	public void testSaveMembre()throws RemoteException{
 		
 	}
 	
-	public void testGetMembre(){
+	public void testGetMembre()throws RemoteException{
 		
 	}
 	
-	public void testGetMembreBis(){
+	public void testGetMembreBis()throws RemoteException{
 		
 	}
 	
-	public void testMembreExists(){
+	public void testMembreExists()throws RemoteException{
 		
 	}
 	
-	public void testGetVendeurDTO(){
+	public void testGetVendeurDTO()throws RemoteException{
 		
 	}
 	
-	public void testSaveVendeur(){
+	public void testSaveVendeur()throws RemoteException{
 		
 	}
 }

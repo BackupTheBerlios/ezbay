@@ -66,9 +66,23 @@ public class VendeurFacadeTest extends TestCase {
 		this.vendeurFacade = null;
 	}
 	
+	public void testSaveVendeur() throws RemoteException {
+		try {
+			VendeurDTO vendeurDTO = vendeurFacade.saveVendeur(vendeurDTOCreated);
+			assertEquals(vendeurDTO,vendeurDTOCreated);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public void testGetVendeur() throws RemoteException {
 		try {
-			//récupération de l'vendeur créé via facade
+			//récupération du vendeur créé via facade
 			VendeurDTO vendeurDTO = vendeurFacade.getVendeur(vendeurDTOCreated.getId());
 			assertTrue(this.equalsDTO(vendeurDTO, vendeurDTOCreated));
 		} catch (RemoteException e) {
@@ -79,6 +93,28 @@ public class VendeurFacadeTest extends TestCase {
 			e.printStackTrace();
 		}
 	}	
+	
+	public void testGetMembre() throws RemoteException {
+		
+	}
+	
+	public void testGetVendeurs() throws RemoteException {
+		try {
+			//récupération du vendeur créé via facade
+			Collection vendeursDTO = vendeurFacade.getVendeurs();
+			for (Iterator it = vendeursDTO.iterator(); it.hasNext(); ) {
+				VendeurDTO vendeurDTO = (VendeurDTO) it.next();
+				assertEquals(vendeurDTOTemoin.getNomProprioCB(),vendeurDTO.getNomProprioCB());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public void testGetArticles() throws RemoteException {
 		try {
@@ -135,6 +171,26 @@ public class VendeurFacadeTest extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void testGetArticlesEnAttente() throws RemoteException {
+		
+	}
+	
+	public void testGetArticlesEnVente() throws RemoteException {
+		
+	}
+	
+	public void testGetArticlesVendus() throws RemoteException {
+		
+	}
+	
+	public void testSaveArticle() throws RemoteException {
+		
+	}
+	
+	public void testRemoveArticle() throws RemoteException {
+		
 	}
 	
 	
