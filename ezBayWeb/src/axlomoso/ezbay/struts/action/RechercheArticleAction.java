@@ -54,17 +54,9 @@ public class RechercheArticleAction extends Action {
 			ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
 			ArticleDTO articleDTO=rechercheForm.getArticleDTO();			
 			String idCategorie=rechercheForm.getCategorieDTO().getId();
-			System.out.println("id categorie"+idCategorie);			
-			System.out.println("libelle article"+articleDTO.getLibelle());			
-			System.out.println("marque "+articleDTO.getMarque());
-			System.out.println("modele"+articleDTO.getModele());			
-			System.out.println("prix vente Min"+rechercheForm.getPrixVenteMin());	
-			System.out.println("prix vente Max"+rechercheForm.getPrixVenteMax());
-			System.out.println("annee fabrication"+articleDTO.getAnneeFabrication());			
-			System.out.println("date limite"+articleDTO.getDateLimite());
-			
 			Collection result=articleFacade.getArticles(idCategorie,articleDTO.getLibelle(),articleDTO.getMarque(),articleDTO.getModele(),rechercheForm.getPrixVenteMin(),rechercheForm.getPrixVenteMax(),articleDTO.getAnneeFabrication(),articleDTO.getDateLimite());
 			rechercheForm.setArticlesDTO(result);
+			rechercheForm.setNbArticles(result.size());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NamingException e) {
@@ -75,6 +67,7 @@ public class RechercheArticleAction extends Action {
 			e.printStackTrace();
 		}
 			return mapping.findForward("showList");
+			
 		}
 
 

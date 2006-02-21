@@ -41,7 +41,7 @@ public class RechercheForm extends ActionForm {
 	private String stringDateLimite=null;
 	private String stringAnneeFabrication=null;
 	private Collection articlesDTO = null;
-
+	private int nbArticles;
 
 
 	/** 
@@ -137,7 +137,6 @@ public class RechercheForm extends ActionForm {
 	}
 
 	
-
 	public String getStringDateLimite() {
 		return stringDateLimite;
 	}
@@ -221,7 +220,9 @@ public class RechercheForm extends ActionForm {
 					Calendar tCal = Calendar.getInstance();
 					int anneeMax = tCal.get(Calendar.YEAR);
 					if( (annee <= 0) || ( annee > anneeMax) )			
-						errors.add("anneeFabrication", new ActionError("articleEdit.erreurs.anneeFabricationNonValide"));					
+						errors.add("anneeFabrication", new ActionError("articleEdit.erreurs.anneeFabricationNonValide"));
+					else
+						this.setAnneeFabrication(new Integer(annee));
 				}catch(Exception e){
 					errors.add("anneeFabrication", new ActionError("articleEdit.erreurs.anneeFabricationNonValide"));
 				}
@@ -276,6 +277,22 @@ public class RechercheForm extends ActionForm {
 	public void setStringPrixVenteMin(String stringPrixVenteMin) {
 		this.stringPrixVenteMin = stringPrixVenteMin;
 	}
+
+
+
+	public void setNbArticles(int nbArticles) {
+		this.nbArticles = nbArticles;
+	}
+
+
+
+	public int getNbArticles() {
+		return nbArticles;
+	}
+
+
+
+	
 
 }
 
