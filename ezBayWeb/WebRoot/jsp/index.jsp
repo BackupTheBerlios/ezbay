@@ -28,7 +28,7 @@
  <html:link action="/membre.do?do=showInscription"><bean:message key="link.inscription"/></html:link><br>
  <br />  
  <br>
- <a href="rechercheArticle.jsp"><bean:message key="link.Recherche.Article"/></a><br>
+ <html:link action="/categorie.do?do=showCategoriesRecherche"><bean:message key="link.Recherche.Article"/></html:link><br>
  <br>
  <br />
  <html:link action="/categorie.do?do=showCategories"><bean:message key="link.categories"/></html:link><br>

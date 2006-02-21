@@ -7,6 +7,7 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-template" prefix="template" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested" %>
+<bean:define id="categories" name="categories" type="java.util.Collection" scope="session"/>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html locale="true">
@@ -26,30 +27,63 @@
 	<html:errors/>
 		<%-- create a html form --%>
 		<html:form action="rechercheArticle">	
-						
-				<br />
-				<td align="right"><bean:message key="articleFiche.libelle"/>:</td>
+				<table border="1">
+				<tbody>					
+			
+				<tr>
+				<td><bean:message key="articleEdit.categorie" /> : </td>
+				<td>
+					<html:select property="categorieDTO.id">
+						<html:options collection="categories" property="id" labelProperty="libelle" />
+					</html:select>
+				</td>
+				</tr>
+
+				<tr>
+				<td><bean:message key="articleEdit.libelle" /> : </td>
 				<td><html:text property="libelle" /></td>
-				<br />
-				<td align="right"><bean:message key="articleFiche.marque"/>:</td>
+				</tr>
+				<tr>
+
+				<td><bean:message key="articleEdit.marque" /> :</td>
 				<td><html:text property="marque" /></td>
-				<br />
-				<td align="right"><bean:message key="articleFiche.modele"/>:</td>
+				</tr>
+
+				<tr>
+				<td><bean:message key="articleEdit.modele" /> :</td>
 				<td><html:text property="modele" /></td>
-				<br />				
-				<td align="right"><bean:message key="articleFiche.anneeFabrication"/>:</td>
-				<td><html:text property="anneeFabrication" /></td>
-				<br />
-				<td align="right"><bean:message key="articleFiche.dateLimite"/>:</td>
-				<td><html:text property="dateLimite" /></td>
-				<br />
+				</tr>
+
+				<tr>
+				<td><bean:message key="rechercheArticle.prixVenteMin" /> :</td>
+				<td><html:text property="stringPrixVenteMin" /></td>
+				</tr>
 				
-				
-							
+				<tr>
+				<td><bean:message key="rechercheArticle.prixVenteMax" /> :</td>
+				<td><html:text property="stringPrixVenteMax" /></td>
+				</tr>
+
+				<tr>
+				<td><bean:message key="articleEdit.anneeFabrication" /> :</td>
+				<td><html:text property="stringAnneeFabrication" /></td>
+				</tr>
+
+				<tr>
+				<td><bean:message key="articleEdit.dateLimite" /> :</td>
+				<td><html:text property="stringDateLimite" /></td>
+				</tr>
+			
+				</tbody>
+			</table>
+			<%-- set the parameter for the dispatch action --%>
+			<html:hidden property="id" />
 			<br>
+			<%-- submit and back button --%>
+			<html:button property="back" onclick="history.back();">Back</html:button>
+			&nbsp;
 			
-			<html:submit><bean:message key="boutton.recherche.article"/></html:submit>	
-		</html:form>
-			
+			<html:submit><bean:message key="link.Recherche.Article" /></html:submit>	
+			</html:form>
 	</body>
 </html:html>

@@ -24,6 +24,7 @@ public class CategorieForm extends ActionForm {
 
 	// --------------------------------------------------------- Instance Variables
 	private Collection listeCategories=null;
+	
 	// --------------------------------------------------------- Methods
 	
 	/** 
@@ -55,5 +56,6 @@ public class CategorieForm extends ActionForm {
 	public void setListeCategories(Collection listeCategories) {
 		this.listeCategories = listeCategories;
 	}
+
 }
 

@@ -5,6 +5,7 @@ package axlomoso.ezbay.struts.action;
 
 import java.rmi.RemoteException;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.ejb.CreateException;
 import javax.naming.InitialContext;
@@ -21,6 +22,7 @@ import org.apache.struts.actions.DispatchAction;
 
 
 import axlomoso.ezbay.struts.form.ArticleListForm;
+import axlomoso.ezbay.struts.form.RechercheForm;
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.delegate.CategorieFacadeDelegate;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
@@ -112,6 +114,7 @@ public class ArticleListAction extends DispatchAction {
 			}
 				return mapping.findForward("showList");
 			}
+	
 
 }
 

@@ -3,16 +3,21 @@
 
 package axlomoso.ezbay.struts.form;
 
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.model.interfaces.CategorieDTO;
+import axlomoso.ezbay.utils.Util;
 
 /** 
  * MyEclipse Struts
@@ -25,24 +30,19 @@ public class RechercheForm extends ActionForm {
 
 	// --------------------------------------------------------- Instance Variables
 	
-	
+	private Util util = new Util();
 	// --------------------------------------------------------- Methods
 	private ArticleDTO articleDTO=new ArticleDTO();
-	private Collection result=null;
+	private CategorieDTO categorieDTO=new CategorieDTO();
+	private String stringPrixVenteMin=null;
+	private String stringPrixVenteMax=null;
+	private Double prixVenteMin=null;
+	private Double prixVenteMax=null;
+	private String stringDateLimite=null;
+	private String stringAnneeFabrication=null;
+	private Collection articlesDTO = null;
 
-	/** 
-	 * Method validate
-	 * @param mapping
-	 * @param request
-	 * @return ActionErrors
-	 */
-	public ActionErrors validate(
-		ActionMapping mapping,
-		HttpServletRequest request) {
 
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	/** 
 	 * Method reset
@@ -54,13 +54,7 @@ public class RechercheForm extends ActionForm {
 		// TODO Auto-generated method stub
 	}
 
-	public Collection getResult() {
-		return result;
-	}
-
-	public void setResult(Collection result) {
-		this.result = result;
-	}
+	
 
 	public ArticleDTO getArticleDTO() {
 		return articleDTO;
@@ -124,6 +118,159 @@ public class RechercheForm extends ActionForm {
 
 	public void setPrixVente(Double prixVente) {
 		articleDTO.setPrixVente(prixVente);
+	}
+
+	public CategorieDTO getCategorieDTO() {
+		return categorieDTO;
+	}
+
+	public void setCategorieDTO(CategorieDTO categorieDTO) {
+		this.categorieDTO = categorieDTO;
+	}
+
+	public Double getPrixVente() {
+		return articleDTO.getPrixVente();
+	}
+
+	public void setAnneeFabrication(Integer anneeFabrication) {
+		articleDTO.setAnneeFabrication(anneeFabrication);
+	}
+
+	
+
+	public String getStringDateLimite() {
+		return stringDateLimite;
+	}
+
+	public void setStringDateLimite(String stringDateLimite) {
+		this.stringDateLimite = stringDateLimite;
+	}
+
+	public Collection getArticlesDTO() {
+		return articlesDTO;
+	}
+
+	public void setArticlesDTO(Collection articlesDTO) {
+		this.articlesDTO = articlesDTO;
+	}
+
+	public String getStringAnneeFabrication() {
+		return stringAnneeFabrication;
+	}
+
+	public void setStringAnneeFabrication(String stringAnneeFabrication) {
+		this.stringAnneeFabrication = stringAnneeFabrication;
+	}
+	
+	public ActionErrors validate(ActionMapping mapping,
+			HttpServletRequest request) {
+		ActionErrors errors = new ActionErrors();
+		if (articleDTO.getLibelle() == null) {
+			this.setLibelle("");
+		}
+		if (articleDTO.getMarque() == null) {
+			this.setMarque("");
+		}
+		if (articleDTO.getModele() == null) {
+			this.setModele("");
+		}
+		if ((stringPrixVenteMin == null)||(stringPrixVenteMin.length()==0)) {
+			this.setPrixVenteMin(new Double(Double.MIN_VALUE));
+		}
+		else{
+			try {				
+					 Double d = new Double(Double.parseDouble(stringPrixVenteMin));
+					 this.setPrixVenteMin(d);
+				}				
+			 catch (Exception e) {
+				errors.add("prixVente", new ActionError("articleEdit.erreurs.prixVenteNonValide"));
+			}
+		}		
+		if ((stringPrixVenteMax == null)||(stringPrixVenteMax.length()==0)) {
+			this.setPrixVenteMax(new Double(Double.MAX_VALUE));
+		}
+		else{
+			try {				
+					 Double d = new Double(Double.parseDouble(stringPrixVenteMax));
+					 this.setPrixVenteMax(d);
+				}				
+			 catch (Exception e) {
+				errors.add("prixVente", new ActionError("articleEdit.erreurs.prixVenteNonValide"));
+			}
+		}		
+		if ((stringDateLimite == null)||(stringDateLimite.length() == 0)) {
+			Date date=new Date();			
+			date.setTime(0);
+			this.setDateLimite(date);
+		}else{
+			try {
+				Date tDate = util.getStringToDate(stringDateLimite);
+				articleDTO.setDateLimite(tDate);
+			} catch (ParseException e) {
+				// dateFormat incorrect
+				errors.add("dateLimite", new ActionError("articleEdit.erreurs.dateLimiteNonValide"));
+			}
+		}		
+		
+		if (  (stringAnneeFabrication == null) ||(stringAnneeFabrication.length() == 0)){
+			this.setAnneeFabrication(new Integer(0));
+		}
+			else{
+			int annee = Integer.parseInt(stringAnneeFabrication);
+			Calendar tCal = Calendar.getInstance();
+			int anneeMax = tCal.get(Calendar.YEAR);
+			if( (annee <= 0) || ( annee > anneeMax) )			
+				errors.add("anneeFabrication", new ActionError("articleEdit.erreurs.anneeFabricationNonValide"));
+		}
+		return errors;
+	}
+
+
+
+	public Double getPrixVenteMax() {
+		return prixVenteMax;
+	}
+
+
+
+	public void setPrixVenteMax(Double prixVenteMax) {
+		this.prixVenteMax = prixVenteMax;
+	}
+
+
+
+	public Double getPrixVenteMin() {
+		return prixVenteMin;
+	}
+
+
+
+	public void setPrixVenteMin(Double prixVenteMin) {
+		this.prixVenteMin = prixVenteMin;
+	}
+
+
+
+	public String getStringPrixVenteMax() {
+		return stringPrixVenteMax;
+	}
+
+
+
+	public void setStringPrixVenteMax(String stringPrixVenteMax) {
+		this.stringPrixVenteMax = stringPrixVenteMax;
+	}
+
+
+
+	public String getStringPrixVenteMin() {
+		return stringPrixVenteMin;
+	}
+
+
+
+	public void setStringPrixVenteMin(String stringPrixVenteMin) {
+		this.stringPrixVenteMin = stringPrixVenteMin;
 	}
 
 }

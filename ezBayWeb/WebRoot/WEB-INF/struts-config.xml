@@ -110,7 +110,7 @@
       input="/jsp/rechercheArticle.jsp"
       scope="request"
       type="axlomoso.ezbay.struts.action.RechercheArticleAction" >
-      <forward name="succes" path="/jsp/articleList.jsp" />
+      <forward name="showList" path="/jsp/listeArticlesRecherche.jsp" />
 	</action>
 	
 	</action-mappings>

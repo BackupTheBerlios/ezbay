@@ -2,6 +2,7 @@ package axlomoso.ezbay.delegate;
 
 import java.rmi.RemoteException;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -59,6 +60,10 @@ public class ArticleFacadeDelegate {
 
 	public VendeurDTO getVendeurDTO(String articleId) throws Exception, RemoteException {
 		return articleFacade.getVendeurDTO(articleId);
+	}
+
+	public Collection getArticles(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,Double prixVenteMax, Integer anneeFabrication, Date dateLimite) throws RemoteException {
+		return articleFacade.getArticles(libcategorie, libelle, marque, modele, prixVenteMin,prixVenteMax, anneeFabrication, dateLimite);
 	}
 	
 }

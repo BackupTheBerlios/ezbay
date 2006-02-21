@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<H2><bean:message key="articleList.categorie.titre" /> <bean:write name="articleListForm" property="categorieDTO.libelle" /> </H2>
+
 <table border="1">
 <tbody>
 <%-- set the header --%>
@@ -24,7 +24,7 @@
 <td><bean:message key="articleList.dateLimite" /></td>
 </tr>
 <%-- start with an iterate over the array articlesDTO --%>
-<logic:iterate name="articleListForm" property="articlesDTO" id="article">
+<logic:iterate name="rechercheForm" property="articlesDTO" id="article">
 <tr>
 <%-- article informations --%>
 
