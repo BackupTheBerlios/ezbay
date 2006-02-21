@@ -1,89 +1,202 @@
 
 <%@ page language="java" pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html" %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles" %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-template" prefix="template" %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested" %>
-<bean:define id="categories" name="categories" type="java.util.Collection" scope="session"/>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-template" prefix="template"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested"%>
+<bean:define id="categories" name="categories" type="java.util.Collection" scope="session" />
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html locale="true">
-  <head>
-    <html:base />
-    
-    <title>rechercheArticle.jsp</title>
-    
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">    
-    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="This is my page">
-  </head>
-  
-  <body>
-	<html:errors/>
-		<%-- create a html form --%>
-		<html:form action="rechercheArticle">	
-				<table border="1">
-				<tbody>					
-			
+<head>
+	<html:base />
+
+	<title>
+		rechercheArticle.jsp
+	</title>
+
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+</head>
+
+<body>
+	<html:errors />
+	<%-- create a html form --%>
+	<html:form action="rechercheArticle">
+		<table border="1">
+			<tbody>
+
 				<tr>
-				<td><bean:message key="articleEdit.categorie" /> : </td>
-				<td>
-					<html:select property="categorieDTO.id">
-						<html:options collection="categories" property="id" labelProperty="libelle" />
-					</html:select>
-				</td>
+					<td>
+						<bean:message key="articleEdit.categorie" />
+						:
+					</td>
+					<td>
+						<html:select property="categorieDTO.id">
+							<html:options collection="categories" property="id" labelProperty="libelle" />
+						</html:select>
+					</td>
 				</tr>
 
 				<tr>
-				<td><bean:message key="articleEdit.libelle" /> : </td>
-				<td><html:text property="libelle" /></td>
+					<td>
+						<bean:message key="articleEdit.libelle" />
+						:
+					</td>
+					<td>
+						<html:text property="libelle" />
+					</td>
 				</tr>
 				<tr>
 
-				<td><bean:message key="articleEdit.marque" /> :</td>
-				<td><html:text property="marque" /></td>
+					<td>
+						<bean:message key="articleEdit.marque" />
+						:
+					</td>
+					<td>
+						<html:text property="marque" />
+					</td>
 				</tr>
 
 				<tr>
-				<td><bean:message key="articleEdit.modele" /> :</td>
-				<td><html:text property="modele" /></td>
+					<td>
+						<bean:message key="articleEdit.modele" />
+						:
+					</td>
+					<td>
+						<html:text property="modele" />
+					</td>
 				</tr>
 
 				<tr>
-				<td><bean:message key="rechercheArticle.prixVenteMin" /> :</td>
-				<td><html:text property="stringPrixVenteMin" /></td>
-				</tr>
-				
-				<tr>
-				<td><bean:message key="rechercheArticle.prixVenteMax" /> :</td>
-				<td><html:text property="stringPrixVenteMax" /></td>
-				</tr>
-
-				<tr>
-				<td><bean:message key="articleEdit.anneeFabrication" /> :</td>
-				<td><html:text property="stringAnneeFabrication" /></td>
+					<td>
+						<bean:message key="rechercheArticle.prixVenteMin" />
+						:
+					</td>
+					<td>
+						<html:text property="stringPrixVenteMin" />
+					</td>
 				</tr>
 
 				<tr>
-				<td><bean:message key="articleEdit.dateLimite" /> :</td>
-				<td><html:text property="stringDateLimite" /></td>
+					<td>
+						<bean:message key="rechercheArticle.prixVenteMax" />
+						:
+					</td>
+					<td>
+						<html:text property="stringPrixVenteMax" />
+					</td>
 				</tr>
-			
-				</tbody>
-			</table>
-			<%-- set the parameter for the dispatch action --%>
-			<html:hidden property="id" />
-			<br>
-			<%-- submit and back button --%>
-			<html:button property="back" onclick="history.back();">Back</html:button>
+
+				<tr>
+					<td>
+						<bean:message key="rechercheArticle.anneeFabrication" />
+						:
+					</td>
+					<td>
+						<html:text property="stringAnneeFabrication" />
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<bean:message key="rechercheArticle.dateLimite" />
+						:
+					</td>
+					<td>
+						<html:text property="stringDateLimite" />
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+		<%-- set the parameter for the dispatch action --%>
+		<html:hidden property="id" />
+		<br>
+		<%-- submit and back button --%>
+		<html:button property="back" onclick="history.back();">Back</html:button>
 			&nbsp;
 			
-			<html:submit><bean:message key="link.Recherche.Article" /></html:submit>	
-			</html:form>
-	</body>
+			<html:submit>
+			<bean:message key="link.Recherche.Article" />
+		</html:submit>
+	</html:form>
+
+<logic:notEmpty name="rechercheForm" property="articlesDTO"> 
+<bean:message key="rechercheArticle.nbArticles" /> : <bean:write name="rechercheForm" property="nbArticles" />
+	<table border="1">
+		<tbody>
+			<%-- set the header --%>
+			<tr>
+				<td>
+					<bean:message key="articleList.libelle" />
+				</td>
+				<td>
+					<bean:message key="articleList.marque" />
+				</td>
+				<td>
+					<bean:message key="articleList.modele" />
+				</td>
+				<td>
+					<bean:message key="articleList.prixVente" />
+				</td>
+				<td>
+					<bean:message key="articleList.anneeFabrication" />
+				</td>
+				<td>
+					<bean:message key="articleList.dateLimite" />
+				</td>
+			</tr>
+			<%-- start with an iterate over the array articlesDTO --%>
+			<logic:iterate name="rechercheForm" property="articlesDTO" id="article">
+				<tr>
+					<%-- article informations --%>
+
+					<td>
+						<bean:write name="article" property="libelle" />
+					</td>
+					<td>
+						<bean:write name="article" property="marque" />
+					</td>
+					<td>
+						<bean:write name="article" property="modele" />
+					</td>
+					<td>
+						<bean:write name="article" property="prixVente" />
+					</td>
+					<td>
+						<bean:write name="article" property="anneeFabrication" />
+					</td>
+					<td>
+						<bean:write name="article" property="formattedDateLimite" />
+					</td>
+					<td>
+						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
+							<bean:message key="link.articleFiche" />
+						</html:link>
+					</td>
+				</tr>
+
+			</logic:iterate>
+			<logic:notPresent name="article">
+				<tr>
+					<td colspan="5">
+						<bean:message key="articleList.noArticle" />
+					</td>
+				</tr>
+			</logic:notPresent>
+		</tbody>
+	</table>
+</logic:notEmpty>
+<logic:empty name="rechercheForm" property="articlesDTO"> 
+	<bean:message key="rechercheArticle.noArticle" /> 
+</logic:empty>
+
+</body>
 </html:html>
