@@ -54,7 +54,7 @@ public class RechercheArticleAction extends Action {
 			ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
 			ArticleDTO articleDTO=rechercheForm.getArticleDTO();			
 			String idCategorie=rechercheForm.getCategorieDTO().getId();
-			Collection result=articleFacade.getArticles(idCategorie,articleDTO.getLibelle(),articleDTO.getMarque(),articleDTO.getModele(),rechercheForm.getPrixVenteMin(),rechercheForm.getPrixVenteMax(),articleDTO.getAnneeFabrication(),articleDTO.getDateLimite());
+			Collection result=articleFacade.rechercherArticlesEnVente(idCategorie,articleDTO.getLibelle(),articleDTO.getMarque(),articleDTO.getModele(),rechercheForm.getPrixVenteMin(),rechercheForm.getPrixVenteMax(),articleDTO.getAnneeFabrication(),articleDTO.getDateLimite());
 			rechercheForm.setArticlesDTO(result);
 			rechercheForm.setNbArticles(result.size());
 		} catch (RemoteException e) {

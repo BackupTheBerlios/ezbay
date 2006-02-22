@@ -51,20 +51,21 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getArticle(articleId);
 	}
 
-	public Collection getArticles() throws RemoteException {
-		return util.getArticlesDtoToView(articleFacade.getArticles());
+	/*public Collection getArticles() throws RemoteException {
+		return util.getArticlesDtoToView(articleFacade.getAllArticles());
+	}*/
+
+	public Collection getArticlesEnVenteByCategorie(String categorieId) throws RemoteException {
+		return util.getArticlesDtoToView(articleFacade.getArticlesEnVenteByCategorie(categorieId));
 	}
 
-	public Collection getArticlesByCategorie(String categorieId) throws RemoteException {
-		return util.getArticlesDtoToView(articleFacade.getArticlesByCategorie(categorieId));
-	}
-
+	/*
 	public Collection getArticlesByLibelle(String libelle) throws RemoteException {
-		return util.getArticlesDtoToView(articleFacade.getArticlesByLibelle(libelle));
-	}
+		return util.getArticlesDtoToView(articleFacade.getArticlesEnVenteByLibelle(libelle));
+	}*/
 
-	public Collection getArticlesByVendeur(String vendeurId) throws RemoteException {
-		return util.getArticlesDtoToView(articleFacade.getArticlesByVendeur(vendeurId));
+	public Collection getArticlesEnVenteByVendeur(String vendeurId) throws RemoteException {
+		return util.getArticlesDtoToView(articleFacade.getArticlesEnVenteByVendeur(vendeurId));
 	}
 
 	public CategorieDTO getCategorieDTO(String articleId) throws Exception, RemoteException {
@@ -79,8 +80,8 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getVendeurDTO(articleId);
 	}
 
-	public Collection getArticles(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,Double prixVenteMax, Integer anneeFabrication, Date dateLimite) throws RemoteException {
-		return util.getArticlesDtoToView(articleFacade.getArticles(libcategorie, libelle, marque, modele, prixVenteMin,prixVenteMax, anneeFabrication, dateLimite));
+	public Collection rechercherArticlesEnVente(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,Double prixVenteMax, Integer anneeFabrication, Date dateLimite) throws RemoteException {
+		return util.getArticlesDtoToView(articleFacade.rechercherArticlesEnVente(libcategorie, libelle, marque, modele, prixVenteMin,prixVenteMax, anneeFabrication, dateLimite));
 	}
 	
 }

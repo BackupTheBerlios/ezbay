@@ -56,7 +56,7 @@ public class ArticleListAction extends DispatchAction {
 	 * @param response
 	 * @return ActionForward
 	 */
-	public ActionForward showAllArticles(
+	/*public ActionForward showAllArticles(
 		ActionMapping mapping,
 		ActionForm form,
 		HttpServletRequest request,
@@ -87,7 +87,7 @@ public class ArticleListAction extends DispatchAction {
 			e.printStackTrace();
 		}
 			return mapping.findForward("showList");
-		}
+		}*/
 	
 	public ActionForward showArticlesByCategorie(
 			ActionMapping mapping,
@@ -100,7 +100,7 @@ public class ArticleListAction extends DispatchAction {
 				ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
 				CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
 				if( categorieId == null ) categorieId = "";
-				Collection articles = articleFacade.getArticlesByCategorie(categorieId);
+				Collection articles = articleFacade.getArticlesEnVenteByCategorie(categorieId);
 				articleListForm.setArticlesDTO(articles);
 				articleListForm.setCategorieDTO(categorieFacade.getCategorie(categorieId));
 			} catch (RemoteException e) {
