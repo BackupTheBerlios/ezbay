@@ -63,7 +63,7 @@ public class ConnectAction extends DispatchAction {
 		ActionErrors erreurs = new ActionErrors();
 		String target = "";
 			try {
-				MembreFacadeDelegate membreDelegate = new MembreFacadeDelegate();
+				MembreFacadeDelegate membreDelegate = MembreFacadeDelegate.getInstance();
 				MembreDTO membreDTO = membreDelegate.getMembre(connectForm.getLogin(), connectForm.getPassword());
 				if( membreDTO == null){
 					erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("myEzBay.erreur.connexion"));
@@ -74,10 +74,6 @@ public class ConnectAction extends DispatchAction {
 					target = "succes";
 				}
 			} catch (RemoteException e) {
-				e.printStackTrace();
-			} catch (NamingException e) {
-				e.printStackTrace();
-			} catch (CreateException e) {
 				e.printStackTrace();
 			} catch (FinderException e) {
 				e.printStackTrace();

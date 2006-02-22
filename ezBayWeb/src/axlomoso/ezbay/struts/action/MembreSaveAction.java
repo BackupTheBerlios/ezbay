@@ -58,7 +58,7 @@ public class MembreSaveAction extends Action {
 	 * @throws PseudoDejaUtiliseException
 	 */
 	private void performSaveMembre(HttpServletRequest request, MembreDTO membreDTO) throws Exception, RemoteException, PseudoDejaUtiliseException {
-		MembreFacadeDelegate membreDelegate = new MembreFacadeDelegate();
+		MembreFacadeDelegate membreDelegate = MembreFacadeDelegate.getInstance();
 		MembreDTO membreDTOCreated = membreDelegate.saveMembre(membreDTO);
 		request.getSession().setAttribute("membre",membreDTOCreated);
 	}

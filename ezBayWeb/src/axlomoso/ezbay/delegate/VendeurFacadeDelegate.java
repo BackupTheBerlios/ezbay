@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import javax.ejb.CreateException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
@@ -22,23 +23,35 @@ import axlomoso.ezbay.model.interfaces.VendeurFacade;
 import axlomoso.ezbay.model.interfaces.VendeurFacadeHome;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.struts.views.ArticleView;
+import axlomoso.ezbay.utils.ServiceLocator;
+import axlomoso.ezbay.utils.ServiceLocatorException;
 import axlomoso.ezbay.utils.Util;
 
 public class VendeurFacadeDelegate {
+
 	private VendeurFacade vendeurFacade = null;
+	private static VendeurFacadeDelegate instance = null;
 	private Util util = new Util();
+
+	public static VendeurFacadeDelegate getInstance(){
+		if( instance == null ) instance = new VendeurFacadeDelegate();
+		return instance;
+	}
 	
-	public VendeurFacadeDelegate() throws Exception {
+	private VendeurFacadeDelegate(){
 		try {
-			Context jndiContext;
-			jndiContext = new InitialContext();
-			Object ref = jndiContext.lookup(VendeurFacadeHome.JNDI_NAME);
-			VendeurFacadeHome facadeHome = (VendeurFacadeHome) PortableRemoteObject.narrow(ref, VendeurFacadeHome.class);
-			this.vendeurFacade = facadeHome.create();
-		} catch (Exception e) {
-			throw new Exception("Cannot locate MembreFacadeHome", e);
+			ServiceLocator locator = ServiceLocator.getInstance();
+			VendeurFacadeHome home = (VendeurFacadeHome) locator.getRemoteHome(VendeurFacadeHome.JNDI_NAME, VendeurFacadeHome.class);
+			this.vendeurFacade = home.create();
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (CreateException e) {
+			e.printStackTrace();
 		}
 	}
+
 	
 	public VendeurFacade getVendeurFacade() {
 		return vendeurFacade;

@@ -4,7 +4,6 @@
 package axlomoso.ezbay.struts.action;
 
 import java.rmi.RemoteException;
-import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -73,8 +72,8 @@ public class VendeurAction extends DispatchAction {
 	 */
 	private void setVendeurForm(ActionForm form, HttpServletRequest request) throws Exception {
 		VendeurForm vendeurForm = (VendeurForm) form;
-		MembreFacadeDelegate membreDelegate = new MembreFacadeDelegate();
-		VendeurFacadeDelegate vendeurDelegate = new VendeurFacadeDelegate();
+		MembreFacadeDelegate membreDelegate = MembreFacadeDelegate.getInstance();
+		VendeurFacadeDelegate vendeurDelegate = VendeurFacadeDelegate.getInstance();
 		try {
 			MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
 			VendeurDTO vendeurDTO = membreDelegate.getVendeurDTO(membreDTO.getId());

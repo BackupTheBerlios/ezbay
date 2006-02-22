@@ -47,9 +47,9 @@ public class CategorieAction extends DispatchAction {
 			throws Exception {
 		System.out.println("CategorieAction.showCategories()");
 		CategorieForm categorieForm = (CategorieForm) form;
-		CategorieFacadeDelegate categorieFacadeDelegate=new CategorieFacadeDelegate();
+		CategorieFacadeDelegate categorieFacadeDelegate=CategorieFacadeDelegate.getInstance();
 		try {
-		categorieForm.setListeCategories(categorieFacadeDelegate.getCategories());
+			categorieForm.setListeCategories(categorieFacadeDelegate.getCategories());
 		}
 		catch(Exception e){
 		   e.printStackTrace();
@@ -61,12 +61,10 @@ public class CategorieAction extends DispatchAction {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		System.out.println("CategorieAction.showCategoriesRecherche()");
-		
 		try {
-			CategorieFacadeDelegate categorieFacade = new CategorieFacadeDelegate();
+			CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
 			Collection categories = categorieFacade.getCategories();
 			request.getSession().setAttribute("categories", categories);
-			
 		}
 		catch(Exception e){
 		   e.printStackTrace();

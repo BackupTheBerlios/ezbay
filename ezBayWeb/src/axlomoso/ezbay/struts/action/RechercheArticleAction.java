@@ -51,17 +51,13 @@ public class RechercheArticleAction extends Action {
 		HttpServletResponse response) {		
 		RechercheForm rechercheForm = (RechercheForm) form;			
 		try {
-			ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
+			ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
 			ArticleDTO articleDTO=rechercheForm.getArticleDTO();			
 			String idCategorie=rechercheForm.getCategorieDTO().getId();
 			Collection result=articleFacade.getArticles(idCategorie,articleDTO.getLibelle(),articleDTO.getMarque(),articleDTO.getModele(),rechercheForm.getPrixVenteMin(),rechercheForm.getPrixVenteMax(),articleDTO.getAnneeFabrication(),articleDTO.getDateLimite());
 			rechercheForm.setArticlesDTO(result);
 			rechercheForm.setNbArticles(result.size());
 		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} catch (CreateException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();

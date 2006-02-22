@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.ejb.CreateException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
@@ -11,24 +12,39 @@ import javax.rmi.PortableRemoteObject;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
+import axlomoso.ezbay.model.interfaces.ArticleFacadeUtil;
+import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
+import axlomoso.ezbay.model.interfaces.CategorieFacadeHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
+import axlomoso.ezbay.utils.ServiceLocator;
+import axlomoso.ezbay.utils.ServiceLocatorException;
 import axlomoso.ezbay.utils.Util;
 
 public class ArticleFacadeDelegate {
 	private Util util = new Util();
 	private ArticleFacade articleFacade = null;
+	private static ArticleFacadeDelegate instance = null;
 
-	public ArticleFacadeDelegate() throws Exception {
+	public static ArticleFacadeDelegate getInstance(){
+		if( instance == null ) instance = new ArticleFacadeDelegate();
+		return instance;
+	}
+	
+	private ArticleFacadeDelegate(){
 		try {
-			Context jndiContext;
-			jndiContext = new InitialContext();
-			Object ref = jndiContext.lookup(ArticleFacadeHome.JNDI_NAME);
-			ArticleFacadeHome facadeHome = (ArticleFacadeHome) PortableRemoteObject.narrow(ref, ArticleFacadeHome.class);
-			this.articleFacade = facadeHome.create();
-		} catch (Exception e) {
-			throw new Exception("Cannot locate ArticleFacadeHome", e);
+			ServiceLocator locator = ServiceLocator.getInstance();
+			ArticleFacadeHome home;
+			home = (ArticleFacadeHome) locator.getRemoteHome(ArticleFacadeHome.JNDI_NAME, ArticleFacadeHome.class);
+			this.articleFacade = home.create();
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (CreateException e) {
+			e.printStackTrace();
 		}
+
 	}
 
 	public ArticleDTO getArticle(String articleId) throws Exception, RemoteException {

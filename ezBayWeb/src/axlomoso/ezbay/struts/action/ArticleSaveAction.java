@@ -56,8 +56,8 @@ public class ArticleSaveAction extends Action {
 		System.out.println("ArticleSaveAction.execute()");
 		ArticleForm articleEditForm = (ArticleForm) form;
 		try {
-			VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
-			MembreFacadeDelegate membreFacade = new MembreFacadeDelegate();
+			VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
+			MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
 			MembreDTO membreDTO = (MembreDTO)request.getSession().getAttribute("membre");
 			VendeurDTO vendeurDTO = membreFacade.getVendeurDTO(membreDTO.getId());
 			vendeurFacade.saveArticle(vendeurDTO.getId(), articleEditForm.getArticleDTO(), articleEditForm.getCategorieDTO().getId());

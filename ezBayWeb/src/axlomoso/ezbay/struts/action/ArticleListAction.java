@@ -97,8 +97,8 @@ public class ArticleListAction extends DispatchAction {
 			ArticleListForm articleListForm = (ArticleListForm) form;
 			String categorieId = request.getParameter("categorieId");
 			try {
-				ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
-				CategorieFacadeDelegate categorieFacade = new CategorieFacadeDelegate();
+				ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
+				CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
 				if( categorieId == null ) categorieId = "";
 				Collection articles = articleFacade.getArticlesByCategorie(categorieId);
 				articleListForm.setArticlesDTO(articles);

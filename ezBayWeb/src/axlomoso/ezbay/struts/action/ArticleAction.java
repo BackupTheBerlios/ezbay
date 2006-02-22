@@ -104,10 +104,10 @@ public class ArticleAction extends DispatchAction {
 		ActionErrors erreurs = new ActionErrors();
 		String articleId = request.getParameter("id");
 			try {
-				MembreFacadeDelegate membreFacade = new MembreFacadeDelegate();
+				MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
 				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
 				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
-				VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
+				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
 				vendeurFacade.removeArticle(vendeurId, articleId);
 			} catch (RemoteException e) {
 				e.printStackTrace();
@@ -141,8 +141,8 @@ public class ArticleAction extends DispatchAction {
 	
 	private void setArticleForm(String articleId, ActionForm form, HttpServletRequest request) throws Exception{
 		ArticleForm articleEditForm = (ArticleForm) form;	
-		ArticleFacadeDelegate articleFacade = new ArticleFacadeDelegate();
-		VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
+		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
+		VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
 		ArticleDTO articleDTO = new ArticleDTO();
 		if( (articleId != null) && (articleId.length() > 0) ){
 			articleDTO = articleFacade.getArticle(articleId);
@@ -151,7 +151,7 @@ public class ArticleAction extends DispatchAction {
 			articleEditForm.setVendeurId(vendeurId);
 			articleEditForm.setMembrePseudo(vendeurFacade.getMembre(vendeurId).getPseudo());
 		}
-		CategorieFacadeDelegate categorieFacade = new CategorieFacadeDelegate();
+		CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
 		articleEditForm.setArticleDTO(articleDTO);
 		Collection categories = categorieFacade.getCategories();
 		request.getSession().setAttribute("categories", categories);

@@ -52,7 +52,7 @@ public class MyEzBayAction extends DispatchAction {
 		System.out.println("myEzBayAction.showMyEzBay()");	
 		String target = "";
 		try {
-			MembreFacadeDelegate membreFacadeDelegate = new MembreFacadeDelegate();
+			MembreFacadeDelegate membreFacadeDelegate = MembreFacadeDelegate.getInstance();
 			MyEzBayForm myEzBayForm = (MyEzBayForm) form;
 			MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
 			if(membreDTO == null)

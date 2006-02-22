@@ -86,7 +86,7 @@ public class MembreAction extends DispatchAction {
 			throws Exception {
 		System.out.println("MembreAction.showMembreFiche()");
 		MembreForm membreForm = (MembreForm) form;
-		VendeurFacadeDelegate vendeurFacade = new VendeurFacadeDelegate();
+		VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
 		String vendeurId = request.getParameter("vendeurId");
 		membreForm.setId(vendeurFacade.getMembre(vendeurId).getId());
 		membreForm.setPseudo(vendeurFacade.getMembre(vendeurId).getPseudo());
