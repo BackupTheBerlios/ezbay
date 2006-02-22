@@ -10,17 +10,9 @@ import javax.ejb.RemoveException;
 
 import javax.ejb.CreateException;
 
-import axlomoso.ezbay.model.interfaces.ClientLocal;
-import axlomoso.ezbay.model.interfaces.MembreDTO;
-import axlomoso.ezbay.model.interfaces.MembreLocal;
-import axlomoso.ezbay.model.interfaces.MembreLocalHome;
-import axlomoso.ezbay.model.interfaces.MembreUtil;
-import axlomoso.ezbay.model.interfaces.VendeurDTO;
-import axlomoso.ezbay.model.interfaces.VendeurLocal;
-import axlomoso.ezbay.model.interfaces.VendeurUtil;
-import axlomoso.ezbay.utils.ServiceLocator;
-import axlomoso.ezbay.utils.ServiceLocatorException;
-
+import axlomoso.ezbay.model.interfaces.ArticleLocal;
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
+import axlomoso.ezbay.model.interfaces.ActionEnchereUtil;
 
 /**
  * XDoclet-based CMP 2.x entity bean.  This class must be declared
@@ -35,39 +27,37 @@ import axlomoso.ezbay.utils.ServiceLocatorException;
  * 
  * Below are the xdoclet-related tags needed for this EJB.
  *
- * @ejb.bean name="Membre"
- *           display-name="Name for Membre"
- *           description="Description for Membre"
- *           jndi-name="ejb/Membre"
- *           schema="membre"
+ * @ejb.bean name="ActionEnchere"
+ *           display-name="Name for Enchere"
+ *           description="Description for Enchere"
+ *           jndi-name="ejb/ActionEnchere"
+ *           schema="actionenchere"
  *           type="CMP"
  *           cmp-version="2.x"
  *           view-type="local"
  *           primkey-field = "id"
  *           
- *         
  * @ejb.persistence 
- * 			table-name = "membre"
- * @jboss.persistence table-name = "membre" 
+ * 			table-name = "actionenchere"
+ * 
+ * @jboss.persistence table-name = "actionenchere" 
  * 			    create-table = "true" 
  *				remove-table = "true"
+ *
  * @ejb:util generate="physical"
+ * 
  * @ejb.value-object match = "*"
- * @ejb.finder
-* 		description="findByPseudo"
-* 		signature="java.util.Collection findByPseudo(java.lang.String pseudo)" 
-* 		query="SELECT DISTINCT OBJECT(p) FROM membre p WHERE p.pseudo = ?1"      
  */
-public abstract class MembreBean implements EntityBean {
+public abstract class ActionEnchereBean implements EntityBean {
 
 	/** The entity context */
 	private EntityContext context;
 
-	public MembreBean() {
+	public ActionEnchereBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	/**
 	 * @ejb.interface-method view-type = "local"
 	 * @ejb.persistence column-name = "id"
@@ -80,221 +70,61 @@ public abstract class MembreBean implements EntityBean {
 	 * @param id
 	 */
 	public abstract void setId(String id);
-	
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "nom"
-	 * @return
-	 */
-	public abstract String getNom();
 
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param nom
-	 */
-	public abstract void setNom(String nom);
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "prenom"
+	 * @ejb.persistence column-name = "date"
 	 * @return
 	 */
-	public abstract String getPrenom();
+	public abstract Date getDate();
 
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param prenom
+	 * @param date
 	 */
-	public abstract void setPrenom(String prenom);
+	public abstract void setDate(Date date);
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "pseudo"
+	 * @ejb.persistence column-name = "montant"
 	 * @return
 	 */
-	public abstract String getPseudo();
+	public abstract Double getMontant();
+	
+	/**
+	 * @ejb.interface-method view-type = "local"
+	 * @param montant
+	 */
+	public abstract void setMontant(Double montant);
+	
+	/**
+	 * @ejb.interface-method view-type = "local"
+	 * @ejb.persistence column-name = "datelimite"
+	 * @return
+	 */
+	public abstract Date getDateLimite();
 
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param pseudo
+	 * @param datelimite
 	 */
-	public abstract void setPseudo(String pseudo);
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "password"
-	 * @return
-	 */
-	public abstract String getPassword();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param password
-	 */
-	public abstract void setPassword(String password);
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "email"
-	 * @return
-	 */
-	public abstract String getEmail();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param email
-	 */
-	public abstract void setEmail(String email);
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "adresse"
-	 * @return
-	 */
-	public abstract String getAdresse();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param adresse
-	 */
-	public abstract void setAdresse(String adresse);
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "codePostal"
-	 * @return
-	 */
-	public abstract String getCodePostal();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param codePostal
-	 */
-	public abstract void setCodePostal(String codePostal);
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "ville"
-	 * @return
-	 */
-	public abstract String getVille();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param ville
-	 */
-	public abstract void setVille(String ville);
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "pays"
-	 * @return
-	 */
-	public abstract String getPays();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param pays
-	 */
-	public abstract void setPays(String pays);
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "telephoneFixe"
-	 * @return
-	 */
-	public abstract String getTelephoneFixe();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param telephoneFixe
-	 */
-	public abstract void setTelephoneFixe(String telephoneFixe);
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "telephonePortable"
-	 * @return
-	 */
-	public abstract String getTelephonePortable();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param telephonePortable
-	 */
-	public abstract void setTelephonePortable(String telephonePortable);
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "dateNaissance"
-	 * @return
-	 */
-	public abstract Date getDateNaissance();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param dateNaissance
-	 */
-	public abstract void setDateNaissance(Date dateNaissance);
-	
+	public abstract void setDateLimite(Date datelimite);
 	
 	/**
 	   * @ejb.interface-method view-type = "local"
-	   * @ejb.relation name = "membre-vendeur" role-name = "A un Membre est associe un Vendeur"
-	   * @jboss.relation related-pk-field = "id" fk-column = "vendeur_id" 
+	   * @ejb.relation name = "enchere-article" role-name = "une enchere est posee sur un Article"
+	   * @jboss.relation related-pk-field = "id" fk-column = "article_id" 
 	   *                 fk-constraint = "true"
-	   * @return
+	   * @return ArticleLocal
 	   */
-	  public abstract VendeurLocal getVendeurLocal();
+	  public abstract ArticleLocal getArticleLocal();
 
 	  /**
 	   * @ejb.interface-method view-type = "local"
-	   * @param vendeurLocal
+	   * @param articleLocal
 	   */
-	  public abstract void setVendeurLocal(VendeurLocal vendeurLocal);		
+	  public abstract void setArticleLocal(ArticleLocal articleLocal);		
 	
-		/**
-	   * @ejb.interface-method view-type = "local"
-	   * @ejb.relation name = "membre-client" role-name = "A un Membre est associe un Client"
-	   * @jboss.relation related-pk-field = "id" fk-column = "client_id" 
-	   *                 fk-constraint = "true"
-	   * @return
-	   */
-	  public abstract ClientLocal getClientLocal();
-
-	  /**
-	   * @ejb.interface-method view-type = "local"
-	   * @param clientLocal
-	   */
-	  public abstract void setClientLocal(ClientLocal clientLocal);		
-
-		/**
-		 * @ejb.interface-method view-type = "local"
-		 * @param
-		 */
-	    public abstract MembreDTO getMembreDTO();
-	  
-		/**
-		 * @ejb.interface-method view-type = "local"
-		 * @param membreDTO
-		 */
-	    public String updateMembre(MembreDTO membreDTO) throws Exception {
-	    	this.setNom(membreDTO.getNom());
-	    	this.setAdresse(membreDTO.getAdresse());
-	    	this.setCodePostal(membreDTO.getCodePostal());
-	    	this.setDateNaissance(membreDTO.getDateNaissance());
-	    	this.setEmail(membreDTO.getEmail());
-	    	this.setPassword(membreDTO.getPassword());
-	    	this.setPays(membreDTO.getPays());
-	    	this.setPrenom(membreDTO.getPrenom());
-	    	//this.setPseudo(membreDTO.getPseudo()); // Ne doit pas être modifié !!
-	    	this.setTelephoneFixe(membreDTO.getTelephoneFixe());
-	    	this.setTelephonePortable(membreDTO.getTelephonePortable());
-	    	this.setVille(membreDTO.getVille());
-	    	return membreDTO.getId();
-	    }
-	  
 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match
 	 * the signatures of the create<METHOD>(...) methods of the entity bean?s home interface.
@@ -327,24 +157,14 @@ public abstract class MembreBean implements EntityBean {
 	 *
 	 * @ejb.create-method
 	 */
-	public String ejbCreate(MembreDTO membreDTO) throws CreateException {
-		String tId = MembreUtil.generateGUID(this);
-		this.setId(tId);
-		this.setNom(membreDTO.getNom());
-		this.setPrenom(membreDTO.getPrenom());
-		this.setPseudo(membreDTO.getPseudo());
-		this.setPassword(membreDTO.getPassword());
-		this.setEmail(membreDTO.getEmail());
-		this.setAdresse(membreDTO.getAdresse());
-		this.setCodePostal(membreDTO.getCodePostal());
-		this.setVille(membreDTO.getVille());
-		this.setPays(membreDTO.getPays());
-		this.setTelephoneFixe(membreDTO.getTelephoneFixe());
-		this.setTelephonePortable(membreDTO.getTelephonePortable());
-		this.setDateNaissance(membreDTO.getDateNaissance());
+	public String ejbCreate(ActionEnchereDTO enchereDTO) throws CreateException {
+		String tId = ActionEnchereUtil.generateGUID(this);
+		this.setDate(enchereDTO.getDate());
+		this.setMontant(enchereDTO.getMontant());
+		this.setDateLimite(enchereDTO.getDateLimite());
 		return tId;
 	}
-	
+
 	/**
 	 * For each ejbCreate<METHOD>(...) method, there is a matching ejbPostCreate<
 	 * METHOD>(...) method that has the same input parameters but whose return type is
@@ -425,5 +245,5 @@ public abstract class MembreBean implements EntityBean {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 }

@@ -1,19 +1,18 @@
 package axlomoso.ezbay.model.ejb;
 
 import java.rmi.RemoteException;
-import java.util.Collection;
 import java.util.Date;
 
-import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.EntityBean;
 import javax.ejb.EntityContext;
 import javax.ejb.RemoveException;
 
-import axlomoso.ezbay.model.interfaces.MembreLocal;
-import axlomoso.ezbay.model.interfaces.VendeurDTO;
-import axlomoso.ezbay.model.interfaces.VendeurUtil;
+import javax.ejb.CreateException;
 
+import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
+import axlomoso.ezbay.model.interfaces.ActionTransactionUtil;
+import axlomoso.ezbay.model.interfaces.ArticleLocal;
 
 /**
  * XDoclet-based CMP 2.x entity bean.  This class must be declared
@@ -28,39 +27,36 @@ import axlomoso.ezbay.model.interfaces.VendeurUtil;
  * 
  * Below are the xdoclet-related tags needed for this EJB.
  *
- * @ejb.bean name="Vendeur"
- *           display-name="Name for Vendeur"
- *           description="Description for Vendeur"
- *           jndi-name="ejb/Vendeur"
- *           schema="vendeur"
+ * @ejb.bean name="ActionTransaction"
+ *           display-name="Name for Transaction"
+ *           description="Description for Transaction"
+ *           jndi-name="ejb/ActionTransaction"
+ *           schema="actiontransaction"
  *           type="CMP"
  *           cmp-version="2.x"
  *           view-type="local"
  *           primkey-field = "id"
+ *           
  * @ejb.persistence 
- * 			table-name = "vendeur"
- * @jboss.persistence table-name = "vendeur" 
+ * 			table-name = "actiontransaction"
+ * 
+ * @jboss.persistence table-name = "actiontransaction" 
  * 			    create-table = "true" 
  *				remove-table = "true"
+ *
  * @ejb:util generate="physical"
+ * 
  * @ejb.value-object match = "*"
- *       
- * @ejb.finder
-* 		signature="java.util.Collection findAll()" 
-* 		query="SELECT Object(a) FROM vendeur AS a"
-* 
-* 
-**/
-public abstract class VendeurBean implements EntityBean {
+ */
+public abstract class ActionTransactionBean implements EntityBean {
 
 	/** The entity context */
 	private EntityContext context;
 
-	public VendeurBean() {
+	public ActionTransactionBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	/**
 	 * @ejb.interface-method view-type = "local"
 	 * @ejb.persistence column-name = "id"
@@ -76,105 +72,32 @@ public abstract class VendeurBean implements EntityBean {
 
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "nomProprioCB"
+	 * @ejb.persistence column-name = "date"
 	 * @return
 	 */
-	public abstract String getNomProprioCB();
+	public abstract Date getDate();
 
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param nomProprioCB
+	 * @param date
 	 */
-	public abstract void setNomProprioCB(String nomProprioCB);
+	public abstract void setDate(Date date);
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "numCB"
+	 * @ejb.persistence column-name = "montant"
 	 * @return
 	 */
-	public abstract String getNumCB();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param numCB
-	 */
-	public abstract void setNumCB(String numCB);
+	public abstract Double getMontant();
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "dateExpirCB"
-	 * @return
+	 * @param montant
 	 */
-	public abstract Date getDateExpirCB();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param dateExpirCB
-	 */
-	public abstract void setDateExpirCB(Date dateExpirCB);
+	public abstract void setMontant(Double montant);
 	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @ejb.persistence column-name = "codeSecuCB"
-	 * @return
-	 */
-	public abstract String getCodeSecuCB();
 
 	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param codeSecuCB
-	 */
-	public abstract void setCodeSecuCB(String codeSecuCB);
-	
-	/**
-	 * @ejb.interface-method
-	 *   view-type="local"
-	 * @ejb.relation
-	 *   name = "article-vendeur"
-	 *   role-name = "vendeur vend article"
-	 *   @return a Collection of Article
-	 */ 
-	public abstract Collection getArticle();
-
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param Collection of Article
-	 */
-	public abstract void setArticle(Collection article);	
-	
-	/**
-	   * @ejb.interface-method view-type = "local"
-	   * @ejb.relation name = "membre-vendeur" role-name = "un Vendeur est associé a un Membre"
-	   * @return
-	   */
-	  public abstract MembreLocal getMembreLocal();
-
-	  /**
-	   * @ejb.interface-method view-type = "local"
-	   * @param membreLocal
-	   */
-	  public abstract void setMembreLocal(MembreLocal membreLocal);		
-	
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param
-	 */
-    public abstract VendeurDTO getVendeurDTO();
-
-    
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param vendeurDTO
-	 */
-    public String updateVendeur(VendeurDTO vendeurDTO) throws Exception {
-		this.setNomProprioCB(vendeurDTO.getNomProprioCB());
-		this.setNumCB(vendeurDTO.getNumCB());
-		this.setDateExpirCB(vendeurDTO.getDateExpirCB());
-		this.setCodeSecuCB(vendeurDTO.getCodeSecuCB());
-		return vendeurDTO.getId();
-    }
-    
- 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match
 	 * the signatures of the create<METHOD>(...) methods of the entity bean?s home interface.
 	 * The container invokes an ejbCreate<METHOD>(...) method on an entity bean instance
@@ -206,15 +129,12 @@ public abstract class VendeurBean implements EntityBean {
 	 *
 	 * @ejb.create-method
 	 */
-	public String ejbCreate(VendeurDTO vendeurDTO) throws CreateException {
-		String tId = VendeurUtil.generateGUID(this);
-		this.setId(tId);
-		this.setNomProprioCB(vendeurDTO.getNomProprioCB());
-		this.setNumCB(vendeurDTO.getNumCB());
-		this.setDateExpirCB(vendeurDTO.getDateExpirCB());
-		this.setCodeSecuCB(vendeurDTO.getCodeSecuCB());
+	public String ejbCreate(ActionTransactionDTO transactionDTO) throws CreateException {
+		String tId = ActionTransactionUtil.generateGUID(this);
+		this.setDate(transactionDTO.getDate());
+		this.setMontant(transactionDTO.getMontant());
 		return tId;
-	}
+}
 
 	/**
 	 * For each ejbCreate<METHOD>(...) method, there is a matching ejbPostCreate<
@@ -235,8 +155,8 @@ public abstract class VendeurBean implements EntityBean {
 	 * 
 	 * @throws CreateException Thrown if method fails due to system-level error.
 	 */
-    public void ejbPostCreate() throws javax.ejb.CreateException {
-    }
+	public void ejbPostCreate() throws CreateException {
+	}
 
 	/**
 	 * Set the associated entity context. The container calls this method 
@@ -296,5 +216,5 @@ public abstract class VendeurBean implements EntityBean {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 }

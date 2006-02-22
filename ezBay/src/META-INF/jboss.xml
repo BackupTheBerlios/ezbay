@@ -21,8 +21,24 @@
 
       </entity>
       <entity>
+         <ejb-name>ActionTransaction</ejb-name>
+         <local-jndi-name>ActionTransactionLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
          <ejb-name>Client</ejb-name>
          <local-jndi-name>ClientLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
+      <entity>
+         <ejb-name>ActionEnchere</ejb-name>
+         <local-jndi-name>ActionEnchereLocal</local-jndi-name>
 
         <method-attributes>
         </method-attributes>

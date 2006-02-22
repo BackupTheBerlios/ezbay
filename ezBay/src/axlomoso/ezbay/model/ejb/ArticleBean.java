@@ -1,6 +1,7 @@
 package axlomoso.ezbay.model.ejb;
 
 import java.rmi.RemoteException;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.ejb.EJBException;
@@ -237,7 +238,22 @@ public abstract class ArticleBean implements EntityBean {
 	   * @param categorieLocal
 	   */
 	  public abstract void setCategorieLocal(CategorieLocal categorieLocal);	
-	
+
+		/**
+		 * @ejb.interface-method
+		 *   view-type="local"
+		 * @ejb.relation
+		 *   name = "enchere-article"
+		 *   role-name = "un article est lié a +sieurs encheres"
+		 *   @return a Collection of ActionEnchereLocal
+		 */ 
+		public abstract Collection getEnchereLocal();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param Collection of ActionEnchereLocal
+		 */
+		public abstract void setEnchereLocal(Collection enchereLocal);	
 	  
 	  
 	/**

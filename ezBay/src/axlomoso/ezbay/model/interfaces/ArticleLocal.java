@@ -54,6 +54,10 @@ public interface ArticleLocal
 
    public void setCategorieLocal( axlomoso.ezbay.model.interfaces.CategorieLocal categorieLocal ) ;
 
+   public java.util.Collection getEnchereLocal(  ) ;
+
+   public void setEnchereLocal( java.util.Collection enchereLocal ) ;
+
    public axlomoso.ezbay.model.interfaces.ArticleDTO getArticleDTO(  ) ;
 
    public java.lang.String updateArticle( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) throws java.lang.Exception;

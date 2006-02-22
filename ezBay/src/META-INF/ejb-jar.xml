@@ -181,6 +181,39 @@
       </entity>
 
       <entity >
+         <description><![CDATA[Description for Transaction]]></description>
+         <display-name>Name for Transaction</display-name>
+
+         <ejb-name>ActionTransaction</ejb-name>
+
+         <local-home>axlomoso.ezbay.model.interfaces.ActionTransactionLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ActionTransactionLocal</local>
+
+         <ejb-class>axlomoso.ezbay.model.ejb.ActionTransactionCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.String</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>actiontransaction</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>date</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>montant</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+	  <!-- Write a file named ejb-finders-ActionTransactionBean.xml if you want to define extra finders. -->
+
+      </entity>
+
+      <entity >
          <description><![CDATA[Description for Client]]></description>
          <display-name>Name for Client</display-name>
 
@@ -202,6 +235,43 @@
          <primkey-field>id</primkey-field>
 
 	  <!-- Write a file named ejb-finders-ClientBean.xml if you want to define extra finders. -->
+
+      </entity>
+
+      <entity >
+         <description><![CDATA[Description for Enchere]]></description>
+         <display-name>Name for Enchere</display-name>
+
+         <ejb-name>ActionEnchere</ejb-name>
+
+         <local-home>axlomoso.ezbay.model.interfaces.ActionEnchereLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ActionEnchereLocal</local>
+
+         <ejb-class>axlomoso.ezbay.model.ejb.ActionEnchereCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.String</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>actionenchere</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>date</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>montant</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>dateLimite</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+	  <!-- Write a file named ejb-finders-ActionEnchereBean.xml if you want to define extra finders. -->
 
       </entity>
 
@@ -558,6 +628,33 @@
             </relationship-role-source>
             <cmr-field >
                <cmr-field-name>membreLocal</cmr-field-name>
+            </cmr-field>
+         </ejb-relationship-role>
+
+      </ejb-relation>
+      <ejb-relation >
+         <ejb-relation-name>enchere-article</ejb-relation-name>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>une enchere est posee sur un Article</ejb-relationship-role-name>
+            <multiplicity>Many</multiplicity>
+            <relationship-role-source >
+               <ejb-name>ActionEnchere</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>articleLocal</cmr-field-name>
+            </cmr-field>
+         </ejb-relationship-role>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>un article est lié a +sieurs encheres</ejb-relationship-role-name>
+            <multiplicity>One</multiplicity>
+            <relationship-role-source >
+               <ejb-name>Article</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>enchereLocal</cmr-field-name>
+               <cmr-field-type>java.util.Collection</cmr-field-type>
             </cmr-field>
          </ejb-relationship-role>
 
