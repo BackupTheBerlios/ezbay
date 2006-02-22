@@ -24,6 +24,9 @@ public class ArticleDTO
    private java.lang.String id;
    private boolean idHasBeenSet = false;
 
+   private java.lang.Boolean enVente;
+   private boolean enVenteHasBeenSet = false;
+
    private java.lang.String libelle;
    private boolean libelleHasBeenSet = false;
 
@@ -51,9 +54,10 @@ public class ArticleDTO
    {
    }
 
-   public ArticleDTO( java.lang.String id,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.lang.String description,java.util.Date dateLimite )
+   public ArticleDTO( java.lang.String id,java.lang.Boolean enVente,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.lang.String description,java.util.Date dateLimite )
    {
        setId(id);
+       setEnVente(enVente);
        setLibelle(libelle);
        setMarque(marque);
        setModele(modele);
@@ -71,6 +75,8 @@ public class ArticleDTO
    {
 	  this.id = otherValue.id;
 	  idHasBeenSet = true;
+	  this.enVente = otherValue.enVente;
+	  enVenteHasBeenSet = true;
 	  this.libelle = otherValue.libelle;
 	  libelleHasBeenSet = true;
 	  this.marque = otherValue.marque;
@@ -117,6 +123,21 @@ public class ArticleDTO
 
    public boolean idHasBeenSet(){
 	  return idHasBeenSet;
+   }
+   public java.lang.Boolean getEnVente()
+   {
+	  return this.enVente;
+   }
+
+   public void setEnVente( java.lang.Boolean enVente )
+   {
+	  this.enVente = enVente;
+	  enVenteHasBeenSet = true;
+
+   }
+
+   public boolean enVenteHasBeenSet(){
+	  return enVenteHasBeenSet;
    }
    public java.lang.String getLibelle()
    {
@@ -228,7 +249,7 @@ public class ArticleDTO
    {
 	  StringBuffer str = new StringBuffer("{");
 
-	  str.append("id=" + getId() + " " + "libelle=" + getLibelle() + " " + "marque=" + getMarque() + " " + "modele=" + getModele() + " " + "prixVente=" + getPrixVente() + " " + "anneeFabrication=" + getAnneeFabrication() + " " + "description=" + getDescription() + " " + "dateLimite=" + getDateLimite());
+	  str.append("id=" + getId() + " " + "enVente=" + getEnVente() + " " + "libelle=" + getLibelle() + " " + "marque=" + getMarque() + " " + "modele=" + getModele() + " " + "prixVente=" + getPrixVente() + " " + "anneeFabrication=" + getAnneeFabrication() + " " + "description=" + getDescription() + " " + "dateLimite=" + getDateLimite());
 	  str.append('}');
 
 	  return(str.toString());
@@ -261,6 +282,14 @@ public class ArticleDTO
                  else
                  {
                         lEquals = lEquals && this.id.equals( that.id );
+                 }
+                 if( this.enVente == null )
+                 {
+                        lEquals = lEquals && ( that.enVente == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.enVente.equals( that.enVente );
                  }
                  if( this.libelle == null )
                  {
@@ -360,6 +389,18 @@ public class ArticleDTO
             }
 
             if(!this.id.equals(that.id)) {
+                return false;
+            }
+
+        }
+
+        if(this.enVente != that.enVente) {
+
+            if( this.enVente == null || that.enVente == null ) {
+                return false;
+            }
+
+            if(!this.enVente.equals(that.enVente)) {
                 return false;
             }
 
@@ -467,6 +508,8 @@ public class ArticleDTO
 	  int result = 17;
       result = 37*result + ((this.id != null) ? this.id.hashCode() : 0);
 
+      result = 37*result + ((this.enVente != null) ? this.enVente.hashCode() : 0);
+
       result = 37*result + ((this.libelle != null) ? this.libelle.hashCode() : 0);
 
       result = 37*result + ((this.marque != null) ? this.marque.hashCode() : 0);
@@ -532,6 +575,10 @@ public class ArticleDTO
 
        public java.lang.String getId() {
               return underlying().id;
+       }
+
+       public java.lang.Boolean getEnVente() {
+              return underlying().enVente;
        }
 
        public java.lang.String getLibelle() {

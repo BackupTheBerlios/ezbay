@@ -63,6 +63,7 @@ public abstract class ArticleCMP
       try
          {
             ArticleDTO.setId( getId() );
+            ArticleDTO.setEnVente( getEnVente() );
             ArticleDTO.setLibelle( getLibelle() );
             ArticleDTO.setMarque( getMarque() );
             ArticleDTO.setModele( getModele() );
@@ -85,6 +86,10 @@ public abstract class ArticleCMP
    public abstract java.lang.String getId() ;
 
    public abstract void setId( java.lang.String id ) ;
+
+   public abstract java.lang.Boolean getEnVente() ;
+
+   public abstract void setEnVente( java.lang.Boolean enVente ) ;
 
    public abstract java.lang.String getLibelle() ;
 

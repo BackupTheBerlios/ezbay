@@ -60,10 +60,22 @@ public class VendeurFacadeBean implements SessionBean {
 	private static final long serialVersionUID = -8719723927459392718L;
 	/** The session context */
 	private SessionContext context;
+	ServiceLocator locator;
+	ArticleFacadeLocalHome articleFacadeLocalHome;
+	ArticleFacadeLocal articleFacade;
 
 	public VendeurFacadeBean() {
 		super();
-		// TODO Auto-generated constructor stub
+		try {
+			locator = ServiceLocator.getInstance();
+			articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
+			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		} catch (CreateException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -215,38 +227,6 @@ public class VendeurFacadeBean implements SessionBean {
 		return tRes;		
 	}
 	
-	private boolean isArticleEnAttente(String articleId) {
-		return !( this.isArticleEnVente(articleId) || this.isArticleVendu(articleId) );
-	}
-	
-	private boolean isArticleEnVente(String articleId) {
-		// A FAIRE : test : l'article est-il en vente ou vendu ?
-		boolean tRes = false;
-		try {
-			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
-			tRes = articleLocal.getArticleDTO().getLibelle().equals("en vente");
-		} catch (FinderException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return tRes;
-	}
-	
-	private boolean isArticleVendu(String articleId) {
-		// A FAIRE : test : l'article est-il en vente ou vendu ?
-		boolean tRes = false;
-		try {
-			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
-			tRes = articleLocal.getArticleDTO().getLibelle().equals("vendu");
-		} catch (FinderException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return tRes;
-	}
-	
-	
-	
 	/**
 	 * @ejb.interface-method view-type = "both"
 	 * @param vendeurId
@@ -282,33 +262,14 @@ public class VendeurFacadeBean implements SessionBean {
 	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws VendeurInconnuException, Exception{
 		ArticleDTO tRes = null;
 		try {
-			VendeurLocal vendeur = getEntity(vendeurId);
-			ServiceLocator locator = ServiceLocator.getInstance();
-			ArticleFacadeLocalHome articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
-			ArticleFacadeLocal articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
+			VendeurLocal vendeur = getEntity(vendeurId); // vérification de l'existence du vendeur
 			tRes = (ArticleDTO) articleFacade.saveArticle(vendeurId, articleDTO, categorieId);
-			articleFacade.remove();
-			articleFacadeLocalHome = null;
 		} catch (FinderException e) {
 			throw new VendeurInconnuException("Le vendeur " + vendeurId + " n'existe pas !");
-		} catch (ServiceLocatorException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw e;
 		} catch (CreateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
 		} catch (EJBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw e;
-		} catch (RemoveException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw e;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
 		}
@@ -327,30 +288,16 @@ public class VendeurFacadeBean implements SessionBean {
 		if( !this.possedeArticle(vendeurId, articleId) ) {
 			throw new ArticleProprietaireException();
 		}
-		else if( this.isArticleEnVente(articleId) ){
+		else if( articleFacade.isArticleEnVente(articleId) ){
 			throw new ArticleEnVenteException();
 		}
-		else if( this.isArticleVendu(articleId) ){
+		else if( articleFacade.isArticleVendu(articleId) ){
 			throw new ArticleVenduException();
 		}
 		else{
-			ServiceLocator locator = ServiceLocator.getInstance();
-			ArticleFacadeLocalHome articleFacadeLocalHome;
 			try {
-				articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
-				ArticleFacadeLocal articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
 				articleFacade.removeArticle(articleId);
-				articleFacade.remove();
-				articleFacadeLocalHome = null;
-			} catch (ServiceLocatorException e) {
-				e.printStackTrace();
-			} catch (CreateException e) {
-				e.printStackTrace();
-			} catch (EJBException e) {
-				e.printStackTrace();
-			} catch (RemoveException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
+			} catch (Exception e) {				
 				e.printStackTrace();
 			}
 		}

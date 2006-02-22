@@ -14,8 +14,22 @@ public interface ArticleFacadeLocal
    extends javax.ejb.EJBLocalObject
 {
 
+   public void mettreEnVente( java.lang.String vendeurId,java.lang.String articleId ) ;
+
    public axlomoso.ezbay.model.interfaces.ArticleDTO saveArticle( java.lang.String vendeurId,axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO,java.lang.String categorieId ) throws java.lang.Exception;
 
    public void removeArticle( java.lang.String articleId ) throws java.lang.Exception;
+
+   public boolean isArticleEnAttente( java.lang.String articleId ) ;
+
+   public boolean isArticleEnVente( java.lang.String articleId ) ;
+
+   public boolean isArticleVendu( java.lang.String articleId ) ;
+
+   public boolean isArticleEnAttente( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) ;
+
+   public boolean isArticleEnVente( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) ;
+
+   public boolean isArticleVendu( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) ;
 
 }

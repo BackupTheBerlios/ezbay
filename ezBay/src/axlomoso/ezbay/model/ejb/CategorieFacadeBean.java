@@ -7,21 +7,13 @@ import java.util.Iterator;
 
 import javax.ejb.EJBException;
 import javax.ejb.FinderException;
-import javax.ejb.RemoveException;
 import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
-import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
-import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieLocal;
 import axlomoso.ezbay.model.interfaces.CategorieLocalHome;
-import axlomoso.ezbay.model.interfaces.VendeurDTO;
-import axlomoso.ezbay.model.interfaces.VendeurLocal;
-import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
 

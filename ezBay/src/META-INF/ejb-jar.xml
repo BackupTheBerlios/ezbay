@@ -382,6 +382,10 @@
          </cmp-field>
          <cmp-field >
             <description><![CDATA[]]></description>
+            <field-name>enVente</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
             <field-name>libelle</field-name>
          </cmp-field>
          <cmp-field >
@@ -602,6 +606,32 @@
             <cmr-field >
                <cmr-field-name>article</cmr-field-name>
                <cmr-field-type>java.util.Collection</cmr-field-type>
+            </cmr-field>
+         </ejb-relationship-role>
+
+      </ejb-relation>
+      <ejb-relation >
+         <ejb-relation-name>transaction-article</ejb-relation-name>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>Une Transaction concerne 1 Article</ejb-relationship-role-name>
+            <multiplicity>One</multiplicity>
+            <relationship-role-source >
+               <ejb-name>ActionTransaction</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>articleLocal</cmr-field-name>
+            </cmr-field>
+         </ejb-relationship-role>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>Un Article fait l'objet d'1 Transaction</ejb-relationship-role-name>
+            <multiplicity>One</multiplicity>
+            <relationship-role-source >
+               <ejb-name>Article</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>actionTransactionLocal</cmr-field-name>
             </cmr-field>
          </ejb-relationship-role>
 

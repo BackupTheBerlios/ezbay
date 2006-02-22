@@ -26,4 +26,8 @@ public interface ActionTransactionLocal
 
    public void setMontant( java.lang.Double montant ) ;
 
+   public axlomoso.ezbay.model.interfaces.ArticleLocal getArticleLocal(  ) ;
+
+   public void setArticleLocal( axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal ) ;
+
 }

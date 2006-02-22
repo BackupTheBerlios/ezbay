@@ -18,6 +18,10 @@ public interface ArticleLocal
 
    public void setId( java.lang.String id ) ;
 
+   public java.lang.Boolean getEnVente(  ) ;
+
+   public void setEnVente( java.lang.Boolean envente ) ;
+
    public java.lang.String getLibelle(  ) ;
 
    public void setLibelle( java.lang.String libelle ) ;
@@ -57,6 +61,10 @@ public interface ArticleLocal
    public java.util.Collection getEnchereLocal(  ) ;
 
    public void setEnchereLocal( java.util.Collection enchereLocal ) ;
+
+   public axlomoso.ezbay.model.interfaces.ActionTransactionLocal getActionTransactionLocal(  ) ;
+
+   public void setActionTransactionLocal( axlomoso.ezbay.model.interfaces.ActionTransactionLocal actionTransactionLocal ) ;
 
    public axlomoso.ezbay.model.interfaces.ArticleDTO getArticleDTO(  ) ;
 

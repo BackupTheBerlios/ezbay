@@ -5,16 +5,10 @@ import java.rmi.RemoteException;
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
-import javax.naming.InitialContext;
 
 import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
 import axlomoso.ezbay.model.interfaces.ClientLocalHome;
-import axlomoso.ezbay.model.interfaces.MembreLocal;
-import axlomoso.ezbay.model.interfaces.MembreLocalHome;
-import axlomoso.ezbay.model.interfaces.VendeurDTO;
-import axlomoso.ezbay.model.interfaces.VendeurLocal;
-import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
 

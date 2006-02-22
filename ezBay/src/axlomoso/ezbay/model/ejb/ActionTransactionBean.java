@@ -11,6 +11,7 @@ import javax.ejb.RemoveException;
 import javax.ejb.CreateException;
 
 import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
+import axlomoso.ezbay.model.interfaces.ActionTransactionLocal;
 import axlomoso.ezbay.model.interfaces.ActionTransactionUtil;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 
@@ -96,6 +97,20 @@ public abstract class ActionTransactionBean implements EntityBean {
 	 */
 	public abstract void setMontant(Double montant);
 	
+	/**
+	   * @ejb.interface-method view-type = "local"
+	   * @ejb.relation name = "transaction-article" role-name = "Une Transaction concerne 1 Article"
+	   * @jboss.relation related-pk-field = "id" fk-column = "article_id" 
+	   *                 fk-constraint = "true"
+	   * @return ArticleLocal
+	   */
+	  public abstract ArticleLocal getArticleLocal();
+
+	  /**
+	   * @ejb.interface-method view-type = "local"
+	   * @param actionTransactionLocal
+	   */
+	  public abstract void setArticleLocal(ArticleLocal articleLocal);
 
 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match

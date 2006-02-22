@@ -11,6 +11,7 @@ import javax.ejb.RemoveException;
 
 import javax.ejb.CreateException;
 
+import axlomoso.ezbay.model.interfaces.ActionTransactionLocal;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleUtil;
 import axlomoso.ezbay.model.interfaces.CategorieLocal;
@@ -116,6 +117,19 @@ public abstract class ArticleBean implements EntityBean {
 	 */
 	public abstract void setId(String id);
 
+	/**
+	 * @ejb.interface-method view-type = "local"
+	 * @ejb.persistence column-name = "envente"
+	 * @return
+	 */
+	public abstract Boolean getEnVente();
+
+	/**
+	 * @ejb.interface-method view-type = "local"
+	 * @param envente
+	 */
+	public abstract void setEnVente(Boolean envente);
+	
 	/**
 	 * @ejb.interface-method view-type = "local"
 	 * @ejb.persistence column-name = "libelle"
@@ -254,7 +268,22 @@ public abstract class ArticleBean implements EntityBean {
 		 * @param Collection of ActionEnchereLocal
 		 */
 		public abstract void setEnchereLocal(Collection enchereLocal);	
-	  
+
+		/**
+		   * @ejb.interface-method view-type = "local"
+		   * @ejb.relation name = "transaction-article" role-name = "Un Article fait l'objet d'1 Transaction"
+		   * @jboss.relation related-pk-field = "id" fk-column = "transaction_id" 
+		   *                 fk-constraint = "true"
+		   * @return ActionTransactionLocal
+		   */
+		  public abstract ActionTransactionLocal getActionTransactionLocal();
+
+		  /**
+		   * @ejb.interface-method view-type = "local"
+		   * @param actionTransactionLocal
+		   */
+		  public abstract void setActionTransactionLocal(ActionTransactionLocal actionTransactionLocal);	
+
 	  
 	/**
 	 * @ejb.interface-method view-type = "local"
@@ -274,6 +303,7 @@ public abstract class ArticleBean implements EntityBean {
     	this.setMarque(articleDTO.getMarque());
     	this.setModele(articleDTO.getModele());
     	this.setPrixVente(articleDTO.getPrixVente());
+    	this.setEnVente(new Boolean(false));
     	return this.getId();
     }
     
