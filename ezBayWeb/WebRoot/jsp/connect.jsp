@@ -8,6 +8,7 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-template" prefix="template" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested" %>
 
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html locale="true">
   <head>
@@ -24,22 +25,39 @@
   
 	<body>
 	<html:errors/>
-		<%-- create a html form --%>
-		<html:form action="connect">
-				<label for="login"><bean:message key="connect.login"/> : </label><html:text property="login" value=""/>
-				<br>
-				<label for="password"><bean:message key="connect.password"/> : </label><html:password property="password" value=""/>
-				<br>
-			<html:hidden property="do" value="validateConnect" />
-			<br>
-			<%-- submit and back button --%>
-			<html:button property="home"  onclick="location.href='default.do'">Cancel</html:button>
-			&nbsp;
-			<html:submit>Connect</html:submit>	
-			</html:form>
-			<br />
-			<html:link action="/membre.do?do=showInscription"><bean:message key="link.inscription"/></html:link><br>
+	<%-- create a html form --%>
+	<html:form action="connect">
+	<center>
+		<br /><br /></br>
+		<table>
+		<tr>
+			<td>
+				<label for="login"><bean:message key="connect.login"/> :
+			</td>
+			<td>
+				</label><html:text property="login" value=""/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="password"><bean:message key="connect.password"/> : 
+			</td>
+			<td>
+				</label><html:password property="password" value=""/>
+			</td>
+		</tr>
+		</table>
+		<br /><br />
+		<html:hidden property="do" value="validateConnect" />
+
+		<%-- submit and back button --%>
+		<html:button property="home"  onclick="location.href='default.do'">Cancel</html:button>
+		&nbsp;
+		<html:submit>Connect</html:submit>	
+	</html:form>
+	
+	<html:link action="/membre.do?do=showInscription"><bean:message key="link.inscription"/></html:link><br>
  
-			
+	</center>		
 	</body>
 </html:html>
