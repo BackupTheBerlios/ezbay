@@ -16,6 +16,7 @@ import axlomoso.ezbay.model.interfaces.ArticleFacadeUtil;
 import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieFacadeHome;
+import axlomoso.ezbay.model.interfaces.EnchereDTO;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
@@ -78,6 +79,10 @@ public class ArticleFacadeDelegate {
 
 	public Collection rechercherArticlesEnVente(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,Double prixVenteMax, Integer anneeFabrication, Date dateLimite) throws RemoteException {
 		return util.getArticlesDtoToView(articleFacade.rechercherArticlesEnVente(libcategorie, libelle, marque, modele, prixVenteMin,prixVenteMax, anneeFabrication, dateLimite));
+	}
+
+	public EnchereDTO getDerniereEnchere(String articleId) throws RemoteException {
+		return articleFacade.getDerniereEnchere(articleId);
 	}
 	
 }

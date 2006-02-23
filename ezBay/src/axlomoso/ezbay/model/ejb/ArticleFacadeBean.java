@@ -6,17 +6,23 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 
+import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.FinderException;
 import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
 import javax.naming.NamingException;
 
+import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocal;
+import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.model.interfaces.ArticleFacadeLocal;
+import axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieLocal;
+import axlomoso.ezbay.model.interfaces.EnchereDTO;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
@@ -42,9 +48,21 @@ public class ArticleFacadeBean implements SessionBean {
 	/** The session context */
 	private SessionContext context;
 
+	ServiceLocator locator;
+	ActionEnchereFacadeLocalHome actionEnchereFacadeLocalHome;
+	ActionEnchereFacadeLocal actionEnchereFacade;
+	
 	public ArticleFacadeBean() {
 		super();
-		// TODO Auto-generated constructor stub
+		try {
+			locator = ServiceLocator.getInstance();
+			actionEnchereFacadeLocalHome = (ActionEnchereFacadeLocalHome) locator.getLocalHome(ActionEnchereFacadeLocalHome.JNDI_NAME);
+			actionEnchereFacade = (ActionEnchereFacadeLocal) actionEnchereFacadeLocalHome.create();
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		} catch (CreateException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -360,6 +378,19 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;
 	}
 
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param articleId
+	 */
+	public EnchereDTO getDerniereEnchere(String articleId){
+		EnchereDTO tRes = null;
+		ArrayList encheres = (ArrayList)actionEnchereFacade.getActionEncheresByArticle(articleId);
+		if( encheres.size() > 0 ){
+			tRes = (EnchereDTO)encheres.get(0);
+		}
+		return tRes;
+	}
+	
 	/**
 	 * @ejb.interface-method view-type = "both"
 	 * @param articleDTO

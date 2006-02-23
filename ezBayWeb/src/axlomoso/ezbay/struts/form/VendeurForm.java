@@ -120,7 +120,7 @@ public class VendeurForm extends ActionForm {
 
 			}
 
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
 			errors.add("codeSecuCB", new ActionError(
 					"vendeur.inscription.erreur.codeSecuCB.badFormat"));
 		}
@@ -132,7 +132,7 @@ public class VendeurForm extends ActionForm {
 				errors.add("numCB", new ActionError(
 						"vendeur.inscription.erreur.numCB.badFormat"));
 			}
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
 			errors.add("numCB", new ActionError(
 					"vendeur.inscription.erreur.numCB.badFormat"));
 		}

@@ -176,7 +176,7 @@ public class ArticleForm extends ActionForm {
 					 Double d = new Double(Double.parseDouble(stringPrixVente));
 					 articleDTO.setPrixVente(d);
 				}				
-			 catch (Exception e) {
+			 catch (NumberFormatException e) {
 				errors.add("prixVente", new ActionError("articleEdit.erreurs.prixVenteNonValide"));
 			}
 		}		

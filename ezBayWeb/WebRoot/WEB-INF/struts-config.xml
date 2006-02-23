@@ -13,6 +13,7 @@
 		<form-bean name="vendeurForm" type="axlomoso.ezbay.struts.form.VendeurForm" />
     	<form-bean name="categorieForm" type="axlomoso.ezbay.struts.form.CategorieForm" />
 		<form-bean name="rechercheForm" type="axlomoso.ezbay.struts.form.RechercheForm" />
+    <form-bean name="enchereForm" type="axlomoso.ezbay.struts.form.EnchereForm" />
 
 	</form-beans>
 
@@ -113,6 +114,24 @@
       type="axlomoso.ezbay.struts.action.RechercheArticleAction" >
       <forward name="showList" path="ezBay.rechercheArticle" />
 	</action>
+    <action
+      attribute="enchereForm"
+      name="enchereForm"
+      parameter="do"
+      path="/enchere"
+      scope="request"
+      type="axlomoso.ezbay.struts.action.EnchereAction" validate="false">
+      <forward name="showEnchereForm" path="/jsp/articleEnchereEdit.jsp" />
+    </action>
+
+    <action
+      attribute="enchereForm"
+      input="/jsp/articleEnchereEdit.jsp"
+      validate="true"
+      name="enchereForm"
+      path="/enchereSave"
+      scope="request"
+      type="axlomoso.ezbay.struts.action.EnchereSaveAction" />
 	
 	</action-mappings>
 

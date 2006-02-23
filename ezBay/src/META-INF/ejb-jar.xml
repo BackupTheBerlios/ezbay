@@ -59,6 +59,22 @@
       </session>
 
       <session >
+         <description><![CDATA[Description for ActionEnchereFacade]]></description>
+         <display-name>Name for ActionEnchereFacade</display-name>
+
+         <ejb-name>ActionEnchereFacade</ejb-name>
+
+         <home>axlomoso.ezbay.model.interfaces.ActionEnchereFacadeHome</home>
+         <remote>axlomoso.ezbay.model.interfaces.ActionEnchereFacade</remote>
+         <local-home>axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocal</local>
+         <ejb-class>axlomoso.ezbay.model.ejb.ActionEnchereFacadeSession</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
          <description><![CDATA[Description for CategorieFacade]]></description>
          <display-name>Name for CategorieFacade</display-name>
 
@@ -271,6 +287,16 @@
          </cmp-field>
          <primkey-field>id</primkey-field>
 
+         <query>
+            <description><![CDATA[findByArticleId]]></description>
+            <query-method>
+               <method-name>findByArticleId</method-name>
+               <method-params>
+                  <method-param>java.lang.String</method-param>
+               </method-params>
+            </query-method>
+            <ejb-ql><![CDATA[ SELECT DISTINCT OBJECT(ae) FROM actionenchere AS ae, article AS a WHERE a.id = ?1 AND ae.articleLocal = a ORDER BY ae.date DESC]]></ejb-ql>
+         </query>
 	  <!-- Write a file named ejb-finders-ActionEnchereBean.xml if you want to define extra finders. -->
 
       </entity>

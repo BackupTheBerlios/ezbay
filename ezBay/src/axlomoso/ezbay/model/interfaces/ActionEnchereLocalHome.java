@@ -19,6 +19,9 @@ public interface ActionEnchereLocalHome
    public axlomoso.ezbay.model.interfaces.ActionEnchereLocal create(axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO)
       throws javax.ejb.CreateException;
 
+   public java.util.Collection findByArticleId(java.lang.String articleId)
+      throws javax.ejb.FinderException;
+
    public axlomoso.ezbay.model.interfaces.ActionEnchereLocal findByPrimaryKey(java.lang.String pk)
       throws javax.ejb.FinderException;
 

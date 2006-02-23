@@ -200,6 +200,38 @@ public class ArticleAction extends DispatchAction {
 		return mapping.findForward(target);
 	}	
 	
+	public ActionForward encherirArticle(
+			//mise en vente d'un article existant
+			ActionMapping mapping,
+			ActionForm form,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("ArticleAction.retirerArticle()");
+		String target = "showVendeurArticles";
+		ActionErrors erreurs = new ActionErrors();
+		String articleId = request.getParameter("id");
+			try {
+				MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
+				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
+				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
+				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
+				vendeurFacade.mettreEnVenteArticle(vendeurId, articleId);
+			} catch (ArticleProprietaireException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.nonProprietaire"));
+				e.printStackTrace();
+			} catch (ArticleVenduException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleVendu"));
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if (!erreurs.isEmpty()) {
+				saveErrors(request, erreurs);
+				target = "echecMiseEnVente";
+			}
+		return mapping.findForward(target);
+	}	
+	
 	private void setArticleForm(String articleId, ActionForm form, HttpServletRequest request) throws Exception{
 		ArticleForm articleEditForm = (ArticleForm) form;	
 		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();

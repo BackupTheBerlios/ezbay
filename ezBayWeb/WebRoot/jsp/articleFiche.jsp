@@ -133,7 +133,11 @@
 		</table>
 		<br />
 		<br />
-
+		
+		
+			<html:link action="/enchere.do?do=showEnchereForm" paramName="articleForm" paramProperty="id" paramId="articleId">
+				<bean:message key="link.articleEncherir" />
+			</html:link>
 		<br />
 		<br />
 		</td>

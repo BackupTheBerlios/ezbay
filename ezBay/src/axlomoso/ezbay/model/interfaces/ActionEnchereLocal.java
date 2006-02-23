@@ -34,4 +34,6 @@ public interface ActionEnchereLocal
 
    public void setArticleLocal( axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal ) ;
 
+   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO getActionEnchereDTO(  ) ;
+
 }

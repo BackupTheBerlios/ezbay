@@ -218,7 +218,7 @@ public class MembreForm extends ActionForm {
 					errors.add("codePostal", new ActionError(
 					"inscription.erreur.codePostal.badFormat"));
 			}
-			catch (Exception e) {
+			catch (NumberFormatException e) {
 			errors.add("codePostal", new ActionError("inscription.erreur.codePostal.badFormat"));}
 		}
 		
@@ -241,7 +241,7 @@ public class MembreForm extends ActionForm {
 				if ((membreDTO.getTelephonePortable() != null)&&(membreDTO.getTelephonePortable().length() != 0)){
 					long x=Long.parseLong(membreDTO.getTelephonePortable());					
 				}
-			} catch (Exception e) {
+			} catch (NumberFormatException e) {
 				errors.add("telephoneformat", new ActionError("inscription.erreur.telephone.badFormat"));
 			}
 		} 

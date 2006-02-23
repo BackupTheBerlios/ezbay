@@ -1,6 +1,7 @@
 package axlomoso.ezbay.model.ejb;
 
 import java.rmi.RemoteException;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.ejb.EJBException;
@@ -10,6 +11,7 @@ import javax.ejb.RemoveException;
 
 import javax.ejb.CreateException;
 
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ActionEnchereUtil;
@@ -47,6 +49,18 @@ import axlomoso.ezbay.model.interfaces.ActionEnchereUtil;
  * @ejb:util generate="physical"
  * 
  * @ejb.value-object match = "*"
+ * 
+ * @ejb.finder
+* 		description="findByArticleId"
+* 		signature="java.util.Collection findByArticleId(java.lang.String articleId)" 
+* 		query="
+* 		SELECT DISTINCT OBJECT(ae) 
+* 		FROM actionenchere AS ae,
+* 			article AS a 
+* 		WHERE 
+* 			a.id = ?1 
+* 			AND ae.articleLocal = a
+* 		ORDER BY ae.date DESC"
  */
 public abstract class ActionEnchereBean implements EntityBean {
 
@@ -125,6 +139,13 @@ public abstract class ActionEnchereBean implements EntityBean {
 	   */
 	  public abstract void setArticleLocal(ArticleLocal articleLocal);		
 	
+	  /**
+	   * @ejb.interface-method view-type = "local"
+	   * @param
+	   */
+	  public abstract ActionEnchereDTO getActionEnchereDTO();
+
+	  
 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match
 	 * the signatures of the create<METHOD>(...) methods of the entity bean?s home interface.
@@ -159,7 +180,8 @@ public abstract class ActionEnchereBean implements EntityBean {
 	 */
 	public String ejbCreate(ActionEnchereDTO enchereDTO) throws CreateException {
 		String tId = ActionEnchereUtil.generateGUID(this);
-		this.setDate(enchereDTO.getDate());
+		Calendar calendar = Calendar.getInstance();
+		this.setDate(calendar.getTime());
 		this.setMontant(enchereDTO.getMontant());
 		this.setDateLimite(enchereDTO.getDateLimite());
 		return tId;

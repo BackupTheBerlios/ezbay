@@ -1,0 +1,67 @@
+//Created by MyEclipse Struts
+// XSL source (default): platform:/plugin/com.genuitec.eclipse.cross.easystruts.eclipse_4.0.1/xslt/JavaClass.xsl
+
+package axlomoso.ezbay.struts.action;
+
+import java.rmi.RemoteException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.actions.DispatchAction;
+
+import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.struts.form.EnchereForm;
+import axlomoso.ezbay.struts.views.ArticleView;
+
+/** 
+ * MyEclipse Struts
+ * Creation date: 02-23-2006
+ * 
+ * XDoclet definition:
+ * @struts.action path="/enchere" name="enchereForm" parameter="do" scope="request" validate="true"
+ */
+public class EnchereAction extends DispatchAction {
+
+	// --------------------------------------------------------- Instance Variables
+	
+	// --------------------------------------------------------- Methods
+
+	/** 
+	 * Method showEnchereForm
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward showEnchereForm(
+		ActionMapping mapping,
+		ActionForm form,
+		HttpServletRequest request,
+		HttpServletResponse response) {
+		EnchereForm enchereForm = (EnchereForm) form;
+		ArticleFacadeDelegate articleDelegate = ArticleFacadeDelegate.getInstance();	
+		String articleId = request.getParameter("articleId");
+		try {
+			ArticleView articleView = new ArticleView();
+			ArticleDTO articleDTO;
+			articleDTO = articleDelegate.getArticle(articleId);
+			articleView.setArticleDTO(articleDTO);
+			articleView.setDerniereEnchereDTO(articleDelegate.getDerniereEnchere(articleDTO.getId()));
+			enchereForm.setArticleView(articleView);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		return (mapping.findForward("showEnchereForm"));
+	}
+
+}
+
