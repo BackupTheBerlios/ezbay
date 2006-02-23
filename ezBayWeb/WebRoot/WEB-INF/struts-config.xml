@@ -28,9 +28,9 @@
 
 	<!-- Action Mappings Configuration -->
 	<action-mappings>
-		<action path="/membreSave" input="ezBay.inscription" type="axlomoso.ezbay.struts.action.MembreSaveAction" name="membreForm" scope="request" validate="true">
+		<action path="/membreSave" input="ezBay.membreEdit" type="axlomoso.ezbay.struts.action.MembreSaveAction" name="membreForm" scope="request" validate="true">
 			<forward name="succesUpdate" path="/membre.do?do=showInformations" redirect="true" />
-			<forward name="echec" path="ezBay.inscription" />
+			<forward name="echec" path="ezBay.membreEdit" />
 			<forward name="succesInscription" path="/myEzBay.do?do=showMyEzBay" redirect="true" />
 		</action>
 		<action forward="/jsp/index.jsp" path="/default" unknown="true" />
@@ -91,9 +91,9 @@
 		</action>
 
 		<action attribute="membreForm" name="membreForm" parameter="do" path="/membre" scope="request" type="axlomoso.ezbay.struts.action.MembreAction" validate="false">
-			<forward name="showInformations" path="ezBay.membre.informations" />
-			<forward name="showEdit" path="ezBay.inscription" />
-			<forward name="showInscription" path="ezBay.inscription"  />
+			<forward name="showInformations" path="ezBay.membreInformations" />
+			<forward name="showEdit" path="ezBay.membreEdit" />
+			<forward name="showInscription" path="ezBay.membreEdit"  />
 			<forward name="showMembreFiche" path="ezBay.membreFiche" />
 			
 		</action>

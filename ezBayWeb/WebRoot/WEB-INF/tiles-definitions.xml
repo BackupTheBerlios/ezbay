@@ -23,7 +23,7 @@
 	</definition>
 	
 	<!-- Tiles Definition of membreEdit -->
-	<definition name="ezBay.inscription" extends="base.definition">
+	<definition name="ezBay.membreEdit" extends="base.definition">
 		<put name="title" value="EzBay" />
 		<put name="body" value="/jsp/membreEdit.jsp" />
 	</definition>
@@ -35,7 +35,7 @@
 	</definition>
 	
 	<!-- Tiles Definition of membreInformations -->
-	<definition name="ezBay.membre.informations" extends="base.definition">
+	<definition name="ezBay.membreInformations" extends="base.definition">
 		<put name="title" value="EzBay" />
 		<put name="body" value="/jsp/membreInformations.jsp" />
 	</definition>
