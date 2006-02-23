@@ -11,17 +11,17 @@
 <body>
 
 
-<table border="1">
+<table border="0">
 <tbody>
 <%-- set the header --%>
 <tr>
 <td>&nbsp;</td>
-<td><bean:message key="articleList.libelle" /></td>
-<td><bean:message key="articleList.marque" /></td>
-<td><bean:message key="articleList.modele" /></td>
-<td><bean:message key="articleList.prixVente" /></td>
-<td><bean:message key="articleList.anneeFabrication" /></td>
-<td><bean:message key="articleList.dateLimite" /></td>
+<td><h2><bean:message key="articleList.libelle" /></h2></td>
+<td><h2><bean:message key="articleList.marque" /></h2></td>
+<td><h2><bean:message key="articleList.modele" /></h2></td>
+<td><h2><bean:message key="articleList.prixVente" /></h2></td>
+<td><h2><bean:message key="articleList.anneeFabrication" /></h2></td>
+<td><h2><bean:message key="articleList.dateLimite" /></h2></td>
 </tr>
 <%-- start with an iterate over the array articlesDTO --%>
 <logic:iterate name="rechercheForm" property="articlesDTO" id="article">

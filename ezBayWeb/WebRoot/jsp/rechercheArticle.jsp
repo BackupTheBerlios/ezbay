@@ -26,16 +26,17 @@
 </head>
 
 <body>
+<center>
 	<html:errors />
 	<%-- create a html form --%>
 	<html:form action="rechercheArticle">
-		<table border="1">
+		<table border="0">
 			<tbody>
 
 				<tr>
 					<td>
-						<bean:message key="articleEdit.categorie" />
-						:
+						<b><bean:message key="articleEdit.categorie" />
+						:</b>
 					</td>
 					<td>
 						<html:select property="categorieDTO.id">
@@ -46,8 +47,8 @@
 
 				<tr>
 					<td>
-						<bean:message key="articleEdit.libelle" />
-						:
+						<b><bean:message key="articleEdit.libelle" />
+						:</b>
 					</td>
 					<td>
 						<html:text property="libelle" />
@@ -56,8 +57,8 @@
 				<tr>
 
 					<td>
-						<bean:message key="articleEdit.marque" />
-						:
+						<b><bean:message key="articleEdit.marque" />
+						:</b>
 					</td>
 					<td>
 						<html:text property="marque" />
@@ -66,8 +67,8 @@
 
 				<tr>
 					<td>
-						<bean:message key="articleEdit.modele" />
-						:
+						<b><bean:message key="articleEdit.modele" />
+						:</b>
 					</td>
 					<td>
 						<html:text property="modele" />
@@ -76,8 +77,8 @@
 
 				<tr>
 					<td>
-						<bean:message key="rechercheArticle.prixVenteMin" />
-						:
+						<b><bean:message key="rechercheArticle.prixVenteMin" />
+						:</b>
 					</td>
 					<td>
 						<html:text property="stringPrixVenteMin" />
@@ -86,8 +87,8 @@
 
 				<tr>
 					<td>
-						<bean:message key="rechercheArticle.prixVenteMax" />
-						:
+						<b><bean:message key="rechercheArticle.prixVenteMax" />
+						:</b>
 					</td>
 					<td>
 						<html:text property="stringPrixVenteMax" />
@@ -96,8 +97,8 @@
 
 				<tr>
 					<td>
-						<bean:message key="rechercheArticle.anneeFabrication" />
-						:
+						<b><bean:message key="rechercheArticle.anneeFabrication" />
+						:</b>
 					</td>
 					<td>
 						<html:text property="stringAnneeFabrication" />
@@ -106,8 +107,8 @@
 
 				<tr>
 					<td>
-						<bean:message key="rechercheArticle.dateLimite" />
-						:
+						<b><bean:message key="rechercheArticle.dateLimite" />
+						:</b>
 					</td>
 					<td>
 						<html:text property="stringDateLimite" />
@@ -129,28 +130,30 @@
 	</html:form>
 
 <logic:notEmpty name="rechercheForm" property="articlesDTO"> 
-<bean:message key="rechercheArticle.nbArticles" /> : <bean:write name="rechercheForm" property="nbArticles" />
-	<table border="1">
+<br /><br />
+<b><bean:message key="rechercheArticle.nbArticles" /> : <bean:write name="rechercheForm" property="nbArticles" /></b>
+	<br /><br /><br />
+	<table border="0">
 		<tbody>
 			<%-- set the header --%>
 			<tr>
-				<td>
-					<bean:message key="articleList.libelle" />
+				<td width="16%" align="center">
+					<h2><bean:message key="articleList.libelle" /></h2>
 				</td>
-				<td>
-					<bean:message key="articleList.marque" />
+				<td width="16%" align="center">
+					<h2><bean:message key="articleList.marque" /></h2>
 				</td>
-				<td>
-					<bean:message key="articleList.modele" />
+				<td width="16%" align="center">
+					<h2><bean:message key="articleList.modele" /></h2>
 				</td>
-				<td>
-					<bean:message key="articleList.prixVente" />
+				<td width="16%" align="center">
+					<h2><bean:message key="articleList.prixVente" /></h2>
 				</td>
-				<td>
-					<bean:message key="articleList.anneeFabrication" />
+				<td width="18%" align="center">
+					<h2><bean:message key="link.articleFiche" /></h2>
 				</td>
-				<td>
-					<bean:message key="articleList.dateLimite" />
+				<td width="14%" align="center">
+					<h2><bean:message key="link.articleEncherir" /></h2>
 				</td>
 			</tr>
 			<%-- start with an iterate over the array articlesDTO --%>
@@ -158,27 +161,27 @@
 				<tr>
 					<%-- article informations --%>
 
-					<td>
+					<td align="center">
 						<bean:write name="article" property="libelle" />
 					</td>
-					<td>
+					<td align="center">
 						<bean:write name="article" property="marque" />
 					</td>
-					<td>
+					<td align="center">
 						<bean:write name="article" property="modele" />
 					</td>
-					<td>
+					<td align="center">
 						<bean:write name="article" property="prixVente" />
 					</td>
-					<td>
-						<bean:write name="article" property="anneeFabrication" />
-					</td>
-					<td>
-						<bean:write name="article" property="formattedDateLimite" />
-					</td>
-					<td>
+					
+					<td align="center">
 						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
 							<bean:message key="link.articleFiche" />
+						</html:link>
+					</td>
+					<td align="center">
+						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
+							<bean:message key="link.articleEncherir" />
 						</html:link>
 					</td>
 				</tr>
@@ -193,10 +196,11 @@
 			</logic:notPresent>
 		</tbody>
 	</table>
+
 </logic:notEmpty>
 <logic:empty name="rechercheForm" property="articlesDTO"> 
-	<bean:message key="rechercheArticle.noArticle" /> 
+	<b><bean:message key="rechercheArticle.noArticle" /> </b>
 </logic:empty>
-
+</center>
 </body>
 </html:html>
