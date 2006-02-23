@@ -25,110 +25,121 @@
 </head>
 
 <body>
-	<table>
-		<tr>
-			<td>
-				<h3>
-					<bean:message key="articleFiche.categorie" />
+	<center>
+		<table>
+			<tr>
+				<td>
+					<b>
+						<bean:message key="articleFiche.categorie" />
+						:
+						<b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="categorieDTO.libelle" />
+				</td>
+				<td>
+					<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="vendeurId" paramId="vendeurId">
+						<bean:message key="link.vendeurFiche" />
+					</html:link>
 					:
-				</h3>
-			</td>
-			<td>
-				<bean:write name="articleForm" property="categorieDTO.libelle" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<h3>
-					<bean:message key="articleFiche.libelle" />
+					<bean:write name="articleForm" property="membrePseudo" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>
+						<bean:message key="articleFiche.libelle" />
+						:
+					</b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="libelle" />
+				</td>
+				<td>
+					<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="vendeurId" paramId="vendeurId">
+						<bean:message key="link.clientFiche" />
+					</html:link>
 					:
-				</h3>
-			</td>
-			<td>
-				<bean:write name="articleForm" property="libelle" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<h3>
-					<bean:message key="articleFiche.modele" />
-					:
-				</h3>
-			</td>
-			<td>
-				<bean:write name="articleForm" property="marque" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<h3>
-					<bean:message key="articleFiche.marque" />
-					:
-				</h3>
-			</td>
-			<td>
-				<bean:write name="articleForm" property="modele" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<h3>
-					<bean:message key="articleFiche.prixVente" />
-					:
-				</h3>
-			</td>
-			<td>
-				<bean:write name="articleForm" property="prixVente" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<h3>
-					<bean:message key="articleFiche.anneeFabrication" />
-					:
-				</h3>
-			</td>
-			<td>
-				<bean:write name="articleForm" property="anneeFabrication" />
-			</td>
-		</tr>
-		<tr>
-			<td>
+					<bean:write name="articleForm" property="membrePseudo" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>
+						<bean:message key="articleFiche.modele" />
+						:
+					</b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="marque" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>
+						<bean:message key="articleFiche.marque" />
+						:
+					</b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="modele" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>
+						<bean:message key="articleFiche.prixVente" />
+						:
+					</b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="prixVente" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>
+						<bean:message key="articleFiche.anneeFabrication" />
+						:
+					</b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="anneeFabrication" />
+				</td>
+			</tr>
+			<tr>
+				<td>
 
-				<h3>
-					<bean:message key="articleFiche.dateLimite" />
-					:
-				</h3>
-			</td>
-			<td>
-				<bean:write name="articleForm" property="stringDateLimite" />
-			</td>
-		</tr>
-		<tr>
-			<td>
+					<b>
+						<bean:message key="articleFiche.dateLimite" />
+						:
+					</b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="stringDateLimite" />
+				</td>
+			</tr>
+			<tr>
+				<td>
 
-				<h3>
-					<bean:message key="articleFiche.description" />
-					:
-				</h3>
-			</td>
-			<td>
-				<bean:write name="articleForm" property="description" />
-			</td>
+					<b>
+						<bean:message key="articleFiche.description" />
+						:
+					</b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="description" />
+				</td>
+			</tr>
+		</table>
+		<br />
+		<br />
+
+		<br />
+		<br />
+		</td>
 		</tr>
-	</table>
-	<br />
-	<br />
-	<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="vendeurId" paramId="vendeurId">
-		<bean:message key="link.vendeurFiche" />
-	</html:link>:<bean:write name="articleForm" property="membrePseudo" />
-	<br />
-	<br />
-	<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="vendeurId" paramId="vendeurId">
-		<bean:message key="link.clientFiche" />
-	</html:link>:<bean:write name="articleForm" property="membrePseudo" />
-	</td>
-	</tr>
-	</table>
+		</table>
+	</center>
 </body>
 </html:html>
