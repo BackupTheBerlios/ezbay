@@ -50,7 +50,7 @@ public interface ArticleFacade
    public java.util.Collection getArticlesByCategorie( java.lang.String categorieId )
       throws java.rmi.RemoteException;
 
-   public axlomoso.ezbay.model.interfaces.EnchereDTO getDerniereEnchere( java.lang.String articleId )
+   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO getDerniereEnchere( java.lang.String articleId )
       throws java.rmi.RemoteException;
 
    public boolean isArticleEnAttente( java.lang.String articleId )

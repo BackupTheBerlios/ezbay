@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="ISO-8859-1"%>
 
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html" %>
@@ -25,18 +25,22 @@
 	<html:errors />
 		<%-- create a html form --%>
 
-		<bean:message key="articleEnchereEdit.libelleArticle" /> : <bean:write name="enchereForm" property="articleView.libelle" />
+		<bean:message key="articleEnchereEdit.libelleArticle" /> : <bean:write name="enchereForm" property="libelle" />
 		<br />
-		<logic:empty name="enchereForm" property="articleView.derniereEnchereDTO">
-			<bean:message key="articleEnchereEdit.prixDepart" /> : <bean:write name="enchereForm" property="articleView.prixVente" />		
-		</logic:empty>
-		<logic:notEmpty name="enchereForm" property="articleView.derniereEnchereDTO">
-			<bean:message key="articleEnchereEdit.derniereEnchere" /> : <bean:write name="enchereForm" property="articleView.derniereEnchereDTO.montant" />		
-		</logic:notEmpty>		
+		<logic:equal name="enchereForm" property="montantDerniereEnchere" value="0">
+			<bean:message key="articleEnchereEdit.prixDepart" /> : <bean:write name="enchereForm" property="prixVente" />		
+		</logic:equal>
+		<logic:notEqual name="enchereForm" property="montantDerniereEnchere" value="0">
+			<bean:message key="articleEnchereEdit.derniereEnchere" /> : <bean:write name="enchereForm" property="montantDerniereEnchere" />		
+		</logic:notEqual>		
 	<br />
 		<html:form action="enchereSave">
 			<bean:message key="articleEnchereEdit.montant" /> : <html:text property="stringMontant" />
 			<br>
+			<html:hidden property="montantDerniereEnchere" />
+			<html:hidden property="id" />
+			<html:hidden property="prixVente" />
+			<html:hidden property="libelle" />
 			<html:submit><bean:message key="bouton.label.valider" /></html:submit>	
 			</html:form>
 	</body>

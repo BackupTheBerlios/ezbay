@@ -15,6 +15,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.struts.form.EnchereForm;
 import axlomoso.ezbay.struts.views.ArticleView;
@@ -49,12 +50,15 @@ public class EnchereAction extends DispatchAction {
 		ArticleFacadeDelegate articleDelegate = ArticleFacadeDelegate.getInstance();	
 		String articleId = request.getParameter("articleId");
 		try {
-			ArticleView articleView = new ArticleView();
-			ArticleDTO articleDTO;
-			articleDTO = articleDelegate.getArticle(articleId);
-			articleView.setArticleDTO(articleDTO);
-			articleView.setDerniereEnchereDTO(articleDelegate.getDerniereEnchere(articleDTO.getId()));
-			enchereForm.setArticleView(articleView);
+			ArticleDTO articleDTO = articleDelegate.getArticle(articleId);
+			ActionEnchereDTO actionEnchereDTO = articleDelegate.getDerniereEnchere(articleDTO.getId());
+			if( actionEnchereDTO != null ){
+				enchereForm.setMontantDerniereEnchere(actionEnchereDTO.getMontant());
+			}
+			else{
+				enchereForm.setMontantDerniereEnchere(new Double(0));
+			}
+			enchereForm.setArticleDTO(articleDTO);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (Exception e) {

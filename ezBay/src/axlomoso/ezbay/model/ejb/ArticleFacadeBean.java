@@ -22,7 +22,7 @@ import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieLocal;
-import axlomoso.ezbay.model.interfaces.EnchereDTO;
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
@@ -382,11 +382,11 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @ejb.interface-method view-type = "both"
 	 * @param articleId
 	 */
-	public EnchereDTO getDerniereEnchere(String articleId){
-		EnchereDTO tRes = null;
+	public ActionEnchereDTO getDerniereEnchere(String articleId){
+		ActionEnchereDTO tRes = null;
 		ArrayList encheres = (ArrayList)actionEnchereFacade.getActionEncheresByArticle(articleId);
 		if( encheres.size() > 0 ){
-			tRes = (EnchereDTO)encheres.get(0);
+			tRes = (ActionEnchereDTO)encheres.get(0);
 		}
 		return tRes;
 	}

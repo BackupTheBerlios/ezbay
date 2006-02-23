@@ -9,6 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
@@ -81,7 +82,7 @@ public class ArticleFacadeDelegate {
 		return util.getArticlesDtoToView(articleFacade.rechercherArticlesEnVente(libcategorie, libelle, marque, modele, prixVenteMin,prixVenteMax, anneeFabrication, dateLimite));
 	}
 
-	public EnchereDTO getDerniereEnchere(String articleId) throws RemoteException {
+	public ActionEnchereDTO getDerniereEnchere(String articleId) throws RemoteException {
 		return articleFacade.getDerniereEnchere(articleId);
 	}
 	

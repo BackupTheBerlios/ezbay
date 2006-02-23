@@ -32,7 +32,7 @@ public interface ArticleFacadeLocal
 
    public java.util.Collection rechercherArticles( java.lang.String libcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVenteMin,java.lang.Double prixVenteMax,java.lang.Integer anneeFabrication,java.util.Date dateLimite ) ;
 
-   public axlomoso.ezbay.model.interfaces.EnchereDTO getDerniereEnchere( java.lang.String articleId ) ;
+   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO getDerniereEnchere( java.lang.String articleId ) ;
 
    public boolean isArticleEnAttente( java.lang.String articleId ) ;
 
