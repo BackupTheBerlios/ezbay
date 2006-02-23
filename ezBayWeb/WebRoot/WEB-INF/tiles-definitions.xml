@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+	<!-- Base Tiles Definition -->
+	<definition name="base.definition" path="/jsp/template.jsp">
+		<put name="logo" value="/jsp/logo.jsp" />
+		<put name="menu" value="/jsp/menu.jsp" />
+		<put name="footer" value="/jsp/footer.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of welcome page -->
+	<definition name="page.welcome" extends="base.definition">
+		<put name="title" value="Welcome page" />
+		<put name="body" value="/jsp/body.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of Connect -->
+	<definition name="monEzBay.connect" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/connect.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of membreEdit -->
+	<definition name="ezBay.inscription" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/membreEdit.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of vendeurEdit -->
+	<definition name="ezBay.inscription.vendeur" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/vendeurEdit.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of membreInformations -->
+	<definition name="ezBay.membre.informations" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/membreInformations.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of articleList -->
+	<definition name="ezBay.articleList" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/articleList.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of articleEdit -->
+	<definition name="ezBay.articleEdit" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/articleEdit.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of vendeurInformations -->
+	<definition name="ezBay.vendeurInformations" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/vendeurInformations.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of vendeurArticles -->
+	<definition name="ezBay.vendeurArticles" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/vendeurArticles.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of articleAdd -->
+	<definition name="ezBay.articleAdd" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/articleAdd.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of articleFiche -->
+	<definition name="ezBay.articleFiche" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/articleFiche.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of articleRetrait -->
+	<definition name="ezBay.articleRetrait" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/articleRetrait.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of membreFiche -->
+	<definition name="ezBay.membreFiche" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/membreFiche.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of listeCategorie -->
+	<definition name="ezBay.listeCategorie" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/listeCategorie.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of rechercheArticle -->
+	<definition name="ezBay.rechercheArticle" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/rechercheArticle.jsp" />
+	</definition>
+	
+</tiles-definitions>
