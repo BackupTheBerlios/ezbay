@@ -19,6 +19,7 @@
     <meta http-equiv="description" content="This is my page">
 </head>
 <body>
+<center>
 <font size="+1">
 <bean:message key="titre.application"/> - <bean:message key="inscription.label"/>
 </font><br>
@@ -94,6 +95,6 @@
 </table>
 <html:hidden property="id" />
 </html:form>
-
+</center>
 </body>
 </html>
