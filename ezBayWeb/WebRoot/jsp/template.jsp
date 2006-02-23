@@ -11,6 +11,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 	<HEAD>
+		   <link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
+ 
 		<title>
 			titre
 		</title>

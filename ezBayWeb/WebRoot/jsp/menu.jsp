@@ -6,7 +6,6 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-template" prefix="template" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested" %>
-
 <table cellspacing="2" cellpadding="2" border="0" width="30%">
 
 <logic:notEmpty name="membre" scope="session">

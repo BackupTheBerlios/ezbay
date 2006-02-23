@@ -4,7 +4,7 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" %>
 <html>
 <head>
-<title>
+ <title>
 <bean:message key="articleList.title" />
 </title>
 </head>

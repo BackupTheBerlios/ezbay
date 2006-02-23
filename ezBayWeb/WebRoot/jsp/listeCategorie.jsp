@@ -4,11 +4,12 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" %>
 <html>
 <head>
-<title>
+  <title>
 <bean:message key="categorieList.title" />
 </title>
 </head>
 <body>
+<center>
 <h2>
 <bean:message key="categorieList.title"/> 
 </h2><br>
@@ -28,5 +29,6 @@
 </logic:notPresent>
 <br /><br />
  <html:button property="back" onclick="location.href='default.do'">Back to menu</html:button>
+</center>
 </body>
 </html>
