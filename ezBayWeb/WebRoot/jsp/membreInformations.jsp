@@ -11,7 +11,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html locale="true">
   <head>
-  <title>membreInformations.jsp</title>
+  <title><bean:message key="membre.titre.infos"/></title>
     
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -21,60 +21,63 @@
   </head>
   
   <body>
+  <center>
 <font size="+1">
-<bean:message key="titre.application"/> - <bean:message key="membre.titre.infos"/>
+<bean:message key="membre.titre.infos"/>
 </font><br>
-<hr width="100%" noshade="true" />
+<hr width="50%" noshade="true" />
 <table>
 <tr>
-<td align="right"><bean:message key="inscription.label.nom"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.nom"/>:</b></td>
 <td><bean:write name="membreForm" property="nom" /></td>
 </tr>
 <tr>
-<td align="right"><bean:message key="inscription.label.prenom"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.prenom"/>:</b></td>
 <td><bean:write name="membreForm" property="prenom" /></td>
 </tr>
 <tr>
-<td align="right"><bean:message key="inscription.label.pseudo"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.pseudo"/>:</b></td>
 <td><bean:write name="membreForm" property="pseudo" /></td>
 </tr>
 <tr>
-<td align="right"><bean:message key="inscription.label.email"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.email"/>:</b></td>
 <td><bean:write name="membreForm" property="email" /></td>
 </tr>
-<td align="right"><bean:message key="inscription.label.adresse"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.adresse"/>:</b></td>
 <td><bean:write name="membreForm" property="adresse" /></td>
 </tr>
 <tr>
-<td align="right"><bean:message key="inscription.label.codepostal"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.codepostal"/>:</b></td>
 <td><bean:write name="membreForm" property="codePostal" /></td>
 </tr>
 <tr>
-<td align="right"><bean:message key="inscription.label.ville"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.ville"/>:</b></td>
 <td><bean:write name="membreForm" property="ville" /></td>
 </tr>
 <tr>
-<td align="right"><bean:message key="inscription.label.pays"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.pays"/>:</b></td>
 <td><bean:write name="membreForm" property="pays" /></td>
 </tr>
-<td align="right"><bean:message key="inscription.label.telephonefixe"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.telephonefixe"/>:</b></td>
 <td><bean:write name="membreForm" property="telephoneFixe" /></td>
 </tr>
 <tr>
-<td align="right"><bean:message key="inscription.label.telephoneportable"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.telephoneportable"/>:</b></td>
 <td><bean:write name="membreForm" property="telephonePortable" /></td>
 </tr>
 <tr>
-<td align="right"><bean:message key="inscription.label.dateNaissance"/>:</td>
+<td align="left"><b><bean:message key="inscription.label.dateNaissance"/>:</b></td>
 <td><bean:write name="membreForm" property="stringDateNaissance" /></td>
 </tr>
+<tr><td><br><br></td></tr>
 <tr>
-<td colspan="2">
+<td align="center">
 <html:link action="/myEzBay.do?do=showMyEzBay"><bean:message key="link.retour"/></html:link>
-<html:link action="/membre.do?do=showEditMembre"><bean:message key="link.membre.edit"/></html:link><br>
+</td>
+<td align="center"><html:link action="/membre.do?do=showEditMembre"><bean:message key="link.membre.edit"/></html:link><br>
 </td>
 </tr>
 </table>
-
+</center>
 </body>
 </html:html>
