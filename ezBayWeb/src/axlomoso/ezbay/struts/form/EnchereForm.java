@@ -64,6 +64,7 @@ public class EnchereForm extends ActionForm {
 			try {				
 					 Double d = new Double(Double.parseDouble(stringMontant));
 					 this.setMontant(d);
+					 // A deplacer dans EnchereSaveAction : début
 					 if( this.articleView.getDerniereEnchereDTO() != null ){
 						 // l'article a déjà été enchéri
 						 if( d.doubleValue() <= this.articleView.getDerniereEnchereDTO().getMontant().doubleValue() ){
@@ -78,6 +79,7 @@ public class EnchereForm extends ActionForm {
 							 errors.add("prixVente", new ActionError("articleEnchereEdit.erreurs.montantInferieurAPrixDepart"));
 						 }
 					 }
+					 // A deplacer dans EnchereSaveAction : fin
 				}				
 			 catch (NumberFormatException e) {
 				errors.add("prixVente", new ActionError("articleEnchereEdit.erreurs.montantInvalide"));

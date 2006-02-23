@@ -11,7 +11,7 @@ public class ArticleView {
 
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private VendeurDTO vendeurDTO = new VendeurDTO();
-	private EnchereDTO derniereEnchereDTO = new EnchereDTO();
+	private EnchereDTO derniereEnchereDTO = null;
 	
 	public Integer getAnneeFabrication() {
 		return articleDTO.getAnneeFabrication();

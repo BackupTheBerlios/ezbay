@@ -131,7 +131,13 @@
       name="enchereForm"
       path="/enchereSave"
       scope="request"
-      type="axlomoso.ezbay.struts.action.EnchereSaveAction" />
+      type="axlomoso.ezbay.struts.action.EnchereSaveAction" >
+      <forward
+        name="saveSuccess"
+        path="/categorie.do?do=showCategoriesRecherche"
+        redirect="true" />
+    </action>
+
 	
 	</action-mappings>
 

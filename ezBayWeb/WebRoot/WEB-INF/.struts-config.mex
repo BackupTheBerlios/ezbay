@@ -191,6 +191,12 @@
       <AbsolutePoint location="1909,1499" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/enchereSave.do,saveSuccess,/categorie.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2289,194" />
+      <AbsolutePoint location="781,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/article.do,echecRetrait,ezBay.articleRetrait,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="1525,1250" />

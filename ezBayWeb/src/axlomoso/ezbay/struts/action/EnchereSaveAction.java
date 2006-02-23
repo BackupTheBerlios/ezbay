@@ -40,8 +40,8 @@ public class EnchereSaveAction extends Action {
 		HttpServletRequest request,
 		HttpServletResponse response) {
 		EnchereForm enchereForm = (EnchereForm) form;
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("EnchereSaveAction.execute()");
+		return (mapping.findForward("saveSuccess"));
 	}
 
 }
