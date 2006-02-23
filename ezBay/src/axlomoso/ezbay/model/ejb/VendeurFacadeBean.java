@@ -14,6 +14,7 @@ import javax.ejb.SessionContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
 import axlomoso.ezbay.exceptions.ArticleEnVenteException;
 import axlomoso.ezbay.exceptions.ArticleProprietaireException;
 import axlomoso.ezbay.exceptions.ArticleVenduException;
@@ -302,7 +303,58 @@ public class VendeurFacadeBean implements SessionBean {
 			}
 		}
 	}
-
+	
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurId, ArticleDTO
+	 * @throws ArticleEnEnchereException 
+	 * @throws ArticleVenduException 
+	 * @throws VendeurInconnuException 
+	 * @throws Exception 
+	 */
+	public void retirerArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleEnEnchereException, ArticleVenduException {
+		if( !this.possedeArticle(vendeurId, articleId) ) {
+			throw new ArticleProprietaireException();
+		}
+		else if( articleFacade.isArticleEnEnchere(articleId) ){
+			throw new ArticleEnEnchereException();
+		}
+		else if( articleFacade.isArticleVendu(articleId) ){
+			throw new ArticleVenduException();
+		}
+		else{
+			try {
+				articleFacade.retirerArticle(articleId);
+			} catch (Exception e) {				
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurId, articleId
+	 * @throws ArticleVenduException 
+	 * @throws VendeurInconnuException 
+	 * @throws Exception 
+	 */
+	public void mettreEnVenteArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleVenduException {
+		if( !this.possedeArticle(vendeurId, articleId) ) {
+			throw new ArticleProprietaireException();
+		}
+		else if( articleFacade.isArticleVendu(articleId) ){
+			throw new ArticleVenduException();
+		}
+		else{
+			try {
+				articleFacade.mettreEnVenteArticle(articleId);
+			} catch (Exception e) {				
+				e.printStackTrace();
+			}
+		}
+	}
+	
    /** Retrieves the local interface of the Customer entity bean. 
   * @throws Exception */
 	public static VendeurLocal getEntity(String id) throws FinderException{

@@ -683,7 +683,7 @@
                <ejb-name>Article</ejb-name>
             </relationship-role-source>
             <cmr-field >
-               <cmr-field-name>enchereLocal</cmr-field-name>
+               <cmr-field-name>actionEnchereLocal</cmr-field-name>
                <cmr-field-type>java.util.Collection</cmr-field-type>
             </cmr-field>
          </ejb-relationship-role>

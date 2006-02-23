@@ -261,13 +261,13 @@ public abstract class ArticleBean implements EntityBean {
 		 *   role-name = "un article est lié a +sieurs encheres"
 		 *   @return a Collection of ActionEnchereLocal
 		 */ 
-		public abstract Collection getEnchereLocal();
+		public abstract Collection getActionEnchereLocal();
 
 		/**
 		 * @ejb.interface-method view-type = "local"
 		 * @param Collection of ActionEnchereLocal
 		 */
-		public abstract void setEnchereLocal(Collection enchereLocal);	
+		public abstract void setActionEnchereLocal(Collection enchereLocal);	
 
 		/**
 		   * @ejb.interface-method view-type = "local"

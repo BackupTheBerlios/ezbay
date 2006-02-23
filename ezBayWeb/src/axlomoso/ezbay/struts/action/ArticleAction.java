@@ -80,7 +80,7 @@ public class ArticleAction extends DispatchAction {
 		return mapping.findForward("showArticleFiche");	
 	}
 
-	public ActionForward retirerArticle(
+	public ActionForward supprimerArticle(
 			ActionMapping mapping,
 			ActionForm form,
 			HttpServletRequest request,
@@ -94,7 +94,8 @@ public class ArticleAction extends DispatchAction {
 		return mapping.findForward("showConfirmRetrait");
 	}
 	
-	public ActionForward confirmRetirerArticle(
+	public ActionForward confirmSupprimerArticle(
+			// suppression d'un article ==> suppression de la bd
 			ActionMapping mapping,
 			ActionForm form,
 			HttpServletRequest request,
@@ -130,14 +131,74 @@ public class ArticleAction extends DispatchAction {
 		return mapping.findForward(target);
 	}
 	
-	/* A supprimer */
-	/*public ActionForward showAdd(
+	public ActionForward retirerArticle(
+			//retrait d'un article de la vente ==> désactivation, mais reste en BD
 			ActionMapping mapping,
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		return mapping.findForward("showAdd");
-	}*/
+		System.out.println("ArticleAction.retirerArticle()");
+		String target = "showVendeurArticles";
+		ActionErrors erreurs = new ActionErrors();
+		String articleId = request.getParameter("id");
+			try {
+				MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
+				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
+				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
+				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
+				vendeurFacade.retirerArticle(vendeurId, articleId);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			} catch (ArticleProprietaireException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.nonProprietaire"));
+				e.printStackTrace();
+			} catch (ArticleEnVenteException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleEnVente"));
+				e.printStackTrace();
+			} catch (ArticleVenduException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleVendu"));
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if (!erreurs.isEmpty()) {
+				saveErrors(request, erreurs);
+				target = "echecRetrait";
+			}
+		return mapping.findForward(target);
+	}	
+	
+	public ActionForward mettreEnVenteArticle(
+			//mise en vente d'un article existant
+			ActionMapping mapping,
+			ActionForm form,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("ArticleAction.retirerArticle()");
+		String target = "showVendeurArticles";
+		ActionErrors erreurs = new ActionErrors();
+		String articleId = request.getParameter("id");
+			try {
+				MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
+				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
+				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
+				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
+				vendeurFacade.mettreEnVenteArticle(vendeurId, articleId);
+			} catch (ArticleProprietaireException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.nonProprietaire"));
+				e.printStackTrace();
+			} catch (ArticleVenduException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleVendu"));
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if (!erreurs.isEmpty()) {
+				saveErrors(request, erreurs);
+				target = "echecMiseEnVente";
+			}
+		return mapping.findForward(target);
+	}	
 	
 	private void setArticleForm(String articleId, ActionForm form, HttpServletRequest request) throws Exception{
 		ArticleForm articleEditForm = (ArticleForm) form;	

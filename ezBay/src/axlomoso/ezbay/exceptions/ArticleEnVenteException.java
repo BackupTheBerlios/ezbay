@@ -4,7 +4,7 @@ public class ArticleEnVenteException extends Exception {
 	String errMessage = "";
 	
 	public ArticleEnVenteException(){
-		errMessage = "L'article est déjà vendu !";
+		errMessage = "L'article est en vente !";
 	}
 	
 	public ArticleEnVenteException(String message){

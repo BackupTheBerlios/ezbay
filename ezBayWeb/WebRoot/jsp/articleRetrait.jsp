@@ -33,7 +33,7 @@
 	</logic:messagesPresent>
 	<logic:messagesNotPresent>
 	<bean:message key="articleRetrait.messageConfirm" /> <bean:write name="articleForm" property="articleDTO.libelle" /> ?
-			<html:link action="/article.do?do=confirmRetirerArticle" paramName="articleForm" paramProperty="articleDTO.id" paramId="id"><bean:message key="link.valider" /></html:link>
+			<html:link action="/article.do?do=confirmSupprimerArticle" paramName="articleForm" paramProperty="articleDTO.id" paramId="id"><bean:message key="link.valider" /></html:link>
 			&nbsp;<html:link href="javascript:history.back()"><bean:message key="link.annuler" /></html:link>
 	</logic:messagesNotPresent>
 	</body>

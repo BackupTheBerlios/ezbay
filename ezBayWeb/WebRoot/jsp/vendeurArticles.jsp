@@ -44,6 +44,7 @@
 <td><bean:message key="articleList.anneeFabrication" /></td>
 <td><bean:message key="articleList.dateLimite" /></td>
 <td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 	<logic:iterate name="vendeurForm" property="articlesEnAttente" id="article">
 		<tr>
@@ -67,7 +68,10 @@
 				<bean:write name="article" property="formattedDateLimite" />
 			</td>
 			<td>
-			<html:link action="/article.do?do=retirerArticle" paramName="article" paramProperty="id" paramId="id"><bean:message key="vendeurArticles.link.retirer" /></html:link>
+			<html:link action="/article.do?do=supprimerArticle" paramName="article" paramProperty="id" paramId="id"><bean:message key="vendeurArticles.link.supprimer" /></html:link>
+			</td>
+			<td>
+			<html:link action="/article.do?do=mettreEnVenteArticle" paramName="article" paramProperty="id" paramId="id"><bean:message key="vendeurArticles.link.mettreEnVente" /></html:link>
 			</td>
 		</tr>
 	</logic:iterate>
@@ -94,6 +98,7 @@
 <td><bean:message key="articleList.prixVente" /></td>
 <td><bean:message key="articleList.anneeFabrication" /></td>
 <td><bean:message key="articleList.dateLimite" /></td>
+<td>&nbsp;</td>
 </tr>
 	<logic:iterate name="vendeurForm" property="articlesEnVente" id="article">
 		<tr>
@@ -115,6 +120,9 @@
 			</td>
 			<td>
 				<bean:write name="article" property="formattedDateLimite" />
+			</td>
+			<td>
+			<html:link action="/article.do?do=retirerArticle" paramName="article" paramProperty="id" paramId="id"><bean:message key="vendeurArticles.link.retirer" /></html:link>
 			</td>
 		</tr>
 	</logic:iterate>

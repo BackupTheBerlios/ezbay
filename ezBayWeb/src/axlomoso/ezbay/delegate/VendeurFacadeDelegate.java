@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
+import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
 import axlomoso.ezbay.exceptions.ArticleEnVenteException;
 import axlomoso.ezbay.exceptions.ArticleProprietaireException;
 import axlomoso.ezbay.exceptions.ArticleVenduException;
@@ -98,6 +99,14 @@ public class VendeurFacadeDelegate {
 	
 	public void removeArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleEnVenteException, ArticleVenduException, Exception{
 		vendeurFacade.removeArticle(vendeurId, articleId);
-	}	
+	}
+	
+	public void retirerArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleEnEnchereException, ArticleVenduException, Exception{
+		vendeurFacade.retirerArticle(vendeurId, articleId);
+	}
+	
+	public void mettreEnVenteArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleVenduException, Exception{
+		vendeurFacade.mettreEnVenteArticle(vendeurId, articleId);
+	}
 	
 }

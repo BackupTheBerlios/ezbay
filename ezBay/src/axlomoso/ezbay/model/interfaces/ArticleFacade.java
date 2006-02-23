@@ -53,6 +53,9 @@ public interface ArticleFacade
    public boolean isArticleEnAttente( java.lang.String articleId )
       throws java.rmi.RemoteException;
 
+   public boolean isArticleEnEnchere( java.lang.String articleId )
+      throws java.rmi.RemoteException;
+
    public boolean isArticleEnVente( java.lang.String articleId )
       throws java.rmi.RemoteException;
 
@@ -63,6 +66,9 @@ public interface ArticleFacade
       throws java.rmi.RemoteException;
 
    public boolean isArticleEnVente( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )
+      throws java.rmi.RemoteException;
+
+   public boolean isArticleEnEnchere( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )
       throws java.rmi.RemoteException;
 
    public boolean isArticleVendu( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )

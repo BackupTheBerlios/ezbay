@@ -58,9 +58,9 @@ public interface ArticleLocal
 
    public void setCategorieLocal( axlomoso.ezbay.model.interfaces.CategorieLocal categorieLocal ) ;
 
-   public java.util.Collection getEnchereLocal(  ) ;
+   public java.util.Collection getActionEnchereLocal(  ) ;
 
-   public void setEnchereLocal( java.util.Collection enchereLocal ) ;
+   public void setActionEnchereLocal( java.util.Collection enchereLocal ) ;
 
    public axlomoso.ezbay.model.interfaces.ActionTransactionLocal getActionTransactionLocal(  ) ;
 

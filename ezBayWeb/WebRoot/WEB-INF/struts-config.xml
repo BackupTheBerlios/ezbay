@@ -54,6 +54,8 @@
       path="/vendeur.do?do=showArticles"
       redirect="true" />
       <forward name="echecDelete" path="ezBay.articleRetrait" />
+      <forward name="echecRetrait" path="ezBay.articleRetrait" />
+      <forward name="echecMiseEnVente" path="ezBay.articleRetrait" />
 		
 		</action>
 		<action attribute="connectForm" input="/jsp/connect.jsp" name="connectForm" parameter="do" path="/connect" scope="request" type="axlomoso.ezbay.struts.action.ConnectAction">
