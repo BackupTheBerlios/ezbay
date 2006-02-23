@@ -71,6 +71,7 @@ public class ConnectAction extends DispatchAction {
 				}
 				else{					
 					request.getSession().setAttribute("membre",membreDTO);
+					request.getSession().setAttribute("vendeurId",membreDelegate.getVendeurDTO(membreDTO.getId()).getId());
 					target = "succes";
 				}
 			} catch (RemoteException e) {
