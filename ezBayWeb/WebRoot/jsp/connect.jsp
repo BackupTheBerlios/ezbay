@@ -24,10 +24,10 @@
   </head>
   
 	<body>
+	<center>
 	<html:errors/>
 	<%-- create a html form --%>
 	<html:form action="connect">
-	<center>
 		<br /><br /></br>
 		<table>
 		<tr>
