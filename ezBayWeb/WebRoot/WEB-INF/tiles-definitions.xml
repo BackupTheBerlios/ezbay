@@ -64,12 +64,6 @@
 		<put name="body" value="/jsp/vendeurArticles.jsp" />
 	</definition>
 	
-	<!-- Tiles Definition of articleAdd -->
-	<definition name="ezBay.articleAdd" extends="base.definition">
-		<put name="title" value="EzBay" />
-		<put name="body" value="/jsp/articleAdd.jsp" />
-	</definition>
-	
 	<!-- Tiles Definition of articleFiche -->
 	<definition name="ezBay.articleFiche" extends="base.definition">
 		<put name="title" value="EzBay" />

@@ -75,7 +75,6 @@ public class VendeurFacadeBean implements SessionBean {
 		} catch (CreateException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	/**
@@ -205,10 +204,13 @@ public class VendeurFacadeBean implements SessionBean {
 		return tRes;
 	}
 	
-	/**
+
+	/*
+	 /**
 	 * @ejb.interface-method view-type = "both"
 	 * @param vendeurDTO
 	 */
+	/*
 	public Collection getArticles(String vendeurId) {
 		Collection tRes = new ArrayList();
 		try {
@@ -225,14 +227,14 @@ public class VendeurFacadeBean implements SessionBean {
 			e.printStackTrace();
 		}
 		return tRes;		
-	}
+	}*/
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
 	 * @param vendeurId
 	 */
 	public Collection getArticlesEnAttente(String vendeurId) {
-		return this.getArticles(vendeurId);
+		return articleFacade.getArticlesEnAttenteByVendeur(vendeurId);
 	}
 	
 	/**
@@ -240,8 +242,7 @@ public class VendeurFacadeBean implements SessionBean {
 	 * @param vendeurId
 	 */
 	public Collection getArticlesEnVente(String vendeurId) {
-		Collection tRes = new ArrayList(); 
-		return tRes;	
+		return articleFacade.getArticlesEnVenteByVendeur(vendeurId);
 	}
 	
 	/**
@@ -249,8 +250,7 @@ public class VendeurFacadeBean implements SessionBean {
 	 * @param vendeurId
 	 */
 	public Collection getArticlesVendus(String vendeurId) {
-		Collection tRes = new ArrayList(); 
-		return tRes;	
+		return articleFacade.getArticlesVendusByVendeur(vendeurId);
 	}
 
 	/**

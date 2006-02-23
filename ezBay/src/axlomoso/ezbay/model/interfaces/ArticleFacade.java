@@ -32,6 +32,12 @@ public interface ArticleFacade
    public java.util.Collection getArticlesEnVenteByVendeur( java.lang.String vendeurId )
       throws java.rmi.RemoteException;
 
+   public java.util.Collection getArticlesEnAttenteByVendeur( java.lang.String vendeurId )
+      throws java.rmi.RemoteException;
+
+   public java.util.Collection getArticlesVendusByVendeur( java.lang.String vendeurId )
+      throws java.rmi.RemoteException;
+
    public java.util.Collection getArticlesEnVenteByCategorie( java.lang.String categorieId )
       throws java.rmi.RemoteException;
 

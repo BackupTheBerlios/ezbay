@@ -239,7 +239,7 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "both"
 	 * @param vendeurId
 	 */
 	public Collection getArticlesEnVenteByVendeur(String vendeurId) {
@@ -248,7 +248,25 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurId
+	 */
+	public Collection getArticlesEnAttenteByVendeur(String vendeurId) {
+		//	retourne une collection d'ArticleDTO
+		return this.getOnlyArticlesEnAttente(this.getArticlesByVendeur(vendeurId));
+	}
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurId
+	 */
+	public Collection getArticlesVendusByVendeur(String vendeurId) {
+		//	retourne une collection d'ArticleDTO
+		return this.getOnlyArticlesVendus(this.getArticlesByVendeur(vendeurId));
+	}
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
 	 * @param categorieId
 	 */
 	public Collection getArticlesEnVenteByCategorie(String categorieId) {
@@ -257,7 +275,7 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "both"
 	 * @param
 	 */
 	public Collection rechercherArticles(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,
@@ -422,7 +440,7 @@ public class ArticleFacadeBean implements SessionBean {
 		Collection tRes = new ArrayList();
 		for (Iterator it = allArticlesLocal.iterator(); it.hasNext();) {
 			ArticleDTO articleDTO = (ArticleDTO) it.next();
-			if(this.isArticleEnVente(articleDTO)){
+			if(this.isArticleVendu(articleDTO)){
 				tRes.add(articleDTO);
 			}
 		}
@@ -434,7 +452,7 @@ public class ArticleFacadeBean implements SessionBean {
 		Collection tRes = new ArrayList();
 		for (Iterator it = allArticlesLocal.iterator(); it.hasNext();) {
 			ArticleDTO articleDTO = (ArticleDTO) it.next();
-			if(this.isArticleEnVente(articleDTO)){
+			if(this.isArticleEnAttente(articleDTO)){
 				tRes.add(articleDTO);
 			}
 		}

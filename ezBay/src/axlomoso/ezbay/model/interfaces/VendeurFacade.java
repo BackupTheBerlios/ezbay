@@ -26,9 +26,6 @@ public interface VendeurFacade
    public java.util.Collection getVendeurs(  )
       throws java.rmi.RemoteException;
 
-   public java.util.Collection getArticles( java.lang.String vendeurId )
-      throws java.rmi.RemoteException;
-
    public java.util.Collection getArticlesEnAttente( java.lang.String vendeurId )
       throws java.rmi.RemoteException;
 

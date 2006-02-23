@@ -74,9 +74,7 @@
 			<html:hidden property="id" />
 			<br>
 			<%-- submit and back button --%>
-			<html:button property="back" onclick="history.back();">Back</html:button>
-			&nbsp;
-			<html:submit>Save</html:submit>	
+			<html:submit><bean:message key="bouton.label.valider" /></html:submit>	
 			</html:form>
 	</body>
 </html:html>

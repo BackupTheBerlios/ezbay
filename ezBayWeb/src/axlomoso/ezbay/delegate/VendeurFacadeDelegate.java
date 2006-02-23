@@ -60,11 +60,11 @@ public class VendeurFacadeDelegate {
 	public void setVendeurFacade(VendeurFacade vendeurFacade) {
 		this.vendeurFacade = vendeurFacade;
 	}
-
+/*
 	public Collection getArticles(String vendeurId) throws RemoteException {
 		return vendeurFacade.getArticles(vendeurId);
 	}
-
+*/
 	public VendeurDTO getVendeur(String vendeurId) throws Exception, RemoteException {
 		return vendeurFacade.getVendeur(vendeurId);
 	}
@@ -83,12 +83,12 @@ public class VendeurFacadeDelegate {
 	}
 
 	public Collection getArticlesEnVente(String vendeurId) throws RemoteException {
-		Collection articles = vendeurFacade.getArticlesEnAttente(vendeurId);
+		Collection articles = vendeurFacade.getArticlesEnVente(vendeurId);
 		return util.getArticlesDtoToView(articles);
 	}
 
 	public Collection getArticlesVendus(String vendeurId) throws RemoteException {
-		Collection articles = vendeurFacade.getArticlesEnAttente(vendeurId);
+		Collection articles = vendeurFacade.getArticlesVendus(vendeurId);
 		return util.getArticlesDtoToView(articles);
 	}
 

@@ -47,7 +47,7 @@
 	    <td align="right"><html:link action="/vendeur.do?do=showArticles"><bean:message key="myEzBay.menu.sectionClient.link.articles"/></html:link></td>
 	</tr>
 	<tr>
-	    <td align="right"><html:link action="/article.do?do=showEdit"><bean:message key="myEzBay.menu.sectionClient.link.miseEnVente"/></html:link></td>
+	    <td align="right"><html:link action="/article.do?do=showEdit"><bean:message key="myEzBay.menu.sectionClient.link.ajoutArticle"/></html:link></td>
 	</tr>
 	
 	

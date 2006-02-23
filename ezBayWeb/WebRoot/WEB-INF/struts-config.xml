@@ -46,7 +46,6 @@
     </action>
 		<action attribute="articleForm" name="articleForm" parameter="do" path="/article" scope="request" validate="false" type="axlomoso.ezbay.struts.action.ArticleAction">
 			<forward name="showEdit" path="ezBay.articleEdit" />
-			<forward name="showAdd" path="ezBay.articleAdd" />
 			<forward name="showList" path="/articleList.do" redirect="true" />
 			<forward name="showArticleFiche" path="ezBay.articleFiche" />
       <forward name="showConfirmRetrait" path="ezBay.articleRetrait" />
@@ -69,7 +68,7 @@
 		</action>
 		<action
       attribute="articleForm"
-      input="/jsp/articleEdit.jsp"
+      input="ezBay.articleEdit"
       name="articleForm"
       path="/articleSave"
       scope="request"

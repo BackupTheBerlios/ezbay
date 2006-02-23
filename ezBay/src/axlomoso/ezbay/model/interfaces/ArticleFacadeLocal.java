@@ -20,6 +20,16 @@ public interface ArticleFacadeLocal
 
    public void removeArticle( java.lang.String articleId ) throws java.lang.Exception;
 
+   public java.util.Collection getArticlesEnVenteByVendeur( java.lang.String vendeurId ) ;
+
+   public java.util.Collection getArticlesEnAttenteByVendeur( java.lang.String vendeurId ) ;
+
+   public java.util.Collection getArticlesVendusByVendeur( java.lang.String vendeurId ) ;
+
+   public java.util.Collection getArticlesEnVenteByCategorie( java.lang.String categorieId ) ;
+
+   public java.util.Collection rechercherArticles( java.lang.String libcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVenteMin,java.lang.Double prixVenteMax,java.lang.Integer anneeFabrication,java.util.Date dateLimite ) ;
+
    public boolean isArticleEnAttente( java.lang.String articleId ) ;
 
    public boolean isArticleEnVente( java.lang.String articleId ) ;

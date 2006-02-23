@@ -181,6 +181,6 @@
 	</tbody>
 	</table>
 	<br /><br />
-<html:link action="article.do?do=showEdit"><bean:message key="myEzBay.menu.sectionClient.link.miseEnVente" /></html:link>
+<html:link action="article.do?do=showEdit"><bean:message key="myEzBay.menu.sectionClient.link.ajoutArticle" /></html:link>
 </body>
 </html:html>

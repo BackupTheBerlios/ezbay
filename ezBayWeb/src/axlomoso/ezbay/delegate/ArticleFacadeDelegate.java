@@ -72,10 +72,6 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getCategorieDTO(articleId);
 	}
 
-	public Object getPrimaryKey() throws RemoteException {
-		return articleFacade.getPrimaryKey();
-	}
-
 	public VendeurDTO getVendeurDTO(String articleId) throws Exception, RemoteException {
 		return articleFacade.getVendeurDTO(articleId);
 	}
