@@ -22,6 +22,7 @@
   </head>
   
 	<body>
+	<center>
 	<H1><bean:message key="articleEdit.title" /></H1>
 	<html:errors />
 		<%-- create a html form --%>
@@ -74,5 +75,6 @@
 			<%-- submit and back button --%>
 			<html:submit><bean:message key="bouton.label.valider" /></html:submit>	
 			</html:form>
+	</center>
 	</body>
 </html:html>
