@@ -19,7 +19,10 @@
 
 	<!-- Global Forwards Configuration -->
 	<global-forwards>
-		<forward name="welcome" path="/jsp/index.jsp" redirect="true" />
+		<forward
+      name="welcome"
+      path="/categorie.do?do=showCategories"
+      redirect="true" />
 
 
 

@@ -105,6 +105,13 @@
       <AbsolutePoint location="656,1717" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="welcome;6,null,/categorie.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1550,630" />
+      <AbsolutePoint location="823,630" />
+      <AbsolutePoint location="823,338" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/vendeur.do,succes,/myEzBay.do,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="200,650" />
@@ -211,7 +218,7 @@
       <AbsolutePoint location="781,250" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/article.do,echecRetrait,ezBay.articleRetrait,1" routingType="1">
+  <StrutsTransition id="/article.do,echecRetrait,ezBay.articleRetrait,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="1525,1250" />
       <AbsolutePoint location="1525,717" />
