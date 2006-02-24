@@ -3,6 +3,8 @@
 
 package axlomoso.ezbay.struts.action;
 
+import java.rmi.RemoteException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,6 +13,11 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
+import axlomoso.ezbay.delegate.MembreFacadeDelegate;
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.struts.form.EnchereForm;
 
 /** 
@@ -39,8 +46,24 @@ public class EnchereSaveAction extends Action {
 		ActionForm form,
 		HttpServletRequest request,
 		HttpServletResponse response) {
-		EnchereForm enchereForm = (EnchereForm) form;
-		System.out.println("EnchereSaveAction.execute()");
+		try {
+			MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
+			ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
+			EnchereForm enchereForm = (EnchereForm) form;
+			//recuperation des champs du form et session
+			ArticleDTO articleDTO = enchereForm.getArticleDTO();
+			Double montantEnchere = enchereForm.getMontantEnchereCourante();
+			String articleId = enchereForm.getArticleDTO().getId();
+			String membreId = ((MembreDTO)request.getSession().getAttribute("membre")).getId();
+			//creations objets
+			ActionEnchereDTO actionEnchereDTO = new ActionEnchereDTO();
+			actionEnchereDTO.setMontant(montantEnchere);
+			String clientId = membreFacade.getClientDTO(membreId).getId();
+			//action
+			articleFacade.encherir(actionEnchereDTO, articleId, clientId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return (mapping.findForward("saveSuccess"));
 	}
 

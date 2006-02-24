@@ -26,9 +26,8 @@ public class EnchereForm extends ActionForm {
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private String stringMontantEnchereCourante = "";
 	private Double montantEnchereCourante = null;
-	private Double montantDerniereEnchere = null;	
+	private Double montantDerniereEnchere = null;
 	// --------------------------------------------------------- Methods
-
 
 	/** 
 	 * Method reset
@@ -128,6 +127,5 @@ public class EnchereForm extends ActionForm {
 		}		
 		return errors;
 	}
-	
 }
 

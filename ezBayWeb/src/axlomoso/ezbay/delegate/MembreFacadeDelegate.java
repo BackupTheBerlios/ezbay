@@ -9,9 +9,11 @@ import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
 import axlomoso.ezbay.exceptions.PseudoDejaUtiliseException;
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
 import axlomoso.ezbay.model.interfaces.CategorieFacadeHome;
+import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.MembreFacade;
 import axlomoso.ezbay.model.interfaces.MembreFacadeHome;
@@ -64,12 +66,12 @@ public class MembreFacadeDelegate {
 		return membreFacade.getMembre(pseudo, password);
 	}
 
-	public MembreFacade getMembreFacade() {
-		return membreFacade;
+	public ClientDTO getClientDTO(String membreId) throws RemoteException {
+		return membreFacade.getClientDTO(membreId);
 	}
 
-	public void setMembreFacade(MembreFacade membreFacade) {
-		this.membreFacade = membreFacade;
+	public MembreFacade getMembreFacade() {
+		return membreFacade;
 	}
 	
 }

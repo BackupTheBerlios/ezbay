@@ -79,4 +79,7 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getDerniereEnchere(articleId);
 	}
 	
+	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws RemoteException{
+		return articleFacade.encherir(enchereDTO, articleId, clientId);
+	}
 }
