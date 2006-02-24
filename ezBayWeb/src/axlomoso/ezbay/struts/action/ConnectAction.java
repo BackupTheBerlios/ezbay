@@ -61,18 +61,25 @@ public class ConnectAction extends DispatchAction {
 		System.out.println("ConnectAction.validateConnect()");
 		ConnectForm connectForm = (ConnectForm) form;
 		ActionErrors erreurs = new ActionErrors();
+		ActionForward next = null;
+		String nextPath = request.getParameter("next");
 		String target = "";
 			try {
 				MembreFacadeDelegate membreDelegate = MembreFacadeDelegate.getInstance();
 				MembreDTO membreDTO = membreDelegate.getMembre(connectForm.getLogin(), connectForm.getPassword());
 				if( membreDTO == null){
 					erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("myEzBay.erreur.connexion"));
-					target = "echec";
+					next = mapping.findForward("echec");
+					request.setAttribute("next", nextPath);
 				}
-				else{					
+				else{
 					request.getSession().setAttribute("membre",membreDTO);
 					request.getSession().setAttribute("vendeurId",membreDelegate.getVendeurDTO(membreDTO.getId()).getId());
-					target = "succes";
+					if( nextPath != null ){
+						next = new ActionForward(nextPath);
+					}
+					else
+						next = mapping.findForward("succes");
 				}
 			} catch (RemoteException e) {
 				e.printStackTrace();
@@ -84,7 +91,7 @@ public class ConnectAction extends DispatchAction {
 			if (!erreurs.isEmpty()) {
 				saveErrors(request, erreurs);
 			}
-			return mapping.findForward(target);
+			return next;
 		}
 	
 	

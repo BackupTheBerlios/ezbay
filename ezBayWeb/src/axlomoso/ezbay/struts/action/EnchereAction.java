@@ -51,20 +51,25 @@ public class EnchereAction extends DispatchAction {
 		String target = "";
 		EnchereForm enchereForm = (EnchereForm) form;
 		ActionErrors erreurs = new ActionErrors();
+		String articleId = request.getParameter("articleId");
 		if(request.getSession().getAttribute("membre") == null){
+			String nextAfterConnect = "/enchere.do?do=showEnchereForm&articleId="+articleId;
+			request.setAttribute("next", nextAfterConnect);
 			target = "EchecMembreNonConnecte";
 			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleEnchereEdit.erreurs.membreNonConnecte"));
 		}
 		else{
 			ArticleFacadeDelegate articleDelegate = ArticleFacadeDelegate.getInstance();	
-			String articleId = request.getParameter("articleId");
 			try {
 				ArticleDTO articleDTO = articleDelegate.getArticle(articleId);
 				ActionEnchereDTO actionEnchereDTO = articleDelegate.getDerniereEnchere(articleDTO.getId());
+				//Pour poser une enchère il faut être connecté
 				if( actionEnchereDTO != null ){
+					//Erreur, utilisateur non connecté. 
 					enchereForm.setMontantDerniereEnchere(actionEnchereDTO.getMontant());
 				}
 				else{
+					//OK, utilisateur connecté. 
 					enchereForm.setMontantDerniereEnchere(new Double(0));
 				}
 				enchereForm.setArticleDTO(articleDTO);

@@ -47,7 +47,10 @@
 		</table>
 		<br /><br />
 		<html:hidden property="do" value="validateConnect" />
-
+		<logic:present name="next" scope="request">
+			<bean:define id="next" name="next" type="java.lang.String" /> 
+			<html:hidden property="next" value="<%= next %>"/>
+		</logic:present>
 		<%-- submit and back button --%>
 		<html:button property="home"  onclick="location.href='default.do'">Cancel</html:button>
 		&nbsp;
