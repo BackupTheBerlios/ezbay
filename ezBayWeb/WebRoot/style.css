@@ -10,4 +10,16 @@ body
   	scrollbar-face-color:#00A6C6;
 }
 
+a
+{
+	font-family:Times New Roman;
+	color:#00A6C6;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+a:hover
+{
+	color:#FF8627;
+}
 
