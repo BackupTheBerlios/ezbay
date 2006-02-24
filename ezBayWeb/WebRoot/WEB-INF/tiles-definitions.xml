@@ -5,7 +5,7 @@
 <tiles-definitions>
 	<!-- Base Tiles Definition -->
 	<definition name="base.definition" path="/jsp/template.jsp">
-		<put name="logo" value="/jsp/logo.jsp" />
+		<put name="header" value="/jsp/header.jsp" />
 		<put name="menu" value="/jsp/menu.jsp" />
 		<put name="footer" value="/jsp/footer.jsp" />
 	</definition>
@@ -13,7 +13,7 @@
 	<!-- Tiles Definition of welcome page -->
 	<definition name="page.welcome" extends="base.definition">
 		<put name="title" value="Welcome page" />
-		<put name="body" value="/jsp/body.jsp" />
+		<put name="body" value="/jsp/index.jsp" />
 	</definition>
 	
 	<!-- Tiles Definition of Connect -->
