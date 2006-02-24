@@ -121,13 +121,13 @@
       path="/enchere"
       scope="request"
       type="axlomoso.ezbay.struts.action.EnchereAction" validate="false">
-      <forward name="showEnchereForm" path="ezBay.articleEnchereEdit" />
+     <forward name="showEnchereForm" path="ezBay.articleEnchereEdit" />
       <forward name="EchecMembreNonConnecte" path="/myEzBay.do?do=showMyEzBay" />
     </action>
 
     <action
       attribute="enchereForm"
-      input="/jsp/articleEnchereEdit.jsp"
+      input="ezBay.articleEnchereEdit"
       validate="true"
       name="enchereForm"
       path="/enchereSave"
