@@ -44,6 +44,8 @@
 			<html:hidden property="libelle" />
 			<html:submit><bean:message key="bouton.label.valider" /></html:submit>	
 			</html:form>
+			<br />
+			<html:link action="article.do?do=showArticleFiche" paramName="enchereForm" paramProperty="id" paramId="id"><bean:message key="articleEnchereEdit.link.articleFiche" /></html:link>
 	</center>
 	</body>
 </html:html>
