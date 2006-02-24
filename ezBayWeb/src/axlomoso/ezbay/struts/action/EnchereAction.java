@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -48,8 +50,10 @@ public class EnchereAction extends DispatchAction {
 		HttpServletResponse response) {
 		String target = "";
 		EnchereForm enchereForm = (EnchereForm) form;
+		ActionErrors erreurs = new ActionErrors();
 		if(request.getSession().getAttribute("membre") == null){
 			target = "EchecMembreNonConnecte";
+			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleEnchereEdit.erreurs.membreNonConnecte"));
 		}
 		else{
 			ArticleFacadeDelegate articleDelegate = ArticleFacadeDelegate.getInstance();	
@@ -70,8 +74,11 @@ public class EnchereAction extends DispatchAction {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}
-		return (mapping.findForward(target));
+		}		
+	if (!erreurs.isEmpty()) {
+		saveErrors(request, erreurs);
+	}
+	return (mapping.findForward(target));
 	}
 
 }
