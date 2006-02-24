@@ -16,7 +16,7 @@ public interface ActionEnchereLocalHome
    public static final String COMP_NAME="java:comp/env/ejb/ActionEnchereLocal";
    public static final String JNDI_NAME="ActionEnchereLocal";
 
-   public axlomoso.ezbay.model.interfaces.ActionEnchereLocal create(axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO)
+   public axlomoso.ezbay.model.interfaces.ActionEnchereLocal create(axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO , axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal , axlomoso.ezbay.model.interfaces.ClientLocal clientLocal)
       throws javax.ejb.CreateException;
 
    public java.util.Collection findByArticleId(java.lang.String articleId)

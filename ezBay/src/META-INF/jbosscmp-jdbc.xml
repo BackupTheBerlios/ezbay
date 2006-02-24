@@ -341,6 +341,26 @@
       </ejb-relationship-role>
     </ejb-relation>
     <ejb-relation>
+      <ejb-relation-name>client-actionenchere</ejb-relation-name>
+
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>ActionEnchere est effectuée par un Client</ejb-relationship-role-name>
+          <fk-constraint>true</fk-constraint>
+		  <key-fields/>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>Client effectue des enchères</ejb-relationship-role-name>
+          <key-fields>
+             <key-field>
+               <field-name>id</field-name>
+               <column-name>client_id</column-name>
+             </key-field>
+          </key-fields>
+
+      </ejb-relationship-role>
+    </ejb-relation>
+    <ejb-relation>
       <ejb-relation-name>transaction-article</ejb-relation-name>
 
       <ejb-relationship-role>

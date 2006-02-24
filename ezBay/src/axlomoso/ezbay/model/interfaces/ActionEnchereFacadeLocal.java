@@ -14,6 +14,8 @@ public interface ActionEnchereFacadeLocal
    extends javax.ejb.EJBLocalObject
 {
 
+   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO createActionEnchere( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal,axlomoso.ezbay.model.interfaces.ClientLocal clientLocal ) throws javax.ejb.CreateException;
+
    public java.util.Collection getActionEncheresByArticle( java.lang.String articleId ) ;
 
 }

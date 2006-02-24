@@ -77,4 +77,7 @@ public interface ArticleFacade
    public boolean isArticleVendu( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )
       throws java.rmi.RemoteException;
 
+   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId )
+      throws java.rmi.RemoteException;
+
 }

@@ -15,6 +15,8 @@ import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ActionEnchereUtil;
+import axlomoso.ezbay.model.interfaces.ClientLocal;
+import axlomoso.ezbay.model.interfaces.VendeurLocal;
 
 /**
  * XDoclet-based CMP 2.x entity bean.  This class must be declared
@@ -145,7 +147,20 @@ public abstract class ActionEnchereBean implements EntityBean {
 	   */
 	  public abstract ActionEnchereDTO getActionEnchereDTO();
 
-	  
+		/**
+	   * @ejb.interface-method view-type = "local"
+	   * @ejb.relation name = "client-actionenchere" role-name = "ActionEnchere est effectuée par un Client"
+	   * @jboss.relation related-pk-field = "id" fk-column = "client_id" 
+	   *                 fk-constraint = "true"
+	   * @return
+	   */
+	  public abstract VendeurLocal getClientLocal();
+
+	  /**
+	   * @ejb.interface-method view-type = "local"
+	   * @param clientLocal
+	   */
+	  public abstract void setClientLocal(ClientLocal clientLocal);	
 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match
 	 * the signatures of the create<METHOD>(...) methods of the entity bean?s home interface.
@@ -178,8 +193,9 @@ public abstract class ActionEnchereBean implements EntityBean {
 	 *
 	 * @ejb.create-method
 	 */
-	public String ejbCreate(ActionEnchereDTO enchereDTO) throws CreateException {
+	public String ejbCreate(ActionEnchereDTO enchereDTO, ArticleLocal articleLocal, ClientLocal clientLocal) throws CreateException {
 		String tId = ActionEnchereUtil.generateGUID(this);
+		this.setId(tId);
 		Calendar calendar = Calendar.getInstance();
 		this.setDate(calendar.getTime());
 		this.setMontant(enchereDTO.getMontant());
@@ -206,7 +222,9 @@ public abstract class ActionEnchereBean implements EntityBean {
 	 * 
 	 * @throws CreateException Thrown if method fails due to system-level error.
 	 */
-	public void ejbPostCreate() throws CreateException {
+	public void ejbPostCreate(ActionEnchereDTO enchereDTO, ArticleLocal articleLocal, ClientLocal clientLocal) throws CreateException {
+		this.setArticleLocal(articleLocal);
+		this.setClientLocal(clientLocal);
 	}
 
 	/**

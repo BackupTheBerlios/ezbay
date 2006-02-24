@@ -24,4 +24,8 @@ public interface ClientLocal
 
    public axlomoso.ezbay.model.interfaces.ClientDTO getClientDTO(  ) ;
 
+   public java.util.Collection getActionEnchereLocal(  ) ;
+
+   public void setActionEnchereLocal( java.util.Collection actionEnchereLocal ) ;
+
 }

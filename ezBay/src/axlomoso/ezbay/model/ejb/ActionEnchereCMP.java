@@ -15,15 +15,6 @@ public abstract class ActionEnchereCMP
    implements javax.ejb.EntityBean
 {
 
-   /**
-    * Generated ejbPostCreate for corresponding ejbCreate method.
-    *
-    * @see #ejbCreate(axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO)
-    */
-   public void ejbPostCreate(axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO)
-   {
-   }
-
    public void ejbLoad() throws javax.ejb.EJBException, java.rmi.RemoteException
    {
       super.ejbLoad();

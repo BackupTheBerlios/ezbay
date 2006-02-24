@@ -50,4 +50,6 @@ public interface ArticleFacadeLocal
 
    public boolean isArticleVendu( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) ;
 
+   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId ) ;
+
 }

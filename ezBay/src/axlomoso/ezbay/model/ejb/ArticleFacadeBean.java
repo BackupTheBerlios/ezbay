@@ -13,16 +13,15 @@ import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
 import javax.naming.NamingException;
 
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocal;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
-import axlomoso.ezbay.model.interfaces.ArticleFacadeLocal;
-import axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieLocal;
-import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
+import axlomoso.ezbay.model.interfaces.ClientLocal;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
@@ -48,15 +47,13 @@ public class ArticleFacadeBean implements SessionBean {
 	/** The session context */
 	private SessionContext context;
 
-	ServiceLocator locator;
-	ActionEnchereFacadeLocalHome actionEnchereFacadeLocalHome;
 	ActionEnchereFacadeLocal actionEnchereFacade;
 	
 	public ArticleFacadeBean() {
 		super();
 		try {
-			locator = ServiceLocator.getInstance();
-			actionEnchereFacadeLocalHome = (ActionEnchereFacadeLocalHome) locator.getLocalHome(ActionEnchereFacadeLocalHome.JNDI_NAME);
+			ServiceLocator locator = ServiceLocator.getInstance();
+			ActionEnchereFacadeLocalHome actionEnchereFacadeLocalHome = (ActionEnchereFacadeLocalHome) locator.getLocalHome(ActionEnchereFacadeLocalHome.JNDI_NAME);
 			actionEnchereFacade = (ActionEnchereFacadeLocal) actionEnchereFacadeLocalHome.create();
 		} catch (ServiceLocatorException e) {
 			e.printStackTrace();
@@ -500,6 +497,29 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;
 	}
 
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param articleDTO
+	 */
+	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId){
+		ActionEnchereDTO tRes = null;
+		try {
+			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
+			ClientLocal clientLocal = ClientFacadeBean.getEntity(clientId);
+			tRes = actionEnchereFacade.createActionEnchere(enchereDTO, articleLocal, clientLocal);
+		} catch (FinderException e) {
+			e.printStackTrace();
+		} catch (CreateException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tRes;
+	}
+	
+	
+	
+	
 	private Collection getOnlyArticlesEnVente(Collection allArticlesLocal){
 		// retourne une Collection d'ArticlesDTO
 		Collection tRes = new ArrayList();

@@ -5,16 +5,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.FinderException;
 import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
 
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ActionEnchereLocal;
 import axlomoso.ezbay.model.interfaces.ActionEnchereLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
+import axlomoso.ezbay.model.interfaces.ClientDTO;
+import axlomoso.ezbay.model.interfaces.ClientLocal;
+import axlomoso.ezbay.model.interfaces.ClientLocalHome;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
 
@@ -76,6 +81,25 @@ public class ActionEnchereFacadeBean implements SessionBean {
 		// TODO Auto-generated method stub
 
 	}
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurDTO
+	 * @throws CreateException 
+	 */
+	public ActionEnchereDTO createActionEnchere(ActionEnchereDTO enchereDTO, ArticleLocal articleLocal, ClientLocal clientLocal) throws CreateException{
+		ActionEnchereDTO tRes = null;
+		try {
+			ActionEnchereLocalHome home = (ActionEnchereLocalHome) getEntityHome();
+			ActionEnchereLocal enchereLocal;
+			enchereLocal = home.create(enchereDTO, articleLocal, clientLocal);
+			tRes = enchereLocal.getActionEnchereDTO();
+		} catch (CreateException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return tRes;
+	}	
 
 	/**
 	 * @ejb.interface-method view-type = "both"

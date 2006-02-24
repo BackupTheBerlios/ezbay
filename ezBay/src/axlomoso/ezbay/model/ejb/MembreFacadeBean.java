@@ -118,7 +118,7 @@ public class MembreFacadeBean implements SessionBean {
     }		
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "both"
 	 * @param membreId
 	 */
 	public MembreDTO getMembre(String membreId) throws Exception{
@@ -131,7 +131,7 @@ public class MembreFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "both"
 	 * @param membreId
 	 * @throws FinderException 
 	 */

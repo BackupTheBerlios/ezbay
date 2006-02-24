@@ -1,6 +1,7 @@
 package axlomoso.ezbay.model.ejb;
 
 import java.rmi.RemoteException;
+import java.util.Collection;
 
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
@@ -86,6 +87,23 @@ public abstract class ClientBean implements EntityBean {
 		 */
 	    public abstract ClientDTO getClientDTO();	  
 	  
+		/**
+		 * @ejb.interface-method
+		 *   view-type="local"
+		 * @ejb.relation
+		 *   name = "client-actionenchere"
+		 *   role-name = "Client effectue des enchères"
+		 *   @return a Collection of ActionEnchere
+		 */ 
+		public abstract Collection getActionEnchereLocal();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param Collection of ActionEnchereLocal
+		 */
+		public abstract void setActionEnchereLocal(Collection actionEnchereLocal);	
+
+	    
 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match
 	 * the signatures of the create<METHOD>(...) methods of the entity bean?s home interface.

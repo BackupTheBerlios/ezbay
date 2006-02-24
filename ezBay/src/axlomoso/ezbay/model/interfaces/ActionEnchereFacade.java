@@ -14,6 +14,9 @@ public interface ActionEnchereFacade
    extends javax.ejb.EJBObject
 {
 
+   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO createActionEnchere( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal,axlomoso.ezbay.model.interfaces.ClientLocal clientLocal )
+      throws javax.ejb.CreateException, java.rmi.RemoteException;
+
    public java.util.Collection getActionEncheresByArticle( java.lang.String articleId )
       throws java.rmi.RemoteException;
 

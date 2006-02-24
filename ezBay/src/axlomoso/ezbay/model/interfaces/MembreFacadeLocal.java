@@ -14,4 +14,8 @@ public interface MembreFacadeLocal
    extends javax.ejb.EJBLocalObject
 {
 
+   public axlomoso.ezbay.model.interfaces.MembreDTO getMembre( java.lang.String membreId ) throws java.lang.Exception;
+
+   public axlomoso.ezbay.model.interfaces.MembreDTO getMembre( java.lang.String pseudo,java.lang.String password ) ;
+
 }

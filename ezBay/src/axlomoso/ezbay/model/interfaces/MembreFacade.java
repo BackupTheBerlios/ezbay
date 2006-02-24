@@ -29,6 +29,9 @@ public interface MembreFacade
    public axlomoso.ezbay.model.interfaces.VendeurDTO getVendeurDTO( java.lang.String membreId )
       throws java.rmi.RemoteException;
 
+   public axlomoso.ezbay.model.interfaces.ClientDTO getClientDTO( java.lang.String membreId )
+      throws java.rmi.RemoteException;
+
    public axlomoso.ezbay.model.interfaces.VendeurDTO saveVendeur( axlomoso.ezbay.model.interfaces.MembreDTO membreDTO,axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO )
       throws java.lang.Exception, java.rmi.RemoteException;
 
