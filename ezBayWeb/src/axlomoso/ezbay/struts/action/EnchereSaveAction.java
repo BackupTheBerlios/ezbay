@@ -46,12 +46,12 @@ public class EnchereSaveAction extends Action {
 		ActionForm form,
 		HttpServletRequest request,
 		HttpServletResponse response) {
-		EnchereForm enchereForm = (EnchereForm) form;
-		String articleId = enchereForm.getArticleDTO().getId();
 		try {
 			MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
 			ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
 			//recuperation des champs du form et session
+			EnchereForm enchereForm = (EnchereForm) form;
+			String articleId = enchereForm.getArticleDTO().getId();			
 			Double montantEnchere = enchereForm.getMontantEnchereCourante();
 			String membreId = ((MembreDTO)request.getSession().getAttribute("membre")).getId();
 			//creations objets
@@ -60,10 +60,10 @@ public class EnchereSaveAction extends Action {
 			String clientId = membreFacade.getClientDTO(membreId).getId();
 			//action
 			articleFacade.encherir(actionEnchereDTO, articleId, clientId);
+			return new ActionForward("/article.do?do=showArticleFiche&id=" + articleId);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		//return (mapping.findForward("saveSuccess" + "&id="+articleId)); => l'idée est de povoir renvoyer sur la fiche article
 		return (mapping.findForward("saveSuccess"));
 	}
 

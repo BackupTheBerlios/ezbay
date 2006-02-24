@@ -28,6 +28,7 @@ import axlomoso.ezbay.delegate.CategorieFacadeDelegate;
 import axlomoso.ezbay.delegate.MembreFacadeDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
+import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
 import axlomoso.ezbay.exceptions.ArticleEnVenteException;
 import axlomoso.ezbay.exceptions.ArticleProprietaireException;
 import axlomoso.ezbay.exceptions.ArticleVenduException;
@@ -138,7 +139,6 @@ public class ArticleAction extends DispatchAction {
 			HttpServletRequest request,
 			HttpServletResponse response) {
 		System.out.println("ArticleAction.retirerArticle()");
-		String target = "showVendeurArticles";
 		ActionErrors erreurs = new ActionErrors();
 		String articleId = request.getParameter("id");
 			try {
@@ -152,8 +152,8 @@ public class ArticleAction extends DispatchAction {
 			} catch (ArticleProprietaireException e) {
 				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.nonProprietaire"));
 				e.printStackTrace();
-			} catch (ArticleEnVenteException e) {
-				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleEnVente"));
+			} catch (ArticleEnEnchereException e) {
+				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleEnEnchere"));
 				e.printStackTrace();
 			} catch (ArticleVenduException e) {
 				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleVendu"));
@@ -163,9 +163,8 @@ public class ArticleAction extends DispatchAction {
 			}
 			if (!erreurs.isEmpty()) {
 				saveErrors(request, erreurs);
-				target = "echecRetrait";
 			}
-		return mapping.findForward(target);
+		return mapping.findForward("showVendeurArticles");
 	}	
 	
 	public ActionForward mettreEnVenteArticle(

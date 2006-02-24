@@ -27,9 +27,7 @@
 		<bean:message key="titre.application" /> - <bean:message key="vendeurArticles.titre" />
 	</font>
 	<br>
-	<hr width="100%" noshade="true" />
-
-
+<html:errors/>
 	<H2>
 		<bean:message key="vendeurArticles.articlesEnAttente.titre" />		
 	</H2>

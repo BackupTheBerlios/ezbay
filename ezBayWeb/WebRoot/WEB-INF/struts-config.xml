@@ -50,10 +50,7 @@
 			<forward name="showList" path="/articleList.do" redirect="true" />
 			<forward name="showArticleFiche" path="ezBay.articleFiche" />
       <forward name="showConfirmRetrait" path="ezBay.articleRetrait" />
-      <forward
-      name="showVendeurArticles"
-      path="/vendeur.do?do=showArticles"
-      redirect="true" />
+      <forward name="showVendeurArticles" path="/vendeur.do?do=showArticles" />
       <forward name="echecDelete" path="ezBay.articleRetrait" />
       <forward name="echecRetrait" path="ezBay.articleRetrait" />
       <forward name="echecMiseEnVente" path="ezBay.articleRetrait" />
