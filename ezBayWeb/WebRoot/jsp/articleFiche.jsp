@@ -98,6 +98,17 @@
 			<tr>
 				<td>
 					<b>
+						<bean:message key="articleFiche.prixVente" />
+						:
+					</b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="prixVente" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>
 						<bean:message key="articleFiche.anneeFabrication" />
 						:
 					</b>

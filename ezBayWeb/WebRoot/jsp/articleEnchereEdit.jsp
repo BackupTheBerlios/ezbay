@@ -21,6 +21,7 @@
   </head>
   
 	<body>
+	<center>
 	<H1><bean:message key="articleEnchereEdit.titre" /></H1>
 	<html:errors />
 		<%-- create a html form --%>
@@ -43,5 +44,6 @@
 			<html:hidden property="libelle" />
 			<html:submit><bean:message key="bouton.label.valider" /></html:submit>	
 			</html:form>
+	</center>
 	</body>
 </html:html>

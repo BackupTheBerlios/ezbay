@@ -21,12 +21,12 @@
 <font size="+1">
 <bean:message key="titre.application"/> - <bean:message key="vendeur.titre.infos"/>
 </font><br>
-<hr width="100%" noshade="true" />
+<hr width="50%" noshade="true" />
 <bean:message key="vendeur.titre.infosCB"/>
 <table>
 <tr>
 <td align="left"><b><bean:message key="vendeur.label.numCB"/>:</b></td>
-<td><bean:write name="vendeurForm" property="numCB" /><br /><br /></td>
+<td><bean:write name="vendeurForm" property="numCB" /></td>
 </tr>
 <tr>
 <td align="left"><b><bean:message key="vendeur.label.nomProprioCB"/>:</b></td>
