@@ -63,5 +63,13 @@ public class MembreFacadeDelegate {
 	public MembreDTO getMembre(String pseudo, String password) throws FinderException, RemoteException {
 		return membreFacade.getMembre(pseudo, password);
 	}
+
+	public MembreFacade getMembreFacade() {
+		return membreFacade;
+	}
+
+	public void setMembreFacade(MembreFacade membreFacade) {
+		this.membreFacade = membreFacade;
+	}
 	
 }
