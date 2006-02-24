@@ -39,8 +39,7 @@
 		</action>
 		<action forward="/jsp/index.jsp" path="/default" unknown="true" />
 		<action
-      attribute="articleListForm"
-      input="/jsp/articleList.jsp"
+      attribute="articleListForm"      
       name="articleListForm"
       parameter="do"
       path="/articleList"
@@ -59,7 +58,7 @@
       <forward name="echecMiseEnVente" path="ezBay.articleRetrait" />
 		
 		</action>
-		<action attribute="connectForm" input="/jsp/connect.jsp" name="connectForm" parameter="do" path="/connect" scope="request" type="axlomoso.ezbay.struts.action.ConnectAction">
+		<action attribute="connectForm" input="monEzBay.connect" name="connectForm" parameter="do" path="/connect" scope="request" type="axlomoso.ezbay.struts.action.ConnectAction">
 			<forward name="succes" path="/myEzBay.do?do=showMyEzBay" />
 			<forward name="echec" path="monEzBay.connect" />
 		</action>

@@ -302,8 +302,9 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @param categorieId
 	 */
 	public Collection getArticlesEnVenteByCategorie(String categorieId) {
-		//	retourne une collection d'ArticleDTO
-		return this.getOnlyArticlesEnVente(this.getArticlesByCategorie(categorieId));
+		//	retourne une collection d'ArticleDTO		
+		return this.getOnlyArticlesEnVente(this.getArticlesByCategorie(categorieId));		
+	
 	}
 	
 	/**
@@ -359,7 +360,7 @@ public class ArticleFacadeBean implements SessionBean {
 		Collection tRes = new ArrayList();
 		try {
 			CategorieLocal categorie = CategorieFacadeBean.getEntity(categorieId);
-			articles = categorie.getArticleLocal();
+			articles = categorie.getArticleLocal();			
 			for (Iterator it = articles.iterator(); it.hasNext();) {
 				ArticleLocal articleLocal = (ArticleLocal) it.next();
 				ArticleDTO articleDTO = articleLocal.getArticleDTO();
@@ -371,8 +372,10 @@ public class ArticleFacadeBean implements SessionBean {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}	
+		
 		return tRes;
+		
 	}
 
 	/**

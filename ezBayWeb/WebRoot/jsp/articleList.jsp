@@ -11,11 +11,10 @@
 <body>
 <center>
 <H2><bean:message key="articleList.categorie.titre" /> <bean:write name="articleListForm" property="categorieDTO.libelle" /> </H2>
-<logic:empty name="article">
+<logic:empty name="articleListForm" property="articlesDTO">
 <bean:message key="articleList.noArticle" />
-
 </logic:empty>
-<logic:notEmpty name="article">
+<logic:notEmpty name="articleListForm" property="articlesDTO">
 <table border="1">
 <tbody>
 <%-- set the header --%>
