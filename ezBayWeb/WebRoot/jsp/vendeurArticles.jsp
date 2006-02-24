@@ -33,10 +33,10 @@
 	<H2>
 		<bean:message key="vendeurArticles.articlesEnAttente.titre" />		
 	</H2>
-<logic:notPresent name="vendeurForm" parameter="articlesEnAttente">
+<logic:empty name="vendeurForm" property="articlesEnAttente">
 	<bean:message key="vendeurArticles.articlesEnAttente.noArticle" />
-</logic:notPresent>
-<logic:present name="vendeurForm" parameter="articlesEnAttente">	
+</logic:empty>
+<logic:notEmpty name="vendeurForm" property="articlesEnAttente">	
 <table border="1">
 <tbody>
 <%-- set the header --%>
@@ -82,15 +82,15 @@
 	
 	</tbody>
 	</table>
-</logic:present>	
+</logic:notEmpty>	
 <br /><br />
 	<H2>
 		<bean:message key="vendeurArticles.articlesEnVente.titre" />
 	</H2>
-<logic:notPresent name="vendeurForm" parameter="articlesEnVente">
+<logic:empty name="vendeurForm" property="articlesEnVente">
 	<bean:message key="vendeurArticles.articlesEnVente.noArticle" />
-</logic:notPresent>
-<logic:present name="vendeurForm" parameter="articlesEnVente">	
+</logic:empty>
+<logic:notEmpty name="vendeurForm" property="articlesEnVente">	
 <table border="1">
 <tbody>
 <%-- set the header --%>
@@ -132,16 +132,16 @@
 	</logic:iterate>
 	</tbody>
 	</table>
-</logic:present>
+</logic:notEmpty>
 <br /><br />
 	<H2>
 		<bean:message key="vendeurArticles.articlesVendus.titre" />
 	</H2>
 <%-- set the header --%>
-<logic:notPresent name="vendeurForm" parameter="articleVendus">
+<logic:empty name="vendeurForm" property="articlesVendus">
 	<bean:message key="vendeurArticles.articlesVendus.noArticle" />
-</logic:notPresent>
-<logic:present name="vendeurForm" parameter="articleVendus">
+</logic:empty>
+<logic:notEmpty name="vendeurForm" property="articlesVendus">
 <table border="1">
 <tbody>
 <tr>
@@ -181,7 +181,7 @@
 	</logic:iterate>
 	</tbody>
 	</table>
-</logic:present>
+</logic:notEmpty>
 	
 	<br /><br />
 </body>
