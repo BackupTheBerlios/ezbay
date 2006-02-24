@@ -100,4 +100,10 @@
 		<put name="body" value="/jsp/rechercheArticle.jsp" />
 	</definition>
 	
+	<!-- Tiles Definition of articleEnchereEdit -->
+	<definition name="ezBay.articleEnchereEdit" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/articleEnchereEdit.jsp" />
+	</definition>
+	
 </tiles-definitions>
