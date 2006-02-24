@@ -33,6 +33,10 @@
 	<H2>
 		<bean:message key="vendeurArticles.articlesEnAttente.titre" />		
 	</H2>
+<logic:notPresent name="articleEnAttente">
+	<bean:message key="vendeurArticles.articlesEnAttente.noArticle" />
+</logic:notPresent>
+<logic:present name="articleEnAttente">	
 <table border="1">
 <tbody>
 <%-- set the header --%>
@@ -75,19 +79,18 @@
 			</td>
 		</tr>
 	</logic:iterate>
-	<logic:notPresent name="article">
-		<tr>
-			<td colspan="5">
-				<bean:message key="vendeurArticles.articlesEnAttente.noArticle" />
-			</td>
-		</tr>
-	</logic:notPresent>
+	
 	</tbody>
 	</table>
+</logic:present>	
 <br /><br />
 	<H2>
 		<bean:message key="vendeurArticles.articlesEnVente.titre" />
 	</H2>
+<logic:notPresent name="articleEnVente">
+	<bean:message key="vendeurArticles.articlesEnVente.noArticle" />
+</logic:notPresent>
+<logic:present name="articleEnVente">	
 <table border="1">
 <tbody>
 <%-- set the header --%>
@@ -127,22 +130,20 @@
 			</td>
 		</tr>
 	</logic:iterate>
-	<logic:notPresent name="article">
-		<tr>
-			<td colspan="5">
-				<bean:message key="vendeurArticles.articlesEnVente.noArticle" />
-			</td>
-		</tr>
-	</logic:notPresent>
 	</tbody>
 	</table>
+</logic:present>
 <br /><br />
 	<H2>
 		<bean:message key="vendeurArticles.articlesVendus.titre" />
 	</H2>
+<%-- set the header --%>
+<logic:notPresent name="articleVendus">
+	<bean:message key="vendeurArticles.articlesVendus.noArticle" />
+</logic:notPresent>
+<logic:present name="articleVendus">
 <table border="1">
 <tbody>
-<%-- set the header --%>
 <tr>
 <td>&nbsp;</td>
 <td><bean:message key="articleList.libelle" /></td>
@@ -178,15 +179,10 @@
 			</td>
 		</tr>
 	</logic:iterate>
-	<logic:notPresent name="article">
-		<tr>
-			<td colspan="5">
-				<bean:message key="vendeurArticles.articlesVendus.noArticle" />
-			</td>
-		</tr>
-	</logic:notPresent>
 	</tbody>
 	</table>
+</logic:present>
+	
 	<br /><br />
 </body>
 </html:html>
