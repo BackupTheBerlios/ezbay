@@ -92,13 +92,14 @@
 <tbody>
 <%-- set the header --%>
 <tr>
+<td>&nbsp;</td>
 <td><bean:message key="articleList.libelle" /></td>
 <td><bean:message key="articleList.marque" /></td>
 <td><bean:message key="articleList.modele" /></td>
 <td><bean:message key="articleList.prixVente" /></td>
 <td><bean:message key="articleList.anneeFabrication" /></td>
 <td><bean:message key="articleList.dateLimite" /></td>
-<td>&nbsp;</td>
+
 </tr>
 	<logic:iterate name="vendeurForm" property="articlesEnVente" id="article">
 		<tr>
@@ -187,6 +188,5 @@
 	</tbody>
 	</table>
 	<br /><br />
-<html:link action="article.do?do=showEdit"><bean:message key="myEzBay.menu.sectionClient.link.ajoutArticle" /></html:link>
 </body>
 </html:html>
