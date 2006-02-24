@@ -35,7 +35,7 @@
 		</logic:notEqual>		
 	<br />
 		<html:form action="enchereSave">
-			<bean:message key="articleEnchereEdit.montant" /> : <html:text property="stringMontant" />
+			<bean:message key="articleEnchereEdit.montant" /> : <html:text property="stringMontantEnchereCourante" />
 			<br>
 			<html:hidden property="montantDerniereEnchere" />
 			<html:hidden property="id" />

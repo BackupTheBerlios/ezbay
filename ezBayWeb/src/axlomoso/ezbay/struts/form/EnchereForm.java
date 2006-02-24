@@ -24,9 +24,9 @@ import axlomoso.ezbay.struts.views.ArticleView;
 public class EnchereForm extends ActionForm {
 	// --------------------------------------------------------- Instance Variables
 	private ArticleDTO articleDTO = new ArticleDTO();
-	private ActionEnchereDTO lastActionEnchereDTO = new ActionEnchereDTO();
-	private ActionEnchereDTO currentActionEnchereDTO = new ActionEnchereDTO();
-	private String stringMontant = "";
+	private String stringMontantEnchereCourante = "";
+	private Double montantEnchereCourante = null;
+	private Double montantDerniereEnchere = null;	
 	// --------------------------------------------------------- Methods
 
 
@@ -36,31 +36,32 @@ public class EnchereForm extends ActionForm {
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		stringMontant = "";
+		stringMontantEnchereCourante = "";
+		montantEnchereCourante = null;
 	}
 
 	public Double getMontantDerniereEnchere() {
-		return lastActionEnchereDTO.getMontant();
+		return montantDerniereEnchere;
 	}
 
 	public void setMontantDerniereEnchere(Double montant) {
-		lastActionEnchereDTO.setMontant(montant);
+		montantDerniereEnchere = montant;
 	}
 	
-	public Double getMontant() {
-		return currentActionEnchereDTO.getMontant();
+	public String getStringMontantEnchereCourante() {
+		return stringMontantEnchereCourante;
 	}
 
-	public void setMontant(Double montant) {
-		currentActionEnchereDTO.setMontant(montant);
+	public void setStringMontantEnchereCourante(String montant) {
+		stringMontantEnchereCourante = montant;
 	}
 
-	public String getStringMontant() {
-		return stringMontant;
+	public Double getMontantEnchereCourante() {
+		return montantEnchereCourante;
 	}
 
-	public void setStringMontant(String stringMontant) {
-		this.stringMontant = stringMontant;
+	public void setMontantEnchereCourante(Double montant) {
+		montantEnchereCourante = montant;
 	}
 
 	public ArticleDTO getArticleDTO() {
@@ -99,13 +100,13 @@ public class EnchereForm extends ActionForm {
 			HttpServletRequest request) {
 		System.out.println("EnchereForm.validate()");
 		ActionErrors errors = new ActionErrors();
-		if ((stringMontant == null)||(stringMontant.length() == 0)) {
+		if ((this.getStringMontantEnchereCourante() == null)||(this.getStringMontantEnchereCourante().length() == 0)) {
 			errors.add("stringMontant", new ActionError("articleEnchereEdit.erreurs.montantVide"));
 		}
 		else{
 			try {				
-					 Double d = new Double(Double.parseDouble(stringMontant));
-					 this.setMontant(d);
+					 Double d = new Double(Double.parseDouble(this.getStringMontantEnchereCourante()));
+					 this.setMontantEnchereCourante(d);
 					 if( this.getMontantDerniereEnchere().doubleValue() > 0 ){
 						 // l'article a déjà été enchéri
 						 if( d.doubleValue() <= this.getMontantDerniereEnchere().doubleValue() ){
@@ -120,7 +121,6 @@ public class EnchereForm extends ActionForm {
 							 errors.add("prixVente", new ActionError("articleEnchereEdit.erreurs.montantInferieurAPrixDepart"));
 						 }
 					 }
-					 // A deplacer dans EnchereSaveAction : fin
 				}				
 			 catch (NumberFormatException e) {
 				errors.add("prixVente", new ActionError("articleEnchereEdit.erreurs.montantInvalide"));

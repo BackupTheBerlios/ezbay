@@ -46,25 +46,32 @@ public class EnchereAction extends DispatchAction {
 		ActionForm form,
 		HttpServletRequest request,
 		HttpServletResponse response) {
+		String target = "";
 		EnchereForm enchereForm = (EnchereForm) form;
-		ArticleFacadeDelegate articleDelegate = ArticleFacadeDelegate.getInstance();	
-		String articleId = request.getParameter("articleId");
-		try {
-			ArticleDTO articleDTO = articleDelegate.getArticle(articleId);
-			ActionEnchereDTO actionEnchereDTO = articleDelegate.getDerniereEnchere(articleDTO.getId());
-			if( actionEnchereDTO != null ){
-				enchereForm.setMontantDerniereEnchere(actionEnchereDTO.getMontant());
-			}
-			else{
-				enchereForm.setMontantDerniereEnchere(new Double(0));
-			}
-			enchereForm.setArticleDTO(articleDTO);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-		return (mapping.findForward("showEnchereForm"));
+		if(request.getSession().getAttribute("membre") == null){
+			target = "EchecMembreNonConnecte";
+		}
+		else{
+			ArticleFacadeDelegate articleDelegate = ArticleFacadeDelegate.getInstance();	
+			String articleId = request.getParameter("articleId");
+			try {
+				ArticleDTO articleDTO = articleDelegate.getArticle(articleId);
+				ActionEnchereDTO actionEnchereDTO = articleDelegate.getDerniereEnchere(articleDTO.getId());
+				if( actionEnchereDTO != null ){
+					enchereForm.setMontantDerniereEnchere(actionEnchereDTO.getMontant());
+				}
+				else{
+					enchereForm.setMontantDerniereEnchere(new Double(0));
+				}
+				enchereForm.setArticleDTO(articleDTO);
+				target = "showEnchereForm";
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+		}
+		return (mapping.findForward(target));
 	}
 
 }

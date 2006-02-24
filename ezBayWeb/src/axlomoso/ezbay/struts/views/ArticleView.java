@@ -2,8 +2,8 @@ package axlomoso.ezbay.struts.views;
 
 import java.util.Date;
 
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
-import axlomoso.ezbay.model.interfaces.EnchereDTO;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.utils.Util;
 
@@ -11,7 +11,7 @@ public class ArticleView {
 
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private VendeurDTO vendeurDTO = new VendeurDTO();
-	private EnchereDTO derniereEnchereDTO = null;
+	private ActionEnchereDTO derniereEnchereDTO = null;
 	
 	public Integer getAnneeFabrication() {
 		return articleDTO.getAnneeFabrication();
@@ -90,11 +90,11 @@ public class ArticleView {
 		this.articleDTO = articleDTO;
 	}
 
-	public EnchereDTO getDerniereEnchereDTO() {
+	public ActionEnchereDTO getDerniereEnchereDTO() {
 		return derniereEnchereDTO;
 	}
 
-	public void setDerniereEnchereDTO(EnchereDTO derniereEnchereDTO) {
+	public void setDerniereEnchereDTO(ActionEnchereDTO derniereEnchereDTO) {
 		this.derniereEnchereDTO = derniereEnchereDTO;
 	}
 
