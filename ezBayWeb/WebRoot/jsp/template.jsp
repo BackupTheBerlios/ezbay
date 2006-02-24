@@ -21,7 +21,7 @@
 		<table border="0" width="100%" cellspacing="5">
 			<tr>
 				<td colspan="2">
-					<tiles:insert attribute="logo" />
+					<tiles:insert attribute="header" />
 				</td>
 			</tr>
 			<tr>
