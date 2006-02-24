@@ -13,7 +13,7 @@
 	<!-- Tiles Definition of welcome page -->
 	<definition name="page.welcome" extends="base.definition">
 		<put name="title" value="Welcome page" />
-		<put name="body" value="/jsp/index.jsp" />
+		<put name="body" value="/jsp/body.jsp" />
 	</definition>
 	
 	<!-- Tiles Definition of Connect -->
