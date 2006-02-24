@@ -6,11 +6,16 @@
 <head>
  <title>
 <bean:message key="articleList.title" />
-</title>
+</title><br />
 </head>
 <body>
-
+<center>
 <H2><bean:message key="articleList.categorie.titre" /> <bean:write name="articleListForm" property="categorieDTO.libelle" /> </H2>
+<logic:empty name="article">
+<bean:message key="articleList.noArticle" />
+
+</logic:empty>
+<logic:notEmpty name="article">
 <table border="1">
 <tbody>
 <%-- set the header --%>
@@ -40,14 +45,13 @@
 </tr>
 
 </logic:iterate>
-<logic:notPresent name="article">
-<tr>
-<td colspan="5"><bean:message key="articleList.noArticle" /></td>
-</tr>
-</logic:notPresent>
+
 </tbody>
 </table>
-<br>
- <html:button property="back" onclick="location.href='default.do'">Back to menu</html:button>
+</logic:notEmpty>
+<br /><br /><br />
+
+ <html:button property="back" onclick="history.back()">Back to menu</html:button>
+</center>
 </body>
 </html>
