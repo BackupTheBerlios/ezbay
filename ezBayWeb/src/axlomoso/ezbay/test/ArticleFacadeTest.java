@@ -103,14 +103,7 @@ public class ArticleFacadeTest extends TestCase {
 		}
 	}
 	
-	public void testGetArticlesByLibelle() throws RemoteException {
-		Collection articlesDTO = articleFacade.getArticlesByLibelle(articleDTOTemoin.getLibelle());
-		for (Iterator it = articlesDTO.iterator(); it.hasNext(); ) {
-			ArticleDTO articleDTO = (ArticleDTO) it.next();
-			assertEquals(articleDTOTemoin.getLibelle(),articleDTO.getLibelle());
-		}
-	}
-
+	
 	// ne marche pas
 	/*public void testGetArticlesByVendeur() throws RemoteException {
 		Collection articlesDTO = articleFacade.getArticlesByVendeur(articleLocal.getVendeurLocal().getId());
@@ -158,13 +151,13 @@ public class ArticleFacadeTest extends TestCase {
 		}
 	}
 	
-	public void testGetArticles() throws RemoteException {
+	/*public void testGetArticles() throws RemoteException {
 		Collection articlesDTO = articleFacade.getArticles();
 		for (Iterator it = articlesDTO.iterator(); it.hasNext(); ) {
 			ArticleDTO articleDTO = (ArticleDTO) it.next();
 			assertEquals(articleDTOTemoin.getLibelle(),articleDTO.getLibelle());
 		}
-	}
+	}*/
 	
 	
 	
@@ -177,7 +170,7 @@ public class ArticleFacadeTest extends TestCase {
 		tRes = tRes && ( (articleDTO1.getPrixVente()).equals(articleDTO2.getPrixVente()) );
 		tRes = tRes && ( (articleDTO1.getAnneeFabrication()).equals(articleDTO2.getAnneeFabrication()) );
 		/* Remarque : Il y a un petit soucis avec la comparaison de dates. A éclaicir... */
-		//tRes = tRes && ( (articleDTO1.getDateLimite()).equals(articleDTO2.getDateLimite()) ); // erreur ici, il faudra verifier
+		tRes = tRes && ( (articleDTO1.getDateLimite()).equals(articleDTO2.getDateLimite()) ); // erreur ici, il faudra verifier
 		tRes = tRes && ( (articleDTO1.getDescription()).equals(articleDTO2.getDescription()) );
 		return tRes;
 	}

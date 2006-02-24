@@ -15,14 +15,20 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
+import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
+import axlomoso.ezbay.delegate.MembreFacadeDelegate;
+import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
+import axlomoso.ezbay.model.interfaces.MembreDTO;
+import axlomoso.ezbay.model.interfaces.MembreLocal;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurFacade;
 import axlomoso.ezbay.model.interfaces.VendeurFacadeHome;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
+import axlomoso.ezbay.utils.ServiceLocator;
 
 import junit.framework.TestCase;
 
@@ -32,11 +38,13 @@ public class VendeurFacadeTest extends TestCase {
 	/**
 	 * The fixture
 	 */
-	Context jndiContext;
+	//Context jndiContext;
 	VendeurFacade vendeurFacade;
 	VendeurDTO vendeurDTOTemoin = null; //DTO témoin
 	VendeurDTO vendeurDTOCreated = null; //DTO créé via la session facade
-
+	//MembreLocal membreLocal=null;
+	MembreDTO membreDTOTemoin = null; //DTO témoin
+	
 	/**
 	 */
 	public VendeurFacadeTest() {
@@ -44,40 +52,42 @@ public class VendeurFacadeTest extends TestCase {
 	}
 
 	protected void setUp() throws Exception {
-		jndiContext = new InitialContext();
-		Object ref = jndiContext.lookup(VendeurFacadeHome.JNDI_NAME);
-		VendeurFacadeHome facadeHome = (VendeurFacadeHome) PortableRemoteObject.narrow(ref, VendeurFacadeHome.class);
-		this.vendeurFacade = facadeHome.create();
-		
-		vendeurDTOTemoin = new VendeurDTO();	
-		//création d'un vendeur par le sessionFacade
+		//création d'un vendeur ==> init + test de vendeurFacade.saveVendeur
+		VendeurFacadeDelegate vendeurFacadeDelegate = VendeurFacadeDelegate.getInstance();
+		VendeurFacade vendeurFacade = vendeurFacadeDelegate.getVendeurFacade();
+		vendeurDTOTemoin = new VendeurDTO();
+		//vendeurDTOTemoin.setCodeSecuCB()
+		//...
 		vendeurDTOCreated = vendeurFacade.saveVendeur(vendeurDTOTemoin);
+		vendeurDTOTemoin.setId(vendeurDTOCreated.getId());
 	}
 
 	/**
 	 */
 	protected void tearDown() throws Exception {
-		//récupération de l'vendeur créé via facade
+		// suppression du vendeur créé
 		VendeurLocal vendeurLocal;
-		VendeurLocalHome vendeurLocalHome;
-		vendeurLocalHome = (VendeurLocalHome) jndiContext.lookup(VendeurLocalHome.JNDI_NAME);
-		vendeurLocal = vendeurLocalHome.findByPrimaryKey(vendeurDTOCreated.getId());
+		ServiceLocator locator = ServiceLocator.getInstance();
+		VendeurLocalHome home = (VendeurLocalHome) locator.getLocalHome(VendeurLocalHome.JNDI_NAME);
+		vendeurLocal = home.findByPrimaryKey(vendeurDTOCreated.getId());
 		vendeurLocal.remove();
-		this.vendeurFacade = null;
 	}
 	
-	public void testSaveVendeur() throws RemoteException {
-		try {
-			VendeurDTO vendeurDTO = vendeurFacade.saveVendeur(vendeurDTOCreated);
-			assertEquals(vendeurDTO,vendeurDTOCreated);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	public void testSaveVendeur() throws Exception {
+			try {
+				//	update d'un vendeur Existant
+				vendeurDTOTemoin.setCodeSecuCB("123");
+				vendeurDTOTemoin.setNomProprioCB("axloso");
+				vendeurDTOTemoin.setNumCB("1212121212121212");
+				
+				vendeurDTOCreated = vendeurFacade.saveVendeur(vendeurDTOTemoin);
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 	
 	public void testGetVendeur() throws RemoteException {
@@ -85,6 +95,27 @@ public class VendeurFacadeTest extends TestCase {
 			//récupération du vendeur créé via facade
 			VendeurDTO vendeurDTO = vendeurFacade.getVendeur(vendeurDTOCreated.getId());
 			assertTrue(this.equalsDTO(vendeurDTO, vendeurDTOCreated));
+			
+			assertTrue(equalsDTO(vendeurDTOTemoin, vendeurDTOCreated));
+
+			// création d'un nouveau vendeur
+			VendeurDTO vendeurDTOTemoin2 = new VendeurDTO();
+			VendeurDTO vendeurDTOCreated2 = new VendeurDTO();
+			VendeurDTO vendeurDTOCreated3 = new VendeurDTO();
+			vendeurDTOTemoin.setCodeSecuCB("123");
+			vendeurDTOTemoin.setNomProprioCB("axloso");
+			vendeurDTOTemoin.setNumCB("1212121212121212");
+			vendeurDTOCreated2 = vendeurFacade.saveVendeur(vendeurDTOTemoin2);
+			vendeurDTOTemoin2.setId(vendeurDTOCreated2.getId());
+			assertTrue(equalsDTO(vendeurDTOTemoin2, vendeurDTOCreated2));
+			
+			//test de création d'un doublon
+			//vendeurDTOCreated3 = vendeurFacade.saveVendeur(vendeurDTOTemoin2);
+			// tester qu'il ya bien 1 erreur : Pas 2 vendeur avec mêmepseudo
+			
+			//effacement
+			//vendeurDTOCreated2
+			//vendeurDTOCreated3
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -95,6 +126,15 @@ public class VendeurFacadeTest extends TestCase {
 	}	
 	
 	public void testGetMembre() throws RemoteException {
+		try{
+			MembreFacadeDelegate membreFacadeDelegate = MembreFacadeDelegate.getInstance();
+			// récupération du membre via la facade
+			MembreDTO membreDTO = vendeurFacade.getMembre(vendeurDTOCreated.getId());
+			assertEquals(membreDTO.getId(), membreFacadeDelegate.getMembre(membreDTOTemoin.getId()));
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -116,76 +156,56 @@ public class VendeurFacadeTest extends TestCase {
 	}
 	
 	
-	public void testGetArticles() throws RemoteException {
-		try {
+	public void testGetArticlesEnAttente() throws RemoteException {
+		try{
+			//ArticleFacadeDelegate articleFacadeDelegate = ArticleFacadeDelegate.getInstance();
 			ArticleLocal articleLocal;
-			ArticleLocalHome articleLocalHome;
-			articleLocalHome = (ArticleLocalHome) jndiContext.lookup(ArticleLocalHome.JNDI_NAME);
-			VendeurLocalHome vendeurLocalHome = (VendeurLocalHome) jndiContext.lookup(VendeurLocalHome.JNDI_NAME);
-			VendeurLocal vendeurLocal = vendeurLocalHome.findByPrimaryKey(vendeurDTOCreated.getId());
-			//création d'une liste d'articles pour le vendeur
-			ArrayList newArticles = new ArrayList();
-			int i=0;
-			for(i=0 ; i<5 ; i++){
-				ArticleDTO art = new ArticleDTO();
-				art.setLibelle("Simpson N°" + i);
-				newArticles.add(articleLocalHome.create(art, vendeurLocal).getArticleDTO());
-			}
-			//récupération des articles du vendeur
-			Collection articlesVendeur = vendeurFacade.getArticles(vendeurDTOCreated.getId());
-			//Est-ce que le vendeur possède bien (et uniquement) les articles que l'on vient de créer ?
-			assertEquals(newArticles.size(), articlesVendeur.size()); // meme nombre
-			//Est-ce que tous les articles que l'on vient de créer se trouvent bien dans la liste du vendeur ?
-			 for (Iterator it = newArticles.iterator(); it.hasNext(); ) {
-				assertTrue(articlesVendeur.contains(it.next()));
-			}
-			// Est-ce que tous les articles appartiennent bien au vendeur ?
-			System.out.println("Articles du vendeur : ");
-			i=0;
-			for (Iterator it = articlesVendeur.iterator(); it.hasNext(); i++) {
+			ServiceLocator locator = ServiceLocator.getInstance();
+			ArticleLocalHome home = (ArticleLocalHome) locator.getLocalHome(ArticleLocalHome.JNDI_NAME);
+			Collection articlesDTO = vendeurFacade.getArticlesEnAttente(vendeurDTOCreated.getId());
+			// récupération du membre via la facade
+			for (Iterator it = articlesDTO.iterator(); it.hasNext(); ) {
 				ArticleDTO articleDTO = (ArticleDTO) it.next();
-				articleLocal = articleLocalHome.findByPrimaryKey(articleDTO.getId());
-				System.out.println("article N°"+ i + " : " + articleDTO.getLibelle());
-				assertEquals(vendeurDTOCreated.getId(),articleLocal.getVendeurLocal().getVendeurDTO().getId());
-			}
-			//suppression des articles			
-			for (Iterator it = newArticles.iterator(); it.hasNext();) {
-				ArticleDTO articleDTO = (ArticleDTO) it.next();
-				articleLocal = articleLocalHome.findByPrimaryKey(articleDTO.getId());
-				articleLocal.remove();
-			}
-			assertTrue(vendeurFacade.getArticles(vendeurDTOCreated.getId()).size() == 0);
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FinderException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (CreateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EJBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoveException e) {
+				//assertEquals(articleDTO.getId());
+				}
+		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public void testGetArticlesEnAttente() throws RemoteException {
-		
-	}
-	
 	public void testGetArticlesEnVente() throws RemoteException {
-		
+		try{
+			ArticleFacadeDelegate articleFacadeDelegate = ArticleFacadeDelegate.getInstance();
+			Collection articlesDTO = vendeurFacade.getArticlesEnVente(vendeurDTOCreated.getId());
+			// récupération du membre via la facade
+			for (Iterator it = articlesDTO.iterator(); it.hasNext(); ) {
+				ArticleDTO articleDTO = (ArticleDTO) it.next();
+				assertEquals(articleDTO.getId(),articleFacadeDelegate.getArticlesEnVenteByVendeur(vendeurDTOTemoin.getId()));
+				}
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void testGetArticlesVendus() throws RemoteException {
-		
+		try{
+			ArticleFacadeDelegate articleFacadeDelegate = ArticleFacadeDelegate.getInstance();
+			Collection articlesDTO = vendeurFacade.getArticlesVendus(vendeurDTOCreated.getId());
+			// récupération du membre via la facade
+			for (Iterator it = articlesDTO.iterator(); it.hasNext(); ) {
+				ArticleDTO articleDTO = (ArticleDTO) it.next();
+				assertEquals(articleDTO.getId(),articleFacadeDelegate.getArticlesEnVenteByVendeur(vendeurDTOTemoin.getId()));
+				}
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void testSaveArticle() throws RemoteException {
+		
 		
 	}
 	

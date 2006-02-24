@@ -6,6 +6,10 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
+import axlomoso.ezbay.delegate.MembreFacadeDelegate;
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.model.interfaces.CategorieLocal;
+import axlomoso.ezbay.model.interfaces.CategorieLocalHome;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.MembreFacade;
 import axlomoso.ezbay.model.interfaces.MembreFacadeHome;
@@ -27,7 +31,8 @@ public class MembreFacadeTest extends TestCase {
 	MembreFacade membreFacade;
 	MembreDTO membreDTOTemoin = null; //DTO témoin
 	MembreDTO membreDTOCreated = null; //DTO créé via la session facade
-
+	MembreFacadeDelegate membreFacadeDelegate=null;
+	
 	/**
 	 */
 	public MembreFacadeTest() {
@@ -35,34 +40,50 @@ public class MembreFacadeTest extends TestCase {
 	}
 	
 	protected void setUp() throws Exception {
-		jndiContext = new InitialContext();
-		Object ref = jndiContext.lookup(MembreFacadeHome.JNDI_NAME);
-		MembreFacadeHome facadeHome = (MembreFacadeHome) PortableRemoteObject.narrow(ref, MembreFacadeHome.class);
-		this.membreFacade = facadeHome.create();
-		
+		membreFacadeDelegate=MembreFacadeDelegate.getInstance();
+		MembreFacade membreFacade = membreFacadeDelegate.getMembreFacade();
 		membreDTOTemoin = new MembreDTO();	
-		//création d'un vendeur par le sessionFacade
-		membreDTOTemoin.setNom("Homer");
-		//membreDTOCreated = membreFacade.createMembre(membreDTOTemoin);
+		membreDTOCreated = membreFacade.saveMembre(membreDTOTemoin);
 	}
 
 	/**
 	 */
 	protected void tearDown() throws Exception {
-		//récupération de l'vendeur créé via facade
 		MembreLocal membreLocal;
-		MembreLocalHome membreLocalHome = (MembreLocalHome) jndiContext.lookup(MembreLocalHome.JNDI_NAME);
-		MembreLocal membre = membreLocalHome.findByPrimaryKey(membreDTOCreated.getId());
-		membre.remove();
+		MembreLocalHome membreLocalHome;
+		membreLocalHome = (MembreLocalHome) jndiContext.lookup(MembreLocalHome.JNDI_NAME);
+		membreLocal = membreLocalHome.findByPrimaryKey(membreDTOCreated.getId());
+		membreLocal.remove();
 		this.membreFacade = null;
+		
 	}
 	
 	public void testSaveMembre()throws RemoteException{
-		
+		try {
+			//récupération de l'article créé via facade
+			MembreDTO membreDTO = membreFacadeDelegate.getMembre(membreDTOCreated.getId());
+			assertTrue(this.equalsDTO(membreDTO, membreDTOCreated));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void testGetMembre()throws RemoteException{
-		
+		try {
+			//récupération du vendeur créé via facade
+			MembreDTO membreDTO = membreFacade.getMembre(membreDTOCreated.getId());
+			assertTrue(this.equalsDTO(membreDTO, membreDTOCreated));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void testGetMembreBis()throws RemoteException{
@@ -79,5 +100,24 @@ public class MembreFacadeTest extends TestCase {
 	
 	public void testSaveVendeur()throws RemoteException{
 		
+	}
+	
+	public boolean equalsDTO(MembreDTO membreDTO1, MembreDTO membreDTO2){
+		boolean tRes = true;
+		tRes = tRes && ( (membreDTO1.getId()).equals(membreDTO2.getId()) );
+		tRes = tRes && ( (membreDTO1.getAdresse()).equals(membreDTO2.getAdresse()) );
+		tRes = tRes && ( (membreDTO1.getCodePostal()).equals(membreDTO2.getCodePostal()) );
+		tRes = tRes && ( (membreDTO1.getEmail()).equals(membreDTO2.getEmail()) );
+		tRes = tRes && ( (membreDTO1.getNom()).equals(membreDTO2.getNom()) );
+		tRes = tRes && ( (membreDTO1.getPassword()).equals(membreDTO2.getPassword()) );
+		tRes = tRes && ( (membreDTO1.getPays()).equals(membreDTO2.getPays()) );
+		tRes = tRes && ( (membreDTO1.getPrenom()).equals(membreDTO2.getPrenom()) );
+		tRes = tRes && ( (membreDTO1.getPseudo()).equals(membreDTO2.getPseudo()) );
+		tRes = tRes && ( (membreDTO1.getTelephoneFixe()).equals(membreDTO2.getTelephonePortable()) );
+		tRes = tRes && ( (membreDTO1.getTelephonePortable()).equals(membreDTO2.getTelephonePortable()) );
+		tRes = tRes && ( (membreDTO1.getVille()).equals(membreDTO2.getVille()) );
+		tRes = tRes && ( (membreDTO1.getDateNaissance()).equals(membreDTO2.getDateNaissance()) );
+		
+		return tRes;
 	}
 }
