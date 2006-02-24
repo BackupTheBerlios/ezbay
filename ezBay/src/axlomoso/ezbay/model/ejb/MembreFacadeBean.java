@@ -195,6 +195,23 @@ public class MembreFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "remote"
+	 * @param membreId
+	 */
+	public ClientDTO getClientDTO(String membreId){
+		ClientDTO tRes = null;
+		try {
+			MembreLocal membre = getEntity(membreId);;
+			ClientLocal vendeur = membre.getClientLocal();
+			if( vendeur != null)
+				tRes = vendeur.getClientDTO();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return tRes;
+	}
+	
+	/**
+	 * @ejb.interface-method view-type = "remote"
 	 * @param membreDTO
 	 */
 	public VendeurDTO saveVendeur(MembreDTO membreDTO, VendeurDTO vendeurDTO) throws Exception {
