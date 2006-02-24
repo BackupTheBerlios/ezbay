@@ -22,9 +22,10 @@
   </head>
   
   <body>
+  <center>
   <h2><bean:message key="membreFiche.title" /></h2><br />
  <bean:message key="membreFiche.pseudo"/>:<bean:write name="membreForm" property="pseudo" />
  <br /><br />
-
+</center>
  </body>
 </html:html>

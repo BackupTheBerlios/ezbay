@@ -22,7 +22,6 @@
 <font size="+1">
 <bean:message key="titre.application"/> - <bean:message key="vendeur.titre"/>
 </font><br>
-<hr width="100%" noshade="true" />
 <html:errors />
 <bean:message key="vendeur.titre.infosCB"/>
 <html:form action="/vendeurSave">

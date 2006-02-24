@@ -23,7 +23,6 @@
 <font size="+1">
 <bean:message key="titre.application"/> - <bean:message key="inscription.label"/>
 </font><br>
-<hr width="100%" noshade="true" />
 <html:errors />
 <html:form action="/membreSave">
 <table>
