@@ -89,6 +89,7 @@ public class MyEzBayAction extends DispatchAction {
 			HttpServletResponse response) {
 		System.out.println("myEzBayAction.deconnect()");
 			request.getSession().removeAttribute("membre");
+			request.getSession().removeAttribute("vendeurId");
 			return (mapping.findForward("welcome"));
 		}
 	
