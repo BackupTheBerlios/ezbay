@@ -92,18 +92,7 @@
 					</b>
 				</td>
 				<td>
-					<bean:write name="articleForm" property="prixVente" />
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>
-						<bean:message key="articleFiche.prixVente" />
-						:
-					</b>
-				</td>
-				<td>
-					<bean:write name="articleForm" property="prixVente" />
+					<bean:write name="articleForm" property="prixVente" /> <bean:message key="general.label.devise" />
 				</td>
 			</tr>
 			<tr>
@@ -142,7 +131,51 @@
 				</td>
 			</tr>
 		</table>
-		<br />
+		<hr align="center"/>
+<logic:notEmpty name="articleForm" property="enchereView.enchereDTO">
+		<b><bean:message key="articleFiche.derniereEnchere.titre" /></b>
+		<table>
+			<tr>
+				<td>
+					<b>
+						<bean:message key="articleFiche.derniereEnchere.date" />
+						:
+						<b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="enchereView.formattedDate" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>
+						<bean:message key="articleFiche.derniereEnchere.montant" />
+						:
+						<b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="enchereView.montant" /> <bean:message key="general.label.devise" />
+				</td>
+			</tr>			
+			<tr>
+				<td>
+					<b>
+						<bean:message key="articleFiche.derniereEnchere.encherisseur" />
+						:
+						<b>
+				</td>
+				<td>
+					<bean:write name="articleForm" property="enchereView.pseudo" />
+				</td>
+			</tr>
+			</table>
+</logic:notEmpty>
+<logic:empty name="articleForm" property="enchereView.enchereDTO">
+	<bean:message key="articleFiche.noEnchere" />
+</logic:empty>
+
+
+	<br />
 		<br />
 			<html:link action="/enchere.do?do=showEnchereForm" paramName="articleForm" paramProperty="id" paramId="articleId">
 				<bean:message key="link.articleEncherir" />

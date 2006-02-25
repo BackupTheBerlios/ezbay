@@ -20,4 +20,7 @@ public interface ActionEnchereFacade
    public java.util.Collection getActionEncheresByArticle( java.lang.String articleId )
       throws java.rmi.RemoteException;
 
+   public axlomoso.ezbay.model.interfaces.ClientDTO getEncherisseur( java.lang.String enchereId )
+      throws java.rmi.RemoteException;
+
 }

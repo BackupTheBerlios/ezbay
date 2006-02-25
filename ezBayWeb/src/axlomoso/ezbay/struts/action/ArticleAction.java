@@ -23,8 +23,10 @@ import org.apache.struts.actions.DispatchAction;
 
 
 import axlomoso.ezbay.struts.form.ArticleForm;
+import axlomoso.ezbay.struts.views.ActionEnchereView;
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.delegate.CategorieFacadeDelegate;
+import axlomoso.ezbay.delegate.ClientFacadeDelegate;
 import axlomoso.ezbay.delegate.MembreFacadeDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
@@ -32,9 +34,11 @@ import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
 import axlomoso.ezbay.exceptions.ArticleEnVenteException;
 import axlomoso.ezbay.exceptions.ArticleProprietaireException;
 import axlomoso.ezbay.exceptions.ArticleVenduException;
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
+import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 
 /** 
@@ -55,7 +59,6 @@ public class ArticleAction extends DispatchAction {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("ArticleAction.showEdit()");
 		String id = request.getParameter("id");
 		try {
 			
@@ -71,7 +74,6 @@ public class ArticleAction extends DispatchAction {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("ArticleAction.showArticleFiche()");
 		String id = request.getParameter("id");
 		try {
 			this.setArticleForm(id, form, request);
@@ -101,7 +103,6 @@ public class ArticleAction extends DispatchAction {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("ArticleAction.confirmRetirerArticle()");
 		String target = "showVendeurArticles";
 		ActionErrors erreurs = new ActionErrors();
 		String articleId = request.getParameter("id");
@@ -138,7 +139,6 @@ public class ArticleAction extends DispatchAction {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("ArticleAction.retirerArticle()");
 		ActionErrors erreurs = new ActionErrors();
 		String articleId = request.getParameter("id");
 			try {
@@ -173,7 +173,6 @@ public class ArticleAction extends DispatchAction {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("ArticleAction.retirerArticle()");
 		String target = "showVendeurArticles";
 		ActionErrors erreurs = new ActionErrors();
 		String articleId = request.getParameter("id");
@@ -205,7 +204,6 @@ public class ArticleAction extends DispatchAction {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("ArticleAction.retirerArticle()");
 		String target = "showVendeurArticles";
 		ActionErrors erreurs = new ActionErrors();
 		String articleId = request.getParameter("id");
@@ -232,19 +230,35 @@ public class ArticleAction extends DispatchAction {
 	}	
 	
 	private void setArticleForm(String articleId, ActionForm form, HttpServletRequest request) throws Exception{
-		ArticleForm articleEditForm = (ArticleForm) form;	
+		ArticleForm articleForm = (ArticleForm) form;	
 		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
 		VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
+		ClientFacadeDelegate clientFacade = ClientFacadeDelegate.getInstance();
 		ArticleDTO articleDTO = new ArticleDTO();
 		if( (articleId != null) && (articleId.length() > 0) ){
 			articleDTO = articleFacade.getArticle(articleId);
 			String vendeurId = articleFacade.getVendeurDTO(articleId).getId();
-			articleEditForm.setCategorieDTO(articleFacade.getCategorieDTO(articleId));
-			articleEditForm.setVendeurId(vendeurId);
-			articleEditForm.setMembrePseudo(vendeurFacade.getMembre(vendeurId).getPseudo());
+			articleForm.setCategorieDTO(articleFacade.getCategorieDTO(articleId));
+			articleForm.setVendeurId(vendeurId);
+			articleForm.setMembrePseudo(vendeurFacade.getMembre(vendeurId).getPseudo());
+			//encheres
+			ActionEnchereDTO enchereDTO = articleFacade.getDerniereEnchere(articleId);
+			ClientDTO clientEncherisseurDTO = null;
+			MembreDTO membreEncherisseurDTO = null;
+			if( enchereDTO != null ){
+				System.out.println("enchereDTO : " + enchereDTO.toString());
+				clientEncherisseurDTO = articleFacade.getDernierEncherisseur(articleId);
+				System.out.println("clientEncherisseurDTO : " + clientEncherisseurDTO.toString());
+				membreEncherisseurDTO = clientFacade.getMembre(clientEncherisseurDTO.getId());
+				System.out.println("membreEncherisseurDTO : " + membreEncherisseurDTO.toString());
+			}
+			ActionEnchereView enchereView = new ActionEnchereView();
+			enchereView.setEnchereDTO(enchereDTO);
+			enchereView.setMembreDTO(membreEncherisseurDTO);
+			articleForm.setEnchereView(enchereView);
 		}
 		CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
-		articleEditForm.setArticleDTO(articleDTO);
+		articleForm.setArticleDTO(articleDTO);
 		Collection categories = categorieFacade.getCategories();
 		request.getSession().setAttribute("categories", categories);
 	}	

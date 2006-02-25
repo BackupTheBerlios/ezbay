@@ -21,7 +21,9 @@ import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieLocal;
+import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
+import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
@@ -383,10 +385,28 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @param articleId
 	 */
 	public ActionEnchereDTO getDerniereEnchere(String articleId){
+		System.out.println("ArticleFacadeBean.getDerniereEnchere(). articleId="+articleId);
 		ActionEnchereDTO tRes = null;
 		ArrayList encheres = (ArrayList)actionEnchereFacade.getActionEncheresByArticle(articleId);
+		System.out.println("ArticleFacadeBean.getDerniereEnchere(). encheres[]="+encheres);
 		if( encheres.size() > 0 ){
 			tRes = (ActionEnchereDTO)encheres.get(0);
+		}
+		return tRes;
+	}
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param articleId
+	 */
+	public ClientDTO getDernierEncherisseur(String articleId){
+		ClientDTO tRes = null;
+		ActionEnchereDTO enchereDTO = this.getDerniereEnchere(articleId);
+		System.out.println("getDernierEncherisseur : " + enchereDTO);
+		if( enchereDTO != null ){
+			String enchereId = enchereDTO.getId();
+			tRes = actionEnchereFacade.getEncherisseur(enchereId);
+			System.out.println("ClientDTO : " + tRes.toString());
 		}
 		return tRes;
 	}

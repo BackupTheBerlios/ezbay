@@ -23,7 +23,7 @@ import axlomoso.ezbay.model.interfaces.CategorieDTO;
 public class ArticleListForm extends ActionForm {
 
 	// --------------------------------------------------------- Instance Variables
-	private Collection articlesDTO = null;
+	private Collection articlesView = null;
 	private CategorieDTO categorieDTO = null; 
 	// --------------------------------------------------------- Methods
 
@@ -34,13 +34,13 @@ public class ArticleListForm extends ActionForm {
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		articlesDTO = new ArrayList();
+		articlesView = new ArrayList();
 	}
-	public Collection getArticlesDTO() {
-		return articlesDTO;
+	public Collection getArticlesView() {
+		return articlesView;
 	}
-	public void setArticlesDTO(Collection articlesDTO) {
-		this.articlesDTO = articlesDTO;
+	public void setArticlesView(Collection articlesDTO) {
+		this.articlesView = articlesDTO;
 	}
 	public CategorieDTO getCategorieDTO() {
 		return categorieDTO;

@@ -29,10 +29,10 @@
 		<bean:message key="articleEnchereEdit.libelleArticle" /> : <bean:write name="enchereForm" property="libelle" />
 		<br />
 		<logic:equal name="enchereForm" property="montantDerniereEnchere" value="0">
-			<bean:message key="articleEnchereEdit.prixDepart" /> : <bean:write name="enchereForm" property="prixVente" />		
+			<bean:message key="articleEnchereEdit.prixDepart" /> : <bean:write name="enchereForm" property="prixVente" /> <bean:message key="general.label.devise" />
 		</logic:equal>
 		<logic:notEqual name="enchereForm" property="montantDerniereEnchere" value="0">
-			<bean:message key="articleEnchereEdit.derniereEnchere" /> : <bean:write name="enchereForm" property="montantDerniereEnchere" />		
+			<bean:message key="articleEnchereEdit.derniereEnchere" /> : <bean:write name="enchereForm" property="montantDerniereEnchere" /> <bean:message key="general.label.devise" />
 		</logic:notEqual>		
 	<br />
 		<html:form action="enchereSave">

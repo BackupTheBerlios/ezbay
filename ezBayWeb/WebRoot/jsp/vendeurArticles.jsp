@@ -106,7 +106,7 @@
 		<tr>
 			<%-- article informations --%>
 			<td>
-				<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
+				<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
 			</td>
 			<td>
 				<bean:write name="article" property="marque" />
@@ -155,7 +155,7 @@
 		<tr>
 			<%-- article informations --%>
 			<td>
-				<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
+				<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
 			</td>
 			<td>
 				<bean:write name="article" property="libelle" />

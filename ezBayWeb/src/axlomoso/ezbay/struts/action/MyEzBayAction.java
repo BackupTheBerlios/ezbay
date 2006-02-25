@@ -49,7 +49,6 @@ public class MyEzBayAction extends DispatchAction {
 		ActionForm form,
 		HttpServletRequest request,
 		HttpServletResponse response) {
-		System.out.println("myEzBayAction.showMyEzBay()");	
 		String target = "";
 		try {
 			MembreFacadeDelegate membreFacadeDelegate = MembreFacadeDelegate.getInstance();
@@ -63,31 +62,18 @@ public class MyEzBayAction extends DispatchAction {
 				target = "showMyEzBay";
 			}
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return (mapping.findForward(target));
 	}
-
-	public ActionForward showInfosVendeur(
-			ActionMapping mapping,
-			ActionForm form,
-			HttpServletRequest request,
-			HttpServletResponse response) {
-		System.out.println("myEzBayAction.showInfosVendeur()");
-		// 	A faire : affichage des infos du vendeur
-			return null;
-		}
 	
 	public ActionForward deconnect(
 			ActionMapping mapping,
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("myEzBayAction.deconnect()");
 			request.getSession().removeAttribute("membre");
 			request.getSession().removeAttribute("vendeurId");
 			return (mapping.findForward("welcome"));

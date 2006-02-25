@@ -68,7 +68,10 @@
 		<action attribute="myEzBayForm" input="/jsp/menu.jsp" name="myEzBayForm" parameter="do" path="/myEzBay" scope="request" type="axlomoso.ezbay.struts.action.MyEzBayAction">
 			<forward name="showMyEzBay" path="page.welcome" />
 			<forward name="showConnectForm" path="monEzBay.connect" />
-			<forward name="welcome" path="page.welcome" />
+			<forward
+      name="welcome"
+      path="/default.do"
+      redirect="true" />
 
 		</action>
 		<action

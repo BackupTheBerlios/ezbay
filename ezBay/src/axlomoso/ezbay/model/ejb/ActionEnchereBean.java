@@ -154,7 +154,7 @@ public abstract class ActionEnchereBean implements EntityBean {
 	   *                 fk-constraint = "true"
 	   * @return
 	   */
-	  public abstract VendeurLocal getClientLocal();
+	  public abstract ClientLocal getClientLocal();
 
 	  /**
 	   * @ejb.interface-method view-type = "local"

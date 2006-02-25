@@ -126,7 +126,7 @@
 		</html:submit>
 	</html:form>
 
-<logic:notEmpty name="rechercheForm" property="articlesDTO"> 
+<logic:notEmpty name="rechercheForm" property="articlesView"> 
 <br /><br />
 <b><bean:message key="rechercheArticle.nbArticles" /> : <bean:write name="rechercheForm" property="nbArticles" /></b>
 	<br /><br /><br />
@@ -153,8 +153,8 @@
 					<h2><bean:message key="link.articleEncherir" /></h2>
 				</td>
 			</tr>
-			<%-- start with an iterate over the array articlesDTO --%>
-			<logic:iterate name="rechercheForm" property="articlesDTO" id="article">
+			<%-- start with an iterate over the array articlesView --%>
+			<logic:iterate name="rechercheForm" property="articlesView" id="article">
 				<tr>
 					<%-- article informations --%>
 
@@ -195,7 +195,7 @@
 	</table>
 
 </logic:notEmpty>
-<logic:empty name="rechercheForm" property="articlesDTO"> 
+<logic:empty name="rechercheForm" property="articlesView"> 
 	<b><bean:message key="rechercheArticle.noArticle" /> </b>
 </logic:empty>
 </center>

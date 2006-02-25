@@ -23,8 +23,8 @@
 <td><bean:message key="articleList.anneeFabrication" /></td>
 <td><bean:message key="articleList.dateLimite" /></td>
 </tr>
-<%-- start with an iterate over the array articlesDTO --%>
-<logic:iterate name="articleListForm" property="articlesDTO" id="article">
+<%-- start with an iterate over the array articlesView --%>
+<logic:iterate name="articleListForm" property="articlesView" id="article">
 <tr>
 <%-- article informations --%>
 

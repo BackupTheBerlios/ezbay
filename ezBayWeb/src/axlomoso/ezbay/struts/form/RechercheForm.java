@@ -40,7 +40,7 @@ public class RechercheForm extends ActionForm {
 	private Double prixVenteMax=null;
 	private String stringDateLimite=null;
 	private String stringAnneeFabrication=null;
-	private Collection articlesDTO = null;
+	private Collection articlesView = null;
 	private int nbArticles;
 
 
@@ -145,12 +145,12 @@ public class RechercheForm extends ActionForm {
 		this.stringDateLimite = stringDateLimite;
 	}
 
-	public Collection getArticlesDTO() {
-		return articlesDTO;
+	public Collection getArticlesView() {
+		return articlesView;
 	}
 
-	public void setArticlesDTO(Collection articlesDTO) {
-		this.articlesDTO = articlesDTO;
+	public void setArticlesView(Collection articlesDTO) {
+		this.articlesView = articlesDTO;
 	}
 
 	public String getStringAnneeFabrication() {

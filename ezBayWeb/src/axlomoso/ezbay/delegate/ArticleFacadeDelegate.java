@@ -11,6 +11,8 @@ import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
+import axlomoso.ezbay.model.interfaces.ClientDTO;
+import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
@@ -46,18 +48,9 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getArticle(articleId);
 	}
 
-	/*public Collection getArticles() throws RemoteException {
-		return util.getArticlesDtoToView(articleFacade.getAllArticles());
-	}*/
-
 	public Collection getArticlesEnVenteByCategorie(String categorieId) throws RemoteException {
 		return util.getArticlesDtoToView(articleFacade.getArticlesEnVenteByCategorie(categorieId));
 	}
-
-	/*
-	public Collection getArticlesByLibelle(String libelle) throws RemoteException {
-		return util.getArticlesDtoToView(articleFacade.getArticlesEnVenteByLibelle(libelle));
-	}*/
 
 	public Collection getArticlesEnVenteByVendeur(String vendeurId) throws RemoteException {
 		return util.getArticlesDtoToView(articleFacade.getArticlesEnVenteByVendeur(vendeurId));
@@ -77,6 +70,10 @@ public class ArticleFacadeDelegate {
 
 	public ActionEnchereDTO getDerniereEnchere(String articleId) throws RemoteException {
 		return articleFacade.getDerniereEnchere(articleId);
+	}
+	
+	public ClientDTO getDernierEncherisseur(String articleId) throws RemoteException {
+		return articleFacade.getDernierEncherisseur(articleId);
 	}
 	
 	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws RemoteException{

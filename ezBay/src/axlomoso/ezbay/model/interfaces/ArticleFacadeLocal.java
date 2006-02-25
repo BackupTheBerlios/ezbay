@@ -34,6 +34,8 @@ public interface ArticleFacadeLocal
 
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO getDerniereEnchere( java.lang.String articleId ) ;
 
+   public axlomoso.ezbay.model.interfaces.ClientDTO getDernierEncherisseur( java.lang.String articleId ) ;
+
    public boolean isArticleEnAttente( java.lang.String articleId ) ;
 
    public boolean isArticleEnEnchere( java.lang.String articleId ) ;

@@ -18,4 +18,6 @@ public interface ActionEnchereFacadeLocal
 
    public java.util.Collection getActionEncheresByArticle( java.lang.String articleId ) ;
 
+   public axlomoso.ezbay.model.interfaces.ClientDTO getEncherisseur( java.lang.String enchereId ) ;
+
 }

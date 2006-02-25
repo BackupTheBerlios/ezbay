@@ -23,15 +23,15 @@
 <td><h2><bean:message key="articleList.anneeFabrication" /></h2></td>
 <td><h2><bean:message key="articleList.dateLimite" /></h2></td>
 </tr>
-<%-- start with an iterate over the array articlesDTO --%>
-<logic:iterate name="rechercheForm" property="articlesDTO" id="article">
+<%-- start with an iterate over the array articlesView --%>
+<logic:iterate name="rechercheForm" property="articlesView" id="article">
 <tr>
 <%-- article informations --%>
 
 <td><bean:write name="article" property="libelle" /></td>
 <td><bean:write name="article" property="marque" /></td>
 <td><bean:write name="article" property="modele" /></td>
-<td><bean:write name="article" property="prixVente" /></td>
+<td><bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" /></td>
 <td><bean:write name="article" property="anneeFabrication" /></td>
 <td><bean:write name="article" property="dateLimite" /></td>
 <td>

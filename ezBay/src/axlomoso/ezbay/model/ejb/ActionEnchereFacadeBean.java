@@ -20,6 +20,7 @@ import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
 import axlomoso.ezbay.model.interfaces.ClientLocalHome;
+import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
 
@@ -123,6 +124,23 @@ public class ActionEnchereFacadeBean implements SessionBean {
 	}
 	
 	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurDTO
+	 * @throws CreateException 
+	 */
+	public ClientDTO getEncherisseur(String enchereId){
+		ClientDTO tRes = null;
+		try {
+			ActionEnchereLocal enchereLocal = getEntity(enchereId);
+			tRes = enchereLocal.getClientLocal().getClientDTO();
+		} catch (FinderException e) {
+			System.out.println("ActionEnchereFacadeBean.getEncherisseur(). Cannot get client.");
+			e.printStackTrace();
+		}
+		return tRes;
+	}	
+	
+	/**
 	 * Retrieves the local interface of the Customer entity bean.
 	 * 
 	 * @throws FinderException
@@ -133,7 +151,7 @@ public class ActionEnchereFacadeBean implements SessionBean {
 			ActionEnchereLocalHome home = getEntityHome();
 			return home.findByPrimaryKey(id);
 		} catch (FinderException e) {
-			throw new FinderException("Cannot locate ActionEnchere" + e.getMessage());
+			throw new FinderException("Cannot locate ActionEnchere with id=" + id + " "+ e.getMessage());
 		}
 	}
 

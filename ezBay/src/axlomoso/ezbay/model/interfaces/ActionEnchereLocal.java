@@ -36,7 +36,7 @@ public interface ActionEnchereLocal
 
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO getActionEnchereDTO(  ) ;
 
-   public axlomoso.ezbay.model.interfaces.VendeurLocal getClientLocal(  ) ;
+   public axlomoso.ezbay.model.interfaces.ClientLocal getClientLocal(  ) ;
 
    public void setClientLocal( axlomoso.ezbay.model.interfaces.ClientLocal clientLocal ) ;
 

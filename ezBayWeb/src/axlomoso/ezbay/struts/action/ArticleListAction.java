@@ -48,47 +48,6 @@ public class ArticleListAction extends DispatchAction {
 
 	private ArticleFacade articleFacade;
 
-	/** 
-	 * Method execute
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return ActionForward
-	 */
-	/*public ActionForward showAllArticles(
-		ActionMapping mapping,
-		ActionForm form,
-		HttpServletRequest request,
-		HttpServletResponse response) {
-		ArticleListForm articleListForm = (ArticleListForm) form;
-		try {
-			MembreDTO membre = (MembreDTO)request.getSession().getAttribute("membre");
-			InitialContext jndiContext = new InitialContext();
-			Collection articleViews = null;
-			Object ref = null;
-			// en attendant : tous les articles
-			ref = jndiContext.lookup(ArticleFacadeHome.JNDI_NAME);
-			ArticleFacadeHome facadeHome = (ArticleFacadeHome) PortableRemoteObject.narrow(ref, ArticleFacadeHome.class);
-			this.articleFacade = facadeHome.create();
-			articleViews = articleFacade.getArticles();
-			if(membre == null){
-				// Tous les articles
-			}
-			else{
-				// articles du membre
-			}
-			articleListForm.setArticlesDTO(articleViews);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} catch (CreateException e) {
-			e.printStackTrace();
-		}
-			return mapping.findForward("showList");
-		}*/
-	
 	public ActionForward showArticlesByCategorie(
 			ActionMapping mapping,
 			ActionForm form,
@@ -101,7 +60,7 @@ public class ArticleListAction extends DispatchAction {
 				CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
 				if( categorieId == null ) categorieId = "";
 				Collection articles = articleFacade.getArticlesEnVenteByCategorie(categorieId);
-				articleListForm.setArticlesDTO(articles);
+				articleListForm.setArticlesView(articles);
 				articleListForm.setCategorieDTO(categorieFacade.getCategorie(categorieId));
 			} catch (RemoteException e) {
 				e.printStackTrace();

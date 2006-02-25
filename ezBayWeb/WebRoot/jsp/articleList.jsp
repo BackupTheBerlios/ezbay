@@ -11,15 +11,14 @@
 <body>
 <center>
 <H2><bean:message key="articleList.categorie.titre" /> <bean:write name="articleListForm" property="categorieDTO.libelle" /> </H2>
-<logic:empty name="articleListForm" property="articlesDTO">
+<logic:empty name="articleListForm" property="articlesView">
 <bean:message key="articleList.noArticle" />
 </logic:empty>
-<logic:notEmpty name="articleListForm" property="articlesDTO">
+<logic:notEmpty name="articleListForm" property="articlesView">
 <table border="1">
 <tbody>
 <%-- set the header --%>
 <tr>
-<td>&nbsp;</td>
 <td><bean:message key="articleList.libelle" /></td>
 <td><bean:message key="articleList.marque" /></td>
 <td><bean:message key="articleList.modele" /></td>
@@ -27,20 +26,17 @@
 <td><bean:message key="articleList.anneeFabrication" /></td>
 <td><bean:message key="articleList.dateLimite" /></td>
 </tr>
-<%-- start with an iterate over the array articlesDTO --%>
-<logic:iterate name="articleListForm" property="articlesDTO" id="article">
+<%-- start with an iterate over the array articlesView --%>
+<logic:iterate name="articleListForm" property="articlesView" id="article">
 <tr>
 <%-- article informations --%>
 
-<td><bean:write name="article" property="libelle" /></td>
+<td><html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link></td>
 <td><bean:write name="article" property="marque" /></td>
 <td><bean:write name="article" property="modele" /></td>
-<td><bean:write name="article" property="prixVente" /></td>
+<td><bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" /></td>
 <td><bean:write name="article" property="anneeFabrication" /></td>
-<td><bean:write name="article" property="dateLimite" /></td>
-<td>
-<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id"><bean:message key="link.articleFiche" /></html:link>
-</td>
+<td><bean:write name="article" property="formattedDateLimite" /></td>
 </tr>
 
 </logic:iterate>

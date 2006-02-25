@@ -9,6 +9,7 @@ import javax.ejb.SessionContext;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
 import axlomoso.ezbay.model.interfaces.ClientLocalHome;
+import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
 
@@ -57,6 +58,21 @@ public class ClientFacadeBean implements SessionBean {
 		} catch (Exception e) {
 			throw new Exception("Cannot create client", e);
 		}
+	}	
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param clientId
+	 */
+	public MembreDTO getMembre(String clientId) throws Exception {
+		MembreDTO tRes = null;
+		try {
+			ClientLocal clientLocal = getEntity(clientId);
+			tRes = clientLocal.getMembreLocal().getMembreDTO();
+		} catch (Exception e) {
+			throw new Exception("Cannot get Membre From client id=" + clientId, e);
+		}
+		return tRes;
 	}	
 	
 	/**

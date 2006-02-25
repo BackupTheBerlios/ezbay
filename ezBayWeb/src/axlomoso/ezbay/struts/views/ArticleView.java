@@ -8,7 +8,6 @@ import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.utils.Util;
 
 public class ArticleView {
-
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private VendeurDTO vendeurDTO = new VendeurDTO();
 	private ActionEnchereDTO derniereEnchereDTO = null;
@@ -105,5 +104,4 @@ public class ArticleView {
 	public void setVendeurDTO(VendeurDTO vendeurDTO) {
 		this.vendeurDTO = vendeurDTO;
 	}
-
 }

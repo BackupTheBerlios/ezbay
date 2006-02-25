@@ -3,9 +3,7 @@
 
 package axlomoso.ezbay.struts.form;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -16,10 +14,10 @@ import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.validator.ValidatorForm;
 
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
+import axlomoso.ezbay.struts.views.ActionEnchereView;
 import axlomoso.ezbay.utils.Util;
 
 
@@ -41,8 +39,8 @@ public class ArticleForm extends ActionForm {
 	private String stringPrixVente="";
 	private String vendeurId = "";
 	private String membrePseudo = "";
+	private ActionEnchereView enchereView = null;
 	// --------------------------------------------------------- Methods
-
 	
 	public String getStringPrixVente() {
 		if(articleDTO.getPrixVente() != null){
@@ -233,6 +231,14 @@ public class ArticleForm extends ActionForm {
 
 	public void setMembrePseudo(String membrePseudo) {
 		this.membrePseudo = membrePseudo;
+	}
+
+	public ActionEnchereView getEnchereView() {
+		return enchereView;
+	}
+
+	public void setEnchereView(ActionEnchereView enchereView) {
+		this.enchereView = enchereView;
 	}
 }
 

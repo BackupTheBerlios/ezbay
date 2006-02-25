@@ -55,7 +55,7 @@ public class RechercheArticleAction extends Action {
 			ArticleDTO articleDTO=rechercheForm.getArticleDTO();			
 			String idCategorie=rechercheForm.getCategorieDTO().getId();
 			Collection result=articleFacade.rechercherArticlesEnVente(idCategorie,articleDTO.getLibelle(),articleDTO.getMarque(),articleDTO.getModele(),rechercheForm.getPrixVenteMin(),rechercheForm.getPrixVenteMax(),articleDTO.getAnneeFabrication(),articleDTO.getDateLimite());
-			rechercheForm.setArticlesDTO(result);
+			rechercheForm.setArticlesView(result);
 			rechercheForm.setNbArticles(result.size());
 		} catch (RemoteException e) {
 			e.printStackTrace();
