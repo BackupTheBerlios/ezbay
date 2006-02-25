@@ -103,6 +103,21 @@ public abstract class ClientBean implements EntityBean {
 		 */
 		public abstract void setActionEnchereLocal(Collection actionEnchereLocal);	
 
+		/**
+		 * @ejb.interface-method
+		 *   view-type="local"
+		 * @ejb.relation
+		 *   name = "client-actiontransaction"
+		 *   role-name = "Client effectue des transactions"
+		 *   @return a Collection of ActionTransactionLocal
+		 */ 
+		public abstract Collection getActionTransactionLocal();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param Collection of ActionTransactionLocal
+		 */
+		public abstract void setActionTransactionLocal(Collection actionTransactionLocal);	
 	    
 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match

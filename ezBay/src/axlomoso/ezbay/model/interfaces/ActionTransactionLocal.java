@@ -30,4 +30,8 @@ public interface ActionTransactionLocal
 
    public void setArticleLocal( axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal ) ;
 
+   public axlomoso.ezbay.model.interfaces.ClientLocal getClientLocal(  ) ;
+
+   public void setClientLocal( axlomoso.ezbay.model.interfaces.ClientLocal clientLocal ) ;
+
 }

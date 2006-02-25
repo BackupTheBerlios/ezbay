@@ -28,4 +28,8 @@ public interface ClientLocal
 
    public void setActionEnchereLocal( java.util.Collection actionEnchereLocal ) ;
 
+   public java.util.Collection getActionTransactionLocal(  ) ;
+
+   public void setActionTransactionLocal( java.util.Collection actionTransactionLocal ) ;
+
 }

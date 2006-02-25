@@ -14,6 +14,7 @@ import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
 import axlomoso.ezbay.model.interfaces.ActionTransactionLocal;
 import axlomoso.ezbay.model.interfaces.ActionTransactionUtil;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
+import axlomoso.ezbay.model.interfaces.ClientLocal;
 
 /**
  * XDoclet-based CMP 2.x entity bean.  This class must be declared
@@ -112,6 +113,21 @@ public abstract class ActionTransactionBean implements EntityBean {
 	   */
 	  public abstract void setArticleLocal(ArticleLocal articleLocal);
 
+		/**
+	   * @ejb.interface-method view-type = "local"
+	   * @ejb.relation name = "client-actiontransaction" role-name = "ActionEnchere est effectuée par un Client"
+	   * @jboss.relation related-pk-field = "id" fk-column = "client_id" 
+	   *                 fk-constraint = "true"
+	   * @return
+	   */
+	  public abstract ClientLocal getClientLocal();
+
+	  /**
+	   * @ejb.interface-method view-type = "local"
+	   * @param clientLocal
+	   */
+	  public abstract void setClientLocal(ClientLocal clientLocal);	
+	  
 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match
 	 * the signatures of the create<METHOD>(...) methods of the entity bean?s home interface.

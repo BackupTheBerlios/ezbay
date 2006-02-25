@@ -742,6 +742,33 @@
          </ejb-relationship-role>
 
       </ejb-relation>
+      <ejb-relation >
+         <ejb-relation-name>client-actiontransaction</ejb-relation-name>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>ActionEnchere est effectuée par un Client</ejb-relationship-role-name>
+            <multiplicity>Many</multiplicity>
+            <relationship-role-source >
+               <ejb-name>ActionTransaction</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>clientLocal</cmr-field-name>
+            </cmr-field>
+         </ejb-relationship-role>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>Client effectue des transactions</ejb-relationship-role-name>
+            <multiplicity>One</multiplicity>
+            <relationship-role-source >
+               <ejb-name>Client</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>actionTransactionLocal</cmr-field-name>
+               <cmr-field-type>java.util.Collection</cmr-field-type>
+            </cmr-field>
+         </ejb-relationship-role>
+
+      </ejb-relation>
         <!-- 
           To add relationships for beans not managed by XDoclet, add
           a file to your XDoclet merge directory called relationships.xml that contains
