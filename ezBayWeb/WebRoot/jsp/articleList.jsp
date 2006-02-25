@@ -48,9 +48,6 @@
 </tbody>
 </table>
 </logic:notEmpty>
-<br /><br /><br />
-
- <html:button property="back" onclick="history.back()">Back to menu</html:button>
 </center>
 </body>
 </html>
