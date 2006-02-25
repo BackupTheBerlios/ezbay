@@ -92,32 +92,6 @@
       </entity>
 
       <entity>
-         <ejb-name>ActionTransaction</ejb-name>
-         <create-table>true</create-table>
-         <remove-table>true</remove-table>
-         <table-name>actiontransaction</table-name>
-
-         <cmp-field>
-            <field-name>id</field-name>
-            <column-name>id</column-name>
-
-        </cmp-field>
-         <cmp-field>
-            <field-name>date</field-name>
-            <column-name>date</column-name>
-
-        </cmp-field>
-         <cmp-field>
-            <field-name>montant</field-name>
-            <column-name>montant</column-name>
-
-        </cmp-field>
-
-<!-- jboss 3.2 features -->
-<!-- optimistic locking does not express the exclusions needed -->
-      </entity>
-
-      <entity>
          <ejb-name>Client</ejb-name>
          <create-table>true</create-table>
          <remove-table>true</remove-table>
@@ -277,6 +251,32 @@
 <!-- optimistic locking does not express the exclusions needed -->
       </entity>
 
+      <entity>
+         <ejb-name>ActionTransaction</ejb-name>
+         <create-table>true</create-table>
+         <remove-table>true</remove-table>
+         <table-name>actiontransaction</table-name>
+
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>date</field-name>
+            <column-name>date</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>montant</field-name>
+            <column-name>montant</column-name>
+
+        </cmp-field>
+
+<!-- jboss 3.2 features -->
+<!-- optimistic locking does not express the exclusions needed -->
+      </entity>
+
    </enterprise-beans>
 
   <relationships>
@@ -364,23 +364,23 @@
       <ejb-relation-name>transaction-article</ejb-relation-name>
 
       <ejb-relationship-role>
-          <ejb-relationship-role-name>Une Transaction concerne 1 Article</ejb-relationship-role-name>
-          <fk-constraint>true</fk-constraint>
-          <key-fields>
-             <key-field>
-               <field-name>id</field-name>
-               <column-name>transaction_id</column-name>
-             </key-field>
-          </key-fields>
-
-      </ejb-relationship-role>
-      <ejb-relationship-role>
           <ejb-relationship-role-name>Un Article fait l'objet d'1 Transaction</ejb-relationship-role-name>
           <fk-constraint>true</fk-constraint>
           <key-fields>
              <key-field>
                <field-name>id</field-name>
                <column-name>article_id</column-name>
+             </key-field>
+          </key-fields>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+          <ejb-relationship-role-name>Une Transaction concerne 1 Article</ejb-relationship-role-name>
+          <fk-constraint>true</fk-constraint>
+          <key-fields>
+             <key-field>
+               <field-name>id</field-name>
+               <column-name>transaction_id</column-name>
              </key-field>
           </key-fields>
 

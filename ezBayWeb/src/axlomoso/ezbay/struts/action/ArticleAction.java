@@ -28,6 +28,7 @@ import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.delegate.CategorieFacadeDelegate;
 import axlomoso.ezbay.delegate.ClientFacadeDelegate;
 import axlomoso.ezbay.delegate.MembreFacadeDelegate;
+import axlomoso.ezbay.delegate.TimerDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
@@ -147,6 +148,10 @@ public class ArticleAction extends DispatchAction {
 				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
 				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
 				vendeurFacade.retirerArticle(vendeurId, articleId);
+				//enlever le timer				
+				TimerDelegate timerDelegate=TimerDelegate.getInstance();				
+				timerDelegate.cancelTimer(articleId);
+				
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			} catch (ArticleProprietaireException e) {
@@ -182,6 +187,14 @@ public class ArticleAction extends DispatchAction {
 				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
 				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
 				vendeurFacade.mettreEnVenteArticle(vendeurId, articleId);
+				//création du Timer 
+				ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
+				TimerDelegate timerDelegate=TimerDelegate.getInstance();
+				long dateSystem=System.currentTimeMillis();
+				long dateLimite=articleFacade.getArticle(articleId).getDateLimite().getTime();
+				long dateExpir=dateLimite-dateSystem;
+				timerDelegate.initializeTimer(dateExpir,articleId);
+				
 			} catch (ArticleProprietaireException e) {
 				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.nonProprietaire"));
 				e.printStackTrace();

@@ -27,32 +27,14 @@
       </session>
 
       <session >
-         <description><![CDATA[Description for ArticleFacade]]></description>
-         <display-name>Name for ArticleFacade</display-name>
+         <description><![CDATA[Description for TimerFinVenteBean]]></description>
+         <display-name>Name for TimerFinVenteBean</display-name>
 
-         <ejb-name>ArticleFacade</ejb-name>
+         <ejb-name>TimerFinVenteBean</ejb-name>
 
-         <home>axlomoso.ezbay.model.interfaces.ArticleFacadeHome</home>
-         <remote>axlomoso.ezbay.model.interfaces.ArticleFacade</remote>
-         <local-home>axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome</local-home>
-         <local>axlomoso.ezbay.model.interfaces.ArticleFacadeLocal</local>
-         <ejb-class>axlomoso.ezbay.model.ejb.ArticleFacadeSession</ejb-class>
-         <session-type>Stateless</session-type>
-         <transaction-type>Container</transaction-type>
-
-      </session>
-
-      <session >
-         <description><![CDATA[Description for ClientFacade]]></description>
-         <display-name>Name for ClientFacade</display-name>
-
-         <ejb-name>ClientFacade</ejb-name>
-
-         <home>axlomoso.ezbay.model.interfaces.ClientFacadeHome</home>
-         <remote>axlomoso.ezbay.model.interfaces.ClientFacade</remote>
-         <local-home>axlomoso.ezbay.model.interfaces.ClientFacadeLocalHome</local-home>
-         <local>axlomoso.ezbay.model.interfaces.ClientFacadeLocal</local>
-         <ejb-class>axlomoso.ezbay.model.ejb.ClientFacadeSession</ejb-class>
+         <home>axlomoso.ezbay.model.interfaces.TimerFinVenteBeanHome</home>
+         <remote>axlomoso.ezbay.model.interfaces.TimerFinVenteBean</remote>
+         <ejb-class>axlomoso.ezbay.model.ejb.TimerFinVenteBeanSession</ejb-class>
          <session-type>Stateless</session-type>
          <transaction-type>Container</transaction-type>
 
@@ -101,6 +83,38 @@
          <local-home>axlomoso.ezbay.model.interfaces.MembreFacadeLocalHome</local-home>
          <local>axlomoso.ezbay.model.interfaces.MembreFacadeLocal</local>
          <ejb-class>axlomoso.ezbay.model.ejb.MembreFacadeSession</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[Description for ArticleFacade]]></description>
+         <display-name>Name for ArticleFacade</display-name>
+
+         <ejb-name>ArticleFacade</ejb-name>
+
+         <home>axlomoso.ezbay.model.interfaces.ArticleFacadeHome</home>
+         <remote>axlomoso.ezbay.model.interfaces.ArticleFacade</remote>
+         <local-home>axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ArticleFacadeLocal</local>
+         <ejb-class>axlomoso.ezbay.model.ejb.ArticleFacadeSession</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[Description for ClientFacade]]></description>
+         <display-name>Name for ClientFacade</display-name>
+
+         <ejb-name>ClientFacade</ejb-name>
+
+         <home>axlomoso.ezbay.model.interfaces.ClientFacadeHome</home>
+         <remote>axlomoso.ezbay.model.interfaces.ClientFacade</remote>
+         <local-home>axlomoso.ezbay.model.interfaces.ClientFacadeLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ClientFacadeLocal</local>
+         <ejb-class>axlomoso.ezbay.model.ejb.ClientFacadeSession</ejb-class>
          <session-type>Stateless</session-type>
          <transaction-type>Container</transaction-type>
 
@@ -193,39 +207,6 @@
             <ejb-ql><![CDATA[SELECT DISTINCT OBJECT(p) FROM membre p WHERE p.pseudo = ?1]]></ejb-ql>
          </query>
 	  <!-- Write a file named ejb-finders-MembreBean.xml if you want to define extra finders. -->
-
-      </entity>
-
-      <entity >
-         <description><![CDATA[Description for Transaction]]></description>
-         <display-name>Name for Transaction</display-name>
-
-         <ejb-name>ActionTransaction</ejb-name>
-
-         <local-home>axlomoso.ezbay.model.interfaces.ActionTransactionLocalHome</local-home>
-         <local>axlomoso.ezbay.model.interfaces.ActionTransactionLocal</local>
-
-         <ejb-class>axlomoso.ezbay.model.ejb.ActionTransactionCMP</ejb-class>
-         <persistence-type>Container</persistence-type>
-         <prim-key-class>java.lang.String</prim-key-class>
-         <reentrant>False</reentrant>
-         <cmp-version>2.x</cmp-version>
-         <abstract-schema-name>actiontransaction</abstract-schema-name>
-         <cmp-field >
-            <description><![CDATA[]]></description>
-            <field-name>id</field-name>
-         </cmp-field>
-         <cmp-field >
-            <description><![CDATA[]]></description>
-            <field-name>date</field-name>
-         </cmp-field>
-         <cmp-field >
-            <description><![CDATA[]]></description>
-            <field-name>montant</field-name>
-         </cmp-field>
-         <primkey-field>id</primkey-field>
-
-	  <!-- Write a file named ejb-finders-ActionTransactionBean.xml if you want to define extra finders. -->
 
       </entity>
 
@@ -539,6 +520,39 @@
 
       </entity>
 
+      <entity >
+         <description><![CDATA[Description for Transaction]]></description>
+         <display-name>Name for Transaction</display-name>
+
+         <ejb-name>ActionTransaction</ejb-name>
+
+         <local-home>axlomoso.ezbay.model.interfaces.ActionTransactionLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ActionTransactionLocal</local>
+
+         <ejb-class>axlomoso.ezbay.model.ejb.ActionTransactionCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.String</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>actiontransaction</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>date</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>montant</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+	  <!-- Write a file named ejb-finders-ActionTransactionBean.xml if you want to define extra finders. -->
+
+      </entity>
+
      <!--
        To add entity beans that you have deployment descriptor info for, add
        a file to your XDoclet merge directory called entity-beans.xml that contains
@@ -667,17 +681,6 @@
          <ejb-relation-name>transaction-article</ejb-relation-name>
 
          <ejb-relationship-role >
-            <ejb-relationship-role-name>Une Transaction concerne 1 Article</ejb-relationship-role-name>
-            <multiplicity>One</multiplicity>
-            <relationship-role-source >
-               <ejb-name>ActionTransaction</ejb-name>
-            </relationship-role-source>
-            <cmr-field >
-               <cmr-field-name>articleLocal</cmr-field-name>
-            </cmr-field>
-         </ejb-relationship-role>
-
-         <ejb-relationship-role >
             <ejb-relationship-role-name>Un Article fait l'objet d'1 Transaction</ejb-relationship-role-name>
             <multiplicity>One</multiplicity>
             <relationship-role-source >
@@ -685,6 +688,17 @@
             </relationship-role-source>
             <cmr-field >
                <cmr-field-name>actionTransactionLocal</cmr-field-name>
+            </cmr-field>
+         </ejb-relationship-role>
+
+         <ejb-relationship-role >
+            <ejb-relationship-role-name>Une Transaction concerne 1 Article</ejb-relationship-role-name>
+            <multiplicity>One</multiplicity>
+            <relationship-role-source >
+               <ejb-name>ActionTransaction</ejb-name>
+            </relationship-role-source>
+            <cmr-field >
+               <cmr-field-name>articleLocal</cmr-field-name>
             </cmr-field>
          </ejb-relationship-role>
 

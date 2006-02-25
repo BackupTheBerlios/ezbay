@@ -21,14 +21,6 @@
 
       </entity>
       <entity>
-         <ejb-name>ActionTransaction</ejb-name>
-         <local-jndi-name>ActionTransactionLocal</local-jndi-name>
-
-        <method-attributes>
-        </method-attributes>
-
-      </entity>
-      <entity>
          <ejb-name>Client</ejb-name>
          <local-jndi-name>ClientLocal</local-jndi-name>
 
@@ -68,6 +60,14 @@
         </method-attributes>
 
       </entity>
+      <entity>
+         <ejb-name>ActionTransaction</ejb-name>
+         <local-jndi-name>ActionTransactionLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+
+      </entity>
 
       <session>
          <ejb-name>VendeurFacade</ejb-name>
@@ -78,17 +78,8 @@
         </method-attributes>
       </session>
       <session>
-         <ejb-name>ArticleFacade</ejb-name>
-         <jndi-name>ejb/ArticleFacade</jndi-name>
-         <local-jndi-name>ArticleFacadeLocal</local-jndi-name>
-
-        <method-attributes>
-        </method-attributes>
-      </session>
-      <session>
-         <ejb-name>ClientFacade</ejb-name>
-         <jndi-name>ejb/ClientFacade</jndi-name>
-         <local-jndi-name>ClientFacadeLocal</local-jndi-name>
+         <ejb-name>TimerFinVenteBean</ejb-name>
+         <jndi-name>ejb/TimerFinVenteBean</jndi-name>
 
         <method-attributes>
         </method-attributes>
@@ -113,6 +104,22 @@
          <ejb-name>MembreFacade</ejb-name>
          <jndi-name>ejb/MembreFacade</jndi-name>
          <local-jndi-name>MembreFacadeLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+      </session>
+      <session>
+         <ejb-name>ArticleFacade</ejb-name>
+         <jndi-name>ejb/ArticleFacade</jndi-name>
+         <local-jndi-name>ArticleFacadeLocal</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+      </session>
+      <session>
+         <ejb-name>ClientFacade</ejb-name>
+         <jndi-name>ejb/ClientFacade</jndi-name>
+         <local-jndi-name>ClientFacadeLocal</local-jndi-name>
 
         <method-attributes>
         </method-attributes>
