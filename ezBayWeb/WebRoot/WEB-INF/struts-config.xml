@@ -37,7 +37,10 @@
 			<forward name="echec" path="ezBay.membreEdit" />
 			<forward name="succesInscription" path="/myEzBay.do?do=showMyEzBay" redirect="true" />
 		</action>
-		<action forward="/jsp/index.jsp" path="/default" unknown="true" />
+		<action
+      forward="/categorie.do?do=showCategories"
+      path="/default"
+      unknown="true" />
 		<action
       attribute="articleListForm"      
       name="articleListForm"
