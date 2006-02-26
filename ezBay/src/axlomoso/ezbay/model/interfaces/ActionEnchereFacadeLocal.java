@@ -16,6 +16,8 @@ public interface ActionEnchereFacadeLocal
 
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO createActionEnchere( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal,axlomoso.ezbay.model.interfaces.ClientLocal clientLocal ) throws javax.ejb.CreateException;
 
+   public void removeActionEnchere( java.lang.String enchereId ) ;
+
    public java.util.Collection getActionEncheresByArticle( java.lang.String articleId ) ;
 
    public axlomoso.ezbay.model.interfaces.ClientDTO getEncherisseur( java.lang.String enchereId ) ;

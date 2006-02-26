@@ -272,8 +272,6 @@ public abstract class ArticleBean implements EntityBean {
 		/**
 		   * @ejb.interface-method view-type = "local"
 		   * @ejb.relation name = "transaction-article" role-name = "Un Article fait l'objet d'1 Transaction"
-		   * @jboss.relation related-pk-field = "id" fk-column = "transaction_id" 
-		   *                 fk-constraint = "true"
 		   * @return ActionTransactionLocal
 		   */
 		  public abstract ActionTransactionLocal getActionTransactionLocal();

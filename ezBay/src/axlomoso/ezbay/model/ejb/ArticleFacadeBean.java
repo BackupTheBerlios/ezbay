@@ -16,14 +16,18 @@ import javax.naming.NamingException;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocal;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocalHome;
+import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
+import axlomoso.ezbay.model.interfaces.ActionTransactionFacadeLocal;
+import axlomoso.ezbay.model.interfaces.ActionTransactionFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieLocal;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
+import axlomoso.ezbay.model.interfaces.ClientFacadeLocal;
+import axlomoso.ezbay.model.interfaces.ClientFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
-import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
@@ -49,12 +53,13 @@ public class ArticleFacadeBean implements SessionBean {
 	/** The session context */
 	private SessionContext context;
 
+	ServiceLocator locator;
 	ActionEnchereFacadeLocal actionEnchereFacade;
 	
 	public ArticleFacadeBean() {
 		super();
 		try {
-			ServiceLocator locator = ServiceLocator.getInstance();
+			locator = ServiceLocator.getInstance();
 			ActionEnchereFacadeLocalHome actionEnchereFacadeLocalHome = (ActionEnchereFacadeLocalHome) locator.getLocalHome(ActionEnchereFacadeLocalHome.JNDI_NAME);
 			actionEnchereFacade = (ActionEnchereFacadeLocal) actionEnchereFacadeLocalHome.create();
 		} catch (ServiceLocatorException e) {
@@ -96,6 +101,46 @@ public class ArticleFacadeBean implements SessionBean {
 
 	}
 
+	/**
+	 * @ejb.interface-method view-type = "local"
+	 * @param String articleId
+	 * @throws Exception
+	 */
+	public void terminerVente(String articleId){
+		System.out.println("FIN DE LA VENTE de l'article : id=" + articleId);
+		try {
+			ActionTransactionFacadeLocalHome actionTransactionFacadeLocalHome = (ActionTransactionFacadeLocalHome) locator.getLocalHome(ActionTransactionFacadeLocalHome.JNDI_NAME);
+			ActionTransactionFacadeLocal actionTransactionFacade = (ActionTransactionFacadeLocal) actionTransactionFacadeLocalHome.create();
+			//retirer l'article de la vente
+			this.retirerArticle(articleId);
+			ActionEnchereDTO derniereEnchereDTO = this.getDerniereEnchere(articleId);
+			if( derniereEnchereDTO != null ){
+				/* L'article possède des enchères */
+				//créer la transaction
+					//ActionTransactionDTO
+				ActionTransactionDTO actionTransactionDTO = new ActionTransactionDTO();
+				actionTransactionDTO.setMontant(derniereEnchereDTO.getMontant());
+					//ClientLocal
+				ClientDTO clientDTO = actionEnchereFacade.getEncherisseur(derniereEnchereDTO.getId());
+				ClientLocal clientLocal = ClientFacadeBean.getEntity(clientDTO.getId());
+					//ArticleLocal
+				ArticleLocal articleLocal = getEntity(articleId);
+					//transaction
+				actionTransactionFacade.createActionTransaction(actionTransactionDTO, articleLocal, clientLocal);
+				//supprimer la derniere enchere
+				actionEnchereFacade.removeActionEnchere(derniereEnchereDTO.getId());
+			}
+		} catch (CreateException e) {
+			e.printStackTrace();
+		} catch (FinderException e) {
+			e.printStackTrace();
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * @ejb.interface-method view-type = "local"
 	 * @param vendeurDTO
@@ -375,9 +420,7 @@ public class ArticleFacadeBean implements SessionBean {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
-		
 		return tRes;
-		
 	}
 
 	/**
@@ -385,10 +428,8 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @param articleId
 	 */
 	public ActionEnchereDTO getDerniereEnchere(String articleId){
-		System.out.println("ArticleFacadeBean.getDerniereEnchere(). articleId="+articleId);
 		ActionEnchereDTO tRes = null;
 		ArrayList encheres = (ArrayList)actionEnchereFacade.getActionEncheresByArticle(articleId);
-		System.out.println("ArticleFacadeBean.getDerniereEnchere(). encheres[]="+encheres);
 		if( encheres.size() > 0 ){
 			tRes = (ActionEnchereDTO)encheres.get(0);
 		}
@@ -402,11 +443,9 @@ public class ArticleFacadeBean implements SessionBean {
 	public ClientDTO getDernierEncherisseur(String articleId){
 		ClientDTO tRes = null;
 		ActionEnchereDTO enchereDTO = this.getDerniereEnchere(articleId);
-		System.out.println("getDernierEncherisseur : " + enchereDTO);
 		if( enchereDTO != null ){
 			String enchereId = enchereDTO.getId();
 			tRes = actionEnchereFacade.getEncherisseur(enchereId);
-			System.out.println("ClientDTO : " + tRes.toString());
 		}
 		return tRes;
 	}

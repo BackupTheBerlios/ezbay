@@ -18,9 +18,9 @@ public abstract class ActionTransactionCMP
    /**
     * Generated ejbPostCreate for corresponding ejbCreate method.
     *
-    * @see #ejbCreate(axlomoso.ezbay.model.interfaces.ActionTransactionDTO transactionDTO)
+    * @see #ejbCreate(axlomoso.ezbay.model.interfaces.ActionTransactionDTO transactionDTO,axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal,axlomoso.ezbay.model.interfaces.ClientLocal clientLocal)
     */
-   public void ejbPostCreate(axlomoso.ezbay.model.interfaces.ActionTransactionDTO transactionDTO)
+   public void ejbPostCreate(axlomoso.ezbay.model.interfaces.ActionTransactionDTO transactionDTO,axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal,axlomoso.ezbay.model.interfaces.ClientLocal clientLocal)
    {
    }
 

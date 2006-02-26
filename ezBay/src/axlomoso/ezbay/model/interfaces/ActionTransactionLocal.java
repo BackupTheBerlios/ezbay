@@ -34,4 +34,6 @@ public interface ActionTransactionLocal
 
    public void setClientLocal( axlomoso.ezbay.model.interfaces.ClientLocal clientLocal ) ;
 
+   public axlomoso.ezbay.model.interfaces.ActionTransactionDTO getActionTransactionDTO(  ) ;
+
 }

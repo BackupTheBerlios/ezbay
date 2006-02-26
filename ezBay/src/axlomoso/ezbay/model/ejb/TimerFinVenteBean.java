@@ -15,6 +15,13 @@ import javax.ejb.TimerService;
 
 import javax.ejb.CreateException;
 
+import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocal;
+import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocalHome;
+import axlomoso.ezbay.model.interfaces.ArticleFacadeLocal;
+import axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome;
+import axlomoso.ezbay.utils.ServiceLocator;
+import axlomoso.ezbay.utils.ServiceLocatorException;
+
 /**
  * XDoclet-based session bean. The class must be declared public according to
  * the EJB specification.
@@ -35,10 +42,21 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 	private SessionContext context;
 
 	private TimerHandle timerHandle = null;
+	ServiceLocator locator;
+	ArticleFacadeLocal articleFacade;
 
 	public TimerFinVenteBean() {
 		super();
-		// TODO Auto-generated constructor stub
+		try {
+			locator = ServiceLocator.getInstance();
+			ArticleFacadeLocalHome articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
+			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		} catch (CreateException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
@@ -72,9 +90,6 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 		// TODO Auto-generated method stub
 
 	}
-
-	
-	 
 	
 	
 	/**
@@ -95,20 +110,15 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 		} catch (Exception e) {
 			System.out.println("Exception after create timer : " + e.toString());
 
-		}
-		return;
+		}		
 
 	}
 
 	public void ejbTimeout(Timer timer) {
-		
 		System.out.println("Performing My Task");
 		System.out.println("ejbTimeout() called at: "
 				+ new Date(System.currentTimeMillis()) + " with info:");
-		
-		
-
-		return;
+		articleFacade.terminerVente(timer.getInfo().toString());
 	}
 	
 	/**

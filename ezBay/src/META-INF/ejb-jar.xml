@@ -89,6 +89,22 @@
       </session>
 
       <session >
+         <description><![CDATA[Description for ActionTransactionFacade]]></description>
+         <display-name>Name for ActionTransactionFacade</display-name>
+
+         <ejb-name>ActionTransactionFacade</ejb-name>
+
+         <home>axlomoso.ezbay.model.interfaces.ActionTransactionFacadeHome</home>
+         <remote>axlomoso.ezbay.model.interfaces.ActionTransactionFacade</remote>
+         <local-home>axlomoso.ezbay.model.interfaces.ActionTransactionFacadeLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.ActionTransactionFacadeLocal</local>
+         <ejb-class>axlomoso.ezbay.model.ejb.ActionTransactionFacadeSession</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
          <description><![CDATA[Description for ArticleFacade]]></description>
          <display-name>Name for ArticleFacade</display-name>
 

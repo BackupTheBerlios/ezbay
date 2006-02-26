@@ -8,6 +8,7 @@ import java.util.Iterator;
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.FinderException;
+import javax.ejb.RemoveException;
 import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
 
@@ -100,6 +101,24 @@ public class ActionEnchereFacadeBean implements SessionBean {
 			throw e;
 		}
 		return tRes;
+	}
+	
+	/**
+	 * @ejb.interface-method view-type = "local"
+	 * @param vendeurDTO
+	 * @throws CreateException 
+	 */
+	public void removeActionEnchere(String enchereId){
+		try {
+			ActionEnchereLocal enchereLocal = getEntity(enchereId);
+			enchereLocal.remove();
+		} catch (FinderException e) {
+			e.printStackTrace();
+		} catch (EJBException e) {
+			e.printStackTrace();
+		} catch (RemoveException e) {
+			e.printStackTrace();
+		}
 	}	
 
 	/**

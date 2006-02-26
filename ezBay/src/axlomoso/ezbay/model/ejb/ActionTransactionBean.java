@@ -1,6 +1,7 @@
 package axlomoso.ezbay.model.ejb;
 
 import java.rmi.RemoteException;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.ejb.EJBException;
@@ -10,6 +11,8 @@ import javax.ejb.RemoveException;
 
 import javax.ejb.CreateException;
 
+import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
+import axlomoso.ezbay.model.interfaces.ActionEnchereUtil;
 import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
 import axlomoso.ezbay.model.interfaces.ActionTransactionLocal;
 import axlomoso.ezbay.model.interfaces.ActionTransactionUtil;
@@ -128,6 +131,12 @@ public abstract class ActionTransactionBean implements EntityBean {
 	   */
 	  public abstract void setClientLocal(ClientLocal clientLocal);	
 	  
+	  /**
+	   * @ejb.interface-method view-type = "local"
+	   * @param
+	   */
+	  public abstract ActionTransactionDTO getActionTransactionDTO();
+	  
 	/**
 	 * There are zero or more ejbCreate<METHOD>(...) methods, whose signatures match
 	 * the signatures of the create<METHOD>(...) methods of the entity bean?s home interface.
@@ -160,12 +169,14 @@ public abstract class ActionTransactionBean implements EntityBean {
 	 *
 	 * @ejb.create-method
 	 */
-	public String ejbCreate(ActionTransactionDTO transactionDTO) throws CreateException {
+	public String ejbCreate(ActionTransactionDTO transactionDTO, ArticleLocal articleLocal, ClientLocal clientLocal) throws CreateException {
 		String tId = ActionTransactionUtil.generateGUID(this);
-		this.setDate(transactionDTO.getDate());
+		this.setId(tId);
+		Calendar calendar = Calendar.getInstance();
+		this.setDate(calendar.getTime());
 		this.setMontant(transactionDTO.getMontant());
 		return tId;
-}
+	}
 
 	/**
 	 * For each ejbCreate<METHOD>(...) method, there is a matching ejbPostCreate<
@@ -186,7 +197,9 @@ public abstract class ActionTransactionBean implements EntityBean {
 	 * 
 	 * @throws CreateException Thrown if method fails due to system-level error.
 	 */
-	public void ejbPostCreate() throws CreateException {
+	public void ejbPostCreate(ActionEnchereDTO enchereDTO, ArticleLocal articleLocal, ClientLocal clientLocal) throws CreateException {
+		this.setArticleLocal(articleLocal);
+		this.setClientLocal(clientLocal);
 	}
 
 	/**

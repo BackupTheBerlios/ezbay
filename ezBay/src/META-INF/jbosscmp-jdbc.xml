@@ -365,7 +365,6 @@
 
       <ejb-relationship-role>
           <ejb-relationship-role-name>Un Article fait l'objet d'1 Transaction</ejb-relationship-role-name>
-          <fk-constraint>true</fk-constraint>
           <key-fields>
              <key-field>
                <field-name>id</field-name>
@@ -377,12 +376,7 @@
       <ejb-relationship-role>
           <ejb-relationship-role-name>Une Transaction concerne 1 Article</ejb-relationship-role-name>
           <fk-constraint>true</fk-constraint>
-          <key-fields>
-             <key-field>
-               <field-name>id</field-name>
-               <column-name>transaction_id</column-name>
-             </key-field>
-          </key-fields>
+		  <key-fields/>
 
       </ejb-relationship-role>
     </ejb-relation>
