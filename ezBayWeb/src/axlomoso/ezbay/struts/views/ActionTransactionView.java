@@ -2,31 +2,31 @@ package axlomoso.ezbay.struts.views;
 
 import java.util.Date;
 
-import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
+import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.utils.Util;
 
-public class ActionEnchereView {
-	private ActionEnchereDTO enchereDTO = null;
+public class ActionTransactionView {
+	private ActionTransactionDTO transactionDTO = null;
 	private MembreDTO membreDTO = null;
 	private String clientId = null;
 	private Util util = new Util();
 	
-	public ActionEnchereView(ActionEnchereDTO enchereDTO){
-		this.enchereDTO = enchereDTO;
+	public ActionTransactionView(ActionTransactionDTO transactionDTO){
+		this.transactionDTO = transactionDTO;
 	}
 	
 	public Date getDate() {
-		return enchereDTO.getDate();
+		return transactionDTO.getDate();
 	}
 	public Double getMontant() {
-		return enchereDTO.getMontant();
+		return transactionDTO.getMontant();
 	}
-	public ActionEnchereDTO getEnchereDTO() {
-		return enchereDTO;
+	public ActionTransactionDTO getTransactionDTO() {
+		return transactionDTO;
 	}
-	public void setEnchereDTO(ActionEnchereDTO enchereDTO) {
-		this.enchereDTO = enchereDTO;
+	public void setTransactionDTO(ActionTransactionDTO transactionDTO) {
+		this.transactionDTO = transactionDTO;
 	}
 	public MembreDTO getMembreDTO() {
 		return membreDTO;

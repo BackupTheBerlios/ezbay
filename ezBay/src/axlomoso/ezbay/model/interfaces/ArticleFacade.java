@@ -53,6 +53,15 @@ public interface ArticleFacade
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO getDerniereEnchere( java.lang.String articleId )
       throws java.rmi.RemoteException;
 
+   public java.lang.Integer getNbEncheres( java.lang.String articleId )
+      throws java.rmi.RemoteException;
+
+   public axlomoso.ezbay.model.interfaces.ClientDTO getAcquereur( java.lang.String articleId )
+      throws java.rmi.RemoteException;
+
+   public axlomoso.ezbay.model.interfaces.ActionTransactionDTO getTransaction( java.lang.String articleId )
+      throws java.rmi.RemoteException;
+
    public axlomoso.ezbay.model.interfaces.ClientDTO getDernierEncherisseur( java.lang.String articleId )
       throws java.rmi.RemoteException;
 
@@ -81,6 +90,6 @@ public interface ArticleFacade
       throws java.rmi.RemoteException;
 
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId )
-      throws java.rmi.RemoteException;
+      throws axlomoso.ezbay.exceptions.ArticlePasEnVenteException, java.rmi.RemoteException;
 
 }

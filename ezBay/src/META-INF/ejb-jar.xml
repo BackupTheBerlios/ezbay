@@ -565,6 +565,16 @@
          </cmp-field>
          <primkey-field>id</primkey-field>
 
+         <query>
+            <description><![CDATA[findByArticle]]></description>
+            <query-method>
+               <method-name>findByArticle</method-name>
+               <method-params>
+                  <method-param>java.lang.String</method-param>
+               </method-params>
+            </query-method>
+            <ejb-ql><![CDATA[SELECT OBJECT(a) FROM actiontransaction as at, article as a WHERE a.id = ?1 and at.articleLocal = a]]></ejb-ql>
+         </query>
 	  <!-- Write a file named ejb-finders-ActionTransactionBean.xml if you want to define extra finders. -->
 
       </entity>

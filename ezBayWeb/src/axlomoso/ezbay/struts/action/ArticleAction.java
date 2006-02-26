@@ -110,7 +110,7 @@ public class ArticleAction extends DispatchAction {
 			try {
 				MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
 				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
-				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
+				String vendeurId = membreFacade.getVendeurDTOByMembreId(membreDTO.getId()).getId();
 				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
 				vendeurFacade.removeArticle(vendeurId, articleId);
 			} catch (RemoteException e) {
@@ -145,7 +145,7 @@ public class ArticleAction extends DispatchAction {
 			try {
 				MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
 				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
-				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
+				String vendeurId = membreFacade.getVendeurDTOByMembreId(membreDTO.getId()).getId();
 				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
 				vendeurFacade.retirerArticle(vendeurId, articleId);
 				//enlever le timer				
@@ -184,7 +184,7 @@ public class ArticleAction extends DispatchAction {
 			try {
 				MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
 				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
-				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
+				String vendeurId = membreFacade.getVendeurDTOByMembreId(membreDTO.getId()).getId();
 				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
 				vendeurFacade.mettreEnVenteArticle(vendeurId, articleId);
 				//création du Timer 
@@ -223,7 +223,7 @@ public class ArticleAction extends DispatchAction {
 			try {
 				MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
 				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
-				String vendeurId = membreFacade.getVendeurDTO(membreDTO.getId()).getId();
+				String vendeurId = membreFacade.getVendeurDTOByMembreId(membreDTO.getId()).getId();
 				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
 				vendeurFacade.mettreEnVenteArticle(vendeurId, articleId);
 			} catch (ArticleProprietaireException e) {
@@ -253,22 +253,20 @@ public class ArticleAction extends DispatchAction {
 			String vendeurId = articleFacade.getVendeurDTO(articleId).getId();
 			articleForm.setCategorieDTO(articleFacade.getCategorieDTO(articleId));
 			articleForm.setVendeurId(vendeurId);
-			articleForm.setMembrePseudo(vendeurFacade.getMembre(vendeurId).getPseudo());
+			articleForm.setMembrePseudo(vendeurFacade.getMembreByVendeurId(vendeurId).getPseudo());
 			//encheres
 			ActionEnchereDTO enchereDTO = articleFacade.getDerniereEnchere(articleId);
 			ClientDTO clientEncherisseurDTO = null;
 			MembreDTO membreEncherisseurDTO = null;
+			ActionEnchereView enchereView = null;
 			if( enchereDTO != null ){
-				System.out.println("enchereDTO : " + enchereDTO.toString());
+				enchereView = new ActionEnchereView(enchereDTO);
 				clientEncherisseurDTO = articleFacade.getDernierEncherisseur(articleId);
-				System.out.println("clientEncherisseurDTO : " + clientEncherisseurDTO.toString());
-				membreEncherisseurDTO = clientFacade.getMembre(clientEncherisseurDTO.getId());
-				System.out.println("membreEncherisseurDTO : " + membreEncherisseurDTO.toString());
+				membreEncherisseurDTO = clientFacade.getMembreByClientId(clientEncherisseurDTO.getId());
+				enchereView.setClientId(clientEncherisseurDTO.getId());
+				enchereView.setMembreDTO(membreEncherisseurDTO);
 			}
-			ActionEnchereView enchereView = new ActionEnchereView();
-			enchereView.setEnchereDTO(enchereDTO);
-			enchereView.setMembreDTO(membreEncherisseurDTO);
-			articleForm.setEnchereView(enchereView);
+			articleForm.setEnchereView(enchereView);			
 		}
 		CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
 		articleForm.setArticleDTO(articleDTO);

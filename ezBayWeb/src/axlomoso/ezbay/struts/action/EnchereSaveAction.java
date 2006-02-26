@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.delegate.MembreFacadeDelegate;
+import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
@@ -46,25 +49,35 @@ public class EnchereSaveAction extends Action {
 		ActionForm form,
 		HttpServletRequest request,
 		HttpServletResponse response) {
+		ActionErrors erreurs = new ActionErrors();
+		ActionForward next = null;
+		String articleId = "";
 		try {
 			MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
 			ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
 			//recuperation des champs du form et session
 			EnchereForm enchereForm = (EnchereForm) form;
-			String articleId = enchereForm.getArticleDTO().getId();			
+			articleId = enchereForm.getArticleDTO().getId();			
 			Double montantEnchere = enchereForm.getMontantEnchereCourante();
 			String membreId = ((MembreDTO)request.getSession().getAttribute("membre")).getId();
 			//creations objets
 			ActionEnchereDTO actionEnchereDTO = new ActionEnchereDTO();
 			actionEnchereDTO.setMontant(montantEnchere);
-			String clientId = membreFacade.getClientDTO(membreId).getId();
+			String clientId = membreFacade.getClientDTOByMembreId(membreId).getId();
 			//action
 			articleFacade.encherir(actionEnchereDTO, articleId, clientId);
-			return new ActionForward("/article.do?do=showArticleFiche&id=" + articleId);
+			next = new ActionForward("/article.do?do=showArticleFiche&id=" + articleId);
+		} catch (ArticlePasEnVenteException e) {
+			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleEnVente"));
+			e.printStackTrace();
+			next = mapping.getInputForward();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return (mapping.findForward("saveSuccess"));
+		if (!erreurs.isEmpty()) {
+			saveErrors(request, erreurs);
+		}
+		return next;
 	}
 
 }

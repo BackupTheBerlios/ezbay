@@ -12,6 +12,7 @@ import org.apache.struts.action.ActionMapping;
 
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.struts.views.ActionEnchereView;
 import axlomoso.ezbay.struts.views.ArticleView;
 
 /** 
@@ -26,7 +27,7 @@ public class EnchereForm extends ActionForm {
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private String stringMontantEnchereCourante = "";
 	private Double montantEnchereCourante = null;
-	private Double montantDerniereEnchere = null;
+	private ActionEnchereView enchereView = null;
 	// --------------------------------------------------------- Methods
 
 	/** 
@@ -37,14 +38,6 @@ public class EnchereForm extends ActionForm {
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		stringMontantEnchereCourante = "";
 		montantEnchereCourante = null;
-	}
-
-	public Double getMontantDerniereEnchere() {
-		return montantDerniereEnchere;
-	}
-
-	public void setMontantDerniereEnchere(Double montant) {
-		montantDerniereEnchere = montant;
 	}
 	
 	public String getStringMontantEnchereCourante() {
@@ -95,6 +88,20 @@ public class EnchereForm extends ActionForm {
 		articleDTO.setId(id);
 	}
 	
+	public ActionEnchereView getEnchereView() {
+		return enchereView;
+	}
+
+	public void setEnchereView(ActionEnchereView enchereView) {
+		this.enchereView = enchereView;
+	}
+	
+	public Double getMontant() {
+		Double tRes = new Double(0);
+		if( enchereView != null )tRes = enchereView.getMontant();
+		return tRes;
+	}
+	
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
 		System.out.println("EnchereForm.validate()");
@@ -106,9 +113,9 @@ public class EnchereForm extends ActionForm {
 			try {				
 					 Double d = new Double(Double.parseDouble(this.getStringMontantEnchereCourante()));
 					 this.setMontantEnchereCourante(d);
-					 if( this.getMontantDerniereEnchere().doubleValue() > 0 ){
+					 if( this.getMontant().doubleValue() > 0 ){
 						 // l'article a déjà été enchéri
-						 if( d.doubleValue() <= this.getMontantDerniereEnchere().doubleValue() ){
+						 if( d.doubleValue() <= this.getMontant().doubleValue() ){
 							 // montant de l'enchère courante <= montant de la dernière enchère
 							 errors.add("prixVente", new ActionError("articleEnchereEdit.erreurs.montantInferieurADerniereEnchere"));
 						 }

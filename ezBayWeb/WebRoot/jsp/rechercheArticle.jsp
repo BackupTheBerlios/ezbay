@@ -144,13 +144,13 @@
 					<h2><bean:message key="articleList.modele" /></h2>
 				</td>
 				<td width="16%" align="center">
-					<h2><bean:message key="articleList.prixVente" /></h2>
+					<h2><bean:message key="articleList.prixActuel" /></h2>
 				</td>
-				<td width="18%" align="center">
-					<h2><bean:message key="link.articleFiche" /></h2>
+				<td width="16%" align="center">
+					<h2><bean:message key="articleList.nbEncheres" /></h2>
 				</td>
-				<td width="14%" align="center">
-					<h2><bean:message key="link.articleEncherir" /></h2>
+				<td width="16%" align="center">
+					<h2><bean:message key="articleList.dateLimite" /></h2>
 				</td>
 			</tr>
 			<%-- start with an iterate over the array articlesView --%>
@@ -159,7 +159,9 @@
 					<%-- article informations --%>
 
 					<td align="center">
-						<bean:write name="article" property="libelle" />
+						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
+							<bean:write name="article" property="libelle" />						
+						</html:link>
 					</td>
 					<td align="center">
 						<bean:write name="article" property="marque" />
@@ -168,19 +170,20 @@
 						<bean:write name="article" property="modele" />
 					</td>
 					<td align="center">
-						<bean:write name="article" property="prixVente" />
+						<logic:empty name="article" property="derniereEnchereView">
+							<bean:write name="article" property="prixVente" />
+						</logic:empty>
+						<logic:notEmpty name="article" property="derniereEnchereView">			
+							<b><bean:write name="article" property="derniereEnchereView.montant" />
+							&nbsp;<bean:message key="general.label.devise" /></b>
+						</logic:notEmpty>
 					</td>
-					
 					<td align="center">
-						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
-							<bean:message key="link.articleFiche" />
-						</html:link>
-					</td>
+						<bean:write name="article" property="nbEncheres" />
+					</td>					
 					<td align="center">
-						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
-							<bean:message key="link.articleEncherir" />
-						</html:link>
-					</td>
+						<bean:write name="article" property="formattedDateLimite" />
+					</td>										
 				</tr>
 
 			</logic:iterate>

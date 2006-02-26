@@ -52,6 +52,14 @@ import axlomoso.ezbay.model.interfaces.ClientLocal;
  * @ejb:util generate="physical"
  * 
  * @ejb.value-object match = "*"
+ * @ejb.finder
+ * 		description="findByArticle"
+ * 		signature="axlomoso.ezbay.model.interfaces.ActionTransactionLocal findByArticle(java.lang.String idArticle)" 
+ * 		query="SELECT OBJECT(a)
+ * 			FROM actiontransaction as at, 
+ * 				article as a 
+ * 			WHERE 
+ * 				a.id = ?1 and at.articleLocal = a" 
  */
 public abstract class ActionTransactionBean implements EntityBean {
 
@@ -198,6 +206,7 @@ public abstract class ActionTransactionBean implements EntityBean {
 	 * @throws CreateException Thrown if method fails due to system-level error.
 	 */
 	public void ejbPostCreate(ActionEnchereDTO enchereDTO, ArticleLocal articleLocal, ClientLocal clientLocal) throws CreateException {
+		//cette méthode n'est pas appellée, pkoi ?
 		this.setArticleLocal(articleLocal);
 		this.setClientLocal(clientLocal);
 	}

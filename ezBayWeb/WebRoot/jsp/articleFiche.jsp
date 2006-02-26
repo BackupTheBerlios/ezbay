@@ -132,7 +132,7 @@
 			</tr>
 		</table>
 		<hr align="center"/>
-<logic:notEmpty name="articleForm" property="enchereView.enchereDTO">
+<logic:notEmpty name="articleForm" property="enchereView">
 		<b><bean:message key="articleFiche.derniereEnchere.titre" /></b>
 		<table>
 			<tr>
@@ -165,12 +165,12 @@
 						<b>
 				</td>
 				<td>
-					<bean:write name="articleForm" property="enchereView.pseudo" />
+					<bean:write name="articleForm" property="enchereView.membreDTO.pseudo" />
 				</td>
 			</tr>
 			</table>
 </logic:notEmpty>
-<logic:empty name="articleForm" property="enchereView.enchereDTO">
+<logic:empty name="articleForm" property="enchereView">
 	<bean:message key="articleFiche.noEnchere" />
 </logic:empty>
 

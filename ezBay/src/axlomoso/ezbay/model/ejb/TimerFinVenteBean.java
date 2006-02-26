@@ -115,7 +115,6 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 	}
 
 	public void ejbTimeout(Timer timer) {
-		System.out.println("Performing My Task");
 		System.out.println("ejbTimeout() called at: "
 				+ new Date(System.currentTimeMillis()) + " with info:");
 		articleFacade.terminerVente(timer.getInfo().toString());

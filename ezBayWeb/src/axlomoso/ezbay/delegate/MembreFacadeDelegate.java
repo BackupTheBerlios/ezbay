@@ -46,7 +46,7 @@ public class MembreFacadeDelegate {
 
 	}
 
-	public VendeurDTO getVendeurDTO(String membreId) throws RemoteException {
+	public VendeurDTO getVendeurDTOByMembreId(String membreId) throws RemoteException {
 		return membreFacade.getVendeurDTO(membreId);
 	}
 	
@@ -58,15 +58,15 @@ public class MembreFacadeDelegate {
 		return membreFacade.saveMembre(membreDTO);
 	}
 	
-	public MembreDTO getMembre(String membreId) throws Exception, RemoteException {
+	public MembreDTO getMembreById(String membreId) throws Exception, RemoteException {
 		return membreFacade.getMembre(membreId);
 	}
 	
-	public MembreDTO getMembre(String pseudo, String password) throws FinderException, RemoteException {
+	public MembreDTO getMembreByAuthInfos(String pseudo, String password) throws FinderException, RemoteException {
 		return membreFacade.getMembre(pseudo, password);
 	}
 
-	public ClientDTO getClientDTO(String membreId) throws RemoteException {
+	public ClientDTO getClientDTOByMembreId(String membreId) throws RemoteException {
 		return membreFacade.getClientDTO(membreId);
 	}
 

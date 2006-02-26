@@ -61,7 +61,7 @@ public class MembreFacadeTest extends TestCase {
 	public void testSaveMembre()throws RemoteException{
 		try {
 			//récupération de l'article créé via facade
-			MembreDTO membreDTO = membreFacadeDelegate.getMembre(membreDTOCreated.getId());
+			MembreDTO membreDTO = membreFacadeDelegate.getMembreById(membreDTOCreated.getId());
 			assertTrue(this.equalsDTO(membreDTO, membreDTOCreated));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

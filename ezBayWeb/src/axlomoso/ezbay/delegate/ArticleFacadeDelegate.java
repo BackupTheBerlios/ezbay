@@ -1,24 +1,30 @@
 package axlomoso.ezbay.delegate;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.ejb.CreateException;
 
+import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
+import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
+import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
+import axlomoso.ezbay.struts.views.ActionEnchereView;
+import axlomoso.ezbay.struts.views.ActionTransactionView;
+import axlomoso.ezbay.struts.views.ArticleView;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
-import axlomoso.ezbay.utils.Util;
 
 public class ArticleFacadeDelegate {
-	private Util util = new Util();
 	private ArticleFacade articleFacade = null;
 	private static ArticleFacadeDelegate instance = null;
 
@@ -47,12 +53,12 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getArticle(articleId);
 	}
 
-	public Collection getArticlesEnVenteByCategorie(String categorieId) throws RemoteException {
-		return util.getArticlesDtoToView(articleFacade.getArticlesEnVenteByCategorie(categorieId));
+	public Collection getArticlesEnVenteByCategorie(String categorieId) throws RemoteException, Exception {
+		return this.getArticlesDtoToView(articleFacade.getArticlesEnVenteByCategorie(categorieId));
 	}
 
-	public Collection getArticlesEnVenteByVendeur(String vendeurId) throws RemoteException {
-		return util.getArticlesDtoToView(articleFacade.getArticlesEnVenteByVendeur(vendeurId));
+	public Collection getArticlesEnVenteByVendeur(String vendeurId) throws RemoteException, Exception {
+		return this.getArticlesDtoToView(articleFacade.getArticlesEnVenteByVendeur(vendeurId));
 	}
 
 	public CategorieDTO getCategorieDTO(String articleId) throws Exception, RemoteException {
@@ -63,8 +69,8 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getVendeurDTO(articleId);
 	}
 
-	public Collection rechercherArticlesEnVente(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,Double prixVenteMax, Integer anneeFabrication, Date dateLimite) throws RemoteException {
-		return util.getArticlesDtoToView(articleFacade.rechercherArticlesEnVente(libcategorie, libelle, marque, modele, prixVenteMin,prixVenteMax, anneeFabrication, dateLimite));
+	public Collection rechercherArticlesEnVente(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,Double prixVenteMax, Integer anneeFabrication, Date dateLimite) throws RemoteException, Exception {
+		return this.getArticlesDtoToView(articleFacade.rechercherArticlesEnVente(libcategorie, libelle, marque, modele, prixVenteMin,prixVenteMax, anneeFabrication, dateLimite));
 	}
 
 	public ActionEnchereDTO getDerniereEnchere(String articleId) throws RemoteException {
@@ -75,7 +81,65 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getDernierEncherisseur(articleId);
 	}
 	
-	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws RemoteException{
+	public Integer getNbEncheres(String articleId) throws RemoteException {
+		return articleFacade.getNbEncheres(articleId);
+	}
+	
+	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws RemoteException, ArticlePasEnVenteException{
 		return articleFacade.encherir(enchereDTO, articleId, clientId);
 	}
+	
+	public ClientDTO getAcquereur(String artilcleId) throws RemoteException {
+		return articleFacade.getAcquereur(artilcleId);
+	}
+
+	public ActionTransactionDTO getTransaction(String articleId) throws RemoteException {
+		return articleFacade.getTransaction(articleId);
+	}
+	
+	/* transforme une liste d'ArticleDTO en une liste d'articleView */
+    public Collection getArticlesDtoToView(Collection articles) throws Exception {
+    	MembreFacadeDelegate membreDelegate = MembreFacadeDelegate.getInstance();
+    	ClientFacadeDelegate clientDelegate = ClientFacadeDelegate.getInstance();
+		Collection tRes = new ArrayList();
+		for (Iterator it = articles.iterator(); it.hasNext(); ) {
+			ArticleDTO articleDTO = (ArticleDTO) it.next();
+			ArticleView articleView = new ArticleView();
+			articleView.setArticleDTO(articleDTO);
+			//Dernière enchère
+			ActionEnchereView enchereView = null;
+			ActionEnchereDTO enchereDTO = this.getDerniereEnchere(articleDTO.getId());
+			ClientDTO clientEncherisseurDTO = null;
+			MembreDTO membreEncherisseurDTO = null;
+			if( enchereDTO != null ){
+				// l'article a été enchéri
+				enchereView = new ActionEnchereView(enchereDTO);
+				clientEncherisseurDTO = this.getDernierEncherisseur(articleDTO.getId());
+				membreEncherisseurDTO = clientDelegate.getMembreByClientId(clientEncherisseurDTO.getId());
+				enchereView.setClientId(clientEncherisseurDTO.getId());
+				enchereView.setMembreDTO(membreEncherisseurDTO); 
+			}
+			articleView.setDerniereEnchereView(enchereView);
+			articleView.setNbEncheres(this.getNbEncheres(articleDTO.getId()));
+			//Transaction
+			ActionTransactionView transactionView = null;
+			System.out.println("getArticlesDtoToView article:" + articleDTO);
+			ActionTransactionDTO transactionDTO = this.getTransaction(articleDTO.getId());
+			System.out.println("getArticlesDtoToView transactionDTO:" + transactionDTO);
+			ClientDTO clientAcquereur = null;
+			MembreDTO membreAcquereur = null;
+			if( transactionDTO != null ){
+				//l'article a été acheté
+				transactionView = new ActionTransactionView(transactionDTO);
+				clientAcquereur = this.getAcquereur(articleDTO.getId());
+				membreAcquereur = clientDelegate.getMembreByClientId(clientAcquereur.getId());
+				transactionView.setClientId(clientAcquereur.getId());
+				transactionView.setMembreDTO(membreAcquereur);
+			}
+			articleView.setTransactionView(transactionView);
+			tRes.add(articleView);
+	    }		
+		return tRes;
+	}
+    
 }

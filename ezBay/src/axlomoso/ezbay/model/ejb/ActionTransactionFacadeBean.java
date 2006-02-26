@@ -15,6 +15,7 @@ import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
 import axlomoso.ezbay.model.interfaces.ActionTransactionLocal;
 import axlomoso.ezbay.model.interfaces.ActionTransactionLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
+import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
@@ -88,10 +89,55 @@ public class ActionTransactionFacadeBean implements SessionBean {
 			ActionTransactionLocalHome home = (ActionTransactionLocalHome) getEntityHome();
 			ActionTransactionLocal transactionLocal;
 			transactionLocal = home.create(transactionDTO, articleLocal, clientLocal);
+			transactionLocal.setArticleLocal(articleLocal);
+			transactionLocal.setClientLocal(clientLocal);
 			tRes = transactionLocal.getActionTransactionDTO();
 		} catch (CreateException e) {
 			e.printStackTrace();
 			throw e;
+		}
+		return tRes;
+	}
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurDTO
+	 * @throws FinderException 
+	 * @throws CreateException 
+	 */
+	public ActionTransactionDTO getActionTransactionByArticle(String articleId){
+		ActionTransactionDTO tRes = null;
+		try {
+			System.out.println("getActionTransactionByArticle. articleId = " + articleId);
+			System.out.println("getActionTransactionByArticle 1");
+			ActionTransactionLocalHome home = getEntityHome();
+			System.out.println("getActionTransactionByArticle 2");
+			ActionTransactionLocal transactionLocal = home.findByArticle(articleId);
+			System.out.println("getActionTransactionByArticle 3");
+			tRes = transactionLocal.getActionTransactionDTO();
+			System.out.println("getActionTransactionByArticle 4");
+		} catch (FinderException e) {
+			System.out.println("cannot get ActionTransaction for article id=" + articleId);
+		}
+		return tRes;
+	}
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurDTO
+	 * @throws FinderException 
+	 * @throws CreateException 
+	 */
+	public ClientDTO getAcquereur(String articleId){
+		ClientDTO tRes = null;
+		try {
+			System.out.println("getActionTransactionByArticle. articleId = " + articleId);
+			ActionTransactionLocalHome home = getEntityHome();
+			ActionTransactionLocal transactionLocal = home.findByArticle(articleId);
+			ClientLocal clientLocal = transactionLocal.getClientLocal();
+			tRes = clientLocal.getClientDTO();
+		} catch (FinderException e) {
+			System.out.println("cannot get ClientLocal Acquéreur for article id=" + articleId);		
 		}
 		return tRes;
 	}

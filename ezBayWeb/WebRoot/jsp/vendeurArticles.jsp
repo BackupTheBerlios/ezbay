@@ -93,14 +93,16 @@
 <tbody>
 <%-- set the header --%>
 <tr>
-<td>&nbsp;</td>
+
 <td><bean:message key="articleList.libelle" /></td>
 <td><bean:message key="articleList.marque" /></td>
 <td><bean:message key="articleList.modele" /></td>
-<td><bean:message key="articleList.prixVente" /></td>
+<td><bean:message key="articleList.prixDepart" /></td>
 <td><bean:message key="articleList.anneeFabrication" /></td>
 <td><bean:message key="articleList.dateLimite" /></td>
-
+<td><bean:message key="articleList.nbEncheres" /></td>
+<td><bean:message key="articleList.derniereEnchere.titre" /></td>
+<td>&nbsp;</td>
 </tr>
 	<logic:iterate name="vendeurForm" property="articlesEnVente" id="article">
 		<tr>
@@ -123,8 +125,25 @@
 			<td>
 				<bean:write name="article" property="formattedDateLimite" />
 			</td>
+			<td><bean:write name="article" property="nbEncheres" /></td>
 			<td>
+				<logic:empty name="article" property="derniereEnchereView">
+					&nbsp;
+				</logic:empty>
+				<logic:notEmpty name="article" property="derniereEnchereView">			
+					<bean:write name="article" property="derniereEnchereView.membreDTO.nom" /><br />
+					<bean:write name="article" property="derniereEnchereView.formattedDate" /><br />
+					<b><bean:write name="article" property="derniereEnchereView.montant" />
+					<bean:message key="general.label.devise" /></b>
+				</logic:notEmpty>
+			</td>
+			<td>
+			<logic:notEmpty name="article" property="derniereEnchereView">
+			&nbsp;
+			</logic:notEmpty>
+			<logic:empty name="article" property="derniereEnchereView">
 			<html:link action="/article.do?do=retirerArticle" paramName="article" paramProperty="id" paramId="id"><bean:message key="vendeurArticles.link.retirer" /></html:link>
+			</logic:empty>
 			</td>
 		</tr>
 	</logic:iterate>

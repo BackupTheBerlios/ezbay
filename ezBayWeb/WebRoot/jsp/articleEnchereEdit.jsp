@@ -28,17 +28,17 @@
 
 		<bean:message key="articleEnchereEdit.libelleArticle" /> : <bean:write name="enchereForm" property="libelle" />
 		<br />
-		<logic:equal name="enchereForm" property="montantDerniereEnchere" value="0">
+		<logic:empty name="enchereForm" property="enchereView">
 			<bean:message key="articleEnchereEdit.prixDepart" /> : <bean:write name="enchereForm" property="prixVente" /> <bean:message key="general.label.devise" />
-		</logic:equal>
-		<logic:notEqual name="enchereForm" property="montantDerniereEnchere" value="0">
-			<bean:message key="articleEnchereEdit.derniereEnchere" /> : <bean:write name="enchereForm" property="montantDerniereEnchere" /> <bean:message key="general.label.devise" />
-		</logic:notEqual>		
+		</logic:empty>
+		<logic:notEmpty name="enchereForm" property="enchereView">
+			<bean:message key="articleEnchereEdit.derniereEnchere" /> : <bean:write name="enchereForm" property="enchereView.montant" /> <bean:message key="general.label.devise" />
+		</logic:notEmpty>		
 	<br />
 		<html:form action="enchereSave">
 			<bean:message key="articleEnchereEdit.montant" /> : <html:text property="stringMontantEnchereCourante" />
 			<br>
-			<html:hidden property="montantDerniereEnchere" />
+			<html:hidden property="montant" />
 			<html:hidden property="id" />
 			<html:hidden property="prixVente" />
 			<html:hidden property="libelle" />

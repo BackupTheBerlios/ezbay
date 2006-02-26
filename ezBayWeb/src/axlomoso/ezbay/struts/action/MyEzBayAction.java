@@ -58,7 +58,7 @@ public class MyEzBayAction extends DispatchAction {
 				target = "showConnectForm";
 			else{
 				myEzBayForm.setMembreDTO(membreDTO);			
-				myEzBayForm.setVendeurDTO(membreFacadeDelegate.getVendeurDTO(membreDTO.getId()));
+				myEzBayForm.setVendeurDTO(membreFacadeDelegate.getVendeurDTOByMembreId(membreDTO.getId()));
 				target = "showMyEzBay";
 			}
 		} catch (RemoteException e) {

@@ -338,6 +338,7 @@ public abstract class ArticleBean implements EntityBean {
 	 * @ejb.create-method
 	 */
 	public String ejbCreate(ArticleDTO articleTO, VendeurLocal vendeur) throws CreateException {
+		System.out.println("ArticleBean.ejbCreate()");
 		String tId = ArticleUtil.generateGUID(this);
 		this.setId(tId);
 		this.setLibelle(articleTO.getLibelle());
@@ -347,6 +348,7 @@ public abstract class ArticleBean implements EntityBean {
 		this.setAnneeFabrication(articleTO.getAnneeFabrication());
 		this.setDateLimite(articleTO.getDateLimite());
 		this.setDescription(articleTO.getDescription());
+		this.setEnVente(articleTO.getEnVente());
 		return tId;
 	}
 
@@ -370,7 +372,8 @@ public abstract class ArticleBean implements EntityBean {
 	 * @throws CreateException Thrown if method fails due to system-level error.
 	 */
     public void ejbPostCreate(ArticleDTO articleDTO, VendeurLocal vendeur) throws javax.ejb.CreateException {
-		this.setVendeurLocal(vendeur);
+		System.out.println("ArticleBean.ejbPostCreate()");
+    	this.setVendeurLocal(vendeur);
     }
 
 	/**

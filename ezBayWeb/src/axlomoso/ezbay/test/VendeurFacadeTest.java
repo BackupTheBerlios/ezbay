@@ -130,7 +130,7 @@ public class VendeurFacadeTest extends TestCase {
 			MembreFacadeDelegate membreFacadeDelegate = MembreFacadeDelegate.getInstance();
 			// récupération du membre via la facade
 			MembreDTO membreDTO = vendeurFacade.getMembre(vendeurDTOCreated.getId());
-			assertEquals(membreDTO.getId(), membreFacadeDelegate.getMembre(membreDTOTemoin.getId()));
+			assertEquals(membreDTO.getId(), membreFacadeDelegate.getMembreById(membreDTOTemoin.getId()));
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

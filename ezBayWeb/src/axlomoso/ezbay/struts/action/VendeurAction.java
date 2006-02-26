@@ -76,8 +76,8 @@ public class VendeurAction extends DispatchAction {
 		VendeurFacadeDelegate vendeurDelegate = VendeurFacadeDelegate.getInstance();
 		try {
 			MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
-			VendeurDTO vendeurDTO = membreDelegate.getVendeurDTO(membreDTO.getId());
-			vendeurForm.setVendeurDTO(membreDelegate.getVendeurDTO(membreDTO.getId()));
+			VendeurDTO vendeurDTO = membreDelegate.getVendeurDTOByMembreId(membreDTO.getId());
+			vendeurForm.setVendeurDTO(membreDelegate.getVendeurDTOByMembreId(membreDTO.getId()));
 			vendeurForm.setArticlesEnAttente(vendeurDelegate.getArticlesEnAttente(vendeurDTO.getId()));
 			vendeurForm.setArticlesEnVente(vendeurDelegate.getArticlesEnVente(vendeurDTO.getId()));
 			vendeurForm.setArticlesVendus(vendeurDelegate.getArticlesVendus(vendeurDTO.getId()));

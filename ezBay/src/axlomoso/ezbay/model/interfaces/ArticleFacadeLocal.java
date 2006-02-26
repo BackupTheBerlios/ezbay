@@ -36,6 +36,12 @@ public interface ArticleFacadeLocal
 
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO getDerniereEnchere( java.lang.String articleId ) ;
 
+   public java.lang.Integer getNbEncheres( java.lang.String articleId ) ;
+
+   public axlomoso.ezbay.model.interfaces.ClientDTO getAcquereur( java.lang.String articleId ) ;
+
+   public axlomoso.ezbay.model.interfaces.ActionTransactionDTO getTransaction( java.lang.String articleId ) ;
+
    public axlomoso.ezbay.model.interfaces.ClientDTO getDernierEncherisseur( java.lang.String articleId ) ;
 
    public boolean isArticleEnAttente( java.lang.String articleId ) ;
@@ -54,6 +60,6 @@ public interface ArticleFacadeLocal
 
    public boolean isArticleVendu( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) ;
 
-   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId ) ;
+   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId ) throws axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
 
 }

@@ -13,6 +13,8 @@ import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
 import javax.naming.NamingException;
 
+import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
+import axlomoso.ezbay.exceptions.ArticleVenduException;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocal;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocalHome;
@@ -55,6 +57,7 @@ public class ArticleFacadeBean implements SessionBean {
 
 	ServiceLocator locator;
 	ActionEnchereFacadeLocal actionEnchereFacade;
+	ActionTransactionFacadeLocal actionTransactionFacade;
 	
 	public ArticleFacadeBean() {
 		super();
@@ -62,6 +65,8 @@ public class ArticleFacadeBean implements SessionBean {
 			locator = ServiceLocator.getInstance();
 			ActionEnchereFacadeLocalHome actionEnchereFacadeLocalHome = (ActionEnchereFacadeLocalHome) locator.getLocalHome(ActionEnchereFacadeLocalHome.JNDI_NAME);
 			actionEnchereFacade = (ActionEnchereFacadeLocal) actionEnchereFacadeLocalHome.create();
+			ActionTransactionFacadeLocalHome actionTransactionFacadeLocalHome = (ActionTransactionFacadeLocalHome) locator.getLocalHome(ActionTransactionFacadeLocalHome.JNDI_NAME);
+			actionTransactionFacade = (ActionTransactionFacadeLocal) actionTransactionFacadeLocalHome.create();
 		} catch (ServiceLocatorException e) {
 			e.printStackTrace();
 		} catch (CreateException e) {
@@ -114,6 +119,7 @@ public class ArticleFacadeBean implements SessionBean {
 			//retirer l'article de la vente
 			this.retirerArticle(articleId);
 			ActionEnchereDTO derniereEnchereDTO = this.getDerniereEnchere(articleId);
+			System.out.println("derniere enchere : " + derniereEnchereDTO);
 			if( derniereEnchereDTO != null ){
 				/* L'article possède des enchères */
 				//créer la transaction
@@ -123,8 +129,12 @@ public class ArticleFacadeBean implements SessionBean {
 					//ClientLocal
 				ClientDTO clientDTO = actionEnchereFacade.getEncherisseur(derniereEnchereDTO.getId());
 				ClientLocal clientLocal = ClientFacadeBean.getEntity(clientDTO.getId());
+				System.out.println("clientDTO : " + clientDTO);
+				System.out.println("clientLocal : " + clientLocal);
 					//ArticleLocal
 				ArticleLocal articleLocal = getEntity(articleId);
+				System.out.println("articleId : " + articleId);
+				System.out.println("articleLocal : " + articleLocal);
 					//transaction
 				actionTransactionFacade.createActionTransaction(actionTransactionDTO, articleLocal, clientLocal);
 				//supprimer la derniere enchere
@@ -170,16 +180,16 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;
 	}
 
-	private ArticleDTO createArticle(String vendeurId, ArticleDTO articleDTO,
-			String categorieId) throws Exception {
+	private ArticleDTO createArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws Exception {
 		ArticleDTO tRes = null;
 		try {
+			ArticleDTO tArticleDTO = articleDTO;
+			tArticleDTO.setEnVente(new Boolean(false));
 			ArticleLocalHome home = getEntityHome();
 			VendeurLocal vendeurLocal = VendeurFacadeBean.getEntity(vendeurId);
 			ArticleLocal articleLocal = home.create(articleDTO, vendeurLocal);
 			// categorie
-			CategorieLocal categorieLocal = CategorieFacadeBean
-					.getEntity(categorieId);
+			CategorieLocal categorieLocal = CategorieFacadeBean.getEntity(categorieId);
 			articleLocal.setCategorieLocal(categorieLocal);
 			// return
 			tRes = articleLocal.getArticleDTO();
@@ -429,12 +439,48 @@ public class ArticleFacadeBean implements SessionBean {
 	 */
 	public ActionEnchereDTO getDerniereEnchere(String articleId){
 		ActionEnchereDTO tRes = null;
-		ArrayList encheres = (ArrayList)actionEnchereFacade.getActionEncheresByArticle(articleId);
+		ArrayList encheres = this.getEncheres(articleId);
 		if( encheres.size() > 0 ){
 			tRes = (ActionEnchereDTO)encheres.get(0);
 		}
 		return tRes;
 	}
+
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param articleId
+	 */
+	public Integer getNbEncheres(String articleId){
+		return new Integer(this.getEncheres(articleId).size());
+	}
+	
+	private ArrayList getEncheres(String articleId) {
+		ArrayList encheres = (ArrayList)actionEnchereFacade.getActionEncheresByArticle(articleId);
+		return encheres;
+	}
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param articleId
+	 */
+	public ClientDTO getAcquereur(String articleId) {
+		ClientDTO tRes = null;
+		ActionTransactionDTO transactionDTO = this.getTransaction(articleId);
+		if( transactionDTO != null ){
+			String transactionId = transactionDTO.getId();
+			tRes = actionTransactionFacade.getAcquereur(transactionId);
+		}
+		return tRes;
+	}
+
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param articleId
+	 */
+	public ActionTransactionDTO getTransaction(String articleId) {
+		return actionTransactionFacade.getActionTransactionByArticle(articleId);
+	}
+	
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
@@ -563,12 +609,17 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @ejb.interface-method view-type = "both"
 	 * @param articleDTO
 	 */
-	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId){
+	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws ArticlePasEnVenteException{
 		ActionEnchereDTO tRes = null;
 		try {
 			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
-			ClientLocal clientLocal = ClientFacadeBean.getEntity(clientId);
-			tRes = actionEnchereFacade.createActionEnchere(enchereDTO, articleLocal, clientLocal);
+			if( !this.isArticleEnVente(articleLocal.getArticleDTO()) ) {
+				throw new ArticlePasEnVenteException();
+			}
+			else{
+				ClientLocal clientLocal = ClientFacadeBean.getEntity(clientId);
+				tRes = actionEnchereFacade.createActionEnchere(enchereDTO, articleLocal, clientLocal);
+			}
 		} catch (FinderException e) {
 			e.printStackTrace();
 		} catch (CreateException e) {
@@ -578,9 +629,6 @@ public class ArticleFacadeBean implements SessionBean {
 		}
 		return tRes;
 	}
-	
-	
-	
 	
 	private Collection getOnlyArticlesEnVente(Collection allArticlesLocal){
 		// retourne une Collection d'ArticlesDTO

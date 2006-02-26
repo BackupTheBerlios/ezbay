@@ -61,16 +61,12 @@ public class VendeurFacadeDelegate {
 	public void setVendeurFacade(VendeurFacade vendeurFacade) {
 		this.vendeurFacade = vendeurFacade;
 	}
-/*
-	public Collection getArticles(String vendeurId) throws RemoteException {
-		return vendeurFacade.getArticles(vendeurId);
-	}
-*/
-	public VendeurDTO getVendeur(String vendeurId) throws Exception, RemoteException {
+
+	public VendeurDTO getVendeurById(String vendeurId) throws Exception, RemoteException {
 		return vendeurFacade.getVendeur(vendeurId);
 	}
 
-	public MembreDTO getMembre(String vendeurId) throws Exception, RemoteException {
+	public MembreDTO getMembreByVendeurId(String vendeurId) throws Exception, RemoteException {
 		return vendeurFacade.getMembre(vendeurId);
 	}
 	
@@ -78,19 +74,22 @@ public class VendeurFacadeDelegate {
 		return vendeurFacade.getVendeurs();
 	}
 
-	public Collection getArticlesEnAttente(String vendeurId) throws RemoteException {
+	public Collection getArticlesEnAttente(String vendeurId) throws RemoteException, Exception {
 		Collection articles = vendeurFacade.getArticlesEnAttente(vendeurId);
-		return util.getArticlesDtoToView(articles);
+		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
+		return articleFacade.getArticlesDtoToView(articles);
 	}
 
-	public Collection getArticlesEnVente(String vendeurId) throws RemoteException {
+	public Collection getArticlesEnVente(String vendeurId) throws RemoteException, Exception {
 		Collection articles = vendeurFacade.getArticlesEnVente(vendeurId);
-		return util.getArticlesDtoToView(articles);
+		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
+		return articleFacade.getArticlesDtoToView(articles);
 	}
 
-	public Collection getArticlesVendus(String vendeurId) throws RemoteException {
+	public Collection getArticlesVendus(String vendeurId) throws RemoteException, Exception {
 		Collection articles = vendeurFacade.getArticlesVendus(vendeurId);
-		return util.getArticlesDtoToView(articles);
+		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
+		return articleFacade.getArticlesDtoToView(articles);
 	}
 
 	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws VendeurInconnuException, Exception, RemoteException {

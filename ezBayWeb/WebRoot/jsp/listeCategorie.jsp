@@ -23,12 +23,9 @@
 <br />
 </logic:iterate>
 <logic:notPresent name="categorie">
-<tr>
-<td colspan="5"><bean:message key="categorieList.noCategories" /></td>
-</tr>
+<bean:message key="categorieList.noCategories" />
 </logic:notPresent>
 <br /><br />
- <html:button property="back" onclick="location.href='default.do'">Back to menu</html:button>
 </center>
 </body>
 </html>

@@ -62,21 +62,9 @@ public class Util {
     
     public String getDateToString(Date date){
     	String tRes = "";
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy - kk:mm:ss");
 		tRes = df.format(date); 
     	return tRes;
     }
-    
-	/* transforme une liste d'ArticleDTO en une liste d'articleView */
-    public Collection getArticlesDtoToView(Collection articles) {
-		Collection tRes = new ArrayList();
-		for (Iterator it = articles.iterator(); it.hasNext(); ) {
-			ArticleDTO articleDTO = (ArticleDTO) it.next();
-			ArticleView articleView = new ArticleView();
-			articleView.setArticleDTO(articleDTO);
-			tRes.add(articleView);
-	    }		
-		return tRes;
-	}
     
 }

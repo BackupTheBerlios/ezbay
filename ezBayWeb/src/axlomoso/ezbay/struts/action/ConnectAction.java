@@ -66,7 +66,7 @@ public class ConnectAction extends DispatchAction {
 		String target = "";
 			try {
 				MembreFacadeDelegate membreDelegate = MembreFacadeDelegate.getInstance();
-				MembreDTO membreDTO = membreDelegate.getMembre(connectForm.getLogin(), connectForm.getPassword());
+				MembreDTO membreDTO = membreDelegate.getMembreByAuthInfos(connectForm.getLogin(), connectForm.getPassword());
 				if( membreDTO == null){
 					erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("myEzBay.erreur.connexion"));
 					next = mapping.findForward("echec");
@@ -74,7 +74,7 @@ public class ConnectAction extends DispatchAction {
 				}
 				else{
 					request.getSession().setAttribute("membre",membreDTO);
-					request.getSession().setAttribute("vendeurId",membreDelegate.getVendeurDTO(membreDTO.getId()).getId());
+					request.getSession().setAttribute("vendeurId",membreDelegate.getVendeurDTOByMembreId(membreDTO.getId()).getId());
 					if( nextPath != null ){
 						next = new ActionForward(nextPath);
 					}

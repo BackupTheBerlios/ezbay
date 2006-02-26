@@ -47,7 +47,7 @@ public class ClientFacadeDelegate {
 		}
 	}
 	
-	public MembreDTO getMembre(String clientId) throws RemoteException, Exception{
+	public MembreDTO getMembreByClientId(String clientId) throws RemoteException, Exception{
 		return clientFacade.getMembre(clientId);
 	}
 	

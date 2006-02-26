@@ -8,7 +8,6 @@ import java.rmi.RemoteException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -20,7 +19,7 @@ import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.struts.form.EnchereForm;
-import axlomoso.ezbay.struts.views.ArticleView;
+import axlomoso.ezbay.struts.views.ActionEnchereView;
 
 /** 
  * MyEclipse Struts
@@ -63,14 +62,10 @@ public class EnchereAction extends DispatchAction {
 			try {
 				ArticleDTO articleDTO = articleDelegate.getArticle(articleId);
 				ActionEnchereDTO actionEnchereDTO = articleDelegate.getDerniereEnchere(articleDTO.getId());
-				//Pour poser une enchère il faut être connecté
+				ActionEnchereView enchereView = null;
 				if( actionEnchereDTO != null ){
-					//Erreur, utilisateur non connecté. 
-					enchereForm.setMontantDerniereEnchere(actionEnchereDTO.getMontant());
-				}
-				else{
-					//OK, utilisateur connecté. 
-					enchereForm.setMontantDerniereEnchere(new Double(0));
+					enchereView = new ActionEnchereView(actionEnchereDTO);
+					enchereForm.setEnchereView(enchereView);
 				}
 				enchereForm.setArticleDTO(articleDTO);
 				target = "showEnchereForm";

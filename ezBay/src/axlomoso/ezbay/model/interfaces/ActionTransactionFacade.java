@@ -17,4 +17,10 @@ public interface ActionTransactionFacade
    public axlomoso.ezbay.model.interfaces.ActionTransactionDTO createActionTransaction( axlomoso.ezbay.model.interfaces.ActionTransactionDTO transactionDTO,axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal,axlomoso.ezbay.model.interfaces.ClientLocal clientLocal )
       throws javax.ejb.CreateException, java.rmi.RemoteException;
 
+   public axlomoso.ezbay.model.interfaces.ActionTransactionDTO getActionTransactionByArticle( java.lang.String articleId )
+      throws java.rmi.RemoteException;
+
+   public axlomoso.ezbay.model.interfaces.ClientDTO getAcquereur( java.lang.String articleId )
+      throws java.rmi.RemoteException;
+
 }
