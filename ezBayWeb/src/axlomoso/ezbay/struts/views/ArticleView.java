@@ -12,10 +12,10 @@ public class ArticleView {
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private VendeurDTO vendeurDTO = new VendeurDTO();
 	private MembreDTO vendeurMembreDTO = new MembreDTO();
-	private CategorieDTO categorieDTO = null;
+	private CategorieDTO categorieDTO = new CategorieDTO();
 	private ActionEnchereView derniereEnchereView = null;
 	private ActionTransactionView transactionView = null;
-	private Integer nbEncheres = null;
+	private Integer nbEncheres = new Integer(0);
 	
 	
 	public Integer getAnneeFabrication() {
