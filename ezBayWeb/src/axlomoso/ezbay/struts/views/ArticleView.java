@@ -148,4 +148,8 @@ public class ArticleView {
 		this.vendeurMembreDTO = vendeurMembreDTO;
 	}
 
+	public Boolean getEnVente() {
+		return articleDTO.getEnVente();
+	}
+
 }
