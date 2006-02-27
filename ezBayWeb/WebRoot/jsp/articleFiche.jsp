@@ -133,6 +133,9 @@
 			</tr>
 		</table>
 		<hr width="50%" align="center"/>
+<b><bean:message key="articleFiche.encheres.historique" /></b><br />
+<bean:write name="articleForm" property="nbEncheres" />&nbsp;<bean:message key="articleFiche.encheres.libelle" />
+<br />
 <logic:notEmpty name="articleForm" property="enchereView">
 		<b><bean:message key="articleFiche.derniereEnchere.titre" /></b>
 		<table>
@@ -171,12 +174,7 @@
 			</tr>
 			</table>
 </logic:notEmpty>
-<logic:empty name="articleForm" property="enchereView">
-	<bean:message key="articleFiche.noEnchere" />
-</logic:empty>
-
-
-	<br />
+<br />
 		<br />
 			<html:link action="/enchere.do?do=showEnchereForm" paramName="articleForm" paramProperty="id" paramId="articleId">
 				<bean:message key="link.articleEncherir" />
