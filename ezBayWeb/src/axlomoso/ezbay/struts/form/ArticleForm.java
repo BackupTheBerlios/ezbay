@@ -66,7 +66,7 @@ public class ArticleForm extends ActionForm {
 	public String getStringDateLimite(){
 		stringDateLimite = "";
 		if(this.getDateLimite() != null){
-			stringDateLimite = util.getDateToString(this.getDateLimite());
+			stringDateLimite = util.getDateToString(this.getDateLimite(), "dd/MM/yyyy - kk:mm:ss");
 		}
 		return stringDateLimite;
 	}
@@ -168,7 +168,7 @@ public class ArticleForm extends ActionForm {
 			errors.add("dateLimite", new ActionError("articleEdit.erreurs.dateLimiteVide"));
 		}else{
 			try {
-				Date tDate = util.getStringToDate(stringDateLimite);
+				Date tDate = util.getStringToDate(stringDateLimite, "dd/MM/yyyy - kk:mm:ss");
 				this.setDateLimite(tDate);
 			} catch (ParseException e) {
 				// dateFormat incorrect

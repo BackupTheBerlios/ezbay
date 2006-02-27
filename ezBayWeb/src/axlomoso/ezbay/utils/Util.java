@@ -51,18 +51,18 @@ public class Util {
         return matcher.find();
     }
     
-    public Date getStringToDate(String strDate) throws ParseException{
+    public Date getStringToDate(String strDate, String pattern) throws ParseException{
     	Date tRes = null;
-    	DateFormat df = new SimpleDateFormat("dd/MM/yyyy - kk:mm:ss");
+    	DateFormat df = new SimpleDateFormat(pattern);
     	tRes = df.parse(strDate);
     	return tRes;
     }
 
 
     
-    public String getDateToString(Date date){
+    public String getDateToString(Date date, String pattern){
     	String tRes = "";
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy - kk:mm:ss");
+		DateFormat df = new SimpleDateFormat(pattern);
 		tRes = df.format(date); 
     	return tRes;
     }

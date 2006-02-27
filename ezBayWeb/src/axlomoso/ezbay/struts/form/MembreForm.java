@@ -43,7 +43,7 @@ public class MembreForm extends ActionForm {
 	public String getStringDateNaissance() {
 		stringDateNaissance = "";
 		if(membreDTO.getDateNaissance() != null){
-			stringDateNaissance = util.getDateToString(membreDTO.getDateNaissance());
+			stringDateNaissance = util.getDateToString(membreDTO.getDateNaissance(), "dd/MM/yyyy");
 		}
 		return stringDateNaissance;
 	}
@@ -251,7 +251,7 @@ public class MembreForm extends ActionForm {
 		}
 		else{
 			try {
-				Date tDate = util.getStringToDate(stringDateNaissance);
+				Date tDate = util.getStringToDate(stringDateNaissance, "dd/MM/yyyy");
 				membreDTO.setDateNaissance(tDate);
 			} catch (ParseException e) {
 				// dateFormat incorrect

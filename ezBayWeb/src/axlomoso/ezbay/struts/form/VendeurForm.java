@@ -97,7 +97,7 @@ public class VendeurForm extends ActionForm {
 	public String getStringDateExpirCB() {
 		stringDateExpirCB = "";
 		if(vendeurDTO.getDateExpirCB() != null){
-			stringDateExpirCB = util.getDateToString(vendeurDTO.getDateExpirCB());
+			stringDateExpirCB = util.getDateToString(vendeurDTO.getDateExpirCB(), "dd/MM/yyyy");
 		}
 		return stringDateExpirCB;
 	}
@@ -148,7 +148,7 @@ public class VendeurForm extends ActionForm {
 					"vendeur.inscription.erreur.dateExpirCB.obligatoire"));
 		} else {
 			try {
-				Date tDate = util.getStringToDate(stringDateExpirCB);
+				Date tDate = util.getStringToDate(stringDateExpirCB, "dd/MM/yyyy");
 				vendeurDTO.setDateExpirCB(tDate);
 			} catch (ParseException e) {
 				// dateFormat incorrect

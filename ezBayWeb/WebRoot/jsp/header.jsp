@@ -19,7 +19,7 @@
 		<html:link action="/myEzBay.do?do=showMyEzBay"><bean:message key="link.monEzBay"/></html:link>
 	</td>
 	<td>
-		<html:link action="/categorie.do?do=showCategoriesRecherche"><bean:message key="link.Recherche.Article"/></html:link>
+		<html:link action="/article.do?do=showRechercheForm"><bean:message key="link.Recherche.Article"/></html:link>
 	</td>
 	<td>
 		<html:link action="/categorie.do?do=showCategories"><bean:message key="link.categories"/></html:link>

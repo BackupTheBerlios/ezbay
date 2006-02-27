@@ -57,14 +57,14 @@ public class RechercheArticleAction extends Action {
 			Collection result=articleFacade.rechercherArticlesEnVente(idCategorie,articleDTO.getLibelle(),articleDTO.getMarque(),articleDTO.getModele(),rechercheForm.getPrixVenteMin(),rechercheForm.getPrixVenteMax(),articleDTO.getAnneeFabrication(),articleDTO.getDateLimite());
 			rechercheForm.setArticlesView(result);
 			rechercheForm.setNbArticles(result.size());
+			request.setAttribute("showResult", "true");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			return mapping.findForward("showList");
-			
-		}
+		return mapping.findForward("showList");
+	}
 
 
 }

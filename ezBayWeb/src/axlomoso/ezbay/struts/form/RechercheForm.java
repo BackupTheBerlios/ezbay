@@ -203,7 +203,7 @@ public class RechercheForm extends ActionForm {
 			this.setDateLimite(date);
 		}else{
 			try {
-				Date tDate = util.getStringToDate(stringDateLimite);
+				Date tDate = util.getStringToDate(stringDateLimite, "dd/MM/yyyy");
 				articleDTO.setDateLimite(tDate);
 			} catch (ParseException e) {
 				// dateFormat incorrect

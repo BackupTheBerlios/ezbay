@@ -251,9 +251,12 @@ public class ArticleAction extends DispatchAction {
 		}
 		CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
 		articleForm.setArticleView(articleFacade.getArticleViewFromArticleDTO(articleDTO));
-		Collection categories = categorieFacade.getCategories();
-		request.getSession().setAttribute("categories", categories);
 	}	
-
+	
+	public ActionForward showRechercheForm(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		return (mapping.findForward("showCategoriesRecherche"));
+	}
 }
 

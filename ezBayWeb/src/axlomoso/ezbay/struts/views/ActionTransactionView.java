@@ -36,7 +36,7 @@ public class ActionTransactionView {
 	}
 	
 	public String getFormattedDate(){
-		return util.getDateToString(this.getDate());
+		return util.getDateToString(this.getDate(), "dd/MM/yyyy - kk:mm:ss");
 	}
 
 	public String getClientId() {

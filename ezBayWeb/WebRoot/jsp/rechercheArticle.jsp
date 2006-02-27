@@ -200,7 +200,9 @@
 
 </logic:notEmpty>
 <logic:empty name="rechercheForm" property="articlesView"> 
-	<b><bean:message key="rechercheArticle.noArticle" /> </b>
+	<logic:present name="showResult" scope="request">
+		<b><bean:message key="rechercheArticle.noArticle" /> </b>
+	</logic:present>
 </logic:empty>
 </center>
 </body>

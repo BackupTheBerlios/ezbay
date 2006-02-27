@@ -45,7 +45,8 @@ public class VendeurSaveAction extends Action {
 		MembreFacadeDelegate membreDelegate;
 		membreDelegate = MembreFacadeDelegate.getInstance();
 		MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
-		membreDelegate.saveVendeur(membreDTO, inscriptionVendeurForm.getVendeurDTO());
+		VendeurDTO vendeurDTO = membreDelegate.saveVendeur(membreDTO, inscriptionVendeurForm.getVendeurDTO());
+		request.getSession().setAttribute("vendeurId", vendeurDTO.getId());
 		return (mapping.findForward("succes"));
 	}
 

@@ -45,7 +45,6 @@ public class CategorieAction extends DispatchAction {
 	public ActionForward showCategories(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("CategorieAction.showCategories()");
 		CategorieForm categorieForm = (CategorieForm) form;
 		CategorieFacadeDelegate categorieFacadeDelegate=CategorieFacadeDelegate.getInstance();
 		try {
@@ -56,26 +55,5 @@ public class CategorieAction extends DispatchAction {
 		}			
 		return (mapping.findForward("showCategories"));
 	}
-	
-	public ActionForward showCategoriesRecherche(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		System.out.println("CategorieAction.showCategoriesRecherche()");
-		try {
-			CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
-			Collection categories = categorieFacade.getCategories();
-			request.getSession().setAttribute("categories", categories);
-		}
-		catch(Exception e){
-		   e.printStackTrace();
-		}			
-		return (mapping.findForward("showCategoriesRecherche"));
-	}
-
-	
-	
-
-	
-	
 }
 

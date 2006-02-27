@@ -21,7 +21,7 @@
 	<global-forwards>
 		<forward
       name="welcome"
-      path="/categorie.do?do=showCategories"
+      path="/init.do"
       redirect="true" />
 
 
@@ -59,7 +59,7 @@
       <forward name="echecDelete" path="ezBay.articleRetrait" />
       <forward name="echecRetrait" path="ezBay.articleRetrait" />
       <forward name="echecMiseEnVente" path="ezBay.articleRetrait" />
-		
+	<forward name="showCategoriesRecherche" path="ezBay.rechercheArticle" />
 		</action>
 		<action attribute="connectForm" input="monEzBay.connect" name="connectForm" parameter="do" path="/connect" scope="request" type="axlomoso.ezbay.struts.action.ConnectAction">
 			<forward name="succes" path="/myEzBay.do?do=showMyEzBay" />
@@ -107,8 +107,6 @@
 		</action>
     <action attribute="categorieForm" name="categorieForm" parameter="do" path="/categorie" scope="request" type="axlomoso.ezbay.struts.action.CategorieAction" validate="false" >
 		<forward name="showCategories" path="ezBay.listeCategorie" />
-		<forward name="showCategoriesRecherche" path="ezBay.rechercheArticle" />
-		
 	</action>
 	<action
       attribute="rechercheForm"
@@ -140,6 +138,15 @@
       type="axlomoso.ezbay.struts.action.EnchereSaveAction" >
       
     </action>
+    <action path="/init" type="axlomoso.ezbay.struts.action.InitAction" >
+      <forward
+        name="next"
+        path="/default.do"
+        redirect="true" />
+    </action>
+
+    
+
 
 	
 	</action-mappings>

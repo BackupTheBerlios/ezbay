@@ -88,7 +88,7 @@ public class ArticleView {
 
 	public String getFormattedDateLimite() {
 		Util util = new Util();
-		return util.getDateToString(articleDTO.getDateLimite());
+		return util.getDateToString(articleDTO.getDateLimite(), "dd/MM/yyyy - kk:mm:ss");
 	}
 
 	public ArticleDTO getArticleDTO() {
