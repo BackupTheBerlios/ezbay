@@ -53,8 +53,8 @@ import axlomoso.ezbay.model.interfaces.ClientLocal;
  * 
  * @ejb.value-object match = "*"
  * @ejb.finder
- * 		description="findByArticle"
- * 		signature="axlomoso.ezbay.model.interfaces.ActionTransactionLocal findByArticle(java.lang.String idArticle)" 
+ * 		description="findByArticleLocal"
+ * 		signature="axlomoso.ezbay.model.interfaces.ActionTransactionLocal findByArticleLocal(java.lang.String idArticle)" 
  * 		query="SELECT OBJECT(a)
  * 			FROM actiontransaction as at, 
  * 				article as a 

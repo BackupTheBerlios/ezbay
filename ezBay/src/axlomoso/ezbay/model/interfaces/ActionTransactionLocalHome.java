@@ -19,7 +19,7 @@ public interface ActionTransactionLocalHome
    public axlomoso.ezbay.model.interfaces.ActionTransactionLocal create(axlomoso.ezbay.model.interfaces.ActionTransactionDTO transactionDTO , axlomoso.ezbay.model.interfaces.ArticleLocal articleLocal , axlomoso.ezbay.model.interfaces.ClientLocal clientLocal)
       throws javax.ejb.CreateException;
 
-   public axlomoso.ezbay.model.interfaces.ActionTransactionLocal findByArticle(java.lang.String idArticle)
+   public axlomoso.ezbay.model.interfaces.ActionTransactionLocal findByArticleLocal(java.lang.String idArticle)
       throws javax.ejb.FinderException;
 
    public axlomoso.ezbay.model.interfaces.ActionTransactionLocal findByPrimaryKey(java.lang.String pk)

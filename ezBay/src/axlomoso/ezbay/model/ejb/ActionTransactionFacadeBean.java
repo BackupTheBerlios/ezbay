@@ -112,7 +112,7 @@ public class ActionTransactionFacadeBean implements SessionBean {
 			System.out.println("getActionTransactionByArticle 1");
 			ActionTransactionLocalHome home = getEntityHome();
 			System.out.println("getActionTransactionByArticle 2");
-			ActionTransactionLocal transactionLocal = home.findByArticle(articleId);
+			ActionTransactionLocal transactionLocal = home.findByArticleLocal(articleId);
 			System.out.println("getActionTransactionByArticle 3");
 			tRes = transactionLocal.getActionTransactionDTO();
 			System.out.println("getActionTransactionByArticle 4");
@@ -133,7 +133,7 @@ public class ActionTransactionFacadeBean implements SessionBean {
 		try {
 			System.out.println("getActionTransactionByArticle. articleId = " + articleId);
 			ActionTransactionLocalHome home = getEntityHome();
-			ActionTransactionLocal transactionLocal = home.findByArticle(articleId);
+			ActionTransactionLocal transactionLocal = home.findByArticleLocal(articleId);
 			ClientLocal clientLocal = transactionLocal.getClientLocal();
 			tRes = clientLocal.getClientDTO();
 		} catch (FinderException e) {

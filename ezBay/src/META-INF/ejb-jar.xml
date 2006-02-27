@@ -566,9 +566,9 @@
          <primkey-field>id</primkey-field>
 
          <query>
-            <description><![CDATA[findByArticle]]></description>
+            <description><![CDATA[findByArticleLocal]]></description>
             <query-method>
-               <method-name>findByArticle</method-name>
+               <method-name>findByArticleLocal</method-name>
                <method-params>
                   <method-param>java.lang.String</method-param>
                </method-params>
