@@ -131,7 +131,7 @@
 				</td>
 			</tr>
 		</table>
-		<hr align="center"/>
+		<hr width="50%" align="center"/>
 <logic:notEmpty name="articleForm" property="enchereView">
 		<b><bean:message key="articleFiche.derniereEnchere.titre" /></b>
 		<table>
