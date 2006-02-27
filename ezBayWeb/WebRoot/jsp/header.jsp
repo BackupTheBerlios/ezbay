@@ -6,6 +6,8 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-template" prefix="template" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested" %>
+
+
   <table cellspacing="0" cellpadding="5" border="0" width="100%">
 <tr>
   <td>
@@ -23,6 +25,13 @@
 		<html:link action="/categorie.do?do=showCategories"><bean:message key="link.categories"/></html:link>
  	</td>
 </tr>
- <tr><td></td></tr>
+<tr>
+	<td>
+		<logic:present name="membre" property="id" scope="session">
+			<bean:message key="header.title"/>
+			<bean:write name="membre" property="pseudo" />
+		</logic:present>
+	</td>
+</tr>
 </table>
 <hr>
