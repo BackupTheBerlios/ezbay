@@ -25,8 +25,18 @@
   <body>
   <center>
   <h2><bean:message key="membreFiche.title" /></h2><br />
- <bean:message key="membreFiche.pseudo"/>:<bean:write name="membreForm" property="pseudo" />
+ <bean:message key="membreFiche.pseudo"/> : <bean:write name="membreForm" property="pseudo" />
  <br /><br />
-</center>
+ 
+ <logic:iterate name="membreForm" property="articlesViewEnVente" id="article">
+		
+		<tr>
+			<%-- article informations --%>
+			<td>
+				<bean:write name="article" property="marque" />
+			</td>
+		</tr>
+	</logic:iterate>
+  </center>
  </body>
 </html:html>
