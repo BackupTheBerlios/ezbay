@@ -7,7 +7,7 @@
 		<title>
 			<bean:message key="articleList.title" />
 		</title>
-		<br />
+	<meta http-equiv="refresh" content="30">
 	</head>
 	<body>
 		<center>

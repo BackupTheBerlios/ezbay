@@ -7,6 +7,7 @@
   <title>
 <bean:message key="categorieList.title" />
 </title>
+<meta http-equiv="refresh" content="30">
 </head>
 <body>
 <center>
