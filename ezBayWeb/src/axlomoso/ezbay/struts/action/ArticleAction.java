@@ -245,31 +245,12 @@ public class ArticleAction extends DispatchAction {
 	private void setArticleForm(String articleId, ActionForm form, HttpServletRequest request) throws Exception{
 		ArticleForm articleForm = (ArticleForm) form;	
 		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
-		VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
-		ClientFacadeDelegate clientFacade = ClientFacadeDelegate.getInstance();
 		ArticleDTO articleDTO = new ArticleDTO();
 		if( (articleId != null) && (articleId.length() > 0) ){
 			articleDTO = articleFacade.getArticle(articleId);
-			String vendeurId = articleFacade.getVendeurDTO(articleId).getId();
-			articleForm.setCategorieDTO(articleFacade.getCategorieDTO(articleId));
-			articleForm.setVendeurId(vendeurId);
-			articleForm.setMembrePseudo(vendeurFacade.getMembreByVendeurId(vendeurId).getPseudo());
-			//encheres
-			ActionEnchereDTO enchereDTO = articleFacade.getDerniereEnchere(articleId);
-			ClientDTO clientEncherisseurDTO = null;
-			MembreDTO membreEncherisseurDTO = null;
-			ActionEnchereView enchereView = null;
-			if( enchereDTO != null ){
-				enchereView = new ActionEnchereView(enchereDTO);
-				clientEncherisseurDTO = articleFacade.getDernierEncherisseur(articleId);
-				membreEncherisseurDTO = clientFacade.getMembreByClientId(clientEncherisseurDTO.getId());
-				enchereView.setClientId(clientEncherisseurDTO.getId());
-				enchereView.setMembreDTO(membreEncherisseurDTO);
-			}
-			articleForm.setEnchereView(enchereView);			
 		}
 		CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
-		articleForm.setArticleDTO(articleDTO);
+		articleForm.setArticleView(articleFacade.getArticleViewFromArticleDTO(articleDTO));
 		Collection categories = categorieFacade.getCategories();
 		request.getSession().setAttribute("categories", categories);
 	}	

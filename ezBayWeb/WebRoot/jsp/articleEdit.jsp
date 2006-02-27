@@ -33,7 +33,7 @@
 				<tr>
 				<td><bean:message key="articleEdit.categorie" /> : </td>
 				<td>
-					<html:select property="categorieDTO.id">
+					<html:select property="articleView.categorieDTO.id">
 						<html:options collection="categories" property="id" labelProperty="libelle" />
 					</html:select>
 				</td>

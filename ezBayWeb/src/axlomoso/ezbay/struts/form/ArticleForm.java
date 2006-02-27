@@ -18,6 +18,7 @@ import org.apache.struts.action.ActionMapping;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.struts.views.ActionEnchereView;
+import axlomoso.ezbay.struts.views.ArticleView;
 import axlomoso.ezbay.utils.Util;
 
 
@@ -32,19 +33,15 @@ public class ArticleForm extends ActionForm {
 	
 	private Util util = new Util();
 	// --------------------------------------------------------- Instance Variables
-	private ArticleDTO articleDTO = new ArticleDTO();
-	private CategorieDTO categorieDTO = new CategorieDTO();
+	private ArticleView articleview = new ArticleView();
 	private Collection categories = null;
 	private String stringDateLimite = ""; 
 	private String stringPrixVente="";
-	private String vendeurId = "";
-	private String membrePseudo = "";
-	private ActionEnchereView enchereView = null;
 	// --------------------------------------------------------- Methods
 	
 	public String getStringPrixVente() {
-		if(articleDTO.getPrixVente() != null){
-			Double d = articleDTO.getPrixVente();
+		if(this.getPrixVente() != null){
+			Double d = this.getPrixVente();
 			stringPrixVente = String.valueOf(d.doubleValue());
 		}
 		return stringPrixVente;
@@ -54,64 +51,56 @@ public class ArticleForm extends ActionForm {
 		this.stringPrixVente = stringPrixVente;
 	}
 
-	public ArticleDTO getArticleDTO() {
-		return articleDTO;
+	public ArticleView getArticleView() {
+		return articleview;
 	}
 
-	public void setArticleDTO(ArticleDTO articleDTO) {
-		this.articleDTO = articleDTO;
-	}
-
-	public boolean anneeFabricationHasBeenSet() {
-		return articleDTO.anneeFabricationHasBeenSet();
+	public void setArticleView(ArticleView articleview) {
+		this.articleview = articleview;
 	}
 
 	public Integer getAnneeFabrication() {
-		return articleDTO.getAnneeFabrication();
+		return articleview.getAnneeFabrication();
 	}
 
 	public String getStringDateLimite(){
 		stringDateLimite = "";
-		if(articleDTO.getDateLimite() != null){
-			stringDateLimite = util.getDateToString(articleDTO.getDateLimite());
+		if(this.getDateLimite() != null){
+			stringDateLimite = util.getDateToString(this.getDateLimite());
 		}
 		return stringDateLimite;
 	}
 	
 	public Date getDateLimite() {
-		return articleDTO.getDateLimite();
+		return articleview.getDateLimite();
 	}
 
 	public String getDescription() {
-		return articleDTO.getDescription();
+		return articleview.getDescription();
 	}
 
 	public String getId() {
-		return articleDTO.getId();
+		return articleview.getId();
 	}
 
 	public String getLibelle() {
-		return articleDTO.getLibelle();
+		return articleview.getLibelle();
 	}
 
 	public String getMarque() {
-		return articleDTO.getMarque();
+		return articleview.getMarque();
 	}
 
 	public String getModele() {
-		return articleDTO.getModele();
-	}
-
-	public String getPrimaryKey() {
-		return articleDTO.getPrimaryKey();
+		return articleview.getModele();
 	}
 
 	public Double getPrixVente() {
-		return articleDTO.getPrixVente();
+		return articleview.getPrixVente();
 	}
 
 	public void setAnneeFabrication(Integer anneeFabrication) {
-		articleDTO.setAnneeFabrication(anneeFabrication);
+		articleview.setAnneeFabrication(anneeFabrication);
 	}
 
 	public void setStringDateLimite(String date){
@@ -119,51 +108,47 @@ public class ArticleForm extends ActionForm {
 	}
 	
 	public void setDateLimite(Date dateLimite) {
-		articleDTO.setDateLimite(dateLimite);
+		articleview.setDateLimite(dateLimite);
 	}
 
 	public void setDescription(String description) {
-		articleDTO.setDescription(description);
+		articleview.setDescription(description);
 	}
 
 	public void setId(String id) {
-		articleDTO.setId(id);
+		articleview.setId(id);
 	}
 
 	public void setLibelle(String libelle) {
-		articleDTO.setLibelle(libelle);
+		articleview.setLibelle(libelle);
 	}
 
 	public void setMarque(String marque) {
-		articleDTO.setMarque(marque);
+		articleview.setMarque(marque);
 	}
 
 	public void setModele(String modele) {
-		articleDTO.setModele(modele);
-	}
-
-	public void setPrimaryKey(String primaryKey) {
-		articleDTO.setPrimaryKey(primaryKey);
+		articleview.setModele(modele);
 	}
 
 	public void setPrixVente(Double prixVente) {
-		articleDTO.setPrixVente(prixVente);
+		articleview.setPrixVente(prixVente);
 	}
 
 	public String toString() {
-		return articleDTO.toString();
+		return articleview.toString();
 	}
 	
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
 		ActionErrors errors = new ActionErrors();
-		if ((articleDTO.getLibelle() == null) || (articleDTO.getLibelle().length() == 0)) {
+		if ((this.getLibelle() == null) || (this.getLibelle().length() == 0)) {
 			errors.add("libelle", new ActionError("articleEdit.erreurs.libelleVide"));
 		}
-		if ((articleDTO.getMarque() == null) || (articleDTO.getMarque().length() == 0)) {
+		if ((this.getMarque() == null) || (this.getMarque().length() == 0)) {
 			errors.add("marque", new ActionError("articleEdit.erreurs.marqueVide"));
 		}
-		if ((articleDTO.getModele() == null) || (articleDTO.getModele().length() == 0)) {
+		if ((this.getModele() == null) || (this.getModele().length() == 0)) {
 			errors.add("modele", new ActionError("articleEdit.erreurs.modeleVide"));
 		}
 		if ((stringPrixVente == null)||(stringPrixVente.length()==0)) {
@@ -172,7 +157,7 @@ public class ArticleForm extends ActionForm {
 		else{
 			try {				
 					 Double d = new Double(Double.parseDouble(stringPrixVente));
-					 articleDTO.setPrixVente(d);
+					 this.setPrixVente(d);
 				}				
 			 catch (NumberFormatException e) {
 				errors.add("prixVente", new ActionError("articleEdit.erreurs.prixVenteNonValide"));
@@ -184,15 +169,15 @@ public class ArticleForm extends ActionForm {
 		}else{
 			try {
 				Date tDate = util.getStringToDate(stringDateLimite);
-				articleDTO.setDateLimite(tDate);
+				this.setDateLimite(tDate);
 			} catch (ParseException e) {
 				// dateFormat incorrect
 				errors.add("dateLimite", new ActionError("articleEdit.erreurs.dateLimiteNonValide"));
 			}
 		}		
 		
-		if (  (articleDTO.getAnneeFabrication() != null) ){
-			int annee = articleDTO.getAnneeFabrication().intValue();
+		if (  (this.getAnneeFabrication() != null) ){
+			int annee = this.getAnneeFabrication().intValue();
 			Calendar tCal = Calendar.getInstance();
 			int anneeMax = tCal.get(Calendar.YEAR);
 			if( (annee <= 0) || ( annee > anneeMax) )			
@@ -201,44 +186,12 @@ public class ArticleForm extends ActionForm {
 		return errors;
 	}
 
-	public void setVendeurId(String vendeurId) {
-		this.vendeurId = vendeurId;
-	}
-	public String getVendeurId() {
-		return vendeurId;
-	}
-
-
-	public CategorieDTO getCategorieDTO() {
-		return categorieDTO;
-	}
-
-	public void setCategorieDTO(CategorieDTO categorieDTO) {
-		this.categorieDTO = categorieDTO;
-	}
-
 	public Collection getCategories() {
 		return categories;
 	}
 
 	public void setCategories(Collection categories) {
 		this.categories = categories;
-	}
-
-	public String getMembrePseudo() {
-		return membrePseudo;
-	}
-
-	public void setMembrePseudo(String membrePseudo) {
-		this.membrePseudo = membrePseudo;
-	}
-
-	public ActionEnchereView getEnchereView() {
-		return enchereView;
-	}
-
-	public void setEnchereView(ActionEnchereView enchereView) {
-		this.enchereView = enchereView;
 	}
 }
 

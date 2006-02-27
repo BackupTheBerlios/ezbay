@@ -88,7 +88,7 @@ public class ActionTransactionFacadeBean implements SessionBean {
 		try {
 			ActionTransactionLocalHome home = (ActionTransactionLocalHome) getEntityHome();
 			ActionTransactionLocal transactionLocal;
-			transactionLocal = home.create(transactionDTO, articleLocal, clientLocal);
+			transactionLocal = home.create(transactionDTO);
 			transactionLocal.setArticleLocal(articleLocal);
 			transactionLocal.setClientLocal(clientLocal);
 			tRes = transactionLocal.getActionTransactionDTO();

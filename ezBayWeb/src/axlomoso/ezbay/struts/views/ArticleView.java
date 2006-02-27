@@ -3,15 +3,20 @@ package axlomoso.ezbay.struts.views;
 import java.util.Date;
 
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
+import axlomoso.ezbay.model.interfaces.CategorieDTO;
+import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.utils.Util;
 
 public class ArticleView {
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private VendeurDTO vendeurDTO = new VendeurDTO();
+	private MembreDTO vendeurMembreDTO = new MembreDTO();
+	private CategorieDTO categorieDTO = null;
 	private ActionEnchereView derniereEnchereView = null;
 	private ActionTransactionView transactionView = null;
 	private Integer nbEncheres = null;
+	
 	
 	public Integer getAnneeFabrication() {
 		return articleDTO.getAnneeFabrication();
@@ -45,6 +50,10 @@ public class ArticleView {
 		return articleDTO.getPrixVente();
 	}
 
+	public void setId(String id) {
+		articleDTO.setId(id);
+	}
+	
 	public void setAnneeFabrication(Integer anneeFabrication) {
 		articleDTO.setAnneeFabrication(anneeFabrication);
 	}
@@ -121,6 +130,22 @@ public class ArticleView {
 	public void setTransactionView(
 			ActionTransactionView transactionView) {
 		this.transactionView = transactionView;
+	}
+
+	public CategorieDTO getCategorieDTO() {
+		return categorieDTO;
+	}
+
+	public void setCategorieDTO(CategorieDTO categorieDTO) {
+		this.categorieDTO = categorieDTO;
+	}
+
+	public MembreDTO getVendeurMembreDTO() {
+		return vendeurMembreDTO;
+	}
+
+	public void setVendeurMembreDTO(MembreDTO vendeurMembreDTO) {
+		this.vendeurMembreDTO = vendeurMembreDTO;
 	}
 
 }
