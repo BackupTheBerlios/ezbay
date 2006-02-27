@@ -56,7 +56,6 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 		} catch (CreateException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**

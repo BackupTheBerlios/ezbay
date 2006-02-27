@@ -119,7 +119,6 @@ public class ArticleFacadeBean implements SessionBean {
 			//retirer l'article de la vente
 			this.retirerArticle(articleId);
 			ActionEnchereDTO derniereEnchereDTO = this.getDerniereEnchere(articleId);
-			System.out.println("derniere enchere : " + derniereEnchereDTO);
 			if( derniereEnchereDTO != null ){
 				/* L'article possède des enchères */
 				//créer la transaction
@@ -129,12 +128,8 @@ public class ArticleFacadeBean implements SessionBean {
 					//ClientLocal
 				ClientDTO clientDTO = actionEnchereFacade.getEncherisseur(derniereEnchereDTO.getId());
 				ClientLocal clientLocal = ClientFacadeBean.getEntity(clientDTO.getId());
-				System.out.println("clientDTO : " + clientDTO);
-				System.out.println("clientLocal : " + clientLocal);
 					//ArticleLocal
 				ArticleLocal articleLocal = getEntity(articleId);
-				System.out.println("articleId : " + articleId);
-				System.out.println("articleLocal : " + articleLocal);
 					//transaction
 				actionTransactionFacade.createActionTransaction(actionTransactionDTO, articleLocal, clientLocal);
 				//supprimer la derniere enchere
@@ -467,8 +462,7 @@ public class ArticleFacadeBean implements SessionBean {
 		ClientDTO tRes = null;
 		ActionTransactionDTO transactionDTO = this.getTransaction(articleId);
 		if( transactionDTO != null ){
-			String transactionId = transactionDTO.getId();
-			tRes = actionTransactionFacade.getAcquereur(transactionId);
+			tRes = actionTransactionFacade.getAcquereur(articleId);
 		}
 		return tRes;
 	}

@@ -16,6 +16,7 @@ import axlomoso.ezbay.model.interfaces.ActionEnchereUtil;
 import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
 import axlomoso.ezbay.model.interfaces.ActionTransactionLocal;
 import axlomoso.ezbay.model.interfaces.ActionTransactionUtil;
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
 
@@ -52,14 +53,16 @@ import axlomoso.ezbay.model.interfaces.ClientLocal;
  * @ejb:util generate="physical"
  * 
  * @ejb.value-object match = "*"
+ * 
  * @ejb.finder
  * 		description="findByArticleLocal"
  * 		signature="axlomoso.ezbay.model.interfaces.ActionTransactionLocal findByArticleLocal(java.lang.String idArticle)" 
- * 		query="SELECT OBJECT(a)
- * 			FROM actiontransaction as at, 
- * 				article as a 
+ * 		query="SELECT OBJECT(at)
+ * 			FROM actiontransaction AS at, 
+ * 				article AS a
  * 			WHERE 
- * 				a.id = ?1 and at.articleLocal = a" 
+ * 				a.id = ?1 
+ * 				AND at.articleLocal = a" 
  */
 public abstract class ActionTransactionBean implements EntityBean {
 
@@ -177,7 +180,7 @@ public abstract class ActionTransactionBean implements EntityBean {
 	 *
 	 * @ejb.create-method
 	 */
-	public String ejbCreate(ActionTransactionDTO transactionDTO, ArticleLocal articleLocal, ClientLocal clientLocal) throws CreateException {
+	public String ejbCreate(ActionTransactionDTO transactionDTO) throws CreateException {
 		String tId = ActionTransactionUtil.generateGUID(this);
 		this.setId(tId);
 		Calendar calendar = Calendar.getInstance();
@@ -205,10 +208,7 @@ public abstract class ActionTransactionBean implements EntityBean {
 	 * 
 	 * @throws CreateException Thrown if method fails due to system-level error.
 	 */
-	public void ejbPostCreate(ActionEnchereDTO enchereDTO, ArticleLocal articleLocal, ClientLocal clientLocal) throws CreateException {
-		//cette méthode n'est pas appellée, pkoi ?
-		this.setArticleLocal(articleLocal);
-		this.setClientLocal(clientLocal);
+	public void ejbPostCreate(ActionEnchereDTO enchereDTO) throws CreateException {
 	}
 
 	/**

@@ -108,14 +108,9 @@ public class ActionTransactionFacadeBean implements SessionBean {
 	public ActionTransactionDTO getActionTransactionByArticle(String articleId){
 		ActionTransactionDTO tRes = null;
 		try {
-			System.out.println("getActionTransactionByArticle. articleId = " + articleId);
-			System.out.println("getActionTransactionByArticle 1");
 			ActionTransactionLocalHome home = getEntityHome();
-			System.out.println("getActionTransactionByArticle 2");
 			ActionTransactionLocal transactionLocal = home.findByArticleLocal(articleId);
-			System.out.println("getActionTransactionByArticle 3");
-			tRes = transactionLocal.getActionTransactionDTO();
-			System.out.println("getActionTransactionByArticle 4");
+			tRes = transactionLocal.getActionTransactionDTO(); //erreur
 		} catch (FinderException e) {
 			System.out.println("cannot get ActionTransaction for article id=" + articleId);
 		}
@@ -131,7 +126,6 @@ public class ActionTransactionFacadeBean implements SessionBean {
 	public ClientDTO getAcquereur(String articleId){
 		ClientDTO tRes = null;
 		try {
-			System.out.println("getActionTransactionByArticle. articleId = " + articleId);
 			ActionTransactionLocalHome home = getEntityHome();
 			ActionTransactionLocal transactionLocal = home.findByArticleLocal(articleId);
 			ClientLocal clientLocal = transactionLocal.getClientLocal();

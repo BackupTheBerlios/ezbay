@@ -40,6 +40,7 @@ import axlomoso.ezbay.model.interfaces.VendeurLocal;
  *           cmp-version="2.x"
  *           view-type="local"
  *           primkey-field = "id"
+ *           
  * @ejb.persistence 
  * 			table-name = "article"
  * @jboss.persistence table-name = "article" 

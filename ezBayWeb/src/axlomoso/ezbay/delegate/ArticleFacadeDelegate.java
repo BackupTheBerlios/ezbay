@@ -123,9 +123,7 @@ public class ArticleFacadeDelegate {
 			articleView.setNbEncheres(this.getNbEncheres(articleDTO.getId()));
 			//Transaction
 			ActionTransactionView transactionView = null;
-			System.out.println("getArticlesDtoToView article:" + articleDTO);
 			ActionTransactionDTO transactionDTO = this.getTransaction(articleDTO.getId());
-			System.out.println("getArticlesDtoToView transactionDTO:" + transactionDTO);
 			ClientDTO clientAcquereur = null;
 			MembreDTO membreAcquereur = null;
 			if( transactionDTO != null ){
