@@ -90,6 +90,12 @@ public class MembreAction extends DispatchAction {
 		String membreId = request.getParameter("membreId");
 		membreForm.setId(membreFacade.getMembreById(membreId).getId());
 		membreForm.setPseudo(membreFacade.getMembreById(membreId).getPseudo());
+		VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
+		String vendeurId = membreFacade.getVendeurDTOByMembreId(membreId).getId();
+		String clientId = membreFacade.getClientDTOByMembreId(membreId).getId();
+		membreForm.setArticlesViewEnVente(vendeurFacade.getArticlesEnVente(vendeurId));
+		membreForm.setVendeurId(vendeurId);
+		membreForm.setClientId(clientId);
 		return (mapping.findForward("showMembreFiche"));
 	}
 	
