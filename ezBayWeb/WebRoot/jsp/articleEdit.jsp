@@ -53,7 +53,7 @@
 				</tr>
 				<tr>
 				<td><bean:message key="articleEdit.prixVente" /> :</td>
-				<td><html:text property="stringPrixVente" /></td> <bean:message key="general.label.devise" />
+				<td><html:text property="stringPrixVente" /> &nbsp;<bean:message key="general.label.devise" /></td> 
 				</tr>
 				<tr>
 				<td><bean:message key="articleEdit.anneeFabrication" /> :</td>
