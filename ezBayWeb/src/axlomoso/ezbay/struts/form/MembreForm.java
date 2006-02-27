@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 
 import org.apache.struts.action.ActionForm;
@@ -31,6 +32,9 @@ public class MembreForm extends ActionForm {
 	private String password2 = null;
 	private String stringDateNaissance = null;
 	private Util util = new Util();
+	private Collection articlesViewEnVente=null;
+	private String vendeurId = "";
+	private String clientId = "";
 	
 	public String getPassword2() {
 		return password2;
@@ -271,5 +275,29 @@ public class MembreForm extends ActionForm {
 
 	public void setMembreDTO(MembreDTO membreDTO) {
 		this.membreDTO = membreDTO;
+	}
+
+	public Collection getArticlesViewEnVente() {
+		return articlesViewEnVente;
+	}
+
+	public void setArticlesViewEnVente(Collection articlesViewEnVente) {
+		this.articlesViewEnVente = articlesViewEnVente;
+	}
+
+	public String getClientId() {
+		return clientId;
+	}
+
+	public void setClientId(String clientId) {
+		this.clientId = clientId;
+	}
+
+	public String getVendeurId() {
+		return vendeurId;
+	}
+
+	public void setVendeurId(String vendeurId) {
+		this.vendeurId = vendeurId;
 	}
 }

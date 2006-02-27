@@ -5,12 +5,6 @@ package axlomoso.ezbay.struts.action;
 
 import java.rmi.RemoteException;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-
-import javax.ejb.CreateException;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,14 +15,11 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
-
 import axlomoso.ezbay.struts.form.ArticleForm;
-import axlomoso.ezbay.struts.views.ActionEnchereView;
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.delegate.CategorieFacadeDelegate;
 import axlomoso.ezbay.delegate.ClientFacadeDelegate;
 import axlomoso.ezbay.delegate.MembreFacadeDelegate;
-import axlomoso.ezbay.delegate.TimerDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.delegate.VendeurFacadeDelegate;
 import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
@@ -147,10 +138,7 @@ public class ArticleAction extends DispatchAction {
 				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
 				String vendeurId = membreFacade.getVendeurDTOByMembreId(membreDTO.getId()).getId();
 				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
-				vendeurFacade.retirerArticle(vendeurId, articleId);
-				//enlever le timer				
-				TimerDelegate timerDelegate=TimerDelegate.getInstance();				
-				timerDelegate.cancelTimer(articleId);
+				vendeurFacade.retirerArticle(vendeurId, articleId);				
 				
 			} catch (RemoteException e) {
 				e.printStackTrace();
@@ -186,15 +174,7 @@ public class ArticleAction extends DispatchAction {
 				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
 				String vendeurId = membreFacade.getVendeurDTOByMembreId(membreDTO.getId()).getId();
 				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
-				vendeurFacade.mettreEnVenteArticle(vendeurId, articleId);
-				//création du Timer 
-				ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
-				TimerDelegate timerDelegate=TimerDelegate.getInstance();
-				long dateSystem=System.currentTimeMillis();
-				long dateLimite=articleFacade.getArticle(articleId).getDateLimite().getTime();
-				long dateExpir=dateLimite-dateSystem;
-				timerDelegate.initializeTimer(dateExpir,articleId);
-				
+				vendeurFacade.mettreEnVenteArticle(vendeurId, articleId);				
 			} catch (ArticleProprietaireException e) {
 				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.nonProprietaire"));
 				e.printStackTrace();
