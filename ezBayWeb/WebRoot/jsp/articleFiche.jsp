@@ -11,7 +11,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html locale="true">
 <head>
-	
+
 	<title>
 		<bean:message key="articleFiche.title" />
 	</title>
@@ -38,10 +38,11 @@
 					<bean:write name="articleForm" property="articleView.categorieDTO.libelle" />
 				</td>
 				<td>
-				<bean:message key="articleFiche.vendeur.fiche" />&nbsp;:&nbsp;
+					<bean:message key="articleFiche.vendeur.fiche" />
+					&nbsp;:&nbsp;
 					<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.vendeurMembreDTO.id" paramId="membreId">
 						<bean:write name="articleForm" property="articleView.vendeurMembreDTO.pseudo" />
-					</html:link>					
+					</html:link>
 				</td>
 			</tr>
 			<tr>
@@ -88,7 +89,8 @@
 					</b>
 				</td>
 				<td>
-					<bean:write name="articleForm" property="prixVente" /> <bean:message key="general.label.devise" />
+					<bean:write name="articleForm" property="prixVente" />
+					<bean:message key="general.label.devise" />
 				</td>
 			</tr>
 			<tr>
@@ -127,55 +129,68 @@
 				</td>
 			</tr>
 		</table>
-		<hr width="50%" align="center"/>
-<b><bean:message key="articleFiche.encheres.historique" /></b><br />
-<bean:write name="articleForm" property="articleView.nbEncheres" />&nbsp;<bean:message key="articleFiche.encheres.libelle" />
-<br />
-<logic:notEmpty name="articleForm" property="articleView.derniereEnchereView">
-		<b><bean:message key="articleFiche.derniereEnchere.titre" /></b>
-		<table>
-			<tr>
-				<td>
-					<b>
-						<bean:message key="articleFiche.derniereEnchere.date" />
-						:
-						<b>
-				</td>
-				<td>
-					<bean:write name="articleForm" property="articleView.derniereEnchereView.formattedDate" />
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>
-						<bean:message key="articleFiche.derniereEnchere.montant" />
-						:
-						<b>
-				</td>
-				<td>
-					<bean:write name="articleForm" property="articleView.derniereEnchereView.montant" /> <bean:message key="general.label.devise" />
-				</td>
-			</tr>			
-			<tr>
-				<td>
-					<b>
-						<bean:message key="articleFiche.derniereEnchere.encherisseur" />
-						:
-						<b>
-				</td>
-				<td>
-					<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.derniereEnchereView.membreDTO.id" paramId="membreId">
-						<bean:write name="articleForm" property="articleView.derniereEnchereView.membreDTO.pseudo" />
-					</html:link>
-				</td>
-			</tr>
-			</table>
-</logic:notEmpty>
-<br />
-		<br />
+		<hr width="50%" align="center" />
+		<logic:equal name="articleForm" property="articleView.enVente" value="true">
+			<b>
+				<bean:message key="articleFiche.encheres.historique" />
+			</b>
+			<br />
+			<bean:write name="articleForm" property="articleView.nbEncheres" />&nbsp;<bean:message key="articleFiche.encheres.libelle" />
+			<br />
+			<logic:notEmpty name="articleForm" property="articleView.derniereEnchereView">
+				<table>
+					<tr>
+						<td colspan="2" align="left">
+							<b>
+								<bean:message key="articleFiche.derniereEnchere.titre" />
+							</b>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>
+								<bean:message key="articleFiche.derniereEnchere.date" />
+								:
+								<b>
+						</td>
+						<td>
+							<bean:write name="articleForm" property="articleView.derniereEnchereView.formattedDate" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>
+								<bean:message key="articleFiche.derniereEnchere.montant" />
+								:
+								<b>
+						</td>
+						<td>
+							<bean:write name="articleForm" property="articleView.derniereEnchereView.montant" />
+							<bean:message key="general.label.devise" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<b>
+								<bean:message key="articleFiche.derniereEnchere.encherisseur" />
+								:
+								<b>
+						</td>
+						<td>
+							<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.derniereEnchereView.membreDTO.id" paramId="membreId">
+								<bean:write name="articleForm" property="articleView.derniereEnchereView.membreDTO.pseudo" />
+							</html:link>
+						</td>
+					</tr>
+				</table>
+			</logic:notEmpty>
+			<br />
+			<br />
+
 			<html:link action="/enchere.do?do=showEnchereForm" paramName="articleForm" paramProperty="id" paramId="articleId">
 				<bean:message key="link.articleEncherir" />
 			</html:link>
+		</logic:equal>
 		<br />
 		<br />
 		</td>

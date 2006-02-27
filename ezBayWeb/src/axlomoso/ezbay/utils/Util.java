@@ -53,7 +53,7 @@ public class Util {
     
     public Date getStringToDate(String strDate) throws ParseException{
     	Date tRes = null;
-    	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    	DateFormat df = new SimpleDateFormat("dd/MM/yyyy - kk:mm:ss");
     	tRes = df.parse(strDate);
     	return tRes;
     }

@@ -4,6 +4,7 @@
 package axlomoso.ezbay.struts.action;
 
 import java.rmi.RemoteException;
+import java.util.Calendar;
 
 import javax.ejb.CreateException;
 import javax.naming.InitialContext;
@@ -60,7 +61,8 @@ public class ArticleSaveAction extends Action {
 			MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
 			MembreDTO membreDTO = (MembreDTO)request.getSession().getAttribute("membre");
 			VendeurDTO vendeurDTO = membreFacade.getVendeurDTOByMembreId(membreDTO.getId());
-			vendeurFacade.saveArticle(vendeurDTO.getId(), articleEditForm.getArticleView().getArticleDTO(), articleEditForm.getArticleView().getCategorieDTO().getId());
+			ArticleDTO articleDTO = articleEditForm.getArticleView().getArticleDTO();
+			vendeurFacade.saveArticle(vendeurDTO.getId(), articleDTO, articleEditForm.getArticleView().getCategorieDTO().getId());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NamingException e) {

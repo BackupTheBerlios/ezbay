@@ -61,7 +61,9 @@
 				</tr>
 				<tr>
 				<td><bean:message key="articleEdit.dateLimite" /> :</td>
-				<td><html:text property="stringDateLimite" /></td>
+				<td>
+				<html:text property="stringDateLimite" />
+				</td>
 				</tr>
 				<tr>
 				<td><bean:message key="articleEdit.description" /> :</td>

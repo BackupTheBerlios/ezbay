@@ -193,5 +193,14 @@ public class ArticleForm extends ActionForm {
 	public void setCategories(Collection categories) {
 		this.categories = categories;
 	}
+
+	public ArticleView getArticleview() {
+		return articleview;
+	}
+
+	public void setArticleview(ArticleView articleview) {
+		this.articleview = articleview;
+	}
+
 }
 
