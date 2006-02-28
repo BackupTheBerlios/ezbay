@@ -1,5 +1,7 @@
 <%@ page language="java" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles" %>
+<html:html locale="true">
+  <body>
 <table border="0" width="100%" align="center">
 <tr>
     <td align="center">

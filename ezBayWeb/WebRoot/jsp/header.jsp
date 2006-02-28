@@ -7,31 +7,28 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-template" prefix="template" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested" %>
 
-
-  <table cellspacing="0" cellpadding="5" border="0" width="100%">
+<table cellspacing="0" cellpadding="5" width="100%">
 <tr>
-  <td>
-      <font color="#000088">
-    <H1><B><i><html:link forward="welcome">EzBay</html:link></i></b><br/></H1></font>
-    
+  <td width="25%" align="center">
+    <i><html:link forward="welcome" styleClass="logo">EzBay</html:link></i>
   </td>
- 	<td>
-		<html:link action="/myEzBay.do?do=showMyEzBay"><bean:message key="link.monEzBay"/></html:link>
+ 	<td width="25%" align="center">
+		<html:link action="/myEzBay.do?do=showMyEzBay" styleClass="header"><bean:message key="link.monEzBay"/></html:link>
 	</td>
-	<td>
-		<html:link action="/article.do?do=showRechercheForm"><bean:message key="link.Recherche.Article"/></html:link>
+	<td width="25%" align="center">
+		<html:link action="/article.do?do=showRechercheForm" styleClass="header"><bean:message key="link.Recherche.Article"/></html:link>
 	</td>
-	<td>
-		<html:link action="/categorie.do?do=showCategories"><bean:message key="link.categories"/></html:link>
+	<td width="25%" align="center">
+		<html:link action="/categorie.do?do=showCategories" styleClass="header"><bean:message key="link.categories"/></html:link>
  	</td>
 </tr>
+<logic:present name="membre" property="id" scope="session">
 <tr>
 	<td>
-		<logic:present name="membre" property="id" scope="session">
-			<bean:message key="header.title"/>
-			<bean:write name="membre" property="pseudo" />
-		</logic:present>
+		<bean:message key="header.title"/>
+		<bean:write name="membre" property="pseudo" />
 	</td>
 </tr>
+</logic:present>
 </table>
-<hr>
+<hr color="#FBE468">

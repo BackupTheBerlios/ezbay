@@ -18,16 +18,21 @@
 	</HEAD>
 
 	<body bgcolor="#ffffff" text="#000000" link="#023264" alink="#023264" vlink="#023264">
-		<table border="0" width="100%" cellspacing="5">
+		<table width="100%" cellspacing="5" height="100%">
 			<tr>
 				<td colspan="2">
 					<tiles:insert attribute="header" />
 				</td>
 			</tr>
-			<tr>
-				<td width="140" valign="top" bgcolor="#CCCCCC">
+			<tr height="100%">
+				<logic:notEmpty name="membre" scope="session">
+				<td valign="top">
 					<tiles:insert attribute='menu' />
 				</td>
+				</logic:notEmpty>
+				<logic:empty name="membre" scope="session">
+				<td></td>
+				</logic:empty>
 				<td width="100%" valign="top" align="left">
 					<tiles:insert attribute='body' />
 				</td>

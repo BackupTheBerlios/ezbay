@@ -14,6 +14,8 @@
   <title>
 		<bean:message key="vendeurArticles.titre" />
 	</title>
+	<link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
+ 
 
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -36,7 +38,7 @@
 	<bean:message key="vendeurArticles.articlesEnAttente.noArticle" />
 </logic:empty>
 <logic:notEmpty name="vendeurForm" property="articlesEnAttente">	
-<table border="1">
+<table class="body_mes_articles" cellspacing="30">
 <tbody>
 <%-- set the header --%>
 <tr>
@@ -90,7 +92,7 @@
 	<bean:message key="vendeurArticles.articlesEnVente.noArticle" />
 </logic:empty>
 <logic:notEmpty name="vendeurForm" property="articlesEnVente">	
-<table border="1">
+<table class="body_mes_articles" cellspacing="30">
 <tbody>
 <%-- set the header --%>
 <tr>
@@ -160,7 +162,7 @@
 	<bean:message key="vendeurArticles.articlesVendus.noArticle" />
 </logic:empty>
 <logic:notEmpty name="vendeurForm" property="articlesVendus">
-<table border="1">
+<table class="body_mes_articles" cellspacing="30">
 <tbody>
 <tr>
 <td>&nbsp;</td>
