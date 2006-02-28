@@ -40,9 +40,10 @@
 				<td>
 					<bean:message key="articleFiche.vendeur.fiche" />
 					&nbsp;:&nbsp;
-					<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.vendeurMembreDTO.id" paramId="membreId">
-						<bean:write name="articleForm" property="articleView.vendeurMembreDTO.pseudo" />
+					<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.vendeurMembreId" paramId="membreId">
+						<bean:write name="articleForm" property="articleView.vendeurPseudo" />
 					</html:link>
+					<!--  ICI -->
 				</td>
 			</tr>
 			<tr>
@@ -137,7 +138,7 @@
 			<br />
 			<bean:write name="articleForm" property="articleView.nbEncheres" />&nbsp;<bean:message key="articleFiche.encheres.libelle" />
 			<br />
-			<logic:notEmpty name="articleForm" property="articleView.derniereEnchereView">
+			<logic:notEmpty name="articleForm" property="articleView.derniereEnchereMontant">
 				<table>
 					<tr>
 						<td colspan="2" align="left">
@@ -154,7 +155,7 @@
 								<b>
 						</td>
 						<td>
-							<bean:write name="articleForm" property="articleView.derniereEnchereView.formattedDate" />
+							<bean:write name="articleForm" property="articleView.derniereEnchereFormattedDate" />
 						</td>
 					</tr>
 					<tr>
@@ -165,7 +166,7 @@
 								<b>
 						</td>
 						<td>
-							<bean:write name="articleForm" property="articleView.derniereEnchereView.montant" />
+							<bean:write name="articleForm" property="articleView.derniereEnchereMontant" />
 							<bean:message key="general.label.devise" />
 						</td>
 					</tr>
@@ -177,8 +178,8 @@
 								<b>
 						</td>
 						<td>
-							<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.derniereEnchereView.membreDTO.id" paramId="membreId">
-								<bean:write name="articleForm" property="articleView.derniereEnchereView.membreDTO.pseudo" />
+							<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.encherisseurMembreId" paramId="membreId">
+								<bean:write name="articleForm" property="articleView.encherisseurPseudo" />
 							</html:link>
 						</td>
 					</tr>
