@@ -21,7 +21,6 @@
 <logic:iterate name="categorieForm" property="listeCategories" id="categorie">
 <br />	
  	<html:link action="/articleList.do?do=showArticlesByCategorie" paramName="categorie" paramProperty="id" paramId="categorieId"><bean:write name="categorie" property="libelle" /></html:link>
-<br />
 </logic:iterate>
 <logic:notPresent name="categorie">
 <bean:message key="categorieList.noCategories" />

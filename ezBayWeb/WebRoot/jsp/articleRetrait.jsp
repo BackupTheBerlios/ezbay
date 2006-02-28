@@ -32,8 +32,8 @@
 		<html:link action="/vendeur.do?do=showArticles"><bean:message key="articleRetrait.erreurs.link.retour" /></html:link>
 	</logic:messagesPresent>
 	<logic:messagesNotPresent>
-	<bean:message key="articleRetrait.messageConfirm" /> <bean:write name="articleForm" property="articleDTO.libelle" /> ?
-			<html:link action="/article.do?do=confirmSupprimerArticle" paramName="articleForm" paramProperty="articleDTO.id" paramId="id"><bean:message key="link.valider" /></html:link>
+	<bean:message key="articleRetrait.messageConfirm" /> <bean:write name="articleForm" property="libelle" /> ?
+			<html:link action="/article.do?do=confirmSupprimerArticle" paramName="articleForm" paramProperty="id" paramId="id"><bean:message key="link.valider" /></html:link>
 			&nbsp;<html:link href="javascript:history.back()"><bean:message key="link.annuler" /></html:link>
 	</logic:messagesNotPresent>
 	</body>

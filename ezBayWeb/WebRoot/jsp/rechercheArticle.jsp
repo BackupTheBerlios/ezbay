@@ -119,9 +119,6 @@
 		<html:hidden property="id" />
 		<br>
 		<%-- submit and back button --%>
-		<html:button property="back" onclick="history.back();">Back</html:button>
-			&nbsp;
-			
 			<html:submit>
 			<bean:message key="link.Recherche.Article" />
 		</html:submit>
@@ -171,11 +168,11 @@
 						<bean:write name="article" property="modele" />
 					</td>
 					<td align="center">
-						<logic:empty name="article" property="derniereEnchereView">
+						<logic:empty name="article" property="derniereEnchereMontant">
 							<bean:write name="article" property="prixVente" />
 						</logic:empty>
-						<logic:notEmpty name="article" property="derniereEnchereView">			
-							<b><bean:write name="article" property="derniereEnchereView.montant" />
+						<logic:notEmpty name="article" property="derniereEnchereMontant">			
+							<b><bean:write name="article" property="derniereEnchereMontant" />
 							&nbsp;<bean:message key="general.label.devise" /></b>
 						</logic:notEmpty>
 					</td>

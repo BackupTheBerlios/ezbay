@@ -13,14 +13,13 @@ table.menu
 	font-family:Verdana;
 	color:#000088;
 	font-weight:bold;
-	text-align :center;
-	font-size: 14;
+	text-align :left;
+	font-size: 12;
 	border-color: #FBE468;
 	background : #FDF3BF;
 	border-style: solid;
 	border-width:thin;
-	width: 3cm;
-	height: 100%;
+	width: 160px;
 }
 
 tr.menu_ligne_fonce
@@ -41,7 +40,7 @@ a
 	color:#004080;
 	text-decoration:none;
 	cursor:pointer;
-	font-size: 12;
+	font-size: 10;
 	
 }
 
