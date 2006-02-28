@@ -75,21 +75,35 @@ public class VendeurFacadeDelegate {
 	}
 
 	public Collection getArticlesEnAttente(String vendeurId) throws RemoteException, Exception {
+		Collection tRes;
+		long d = System.currentTimeMillis();
 		Collection articles = vendeurFacade.getArticlesEnAttente(vendeurId);
 		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
-		return articleFacade.getArticlesDtoToView(articles);
+		tRes = articleFacade.getArticlesDtoToView(articles);
+		System.out.println("getArticlesEnAttente" + (System.currentTimeMillis() - d));
+		return tRes;
 	}
 
+	
+	
 	public Collection getArticlesEnVente(String vendeurId) throws RemoteException, Exception {
+		Collection tRes;
+		long d = System.currentTimeMillis();
 		Collection articles = vendeurFacade.getArticlesEnVente(vendeurId);
 		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
-		return articleFacade.getArticlesDtoToView(articles);
+		tRes = articleFacade.getArticlesDtoToView(articles);
+		System.out.println("getArticlesEnAttente" + (System.currentTimeMillis() - d));
+		return tRes;
 	}
 
 	public Collection getArticlesVendus(String vendeurId) throws RemoteException, Exception {
+		Collection tRes;
+		long d = System.currentTimeMillis();
 		Collection articles = vendeurFacade.getArticlesVendus(vendeurId);
 		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
-		return articleFacade.getArticlesDtoToView(articles);
+		tRes = articleFacade.getArticlesDtoToView(articles);
+		System.out.println("getArticlesEnAttente" + (System.currentTimeMillis() - d));
+		return tRes;
 	}
 
 	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws VendeurInconnuException, Exception, RemoteException {

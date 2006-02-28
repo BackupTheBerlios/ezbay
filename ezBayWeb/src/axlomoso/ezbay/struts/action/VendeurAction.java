@@ -72,6 +72,7 @@ public class VendeurAction extends DispatchAction {
 	 */
 	private void setVendeurForm(ActionForm form, HttpServletRequest request) throws Exception {
 		VendeurForm vendeurForm = (VendeurForm) form;
+		double dGlobal = System.currentTimeMillis();
 		MembreFacadeDelegate membreDelegate = MembreFacadeDelegate.getInstance();
 		VendeurFacadeDelegate vendeurDelegate = VendeurFacadeDelegate.getInstance();
 		try {
@@ -89,6 +90,7 @@ public class VendeurAction extends DispatchAction {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("setVendeurForm - temps execution : " + (System.currentTimeMillis() - dGlobal) + "ms");
 	}
 	
 	

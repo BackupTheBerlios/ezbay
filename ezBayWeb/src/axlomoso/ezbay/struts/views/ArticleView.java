@@ -10,13 +10,8 @@ import axlomoso.ezbay.utils.Util;
 
 public class ArticleView {
 	private ArticleDTO articleDTO = new ArticleDTO();
-	private VendeurDTO vendeurDTO = new VendeurDTO();
-	private MembreDTO vendeurMembreDTO = new MembreDTO();
 	private CategorieDTO categorieDTO = new CategorieDTO();
-	private ActionEnchereView derniereEnchereView = null;
-	private ActionTransactionView transactionView = null;
-	private Integer nbEncheres = new Integer(0);
-	
+	private Util util = new Util();
 	
 	public Integer getAnneeFabrication() {
 		return articleDTO.getAnneeFabrication();
@@ -99,39 +94,6 @@ public class ArticleView {
 		this.articleDTO = articleDTO;
 	}
 
-	public ActionEnchereView getDerniereEnchereView() {
-		return derniereEnchereView;
-	}
-
-	public void setDerniereEnchereView(ActionEnchereView derniereEnchereView) {
-		this.derniereEnchereView = derniereEnchereView;
-	}
-
-	public VendeurDTO getVendeurDTO() {
-		return vendeurDTO;
-	}
-
-	public void setVendeurDTO(VendeurDTO vendeurDTO) {
-		this.vendeurDTO = vendeurDTO;
-	}
-
-	public Integer getNbEncheres() {
-		return nbEncheres;
-	}
-
-	public void setNbEncheres(Integer nbEncheres) {
-		this.nbEncheres = nbEncheres;
-	}
-
-	public ActionTransactionView getTransactionView() {
-		return transactionView;
-	}
-
-	public void setTransactionView(
-			ActionTransactionView transactionView) {
-		this.transactionView = transactionView;
-	}
-
 	public CategorieDTO getCategorieDTO() {
 		return categorieDTO;
 	}
@@ -140,16 +102,120 @@ public class ArticleView {
 		this.categorieDTO = categorieDTO;
 	}
 
-	public MembreDTO getVendeurMembreDTO() {
-		return vendeurMembreDTO;
-	}
-
-	public void setVendeurMembreDTO(MembreDTO vendeurMembreDTO) {
-		this.vendeurMembreDTO = vendeurMembreDTO;
-	}
-
 	public Boolean getEnVente() {
 		return articleDTO.getEnVente();
+	}
+
+	public String getAcheteurId() {
+		return articleDTO.getAcheteurId();
+	}
+
+	public String getAcheteurPseudo() {
+		return articleDTO.getAcheteurPseudo();
+	}
+
+	public Date getDerniereEnchereDate() {
+		return articleDTO.getDerniereEnchereDate();
+	}
+
+	public Double getDerniereEnchereMontant() {
+		return articleDTO.getDerniereEnchereMontant();
+	}
+
+	public String getEncherisseurPseudo() {
+		return articleDTO.getEncherisseurPseudo();
+	}
+
+	public Integer getNbEncheres() {
+		return articleDTO.getNbEncheres();
+	}
+
+	public Date getTransactionDate() {
+		return articleDTO.getTransactionDate();
+	}
+
+	public Double getTransactionMontant() {
+		return articleDTO.getTransactionMontant();
+	}
+
+	public String getVendeurId() {
+		return articleDTO.getVendeurId();
+	}
+
+	public String getVendeurPseudo() {
+		return articleDTO.getVendeurPseudo();
+	}
+
+	public void setAcheteurId(String acheteurId) {
+		articleDTO.setAcheteurId(acheteurId);
+	}
+
+	public void setAcheteurPseudo(String acheteurPseudo) {
+		articleDTO.setAcheteurPseudo(acheteurPseudo);
+	}
+
+	public void setDerniereEnchereDate(Date derniereEnchereDate) {
+		articleDTO.setDerniereEnchereDate(derniereEnchereDate);
+	}
+
+	public void setDerniereEnchereMontant(Double derniereEnchereMontant) {
+		articleDTO.setDerniereEnchereMontant(derniereEnchereMontant);
+	}
+
+	public void setEncherisseurPseudo(String encherisseurPseudo) {
+		articleDTO.setEncherisseurPseudo(encherisseurPseudo);
+	}
+
+	public void setEnVente(Boolean enVente) {
+		articleDTO.setEnVente(enVente);
+	}
+
+	public void setNbEncheres(Integer nbEncheres) {
+		articleDTO.setNbEncheres(nbEncheres);
+	}
+
+	public void setTransactionDate(Date transactionDate) {
+		articleDTO.setTransactionDate(transactionDate);
+	}
+
+	public void setTransactionMontant(Double transactionMontant) {
+		articleDTO.setTransactionMontant(transactionMontant);
+	}
+
+	public void setVendeurId(String vendeurId) {
+		articleDTO.setVendeurId(vendeurId);
+	}
+
+	public void setVendeurPseudo(String vendeurPseudo) {
+		articleDTO.setVendeurPseudo(vendeurPseudo);
+	}
+
+	public String getEncherisseurClientId() {
+		return articleDTO.getEncherisseurClientId();
+	}
+
+	public String getEncherisseurMembreId() {
+		return articleDTO.getEncherisseurMembreId();
+	}
+
+	public void setEncherisseurClientId(String encherisseurClientId) {
+		articleDTO.setEncherisseurClientId(encherisseurClientId);
+	}
+
+	public void setEncherisseurMembreId(String encherisseurMembreId) {
+		articleDTO.setEncherisseurMembreId(encherisseurMembreId);
+	}
+
+	public String getVendeurMembreId() {
+		return articleDTO.getVendeurMembreId();
+	}
+
+	public void setVendeurMembreId(String vendeurMembreId) {
+		articleDTO.setVendeurMembreId(vendeurMembreId);
+	}
+	
+	public String getDerniereEnchereFormattedDate(){
+		return util.getDateToString(this.getDerniereEnchereDate(), "dd/MM/yyyy - kk:mm:ss");
 	}
 
 }

@@ -1,6 +1,7 @@
 package axlomoso.ezbay.delegate;
 
 import java.rmi.RemoteException;
+import java.util.Collection;
 
 import javax.ejb.CreateException;
 import javax.ejb.FinderException;
@@ -49,6 +50,14 @@ public class ClientFacadeDelegate {
 	
 	public MembreDTO getMembreByClientId(String clientId) throws RemoteException, Exception{
 		return clientFacade.getMembre(clientId);
+	}
+	
+	public Collection getArticlesEnEncheres(String clientId) throws RemoteException{
+		return clientFacade.getArticlesEnEncheres(clientId);
+	}
+	
+	public Collection getArticlesAchetes(String clientId) throws RemoteException{
+		return clientFacade.getArticlesAchetes(clientId);
 	}
 	
 }

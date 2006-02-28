@@ -99,12 +99,12 @@ public class ArticleFacadeDelegate {
 	
 	/* transforme une liste d'ArticleDTO en une liste d'articleView */
     public Collection getArticlesDtoToView(Collection articles) throws Exception {
-		Collection tRes = new ArrayList();
+    	Collection tRes = new ArrayList();
 		for (Iterator it = articles.iterator(); it.hasNext(); ) {
 			ArticleDTO articleDTO = (ArticleDTO) it.next();
 			ArticleView articleView = getArticleViewFromArticleDTO(articleDTO);
 			tRes.add(articleView);
-	    }		
+	    }
 		return tRes;
 	}
 
@@ -116,48 +116,11 @@ public class ArticleFacadeDelegate {
 	 * @throws Exception
 	 */
 	public ArticleView getArticleViewFromArticleDTO(ArticleDTO articleDTO) throws RemoteException, Exception {
-		ClientFacadeDelegate clientDelegate = ClientFacadeDelegate.getInstance();
-		VendeurFacadeDelegate vendeurDelegate = VendeurFacadeDelegate.getInstance();
 		ArticleView articleView = new ArticleView();
+		CategorieDTO categorieDTO = new CategorieDTO();
 		articleView.setArticleDTO(articleDTO);
-		//Vendeur
-		VendeurDTO vendeurDTO = this.getVendeurDTO(articleDTO.getId());
-		MembreDTO membreDTO = vendeurDelegate.getMembreByVendeurId(vendeurDTO.getId());
-		articleView.setVendeurDTO(vendeurDTO);
-		articleView.setVendeurMembreDTO(membreDTO);
-		// Catégorie
-		articleView.setCategorieDTO(this.getCategorieDTO(articleDTO.getId()));		
-		//Dernière enchère
-		ActionEnchereView enchereView = null;
-		ActionEnchereDTO enchereDTO = this.getDerniereEnchere(articleDTO.getId());
-		ClientDTO clientEncherisseurDTO = null;
-		MembreDTO membreEncherisseurDTO = null;
-		if( enchereDTO != null ){
-			// l'article a été enchéri
-			enchereView = new ActionEnchereView(enchereDTO);
-			clientEncherisseurDTO = this.getDernierEncherisseur(articleDTO.getId());
-			membreEncherisseurDTO = clientDelegate.getMembreByClientId(clientEncherisseurDTO.getId());
-			enchereView.setClientId(clientEncherisseurDTO.getId());
-			enchereView.setMembreDTO(membreEncherisseurDTO); 
-		}
-		articleView.setDerniereEnchereView(enchereView);
-		articleView.setNbEncheres(this.getNbEncheres(articleDTO.getId()));
-		//Transaction
-		ActionTransactionView transactionView = null;
-		ActionTransactionDTO transactionDTO = this.getTransaction(articleDTO.getId());
-		ClientDTO clientAcquereur = null;
-		MembreDTO membreAcquereur = null;
-		if( transactionDTO != null ){
-			//l'article a été acheté
-			transactionView = new ActionTransactionView(transactionDTO);
-			clientAcquereur = this.getAcquereur(articleDTO.getId());
-			membreAcquereur = clientDelegate.getMembreByClientId(clientAcquereur.getId());
-			transactionView.setClientId(clientAcquereur.getId());
-			transactionView.setMembreDTO(membreAcquereur);
-		}
-		articleView.setTransactionView(transactionView);
+		articleView.setCategorieDTO(this.getCategorieDTO(articleDTO.getId()));
 		return articleView;
-	}
-    
+	} 
     
 }
