@@ -246,6 +246,71 @@
             <column-name>datelimite</column-name>
 
         </cmp-field>
+         <cmp-field>
+            <field-name>vendeurPseudo</field-name>
+            <column-name>vendeurPseudo</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>vendeurMembreId</field-name>
+            <column-name>vendeurMembreId</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>vendeurId</field-name>
+            <column-name>vendeurId</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>encherisseurPseudo</field-name>
+            <column-name>encherisseurpseudo</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>encherisseurMembreId</field-name>
+            <column-name>encherisseurmembreid</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>encherisseurClientId</field-name>
+            <column-name>encherisseurClientId</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>derniereEnchereDate</field-name>
+            <column-name>dernierencheredate</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>derniereEnchereMontant</field-name>
+            <column-name>derniereEnchereMontant</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>nbEncheres</field-name>
+            <column-name>nbEncheres</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>acheteurPseudo</field-name>
+            <column-name>acheteurPseudo</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>acheteurId</field-name>
+            <column-name>acheteurId</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>transactionDate</field-name>
+            <column-name>transactionDate</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>transactionMontant</field-name>
+            <column-name>transactionMontant</column-name>
+
+        </cmp-field>
 
 <!-- jboss 3.2 features -->
 <!-- optimistic locking does not express the exclusions needed -->

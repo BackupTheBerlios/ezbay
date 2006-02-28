@@ -64,6 +64,7 @@ public class VendeurFacadeBean implements SessionBean {
 	ServiceLocator locator;
 	ArticleFacadeLocalHome articleFacadeLocalHome;
 	ArticleFacadeLocal articleFacade;
+	private VendeurLocalHome home;
 
 	public VendeurFacadeBean() {
 		super();
@@ -71,6 +72,7 @@ public class VendeurFacadeBean implements SessionBean {
 			locator = ServiceLocator.getInstance();
 			articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
 			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
+			home = getEntityHome();
 		} catch (ServiceLocatorException e) {
 			e.printStackTrace();
 		} catch (CreateException e) {
@@ -206,30 +208,6 @@ public class VendeurFacadeBean implements SessionBean {
 	}
 	
 
-	/*
-	 /**
-	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurDTO
-	 */
-	/*
-	public Collection getArticles(String vendeurId) {
-		Collection tRes = new ArrayList();
-		try {
-			VendeurLocal vendeur = getEntity(vendeurId);
-			Collection articles = vendeur.getArticle();
-			for (Iterator it = articles.iterator(); it.hasNext(); ) {
-				ArticleLocal articleLocal = (ArticleLocal) it.next();
-				tRes.add(articleLocal.getArticleDTO());
-		    }		
-		} catch (FinderException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return tRes;		
-	}*/
-	
 	/**
 	 * @ejb.interface-method view-type = "both"
 	 * @param vendeurId

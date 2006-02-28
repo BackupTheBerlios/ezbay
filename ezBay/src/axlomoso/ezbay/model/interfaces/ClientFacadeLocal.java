@@ -18,4 +18,8 @@ public interface ClientFacadeLocal
 
    public axlomoso.ezbay.model.interfaces.MembreDTO getMembre( java.lang.String clientId ) throws java.lang.Exception;
 
+   public java.util.Collection getArticlesEnEncheres( java.lang.String clientId ) ;
+
+   public java.util.Collection getArticlesAchetes( java.lang.String clientId ) ;
+
 }

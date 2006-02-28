@@ -1,11 +1,15 @@
 package axlomoso.ezbay.model.ejb;
 
 import java.rmi.RemoteException;
+import java.util.Collection;
 
+import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
 
+import axlomoso.ezbay.model.interfaces.ArticleFacadeLocal;
+import axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
 import axlomoso.ezbay.model.interfaces.ClientLocalHome;
@@ -40,10 +44,21 @@ public class ClientFacadeBean implements SessionBean {
 	private static final long serialVersionUID = -6764821663424470511L;
 	/** The session context */
 	private SessionContext context;
-
+	ServiceLocator locator;
+	ArticleFacadeLocalHome articleFacadeLocalHome;
+	ArticleFacadeLocal articleFacade;
+	
 	public ClientFacadeBean() {
 		super();
-		// TODO Auto-generated constructor stub
+		try {
+			locator = ServiceLocator.getInstance();
+			articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
+			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		} catch (CreateException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -74,6 +89,25 @@ public class ClientFacadeBean implements SessionBean {
 		}
 		return tRes;
 	}	
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param clientId
+	 */
+	public Collection getArticlesEnEncheres(String clientId) {
+		
+		return null;
+	}	
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param clientId
+	 */
+	public Collection getArticlesAchetes(String clientId) {
+		
+		return null;
+	}	
+	
 	
 	/**
 	 * Set the associated session context. The container calls this method 

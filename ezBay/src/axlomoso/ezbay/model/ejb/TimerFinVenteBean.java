@@ -15,8 +15,6 @@ import javax.ejb.TimerService;
 
 import javax.ejb.CreateException;
 
-import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocal;
-import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeLocal;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome;
 import axlomoso.ezbay.utils.ServiceLocator;
@@ -32,9 +30,9 @@ import axlomoso.ezbay.utils.ServiceLocatorException;
  * 
  * Below are the xdoclet-related tags needed for this EJB.
  * 
- * @ejb.bean name="TimerFinVenteBean" display-name="Name for TimerFinVenteBean"
+ * @ejb.bean name="TimerFinVente" display-name="Name for TimerFinVenteBean"
  *           description="Description for TimerFinVenteBean"
- *           jndi-name="ejb/TimerFinVenteBean" type="Stateless" view-type="remote"
+ *           jndi-name="ejb/TimerFinVente" type="Stateless" view-type="local"
  */
 public class TimerFinVenteBean implements SessionBean, TimedObject {
 
@@ -44,18 +42,10 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 	private TimerHandle timerHandle = null;
 	ServiceLocator locator;
 	ArticleFacadeLocal articleFacade;
-
+	
 	public TimerFinVenteBean() {
 		super();
-		try {
-			locator = ServiceLocator.getInstance();
-			ArticleFacadeLocalHome articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
-			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
-		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
-		} catch (CreateException e) {
-			e.printStackTrace();
-		}
+		locator = ServiceLocator.getInstance();
 	}
 
 	/**
@@ -92,7 +82,7 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 	
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param
 	 */
 	public void initializeTimer(long timeout, String timerName) {
@@ -116,11 +106,19 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 	public void ejbTimeout(Timer timer) {
 		System.out.println("ejbTimeout() called at: "
 				+ new Date(System.currentTimeMillis()) + " with info:");
-		articleFacade.terminerVente(timer.getInfo().toString());
+		try{
+			ArticleFacadeLocalHome articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
+			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
+			articleFacade.terminerVente(timer.getInfo().toString());
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		} catch (CreateException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param
 	 */
 

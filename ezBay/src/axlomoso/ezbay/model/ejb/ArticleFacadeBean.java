@@ -14,7 +14,6 @@ import javax.ejb.SessionContext;
 import javax.naming.NamingException;
 
 import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
-import axlomoso.ezbay.exceptions.ArticleVenduException;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocal;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocalHome;
@@ -27,9 +26,10 @@ import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieLocal;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
-import axlomoso.ezbay.model.interfaces.ClientFacadeLocal;
-import axlomoso.ezbay.model.interfaces.ClientFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
+import axlomoso.ezbay.model.interfaces.MembreLocal;
+import axlomoso.ezbay.model.interfaces.TimerFinVenteLocal;
+import axlomoso.ezbay.model.interfaces.TimerFinVenteLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
@@ -58,6 +58,7 @@ public class ArticleFacadeBean implements SessionBean {
 	ServiceLocator locator;
 	ActionEnchereFacadeLocal actionEnchereFacade;
 	ActionTransactionFacadeLocal actionTransactionFacade;
+	TimerFinVenteLocal timerLocal;
 	
 	public ArticleFacadeBean() {
 		super();
@@ -67,6 +68,8 @@ public class ArticleFacadeBean implements SessionBean {
 			actionEnchereFacade = (ActionEnchereFacadeLocal) actionEnchereFacadeLocalHome.create();
 			ActionTransactionFacadeLocalHome actionTransactionFacadeLocalHome = (ActionTransactionFacadeLocalHome) locator.getLocalHome(ActionTransactionFacadeLocalHome.JNDI_NAME);
 			actionTransactionFacade = (ActionTransactionFacadeLocal) actionTransactionFacadeLocalHome.create();
+			TimerFinVenteLocalHome timerHome = (TimerFinVenteLocalHome) locator.getLocalHome(TimerFinVenteLocalHome.JNDI_NAME);
+			timerLocal = (TimerFinVenteLocal) timerHome.create();
 		} catch (ServiceLocatorException e) {
 			e.printStackTrace();
 		} catch (CreateException e) {
@@ -186,6 +189,11 @@ public class ArticleFacadeBean implements SessionBean {
 			// categorie
 			CategorieLocal categorieLocal = CategorieFacadeBean.getEntity(categorieId);
 			articleLocal.setCategorieLocal(categorieLocal);
+			articleLocal.setVendeurId(vendeurId);
+			//InfoRedondante
+			MembreLocal membreLocal = vendeurLocal.getMembreLocal();
+			articleLocal.setVendeurMembreId(membreLocal.getId());
+			articleLocal.setVendeurPseudo(membreLocal.getPseudo());
 			// return
 			tRes = articleLocal.getArticleDTO();
 		} catch (Exception e) {
@@ -233,6 +241,7 @@ public class ArticleFacadeBean implements SessionBean {
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
 			articleLocal.setEnVente(new Boolean(false));
+			timerLocal.cancelTimer(articleId);
 		} catch (Exception e) {
 			throw new Exception("Impossible de retirer l'article de la vente", e);
 		}
@@ -246,6 +255,7 @@ public class ArticleFacadeBean implements SessionBean {
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
 			articleLocal.setEnVente(new Boolean(true));
+			timerLocal.initializeTimer(articleLocal.getDateLimite().getTime(), articleId);			
 		} catch (Exception e) {
 			throw new Exception("Impossible de mettre l'article en vente", e);
 		}
@@ -613,6 +623,12 @@ public class ArticleFacadeBean implements SessionBean {
 			else{
 				ClientLocal clientLocal = ClientFacadeBean.getEntity(clientId);
 				tRes = actionEnchereFacade.createActionEnchere(enchereDTO, articleLocal, clientLocal);
+				articleLocal.setDerniereEnchereDate(tRes.getDate());
+				articleLocal.setDerniereEnchereMontant(tRes.getMontant());
+				articleLocal.setEncherisseurClientId(clientId);
+				articleLocal.setEncherisseurMembreId(clientId);
+				articleLocal.setEncherisseurPseudo(ClientFacadeBean.getEntity(clientId).getMembreLocal().getMembreDTO().getPseudo());
+				articleLocal.setNbEncheres( new Integer(articleLocal.getNbEncheres().intValue() + 1) );
 			}
 		} catch (FinderException e) {
 			e.printStackTrace();

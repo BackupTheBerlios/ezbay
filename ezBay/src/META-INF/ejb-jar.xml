@@ -30,11 +30,11 @@
          <description><![CDATA[Description for TimerFinVenteBean]]></description>
          <display-name>Name for TimerFinVenteBean</display-name>
 
-         <ejb-name>TimerFinVenteBean</ejb-name>
+         <ejb-name>TimerFinVente</ejb-name>
 
-         <home>axlomoso.ezbay.model.interfaces.TimerFinVenteBeanHome</home>
-         <remote>axlomoso.ezbay.model.interfaces.TimerFinVenteBean</remote>
-         <ejb-class>axlomoso.ezbay.model.ejb.TimerFinVenteBeanSession</ejb-class>
+         <local-home>axlomoso.ezbay.model.interfaces.TimerFinVenteLocalHome</local-home>
+         <local>axlomoso.ezbay.model.interfaces.TimerFinVenteLocal</local>
+         <ejb-class>axlomoso.ezbay.model.ejb.TimerFinVenteSession</ejb-class>
          <session-type>Stateless</session-type>
          <transaction-type>Container</transaction-type>
 
@@ -434,6 +434,58 @@
          <cmp-field >
             <description><![CDATA[]]></description>
             <field-name>dateLimite</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>vendeurPseudo</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>vendeurMembreId</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>vendeurId</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>encherisseurPseudo</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>encherisseurMembreId</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>encherisseurClientId</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>derniereEnchereDate</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>derniereEnchereMontant</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>nbEncheres</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>acheteurPseudo</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>acheteurId</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>transactionDate</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>transactionMontant</field-name>
          </cmp-field>
          <primkey-field>id</primkey-field>
 

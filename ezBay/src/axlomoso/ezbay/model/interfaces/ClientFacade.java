@@ -20,4 +20,10 @@ public interface ClientFacade
    public axlomoso.ezbay.model.interfaces.MembreDTO getMembre( java.lang.String clientId )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.util.Collection getArticlesEnEncheres( java.lang.String clientId )
+      throws java.rmi.RemoteException;
+
+   public java.util.Collection getArticlesAchetes( java.lang.String clientId )
+      throws java.rmi.RemoteException;
+
 }

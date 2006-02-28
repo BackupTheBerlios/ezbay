@@ -68,6 +68,58 @@ public interface ArticleLocal
 
    public axlomoso.ezbay.model.interfaces.ArticleDTO getArticleDTO(  ) ;
 
+   public java.lang.String getVendeurPseudo(  ) ;
+
+   public void setVendeurPseudo( java.lang.String vendeurPseudo ) ;
+
+   public java.lang.String getVendeurMembreId(  ) ;
+
+   public void setVendeurMembreId( java.lang.String vendeurMembreId ) ;
+
+   public java.lang.String getVendeurId(  ) ;
+
+   public void setVendeurId( java.lang.String vendeurId ) ;
+
+   public java.lang.String getEncherisseurPseudo(  ) ;
+
+   public void setEncherisseurPseudo( java.lang.String encherisseurPseudo ) ;
+
+   public java.lang.String getEncherisseurMembreId(  ) ;
+
+   public void setEncherisseurMembreId( java.lang.String encherisseurMembreId ) ;
+
+   public java.lang.String getEncherisseurClientId(  ) ;
+
+   public void setEncherisseurClientId( java.lang.String encherisseurClientId ) ;
+
+   public java.util.Date getDerniereEnchereDate(  ) ;
+
+   public void setDerniereEnchereDate( java.util.Date dernierEnchereDate ) ;
+
+   public java.lang.Double getDerniereEnchereMontant(  ) ;
+
+   public void setDerniereEnchereMontant( java.lang.Double derniereEnchereMontant ) ;
+
+   public java.lang.Integer getNbEncheres(  ) ;
+
+   public void setNbEncheres( java.lang.Integer nbEncheres ) ;
+
+   public java.lang.String getAcheteurPseudo(  ) ;
+
+   public void setAcheteurPseudo( java.lang.String acheteurPseudo ) ;
+
+   public java.lang.String getAcheteurId(  ) ;
+
+   public void setAcheteurId( java.lang.String acheteurId ) ;
+
+   public java.util.Date getTransactionDate(  ) ;
+
+   public void setTransactionDate( java.util.Date transactionDate ) ;
+
+   public java.lang.Double getTransactionMontant(  ) ;
+
+   public void setTransactionMontant( java.lang.Double transactionMontant ) ;
+
    public java.lang.String updateArticle( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) throws java.lang.Exception;
 
 }

@@ -71,6 +71,19 @@ public abstract class ArticleCMP
             ArticleDTO.setAnneeFabrication( getAnneeFabrication() );
             ArticleDTO.setDescription( getDescription() );
             ArticleDTO.setDateLimite( getDateLimite() );
+            ArticleDTO.setVendeurPseudo( getVendeurPseudo() );
+            ArticleDTO.setVendeurMembreId( getVendeurMembreId() );
+            ArticleDTO.setVendeurId( getVendeurId() );
+            ArticleDTO.setEncherisseurPseudo( getEncherisseurPseudo() );
+            ArticleDTO.setEncherisseurMembreId( getEncherisseurMembreId() );
+            ArticleDTO.setEncherisseurClientId( getEncherisseurClientId() );
+            ArticleDTO.setDerniereEnchereDate( getDerniereEnchereDate() );
+            ArticleDTO.setDerniereEnchereMontant( getDerniereEnchereMontant() );
+            ArticleDTO.setNbEncheres( getNbEncheres() );
+            ArticleDTO.setAcheteurPseudo( getAcheteurPseudo() );
+            ArticleDTO.setAcheteurId( getAcheteurId() );
+            ArticleDTO.setTransactionDate( getTransactionDate() );
+            ArticleDTO.setTransactionMontant( getTransactionMontant() );
 
          }
          catch (Exception e)
@@ -118,5 +131,57 @@ public abstract class ArticleCMP
    public abstract java.util.Date getDateLimite() ;
 
    public abstract void setDateLimite( java.util.Date dateLimite ) ;
+
+   public abstract java.lang.String getVendeurPseudo() ;
+
+   public abstract void setVendeurPseudo( java.lang.String vendeurPseudo ) ;
+
+   public abstract java.lang.String getVendeurMembreId() ;
+
+   public abstract void setVendeurMembreId( java.lang.String vendeurMembreId ) ;
+
+   public abstract java.lang.String getVendeurId() ;
+
+   public abstract void setVendeurId( java.lang.String vendeurId ) ;
+
+   public abstract java.lang.String getEncherisseurPseudo() ;
+
+   public abstract void setEncherisseurPseudo( java.lang.String encherisseurPseudo ) ;
+
+   public abstract java.lang.String getEncherisseurMembreId() ;
+
+   public abstract void setEncherisseurMembreId( java.lang.String encherisseurMembreId ) ;
+
+   public abstract java.lang.String getEncherisseurClientId() ;
+
+   public abstract void setEncherisseurClientId( java.lang.String encherisseurClientId ) ;
+
+   public abstract java.util.Date getDerniereEnchereDate() ;
+
+   public abstract void setDerniereEnchereDate( java.util.Date derniereEnchereDate ) ;
+
+   public abstract java.lang.Double getDerniereEnchereMontant() ;
+
+   public abstract void setDerniereEnchereMontant( java.lang.Double derniereEnchereMontant ) ;
+
+   public abstract java.lang.Integer getNbEncheres() ;
+
+   public abstract void setNbEncheres( java.lang.Integer nbEncheres ) ;
+
+   public abstract java.lang.String getAcheteurPseudo() ;
+
+   public abstract void setAcheteurPseudo( java.lang.String acheteurPseudo ) ;
+
+   public abstract java.lang.String getAcheteurId() ;
+
+   public abstract void setAcheteurId( java.lang.String acheteurId ) ;
+
+   public abstract java.util.Date getTransactionDate() ;
+
+   public abstract void setTransactionDate( java.util.Date transactionDate ) ;
+
+   public abstract java.lang.Double getTransactionMontant() ;
+
+   public abstract void setTransactionMontant( java.lang.Double transactionMontant ) ;
 
 }

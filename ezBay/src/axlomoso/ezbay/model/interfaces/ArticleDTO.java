@@ -48,13 +48,52 @@ public class ArticleDTO
    private java.util.Date dateLimite;
    private boolean dateLimiteHasBeenSet = false;
 
+   private java.lang.String vendeurPseudo;
+   private boolean vendeurPseudoHasBeenSet = false;
+
+   private java.lang.String vendeurMembreId;
+   private boolean vendeurMembreIdHasBeenSet = false;
+
+   private java.lang.String vendeurId;
+   private boolean vendeurIdHasBeenSet = false;
+
+   private java.lang.String encherisseurPseudo;
+   private boolean encherisseurPseudoHasBeenSet = false;
+
+   private java.lang.String encherisseurMembreId;
+   private boolean encherisseurMembreIdHasBeenSet = false;
+
+   private java.lang.String encherisseurClientId;
+   private boolean encherisseurClientIdHasBeenSet = false;
+
+   private java.util.Date derniereEnchereDate;
+   private boolean derniereEnchereDateHasBeenSet = false;
+
+   private java.lang.Double derniereEnchereMontant;
+   private boolean derniereEnchereMontantHasBeenSet = false;
+
+   private java.lang.Integer nbEncheres;
+   private boolean nbEncheresHasBeenSet = false;
+
+   private java.lang.String acheteurPseudo;
+   private boolean acheteurPseudoHasBeenSet = false;
+
+   private java.lang.String acheteurId;
+   private boolean acheteurIdHasBeenSet = false;
+
+   private java.util.Date transactionDate;
+   private boolean transactionDateHasBeenSet = false;
+
+   private java.lang.Double transactionMontant;
+   private boolean transactionMontantHasBeenSet = false;
+
    private java.lang.String primaryKey;
 
    public ArticleDTO()
    {
    }
 
-   public ArticleDTO( java.lang.String id,java.lang.Boolean enVente,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.lang.String description,java.util.Date dateLimite )
+   public ArticleDTO( java.lang.String id,java.lang.Boolean enVente,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.lang.String description,java.util.Date dateLimite,java.lang.String vendeurPseudo,java.lang.String vendeurMembreId,java.lang.String vendeurId,java.lang.String encherisseurPseudo,java.lang.String encherisseurMembreId,java.lang.String encherisseurClientId,java.util.Date derniereEnchereDate,java.lang.Double derniereEnchereMontant,java.lang.Integer nbEncheres,java.lang.String acheteurPseudo,java.lang.String acheteurId,java.util.Date transactionDate,java.lang.Double transactionMontant )
    {
        setId(id);
        setEnVente(enVente);
@@ -65,6 +104,19 @@ public class ArticleDTO
        setAnneeFabrication(anneeFabrication);
        setDescription(description);
        setDateLimite(dateLimite);
+       setVendeurPseudo(vendeurPseudo);
+       setVendeurMembreId(vendeurMembreId);
+       setVendeurId(vendeurId);
+       setEncherisseurPseudo(encherisseurPseudo);
+       setEncherisseurMembreId(encherisseurMembreId);
+       setEncherisseurClientId(encherisseurClientId);
+       setDerniereEnchereDate(derniereEnchereDate);
+       setDerniereEnchereMontant(derniereEnchereMontant);
+       setNbEncheres(nbEncheres);
+       setAcheteurPseudo(acheteurPseudo);
+       setAcheteurId(acheteurId);
+       setTransactionDate(transactionDate);
+       setTransactionMontant(transactionMontant);
 	   primaryKey = this.getId();
    }
 
@@ -91,6 +143,32 @@ public class ArticleDTO
 	  descriptionHasBeenSet = true;
 	  this.dateLimite = otherValue.dateLimite;
 	  dateLimiteHasBeenSet = true;
+	  this.vendeurPseudo = otherValue.vendeurPseudo;
+	  vendeurPseudoHasBeenSet = true;
+	  this.vendeurMembreId = otherValue.vendeurMembreId;
+	  vendeurMembreIdHasBeenSet = true;
+	  this.vendeurId = otherValue.vendeurId;
+	  vendeurIdHasBeenSet = true;
+	  this.encherisseurPseudo = otherValue.encherisseurPseudo;
+	  encherisseurPseudoHasBeenSet = true;
+	  this.encherisseurMembreId = otherValue.encherisseurMembreId;
+	  encherisseurMembreIdHasBeenSet = true;
+	  this.encherisseurClientId = otherValue.encherisseurClientId;
+	  encherisseurClientIdHasBeenSet = true;
+	  this.derniereEnchereDate = otherValue.derniereEnchereDate;
+	  derniereEnchereDateHasBeenSet = true;
+	  this.derniereEnchereMontant = otherValue.derniereEnchereMontant;
+	  derniereEnchereMontantHasBeenSet = true;
+	  this.nbEncheres = otherValue.nbEncheres;
+	  nbEncheresHasBeenSet = true;
+	  this.acheteurPseudo = otherValue.acheteurPseudo;
+	  acheteurPseudoHasBeenSet = true;
+	  this.acheteurId = otherValue.acheteurId;
+	  acheteurIdHasBeenSet = true;
+	  this.transactionDate = otherValue.transactionDate;
+	  transactionDateHasBeenSet = true;
+	  this.transactionMontant = otherValue.transactionMontant;
+	  transactionMontantHasBeenSet = true;
 
 	  primaryKey = this.getId();
    }
@@ -244,12 +322,207 @@ public class ArticleDTO
    public boolean dateLimiteHasBeenSet(){
 	  return dateLimiteHasBeenSet;
    }
+   public java.lang.String getVendeurPseudo()
+   {
+	  return this.vendeurPseudo;
+   }
+
+   public void setVendeurPseudo( java.lang.String vendeurPseudo )
+   {
+	  this.vendeurPseudo = vendeurPseudo;
+	  vendeurPseudoHasBeenSet = true;
+
+   }
+
+   public boolean vendeurPseudoHasBeenSet(){
+	  return vendeurPseudoHasBeenSet;
+   }
+   public java.lang.String getVendeurMembreId()
+   {
+	  return this.vendeurMembreId;
+   }
+
+   public void setVendeurMembreId( java.lang.String vendeurMembreId )
+   {
+	  this.vendeurMembreId = vendeurMembreId;
+	  vendeurMembreIdHasBeenSet = true;
+
+   }
+
+   public boolean vendeurMembreIdHasBeenSet(){
+	  return vendeurMembreIdHasBeenSet;
+   }
+   public java.lang.String getVendeurId()
+   {
+	  return this.vendeurId;
+   }
+
+   public void setVendeurId( java.lang.String vendeurId )
+   {
+	  this.vendeurId = vendeurId;
+	  vendeurIdHasBeenSet = true;
+
+   }
+
+   public boolean vendeurIdHasBeenSet(){
+	  return vendeurIdHasBeenSet;
+   }
+   public java.lang.String getEncherisseurPseudo()
+   {
+	  return this.encherisseurPseudo;
+   }
+
+   public void setEncherisseurPseudo( java.lang.String encherisseurPseudo )
+   {
+	  this.encherisseurPseudo = encherisseurPseudo;
+	  encherisseurPseudoHasBeenSet = true;
+
+   }
+
+   public boolean encherisseurPseudoHasBeenSet(){
+	  return encherisseurPseudoHasBeenSet;
+   }
+   public java.lang.String getEncherisseurMembreId()
+   {
+	  return this.encherisseurMembreId;
+   }
+
+   public void setEncherisseurMembreId( java.lang.String encherisseurMembreId )
+   {
+	  this.encherisseurMembreId = encherisseurMembreId;
+	  encherisseurMembreIdHasBeenSet = true;
+
+   }
+
+   public boolean encherisseurMembreIdHasBeenSet(){
+	  return encherisseurMembreIdHasBeenSet;
+   }
+   public java.lang.String getEncherisseurClientId()
+   {
+	  return this.encherisseurClientId;
+   }
+
+   public void setEncherisseurClientId( java.lang.String encherisseurClientId )
+   {
+	  this.encherisseurClientId = encherisseurClientId;
+	  encherisseurClientIdHasBeenSet = true;
+
+   }
+
+   public boolean encherisseurClientIdHasBeenSet(){
+	  return encherisseurClientIdHasBeenSet;
+   }
+   public java.util.Date getDerniereEnchereDate()
+   {
+	  return this.derniereEnchereDate;
+   }
+
+   public void setDerniereEnchereDate( java.util.Date derniereEnchereDate )
+   {
+	  this.derniereEnchereDate = derniereEnchereDate;
+	  derniereEnchereDateHasBeenSet = true;
+
+   }
+
+   public boolean derniereEnchereDateHasBeenSet(){
+	  return derniereEnchereDateHasBeenSet;
+   }
+   public java.lang.Double getDerniereEnchereMontant()
+   {
+	  return this.derniereEnchereMontant;
+   }
+
+   public void setDerniereEnchereMontant( java.lang.Double derniereEnchereMontant )
+   {
+	  this.derniereEnchereMontant = derniereEnchereMontant;
+	  derniereEnchereMontantHasBeenSet = true;
+
+   }
+
+   public boolean derniereEnchereMontantHasBeenSet(){
+	  return derniereEnchereMontantHasBeenSet;
+   }
+   public java.lang.Integer getNbEncheres()
+   {
+	  return this.nbEncheres;
+   }
+
+   public void setNbEncheres( java.lang.Integer nbEncheres )
+   {
+	  this.nbEncheres = nbEncheres;
+	  nbEncheresHasBeenSet = true;
+
+   }
+
+   public boolean nbEncheresHasBeenSet(){
+	  return nbEncheresHasBeenSet;
+   }
+   public java.lang.String getAcheteurPseudo()
+   {
+	  return this.acheteurPseudo;
+   }
+
+   public void setAcheteurPseudo( java.lang.String acheteurPseudo )
+   {
+	  this.acheteurPseudo = acheteurPseudo;
+	  acheteurPseudoHasBeenSet = true;
+
+   }
+
+   public boolean acheteurPseudoHasBeenSet(){
+	  return acheteurPseudoHasBeenSet;
+   }
+   public java.lang.String getAcheteurId()
+   {
+	  return this.acheteurId;
+   }
+
+   public void setAcheteurId( java.lang.String acheteurId )
+   {
+	  this.acheteurId = acheteurId;
+	  acheteurIdHasBeenSet = true;
+
+   }
+
+   public boolean acheteurIdHasBeenSet(){
+	  return acheteurIdHasBeenSet;
+   }
+   public java.util.Date getTransactionDate()
+   {
+	  return this.transactionDate;
+   }
+
+   public void setTransactionDate( java.util.Date transactionDate )
+   {
+	  this.transactionDate = transactionDate;
+	  transactionDateHasBeenSet = true;
+
+   }
+
+   public boolean transactionDateHasBeenSet(){
+	  return transactionDateHasBeenSet;
+   }
+   public java.lang.Double getTransactionMontant()
+   {
+	  return this.transactionMontant;
+   }
+
+   public void setTransactionMontant( java.lang.Double transactionMontant )
+   {
+	  this.transactionMontant = transactionMontant;
+	  transactionMontantHasBeenSet = true;
+
+   }
+
+   public boolean transactionMontantHasBeenSet(){
+	  return transactionMontantHasBeenSet;
+   }
 
    public String toString()
    {
 	  StringBuffer str = new StringBuffer("{");
 
-	  str.append("id=" + getId() + " " + "enVente=" + getEnVente() + " " + "libelle=" + getLibelle() + " " + "marque=" + getMarque() + " " + "modele=" + getModele() + " " + "prixVente=" + getPrixVente() + " " + "anneeFabrication=" + getAnneeFabrication() + " " + "description=" + getDescription() + " " + "dateLimite=" + getDateLimite());
+	  str.append("id=" + getId() + " " + "enVente=" + getEnVente() + " " + "libelle=" + getLibelle() + " " + "marque=" + getMarque() + " " + "modele=" + getModele() + " " + "prixVente=" + getPrixVente() + " " + "anneeFabrication=" + getAnneeFabrication() + " " + "description=" + getDescription() + " " + "dateLimite=" + getDateLimite() + " " + "vendeurPseudo=" + getVendeurPseudo() + " " + "vendeurMembreId=" + getVendeurMembreId() + " " + "vendeurId=" + getVendeurId() + " " + "encherisseurPseudo=" + getEncherisseurPseudo() + " " + "encherisseurMembreId=" + getEncherisseurMembreId() + " " + "encherisseurClientId=" + getEncherisseurClientId() + " " + "derniereEnchereDate=" + getDerniereEnchereDate() + " " + "derniereEnchereMontant=" + getDerniereEnchereMontant() + " " + "nbEncheres=" + getNbEncheres() + " " + "acheteurPseudo=" + getAcheteurPseudo() + " " + "acheteurId=" + getAcheteurId() + " " + "transactionDate=" + getTransactionDate() + " " + "transactionMontant=" + getTransactionMontant());
 	  str.append('}');
 
 	  return(str.toString());
@@ -346,6 +619,110 @@ public class ArticleDTO
                  else
                  {
                         lEquals = lEquals && this.dateLimite.equals( that.dateLimite );
+                 }
+                 if( this.vendeurPseudo == null )
+                 {
+                        lEquals = lEquals && ( that.vendeurPseudo == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.vendeurPseudo.equals( that.vendeurPseudo );
+                 }
+                 if( this.vendeurMembreId == null )
+                 {
+                        lEquals = lEquals && ( that.vendeurMembreId == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.vendeurMembreId.equals( that.vendeurMembreId );
+                 }
+                 if( this.vendeurId == null )
+                 {
+                        lEquals = lEquals && ( that.vendeurId == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.vendeurId.equals( that.vendeurId );
+                 }
+                 if( this.encherisseurPseudo == null )
+                 {
+                        lEquals = lEquals && ( that.encherisseurPseudo == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.encherisseurPseudo.equals( that.encherisseurPseudo );
+                 }
+                 if( this.encherisseurMembreId == null )
+                 {
+                        lEquals = lEquals && ( that.encherisseurMembreId == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.encherisseurMembreId.equals( that.encherisseurMembreId );
+                 }
+                 if( this.encherisseurClientId == null )
+                 {
+                        lEquals = lEquals && ( that.encherisseurClientId == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.encherisseurClientId.equals( that.encherisseurClientId );
+                 }
+                 if( this.derniereEnchereDate == null )
+                 {
+                        lEquals = lEquals && ( that.derniereEnchereDate == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.derniereEnchereDate.equals( that.derniereEnchereDate );
+                 }
+                 if( this.derniereEnchereMontant == null )
+                 {
+                        lEquals = lEquals && ( that.derniereEnchereMontant == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.derniereEnchereMontant.equals( that.derniereEnchereMontant );
+                 }
+                 if( this.nbEncheres == null )
+                 {
+                        lEquals = lEquals && ( that.nbEncheres == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.nbEncheres.equals( that.nbEncheres );
+                 }
+                 if( this.acheteurPseudo == null )
+                 {
+                        lEquals = lEquals && ( that.acheteurPseudo == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.acheteurPseudo.equals( that.acheteurPseudo );
+                 }
+                 if( this.acheteurId == null )
+                 {
+                        lEquals = lEquals && ( that.acheteurId == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.acheteurId.equals( that.acheteurId );
+                 }
+                 if( this.transactionDate == null )
+                 {
+                        lEquals = lEquals && ( that.transactionDate == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.transactionDate.equals( that.transactionDate );
+                 }
+                 if( this.transactionMontant == null )
+                 {
+                        lEquals = lEquals && ( that.transactionMontant == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.transactionMontant.equals( that.transactionMontant );
                  }
 
                  return lEquals;
@@ -490,6 +867,162 @@ public class ArticleDTO
 
         }
 
+        if(this.vendeurPseudo != that.vendeurPseudo) {
+
+            if( this.vendeurPseudo == null || that.vendeurPseudo == null ) {
+                return false;
+            }
+
+            if(!this.vendeurPseudo.equals(that.vendeurPseudo)) {
+                return false;
+            }
+
+        }
+
+        if(this.vendeurMembreId != that.vendeurMembreId) {
+
+            if( this.vendeurMembreId == null || that.vendeurMembreId == null ) {
+                return false;
+            }
+
+            if(!this.vendeurMembreId.equals(that.vendeurMembreId)) {
+                return false;
+            }
+
+        }
+
+        if(this.vendeurId != that.vendeurId) {
+
+            if( this.vendeurId == null || that.vendeurId == null ) {
+                return false;
+            }
+
+            if(!this.vendeurId.equals(that.vendeurId)) {
+                return false;
+            }
+
+        }
+
+        if(this.encherisseurPseudo != that.encherisseurPseudo) {
+
+            if( this.encherisseurPseudo == null || that.encherisseurPseudo == null ) {
+                return false;
+            }
+
+            if(!this.encherisseurPseudo.equals(that.encherisseurPseudo)) {
+                return false;
+            }
+
+        }
+
+        if(this.encherisseurMembreId != that.encherisseurMembreId) {
+
+            if( this.encherisseurMembreId == null || that.encherisseurMembreId == null ) {
+                return false;
+            }
+
+            if(!this.encherisseurMembreId.equals(that.encherisseurMembreId)) {
+                return false;
+            }
+
+        }
+
+        if(this.encherisseurClientId != that.encherisseurClientId) {
+
+            if( this.encherisseurClientId == null || that.encherisseurClientId == null ) {
+                return false;
+            }
+
+            if(!this.encherisseurClientId.equals(that.encherisseurClientId)) {
+                return false;
+            }
+
+        }
+
+        if(this.derniereEnchereDate != that.derniereEnchereDate) {
+
+            if( this.derniereEnchereDate == null || that.derniereEnchereDate == null ) {
+                return false;
+            }
+
+            if(!this.derniereEnchereDate.equals(that.derniereEnchereDate)) {
+                return false;
+            }
+
+        }
+
+        if(this.derniereEnchereMontant != that.derniereEnchereMontant) {
+
+            if( this.derniereEnchereMontant == null || that.derniereEnchereMontant == null ) {
+                return false;
+            }
+
+            if(!this.derniereEnchereMontant.equals(that.derniereEnchereMontant)) {
+                return false;
+            }
+
+        }
+
+        if(this.nbEncheres != that.nbEncheres) {
+
+            if( this.nbEncheres == null || that.nbEncheres == null ) {
+                return false;
+            }
+
+            if(!this.nbEncheres.equals(that.nbEncheres)) {
+                return false;
+            }
+
+        }
+
+        if(this.acheteurPseudo != that.acheteurPseudo) {
+
+            if( this.acheteurPseudo == null || that.acheteurPseudo == null ) {
+                return false;
+            }
+
+            if(!this.acheteurPseudo.equals(that.acheteurPseudo)) {
+                return false;
+            }
+
+        }
+
+        if(this.acheteurId != that.acheteurId) {
+
+            if( this.acheteurId == null || that.acheteurId == null ) {
+                return false;
+            }
+
+            if(!this.acheteurId.equals(that.acheteurId)) {
+                return false;
+            }
+
+        }
+
+        if(this.transactionDate != that.transactionDate) {
+
+            if( this.transactionDate == null || that.transactionDate == null ) {
+                return false;
+            }
+
+            if(!this.transactionDate.equals(that.transactionDate)) {
+                return false;
+            }
+
+        }
+
+        if(this.transactionMontant != that.transactionMontant) {
+
+            if( this.transactionMontant == null || that.transactionMontant == null ) {
+                return false;
+            }
+
+            if(!this.transactionMontant.equals(that.transactionMontant)) {
+                return false;
+            }
+
+        }
+
         return true;
 
     }
@@ -523,6 +1056,32 @@ public class ArticleDTO
       result = 37*result + ((this.description != null) ? this.description.hashCode() : 0);
 
       result = 37*result + ((this.dateLimite != null) ? this.dateLimite.hashCode() : 0);
+
+      result = 37*result + ((this.vendeurPseudo != null) ? this.vendeurPseudo.hashCode() : 0);
+
+      result = 37*result + ((this.vendeurMembreId != null) ? this.vendeurMembreId.hashCode() : 0);
+
+      result = 37*result + ((this.vendeurId != null) ? this.vendeurId.hashCode() : 0);
+
+      result = 37*result + ((this.encherisseurPseudo != null) ? this.encherisseurPseudo.hashCode() : 0);
+
+      result = 37*result + ((this.encherisseurMembreId != null) ? this.encherisseurMembreId.hashCode() : 0);
+
+      result = 37*result + ((this.encherisseurClientId != null) ? this.encherisseurClientId.hashCode() : 0);
+
+      result = 37*result + ((this.derniereEnchereDate != null) ? this.derniereEnchereDate.hashCode() : 0);
+
+      result = 37*result + ((this.derniereEnchereMontant != null) ? this.derniereEnchereMontant.hashCode() : 0);
+
+      result = 37*result + ((this.nbEncheres != null) ? this.nbEncheres.hashCode() : 0);
+
+      result = 37*result + ((this.acheteurPseudo != null) ? this.acheteurPseudo.hashCode() : 0);
+
+      result = 37*result + ((this.acheteurId != null) ? this.acheteurId.hashCode() : 0);
+
+      result = 37*result + ((this.transactionDate != null) ? this.transactionDate.hashCode() : 0);
+
+      result = 37*result + ((this.transactionMontant != null) ? this.transactionMontant.hashCode() : 0);
 
 	  return result;
     }
@@ -607,6 +1166,58 @@ public class ArticleDTO
 
        public java.util.Date getDateLimite() {
               return underlying().dateLimite;
+       }
+
+       public java.lang.String getVendeurPseudo() {
+              return underlying().vendeurPseudo;
+       }
+
+       public java.lang.String getVendeurMembreId() {
+              return underlying().vendeurMembreId;
+       }
+
+       public java.lang.String getVendeurId() {
+              return underlying().vendeurId;
+       }
+
+       public java.lang.String getEncherisseurPseudo() {
+              return underlying().encherisseurPseudo;
+       }
+
+       public java.lang.String getEncherisseurMembreId() {
+              return underlying().encherisseurMembreId;
+       }
+
+       public java.lang.String getEncherisseurClientId() {
+              return underlying().encherisseurClientId;
+       }
+
+       public java.util.Date getDerniereEnchereDate() {
+              return underlying().derniereEnchereDate;
+       }
+
+       public java.lang.Double getDerniereEnchereMontant() {
+              return underlying().derniereEnchereMontant;
+       }
+
+       public java.lang.Integer getNbEncheres() {
+              return underlying().nbEncheres;
+       }
+
+       public java.lang.String getAcheteurPseudo() {
+              return underlying().acheteurPseudo;
+       }
+
+       public java.lang.String getAcheteurId() {
+              return underlying().acheteurId;
+       }
+
+       public java.util.Date getTransactionDate() {
+              return underlying().transactionDate;
+       }
+
+       public java.lang.Double getTransactionMontant() {
+              return underlying().transactionMontant;
        }
 
         public int hashCode() {

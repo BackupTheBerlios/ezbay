@@ -283,12 +283,196 @@ public abstract class ArticleBean implements EntityBean {
 		   */
 		  public abstract void setActionTransactionLocal(ActionTransactionLocal actionTransactionLocal);	
 
-	  
-	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param
-	 */
-    public abstract ArticleDTO getArticleDTO();
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param
+		 */
+	    public abstract ArticleDTO getArticleDTO();
+		  
+/* *************** <INFORMATIONS REDONDANTES> ********************* */
+		  // Pour optimisation des requetes
+		
+	    //VENDEUR
+	    /**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "vendeurPseudo"
+		 * @return
+		 */
+		public abstract String getVendeurPseudo();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param vendeurPseudo
+		 */
+		public abstract void setVendeurPseudo(String vendeurPseudo);
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "vendeurMembreId"
+		 * @return
+		 */
+		public abstract String getVendeurMembreId();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param vendeurMembreId
+		 */
+		public abstract void setVendeurMembreId(String vendeurMembreId);
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "vendeurId"
+		 * @return
+		 */
+		public abstract String getVendeurId();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param vendeurMembreId
+		 */
+		public abstract void setVendeurId(String vendeurId);
+	    
+	    //ENCHERES
+	    /**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "encherisseurpseudo"
+		 * @return
+		 */
+		public abstract String getEncherisseurPseudo();
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param encherisseurPseudo
+		 */
+		public abstract void setEncherisseurPseudo(String encherisseurPseudo);
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "encherisseurmembreid"
+		 * @return
+		 */
+		public abstract String getEncherisseurMembreId();
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param encherisseurMembreid
+		 */
+		public abstract void setEncherisseurMembreId(String encherisseurMembreId);
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "encherisseurClientId"
+		 * @return
+		 */
+		public abstract String getEncherisseurClientId();
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param encherisseurid
+		 */
+		public abstract void setEncherisseurClientId(String encherisseurClientId);
+
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "dernierencheredate"
+		 * @return
+		 */
+		public abstract Date getDerniereEnchereDate();
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param dernierencheredate
+		 */
+		public abstract void setDerniereEnchereDate(Date dernierEnchereDate);
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "derniereEnchereMontant"
+		 * @return
+		 */
+		public abstract Double getDerniereEnchereMontant();
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param derniereEnchereMontant
+		 */
+		public abstract void setDerniereEnchereMontant(Double derniereEnchereMontant);
+		
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "nbEncheres"
+		 * @return
+		 */
+		public abstract Integer getNbEncheres();
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param nbEncheres
+		 */
+		public abstract void setNbEncheres(Integer nbEncheres);
+		
+		//TRANSACTIONS
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "acheteurPseudo"
+		 * @return
+		 */
+		public abstract String getAcheteurPseudo();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param acheteurPseudo
+		 */
+		public abstract void setAcheteurPseudo(String acheteurPseudo);
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "acheteurId"
+		 * @return
+		 */
+		public abstract String getAcheteurId();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param acheteurId
+		 */
+		public abstract void setAcheteurId(String acheteurId);
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "transactionDate"
+		 * @return
+		 */
+		public abstract Date getTransactionDate();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param transactionDate
+		 */
+		public abstract void setTransactionDate(Date transactionDate);
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "transactionMontant"
+		 * @return
+		 */
+		public abstract Double getTransactionMontant();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param transactionMontant
+		 */
+		public abstract void setTransactionMontant(Double transactionMontant);
+
+/* *************** </INFORMATIONS REDONDANTES> ********************* */		  
+
+		
+		
+		
+		
 
 	/**
 	 * @ejb.interface-method view-type = "local"
@@ -339,7 +523,6 @@ public abstract class ArticleBean implements EntityBean {
 	 * @ejb.create-method
 	 */
 	public String ejbCreate(ArticleDTO articleTO, VendeurLocal vendeur) throws CreateException {
-		System.out.println("ArticleBean.ejbCreate()");
 		String tId = ArticleUtil.generateGUID(this);
 		this.setId(tId);
 		this.setLibelle(articleTO.getLibelle());
@@ -350,6 +533,7 @@ public abstract class ArticleBean implements EntityBean {
 		this.setDateLimite(articleTO.getDateLimite());
 		this.setDescription(articleTO.getDescription());
 		this.setEnVente(articleTO.getEnVente());
+		this.setNbEncheres(new Integer(0));
 		return tId;
 	}
 
@@ -373,7 +557,6 @@ public abstract class ArticleBean implements EntityBean {
 	 * @throws CreateException Thrown if method fails due to system-level error.
 	 */
     public void ejbPostCreate(ArticleDTO articleDTO, VendeurLocal vendeur) throws javax.ejb.CreateException {
-		System.out.println("ArticleBean.ejbPostCreate()");
     	this.setVendeurLocal(vendeur);
     }
 
