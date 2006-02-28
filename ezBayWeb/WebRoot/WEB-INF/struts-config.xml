@@ -14,6 +14,7 @@
     	<form-bean name="categorieForm" type="axlomoso.ezbay.struts.form.CategorieForm" />
 		<form-bean name="rechercheForm" type="axlomoso.ezbay.struts.form.RechercheForm" />
     <form-bean name="enchereForm" type="axlomoso.ezbay.struts.form.EnchereForm" />
+    <form-bean name="clientForm" type="axlomoso.ezbay.struts.form.ClientForm" />
 
 	</form-beans>
 
@@ -144,6 +145,14 @@
         path="/default.do"
         redirect="true" />
     </action>
+    <action
+      attribute="clientForm"
+      name="clientForm"
+      parameter="do"
+      path="/client"
+      scope="request"
+      type="axlomoso.ezbay.struts.action.ClientAction"
+      validate="false" />
 
     
 

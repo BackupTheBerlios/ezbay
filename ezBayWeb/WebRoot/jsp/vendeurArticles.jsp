@@ -130,21 +130,21 @@
 			</td>
 			<td><bean:write name="article" property="nbEncheres" /></td>
 			<td>
-				<logic:empty name="article" property="derniereEnchereView">
+				<logic:empty name="article" property="derniereEnchereMontant">
 					&nbsp;
 				</logic:empty>
-				<logic:notEmpty name="article" property="derniereEnchereView">			
-					<bean:write name="article" property="derniereEnchereView.membreDTO.nom" /><br />
-					<bean:write name="article" property="derniereEnchereView.formattedDate" /><br />
-					<b><bean:write name="article" property="derniereEnchereView.montant" />
+				<logic:notEmpty name="article" property="derniereEnchereMontant">			
+					<bean:write name="article" property="encherisseurPseudo" /><br />
+					<bean:write name="article" property="derniereEnchereFormattedDate" /><br />
+					<b><bean:write name="article" property="derniereEnchereMontant" />
 					<bean:message key="general.label.devise" /></b>
 				</logic:notEmpty>
 			</td>
 			<td>
-			<logic:notEmpty name="article" property="derniereEnchereView">
+			<logic:notEmpty name="article" property="derniereEnchereMontant">
 			&nbsp;
 			</logic:notEmpty>
-			<logic:empty name="article" property="derniereEnchereView">
+			<logic:empty name="article" property="derniereEnchereMontant">
 			<html:link action="/article.do?do=retirerArticle" paramName="article" paramProperty="id" paramId="id"><bean:message key="vendeurArticles.link.retirer" /></html:link>
 			</logic:empty>
 			</td>
