@@ -1,25 +1,92 @@
 body
 {
-	font-family:Times New Roman;
-	color:#00A6C6;
+	font-family:Verdana;
+	font-weight:bold;
+	background-color:#FFFFFF;
+	color:black;
+	text-align :center;
+	vertical-align:middle;
+}
+
+table.menu
+{
+	font-family:Verdana;
+	color:#000088;
 	font-weight:bold;
 	text-align :center;
-	scrollbar-arrow-color:#FF8627;
-  	scrollbar-track-color:#FF8627;
- 	scrollbar-shadow-color:#00A6C6;
-  	scrollbar-face-color:#00A6C6;
+	font-size: 14;
+	border-color: #FBE468;
+	background : #FDF3BF;
+	border-style: solid;
+	border-width:thin;
+	width: 3cm;
+	height: 100%;
 }
+
+tr.menu_ligne_fonce
+{
+	font-family:Verdana;
+	background-color:#FBE468;
+	font-size: 14;
+	font-weight:bold;
+	text-align :center;
+	vertical-align: middle;
+}
+
+
 
 a
 {
-	font-family:Times New Roman;
-	color:#00A6C6;
+	font-family:Verdana;
+	color:#004080;
 	text-decoration:none;
 	cursor:pointer;
+	font-size: 12;
+	
+}
+
+a.header
+{
+	font-family:Verdana;
+	color:#004080;
+	text-decoration:none;
+	cursor:pointer;
+	font-size: 14;
+	font-weight:bold;
+	
+	
+}
+
+hr.header
+{
+	color: #FBE468;
+	width: auto;
+}
+
+a.logo
+{
+	font-family:Times New Roman;
+	color:#004080;
+	text-decoration:none;
+	cursor:pointer;
+	font-size: 26;
+	font-weight:bold;
+	
 }
 
 a:hover
 {
-	color:#FF8627;
+	color:#FF5555; 
 }
 
+table.body_mes_articles
+{
+	font-family:Verdana;
+	color:#000088;
+	font-weight:bold;
+	text-align :center;
+	font-size: 14;
+	border-color: #FBE468;
+	border-style: solid;
+	border-width:thin;
+}
