@@ -11,9 +11,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html locale="true">
 <head>
-<title>
-		rechercheArticle.jsp
-	</title>
+<title>rechercheArticle.jsp	</title>
+<link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
 
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,99 +20,99 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="refresh" content="30">
+	
 </head>
 
 <body>
 <center>
+	<h2><bean:message key="rechercheArticle.title" /></h2>
+	<br />
+	<hr width="50%;" color=" #FDF3BF" size="3" />
+	<br />
+	
 	<html:errors />
 	<%-- create a html form --%>
 	<html:form action="rechercheArticle">
-		<table border="0">
-			<tbody>
+		<table class="body_affichage_donnees">
+			<tr>
+				<td>
+					<b><bean:message key="articleEdit.categorie" />
+					:</b>
+				</td>
+				<td>
+					<html:select property="categorieDTO.id">
+						<html:options collection="categories" property="id" labelProperty="libelle" />
+					</html:select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b><bean:message key="articleEdit.libelle" />
+					:</b>
+				</td>
+				<td>
+					<html:text property="libelle" />
+				</td>
+			</tr>
+			<tr>
 
-				<tr>
-					<td>
-						<b><bean:message key="articleEdit.categorie" />
-						:</b>
-					</td>
-					<td>
-						<html:select property="categorieDTO.id">
-							<html:options collection="categories" property="id" labelProperty="libelle" />
-						</html:select>
-					</td>
-				</tr>
+				<td>
+					<b><bean:message key="articleEdit.marque" />
+					:</b>
+				</td>
+				<td>
+					<html:text property="marque" />
+				</td>
+			</tr>
 
-				<tr>
-					<td>
-						<b><bean:message key="articleEdit.libelle" />
-						:</b>
-					</td>
-					<td>
-						<html:text property="libelle" />
-					</td>
-				</tr>
-				<tr>
+			<tr>
+				<td>
+					<b><bean:message key="articleEdit.modele" />
+					:</b>
+				</td>
+				<td>
+					<html:text property="modele" />
+				</td>
+			</tr>
 
-					<td>
-						<b><bean:message key="articleEdit.marque" />
-						:</b>
-					</td>
-					<td>
-						<html:text property="marque" />
-					</td>
-				</tr>
+			<tr>
+				<td>
+					<b><bean:message key="rechercheArticle.prixVenteMin" />
+					:</b>
+				</td>
+				<td>
+					<html:text property="stringPrixVenteMin" />
+				</td>
+			</tr>
 
-				<tr>
-					<td>
-						<b><bean:message key="articleEdit.modele" />
-						:</b>
-					</td>
-					<td>
-						<html:text property="modele" />
-					</td>
-				</tr>
+			<tr>
+				<td>
+					<b><bean:message key="rechercheArticle.prixVenteMax" />
+					:</b>
+				</td>
+				<td>
+					<html:text property="stringPrixVenteMax" />
+				</td>
+			</tr>
 
-				<tr>
-					<td>
-						<b><bean:message key="rechercheArticle.prixVenteMin" />
-						:</b>
-					</td>
-					<td>
-						<html:text property="stringPrixVenteMin" />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<b><bean:message key="rechercheArticle.prixVenteMax" />
-						:</b>
-					</td>
-					<td>
-						<html:text property="stringPrixVenteMax" />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<b><bean:message key="rechercheArticle.anneeFabrication" />
-						:</b>
-					</td>
-					<td>
-						<html:text property="stringAnneeFabrication" />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<b><bean:message key="rechercheArticle.dateLimite" />
-						:</b>
-					</td>
-					<td>
-						<html:text property="stringDateLimite" />
-					</td>
-				</tr>
-
-			</tbody>
+			<tr>
+				<td>
+					<b><bean:message key="rechercheArticle.anneeFabrication" />
+					:</b>
+				</td>
+				<td>
+					<html:text property="stringAnneeFabrication" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b><bean:message key="rechercheArticle.dateLimite" />
+					:</b>
+				</td>
+				<td>
+					<html:text property="stringDateLimite" />
+				</td>
+			</tr>
 		</table>
 		<%-- set the parameter for the dispatch action --%>
 		<html:hidden property="id" />
@@ -128,62 +127,58 @@
 <br /><br />
 <b><bean:message key="rechercheArticle.nbArticles" /> : <bean:write name="rechercheForm" property="nbArticles" /></b>
 	<br /><br /><br />
-	<table border="0">
-		<tbody>
-			<%-- set the header --%>
+	<table class="body_recherche_article" cellspacing="15">
+		<tr class="body_recherche_article">
+			<td>
+				<bean:message key="articleList.libelle" />
+			</td>
+			<td>
+				<bean:message key="articleList.marque" />
+			</td>
+			<td>
+				<bean:message key="articleList.modele" />
+			</td>
+			<td>
+				<bean:message key="articleList.prixActuel" />
+			</td>
+			<td>
+				<bean:message key="articleList.nbEncheres" />
+			</td>
+			<td>
+				<bean:message key="articleList.dateLimite" />
+			</td>
+		</tr>
+		<%-- start with an iterate over the array articlesView --%>
+		<logic:iterate name="rechercheForm" property="articlesView" id="article">
 			<tr>
-				<td width="16%" align="center">
-					<h2><bean:message key="articleList.libelle" /></h2>
+				<%-- article informations --%>
+				<td>
+					<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
+						<bean:write name="article" property="libelle" />						
+					</html:link>
 				</td>
-				<td width="16%" align="center">
-					<h2><bean:message key="articleList.marque" /></h2>
+				<td>
+					<bean:write name="article" property="marque" />
 				</td>
-				<td width="16%" align="center">
-					<h2><bean:message key="articleList.modele" /></h2>
+				<td>
+					<bean:write name="article" property="modele" />
 				</td>
-				<td width="16%" align="center">
-					<h2><bean:message key="articleList.prixActuel" /></h2>
+				<td>
+					<logic:empty name="article" property="derniereEnchereMontant">
+						<bean:write name="article" property="prixVente" />
+					</logic:empty>
+					<logic:notEmpty name="article" property="derniereEnchereMontant">			
+						<b><bean:write name="article" property="derniereEnchereMontant" />
+						&nbsp;<bean:message key="general.label.devise" /></b>
+					</logic:notEmpty>
 				</td>
-				<td width="16%" align="center">
-					<h2><bean:message key="articleList.nbEncheres" /></h2>
-				</td>
-				<td width="16%" align="center">
-					<h2><bean:message key="articleList.dateLimite" /></h2>
-				</td>
+				<td>
+					<bean:write name="article" property="nbEncheres" />
+				</td>					
+				<td>
+					<bean:write name="article" property="formattedDateLimite" />
+				</td>										
 			</tr>
-			<%-- start with an iterate over the array articlesView --%>
-			<logic:iterate name="rechercheForm" property="articlesView" id="article">
-				<tr>
-					<%-- article informations --%>
-
-					<td align="center">
-						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
-							<bean:write name="article" property="libelle" />						
-						</html:link>
-					</td>
-					<td align="center">
-						<bean:write name="article" property="marque" />
-					</td>
-					<td align="center">
-						<bean:write name="article" property="modele" />
-					</td>
-					<td align="center">
-						<logic:empty name="article" property="derniereEnchereMontant">
-							<bean:write name="article" property="prixVente" />
-						</logic:empty>
-						<logic:notEmpty name="article" property="derniereEnchereMontant">			
-							<b><bean:write name="article" property="derniereEnchereMontant" />
-							&nbsp;<bean:message key="general.label.devise" /></b>
-						</logic:notEmpty>
-					</td>
-					<td align="center">
-						<bean:write name="article" property="nbEncheres" />
-					</td>					
-					<td align="center">
-						<bean:write name="article" property="formattedDateLimite" />
-					</td>										
-				</tr>
-
 			</logic:iterate>
 			<logic:notPresent name="article">
 				<tr>
@@ -192,13 +187,12 @@
 					</td>
 				</tr>
 			</logic:notPresent>
-		</tbody>
 	</table>
 
 </logic:notEmpty>
 <logic:empty name="rechercheForm" property="articlesView"> 
 	<logic:present name="showResult" scope="request">
-		<b><bean:message key="rechercheArticle.noArticle" /> </b>
+		<bean:message key="rechercheArticle.noArticle" />
 	</logic:present>
 </logic:empty>
 </center>

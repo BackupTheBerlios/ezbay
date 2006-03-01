@@ -9,16 +9,16 @@
 
 <table cellspacing="0" cellpadding="5" width="100%">
 <tr>
-  <td width="25%" align="center">
+  <td align="left" witdh="90">
     <i><html:link forward="welcome" styleClass="logo">EzBay</html:link></i>
   </td>
- 	<td width="25%" align="center">
+ 	<td align="center">
 		<html:link action="/myEzBay.do?do=showMyEzBay" styleClass="header"><bean:message key="link.monEzBay"/></html:link>
 	</td>
-	<td width="25%" align="center">
+	<td align="center">
 		<html:link action="/article.do?do=showRechercheForm" styleClass="header"><bean:message key="link.Recherche.Article"/></html:link>
 	</td>
-	<td width="25%" align="center">
+	<td align="center">
 		<html:link action="/categorie.do?do=showCategories" styleClass="header"><bean:message key="link.categories"/></html:link>
  	</td>
 </tr>

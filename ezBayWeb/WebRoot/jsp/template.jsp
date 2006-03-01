@@ -12,7 +12,7 @@
 	<HEAD>
 		   <link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
 		<title>
-			titre
+			<bean:message key="titre.application"/>
 		</title>
 	</HEAD>
 

@@ -12,6 +12,7 @@
 <html:html locale="true">
   <head>
    <title><bean:message key="articleEdit.title" /></title>
+    <link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
     
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -23,53 +24,51 @@
   
 	<body>
 	<center>
-	<H1><bean:message key="articleEdit.title" /></H1>
+	<h2><bean:message key="articleEdit.title" /></h2>
+	<br /><br />
 	<html:errors />
 		<%-- create a html form --%>
 		<html:form action="articleSave">
 			<%-- print out the form data --%>
-			<table border="1">
-				<tbody>
+			<table>
 				<tr>
-				<td><bean:message key="articleEdit.categorie" /> : </td>
+				<td class="intitule"><bean:message key="articleEdit.categorie" /> : </td>
 				<td>
 					<html:select property="articleView.categorieDTO.id">
 						<html:options collection="categories" property="id" labelProperty="libelle" />
 					</html:select>
 				</td>
 				</tr>
-				
 				<tr>
-				<td><bean:message key="articleEdit.libelle" /> : </td>
+				<td class="intitule"><bean:message key="articleEdit.libelle" /> : </td>
 				<td><html:text property="libelle" /></td>
 				</tr>
 				<tr>
-				<td><bean:message key="articleEdit.marque" /> :</td>
+				<td class="intitule"><bean:message key="articleEdit.marque" /> :</td>
 				<td><html:text property="marque" /></td>
 				</tr>
 				<tr>
-				<td><bean:message key="articleEdit.modele" /> :</td>
+				<td class="intitule"><bean:message key="articleEdit.modele" /> :</td>
 				<td><html:text property="modele" /></td>
 				</tr>
 				<tr>
-				<td><bean:message key="articleEdit.prixVente" /> :</td>
-				<td><html:text property="stringPrixVente" /> &nbsp;<bean:message key="general.label.devise" /></td> 
+				<td class="intitule"><bean:message key="articleEdit.prixVente" /> :</td>
+				<td><html:text property="stringPrixVente" /> &nbsp;<b><bean:message key="general.label.devise" /></b></td> 
 				</tr>
 				<tr>
-				<td><bean:message key="articleEdit.anneeFabrication" /> :</td>
+				<td class="intitule"><bean:message key="articleEdit.anneeFabrication" /> :</td>
 				<td><html:text property="anneeFabrication" /></td>
 				</tr>
 				<tr>
-				<td><bean:message key="articleEdit.dateLimite" /> :</td>
+				<td class="intitule"><bean:message key="articleEdit.dateLimite" /> :</td>
 				<td>
 				<html:text property="stringDateLimite" />
 				</td>
 				</tr>
 				<tr>
-				<td><bean:message key="articleEdit.description" /> :</td>
+				<td class="intitule"><bean:message key="articleEdit.description" /> :</td>
 				<td><html:textarea property="description" rows="10" cols="50" /></td>
 				</tr>
-				</tbody>
 			</table>
 			<%-- set the parameter for the dispatch action --%>
 			<html:hidden property="id" />

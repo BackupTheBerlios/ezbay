@@ -10,6 +10,7 @@
 <html>
 <head>
   <title><bean:message key="titre.application"/> - <bean:message key="inscription.label"/></title>
+    <link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">    
@@ -19,26 +20,27 @@
 </head>
 <body>
 <center>
-<font size="+1">
-<bean:message key="titre.application"/> - <bean:message key="vendeur.titre.infos"/>
-</font><br>
-<hr width="50%" noshade="true" />
-<bean:message key="vendeur.titre.infosCB"/>
-<table>
+<h2><bean:message key="titre.application"/> - <bean:message key="vendeur.titre.infos"/>
+</h2><br />
+<hr width="50%;" color=" #FDF3BF" size="3" />
+<br />
+<i><bean:message key="vendeur.titre.infosCB"/></i>
+<br /><br />
+<table class="body_affichage_donnees">
 <tr>
-<td align="left"><b><bean:message key="vendeur.label.numCB"/>:</b></td>
+<td class="intitule"><bean:message key="vendeur.label.numCB"/>:</b></td>
 <td><bean:write name="vendeurForm" property="numCB" /></td>
 </tr>
 <tr>
-<td align="left"><b><bean:message key="vendeur.label.nomProprioCB"/>:</b></td>
+<td class="intitule"><bean:message key="vendeur.label.nomProprioCB"/>:</b></td>
 <td><bean:write name="vendeurForm" property="nomProprioCB" /></td>
 </tr>
 <tr>
-<td align="left"><b><bean:message key="vendeur.label.dateExpirCB"/>:</b></td>
-<td><bean:write name="vendeurForm" property="dateExpirCB" /></td>
+<td class="intitule"><bean:message key="vendeur.label.dateExpirCB"/>:</b></td>
+<td><bean:write name="vendeurForm" property="stringDateExpirCB" /></td>
 </tr>
 <tr>
-<td align="left"><b><bean:message key="vendeur.label.codeSecuCB"/>:</b></td>
+<td class="intitule"><bean:message key="vendeur.label.codeSecuCB"/>:</b></td>
 <td><bean:write name="vendeurForm" property="codeSecuCB" /></td>
 </tr>
 <tr>
@@ -50,5 +52,6 @@
 </tr>
 </table>
 </center>
+<br /><br />
 </body>
 </html>

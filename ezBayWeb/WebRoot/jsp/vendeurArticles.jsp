@@ -11,11 +11,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html locale="true">
 <head>
-  <title>
+	<title>
 		<bean:message key="vendeurArticles.titre" />
 	</title>
 	<link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
- 
+
 
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -29,144 +29,179 @@
 	<font size="+1">
 		<bean:message key="titre.application" /> - <bean:message key="vendeurArticles.titre" />
 	</font>
-	<br>
-<html:errors/>
+	<br />
+	<html:errors />
 	<H2>
-		<bean:message key="vendeurArticles.articlesEnAttente.titre" />		
+		<bean:message key="vendeurArticles.articlesEnAttente.titre" />
 	</H2>
-<logic:empty name="vendeurForm" property="articlesEnAttente">
-	<bean:message key="vendeurArticles.articlesEnAttente.noArticle" />
-</logic:empty>
-<logic:notEmpty name="vendeurForm" property="articlesEnAttente">	
-<table class="body_mes_articles" cellspacing="30">
-<tbody>
-<%-- set the header --%>
-<tr>
-<td><bean:message key="articleList.libelle" /></td>
-<td><bean:message key="articleList.prixVente" /></td>
-<td><bean:message key="articleList.dateLimiteSimple" /></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-	<logic:iterate name="vendeurForm" property="articlesEnAttente" id="article">
-		<tr>
-			<%-- article informations --%>
-			<td>
-				<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
-			</td>
-			<td>
-				<bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" />
-			</td>
-			<td>
-				<bean:write name="article" property="formattedDateLimite" />
-			</td>
-			<td>
-			<html:link action="/article.do?do=supprimerArticle" paramName="article" paramProperty="id" paramId="id"><bean:message key="vendeurArticles.link.supprimer" /></html:link>
-			</td>
-			<td>
-			<html:link action="/article.do?do=mettreEnVenteArticle" paramName="article" paramProperty="id" paramId="id"><bean:message key="vendeurArticles.link.mettreEnVente" /></html:link>
-			</td>
-		</tr>
-	</logic:iterate>
-	
-	</tbody>
-	</table>
-</logic:notEmpty>	
-<br /><br />
+	<logic:empty name="vendeurForm" property="articlesEnAttente">
+		<bean:message key="vendeurArticles.articlesEnAttente.noArticle" />
+	</logic:empty>
+	<logic:notEmpty name="vendeurForm" property="articlesEnAttente">
+		<table class="body_mes_articles" cellspacing="15">
+			<tr class="body_mes_articles_ligne_foncee">
+				<td>
+					<bean:message key="articleList.libelle" />
+				</td>
+				<td>
+					<bean:message key="articleList.prixVente" />
+				</td>
+				<td>
+					<bean:message key="articleList.dateLimiteSimple" />
+				</td>
+				
+			</tr>
+			<logic:iterate name="vendeurForm" property="articlesEnAttente" id="article">
+				<tr>
+					<%-- article informations --%>
+					<td>
+						<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id">
+							<bean:write name="article" property="libelle" />
+						</html:link>
+					</td>
+					<td>
+						<bean:write name="article" property="prixVente" />
+						<bean:message key="general.label.devise" />
+					</td>
+					<td>
+						<bean:write name="article" property="formattedDateLimite" />
+					</td>
+					<td>
+						<html:link action="/article.do?do=supprimerArticle" paramName="article" paramProperty="id" paramId="id">
+							<bean:message key="vendeurArticles.link.supprimer" />
+						</html:link>
+					</td>
+					<td>
+						<html:link action="/article.do?do=mettreEnVenteArticle" paramName="article" paramProperty="id" paramId="id">
+							<bean:message key="vendeurArticles.link.mettreEnVente" />
+						</html:link>
+					</td>
+				</tr>
+			</logic:iterate>
+		</table>
+	</logic:notEmpty>
+	<br />
 	<H2>
 		<bean:message key="vendeurArticles.articlesEnVente.titre" />
 	</H2>
-<logic:empty name="vendeurForm" property="articlesEnVente">
-	<bean:message key="vendeurArticles.articlesEnVente.noArticle" />
-</logic:empty>
-<logic:notEmpty name="vendeurForm" property="articlesEnVente">	
-<table class="body_mes_articles" cellspacing="30">
-<tbody>
-<%-- set the header --%>
-<tr>
-
-<td><bean:message key="articleList.libelle" /></td>
-<td><bean:message key="articleList.prixDepart" /></td>
-<td><bean:message key="articleList.dateLimiteSimple" /></td>
-<td><bean:message key="articleList.nbEncheres" /></td>
-<td><bean:message key="articleList.derniereEnchere.titre" /></td>
-<td>&nbsp;</td>
-</tr>
-	<logic:iterate name="vendeurForm" property="articlesEnVente" id="article">
-		<tr>
-			<%-- article informations --%>
-			<td>
-				<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
-			</td>
-			<td>
-				<bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" />
-			</td>
-			<td>
-				<bean:write name="article" property="formattedDateLimite" />
-			</td>
-			<td><bean:write name="article" property="nbEncheres" /></td>
-			<td>
-				<logic:empty name="article" property="derniereEnchereMontant">
-					&nbsp;
-				</logic:empty>
-				<logic:notEmpty name="article" property="derniereEnchereMontant">			
-					<bean:write name="article" property="encherisseurPseudo" /><br />
-					<bean:write name="article" property="derniereEnchereFormattedDate" /><br />
-					<b><bean:write name="article" property="derniereEnchereMontant" />
-					<bean:message key="general.label.devise" /></b>
-				</logic:notEmpty>
-			</td>
-			<td>
-			<logic:notEmpty name="article" property="derniereEnchereMontant">
-			&nbsp;
-			</logic:notEmpty>
-			<logic:empty name="article" property="derniereEnchereMontant">
-			<html:link action="/article.do?do=retirerArticle" paramName="article" paramProperty="id" paramId="id"><bean:message key="vendeurArticles.link.retirer" /></html:link>
-			</logic:empty>
-			</td>
-		</tr>
-	</logic:iterate>
-	</tbody>
-	</table>
-</logic:notEmpty>
-<br /><br />
+	<logic:empty name="vendeurForm" property="articlesEnVente">
+		<bean:message key="vendeurArticles.articlesEnVente.noArticle" />
+	</logic:empty>
+	<logic:notEmpty name="vendeurForm" property="articlesEnVente">
+		<table class="body_mes_articles" cellspacing="15">
+				<tr class="body_mes_articles_ligne_foncee">
+					<td>
+						<bean:message key="articleList.libelle" />
+					</td>
+					<td>
+						<bean:message key="articleList.prixDepart" />
+					</td>
+					<td>
+						<bean:message key="articleList.dateLimiteSimple" />
+					</td>
+					<td>
+						<bean:message key="articleList.nbEncheres" />
+					</td>
+					<td>
+						<bean:message key="articleList.derniereEnchere.encherriseur.nom" />
+					</td>
+					<td>
+						<bean:message key="articleList.derniereEnchere.date" />
+					</td>
+					<td>
+						<bean:message key="articleList.derniereEnchere.titre" />
+					</td>
+					
+				</tr>
+				<logic:iterate name="vendeurForm" property="articlesEnVente" id="article">
+					<tr>
+						<%-- article informations --%>
+					<td>
+						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
+							<bean:write name="article" property="libelle" />
+						</html:link>
+					</td>
+					<td>
+						<bean:write name="article" property="prixVente" />
+						<bean:message key="general.label.devise" />
+					</td>
+					<td>
+						<bean:write name="article" property="formattedDateLimite" />
+					</td>
+					<td>
+						<bean:write name="article" property="nbEncheres" />
+					</td>
+					<logic:empty name="article" property="derniereEnchereMontant">
+					<td></td><td></td><td></td>
+					</logic:empty>
+					<logic:notEmpty name="article" property="derniereEnchereMontant">
+					<td>
+						<bean:write name="article" property="encherisseurPseudo" />
+					</td>
+					<td>
+						<bean:write name="article" property="derniereEnchereFormattedDate" />
+					<td>
+						<bean:write name="article" property="derniereEnchereMontant" />
+						<bean:message key="general.label.devise" />
+					</td>
+					</logic:notEmpty>
+					<logic:empty name="article" property="derniereEnchereMontant">
+					<td>
+						<html:link action="/article.do?do=retirerArticle" paramName="article" paramProperty="id" paramId="id">
+							<bean:message key="vendeurArticles.link.retirer" />
+						</html:link>
+					</td>
+					</logic:empty>
+				</tr>
+			</logic:iterate>
+		</table>
+	</logic:notEmpty>
+	<br />
 	<H2>
 		<bean:message key="vendeurArticles.articlesVendus.titre" />
 	</H2>
-<%-- set the header --%>
-<logic:empty name="vendeurForm" property="articlesVendus">
-	<bean:message key="vendeurArticles.articlesVendus.noArticle" />
-</logic:empty>
-<logic:notEmpty name="vendeurForm" property="articlesVendus">
-<table class="body_mes_articles" cellspacing="30">
-<tbody>
-<tr>
-<td>&nbsp;</td>
-<td><bean:message key="articleList.libelle" /></td>
-<td><bean:message key="articleList.prixVente" /></td>
-<td><bean:message key="articleList.dateLimiteSimple" /></td>
-</tr>
-	<logic:iterate name="vendeurForm" property="articlesVendus" id="article">
-		<tr>
-			<%-- article informations --%>
-			<td>
-				<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
-			</td>
-			<td>
-				<bean:write name="article" property="libelle" />
-			</td>
-			<td>
-				<bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" />
-			</td>
-			<td>
-				<bean:write name="article" property="formattedDateLimite" />
-			</td>
-		</tr>
-	</logic:iterate>
-	</tbody>
-	</table>
-</logic:notEmpty>
-	
-	<br /><br />
+	<%-- set the header --%>
+	<logic:empty name="vendeurForm" property="articlesVendus">
+		<bean:message key="vendeurArticles.articlesVendus.noArticle" />
+	</logic:empty>
+	<logic:notEmpty name="vendeurForm" property="articlesVendus">
+		<table class="body_mes_articles" cellspacing="15">
+			<tr class="body_mes_articles" cellspacing="15">
+				<td>
+					&nbsp;
+				</td>
+				<td>
+					<bean:message key="articleList.libelle" />
+				</td>
+				<td>
+					<bean:message key="articleList.prixVente" />
+				</td>
+				<td>
+					<bean:message key="articleList.dateLimiteSimple" />
+				</td>
+			</tr>
+			<logic:iterate name="vendeurForm" property="articlesVendus" id="article">
+				<tr>
+					<%-- article informations --%>
+					<td>
+						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
+							<bean:write name="article" property="libelle" />
+						</html:link>
+					</td>
+					<td>
+						<bean:write name="article" property="libelle" />
+					</td>
+					<td>
+						<bean:write name="article" property="prixVente" />
+						<bean:message key="general.label.devise" />
+					</td>
+					<td>
+						<bean:write name="article" property="formattedDateLimite" />
+					</td>
+				</tr>
+			</logic:iterate>
+		</table>
+	</logic:notEmpty>
+	<br />
 </body>
 </html:html>

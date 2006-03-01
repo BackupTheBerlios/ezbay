@@ -15,7 +15,7 @@
 	<title>
 		<bean:message key="articleFiche.title" />
 	</title>
-
+	<link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
@@ -26,28 +26,28 @@
 
 <body>
 	<center>
-		<table>
+	<h2><bean:message key="articleFiche.title" /></h2>
+	<br />
+		<hr width="50%;" color=" #FDF3BF" size="3" />
+	<br />
+			
+		<table class="body_affichage_donnees">
 			<tr>
-				<td>
-					<b>
-						<bean:message key="articleFiche.categorie" />
-						:
-						<b>
+				<td class="intitule">
+					<bean:message key="articleFiche.categorie" />:
 				</td>
 				<td>
 					<bean:write name="articleForm" property="articleView.categorieDTO.libelle" />
 				</td>
 				<td>
 					<bean:message key="articleFiche.vendeur.fiche" />
-					&nbsp;:&nbsp;
 					<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.vendeurMembreId" paramId="membreId">
 						<bean:write name="articleForm" property="articleView.vendeurPseudo" />
 					</html:link>
-					<!--  ICI -->
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="intitule">
 					<b>
 						<bean:message key="articleFiche.libelle" />
 						:
@@ -61,7 +61,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="intitule">
 					<b>
 						<bean:message key="articleFiche.modele" />
 						:
@@ -72,7 +72,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="intitule">
 					<b>
 						<bean:message key="articleFiche.marque" />
 						:
@@ -83,7 +83,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="intitule">
 					<b>
 						<bean:message key="articleFiche.prixVente" />
 						:
@@ -95,7 +95,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="intitule">
 					<b>
 						<bean:message key="articleFiche.anneeFabrication" />
 						:
@@ -106,7 +106,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="intitule">
 
 					<b>
 						<bean:message key="articleFiche.dateLimite" />
@@ -118,7 +118,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="intitule">
 
 					<b>
 						<bean:message key="articleFiche.description" />
@@ -130,27 +130,18 @@
 				</td>
 			</tr>
 		</table>
-		<hr width="50%" align="center" />
-		<logic:equal name="articleForm" property="articleView.enVente" value="true">
-			<b>
-				<bean:message key="articleFiche.encheres.historique" />
-			</b>
+		<hr width="50%;" color=" #FDF3BF" size="3" /><logic:equal name="articleForm" property="articleView.enVente" value="true">
 			<br />
-			<bean:write name="articleForm" property="articleView.nbEncheres" />&nbsp;<bean:message key="articleFiche.encheres.libelle" />
-			<br />
+				<h2><bean:message key="articleFiche.encheres.historique" /></h2>
+			<br /><br />
+			<i><bean:write name="articleForm" property="articleView.nbEncheres" />&nbsp;<bean:message key="articleFiche.encheres.libelle" /></i> 
+			<br /><br />
 			<logic:notEmpty name="articleForm" property="articleView.derniereEnchereMontant">
-				<table>
-					<tr>
-						<td colspan="2" align="left">
-							<b>
-								<bean:message key="articleFiche.derniereEnchere.titre" />
-							</b>
-						</td>
-					</tr>
+				<table class="body_affichage_donnees">
 					<tr>
 						<td>
 							<b>
-								<bean:message key="articleFiche.derniereEnchere.date" />
+								<bean:message key="articleFiche.dateDerniereEnchere" />
 								:
 								<b>
 						</td>

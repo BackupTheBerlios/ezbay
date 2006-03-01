@@ -12,6 +12,7 @@
 <html>
 <head>
   <title><bean:message key="titre.application"/> - <bean:message key="inscription.label"/></title>
+    <link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">    
@@ -20,22 +21,23 @@
 </head>
 <body>
 <center>
-<font size="+1">
-<bean:message key="titre.application"/> - <bean:message key="inscription.label"/>
-</font><br>
+<h2><bean:message key="titre.application"/> - <bean:message key="inscription.label"/></h2>
+<br />
+<hr width="50%;" color=" #FDF3BF" size="3" />
+<br />
 <html:errors />
 <html:form action="/membreSave">
-<table>
+<table class="body_affichage_donnees">
 <tr>
-<td align="right"><b><bean:message key="inscription.label.nom"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.nom"/>:</b></td>
 <td><html:text property="nom" /></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.prenom"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.prenom"/>:</b></td>
 <td><html:text property="prenom" /></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.pseudo"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.pseudo"/>:</b></td>
 <td>
 	 <logic:empty name="membreForm" property="id"> 
 		<b><html:text property="pseudo" /></b>
@@ -47,51 +49,49 @@
 </td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.password1"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.password1"/>:</b></td>
 <td><html:password property="password" value="" /></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.password2"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.password2"/>:</b></td>
 <td><html:password property="password2" value=""/></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.email"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.email"/>:</b></td>
 <td><html:text property="email" /></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.adresse"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.adresse"/>:</b></td>
 <td><html:text property="adresse" /></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.codepostal"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.codepostal"/>:</b></td>
 <td><html:text property="codePostal" maxlength="5" size="5"/></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.ville"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.ville"/>:</b></td>
 <td><html:text property="ville" /></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.pays"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.pays"/>:</b></td>
 <td><html:text property="pays" /></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.telephonefixe"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.telephonefixe"/>:</b></td>
 <td><html:text property="telephoneFixe" maxlength="10"/></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.telephoneportable"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.telephoneportable"/>:</b></td>
 <td><html:text property="telephonePortable" maxlength="10"/></td>
 </tr>
 <tr>
-<td align="right"><b><bean:message key="inscription.label.dateNaissance"/>:</b></td>
+<td class="intitule"><b><bean:message key="inscription.label.dateNaissance"/>:</b></td>
 <td><html:text property="stringDateNaissance" size="10" maxlength="10"/></td>
 </tr>
-<tr>
-<td colspan="2">
+</table><br /><br />
 <html:submit><bean:message key="bouton.label.valider"/></html:submit>
-</td>
-</tr>
-</table>
+
+
 <html:hidden property="id" />
 </html:form>
 </center>
