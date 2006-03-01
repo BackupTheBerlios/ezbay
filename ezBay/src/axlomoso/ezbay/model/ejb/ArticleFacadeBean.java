@@ -28,6 +28,7 @@ import axlomoso.ezbay.model.interfaces.CategorieLocal;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
 import axlomoso.ezbay.model.interfaces.MembreLocal;
+import axlomoso.ezbay.model.interfaces.TimerFinVenteBeanHome;
 import axlomoso.ezbay.model.interfaces.TimerFinVenteLocal;
 import axlomoso.ezbay.model.interfaces.TimerFinVenteLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
@@ -55,10 +56,10 @@ public class ArticleFacadeBean implements SessionBean {
 	/** The session context */
 	private SessionContext context;
 
-	ServiceLocator locator;
-	ActionEnchereFacadeLocal actionEnchereFacade;
-	ActionTransactionFacadeLocal actionTransactionFacade;
-	TimerFinVenteLocal timerLocal;
+	private ServiceLocator locator;
+	private ActionEnchereFacadeLocal actionEnchereFacade;
+	private ActionTransactionFacadeLocal actionTransactionFacade;
+	private TimerFinVenteLocal timerFinVente = null;
 	
 	public ArticleFacadeBean() {
 		super();
@@ -68,8 +69,6 @@ public class ArticleFacadeBean implements SessionBean {
 			actionEnchereFacade = (ActionEnchereFacadeLocal) actionEnchereFacadeLocalHome.create();
 			ActionTransactionFacadeLocalHome actionTransactionFacadeLocalHome = (ActionTransactionFacadeLocalHome) locator.getLocalHome(ActionTransactionFacadeLocalHome.JNDI_NAME);
 			actionTransactionFacade = (ActionTransactionFacadeLocal) actionTransactionFacadeLocalHome.create();
-			TimerFinVenteLocalHome timerHome = (TimerFinVenteLocalHome) locator.getLocalHome(TimerFinVenteLocalHome.JNDI_NAME);
-			timerLocal = (TimerFinVenteLocal) timerHome.create();
 		} catch (ServiceLocatorException e) {
 			e.printStackTrace();
 		} catch (CreateException e) {
@@ -241,7 +240,7 @@ public class ArticleFacadeBean implements SessionBean {
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
 			articleLocal.setEnVente(new Boolean(false));
-			timerLocal.cancelTimer(articleId);
+			this.annulerTimer(articleId);
 		} catch (Exception e) {
 			throw new Exception("Impossible de retirer l'article de la vente", e);
 		}
@@ -255,7 +254,7 @@ public class ArticleFacadeBean implements SessionBean {
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
 			articleLocal.setEnVente(new Boolean(true));
-			timerLocal.initializeTimer(articleLocal.getDateLimite().getTime(), articleId);			
+			this.intialiserTimer(articleId);		
 		} catch (Exception e) {
 			throw new Exception("Impossible de mettre l'article en vente", e);
 		}
@@ -702,6 +701,44 @@ public class ArticleFacadeBean implements SessionBean {
 			e.printStackTrace();
 		}
 		return home;
+	}
+	
+	public TimerFinVenteLocal getTimerInstance(){	
+		if( timerFinVente != null){
+			return timerFinVente;
+		}
+		else{
+			try {
+				TimerFinVenteLocalHome timerHome = (TimerFinVenteLocalHome) locator.getLocalHome(TimerFinVenteLocalHome.JNDI_NAME);
+				timerFinVente = (TimerFinVenteLocal) timerHome.create();
+				} catch (ServiceLocatorException e) {
+					e.printStackTrace();
+				} catch (CreateException e) {
+					e.printStackTrace();
+				}
+				return timerFinVente;
+		}
+	}
+	
+	public void intialiserTimer(String articleId){
+		TimerFinVenteLocal timer=this.getTimerInstance();		
+		try {
+			long dateSystem=System.currentTimeMillis();
+			long dateLimite;
+			dateLimite = this.getArticle(articleId).getDateLimite().getTime();		
+			long dateExpir=dateLimite-dateSystem;		
+			timer.initializeTimer(dateExpir,articleId);
+		} catch (RemoteException e) {			
+			e.printStackTrace();
+		
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+	}
+	
+	public void annulerTimer(String articleId) {
+		TimerFinVenteLocal timer = this.getTimerInstance();	
+		timer.cancelTimer(articleId);		
 	}
 
 }

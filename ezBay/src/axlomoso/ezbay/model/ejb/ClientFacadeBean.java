@@ -1,15 +1,20 @@
 package axlomoso.ezbay.model.ejb;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
 
+import axlomoso.ezbay.model.interfaces.ActionEnchereLocal;
+import axlomoso.ezbay.model.interfaces.ActionTransactionLocal;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeLocal;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome;
+import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
 import axlomoso.ezbay.model.interfaces.ClientLocalHome;
@@ -95,8 +100,20 @@ public class ClientFacadeBean implements SessionBean {
 	 * @param clientId
 	 */
 	public Collection getArticlesEnEncheres(String clientId) {
-		
-		return null;
+		Collection tRes = new ArrayList();
+		Collection transactions = null;
+		try {
+			ClientLocal clientLocal = getEntity(clientId);
+			transactions = clientLocal.getActionEnchereLocal();
+			for (Iterator it = transactions.iterator(); it.hasNext();) {
+				ActionEnchereLocal encheres = (ActionEnchereLocal) it.next();
+				ArticleLocal articleLocal = encheres.getArticleLocal();
+				tRes.add(articleLocal.getArticleDTO());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tRes;
 	}	
 	
 	/**
@@ -104,8 +121,20 @@ public class ClientFacadeBean implements SessionBean {
 	 * @param clientId
 	 */
 	public Collection getArticlesAchetes(String clientId) {
-		
-		return null;
+		Collection tRes = new ArrayList();
+		Collection transactions = null;
+		try {
+			ClientLocal clientLocal = getEntity(clientId);
+			transactions = clientLocal.getActionTransactionLocal();
+			for (Iterator it = transactions.iterator(); it.hasNext();) {
+				ActionTransactionLocal transaction = (ActionTransactionLocal) it.next();
+				ArticleLocal articleLocal = transaction.getArticleLocal();
+				tRes.add(articleLocal.getArticleDTO());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tRes;
 	}	
 	
 	
