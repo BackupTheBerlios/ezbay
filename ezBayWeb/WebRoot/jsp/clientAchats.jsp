@@ -32,7 +32,7 @@
 	<br>
 <html:errors/>
 
-
+<html:form action="client">
 <logic:empty name="clientForm" property="articlesView">
 	<bean:message key="clientAchats.noArticle" />
 </logic:empty>
@@ -45,6 +45,7 @@
 <td><bean:message key="articleList.prix" /></td>
 <td><bean:message key="clientAchats.article.date" /></td>
 <td><bean:message key="clientAchats.vendeur" /></td>
+<td><bean:message key="clientAchats.avis.titre" /></td>
 </tr>
 	<logic:iterate name="clientForm" property="articlesView" id="article">
 		<tr>
@@ -56,12 +57,28 @@
 				<bean:write name="article" property="transactionMontant" /> <bean:message key="general.label.devise" />
 			</td>
 			<td>
-				<bean:write name="article" property="TransactionFormattedDate" />
+				<bean:write name="article" property="transactionFormattedDate" />
 			</td>
 			<td>
 				<html:link action="/membre.do?do=showMembreFiche" paramName="article" paramProperty="vendeurMembreId" paramId="membreId">
 						<bean:write name="article" property="vendeurPseudo" />
 				</html:link>
+			</td>
+			<td>
+			<logic:notEmpty name="article" property="transactionAvis">
+				<bean:write name="article" property="transactionAvis" />
+			</logic:notEmpty>
+			<logic:empty name="article" property="transactionAvis">
+				<html:select name="article" property="transactionAvis">
+					<html:option value="tresBien"><bean:message key="clientAchats.avis.titre.tresBien" /></html:option>
+					<html:option value="bien"><bean:message key="clientAchats.avis.titre.bien" /></html:option>
+					<html:option value="passable"><bean:message key="clientAchats.avis.titre.passable" /></html:option>
+					<html:option value="mauvais"><bean:message key="clientAchats.avis.titre.mauvais" /></html:option>				
+				</html:select>
+				<html:link action="/client.do?do=deposerAvis" paramName="article" paramProperty="id" paramId="articleId">
+						<td><bean:message key="clientAchats.deposerAvis.link" />
+				</html:link>
+			</logic:empty>
 			</td>
 		</tr>
 	</logic:iterate>
@@ -69,5 +86,7 @@
 	</tbody>
 	</table>
 </logic:notEmpty>
+<html:hidden property="do" value="deposerAvis"/>
+</html:form>
 </body>
 </html:html>

@@ -5,6 +5,7 @@ package axlomoso.ezbay.struts.action;
 
 import java.rmi.RemoteException;
 import java.util.Collection;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,9 +18,11 @@ import org.apache.struts.actions.DispatchAction;
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.delegate.ClientFacadeDelegate;
 import axlomoso.ezbay.delegate.MembreFacadeDelegate;
+import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.struts.form.ClientForm;
+import axlomoso.ezbay.struts.views.ArticleView;
 
 /** 
  * MyEclipse Struts
@@ -93,7 +96,40 @@ public class ClientAction extends DispatchAction {
 			return mapping.findForward("showEncheres");
 	}
 	
-
-
+	
+	
+	
+	/** 
+	 * Method showMyEncheres
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward deposerAvis(
+			ActionMapping mapping,
+			ActionForm form,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+			ClientForm clientForm = (ClientForm) form;
+			ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
+			String articleId = request.getParameter("articleId");
+			Collection articlesView = clientForm.getArticlesView();
+			String avis = null;
+			Iterator it = articlesView.iterator();
+			while(it.hasNext() && (avis == null)){
+				ArticleView articleView = (ArticleView) it.next();
+				if( articleView.getId().equals(articleId) ){
+					avis = articleView.getTransactionAvis();
+				}
+			}
+			try {
+				articleFacade.deposerTransactionAvis(articleId, avis);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			return mapping.findForward("showAchats");
+	}
 }
 

@@ -221,5 +221,13 @@ public class ArticleView {
 	public String getTransactionFormattedDate(){
 		return util.getDateToString(this.getTransactionDate(), "dd/MM/yyyy - kk:mm:ss");
 	}
+
+	public String getTransactionAvis() {
+		return articleDTO.getTransactionAvis();
+	}
+
+	public void setTransactionAvis(String transactionAvis) {
+		articleDTO.setTransactionAvis(transactionAvis);
+	}
 	
 }

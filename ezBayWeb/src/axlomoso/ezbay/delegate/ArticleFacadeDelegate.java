@@ -97,6 +97,13 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getTransaction(articleId);
 	}
 	
+	public void deposerTransactionAvis(String articleId, String avis) throws RemoteException {
+		articleFacade.deposerTransactionAvis(articleId, avis);		
+	} 
+	
+	
+	
+	
 	/* transforme une liste d'ArticleDTO en une liste d'articleView */
     public Collection getArticlesDtoToView(Collection articles) throws Exception {
     	Collection tRes = new ArrayList();
@@ -121,6 +128,6 @@ public class ArticleFacadeDelegate {
 		articleView.setArticleDTO(articleDTO);
 		articleView.setCategorieDTO(this.getCategorieDTO(articleDTO.getId()));
 		return articleView;
-	} 
-    
+	}
+ 
 }
