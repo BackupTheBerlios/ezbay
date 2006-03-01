@@ -19,11 +19,11 @@
 		 </td>
 	</tr>
 	<tr height="20">
-	    <td><html:link action="#"><bean:message key="myEzBay.menu.sectionClient.link.achats"/></html:link>
+	    <td><html:link action="client.do?do=showMyAchats"><bean:message key="myEzBay.menu.sectionClient.link.achats"/></html:link>
 		 </td>
 	</tr>
 	<tr height="20">
-	    <td><html:link action="#"><bean:message key="myEzBay.menu.sectionClient.link.encheres"/></html:link>
+	    <td><html:link action="client.do?do=showMyEncheres"><bean:message key="myEzBay.menu.sectionClient.link.encheres"/></html:link>
 		 <br /><br /></td>
 	</tr>
 	

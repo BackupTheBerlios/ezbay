@@ -152,7 +152,11 @@
       path="/client"
       scope="request"
       type="axlomoso.ezbay.struts.action.ClientAction"
-      validate="false" />
+      validate="false" >
+      <forward name="showAchats" path="ezBay.clientAchats" />
+      <forward name="showEncheres" path="ezBay.clientEncheres" />
+    </action>
+
 
     
 

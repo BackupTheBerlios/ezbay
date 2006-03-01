@@ -70,6 +70,18 @@
 		<put name="body" value="/jsp/vendeurArticles.jsp" />
 	</definition>
 	
+	<!-- Tiles Definition of clientAchats -->
+	<definition name="ezBay.clientAchats" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/clientAchats.jsp" />
+	</definition>
+	
+	<!-- Tiles Definition of clientEncheres -->
+	<definition name="ezBay.clientEncheres" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/clientEncheres.jsp" />
+	</definition>
+	
 	<!-- Tiles Definition of articleFiche -->
 	<definition name="ezBay.articleFiche" extends="base.definition">
 		<put name="title" value="EzBay" />

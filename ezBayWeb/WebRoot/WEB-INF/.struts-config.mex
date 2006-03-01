@@ -15,6 +15,7 @@
   <StrutsActivity path="/enchere.do" location="1850,1550" dimension="255,88" />
   <StrutsActivity path="/enchereSave.do" location="2150,150" dimension="279,88" />
   <StrutsActivity path="/init.do" location="1850,1750" dimension="242,88" />
+  <StrutsActivity path="/client.do" location="2150,1750" dimension="243,88" />
   <StrutsActivity path="welcome;6" location="1550,550" dimension="122,84" />
   <StrutsActivity path="ezBay.membreEdit" location="1850,1450" dimension="118,49" />
   <StrutsActivity path="ezBay.articleList" location="50,350" dimension="107,49" />
@@ -33,6 +34,8 @@
   <StrutsActivity path="ezBay.membreFiche" location="1550,1150" dimension="125,49" />
   <StrutsActivity path="ezBay.listeCategorie" location="1850,1250" dimension="128,49" />
   <StrutsActivity path="ezBay.articleEnchereEdit" location="2150,850" dimension="148,49" />
+  <StrutsActivity path="/jsp/clientAchats.jsp" location="2150,550" dimension="127,49" />
+  <StrutsActivity path="/jsp/clientEncheres.jsp" location="2150,650" dimension="138,49" />
   <StrutsActivity path="/jsp/index.jsp" location="50,850" dimension="112,52" />
   <StrutsActivity path="/jsp/connect.jsp" location="50,1050" dimension="126,52" />
   <StrutsActivity path="/jsp/articleList.jsp" location="350,850" dimension="136,52" />
@@ -70,7 +73,8 @@
   <StrutsActivity path="/jsp/body.jsp" location="2150,1150" dimension="109,52" />
   <StrutsActivity path="welcome" location="2150,1350" dimension="70,49" />
   <StrutsActivity path="/welcome" location="2150,1450" dimension="74,49" />
-  <StrutsActivity path="/client.do" location="2150,1750" dimension="243,88" />
+  <StrutsActivity path="ezBay.clientAchats" />
+  <StrutsActivity path="ezBay.clientEncheres" />
   <StrutsTransition id="/enchere.do,EchecMembreNonConnecte,/myEzBay.do,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="1850,1594" />
@@ -92,6 +96,12 @@
       <AbsolutePoint location="350,514" />
       <AbsolutePoint location="153,514" />
       <AbsolutePoint location="153,399" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/client.do,showAchats,ezBay.clientAchats,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2271,1794" />
+      <AbsolutePoint location="0,0" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="monEzBay.connect,null,/connect.do,2" routingType="0">
@@ -116,6 +126,12 @@
     <AutomaticBendpoints>
       <AbsolutePoint location="230,650" />
       <AbsolutePoint location="230,238" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/client.do,showEncheres,ezBay.clientEncheres,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2271,1794" />
+      <AbsolutePoint location="0,0" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/myEzBay.do,showConnectForm,monEzBay.connect,1" routingType="0">
@@ -223,6 +239,12 @@
       <AbsolutePoint location="1912,699" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/client.do,showAchats,/jsp/clientAchats.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2271,1794" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/article.do,showList,/articleList.do,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="1414,1250" />
@@ -252,6 +274,12 @@
       <AbsolutePoint location="197,1017" />
       <AbsolutePoint location="1918,1017" />
       <AbsolutePoint location="1918,999" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/client.do,showEncheres,/jsp/clientEncheres.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2271,1794" />
+      <AbsolutePoint location="0,0" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="ezBay.rechercheArticle,null,/rechercheArticle.do,2" routingType="0">

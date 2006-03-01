@@ -217,5 +217,9 @@ public class ArticleView {
 	public String getDerniereEnchereFormattedDate(){
 		return util.getDateToString(this.getDerniereEnchereDate(), "dd/MM/yyyy - kk:mm:ss");
 	}
-
+	
+	public String getTransactionFormattedDate(){
+		return util.getDateToString(this.getTransactionDate(), "dd/MM/yyyy - kk:mm:ss");
+	}
+	
 }
