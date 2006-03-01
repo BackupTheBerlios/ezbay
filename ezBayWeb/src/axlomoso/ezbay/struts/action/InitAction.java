@@ -43,7 +43,6 @@ public class InitAction extends Action {
 		ActionForm form,
 		HttpServletRequest request,
 		HttpServletResponse response) {
-		System.out.println("init.execute()");
 		CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
 		Collection categories = new ArrayList();
 		try {

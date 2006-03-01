@@ -54,7 +54,6 @@ public class ArticleSaveAction extends Action {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("ArticleSaveAction.execute()");
 		ArticleForm articleEditForm = (ArticleForm) form;
 		try {
 			VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();

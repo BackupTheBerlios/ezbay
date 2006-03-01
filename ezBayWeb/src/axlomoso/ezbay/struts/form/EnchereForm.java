@@ -28,6 +28,9 @@ public class EnchereForm extends ActionForm {
 	private String stringMontantEnchereCourante = "";
 	private Double montantEnchereCourante = null;
 	private ActionEnchereView enchereView = null;
+
+	
+	
 	// --------------------------------------------------------- Methods
 
 	/** 
@@ -104,7 +107,6 @@ public class EnchereForm extends ActionForm {
 	
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
-		System.out.println("EnchereForm.validate()");
 		ActionErrors errors = new ActionErrors();
 		if ((this.getStringMontantEnchereCourante() == null)||(this.getStringMontantEnchereCourante().length() == 0)) {
 			errors.add("stringMontant", new ActionError("articleEnchereEdit.erreurs.montantVide"));

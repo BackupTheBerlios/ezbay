@@ -43,7 +43,6 @@ public class VendeurAction extends DispatchAction {
 	public ActionForward showInformations(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("VendeurAction.showInformations()");
 		setVendeurForm(form, request);
 		return (mapping.findForward("showInformations"));
 	}
@@ -51,7 +50,6 @@ public class VendeurAction extends DispatchAction {
 	public ActionForward showEditVendeur(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("VendeurAction.showEditVendeur()");
 		setVendeurForm(form, request);
 		return (mapping.findForward("showEdit"));
 	}
@@ -59,7 +57,6 @@ public class VendeurAction extends DispatchAction {
 	public ActionForward showArticles(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("VendeurAction.showArticles()");
 		setVendeurForm(form, request);
 		return (mapping.findForward("showArticles"));
 	}
@@ -90,7 +87,6 @@ public class VendeurAction extends DispatchAction {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("setVendeurForm - temps execution : " + (System.currentTimeMillis() - dGlobal) + "ms");
 	}
 	
 	

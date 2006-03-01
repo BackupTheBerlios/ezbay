@@ -52,12 +52,14 @@ public class EnchereAction extends DispatchAction {
 		ActionErrors erreurs = new ActionErrors();
 		String articleId = request.getParameter("articleId");
 		if(request.getSession().getAttribute("membre") == null){
+			//il faut être connecté !
 			String nextAfterConnect = "/enchere.do?do=showEnchereForm&articleId="+articleId;
 			request.setAttribute("next", nextAfterConnect);
 			target = "EchecMembreNonConnecte";
 			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleEnchereEdit.erreurs.membreNonConnecte"));
 		}
 		else{
+			//c'est bon !
 			ArticleFacadeDelegate articleDelegate = ArticleFacadeDelegate.getInstance();	
 			try {
 				ArticleDTO articleDTO = articleDelegate.getArticle(articleId);

@@ -25,7 +25,6 @@ public class MembreSaveAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("MembreSaveAction.execute()");
 		ActionErrors erreurs = new ActionErrors();
 		MembreForm inscriptionForm = (MembreForm) form;
 		String id = request.getParameter("id");

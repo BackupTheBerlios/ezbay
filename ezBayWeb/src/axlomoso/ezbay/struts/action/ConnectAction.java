@@ -58,7 +58,6 @@ public class ConnectAction extends DispatchAction {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("ConnectAction.validateConnect()");
 		ConnectForm connectForm = (ConnectForm) form;
 		ActionErrors erreurs = new ActionErrors();
 		ActionForward next = null;

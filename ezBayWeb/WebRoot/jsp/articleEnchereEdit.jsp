@@ -26,7 +26,7 @@
 	<H1><bean:message key="articleEnchereEdit.titre" /></H1>
 	<html:errors />
 		<%-- create a html form --%>
-
+		<html:form action="enchereSave">
 		<bean:message key="articleEnchereEdit.libelleArticle" /> : <bean:write name="enchereForm" property="libelle" />
 		<br />
 		<logic:empty name="enchereForm" property="enchereView">
@@ -36,7 +36,6 @@
 			<bean:message key="articleEnchereEdit.derniereEnchere" /> : <bean:write name="enchereForm" property="enchereView.montant" /> <bean:message key="general.label.devise" />
 		</logic:notEmpty>		
 	<br />
-		<html:form action="enchereSave">
 			<bean:message key="articleEnchereEdit.montant" /> : <html:text property="stringMontantEnchereCourante" />
 			<br>
 			<html:hidden property="montant" />

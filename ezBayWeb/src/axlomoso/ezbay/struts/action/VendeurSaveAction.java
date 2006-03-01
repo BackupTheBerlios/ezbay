@@ -40,7 +40,6 @@ public class VendeurSaveAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("VendeurSaveAction.execute()");
 		VendeurForm inscriptionVendeurForm = (VendeurForm) form;
 		MembreFacadeDelegate membreDelegate;
 		membreDelegate = MembreFacadeDelegate.getInstance();

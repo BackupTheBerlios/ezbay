@@ -43,11 +43,8 @@
 <%-- set the header --%>
 <tr>
 <td><bean:message key="articleList.libelle" /></td>
-<td><bean:message key="articleList.marque" /></td>
-<td><bean:message key="articleList.modele" /></td>
 <td><bean:message key="articleList.prixVente" /></td>
-<td><bean:message key="articleList.anneeFabrication" /></td>
-<td><bean:message key="articleList.dateLimite" /></td>
+<td><bean:message key="articleList.dateLimiteSimple" /></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
@@ -58,16 +55,7 @@
 				<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
 			</td>
 			<td>
-				<bean:write name="article" property="marque" />
-			</td>
-			<td>
-				<bean:write name="article" property="modele" />
-			</td>
-			<td>
 				<bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" />
-			</td>
-			<td>
-				<bean:write name="article" property="anneeFabrication" />
 			</td>
 			<td>
 				<bean:write name="article" property="formattedDateLimite" />
@@ -98,11 +86,8 @@
 <tr>
 
 <td><bean:message key="articleList.libelle" /></td>
-<td><bean:message key="articleList.marque" /></td>
-<td><bean:message key="articleList.modele" /></td>
 <td><bean:message key="articleList.prixDepart" /></td>
-<td><bean:message key="articleList.anneeFabrication" /></td>
-<td><bean:message key="articleList.dateLimite" /></td>
+<td><bean:message key="articleList.dateLimiteSimple" /></td>
 <td><bean:message key="articleList.nbEncheres" /></td>
 <td><bean:message key="articleList.derniereEnchere.titre" /></td>
 <td>&nbsp;</td>
@@ -114,16 +99,7 @@
 				<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
 			</td>
 			<td>
-				<bean:write name="article" property="marque" />
-			</td>
-			<td>
-				<bean:write name="article" property="modele" />
-			</td>
-			<td>
 				<bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" />
-			</td>
-			<td>
-				<bean:write name="article" property="anneeFabrication" />
 			</td>
 			<td>
 				<bean:write name="article" property="formattedDateLimite" />
@@ -167,11 +143,8 @@
 <tr>
 <td>&nbsp;</td>
 <td><bean:message key="articleList.libelle" /></td>
-<td><bean:message key="articleList.marque" /></td>
-<td><bean:message key="articleList.modele" /></td>
 <td><bean:message key="articleList.prixVente" /></td>
-<td><bean:message key="articleList.anneeFabrication" /></td>
-<td><bean:message key="articleList.dateLimite" /></td>
+<td><bean:message key="articleList.dateLimiteSimple" /></td>
 </tr>
 	<logic:iterate name="vendeurForm" property="articlesVendus" id="article">
 		<tr>
@@ -183,16 +156,7 @@
 				<bean:write name="article" property="libelle" />
 			</td>
 			<td>
-				<bean:write name="article" property="marque" />
-			</td>
-			<td>
-				<bean:write name="article" property="modele" />
-			</td>
-			<td>
 				<bean:write name="article" property="prixVente" /> <bean:message key="general.label.devise" />
-			</td>
-			<td>
-				<bean:write name="article" property="anneeFabrication" />
 			</td>
 			<td>
 				<bean:write name="article" property="formattedDateLimite" />

@@ -56,7 +56,6 @@ public class MembreAction extends DispatchAction {
 	public ActionForward showInscription(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("MembreAction.showInscription()");
 		request.getSession().removeAttribute("membre");
 		return (mapping.findForward("showInscription"));
 	}
@@ -64,7 +63,6 @@ public class MembreAction extends DispatchAction {
 	public ActionForward showInformations(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("MembreAction.showInformations()");
 		MembreForm membreForm = (MembreForm) form;
 		MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
 		membreForm.setMembreDTO(membreDTO);
@@ -74,7 +72,6 @@ public class MembreAction extends DispatchAction {
 	public ActionForward showEditMembre(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("MembreAction.showEditMembre()");
 		MembreForm membreForm = (MembreForm) form;
 		MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
 		membreForm.setMembreDTO(membreDTO);
@@ -84,7 +81,6 @@ public class MembreAction extends DispatchAction {
 	public ActionForward showMembreFiche(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("MembreAction.showMembreFiche()");
 		MembreForm membreForm = (MembreForm) form;
 		MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
 		String membreId = request.getParameter("membreId");

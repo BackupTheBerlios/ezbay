@@ -81,10 +81,10 @@ a:hover
 table.body_mes_articles
 {
 	font-family:Verdana;
-	color:#000088;
+	color:#000000;
 	font-weight:bold;
 	text-align :center;
-	font-size: 14;
+	font-size: 10;
 	border-color: #FBE468;
 	border-style: solid;
 	border-width:thin;
