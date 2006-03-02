@@ -34,7 +34,6 @@
 	<hr width="50%;" color=" #FDF3BF" size="3" />
 	<br />
 	<html:errors />
-
 	<html:form action="client">
 		<logic:empty name="clientForm" property="articlesView">
 			<bean:message key="clientAchats.noArticle" />
