@@ -26,12 +26,19 @@
 </head>
 
 <body>
+	<center>
 	<h2><bean:message key="titre.application" /> - <bean:message key="vendeurArticles.titre" />
-	</h2><br />
+	</h2>
+	<br />
+		<hr width="50%;" color=" #FDF3BF" size="3" />
+	<br /><br /><br />
+	
+	</center>
+	
 	<html:errors />
-	<H2>
+	<h2>
 		<bean:message key="vendeurArticles.articlesEnAttente.titre" />
-	</H2>
+	</h2>
 	<logic:empty name="vendeurForm" property="articlesEnAttente">
 		<bean:message key="vendeurArticles.articlesEnAttente.noArticle" />
 	</logic:empty>
@@ -79,9 +86,9 @@
 		</table>
 	</logic:notEmpty>
 	<br />
-	<H2>
+	<h2>
 		<bean:message key="vendeurArticles.articlesEnVente.titre" />
-	</H2>
+	</h2>
 	<logic:empty name="vendeurForm" property="articlesEnVente">
 		<bean:message key="vendeurArticles.articlesEnVente.noArticle" />
 	</logic:empty>
@@ -155,9 +162,9 @@
 		</table>
 	</logic:notEmpty>
 	<br />
-	<H2>
+	<h2>
 		<bean:message key="vendeurArticles.articlesVendus.titre" />
-	</H2>
+	</h2>
 	<%-- set the header --%>
 	<logic:empty name="vendeurForm" property="articlesVendus">
 		<bean:message key="vendeurArticles.articlesVendus.noArticle" />
