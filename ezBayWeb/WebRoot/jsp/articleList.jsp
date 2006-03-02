@@ -7,8 +7,8 @@
 		<title>
 			<bean:message key="articleList.title" />
 		</title>
-	<link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
-    <meta http-equiv="refresh" content="30">
+		<link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
+		<meta http-equiv="refresh" content="30">
 	</head>
 	<body>
 		<center>
@@ -16,9 +16,9 @@
 				<bean:message key="articleList.categorie.titre" />
 				<bean:write name="articleListForm" property="categorieDTO.libelle" />
 			</H2>
-			<br /><br />
+			<hr width="50%;" color=" #FDF3BF" size="3" />
 			<logic:empty name="articleListForm" property="articlesView">
-				<bean:message key="articleList.noArticle" />
+				<br /><bean:message key="articleList.noArticle" />
 			</logic:empty>
 			<logic:notEmpty name="articleListForm" property="articlesView">
 				<table class="body_recherche_article" cellspacing="15">
@@ -42,10 +42,7 @@
 							<bean:message key="articleList.nbEncheres" />
 						</td>
 						<td>
-							<bean:message key="articleList.dateLimite" />
-						</td>
-						<td>
-							<bean:message key="articleList.derniereEnchere.titre" />
+							<bean:message key="articleList.dateLimiteSimple" />
 						</td>
 					</tr>
 					<%-- start with an iterate over the array articlesView --%>
@@ -67,7 +64,16 @@
 								<bean:write name="article" property="anneeFabrication" />
 							</td>
 							<td>
-								<bean:write name="article" property="prixVente" />
+								<logic:empty name="article" property="derniereEnchereMontant">
+									<bean:write name="article" property="prixVente" />
+								</logic:empty>
+								<logic:notEmpty name="article" property="derniereEnchereMontant">
+									<b>
+										<bean:write name="article" property="derniereEnchereMontant" />
+										&nbsp;
+										<bean:message key="general.label.devise" />
+									</b>
+								</logic:notEmpty>
 							</td>
 							<td>
 								<bean:write name="article" property="nbEncheres" />
@@ -75,12 +81,6 @@
 							<td>
 								<bean:write name="article" property="formattedDateLimite" />
 							</td>
-							<logic:notEmpty name="article" property="derniereEnchereDate">
-								<td>
-									<bean:write name="article" property="derniereEnchereMontant" />
-									<bean:message key="general.label.devise" />
-								</td>
-							</logic:notEmpty>
 						</tr>
 					</logic:iterate>
 				</table>

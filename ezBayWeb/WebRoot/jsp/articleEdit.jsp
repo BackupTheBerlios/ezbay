@@ -25,7 +25,7 @@
 	<body>
 	<center>
 	<h2><bean:message key="articleEdit.title" /></h2>
-	<br /><br />
+	<hr width="50%;" color=" #FDF3BF" size="3" />
 	<html:errors />
 		<%-- create a html form --%>
 		<html:form action="articleSave">

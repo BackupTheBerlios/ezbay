@@ -30,11 +30,9 @@
 				-
 				<bean:message key="vendeur.titre" />
 			</h2>
-			<br />
 			<hr width="50%;" color=" #FDF3BF" size="3" />
-			<br />
 			<html:errors />
-			<bean:message key="vendeur.titre.infosCB" />
+			<i><bean:message key="vendeur.titre.infosCB" /></i>
 			<html:form action="/vendeurSave">
 				<table class="body_affichage_donnees">
 					<tr>

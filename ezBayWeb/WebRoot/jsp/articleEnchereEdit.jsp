@@ -26,9 +26,7 @@
 		<h2>
 			<bean:message key="articleEnchereEdit.titre" />
 		</h2>
-		<br />
 		<hr width="50%;" color=" #FDF3BF" size="3" />
-		<br />
 		<html:errors />
 		<%-- create a html form --%>
 		<html:form action="enchereSave">

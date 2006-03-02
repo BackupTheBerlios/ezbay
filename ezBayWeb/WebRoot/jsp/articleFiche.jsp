@@ -27,10 +27,7 @@
 <body>
 	<center>
 	<h2><bean:message key="articleFiche.title" /></h2>
-	<br />
 		<hr width="50%;" color=" #FDF3BF" size="3" />
-	<br />
-			
 		<table class="body_affichage_donnees">
 			<tr>
 				<td class="intitule">
@@ -131,9 +128,7 @@
 			</tr>
 		</table>
 		<hr width="50%;" color=" #FDF3BF" size="3" /><logic:equal name="articleForm" property="articleView.enVente" value="true">
-			<br />
 				<h2><bean:message key="articleFiche.encheres.historique" /></h2>
-			<br /><br />
 			<i><bean:write name="articleForm" property="articleView.nbEncheres" />&nbsp;<bean:message key="articleFiche.encheres.libelle" /></i> 
 			<br /><br />
 			<logic:notEmpty name="articleForm" property="articleView.derniereEnchereMontant">

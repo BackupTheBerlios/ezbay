@@ -145,7 +145,7 @@
 				<bean:message key="articleList.nbEncheres" />
 			</td>
 			<td>
-				<bean:message key="articleList.dateLimite" />
+				<bean:message key="articleList.dateLimiteSimple" />
 			</td>
 		</tr>
 		<%-- start with an iterate over the array articlesView --%>

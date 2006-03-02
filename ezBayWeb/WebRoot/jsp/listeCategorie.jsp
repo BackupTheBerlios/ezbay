@@ -14,9 +14,7 @@
 			<h2>
 				<bean:message key="categorieList.title" />
 			</h2>
-			<br />
 			<hr width="50%;" color=" #FDF3BF" size="3" />
-			<br />
 			<html:errors />
 
 			<%-- start with an iterate over the array categoriesDTO --%>

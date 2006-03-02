@@ -30,9 +30,7 @@
 				-
 				<bean:message key="inscription.label" />
 			</h2>
-			<br />
 			<hr width="50%;" color=" #FDF3BF" size="3" />
-			<br />
 			<html:errors />
 			<html:form action="/membreSave">
 				<table class="body_affichage_donnees">

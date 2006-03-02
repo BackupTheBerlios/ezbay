@@ -29,10 +29,8 @@
 		<h2>
 			<bean:message key="membreFiche.title" />
 		</h2>
-		<br />
 		<hr width="50%;" color=" #FDF3BF" size="3" />
-		<br />
-
+		
 		<table class="body_affichage_donnees">
 			<tr>
 				<td>
