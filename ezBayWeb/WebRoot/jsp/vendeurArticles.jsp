@@ -170,19 +170,13 @@
 		<bean:message key="vendeurArticles.articlesVendus.noArticle" />
 	</logic:empty>
 	<logic:notEmpty name="vendeurForm" property="articlesVendus">
-		<table class="body_mes_articles" cellspacing="15">
+		<table class="body_mes_articles" cellspacing="15" width="500">
 			<tr class="body_mes_articles" cellspacing="15">
-				<td>
-					&nbsp;
-				</td>
 				<td>
 					<bean:message key="articleList.libelle" />
 				</td>
-				<td>
-					<bean:message key="articleList.prixVente" />
-				</td>
-				<td>
-					<bean:message key="articleList.dateLimiteSimple" />
+				<td align="left">
+					<bean:message key="vendeurArticles.articlesVendus.vente.titre" />
 				</td>
 			</tr>
 			<logic:iterate name="vendeurForm" property="articlesVendus" id="article">
@@ -194,14 +188,11 @@
 						</html:link>
 					</td>
 					<td>
-						<bean:write name="article" property="libelle" />
-					</td>
-					<td>
-						<bean:write name="article" property="prixVente" />
-						<bean:message key="general.label.devise" />
-					</td>
-					<td>
-						<bean:write name="article" property="formattedDateLimite" />
+						<bean:write name="article" property="transactionFormattedDate" /><br />
+						<bean:write name="article" property="transactionMontant" /><br />
+						<html:link action="/membre.do?do=showMembreFiche" paramName="article" paramProperty="acheteurMembreId" paramId="membreId">
+							<bean:write name="article" property="acheteurPseudo" /><br />
+						</html:link>
 					</td>
 				</tr>
 			</logic:iterate>

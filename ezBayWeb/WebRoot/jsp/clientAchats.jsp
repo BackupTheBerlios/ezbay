@@ -34,7 +34,6 @@
 	<hr width="50%;" color=" #FDF3BF" size="3" />
 	<br />
 	<html:errors />
-	<html:form action="client">
 		<logic:empty name="clientForm" property="articlesView">
 			<bean:message key="clientAchats.noArticle" />
 		</logic:empty>
@@ -82,22 +81,7 @@
 							<bean:write name="article" property="transactionAvis" />
 						</logic:notEmpty>
 						<logic:empty name="article" property="transactionAvis">
-							<html:select name="article" property="transactionAvis">
-								<html:option value="tresBien">
-									<bean:message key="clientAchats.avis.titre.tresBien" />
-								</html:option>
-								<html:option value="bien">
-									<bean:message key="clientAchats.avis.titre.bien" />
-								</html:option>
-								<html:option value="passable">
-									<bean:message key="clientAchats.avis.titre.passable" />
-								</html:option>
-								<html:option value="mauvais">
-									<bean:message key="clientAchats.avis.titre.mauvais" />
-								</html:option>
-							</html:select>
-							<html:link action="/client.do?do=deposerAvis" paramName="article" paramProperty="id" paramId="articleId">
-								<td>
+							<html:link action="/avis.do?do=showDeposerAvisForm" paramName="article" paramProperty="id" paramId="articleId">
 									<bean:message key="clientAchats.deposerAvis.link" />
 							</html:link>
 						</logic:empty>
@@ -107,7 +91,6 @@
 			</table>
 		</logic:notEmpty>
 		<html:hidden property="do" value="deposerAvis" />
-	</html:form>
 	</center>
 </body>
 </html:html>
