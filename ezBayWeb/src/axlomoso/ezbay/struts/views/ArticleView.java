@@ -230,5 +230,13 @@ public class ArticleView {
 	public void setTransactionAvis(String transactionAvis) {
 		//articleDTO.setTransactionAvis(transactionAvis);
 	}
+
+	public String getAcheteurMembreId() {
+		return articleDTO.getAcheteurMembreId();
+	}
+
+	public void setAcheteurMembreId(String acheteurMembreId) {
+		articleDTO.setAcheteurMembreId(acheteurMembreId);
+	}
 	
 }

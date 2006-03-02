@@ -137,6 +137,22 @@ public class ActionTransactionFacadeBean implements SessionBean {
 	}
 	
 	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param vendeurDTO
+	 * @throws FinderException 
+	 * @throws CreateException 
+	 */
+	public void setAvis(String transactionId, String avis){
+		try {
+			ActionTransactionLocal transactionLocal = getEntity(transactionId);
+			transactionLocal.setAvis(avis);
+		} catch (FinderException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**
 	 * Retrieves the local interface of the Customer entity bean.
 	 * 
 	 * @throws FinderException

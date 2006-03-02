@@ -23,4 +23,7 @@ public interface ActionTransactionFacade
    public axlomoso.ezbay.model.interfaces.ClientDTO getAcquereur( java.lang.String articleId )
       throws java.rmi.RemoteException;
 
+   public void setAvis( java.lang.String transactionId,java.lang.String avis )
+      throws java.rmi.RemoteException;
+
 }

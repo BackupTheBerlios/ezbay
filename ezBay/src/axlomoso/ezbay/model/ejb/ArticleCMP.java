@@ -82,8 +82,10 @@ public abstract class ArticleCMP
             ArticleDTO.setNbEncheres( getNbEncheres() );
             ArticleDTO.setAcheteurPseudo( getAcheteurPseudo() );
             ArticleDTO.setAcheteurId( getAcheteurId() );
+            ArticleDTO.setAcheteurMembreId( getAcheteurMembreId() );
             ArticleDTO.setTransactionDate( getTransactionDate() );
             ArticleDTO.setTransactionMontant( getTransactionMontant() );
+            ArticleDTO.setTransactionAvis( getTransactionAvis() );
 
          }
          catch (Exception e)
@@ -176,6 +178,10 @@ public abstract class ArticleCMP
 
    public abstract void setAcheteurId( java.lang.String acheteurId ) ;
 
+   public abstract java.lang.String getAcheteurMembreId() ;
+
+   public abstract void setAcheteurMembreId( java.lang.String acheteurMembreId ) ;
+
    public abstract java.util.Date getTransactionDate() ;
 
    public abstract void setTransactionDate( java.util.Date transactionDate ) ;
@@ -183,5 +189,9 @@ public abstract class ArticleCMP
    public abstract java.lang.Double getTransactionMontant() ;
 
    public abstract void setTransactionMontant( java.lang.Double transactionMontant ) ;
+
+   public abstract java.lang.String getTransactionAvis() ;
+
+   public abstract void setTransactionAvis( java.lang.String transactionAvis ) ;
 
 }

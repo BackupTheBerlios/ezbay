@@ -20,4 +20,6 @@ public interface ActionTransactionFacadeLocal
 
    public axlomoso.ezbay.model.interfaces.ClientDTO getAcquereur( java.lang.String articleId ) ;
 
+   public void setAvis( java.lang.String transactionId,java.lang.String avis ) ;
+
 }

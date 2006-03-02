@@ -443,6 +443,19 @@ public abstract class ArticleBean implements EntityBean {
 		
 		/**
 		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "acheteurMembreId"
+		 * @return
+		 */
+		public abstract String getAcheteurMembreId();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param acheteurId
+		 */
+		public abstract void setAcheteurMembreId(String acheteurMembreId);
+		
+		/**
+		 * @ejb.interface-method view-type = "local"
 		 * @ejb.persistence column-name = "transactionDate"
 		 * @return
 		 */
@@ -467,6 +480,19 @@ public abstract class ArticleBean implements EntityBean {
 		 */
 		public abstract void setTransactionMontant(Double transactionMontant);
 
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @ejb.persistence column-name = "transactionAvis"
+		 * @return
+		 */
+		public abstract String getTransactionAvis();
+
+		/**
+		 * @ejb.interface-method view-type = "local"
+		 * @param transactionAvis
+		 */
+		public abstract void setTransactionAvis(String transactionAvis);
+		
 /* *************** </INFORMATIONS REDONDANTES> ********************* */		  
 
 		

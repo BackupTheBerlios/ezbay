@@ -27,6 +27,7 @@ import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieLocal;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
+import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.MembreLocal;
 import axlomoso.ezbay.model.interfaces.TimerFinVenteBeanHome;
 import axlomoso.ezbay.model.interfaces.TimerFinVenteLocal;
@@ -133,9 +134,16 @@ public class ArticleFacadeBean implements SessionBean {
 					//ArticleLocal
 				ArticleLocal articleLocal = getEntity(articleId);
 					//transaction
-				actionTransactionFacade.createActionTransaction(actionTransactionDTO, articleLocal, clientLocal);
+				actionTransactionDTO = actionTransactionFacade.createActionTransaction(actionTransactionDTO, articleLocal, clientLocal);
 				//supprimer la derniere enchere
 				actionEnchereFacade.removeActionEnchere(derniereEnchereDTO.getId());
+				//ArticleBean : info redondante
+				MembreDTO membreDTO = clientLocal.getMembreLocal().getMembreDTO();
+				articleLocal.setAcheteurPseudo(membreDTO.getPseudo());
+				articleLocal.setAcheteurId(clientDTO.getId());
+				articleLocal.setTransactionDate(actionTransactionDTO.getDate());
+				articleLocal.setTransactionMontant(actionTransactionDTO.getMontant());
+				articleLocal.setAcheteurMembreId(membreDTO.getId());
 			}
 		} catch (CreateException e) {
 			e.printStackTrace();
@@ -144,6 +152,30 @@ public class ArticleFacadeBean implements SessionBean {
 		} catch (ServiceLocatorException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**
+	 * @ejb.interface-method view-type = "both"
+	 * @param String articleId
+	 * @throws Exception
+	 */
+	public void deposerTransactionAvis(String articleId, String avis){
+		try {
+			ArticleLocal articleLocal = getEntity(articleId);
+			ActionTransactionDTO transactionDTO = articleLocal.getActionTransactionLocal().getActionTransactionDTO();
+			ActionTransactionFacadeLocalHome actionTransactionFacadeLocalHome = (ActionTransactionFacadeLocalHome) locator.getLocalHome(ActionTransactionFacadeLocalHome.JNDI_NAME);
+			ActionTransactionFacadeLocal actionTransactionFacade = (ActionTransactionFacadeLocal) actionTransactionFacadeLocalHome.create();
+			actionTransactionFacade.setAvis(transactionDTO.getId(), avis);
+			//Info redondante
+			articleLocal.setTransactionAvis(avis);
+		} catch (FinderException e) {
+			e.printStackTrace();
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+		} catch (CreateException e) {
 			e.printStackTrace();
 		}
 	}
@@ -625,7 +657,7 @@ public class ArticleFacadeBean implements SessionBean {
 				articleLocal.setDerniereEnchereDate(tRes.getDate());
 				articleLocal.setDerniereEnchereMontant(tRes.getMontant());
 				articleLocal.setEncherisseurClientId(clientId);
-				articleLocal.setEncherisseurMembreId(clientId);
+				articleLocal.setEncherisseurMembreId(clientLocal.getMembreLocal().getId());
 				articleLocal.setEncherisseurPseudo(ClientFacadeBean.getEntity(clientId).getMembreLocal().getMembreDTO().getPseudo());
 				articleLocal.setNbEncheres( new Integer(articleLocal.getNbEncheres().intValue() + 1) );
 			}

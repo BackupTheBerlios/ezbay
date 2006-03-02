@@ -74,6 +74,7 @@ public abstract class ActionTransactionCMP
             ActionTransactionDTO.setId( getId() );
             ActionTransactionDTO.setDate( getDate() );
             ActionTransactionDTO.setMontant( getMontant() );
+            ActionTransactionDTO.setAvis( getAvis() );
 
          }
          catch (Exception e)
@@ -97,5 +98,9 @@ public abstract class ActionTransactionCMP
    public abstract java.lang.Double getMontant() ;
 
    public abstract void setMontant( java.lang.Double montant ) ;
+
+   public abstract java.lang.String getAvis() ;
+
+   public abstract void setAvis( java.lang.String avis ) ;
 
 }

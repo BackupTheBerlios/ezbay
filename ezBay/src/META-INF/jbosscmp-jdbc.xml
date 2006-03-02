@@ -302,6 +302,11 @@
 
         </cmp-field>
          <cmp-field>
+            <field-name>acheteurMembreId</field-name>
+            <column-name>acheteurMembreId</column-name>
+
+        </cmp-field>
+         <cmp-field>
             <field-name>transactionDate</field-name>
             <column-name>transactionDate</column-name>
 
@@ -309,6 +314,11 @@
          <cmp-field>
             <field-name>transactionMontant</field-name>
             <column-name>transactionMontant</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>transactionAvis</field-name>
+            <column-name>transactionAvis</column-name>
 
         </cmp-field>
 
@@ -335,6 +345,11 @@
          <cmp-field>
             <field-name>montant</field-name>
             <column-name>montant</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>avis</field-name>
+            <column-name>avis</column-name>
 
         </cmp-field>
 

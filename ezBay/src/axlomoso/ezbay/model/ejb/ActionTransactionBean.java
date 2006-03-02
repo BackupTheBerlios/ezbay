@@ -3,6 +3,7 @@ package axlomoso.ezbay.model.ejb;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Enumeration;
 
 import javax.ejb.EJBException;
 import javax.ejb.EntityBean;
@@ -111,6 +112,21 @@ public abstract class ActionTransactionBean implements EntityBean {
 	 * @param montant
 	 */
 	public abstract void setMontant(Double montant);
+	
+	
+	/**
+	 * @ejb.interface-method view-type = "local"
+	 * @ejb.persistence column-name = "avis"
+	 * @return
+	 */
+	public abstract String getAvis();
+
+	/**
+	 * @ejb.interface-method view-type = "local"
+	 * @param avis
+	 */
+	public abstract void setAvis(String avis);
+	
 	
 	/**
 	   * @ejb.interface-method view-type = "local"

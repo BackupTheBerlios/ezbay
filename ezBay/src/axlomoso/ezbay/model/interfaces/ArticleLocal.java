@@ -112,6 +112,10 @@ public interface ArticleLocal
 
    public void setAcheteurId( java.lang.String acheteurId ) ;
 
+   public java.lang.String getAcheteurMembreId(  ) ;
+
+   public void setAcheteurMembreId( java.lang.String acheteurMembreId ) ;
+
    public java.util.Date getTransactionDate(  ) ;
 
    public void setTransactionDate( java.util.Date transactionDate ) ;
@@ -119,6 +123,10 @@ public interface ArticleLocal
    public java.lang.Double getTransactionMontant(  ) ;
 
    public void setTransactionMontant( java.lang.Double transactionMontant ) ;
+
+   public java.lang.String getTransactionAvis(  ) ;
+
+   public void setTransactionAvis( java.lang.String transactionAvis ) ;
 
    public java.lang.String updateArticle( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) throws java.lang.Exception;
 

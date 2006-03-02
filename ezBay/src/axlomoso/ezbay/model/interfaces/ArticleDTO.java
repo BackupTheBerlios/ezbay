@@ -81,11 +81,17 @@ public class ArticleDTO
    private java.lang.String acheteurId;
    private boolean acheteurIdHasBeenSet = false;
 
+   private java.lang.String acheteurMembreId;
+   private boolean acheteurMembreIdHasBeenSet = false;
+
    private java.util.Date transactionDate;
    private boolean transactionDateHasBeenSet = false;
 
    private java.lang.Double transactionMontant;
    private boolean transactionMontantHasBeenSet = false;
+
+   private java.lang.String transactionAvis;
+   private boolean transactionAvisHasBeenSet = false;
 
    private java.lang.String primaryKey;
 
@@ -93,7 +99,7 @@ public class ArticleDTO
    {
    }
 
-   public ArticleDTO( java.lang.String id,java.lang.Boolean enVente,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.lang.String description,java.util.Date dateLimite,java.lang.String vendeurPseudo,java.lang.String vendeurMembreId,java.lang.String vendeurId,java.lang.String encherisseurPseudo,java.lang.String encherisseurMembreId,java.lang.String encherisseurClientId,java.util.Date derniereEnchereDate,java.lang.Double derniereEnchereMontant,java.lang.Integer nbEncheres,java.lang.String acheteurPseudo,java.lang.String acheteurId,java.util.Date transactionDate,java.lang.Double transactionMontant )
+   public ArticleDTO( java.lang.String id,java.lang.Boolean enVente,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVente,java.lang.Integer anneeFabrication,java.lang.String description,java.util.Date dateLimite,java.lang.String vendeurPseudo,java.lang.String vendeurMembreId,java.lang.String vendeurId,java.lang.String encherisseurPseudo,java.lang.String encherisseurMembreId,java.lang.String encherisseurClientId,java.util.Date derniereEnchereDate,java.lang.Double derniereEnchereMontant,java.lang.Integer nbEncheres,java.lang.String acheteurPseudo,java.lang.String acheteurId,java.lang.String acheteurMembreId,java.util.Date transactionDate,java.lang.Double transactionMontant,java.lang.String transactionAvis )
    {
        setId(id);
        setEnVente(enVente);
@@ -115,8 +121,10 @@ public class ArticleDTO
        setNbEncheres(nbEncheres);
        setAcheteurPseudo(acheteurPseudo);
        setAcheteurId(acheteurId);
+       setAcheteurMembreId(acheteurMembreId);
        setTransactionDate(transactionDate);
        setTransactionMontant(transactionMontant);
+       setTransactionAvis(transactionAvis);
 	   primaryKey = this.getId();
    }
 
@@ -165,10 +173,14 @@ public class ArticleDTO
 	  acheteurPseudoHasBeenSet = true;
 	  this.acheteurId = otherValue.acheteurId;
 	  acheteurIdHasBeenSet = true;
+	  this.acheteurMembreId = otherValue.acheteurMembreId;
+	  acheteurMembreIdHasBeenSet = true;
 	  this.transactionDate = otherValue.transactionDate;
 	  transactionDateHasBeenSet = true;
 	  this.transactionMontant = otherValue.transactionMontant;
 	  transactionMontantHasBeenSet = true;
+	  this.transactionAvis = otherValue.transactionAvis;
+	  transactionAvisHasBeenSet = true;
 
 	  primaryKey = this.getId();
    }
@@ -487,6 +499,21 @@ public class ArticleDTO
    public boolean acheteurIdHasBeenSet(){
 	  return acheteurIdHasBeenSet;
    }
+   public java.lang.String getAcheteurMembreId()
+   {
+	  return this.acheteurMembreId;
+   }
+
+   public void setAcheteurMembreId( java.lang.String acheteurMembreId )
+   {
+	  this.acheteurMembreId = acheteurMembreId;
+	  acheteurMembreIdHasBeenSet = true;
+
+   }
+
+   public boolean acheteurMembreIdHasBeenSet(){
+	  return acheteurMembreIdHasBeenSet;
+   }
    public java.util.Date getTransactionDate()
    {
 	  return this.transactionDate;
@@ -517,12 +544,27 @@ public class ArticleDTO
    public boolean transactionMontantHasBeenSet(){
 	  return transactionMontantHasBeenSet;
    }
+   public java.lang.String getTransactionAvis()
+   {
+	  return this.transactionAvis;
+   }
+
+   public void setTransactionAvis( java.lang.String transactionAvis )
+   {
+	  this.transactionAvis = transactionAvis;
+	  transactionAvisHasBeenSet = true;
+
+   }
+
+   public boolean transactionAvisHasBeenSet(){
+	  return transactionAvisHasBeenSet;
+   }
 
    public String toString()
    {
 	  StringBuffer str = new StringBuffer("{");
 
-	  str.append("id=" + getId() + " " + "enVente=" + getEnVente() + " " + "libelle=" + getLibelle() + " " + "marque=" + getMarque() + " " + "modele=" + getModele() + " " + "prixVente=" + getPrixVente() + " " + "anneeFabrication=" + getAnneeFabrication() + " " + "description=" + getDescription() + " " + "dateLimite=" + getDateLimite() + " " + "vendeurPseudo=" + getVendeurPseudo() + " " + "vendeurMembreId=" + getVendeurMembreId() + " " + "vendeurId=" + getVendeurId() + " " + "encherisseurPseudo=" + getEncherisseurPseudo() + " " + "encherisseurMembreId=" + getEncherisseurMembreId() + " " + "encherisseurClientId=" + getEncherisseurClientId() + " " + "derniereEnchereDate=" + getDerniereEnchereDate() + " " + "derniereEnchereMontant=" + getDerniereEnchereMontant() + " " + "nbEncheres=" + getNbEncheres() + " " + "acheteurPseudo=" + getAcheteurPseudo() + " " + "acheteurId=" + getAcheteurId() + " " + "transactionDate=" + getTransactionDate() + " " + "transactionMontant=" + getTransactionMontant());
+	  str.append("id=" + getId() + " " + "enVente=" + getEnVente() + " " + "libelle=" + getLibelle() + " " + "marque=" + getMarque() + " " + "modele=" + getModele() + " " + "prixVente=" + getPrixVente() + " " + "anneeFabrication=" + getAnneeFabrication() + " " + "description=" + getDescription() + " " + "dateLimite=" + getDateLimite() + " " + "vendeurPseudo=" + getVendeurPseudo() + " " + "vendeurMembreId=" + getVendeurMembreId() + " " + "vendeurId=" + getVendeurId() + " " + "encherisseurPseudo=" + getEncherisseurPseudo() + " " + "encherisseurMembreId=" + getEncherisseurMembreId() + " " + "encherisseurClientId=" + getEncherisseurClientId() + " " + "derniereEnchereDate=" + getDerniereEnchereDate() + " " + "derniereEnchereMontant=" + getDerniereEnchereMontant() + " " + "nbEncheres=" + getNbEncheres() + " " + "acheteurPseudo=" + getAcheteurPseudo() + " " + "acheteurId=" + getAcheteurId() + " " + "acheteurMembreId=" + getAcheteurMembreId() + " " + "transactionDate=" + getTransactionDate() + " " + "transactionMontant=" + getTransactionMontant() + " " + "transactionAvis=" + getTransactionAvis());
 	  str.append('}');
 
 	  return(str.toString());
@@ -708,6 +750,14 @@ public class ArticleDTO
                  {
                         lEquals = lEquals && this.acheteurId.equals( that.acheteurId );
                  }
+                 if( this.acheteurMembreId == null )
+                 {
+                        lEquals = lEquals && ( that.acheteurMembreId == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.acheteurMembreId.equals( that.acheteurMembreId );
+                 }
                  if( this.transactionDate == null )
                  {
                         lEquals = lEquals && ( that.transactionDate == null );
@@ -723,6 +773,14 @@ public class ArticleDTO
                  else
                  {
                         lEquals = lEquals && this.transactionMontant.equals( that.transactionMontant );
+                 }
+                 if( this.transactionAvis == null )
+                 {
+                        lEquals = lEquals && ( that.transactionAvis == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.transactionAvis.equals( that.transactionAvis );
                  }
 
                  return lEquals;
@@ -999,6 +1057,18 @@ public class ArticleDTO
 
         }
 
+        if(this.acheteurMembreId != that.acheteurMembreId) {
+
+            if( this.acheteurMembreId == null || that.acheteurMembreId == null ) {
+                return false;
+            }
+
+            if(!this.acheteurMembreId.equals(that.acheteurMembreId)) {
+                return false;
+            }
+
+        }
+
         if(this.transactionDate != that.transactionDate) {
 
             if( this.transactionDate == null || that.transactionDate == null ) {
@@ -1018,6 +1088,18 @@ public class ArticleDTO
             }
 
             if(!this.transactionMontant.equals(that.transactionMontant)) {
+                return false;
+            }
+
+        }
+
+        if(this.transactionAvis != that.transactionAvis) {
+
+            if( this.transactionAvis == null || that.transactionAvis == null ) {
+                return false;
+            }
+
+            if(!this.transactionAvis.equals(that.transactionAvis)) {
                 return false;
             }
 
@@ -1079,9 +1161,13 @@ public class ArticleDTO
 
       result = 37*result + ((this.acheteurId != null) ? this.acheteurId.hashCode() : 0);
 
+      result = 37*result + ((this.acheteurMembreId != null) ? this.acheteurMembreId.hashCode() : 0);
+
       result = 37*result + ((this.transactionDate != null) ? this.transactionDate.hashCode() : 0);
 
       result = 37*result + ((this.transactionMontant != null) ? this.transactionMontant.hashCode() : 0);
+
+      result = 37*result + ((this.transactionAvis != null) ? this.transactionAvis.hashCode() : 0);
 
 	  return result;
     }
@@ -1212,12 +1298,20 @@ public class ArticleDTO
               return underlying().acheteurId;
        }
 
+       public java.lang.String getAcheteurMembreId() {
+              return underlying().acheteurMembreId;
+       }
+
        public java.util.Date getTransactionDate() {
               return underlying().transactionDate;
        }
 
        public java.lang.Double getTransactionMontant() {
               return underlying().transactionMontant;
+       }
+
+       public java.lang.String getTransactionAvis() {
+              return underlying().transactionAvis;
        }
 
         public int hashCode() {

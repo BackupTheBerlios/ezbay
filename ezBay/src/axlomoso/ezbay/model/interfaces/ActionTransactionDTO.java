@@ -30,17 +30,21 @@ public class ActionTransactionDTO
    private java.lang.Double montant;
    private boolean montantHasBeenSet = false;
 
+   private java.lang.String avis;
+   private boolean avisHasBeenSet = false;
+
    private java.lang.String primaryKey;
 
    public ActionTransactionDTO()
    {
    }
 
-   public ActionTransactionDTO( java.lang.String id,java.util.Date date,java.lang.Double montant )
+   public ActionTransactionDTO( java.lang.String id,java.util.Date date,java.lang.Double montant,java.lang.String avis )
    {
        setId(id);
        setDate(date);
        setMontant(montant);
+       setAvis(avis);
 	   primaryKey = this.getId();
    }
 
@@ -55,6 +59,8 @@ public class ActionTransactionDTO
 	  dateHasBeenSet = true;
 	  this.montant = otherValue.montant;
 	  montantHasBeenSet = true;
+	  this.avis = otherValue.avis;
+	  avisHasBeenSet = true;
 
 	  primaryKey = this.getId();
    }
@@ -118,12 +124,27 @@ public class ActionTransactionDTO
    public boolean montantHasBeenSet(){
 	  return montantHasBeenSet;
    }
+   public java.lang.String getAvis()
+   {
+	  return this.avis;
+   }
+
+   public void setAvis( java.lang.String avis )
+   {
+	  this.avis = avis;
+	  avisHasBeenSet = true;
+
+   }
+
+   public boolean avisHasBeenSet(){
+	  return avisHasBeenSet;
+   }
 
    public String toString()
    {
 	  StringBuffer str = new StringBuffer("{");
 
-	  str.append("id=" + getId() + " " + "date=" + getDate() + " " + "montant=" + getMontant());
+	  str.append("id=" + getId() + " " + "date=" + getDate() + " " + "montant=" + getMontant() + " " + "avis=" + getAvis());
 	  str.append('}');
 
 	  return(str.toString());
@@ -172,6 +193,14 @@ public class ActionTransactionDTO
                  else
                  {
                         lEquals = lEquals && this.montant.equals( that.montant );
+                 }
+                 if( this.avis == null )
+                 {
+                        lEquals = lEquals && ( that.avis == null );
+                 }
+                 else
+                 {
+                        lEquals = lEquals && this.avis.equals( that.avis );
                  }
 
                  return lEquals;
@@ -244,6 +273,18 @@ public class ActionTransactionDTO
 
         }
 
+        if(this.avis != that.avis) {
+
+            if( this.avis == null || that.avis == null ) {
+                return false;
+            }
+
+            if(!this.avis.equals(that.avis)) {
+                return false;
+            }
+
+        }
+
         return true;
 
     }
@@ -265,6 +306,8 @@ public class ActionTransactionDTO
       result = 37*result + ((this.date != null) ? this.date.hashCode() : 0);
 
       result = 37*result + ((this.montant != null) ? this.montant.hashCode() : 0);
+
+      result = 37*result + ((this.avis != null) ? this.avis.hashCode() : 0);
 
 	  return result;
     }
@@ -325,6 +368,10 @@ public class ActionTransactionDTO
 
        public java.lang.Double getMontant() {
               return underlying().montant;
+       }
+
+       public java.lang.String getAvis() {
+              return underlying().avis;
        }
 
         public int hashCode() {

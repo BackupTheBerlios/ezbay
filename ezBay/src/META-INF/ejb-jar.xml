@@ -481,11 +481,19 @@
          </cmp-field>
          <cmp-field >
             <description><![CDATA[]]></description>
+            <field-name>acheteurMembreId</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
             <field-name>transactionDate</field-name>
          </cmp-field>
          <cmp-field >
             <description><![CDATA[]]></description>
             <field-name>transactionMontant</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>transactionAvis</field-name>
          </cmp-field>
          <primkey-field>id</primkey-field>
 
@@ -614,6 +622,10 @@
          <cmp-field >
             <description><![CDATA[]]></description>
             <field-name>montant</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>avis</field-name>
          </cmp-field>
          <primkey-field>id</primkey-field>
 
