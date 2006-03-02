@@ -39,7 +39,7 @@
 		<bean:message key="vendeurArticles.articlesEnAttente.noArticle" />
 	</logic:empty>
 	<logic:notEmpty name="vendeurForm" property="articlesEnAttente">
-		<table class="body_mes_articles" cellspacing="15">
+		<table class="body_mes_articles">
 			<tr class="body_mes_articles_ligne_foncee">
 				<td>
 					<bean:message key="articleList.libelle" />
@@ -87,7 +87,7 @@
 		<bean:message key="vendeurArticles.articlesEnVente.noArticle" />
 	</logic:empty>
 	<logic:notEmpty name="vendeurForm" property="articlesEnVente">
-		<table class="body_mes_articles" cellspacing="15">
+		<table class="body_mes_articles">
 				<tr class="body_mes_articles_ligne_foncee">
 					<td>
 						<bean:message key="articleList.libelle" />
@@ -150,7 +150,7 @@
 		<bean:message key="vendeurArticles.articlesVendus.noArticle" />
 	</logic:empty>
 	<logic:notEmpty name="vendeurForm" property="articlesVendus">
-		<table class="body_mes_articles" cellspacing="15" width="500">
+		<table class="body_mes_articles">
 			<tr class="body_mes_articles_ligne_foncee">
 				<td>
 					<bean:message key="articleList.libelle" />

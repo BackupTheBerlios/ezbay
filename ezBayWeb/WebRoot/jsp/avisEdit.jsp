@@ -9,14 +9,12 @@
 	<body>
 	<center>
 		<h2><bean:message key="titre.application" /> - <bean:message key="avisEdit.titre" /></h2>
-	<br />
 		<hr width="50%;" color=" #FDF3BF" size="3" />
-	<br />
 	<html:form action="/avis">
 		<table class="body_affichage_donnees" align="center">
 			<tr>
 				<td class="intitule">
-					<bean:message key="avisEdit.vendeur" />
+					<bean:message key="avisEdit.vendeur" /> : 
 				</td>
 				<td>
 					<bean:write name="avisForm" property="articleView.vendeurPseudo" />
@@ -24,7 +22,7 @@
 			</tr>
 			<tr>
 				<td class="intitule">
-					<bean:message key="avisEdit.article" />
+					<bean:message key="avisEdit.article" /> :
 				</td>
 				<td>
 					<bean:write name="avisForm" property="articleView.libelle" />
@@ -32,7 +30,7 @@
 			</tr>
 			<tr>
 				<td class="intitule">
-					<bean:message key="avisEdit.date" />
+					<bean:message key="avisEdit.date" /> :
 				</td>
 				<td>
 					<bean:write name="avisForm" property="articleView.transactionFormattedDate" />
@@ -40,15 +38,16 @@
 			</tr>	
 			<tr>
 				<td class="intitule">
-					<bean:message key="avisEdit.montant" />
+					<bean:message key="avisEdit.montant" /> : 
 				</td>
 				<td>
 					<bean:write name="avisForm" property="articleView.transactionMontant" />&nbsp;<bean:message key="general.label.devise" />
 				</td>
 			</tr>
+			<td> </td>
 			<tr>
 				<td class="intitule">
-					<bean:message key="avisEdit.votreAvis" />
+					<bean:message key="avisEdit.votreAvis" /> :
 				</td>
 				<td>
 					<html:select property="avis">
@@ -59,13 +58,11 @@
 					</html:select>
 				</td>
 			</tr>
-			<tr>
-			<td colspan="2" align="center">
+		</table>
+		<br /><br />
 				<html:hidden property="articleId" />
 				<html:hidden property="do" value="saveAvis"/>
-				<html:submit/>
-			</td>				
-		</table>
+				<html:submit><bean:message key="link.valider" /></html:submit>
 		</html:form>
 		</center>
 	</body>

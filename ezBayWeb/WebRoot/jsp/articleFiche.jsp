@@ -26,18 +26,23 @@
 
 <body>
 	<center>
-	<h2><bean:message key="articleFiche.title" /></h2>
+		<h2>
+			<bean:message key="articleFiche.title" />
+		</h2>
 		<hr width="50%;" color=" #FDF3BF" size="3" />
 		<table class="body_affichage_donnees">
 			<tr>
 				<td class="intitule">
-					<bean:message key="articleFiche.categorie" />:
+					<bean:message key="articleFiche.categorie" />
+					:
 				</td>
 				<td>
 					<bean:write name="articleForm" property="articleView.categorieDTO.libelle" />
 				</td>
+				<td class="intitule">
+					<bean:message key="articleFiche.vendeur.fiche" /> :
+				</td>
 				<td>
-					<bean:message key="articleFiche.vendeur.fiche" />
 					<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.vendeurMembreId" paramId="membreId">
 						<bean:write name="articleForm" property="articleView.vendeurPseudo" />
 					</html:link>
@@ -122,15 +127,23 @@
 						:
 					</b>
 				</td>
-				<td>
+				<td class="descriptif">
 					<bean:write name="articleForm" property="description" />
 				</td>
 			</tr>
 		</table>
-		<hr width="50%;" color=" #FDF3BF" size="3" /><logic:equal name="articleForm" property="articleView.enVente" value="true">
-				<h2><bean:message key="articleFiche.encheres.historique" /></h2>
-			<i><bean:write name="articleForm" property="articleView.nbEncheres" />&nbsp;<bean:message key="articleFiche.encheres.libelle" /></i> 
-			<br /><br />
+		<hr width="50%;" color=" #FDF3BF" size="3" />
+		<logic:equal name="articleForm" property="articleView.enVente" value="true">
+			<h2>
+				<bean:message key="articleFiche.encheres.historique" />
+			</h2>
+			<i>
+				<bean:write name="articleForm" property="articleView.nbEncheres" />
+				&nbsp;
+				<bean:message key="articleFiche.encheres.libelle" />
+			</i>
+			<br />
+			<br />
 			<logic:notEmpty name="articleForm" property="articleView.derniereEnchereMontant">
 				<table class="body_affichage_donnees">
 					<tr>
@@ -164,7 +177,7 @@
 								<b>
 						</td>
 						<td>
-							<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.encherisseurMembreId" paramId="membreId">
+							<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.acheteurId" paramId="membreId">
 								<bean:write name="articleForm" property="articleView.encherisseurPseudo" />
 							</html:link>
 						</td>

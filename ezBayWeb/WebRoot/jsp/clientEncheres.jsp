@@ -33,13 +33,11 @@
 	<hr width="50%;" color=" #FDF3BF" size="3" />
 	<html:errors />
 
-
 	<logic:empty name="clientForm" property="articlesView">
 		<bean:message key="clientEncheres.noArticle" />
 	</logic:empty>
 	<logic:notEmpty name="clientForm" property="articlesView">
-		<table class="body_mes_articles" cellspacing="30">
-			<%-- set the header --%>
+		<table class="body_mes_articles">
 			<tr class="body_mes_articles_ligne_foncee">
 				<td>
 					<bean:message key="articleList.libelle" />
@@ -93,7 +91,6 @@
 				</tr>
 			</logic:iterate>
 		</table>
-	
 	</logic:notEmpty>
 	</center>
 </body>

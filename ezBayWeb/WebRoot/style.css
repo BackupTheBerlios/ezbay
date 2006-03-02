@@ -2,7 +2,6 @@ body
 {
 	font-family:Verdana;
 	font-weight:bold;
-	background-color:#FFFFFF;
 	font-color:black;
 	text-align :center;
 	vertical-align:middle;
@@ -19,6 +18,7 @@ table
 	font-family:Verdana;
 	font-size: 12;
 	vertical-align: middle;
+	border-spacing: 10px;
 }
 
 td.intitule
@@ -44,7 +44,8 @@ table.menu
 	background : #FDF3BF;
 	border-style: solid;
 	border-width:thin;
-	width: 160px;
+	width: 200px;
+	border-spacing: 3px;
 }
 
 tr.menu_ligne_fonce
@@ -113,6 +114,7 @@ table.body_mes_articles
 	border-style: solid;
 	border-width:thin;
 	margin: 50px;
+	width: 800px;
 }
 
 tr.body_mes_articles_ligne_foncee
@@ -129,7 +131,7 @@ table.body_recherche_article
 	border-color: #FBE468;
 	border-style: solid;
 	border-width:thin;
-	width: 600px;
+	width: 800px;
 }
 
 tr.body_recherche_article
@@ -146,9 +148,7 @@ table.body_article_edit
 	border-color: #FBE468;
 	border-style: solid;
 	border-width:thin;
-	width: 900px;
-	border-spacing: 10px;
-	
+	width: 800px;
 }
 
 table.body_affichage_donnees

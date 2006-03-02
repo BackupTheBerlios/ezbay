@@ -36,8 +36,8 @@
 			<bean:message key="clientAchats.noArticle" />
 		</logic:empty>
 		<logic:notEmpty name="clientForm" property="articlesView">
-			<table class="body_mes_articles" cellspacing="30">
-				<tr>
+			<table class="body_mes_articles">
+				<tr class="body_mes_articles_ligne_foncee">
 					<td>
 						<bean:message key="articleList.libelle" />
 					</td>

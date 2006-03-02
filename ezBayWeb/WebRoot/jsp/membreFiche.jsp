@@ -46,13 +46,63 @@
 		<hr width="50%;" color=" #FDF3BF" size="3" />
 		<logic:notEmpty name="membreForm" property="articlesViewEnVente">
 		<h2><bean:message key="membreFiche.mesArticles" /></h2>
-		<table>
+		<table class="body_recherche_article">
+			<tr class="body_recherche_article">
+				<td>
+					<bean:message key="articleList.libelle" />
+				</td>
+				<td>
+					<bean:message key="articleList.marque" />
+				</td>
+				<td>
+					<bean:message key="articleList.modele" />
+				</td>
+				<td>
+					<bean:message key="articleList.anneeFabrication" />
+				</td>
+				<td>
+					<bean:message key="articleList.prixActuel" />
+				</td>
+				<td>
+					<bean:message key="articleList.nbEncheres" />
+				</td>
+				<td>
+					<bean:message key="articleList.dateLimiteSimple" />
+				</td>
+			</tr>
 			<logic:iterate name="membreForm" property="articlesViewEnVente" id="article">
 			<tr>
-				<td colspan="2">
+				<td>
 					<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
-					<bean:write name="article" property="marque" />
+					<bean:message key="articleList.libelle" />
 					</html:link>
+				</td>
+				<td>
+					<bean:write name="article" property="marque" />
+				</td>
+				<td>
+					<bean:write name="article" property="modele" />
+				</td>
+				<td>
+					<bean:write name="article" property="anneeFabrication" />
+				</td>
+				<td>
+					<logic:empty name="article" property="derniereEnchereMontant">
+						<bean:write name="article" property="prixVente" />
+					</logic:empty>
+					<logic:notEmpty name="article" property="derniereEnchereMontant">
+						<b>
+							<bean:write name="article" property="derniereEnchereMontant" />
+							&nbsp;
+							<bean:message key="general.label.devise" />
+						</b>
+					</logic:notEmpty>
+				</td>
+				<td>
+					<bean:write name="article" property="nbEncheres" />
+				</td>
+				<td>
+					<bean:write name="article" property="formattedDateLimite" />
 				</td>
 			</tr>
 			</logic:iterate>

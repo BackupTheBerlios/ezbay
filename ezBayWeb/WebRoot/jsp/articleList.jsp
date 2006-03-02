@@ -16,12 +16,12 @@
 				<bean:message key="articleList.categorie.titre" />
 				<bean:write name="articleListForm" property="categorieDTO.libelle" />
 			</H2>
-			<hr width="50%;" color=" #FDF3BF" size="3" />
+			<hr width="50%;" color=" #FDF3BF" size="3" /><br />
 			<logic:empty name="articleListForm" property="articlesView">
 				<br /><bean:message key="articleList.noArticle" />
 			</logic:empty>
 			<logic:notEmpty name="articleListForm" property="articlesView">
-				<table class="body_recherche_article" cellspacing="15">
+				<table class="body_recherche_article">
 					<tr class="body_recherche_article">
 						<td>
 							<bean:message key="articleList.libelle" />

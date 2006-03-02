@@ -127,7 +127,7 @@
 <br /><br />
 <b><bean:message key="rechercheArticle.nbArticles" /> : <bean:write name="rechercheForm" property="nbArticles" /></b>
 	<br /><br /><br />
-	<table class="body_recherche_article" cellspacing="15">
+	<table class="body_recherche_article">
 		<tr class="body_recherche_article">
 			<td>
 				<bean:message key="articleList.libelle" />
