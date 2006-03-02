@@ -158,6 +158,9 @@
 				<td>
 					<bean:message key="vendeurArticles.articlesVendus.vente.titre" />
 				</td>
+				<td>
+					<bean:message key="vendeurArticles.articlesVendus.avis.titre" />
+				</td>				
 			</tr>
 			<logic:iterate name="vendeurForm" property="articlesVendus" id="article">
 				<tr>
@@ -173,6 +176,14 @@
 						<html:link action="/membre.do?do=showMembreFiche" paramName="article" paramProperty="acheteurMembreId" paramId="membreId">
 							<bean:write name="article" property="acheteurPseudo" /><br />
 						</html:link>
+					</td>
+					<td align="left">
+					<logic:empty name="article" property="transactionAvis">
+						<bean:message key="vendeurArticles.articlesVendus.avis.noAvis" />
+					</logic:empty>
+					<logic:notEmpty name="article" property="transactionAvis">
+						<bean:write name="article" property="transactionAvis" />
+					</logic:notEmpty>
 					</td>
 				</tr>
 			</logic:iterate>
