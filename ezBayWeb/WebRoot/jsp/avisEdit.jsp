@@ -2,23 +2,72 @@
 <%@ page language="java"%>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%> 
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"%>
- 
 <html> 
 	<head>
-		<title>JSP for avisForm form</title>
+		<title><bean:message key="titre.application" />-<bean:message key="avisEdit.titre" /></title>
 	</head>
 	<body>
-		<html:form action="/avis">
-			<bean:write name="avisForm" property="articleId"/>
-			<html:select property="avis">
-				<html:option value="tresBien"><bean:message key="clientAchats.avis.titre.tresBien" /></html:option>
-				<html:option value="bien"><bean:message key="clientAchats.avis.titre.bien" /></html:option>
-				<html:option value="passable"><bean:message key="clientAchats.avis.titre.passable" /></html:option>
-				<html:option value="mauvais"><bean:message key="clientAchats.avis.titre.mauvais" /></html:option>				
-			</html:select>
-			<html:hidden property="articleId" />
-			<html:hidden property="do" value="saveAvis"/>
-			<html:submit/>
+	<center>
+		<h2><bean:message key="titre.application" /> - <bean:message key="avisEdit.titre" /></h2>
+	<br />
+		<hr width="50%;" color=" #FDF3BF" size="3" />
+	<br />
+	<html:form action="/avis">
+		<table class="body_affichage_donnees" align="center">
+			<tr>
+				<td class="intitule">
+					<bean:message key="avisEdit.vendeur" />
+				</td>
+				<td>
+					<bean:write name="avisForm" property="articleView.vendeurPseudo" />
+				</td>
+			</tr>
+			<tr>
+				<td class="intitule">
+					<bean:message key="avisEdit.article" />
+				</td>
+				<td>
+					<bean:write name="avisForm" property="articleView.libelle" />
+				</td>
+			</tr>
+			<tr>
+				<td class="intitule">
+					<bean:message key="avisEdit.date" />
+				</td>
+				<td>
+					<bean:write name="avisForm" property="articleView.transactionFormattedDate" />
+				</td>
+			</tr>	
+			<tr>
+				<td class="intitule">
+					<bean:message key="avisEdit.montant" />
+				</td>
+				<td>
+					<bean:write name="avisForm" property="articleView.transactionMontant" />
+				</td>
+			</tr>
+			<tr>
+				<td class="intitule">
+					<bean:message key="avisEdit.votreAvis" />
+				</td>
+				<td>
+					<html:select property="avis">
+						<html:option value="tresBien"><bean:message key="clientAchats.avis.titre.tresBien" /></html:option>
+						<html:option value="bien"><bean:message key="clientAchats.avis.titre.bien" /></html:option>
+						<html:option value="passable"><bean:message key="clientAchats.avis.titre.passable" /></html:option>
+						<html:option value="mauvais"><bean:message key="clientAchats.avis.titre.mauvais" /></html:option>				
+					</html:select>
+				</td>
+			</tr>
+			<tr>
+			<td colspan="2" align="center">
+				<html:hidden property="articleId" />
+				<html:hidden property="do" value="saveAvis"/>
+				<html:submit/>
+			</td>				
+		</table>
 		</html:form>
+		</center>
 	</body>
 </html>
+

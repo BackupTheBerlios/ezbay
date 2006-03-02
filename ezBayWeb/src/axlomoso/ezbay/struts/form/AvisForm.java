@@ -9,6 +9,8 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
+import axlomoso.ezbay.struts.views.ArticleView;
+
 /** 
  * MyEclipse Struts
  * Creation date: 03-01-2006
@@ -21,31 +23,9 @@ public class AvisForm extends ActionForm {
 	// --------------------------------------------------------- Instance Variables
 	private String avis = null;
 	private String articleId = null;
+	private ArticleView articleView = new ArticleView(); 
 	// --------------------------------------------------------- Methods
 
-	/** 
-	 * Method validate
-	 * @param mapping
-	 * @param request
-	 * @return ActionErrors
-	 */
-	public ActionErrors validate(
-		ActionMapping mapping,
-		HttpServletRequest request) {
-
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/** 
-	 * Method reset
-	 * @param mapping
-	 * @param request
-	 */
-	public void reset(ActionMapping mapping, HttpServletRequest request) {
-
-		// TODO Auto-generated method stub
-	}
 
 	public String getArticleId() {
 		return articleId;
@@ -61,6 +41,14 @@ public class AvisForm extends ActionForm {
 
 	public void setAvis(String avis) {
 		this.avis = avis;
+	}
+
+	public ArticleView getArticleView() {
+		return articleView;
+	}
+
+	public void setArticleView(ArticleView articleView) {
+		this.articleView = articleView;
 	}
 
 }

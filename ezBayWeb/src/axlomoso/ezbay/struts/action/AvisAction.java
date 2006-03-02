@@ -16,6 +16,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.struts.form.AvisForm;
 import axlomoso.ezbay.struts.form.ClientForm;
 import axlomoso.ezbay.struts.views.ArticleView;
@@ -48,6 +49,16 @@ public class AvisAction extends DispatchAction {
 			AvisForm avisForm = (AvisForm) form;
 			String articleId = request.getParameter("articleId");
 			avisForm.setArticleId(articleId);
+			ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
+			ArticleDTO articleDTO;
+			try {
+				articleDTO = articleFacade.getArticle(articleId);
+				avisForm.setArticleView(articleFacade.getArticleViewFromArticleDTO(articleDTO));
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 			return mapping.findForward("showAvisForm");
 	}
 	
