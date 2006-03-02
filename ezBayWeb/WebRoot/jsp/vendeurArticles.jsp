@@ -26,10 +26,8 @@
 </head>
 
 <body>
-	<font size="+1">
-		<bean:message key="titre.application" /> - <bean:message key="vendeurArticles.titre" />
-	</font>
-	<br />
+	<h2><bean:message key="titre.application" /> - <bean:message key="vendeurArticles.titre" />
+	</h2><br />
 	<html:errors />
 	<H2>
 		<bean:message key="vendeurArticles.articlesEnAttente.titre" />

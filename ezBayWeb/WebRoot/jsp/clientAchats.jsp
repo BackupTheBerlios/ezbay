@@ -11,12 +11,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html locale="true">
 <head>
-  <title>
+	<title>
 		<bean:message key="clientAchats.titre" />
 	</title>
 	<link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
- 
-
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
@@ -26,67 +24,91 @@
 </head>
 
 <body>
-	<font size="+1">
-		<bean:message key="titre.application" /> - <bean:message key="clientAchats.titre" />
-	</font>
-	<br>
-<html:errors/>
+	<center>
+	<h2>
+		<bean:message key="titre.application" />
+		-
+		<bean:message key="clientAchats.titre" />
+	</h2>
+	<br />
+	<hr width="50%;" color=" #FDF3BF" size="3" />
+	<br />
+	<html:errors />
 
-<html:form action="client">
-<logic:empty name="clientForm" property="articlesView">
-	<bean:message key="clientAchats.noArticle" />
-</logic:empty>
-<logic:notEmpty name="clientForm" property="articlesView">	
-<table class="body_mes_articles" cellspacing="30">
-<tbody>
-<%-- set the header --%>
-<tr>
-<td><bean:message key="articleList.libelle" /></td>
-<td><bean:message key="articleList.prix" /></td>
-<td><bean:message key="clientAchats.article.date" /></td>
-<td><bean:message key="clientAchats.vendeur" /></td>
-<td><bean:message key="clientAchats.avis.titre" /></td>
-</tr>
-	<logic:iterate name="clientForm" property="articlesView" id="article">
-		<tr>
-			<%-- article informations --%>
-			<td>
-				<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id"><bean:write name="article" property="libelle" /></html:link>
-			</td>
-			<td>
-				<bean:write name="article" property="transactionMontant" /> <bean:message key="general.label.devise" />
-			</td>
-			<td>
-				<bean:write name="article" property="transactionFormattedDate" />
-			</td>
-			<td>
-				<html:link action="/membre.do?do=showMembreFiche" paramName="article" paramProperty="vendeurMembreId" paramId="membreId">
-						<bean:write name="article" property="vendeurPseudo" />
-				</html:link>
-			</td>
-			<td>
-			<logic:notEmpty name="article" property="transactionAvis">
-				<bean:write name="article" property="transactionAvis" />
-			</logic:notEmpty>
-			<logic:empty name="article" property="transactionAvis">
-				<html:select name="article" property="transactionAvis">
-					<html:option value="tresBien"><bean:message key="clientAchats.avis.titre.tresBien" /></html:option>
-					<html:option value="bien"><bean:message key="clientAchats.avis.titre.bien" /></html:option>
-					<html:option value="passable"><bean:message key="clientAchats.avis.titre.passable" /></html:option>
-					<html:option value="mauvais"><bean:message key="clientAchats.avis.titre.mauvais" /></html:option>				
-				</html:select>
-				<html:link action="/client.do?do=deposerAvis" paramName="article" paramProperty="id" paramId="articleId">
-						<td><bean:message key="clientAchats.deposerAvis.link" />
-				</html:link>
-			</logic:empty>
-			</td>
-		</tr>
-	</logic:iterate>
-	
-	</tbody>
-	</table>
-</logic:notEmpty>
-<html:hidden property="do" value="deposerAvis"/>
-</html:form>
+	<html:form action="client">
+		<logic:empty name="clientForm" property="articlesView">
+			<bean:message key="clientAchats.noArticle" />
+		</logic:empty>
+		<logic:notEmpty name="clientForm" property="articlesView">
+			<table class="body_mes_articles" cellspacing="30">
+				<tr>
+					<td>
+						<bean:message key="articleList.libelle" />
+					</td>
+					<td>
+						<bean:message key="articleList.prix" />
+					</td>
+					<td>
+						<bean:message key="clientAchats.article.date" />
+					</td>
+					<td>
+						<bean:message key="clientAchats.vendeur" />
+					</td>
+					<td>
+						<bean:message key="clientAchats.avis.titre" />
+					</td>
+				</tr>
+				<logic:iterate name="clientForm" property="articlesView" id="article">
+				<tr>
+					<%-- article informations --%>
+					<td>
+						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
+							<bean:write name="article" property="libelle" />
+						</html:link>
+					</td>
+					<td>
+						<bean:write name="article" property="transactionMontant" />
+						<bean:message key="general.label.devise" />
+					</td>
+					<td>
+						<bean:write name="article" property="transactionFormattedDate" />
+					</td>
+					<td>
+						<html:link action="/membre.do?do=showMembreFiche" paramName="article" paramProperty="vendeurMembreId" paramId="membreId">
+							<bean:write name="article" property="vendeurPseudo" />
+						</html:link>
+					</td>
+					<td>
+						<logic:notEmpty name="article" property="transactionAvis">
+							<bean:write name="article" property="transactionAvis" />
+						</logic:notEmpty>
+						<logic:empty name="article" property="transactionAvis">
+							<html:select name="article" property="transactionAvis">
+								<html:option value="tresBien">
+									<bean:message key="clientAchats.avis.titre.tresBien" />
+								</html:option>
+								<html:option value="bien">
+									<bean:message key="clientAchats.avis.titre.bien" />
+								</html:option>
+								<html:option value="passable">
+									<bean:message key="clientAchats.avis.titre.passable" />
+								</html:option>
+								<html:option value="mauvais">
+									<bean:message key="clientAchats.avis.titre.mauvais" />
+								</html:option>
+							</html:select>
+							<html:link action="/client.do?do=deposerAvis" paramName="article" paramProperty="id" paramId="articleId">
+								<td>
+									<bean:message key="clientAchats.deposerAvis.link" />
+							</html:link>
+						</logic:empty>
+					</td>
+				</tr>
+				</logic:iterate>
+			</table>
+		</logic:notEmpty>
+		<html:hidden property="do" value="deposerAvis" />
+	</html:form>
+	</center>
 </body>
 </html:html>

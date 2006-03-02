@@ -98,7 +98,7 @@ public class ArticleFacadeDelegate {
 	}
 	
 	public void deposerTransactionAvis(String articleId, String avis) throws RemoteException {
-		articleFacade.deposerTransactionAvis(articleId, avis);		
+		//articleFacade.deposerTransactionAvis(articleId, avis);		
 	} 
 	
 	

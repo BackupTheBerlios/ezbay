@@ -8,6 +8,27 @@ body
 	vertical-align:middle;
 }
 
+table
+{
+	font-family:Verdana;
+	color:#000088;
+	font-size: 12;
+	vertical-align: middle;
+}
+
+td.intitule
+{
+	font-weight:bold;
+	text-align: left;
+}
+
+// ne marche pas 
+hr.body_ligne
+{
+	color:#FDF3BF;
+	size: 60px;
+}
+
 table.menu
 {
 	font-family:Verdana;
@@ -88,4 +109,49 @@ table.body_mes_articles
 	border-color: #FBE468;
 	border-style: solid;
 	border-width:thin;
+	margin: 50px;
+}
+
+tr.body_mes_articles_ligne_foncee
+{
+	background-color:#FBE468;
+}
+
+table.body_recherche_article
+{
+	font-family:Verdana;
+	color:#000000;
+	font-weight:bold;
+	text-align :center;
+	font-size: 10;
+	border-color: #FBE468;
+	border-style: solid;
+	border-width:thin;
+	width: 900px;
+}
+
+tr.body_recherche_article
+{
+	background-color:#FBE468;
+}
+
+table.body_article_edit
+{
+	font-family:Verdana;
+	color:#000000;
+	font-weight:bold;
+	text-align :center;
+	font-size: 10;
+	border-color: #FBE468;
+	border-style: solid;
+	border-width:thin;
+	width: 900px;
+	border-spacing: 20px;
+	
+}
+
+table.body_affichage_donnees
+{
+	border-spacing: 20px;
+	
 }

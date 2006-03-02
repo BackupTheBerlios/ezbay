@@ -223,11 +223,12 @@ public class ArticleView {
 	}
 
 	public String getTransactionAvis() {
-		return articleDTO.getTransactionAvis();
+		//return articleDTO.getTransactionAvis();
+		return null;
 	}
 
 	public void setTransactionAvis(String transactionAvis) {
-		articleDTO.setTransactionAvis(transactionAvis);
+		//articleDTO.setTransactionAvis(transactionAvis);
 	}
 	
 }
