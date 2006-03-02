@@ -124,4 +124,11 @@
 		<put name="body" value="/jsp/articleEnchereEdit.jsp" />
 	</definition>
 	
+	<!-- Tiles Definition of articleEnchereEdit -->
+	<definition name="ezBay.vendeurEdit" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/vendeurEdit.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>

@@ -54,7 +54,7 @@
 			<logic:iterate name="vendeurForm" property="articlesEnAttente" id="article">
 				<tr>
 					<%-- article informations --%>
-					<td>
+					<td align="left">
 						<html:link action="article.do?do=showEdit" paramName="article" paramProperty="id" paramId="id">
 							<bean:write name="article" property="libelle" />
 						</html:link>
@@ -105,7 +105,7 @@
 				<logic:iterate name="vendeurForm" property="articlesEnVente" id="article">
 					<tr>
 						<%-- article informations --%>
-					<td>
+					<td align="left">
 						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
 							<bean:write name="article" property="libelle" />
 						</html:link>
@@ -124,7 +124,7 @@
 					<td></td><td></td><td></td>
 					</logic:empty>
 					<logic:notEmpty name="article" property="derniereEnchereMontant">
-					<td>
+					<td align="left">
 						<bean:write name="article" property="encherisseurPseudo" /><br />
 						<bean:write name="article" property="derniereEnchereFormattedDate" /><br />
 						<bean:write name="article" property="derniereEnchereMontant" />
@@ -151,7 +151,7 @@
 	</logic:empty>
 	<logic:notEmpty name="vendeurForm" property="articlesVendus">
 		<table class="body_mes_articles" cellspacing="15" width="500">
-			<tr class="body_mes_articles">
+			<tr class="body_mes_articles_ligne_foncee">
 				<td>
 					<bean:message key="articleList.libelle" />
 				</td>
