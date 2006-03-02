@@ -76,6 +76,12 @@
 		<put name="body" value="/jsp/clientAchats.jsp" />
 	</definition>
 	
+		<!-- Tiles Definition of avisEdit -->
+	<definition name="ezBay.avisEdit" extends="base.definition">
+		<put name="title" value="EzBay" />
+		<put name="body" value="/jsp/avisEdit.jsp" />
+	</definition>
+	
 	<!-- Tiles Definition of clientEncheres -->
 	<definition name="ezBay.clientEncheres" extends="base.definition">
 		<put name="title" value="EzBay" />

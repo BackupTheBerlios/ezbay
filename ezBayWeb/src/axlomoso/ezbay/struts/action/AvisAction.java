@@ -45,7 +45,6 @@ public class AvisAction extends DispatchAction {
 			ActionForm form,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("AvisSaveAction.showDeposerAvisForm()");
 			AvisForm avisForm = (AvisForm) form;
 			String articleId = request.getParameter("articleId");
 			avisForm.setArticleId(articleId);

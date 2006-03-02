@@ -1,0 +1,67 @@
+//Created by MyEclipse Struts
+// XSL source (default): platform:/plugin/com.genuitec.eclipse.cross.easystruts.eclipse_4.0.1/xslt/JavaClass.xsl
+
+package axlomoso.ezbay.struts.form;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+
+/** 
+ * MyEclipse Struts
+ * Creation date: 03-01-2006
+ * 
+ * XDoclet definition:
+ * @struts.form name="avisForm"
+ */
+public class AvisForm extends ActionForm {
+
+	// --------------------------------------------------------- Instance Variables
+	private String avis = null;
+	private String articleId = null;
+	// --------------------------------------------------------- Methods
+
+	/** 
+	 * Method validate
+	 * @param mapping
+	 * @param request
+	 * @return ActionErrors
+	 */
+	public ActionErrors validate(
+		ActionMapping mapping,
+		HttpServletRequest request) {
+
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/** 
+	 * Method reset
+	 * @param mapping
+	 * @param request
+	 */
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+
+		// TODO Auto-generated method stub
+	}
+
+	public String getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(String articleId) {
+		this.articleId = articleId;
+	}
+
+	public String getAvis() {
+		return avis;
+	}
+
+	public void setAvis(String avis) {
+		this.avis = avis;
+	}
+
+}
+

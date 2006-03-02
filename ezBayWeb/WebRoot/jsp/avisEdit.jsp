@@ -16,7 +16,6 @@
 				<html:option value="passable"><bean:message key="clientAchats.avis.titre.passable" /></html:option>
 				<html:option value="mauvais"><bean:message key="clientAchats.avis.titre.mauvais" /></html:option>				
 			</html:select>
-				
 			<html:hidden property="articleId" />
 			<html:hidden property="do" value="saveAvis"/>
 			<html:submit/>

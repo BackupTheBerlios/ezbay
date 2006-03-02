@@ -15,6 +15,8 @@
 		<form-bean name="rechercheForm" type="axlomoso.ezbay.struts.form.RechercheForm" />
     <form-bean name="enchereForm" type="axlomoso.ezbay.struts.form.EnchereForm" />
     <form-bean name="clientForm" type="axlomoso.ezbay.struts.form.ClientForm" />
+    <form-bean name="avisForm" type="axlomoso.ezbay.struts.form.AvisForm" />
+    
 
 	</form-beans>
 
@@ -155,7 +157,26 @@
       validate="false" >
       <forward name="showAchats" path="ezBay.clientAchats" />
       <forward name="showEncheres" path="ezBay.clientEncheres" />
+      
     </action>
+    
+    <action
+      attribute="avisForm"
+      name="avisForm"
+      parameter="do"
+      path="/avis"
+      scope="request"
+      type="axlomoso.ezbay.struts.action.AvisAction"
+      validate="false" >
+      <forward name="showAvisForm" path="ezBay.avisEdit" />
+      <forward
+      name="showAchats"
+      path="client.do?do=showMyAchats"
+      redirect="true" />
+    </action>
+
+
+    
 
 
     
