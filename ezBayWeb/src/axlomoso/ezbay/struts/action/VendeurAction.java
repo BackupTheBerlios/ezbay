@@ -69,7 +69,6 @@ public class VendeurAction extends DispatchAction {
 	 */
 	private void setVendeurForm(ActionForm form, HttpServletRequest request) throws Exception {
 		VendeurForm vendeurForm = (VendeurForm) form;
-		double dGlobal = System.currentTimeMillis();
 		MembreFacadeDelegate membreDelegate = MembreFacadeDelegate.getInstance();
 		VendeurFacadeDelegate vendeurDelegate = VendeurFacadeDelegate.getInstance();
 		try {
@@ -79,9 +78,11 @@ public class VendeurAction extends DispatchAction {
 				vendeurDTO = new VendeurDTO();
 			}
 			vendeurForm.setVendeurDTO(vendeurDTO);
-			vendeurForm.setArticlesEnAttente(vendeurDelegate.getArticlesEnAttente(vendeurDTO.getId()));
-			vendeurForm.setArticlesEnVente(vendeurDelegate.getArticlesEnVente(vendeurDTO.getId()));
-			vendeurForm.setArticlesVendus(vendeurDelegate.getArticlesVendus(vendeurDTO.getId()));
+			if( vendeurDTO.getId() != null){
+				vendeurForm.setArticlesEnAttente(vendeurDelegate.getArticlesEnAttente(vendeurDTO.getId()));
+				vendeurForm.setArticlesEnVente(vendeurDelegate.getArticlesEnVente(vendeurDTO.getId()));
+				vendeurForm.setArticlesVendus(vendeurDelegate.getArticlesVendus(vendeurDTO.getId()));
+			}
 		} catch (RemoteException e) {
 		e.printStackTrace();
 		} catch (Exception e) {

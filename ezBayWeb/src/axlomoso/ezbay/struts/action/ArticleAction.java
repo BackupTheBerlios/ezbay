@@ -229,7 +229,6 @@ public class ArticleAction extends DispatchAction {
 		if( (articleId != null) && (articleId.length() > 0) ){
 			articleDTO = articleFacade.getArticle(articleId);
 		}
-		CategorieFacadeDelegate categorieFacade = CategorieFacadeDelegate.getInstance();
 		articleForm.setArticleView(articleFacade.getArticleViewFromArticleDTO(articleDTO));
 	}	
 	

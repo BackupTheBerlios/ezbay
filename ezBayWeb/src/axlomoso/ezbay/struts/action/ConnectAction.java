@@ -31,6 +31,7 @@ import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.MembreFacade;
 import axlomoso.ezbay.model.interfaces.MembreFacadeHome;
+import axlomoso.ezbay.model.interfaces.VendeurDTO;
 /** 
  * MyEclipse Struts
  * Creation date: 02-12-2006
@@ -73,7 +74,12 @@ public class ConnectAction extends DispatchAction {
 				}
 				else{
 					request.getSession().setAttribute("membre",membreDTO);
-					request.getSession().setAttribute("vendeurId",membreDelegate.getVendeurDTOByMembreId(membreDTO.getId()).getId());
+					VendeurDTO vendeurDTO = membreDelegate.getVendeurDTOByMembreId(membreDTO.getId());
+					String vendeurId = null;
+					if( vendeurDTO != null ){
+						vendeurId = vendeurDTO.getId();
+					}
+					request.getSession().setAttribute("vendeurId", vendeurId);
 					if( nextPath != null ){
 						next = new ActionForward(nextPath);
 					}
