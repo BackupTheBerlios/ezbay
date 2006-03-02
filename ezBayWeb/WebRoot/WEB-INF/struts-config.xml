@@ -68,7 +68,7 @@
 			<forward name="succes" path="/myEzBay.do?do=showMyEzBay" />
 			<forward name="echec" path="monEzBay.connect" />
 		</action>
-		<action attribute="myEzBayForm" input="/jsp/menu.jsp" name="myEzBayForm" parameter="do" path="/myEzBay" scope="request" type="axlomoso.ezbay.struts.action.MyEzBayAction">
+		<action attribute="myEzBayForm" input="page.welcome" name="myEzBayForm" parameter="do" path="/myEzBay" scope="request" type="axlomoso.ezbay.struts.action.MyEzBayAction">
 			<forward name="showMyEzBay" path="page.welcome" />
 			<forward name="showConnectForm" path="monEzBay.connect" />
 			<forward
@@ -90,7 +90,7 @@
         redirect="true" />
     </action>
 		
-			<action attribute="vendeurForm" input="/jsp/vendeurEdit.jsp" name="vendeurForm" path="/vendeurSave" scope="request" type="axlomoso.ezbay.struts.action.VendeurSaveAction" validate="true">
+			<action attribute="vendeurForm" input="ezBay.vendeurEdit" name="vendeurForm" path="/vendeurSave" scope="request" type="axlomoso.ezbay.struts.action.VendeurSaveAction" validate="true">
 			<forward name="succes" path="/vendeur.do?do=showInformations" redirect="true" />
 		</action>
 
