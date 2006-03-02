@@ -33,24 +33,31 @@
 		
 		<table class="body_affichage_donnees">
 			<tr>
-				<td>
+				<td class="intitule">
 					<bean:message key="membreFiche.pseudo" /> : 
 				</td>
 				<td>
 					<bean:write name="membreForm" property="pseudo" />
 				</td>
 			</tr>
-			<tr>
-				<td><br /><br /></td>
-			</tr>
+		</table>
+		<br /><br />
+		
+		<hr width="50%;" color=" #FDF3BF" size="3" />
+		<logic:notEmpty name="membreForm" property="articlesViewEnVente">
+		<h2><bean:message key="membreFiche.mesArticles" /></h2>
+		<table>
 			<logic:iterate name="membreForm" property="articlesViewEnVente" id="article">
-				<tr>
-					<td colspan="2">
-						<bean:write name="article" property="marque" />
-					</td>
-				</tr>
+			<tr>
+				<td colspan="2">
+					<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
+					<bean:write name="article" property="marque" />
+					</html:link>
+				</td>
+			</tr>
 			</logic:iterate>
 		</table>
+		</logic:notEmpty>
 	</center>
 </body>
 </html>

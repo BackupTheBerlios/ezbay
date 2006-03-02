@@ -40,7 +40,7 @@
 	<logic:notEmpty name="clientForm" property="articlesView">
 		<table class="body_mes_articles" cellspacing="30">
 			<%-- set the header --%>
-			<tr>
+			<tr class="body_mes_articles_ligne_foncee">
 				<td>
 					<bean:message key="articleList.libelle" />
 				</td>

@@ -3,15 +3,20 @@ body
 	font-family:Verdana;
 	font-weight:bold;
 	background-color:#FFFFFF;
-	color:black;
+	font-color:black;
 	text-align :center;
 	vertical-align:middle;
 }
 
+h2
+{
+	color:#000088;
+}
+
+
 table
 {
 	font-family:Verdana;
-	color:#000088;
 	font-size: 12;
 	vertical-align: middle;
 }
@@ -32,7 +37,6 @@ hr.body_ligne
 table.menu
 {
 	font-family:Verdana;
-	color:#000088;
 	font-weight:bold;
 	text-align :left;
 	font-size: 12;
@@ -102,7 +106,6 @@ a:hover
 table.body_mes_articles
 {
 	font-family:Verdana;
-	color:#000000;
 	font-weight:bold;
 	text-align :center;
 	font-size: 10;
@@ -120,14 +123,13 @@ tr.body_mes_articles_ligne_foncee
 table.body_recherche_article
 {
 	font-family:Verdana;
-	color:#000000;
 	font-weight:bold;
 	text-align :center;
 	font-size: 10;
 	border-color: #FBE468;
 	border-style: solid;
 	border-width:thin;
-	width: 900px;
+	width: 800px;
 }
 
 tr.body_recherche_article
@@ -138,20 +140,19 @@ tr.body_recherche_article
 table.body_article_edit
 {
 	font-family:Verdana;
-	color:#000000;
 	font-weight:bold;
-	text-align :center;
+	text-align :left;
 	font-size: 10;
 	border-color: #FBE468;
 	border-style: solid;
 	border-width:thin;
 	width: 900px;
-	border-spacing: 20px;
+	border-spacing: 10px;
 	
 }
 
 table.body_affichage_donnees
 {
-	border-spacing: 20px;
+	border-spacing: 10px;
 	
 }

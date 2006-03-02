@@ -9,14 +9,12 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html:html locale="true">
+<html>
 <head>
 	<title>
 		<bean:message key="vendeurArticles.titre" />
 	</title>
 	<link rel="stylesheet" href="<html:rewrite page="/style.css"/>" type="text/css">
-
-
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
@@ -29,10 +27,8 @@
 	<center>
 	<h2><bean:message key="titre.application" /> - <bean:message key="vendeurArticles.titre" />
 	</h2>
-	<br />
 		<hr width="50%;" color=" #FDF3BF" size="3" />
-	<br /><br /><br />
-	
+	<br />	
 	</center>
 	
 	<html:errors />
@@ -54,7 +50,6 @@
 				<td>
 					<bean:message key="articleList.dateLimiteSimple" />
 				</td>
-				
 			</tr>
 			<logic:iterate name="vendeurForm" property="articlesEnAttente" id="article">
 				<tr>
@@ -85,7 +80,6 @@
 			</logic:iterate>
 		</table>
 	</logic:notEmpty>
-	<br />
 	<h2>
 		<bean:message key="vendeurArticles.articlesEnVente.titre" />
 	</h2>
@@ -107,16 +101,6 @@
 					<td>
 						<bean:message key="articleList.nbEncheres" />
 					</td>
-					<td>
-						<bean:message key="articleList.derniereEnchere.encherriseur.nom" />
-					</td>
-					<td>
-						<bean:message key="articleList.derniereEnchere.date" />
-					</td>
-					<td>
-						<bean:message key="articleList.derniereEnchere.titre" />
-					</td>
-					
 				</tr>
 				<logic:iterate name="vendeurForm" property="articlesEnVente" id="article">
 					<tr>
@@ -141,11 +125,8 @@
 					</logic:empty>
 					<logic:notEmpty name="article" property="derniereEnchereMontant">
 					<td>
-						<bean:write name="article" property="encherisseurPseudo" />
-					</td>
-					<td>
-						<bean:write name="article" property="derniereEnchereFormattedDate" />
-					<td>
+						<bean:write name="article" property="encherisseurPseudo" /><br />
+						<bean:write name="article" property="derniereEnchereFormattedDate" /><br />
 						<bean:write name="article" property="derniereEnchereMontant" />
 						<bean:message key="general.label.devise" />
 					</td>
@@ -161,7 +142,6 @@
 			</logic:iterate>
 		</table>
 	</logic:notEmpty>
-	<br />
 	<h2>
 		<bean:message key="vendeurArticles.articlesVendus.titre" />
 	</h2>
@@ -171,7 +151,7 @@
 	</logic:empty>
 	<logic:notEmpty name="vendeurForm" property="articlesVendus">
 		<table class="body_mes_articles" cellspacing="15" width="500">
-			<tr class="body_mes_articles" cellspacing="15">
+			<tr class="body_mes_articles">
 				<td>
 					<bean:message key="articleList.libelle" />
 				</td>
@@ -198,6 +178,5 @@
 			</logic:iterate>
 		</table>
 	</logic:notEmpty>
-	<br />
 </body>
-</html:html>
+</html>

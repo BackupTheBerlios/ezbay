@@ -25,6 +25,8 @@
 <body>
 	<center>
 		<h2>
+			<bean:message key="titre.application" />
+			-
 			<bean:message key="membre.titre.infos" />
 		</h2>
 		<hr width="50%;" color=" #FDF3BF" size="3" />
