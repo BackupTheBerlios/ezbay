@@ -175,19 +175,19 @@
 				<td>
 					<bean:message key="articleList.libelle" />
 				</td>
-				<td align="left">
+				<td>
 					<bean:message key="vendeurArticles.articlesVendus.vente.titre" />
 				</td>
 			</tr>
 			<logic:iterate name="vendeurForm" property="articlesVendus" id="article">
 				<tr>
 					<%-- article informations --%>
-					<td>
+					<td align="left">
 						<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
 							<bean:write name="article" property="libelle" />
 						</html:link>
 					</td>
-					<td>
+					<td align="left">
 						<bean:write name="article" property="transactionFormattedDate" /><br />
 						<bean:write name="article" property="transactionMontant" /><br />
 						<html:link action="/membre.do?do=showMembreFiche" paramName="article" paramProperty="acheteurMembreId" paramId="membreId">

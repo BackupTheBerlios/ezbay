@@ -43,7 +43,7 @@
 					<bean:message key="avisEdit.montant" />
 				</td>
 				<td>
-					<bean:write name="avisForm" property="articleView.transactionMontant" />
+					<bean:write name="avisForm" property="articleView.transactionMontant" />&nbsp;<bean:message key="general.label.devise" />
 				</td>
 			</tr>
 			<tr>
