@@ -124,7 +124,9 @@ public class ArticleFacadeDelegate {
 		ArticleView articleView = new ArticleView();
 		CategorieDTO categorieDTO = new CategorieDTO();
 		articleView.setArticleDTO(articleDTO);
-		articleView.setCategorieDTO(this.getCategorieDTO(articleDTO.getId()));
+		if(articleDTO.getId() != null){
+			articleView.setCategorieDTO(this.getCategorieDTO(articleDTO.getId()));
+		}
 		return articleView;
 	}
  
