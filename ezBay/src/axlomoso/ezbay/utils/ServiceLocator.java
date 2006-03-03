@@ -41,8 +41,7 @@ public class ServiceLocator {
       try {
         me = new ServiceLocator();
       } catch(ServiceLocatorException se) {
-        System.err.println(se);
-        se.printStackTrace(System.err);
+    	  System.out.println(se.getMessage());
       }
     }
 

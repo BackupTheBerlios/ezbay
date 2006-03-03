@@ -75,9 +75,9 @@ public class ArticleFacadeBean implements SessionBean {
 			ActionTransactionFacadeLocalHome actionTransactionFacadeLocalHome = (ActionTransactionFacadeLocalHome) locator.getLocalHome(ActionTransactionFacadeLocalHome.JNDI_NAME);
 			actionTransactionFacade = (ActionTransactionFacadeLocal) actionTransactionFacadeLocalHome.create();
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 	}
 
@@ -150,13 +150,13 @@ public class ArticleFacadeBean implements SessionBean {
 				articleLocal.setAcheteurMembreId(membreDTO.getId());
 			}
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 	}
 	
@@ -176,11 +176,11 @@ public class ArticleFacadeBean implements SessionBean {
 			//Info redondante
 			articleLocal.setTransactionAvis(avis);
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 	}
 	
@@ -410,7 +410,7 @@ public class ArticleFacadeBean implements SessionBean {
 				tRes.add(articleDTO);
 			}
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}
@@ -428,7 +428,7 @@ public class ArticleFacadeBean implements SessionBean {
 				tRes.add(articleDTO);
 			}
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}
@@ -446,11 +446,11 @@ public class ArticleFacadeBean implements SessionBean {
 				tRes.add(articleDTO);
 			}
 		} catch (NamingException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}	
 		return tRes;
 	}
@@ -527,7 +527,7 @@ public class ArticleFacadeBean implements SessionBean {
 			return ( getEntity(articleId).getActionEnchereLocal().size() > 0 );
 		}
 		catch (FinderException e) {
-		e.printStackTrace();
+		System.out.println(e.getMessage()); 
 		}
 		return tRes;		
 	}
@@ -547,7 +547,7 @@ public class ArticleFacadeBean implements SessionBean {
 			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleDTO.getId());
 			tRes = (articleLocal.getActionTransactionLocal() != null);
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}
@@ -568,7 +568,7 @@ public class ArticleFacadeBean implements SessionBean {
 			return ( getEntity(articleDTO.getId()).getActionEnchereLocal().size() > 0 );
 		}
 		catch (FinderException e) {
-		e.printStackTrace();
+		System.out.println(e.getMessage()); 
 		}
 		return tRes;		
 	}
@@ -585,7 +585,7 @@ public class ArticleFacadeBean implements SessionBean {
 			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleDTO.getId());
 			tRes = (articleLocal.getActionTransactionLocal() != null);
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}
@@ -612,11 +612,11 @@ public class ArticleFacadeBean implements SessionBean {
 				articleLocal.setNbEncheres( new Integer(articleLocal.getNbEncheres().intValue() + 1) );
 			}
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}
@@ -680,7 +680,7 @@ public class ArticleFacadeBean implements SessionBean {
 			home = (ArticleLocalHome) locator
 					.getLocalHome(ArticleLocalHome.JNDI_NAME);
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return home;
 	}
@@ -694,9 +694,9 @@ public class ArticleFacadeBean implements SessionBean {
 				TimerFinVenteLocalHome timerHome = (TimerFinVenteLocalHome) locator.getLocalHome(TimerFinVenteLocalHome.JNDI_NAME);
 				timerFinVente = (TimerFinVenteLocal) timerHome.create();
 				} catch (ServiceLocatorException e) {
-					e.printStackTrace();
+					System.out.println(e.getMessage()); 
 				} catch (CreateException e) {
-					e.printStackTrace();
+					System.out.println(e.getMessage()); 
 				}
 				return timerFinVente;
 		}
@@ -711,10 +711,10 @@ public class ArticleFacadeBean implements SessionBean {
 			long dateExpir=dateLimite-dateSystem;		
 			timer.initializeTimer(dateExpir,articleId);
 		} catch (RemoteException e) {			
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		
 		} catch (Exception e) {			
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 	}
 	

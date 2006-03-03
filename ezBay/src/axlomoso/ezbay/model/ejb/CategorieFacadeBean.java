@@ -156,7 +156,7 @@ public class CategorieFacadeBean implements SessionBean {
 	        ServiceLocator locator = ServiceLocator.getInstance();
 			home = (CategorieLocalHome) locator.getLocalHome(CategorieLocalHome.JNDI_NAME);
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
         return home;
     }
@@ -176,7 +176,7 @@ public class CategorieFacadeBean implements SessionBean {
 				tRes.add(categorieLocal.getCategorieDTO());
 		    }			
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}

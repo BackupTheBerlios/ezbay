@@ -125,7 +125,7 @@ public class MembreFacadeBean implements SessionBean {
 		try {
 			return getEntity(membreId).getMembreDTO();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 			throw new Exception("Cannot get membre", e);
 		}
 	}
@@ -151,7 +151,7 @@ public class MembreFacadeBean implements SessionBean {
 						//throw new FinderException("Mauvais mot de passe !! ");
 				}
 			} catch (FinderException e) {
-				e.printStackTrace();
+				System.out.println(e.getMessage()); 
 				//throw new FinderException("Membre n'existe pas " + e.getMessage());
 			}
 			return tRes;
@@ -188,7 +188,7 @@ public class MembreFacadeBean implements SessionBean {
 			if( vendeur != null)
 				tRes = vendeur.getVendeurDTO();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}	
 		return tRes;
 	}
@@ -205,7 +205,7 @@ public class MembreFacadeBean implements SessionBean {
 			if( vendeur != null)
 				tRes = vendeur.getClientDTO();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}	
 		return tRes;
 	}
@@ -299,7 +299,7 @@ public class MembreFacadeBean implements SessionBean {
 	        ServiceLocator locator = ServiceLocator.getInstance();
 			home = (MembreLocalHome) locator.getLocalHome(MembreLocalHome.JNDI_NAME);
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
         return home;
     }	

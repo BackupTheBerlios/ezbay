@@ -60,9 +60,9 @@ public class ClientFacadeBean implements SessionBean {
 			articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
 			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 	}
 
@@ -111,7 +111,7 @@ public class ClientFacadeBean implements SessionBean {
 				tRes.add(articleLocal.getArticleDTO());
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}	
@@ -132,7 +132,7 @@ public class ClientFacadeBean implements SessionBean {
 				tRes.add(articleLocal.getArticleDTO());
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}	
@@ -188,7 +188,7 @@ public class ClientFacadeBean implements SessionBean {
 	        ServiceLocator locator = ServiceLocator.getInstance();
 			home = (ClientLocalHome) locator.getLocalHome(ClientLocalHome.JNDI_NAME);
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
         return home;
     }	

@@ -111,9 +111,9 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
 			articleFacade.terminerVente(timer.getInfo().toString());
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 	}
 	

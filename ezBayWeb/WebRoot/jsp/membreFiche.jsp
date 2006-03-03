@@ -103,6 +103,11 @@
 				</td>
 			</tr>
 			</logic:iterate>
+			<tr>
+				<td></td>
+			</tr>
+			
+			
 		</table>
 		<br />
 		<html:link href="javascript:history.back()">

@@ -93,7 +93,7 @@ public class ActionTransactionFacadeBean implements SessionBean {
 			transactionLocal.setClientLocal(clientLocal);
 			tRes = transactionLocal.getActionTransactionDTO();
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 			throw e;
 		}
 		return tRes;
@@ -147,7 +147,7 @@ public class ActionTransactionFacadeBean implements SessionBean {
 			ActionTransactionLocal transactionLocal = getEntity(transactionId);
 			transactionLocal.setAvis(avis);
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 	}
 	
@@ -175,7 +175,7 @@ public class ActionTransactionFacadeBean implements SessionBean {
 			home = (ActionTransactionLocalHome) locator
 					.getLocalHome(ActionTransactionLocalHome.JNDI_NAME);
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return home;
 	}

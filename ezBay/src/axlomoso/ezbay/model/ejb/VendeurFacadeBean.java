@@ -74,9 +74,9 @@ public class VendeurFacadeBean implements SessionBean {
 			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
 			home = getEntityHome();
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 	}
 
@@ -202,7 +202,7 @@ public class VendeurFacadeBean implements SessionBean {
 				tRes.add(vendeurLocal.getVendeurDTO());
 		    }			
 		}catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}
@@ -246,10 +246,10 @@ public class VendeurFacadeBean implements SessionBean {
 		} catch (FinderException e) {
 			throw new VendeurInconnuException("Le vendeur " + vendeurId + " n'existe pas !");
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 			throw e;
 		} catch (EJBException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 			throw e;
 		}
 		return tRes;		
@@ -271,7 +271,7 @@ public class VendeurFacadeBean implements SessionBean {
 			try {
 				articleFacade.removeArticle(articleId);
 			} catch (Exception e) {				
-				e.printStackTrace();
+				System.out.println(e.getMessage()); 
 			}
 		}
 	}
@@ -299,7 +299,7 @@ public class VendeurFacadeBean implements SessionBean {
 			try {
 				articleFacade.retirerArticle(articleId);
 			} catch (Exception e) {				
-				e.printStackTrace();
+				System.out.println(e.getMessage()); 
 			}
 		}
 	}
@@ -319,7 +319,7 @@ public class VendeurFacadeBean implements SessionBean {
 			try {
 				articleFacade.mettreEnVenteArticle(articleId);
 			} catch (Exception e) {				
-				e.printStackTrace();
+				System.out.println(e.getMessage()); 
 			}
 		}
 	}
@@ -342,7 +342,7 @@ public class VendeurFacadeBean implements SessionBean {
 	        ServiceLocator locator = ServiceLocator.getInstance();
 			home = (VendeurLocalHome) locator.getLocalHome(VendeurLocalHome.JNDI_NAME);
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
      return home;
  }		
@@ -360,10 +360,10 @@ public class VendeurFacadeBean implements SessionBean {
 				}
 		    }		
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;		
 	}

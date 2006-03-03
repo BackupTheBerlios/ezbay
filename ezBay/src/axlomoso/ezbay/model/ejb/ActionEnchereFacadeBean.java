@@ -97,7 +97,7 @@ public class ActionEnchereFacadeBean implements SessionBean {
 			enchereLocal = home.create(enchereDTO, articleLocal, clientLocal);
 			tRes = enchereLocal.getActionEnchereDTO();
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 			throw e;
 		}
 		return tRes;
@@ -113,11 +113,11 @@ public class ActionEnchereFacadeBean implements SessionBean {
 			ActionEnchereLocal enchereLocal = getEntity(enchereId);
 			enchereLocal.remove();
 		} catch (FinderException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (EJBException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		} catch (RemoveException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 	}	
 
@@ -137,7 +137,7 @@ public class ActionEnchereFacadeBean implements SessionBean {
 				tRes.add(actionEnchereLocal.getActionEnchereDTO());
 			}
 		} catch (FinderException e) {
-			//e.printStackTrace();
+			//System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}
@@ -154,7 +154,7 @@ public class ActionEnchereFacadeBean implements SessionBean {
 			tRes = enchereLocal.getClientLocal().getClientDTO();
 		} catch (FinderException e) {
 			//System.out.println("ActionEnchereFacadeBean.getEncherisseur(). Cannot get client.");
-			//e.printStackTrace();
+			//System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}	
@@ -182,7 +182,7 @@ public class ActionEnchereFacadeBean implements SessionBean {
 			home = (ActionEnchereLocalHome) locator
 					.getLocalHome(ActionEnchereLocalHome.JNDI_NAME);
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage()); 
 		}
 		return home;
 	}
