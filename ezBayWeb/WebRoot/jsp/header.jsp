@@ -36,7 +36,7 @@
 			<html:link action="/categorie.do?do=showCategories" styleClass="header">
 				<bean:message key="link.categories" />
 			</html:link>
-		</td>
+		</td>		
 		<td align="center">
 			<logic:present name="membre" property="id" scope="session">
 			<html:link action="/myEzBay.do?do=deconnect" styleClass="header">
