@@ -360,7 +360,7 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param vendeurId
 	 */
 	public Collection getArticlesEnVenteByVendeur(String vendeurId) {
@@ -369,7 +369,7 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param vendeurId
 	 */
 	public Collection getArticlesEnAttenteByVendeur(String vendeurId) {
@@ -378,7 +378,7 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param vendeurId
 	 */
 	public Collection getArticlesVendusByVendeur(String vendeurId) {

@@ -202,7 +202,19 @@ public class ArticleFacadeTest extends TestCase {
 		}
 	}
 	
-	
+	public void testGetArticlesEnVenteByCategorie() {
+		try {
+			//récupération de id de la categorie creee 
+			String idCategorie=categorieDTO.getId();
+			Collection articles=articleFacade.getArticlesEnVenteByCategorie(idCategorie);
+			//la collection doit contenir 2 articles
+			assertTrue(articles.size()==2);
+		} catch (RemoteException e) {			
+			e.printStackTrace();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+	}
 	
 	
 	
@@ -296,44 +308,11 @@ public class ArticleFacadeTest extends TestCase {
 			
 		} catch (RemoteException e) {			
 			e.printStackTrace();
-		} catch (ArticleProprietaireException e) {
-			// TODO Auto-generated catch block
+		} catch (ArticleProprietaireException e) {			
 			e.printStackTrace();
 		}
 		
 	}
-	
-	/*
-	// ne marche pas
-	public Collection getArticlesEnVenteByVendeur(String vendeurId) throws RemoteException, Exception {
-		return this.getArticlesDtoToView(articleFacade.getArticlesEnVenteByVendeur(vendeurId));
-	}
-	*/
-	
-	/*public void testGetArticlesEnVenteByVendeur() throws RemoteException {
-	 *
-		Collection articlesDTO = articleFacade.getArticlesByVendeur(articleLocal.getVendeurLocal().getId());
-		for (Iterator it = articlesDTO.iterator(); it.hasNext(); ) {
-			ArticleDTO articleDTO = (ArticleDTO) it.next();
-			assertEquals(articleDTOTemoin.getLibelle(),articleDTO.getLibelle());
-		}
-	}*/
-	
-	// ne marche pas
-	/*
-	public Collection getArticlesEnVenteByCategorie(String categorieId) throws RemoteException, Exception {
-		return this.getArticlesDtoToView(articleFacade.getArticlesEnVenteByCategorie(categorieId));
-	}
-	public void testGetArticlesByCategorie() throws RemoteException {
-		Collection articlesDTO = articleFacade.getArticlesByCategorie(articleLocal.getCategorieLocal().getId());
-		for (Iterator it = articlesDTO.iterator(); it.hasNext(); ) {
-			ArticleDTO articleDTO = (ArticleDTO) it.next();
-			assertEquals(articleDTOTemoin.getLibelle(),articleDTO.getLibelle());
-		}
-	}*/
-	
-	
-	
 	
 	
 	
@@ -357,44 +336,25 @@ public class ArticleFacadeTest extends TestCase {
 	
 	
 /*
-		public void terminerVente(String articleId){
-		public void deposerTransactionAvis(String articleId, String avis){
+ 	public void terminerVente(String articleId)
+
+	public void deposerTransactionAvis(String articleId, String avis)	
+
+	public Collection rechercherArticlesEnVente(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,Double prixVenteMax, Integer anneeFabrication, Date dateLimite)
+ 
+ 	public ActionEnchereDTO getDerniereEnchere(String articleId)
 		
+	public Integer getNbEncheres(String articleId)
 	
-	
+	public ClientDTO getAcquereur(String articleId) 
 		
-		public void retirerArticle(String articleId) throws Exception {
+	public ActionTransactionDTO getTransaction(String articleId) 
+	
+	public ClientDTO getDernierEncherisseur(String articleId)
 		
-	public void mettreEnVenteArticle(String articleId) throws Exception {	
+	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws ArticlePasEnVenteException
 	
-	
-		public Collection rechercherArticlesEnVente(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,
-			Double prixVenteMax, Integer anneeFabrication, Date dateLimite) {
-		
-	public Collection getArticlesEnVenteByVendeur(String vendeurId) {
-		
-	public Collection getArticlesEnAttenteByVendeur(String vendeurId) {
-		
-	public Collection getArticlesVendusByVendeur(String vendeurId) {
-		
-	public Collection getArticlesEnVenteByCategorie(String categorieId) {
-	
-	
-	
-	
-	public ActionEnchereDTO getDerniereEnchere(String articleId){
-		
-	public Integer getNbEncheres(String articleId){
-	
-	public ClientDTO getAcquereur(String articleId) {
-		
-	public ActionTransactionDTO getTransaction(String articleId) {
-	
-	public ClientDTO getDernierEncherisseur(String articleId){
-		
-		public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws ArticlePasEnVenteException{
-	
-	*/
+*/
 
 	
 	

@@ -29,15 +29,6 @@ public interface ArticleFacade
    public java.util.Collection rechercherArticlesEnVente( java.lang.String libcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVenteMin,java.lang.Double prixVenteMax,java.lang.Integer anneeFabrication,java.util.Date dateLimite )
       throws java.rmi.RemoteException;
 
-   public java.util.Collection getArticlesEnVenteByVendeur( java.lang.String vendeurId )
-      throws java.rmi.RemoteException;
-
-   public java.util.Collection getArticlesEnAttenteByVendeur( java.lang.String vendeurId )
-      throws java.rmi.RemoteException;
-
-   public java.util.Collection getArticlesVendusByVendeur( java.lang.String vendeurId )
-      throws java.rmi.RemoteException;
-
    public java.util.Collection getArticlesEnVenteByCategorie( java.lang.String categorieId )
       throws java.rmi.RemoteException;
 
