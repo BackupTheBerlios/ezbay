@@ -312,12 +312,12 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 * @param articleId
 	 */
-	public ArticleDTO getArticle(String articleId) throws Exception {
+	public ArticleDTO getArticle(String articleId) throws FinderException {
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
 			return articleLocal.getArticleDTO();
-		} catch (Exception e) {
-			throw new Exception("Cannot get article", e);
+		} catch (FinderException e) {
+			throw new FinderException("Cannot get article" + e.getMessage());
 		}
 	}
 
@@ -710,9 +710,6 @@ public class ArticleFacadeBean implements SessionBean {
 			dateLimite = this.getArticle(articleId).getDateLimite().getTime();		
 			long dateExpir=dateLimite-dateSystem;		
 			timer.initializeTimer(dateExpir,articleId);
-		} catch (RemoteException e) {			
-			System.out.println(e.getMessage()); 
-		
 		} catch (Exception e) {			
 			System.out.println(e.getMessage()); 
 		}

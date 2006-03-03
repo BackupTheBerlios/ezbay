@@ -18,7 +18,7 @@ public interface ArticleFacade
       throws java.rmi.RemoteException;
 
    public axlomoso.ezbay.model.interfaces.ArticleDTO getArticle( java.lang.String articleId )
-      throws java.lang.Exception, java.rmi.RemoteException;
+      throws javax.ejb.FinderException, java.rmi.RemoteException;
 
    public axlomoso.ezbay.model.interfaces.VendeurDTO getVendeurDTO( java.lang.String articleId )
       throws java.lang.Exception, java.rmi.RemoteException;

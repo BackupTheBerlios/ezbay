@@ -214,9 +214,12 @@ public class VendeurFacadeTest extends TestCase {
 	}
 	
 	
-	public boolean equalsDTO(VendeurDTO vendeurDTO1, VendeurDTO vendeurDTO2){
+	public static boolean equalsDTO(VendeurDTO vendeurDTO1, VendeurDTO vendeurDTO2){
 		boolean tRes = true;
 		tRes = tRes && ( (vendeurDTO1.getId()).equals(vendeurDTO2.getId()) );
+		tRes = tRes && ( (vendeurDTO1.getCodeSecuCB()).equals(vendeurDTO2.getCodeSecuCB()) );
+		tRes = tRes && ( (vendeurDTO1.getNomProprioCB()).equals(vendeurDTO2.getNomProprioCB()) );
+		tRes = tRes && ( (vendeurDTO1.getNumCB()).equals(vendeurDTO2.getNumCB()) );		
 		return tRes;
 	}
 	

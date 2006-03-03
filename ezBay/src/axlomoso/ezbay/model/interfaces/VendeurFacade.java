@@ -14,9 +14,6 @@ public interface VendeurFacade
    extends javax.ejb.EJBObject
 {
 
-   public axlomoso.ezbay.model.interfaces.VendeurDTO saveVendeur( axlomoso.ezbay.model.interfaces.VendeurDTO vendeurDTO )
-      throws java.lang.Exception, java.rmi.RemoteException;
-
    public axlomoso.ezbay.model.interfaces.VendeurDTO getVendeur( java.lang.String vendeurId )
       throws java.lang.Exception, java.rmi.RemoteException;
 
@@ -39,7 +36,7 @@ public interface VendeurFacade
       throws axlomoso.ezbay.exceptions.VendeurInconnuException, java.lang.Exception, java.rmi.RemoteException;
 
    public void removeArticle( java.lang.String vendeurId,java.lang.String articleId )
-      throws axlomoso.ezbay.exceptions.ArticleProprietaireException, java.rmi.RemoteException;
+      throws axlomoso.ezbay.exceptions.ArticleEnVenteException, axlomoso.ezbay.exceptions.ArticleVenduException, java.lang.Exception, java.rmi.RemoteException;
 
    public void retirerArticle( java.lang.String vendeurId,java.lang.String articleId )
       throws axlomoso.ezbay.exceptions.ArticleEnEnchereException, axlomoso.ezbay.exceptions.ArticleVenduException, axlomoso.ezbay.exceptions.ArticleProprietaireException, java.rmi.RemoteException;

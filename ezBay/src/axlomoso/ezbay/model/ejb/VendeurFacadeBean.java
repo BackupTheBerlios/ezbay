@@ -112,7 +112,7 @@ public class VendeurFacadeBean implements SessionBean {
 	}
 
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param vendeurDTO
 	 * @throws Exception 
 	 */
@@ -258,21 +258,20 @@ public class VendeurFacadeBean implements SessionBean {
 	/**
 	 * @ejb.interface-method view-type = "both"
 	 * @param vendeurId, ArticleDTO
+	 * @throws Exception 
+	 * @throws ArticleVenduException 
+	 * @throws ArticleEnVenteException 
 	 * @throws ArticleEnVenteException 
 	 * @throws ArticleVenduException 
 	 * @throws VendeurInconnuException 
 	 * @throws Exception 
 	 */
-	public void removeArticle(String vendeurId, String articleId) throws ArticleProprietaireException {
+	public void removeArticle(String vendeurId, String articleId) throws ArticleEnVenteException, ArticleVenduException, Exception {
 		if( !this.possedeArticle(vendeurId, articleId) ) {
 			throw new ArticleProprietaireException();
 		}		
 		else{
-			try {
-				articleFacade.removeArticle(articleId);
-			} catch (Exception e) {				
-				System.out.println(e.getMessage()); 
-			}
+				articleFacade.removeArticle(articleId);			
 		}
 	}
 	

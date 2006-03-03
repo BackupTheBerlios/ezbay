@@ -129,4 +129,12 @@ public class CategorieFacadeTest extends TestCase {
 			e.printStackTrace();
 		}
 	}
+	
+	public static boolean equalsDTO(CategorieDTO categorieDTO1, CategorieDTO categorieDTO2){
+		boolean tRes = true;
+		tRes = tRes && ( (categorieDTO1.getId()).equals(categorieDTO2.getId()) );
+		tRes = tRes && ( (categorieDTO1.getLibelle()).equals(categorieDTO2.getLibelle()) );
+			
+		return tRes;
+	}
 }

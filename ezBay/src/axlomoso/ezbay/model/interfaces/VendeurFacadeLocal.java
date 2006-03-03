@@ -30,7 +30,7 @@ public interface VendeurFacadeLocal
 
    public axlomoso.ezbay.model.interfaces.ArticleDTO saveArticle( java.lang.String vendeurId,axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO,java.lang.String categorieId ) throws axlomoso.ezbay.exceptions.VendeurInconnuException, java.lang.Exception;
 
-   public void removeArticle( java.lang.String vendeurId,java.lang.String articleId ) throws axlomoso.ezbay.exceptions.ArticleProprietaireException;
+   public void removeArticle( java.lang.String vendeurId,java.lang.String articleId ) throws axlomoso.ezbay.exceptions.ArticleEnVenteException, axlomoso.ezbay.exceptions.ArticleVenduException, java.lang.Exception;
 
    public void retirerArticle( java.lang.String vendeurId,java.lang.String articleId ) throws axlomoso.ezbay.exceptions.ArticleEnEnchereException, axlomoso.ezbay.exceptions.ArticleVenduException, axlomoso.ezbay.exceptions.ArticleProprietaireException;
 

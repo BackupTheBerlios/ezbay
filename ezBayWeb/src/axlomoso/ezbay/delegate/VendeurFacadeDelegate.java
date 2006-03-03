@@ -53,15 +53,6 @@ public class VendeurFacadeDelegate {
 		}
 	}
 
-	
-	public VendeurFacade getVendeurFacade() {
-		return vendeurFacade;
-	}
-
-	public void setVendeurFacade(VendeurFacade vendeurFacade) {
-		this.vendeurFacade = vendeurFacade;
-	}
-
 	public VendeurDTO getVendeurById(String vendeurId) throws Exception, RemoteException {
 		return vendeurFacade.getVendeur(vendeurId);
 	}
