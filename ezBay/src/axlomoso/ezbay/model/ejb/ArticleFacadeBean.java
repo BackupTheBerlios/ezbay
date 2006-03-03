@@ -13,7 +13,11 @@ import javax.ejb.SessionBean;
 import javax.ejb.SessionContext;
 import javax.naming.NamingException;
 
+import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
+import axlomoso.ezbay.exceptions.ArticleEnVenteException;
 import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
+import axlomoso.ezbay.exceptions.ArticleProprietaireException;
+import axlomoso.ezbay.exceptions.ArticleVenduException;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocal;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocalHome;
@@ -255,9 +259,16 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @ejb.interface-method view-type = "local"
 	 * @param
 	 */
-	public void removeArticle(String articleId) throws Exception {
+	public void removeArticle(String articleId) throws ArticleEnVenteException, ArticleVenduException,Exception {		
+		
+		ArticleLocal articleLocal = getEntity(articleId);
+		if( this.isArticleEnVente(articleLocal.getArticleDTO()) ){
+			throw new ArticleEnVenteException();
+		}
+		else if( this.isArticleVendu(articleLocal.getArticleDTO()) ){
+			throw new ArticleVenduException();
+		}
 		try {
-			ArticleLocal articleLocal = getEntity(articleId);
 			articleLocal.remove();
 		} catch (Exception e) {
 			throw new Exception("Cannot remove article", e);
@@ -268,7 +279,8 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @ejb.interface-method view-type = "local"
 	 * @param
 	 */
-	public void retirerArticle(String articleId) throws Exception {
+	public void retirerArticle(String articleId) throws Exception {		
+		
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
 			articleLocal.setEnVente(new Boolean(false));
@@ -282,9 +294,12 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @ejb.interface-method view-type = "local"
 	 * @param
 	 */
-	public void mettreEnVenteArticle(String articleId) throws Exception {
+	public void mettreEnVenteArticle(String articleId) throws ArticleVenduException,Exception {		
+		ArticleLocal articleLocal = getEntity(articleId);
+		if( this.isArticleVendu(articleLocal.getArticleDTO()) ){
+			throw new ArticleVenduException();
+		}
 		try {
-			ArticleLocal articleLocal = getEntity(articleId);
 			articleLocal.setEnVente(new Boolean(true));
 			this.intialiserTimer(articleId);		
 		} catch (Exception e) {
@@ -332,25 +347,6 @@ public class ArticleFacadeBean implements SessionBean {
 		}
 	}
 
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param
-	 */
-	public Collection getAllArticles() {
-		Collection articles = null;
-		ArrayList tRes = new ArrayList();
-		try {
-			ArticleLocalHome home = getEntityHome();
-			articles = home.findAll();
-			for (Iterator it = articles.iterator(); it.hasNext();) {
-				ArticleLocal articleLocal = (ArticleLocal) it.next();
-				tRes.add(articleLocal.getArticleDTO());
-			}
-		} catch (FinderException e) {
-			e.printStackTrace();
-		}
-		return tRes;
-	}
 	
 	/**
 	 * @ejb.interface-method view-type = "remote"
@@ -400,11 +396,8 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	}
 	
-	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param
-	 */
-	public Collection rechercherArticles(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,
+	
+	private Collection rechercherArticles(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,
 			Double prixVenteMax, Integer anneeFabrication, Date dateLimite) {
 		Collection articles = null;
 		Collection tRes = new ArrayList();
@@ -421,12 +414,8 @@ public class ArticleFacadeBean implements SessionBean {
 		}
 		return tRes;
 	}
-
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param vendeurId
-	 */
-	public Collection getArticlesByVendeur(String vendeurId) {
+	
+	private Collection getArticlesByVendeur(String vendeurId) {
 		Collection articles = null;
 		Collection tRes = new ArrayList();
 		try {
@@ -444,11 +433,8 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;
 	}
 
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param categorieId
-	 */
-	public Collection getArticlesByCategorie(String categorieId) {
+	
+	private Collection getArticlesByCategorie(String categorieId) {
 		Collection articles = null;
 		Collection tRes = new ArrayList();
 		try {
@@ -535,34 +521,10 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @ejb.interface-method view-type = "both"
 	 * @param articleDTO
 	 */
-	public boolean isArticleEnAttente(String articleId) {
-		return !(this.isArticleEnVente(articleId) || this.isArticleVendu(articleId));
-	}
-
-	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param articleDTO
-	 */
 	public boolean isArticleEnEnchere(String articleId) {
 		boolean tRes = false;
 		try{
 			return ( getEntity(articleId).getActionEnchereLocal().size() > 0 );
-		}
-		catch (FinderException e) {
-		e.printStackTrace();
-		}
-		return tRes;		
-	}
-	
-	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param articleDTO
-	 */
-	public boolean isArticleEnVente(String articleId) {
-		boolean tRes = false;
-		try{
-			ArticleDTO articleDTO = getEntity(articleId).getArticleDTO();
-			return articleDTO.getEnVente().booleanValue();
 		}
 		catch (FinderException e) {
 		e.printStackTrace();
@@ -590,27 +552,17 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;
 	}
 
-	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param articleDTO
-	 */
-	public boolean isArticleEnAttente(ArticleDTO articleDTO) {
+	
+	private boolean isArticleEnAttente(ArticleDTO articleDTO) {
 		return !(this.isArticleEnVente(articleDTO) || this.isArticleVendu(articleDTO));
 	}
 
-	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param articleDTO
-	 */
-	public boolean isArticleEnVente(ArticleDTO articleDTO) {
+	private boolean isArticleEnVente(ArticleDTO articleDTO) {
 		return articleDTO.getEnVente().booleanValue();
 	}
 
-	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param articleDTO
-	 */
-	public boolean isArticleEnEnchere(ArticleDTO articleDTO) {
+	 
+	private boolean isArticleEnEnchere(ArticleDTO articleDTO) {
 		boolean tRes = false;
 		try{
 			return ( getEntity(articleDTO.getId()).getActionEnchereLocal().size() > 0 );
@@ -621,11 +573,9 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;		
 	}
 	
-	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param articleDTO
-	 */
-	public boolean isArticleVendu(ArticleDTO articleDTO) {
+	
+	
+	private boolean isArticleVendu(ArticleDTO articleDTO) {
 		boolean tRes = false;
 		if (this.isArticleEnVente(articleDTO)) {
 			tRes = false;
@@ -735,7 +685,7 @@ public class ArticleFacadeBean implements SessionBean {
 		return home;
 	}
 	
-	public TimerFinVenteLocal getTimerInstance(){	
+	private TimerFinVenteLocal getTimerInstance(){	
 		if( timerFinVente != null){
 			return timerFinVente;
 		}
@@ -752,7 +702,7 @@ public class ArticleFacadeBean implements SessionBean {
 		}
 	}
 	
-	public void intialiserTimer(String articleId){
+	private void intialiserTimer(String articleId){
 		TimerFinVenteLocal timer=this.getTimerInstance();		
 		try {
 			long dateSystem=System.currentTimeMillis();
@@ -768,7 +718,7 @@ public class ArticleFacadeBean implements SessionBean {
 		}
 	}
 	
-	public void annulerTimer(String articleId) {
+	private void annulerTimer(String articleId) {
 		TimerFinVenteLocal timer = this.getTimerInstance();	
 		timer.cancelTimer(articleId);		
 	}

@@ -20,11 +20,11 @@ public interface ArticleFacadeLocal
 
    public axlomoso.ezbay.model.interfaces.ArticleDTO saveArticle( java.lang.String vendeurId,axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO,java.lang.String categorieId ) throws java.lang.Exception;
 
-   public void removeArticle( java.lang.String articleId ) throws java.lang.Exception;
+   public void removeArticle( java.lang.String articleId ) throws axlomoso.ezbay.exceptions.ArticleEnVenteException, axlomoso.ezbay.exceptions.ArticleVenduException, java.lang.Exception;
 
    public void retirerArticle( java.lang.String articleId ) throws java.lang.Exception;
 
-   public void mettreEnVenteArticle( java.lang.String articleId ) throws java.lang.Exception;
+   public void mettreEnVenteArticle( java.lang.String articleId ) throws axlomoso.ezbay.exceptions.ArticleVenduException, java.lang.Exception;
 
    public java.util.Collection getArticlesEnVenteByVendeur( java.lang.String vendeurId ) ;
 
@@ -33,8 +33,6 @@ public interface ArticleFacadeLocal
    public java.util.Collection getArticlesVendusByVendeur( java.lang.String vendeurId ) ;
 
    public java.util.Collection getArticlesEnVenteByCategorie( java.lang.String categorieId ) ;
-
-   public java.util.Collection rechercherArticles( java.lang.String libcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVenteMin,java.lang.Double prixVenteMax,java.lang.Integer anneeFabrication,java.util.Date dateLimite ) ;
 
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO getDerniereEnchere( java.lang.String articleId ) ;
 
@@ -46,21 +44,9 @@ public interface ArticleFacadeLocal
 
    public axlomoso.ezbay.model.interfaces.ClientDTO getDernierEncherisseur( java.lang.String articleId ) ;
 
-   public boolean isArticleEnAttente( java.lang.String articleId ) ;
-
    public boolean isArticleEnEnchere( java.lang.String articleId ) ;
 
-   public boolean isArticleEnVente( java.lang.String articleId ) ;
-
    public boolean isArticleVendu( java.lang.String articleId ) ;
-
-   public boolean isArticleEnAttente( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) ;
-
-   public boolean isArticleEnVente( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) ;
-
-   public boolean isArticleEnEnchere( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) ;
-
-   public boolean isArticleVendu( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO ) ;
 
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId ) throws axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
 

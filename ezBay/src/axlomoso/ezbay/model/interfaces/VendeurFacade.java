@@ -39,12 +39,12 @@ public interface VendeurFacade
       throws axlomoso.ezbay.exceptions.VendeurInconnuException, java.lang.Exception, java.rmi.RemoteException;
 
    public void removeArticle( java.lang.String vendeurId,java.lang.String articleId )
-      throws axlomoso.ezbay.exceptions.ArticleProprietaireException, axlomoso.ezbay.exceptions.ArticleEnVenteException, axlomoso.ezbay.exceptions.ArticleVenduException, java.rmi.RemoteException;
+      throws axlomoso.ezbay.exceptions.ArticleProprietaireException, java.rmi.RemoteException;
 
    public void retirerArticle( java.lang.String vendeurId,java.lang.String articleId )
-      throws axlomoso.ezbay.exceptions.ArticleProprietaireException, axlomoso.ezbay.exceptions.ArticleEnEnchereException, axlomoso.ezbay.exceptions.ArticleVenduException, java.rmi.RemoteException;
+      throws axlomoso.ezbay.exceptions.ArticleEnEnchereException, axlomoso.ezbay.exceptions.ArticleVenduException, axlomoso.ezbay.exceptions.ArticleProprietaireException, java.rmi.RemoteException;
 
    public void mettreEnVenteArticle( java.lang.String vendeurId,java.lang.String articleId )
-      throws axlomoso.ezbay.exceptions.ArticleProprietaireException, axlomoso.ezbay.exceptions.ArticleVenduException, java.rmi.RemoteException;
+      throws axlomoso.ezbay.exceptions.ArticleProprietaireException, java.rmi.RemoteException;
 
 }

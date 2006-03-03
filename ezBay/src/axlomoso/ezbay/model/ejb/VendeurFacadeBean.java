@@ -263,16 +263,10 @@ public class VendeurFacadeBean implements SessionBean {
 	 * @throws VendeurInconnuException 
 	 * @throws Exception 
 	 */
-	public void removeArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleEnVenteException, ArticleVenduException {
+	public void removeArticle(String vendeurId, String articleId) throws ArticleProprietaireException {
 		if( !this.possedeArticle(vendeurId, articleId) ) {
 			throw new ArticleProprietaireException();
-		}
-		else if( articleFacade.isArticleEnVente(articleId) ){
-			throw new ArticleEnVenteException();
-		}
-		else if( articleFacade.isArticleVendu(articleId) ){
-			throw new ArticleVenduException();
-		}
+		}		
 		else{
 			try {
 				articleFacade.removeArticle(articleId);
@@ -291,14 +285,14 @@ public class VendeurFacadeBean implements SessionBean {
 	 * @throws VendeurInconnuException 
 	 * @throws Exception 
 	 */
-	public void retirerArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleEnEnchereException, ArticleVenduException {
+	public void retirerArticle(String vendeurId, String articleId) throws ArticleEnEnchereException, ArticleVenduException,ArticleProprietaireException{
 		if( !this.possedeArticle(vendeurId, articleId) ) {
 			throw new ArticleProprietaireException();
 		}
-		else if( articleFacade.isArticleEnEnchere(articleId) ){
+		else if( articleFacade.isArticleEnEnchere(articleId)){
 			throw new ArticleEnEnchereException();
 		}
-		else if( articleFacade.isArticleVendu(articleId) ){
+		else if( articleFacade.isArticleVendu(articleId)){
 			throw new ArticleVenduException();
 		}
 		else{
@@ -317,13 +311,10 @@ public class VendeurFacadeBean implements SessionBean {
 	 * @throws VendeurInconnuException 
 	 * @throws Exception 
 	 */
-	public void mettreEnVenteArticle(String vendeurId, String articleId) throws ArticleProprietaireException, ArticleVenduException {
+	public void mettreEnVenteArticle(String vendeurId, String articleId) throws ArticleProprietaireException{
 		if( !this.possedeArticle(vendeurId, articleId) ) {
 			throw new ArticleProprietaireException();
-		}
-		else if( articleFacade.isArticleVendu(articleId) ){
-			throw new ArticleVenduException();
-		}
+		}		
 		else{
 			try {
 				articleFacade.mettreEnVenteArticle(articleId);

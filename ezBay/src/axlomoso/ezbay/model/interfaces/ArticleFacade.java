@@ -26,9 +26,6 @@ public interface ArticleFacade
    public axlomoso.ezbay.model.interfaces.CategorieDTO getCategorieDTO( java.lang.String articleId )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.Collection getAllArticles(  )
-      throws java.rmi.RemoteException;
-
    public java.util.Collection rechercherArticlesEnVente( java.lang.String libcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVenteMin,java.lang.Double prixVenteMax,java.lang.Integer anneeFabrication,java.util.Date dateLimite )
       throws java.rmi.RemoteException;
 
@@ -42,15 +39,6 @@ public interface ArticleFacade
       throws java.rmi.RemoteException;
 
    public java.util.Collection getArticlesEnVenteByCategorie( java.lang.String categorieId )
-      throws java.rmi.RemoteException;
-
-   public java.util.Collection rechercherArticles( java.lang.String libcategorie,java.lang.String libelle,java.lang.String marque,java.lang.String modele,java.lang.Double prixVenteMin,java.lang.Double prixVenteMax,java.lang.Integer anneeFabrication,java.util.Date dateLimite )
-      throws java.rmi.RemoteException;
-
-   public java.util.Collection getArticlesByVendeur( java.lang.String vendeurId )
-      throws java.rmi.RemoteException;
-
-   public java.util.Collection getArticlesByCategorie( java.lang.String categorieId )
       throws java.rmi.RemoteException;
 
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO getDerniereEnchere( java.lang.String articleId )
@@ -68,28 +56,10 @@ public interface ArticleFacade
    public axlomoso.ezbay.model.interfaces.ClientDTO getDernierEncherisseur( java.lang.String articleId )
       throws java.rmi.RemoteException;
 
-   public boolean isArticleEnAttente( java.lang.String articleId )
-      throws java.rmi.RemoteException;
-
    public boolean isArticleEnEnchere( java.lang.String articleId )
       throws java.rmi.RemoteException;
 
-   public boolean isArticleEnVente( java.lang.String articleId )
-      throws java.rmi.RemoteException;
-
    public boolean isArticleVendu( java.lang.String articleId )
-      throws java.rmi.RemoteException;
-
-   public boolean isArticleEnAttente( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )
-      throws java.rmi.RemoteException;
-
-   public boolean isArticleEnVente( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )
-      throws java.rmi.RemoteException;
-
-   public boolean isArticleEnEnchere( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )
-      throws java.rmi.RemoteException;
-
-   public boolean isArticleVendu( axlomoso.ezbay.model.interfaces.ArticleDTO articleDTO )
       throws java.rmi.RemoteException;
 
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId )
