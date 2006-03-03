@@ -223,5 +223,28 @@ public class VendeurFacadeTest extends TestCase {
 		return tRes;
 	}
 	
+/*
+	public VendeurDTO getVendeur(String vendeurId) throws Exception 
+		
+	public MembreDTO getMembre(String vendeurId) throws Exception 
+		
+	public Collection getVendeurs() 
+	
+	public Collection getArticlesEnAttente(String vendeurId) 
+		
+	public Collection getArticlesEnVente(String vendeurId) 
+		
+	public Collection getArticlesVendus(String vendeurId) 
+	
+	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws VendeurInconnuException, Exception
+	
+	public void removeArticle(String vendeurId, String articleId) throws ArticleEnVenteException, ArticleVenduException, Exception 
+	
+	public void retirerArticle(String vendeurId, String articleId) throws ArticleEnEnchereException, ArticleVenduException,ArticleProprietaireException
+	
+	public void mettreEnVenteArticle(String vendeurId, String articleId) throws ArticleProprietaireException{
+			 
+*/
+	
 	
 }
