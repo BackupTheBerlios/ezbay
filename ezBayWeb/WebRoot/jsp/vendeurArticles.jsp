@@ -177,7 +177,7 @@
 							<bean:write name="article" property="acheteurPseudo" /><br />
 						</html:link>
 					</td>
-					<td align="left">
+					<td>
 					<logic:empty name="article" property="transactionAvis">
 						<bean:message key="vendeurArticles.articlesVendus.avis.noAvis" />
 					</logic:empty>

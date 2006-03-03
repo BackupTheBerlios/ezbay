@@ -177,7 +177,7 @@
 								<b>
 						</td>
 						<td>
-							<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.acheteurId" paramId="membreId">
+							<html:link action="/membre.do?do=showMembreFiche" paramName="articleForm" paramProperty="articleView.encherisseurMembreId" paramId="membreId">
 								<bean:write name="articleForm" property="articleView.encherisseurPseudo" />
 							</html:link>
 						</td>
