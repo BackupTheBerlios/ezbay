@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="utils-aid" size="994,578" id="axlomoso.ezbay.utils" metadata="uml2-1.0" initialized="true" tag="10" key="323030353039323720554D4C5F657A426179">
+  <children xsi:type="editmodel:ClassEditModel" name="ServiceLocator" location="480,50" size="219,250" id="axlomoso.ezbay.utils/ServiceLocator" runTimeClassModel="getTopic(Ljava.lang.String;),getLocalHome(Ljava.lang.String;),getRemoteHome(Ljava.lang.String;Ljava.lang.Class;),getUrl(Ljava.lang.String;),getTopicConnectionFactory(Ljava.lang.String;),getString(Ljava.lang.String;),getInstance(),getBoolean(Ljava.lang.String;),getQueue(Ljava.lang.String;),getDataSource(Ljava.lang.String;),getQueueConnectionFactory(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="196,198">
+      <children xsi:type="editmodel:MethodEditModel" name="getBoolean" id="axlomoso.ezbay.utils/ServiceLocator#getBoolean(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDataSource" id="axlomoso.ezbay.utils/ServiceLocator#getDataSource(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getInstance" id="axlomoso.ezbay.utils/ServiceLocator#getInstance()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLocalHome" id="axlomoso.ezbay.utils/ServiceLocator#getLocalHome(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getQueue" id="axlomoso.ezbay.utils/ServiceLocator#getQueue(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getQueueConnectionFactory" id="axlomoso.ezbay.utils/ServiceLocator#getQueueConnectionFactory(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getRemoteHome" id="axlomoso.ezbay.utils/ServiceLocator#getRemoteHome(Ljava.lang.String;Ljava.lang.Class;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getString" id="axlomoso.ezbay.utils/ServiceLocator#getString(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTopic" id="axlomoso.ezbay.utils/ServiceLocator#getTopic(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTopicConnectionFactory" id="axlomoso.ezbay.utils/ServiceLocator#getTopicConnectionFactory(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getUrl" id="axlomoso.ezbay.utils/ServiceLocator#getUrl(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.utils/ServiceLocator->axlomoso.ezbay.utils/ServiceLocatorException" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«send»" size="42,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,66" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="239,82"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.utils/ServiceLocator->axlomoso.ezbay.utils/ServiceLocatorException" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.1/@children.2" label="//@children.0/@sourceConnections.1/@children.0" sourceEnd="//@children.0/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,62" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="239,62"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0 //@children.0/@sourceConnections.1" name="ServiceLocatorException" location="50,50" size="239,124" id="axlomoso.ezbay.utils/ServiceLocatorException" runTimeClassModel="ServiceLocatorException(Ljava.lang.Throwable;),ServiceLocatorException(Ljava.lang.String;),ServiceLocatorException(),ServiceLocatorException(Ljava.lang.String;Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="174,72">
+      <children xsi:type="editmodel:MethodEditModel" name="ServiceLocatorException" id="axlomoso.ezbay.utils/ServiceLocatorException#ServiceLocatorException(Ljava.lang.Throwable;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ServiceLocatorException" id="axlomoso.ezbay.utils/ServiceLocatorException#ServiceLocatorException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ServiceLocatorException" id="axlomoso.ezbay.utils/ServiceLocatorException#ServiceLocatorException(Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ServiceLocatorException" id="axlomoso.ezbay.utils/ServiceLocatorException#ServiceLocatorException(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=7"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

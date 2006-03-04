@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="exceptions-aid" size="994,578" id="axlomoso.ezbay.exceptions" metadata="uml2-1.0" initialized="true" tag="10" key="323030353039323720554D4C5F657A426179">
+  <children xsi:type="editmodel:ClassEditModel" name="ArticleVenduException" location="50,398" size="220,124" id="axlomoso.ezbay.exceptions/ArticleVenduException" runTimeClassModel="ArticleVenduException(),getMessage(),errMessage,ArticleVenduException(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="errMessage" id="axlomoso.ezbay.exceptions/ArticleVenduException#errMessage"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="163,54">
+      <children xsi:type="editmodel:MethodEditModel" name="ArticleVenduException" id="axlomoso.ezbay.exceptions/ArticleVenduException#ArticleVenduException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ArticleVenduException" id="axlomoso.ezbay.exceptions/ArticleVenduException#ArticleVenduException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessage" id="axlomoso.ezbay.exceptions/ArticleVenduException#getMessage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ArticleEnEnchereException" location="50,224" size="256,124" id="axlomoso.ezbay.exceptions/ArticleEnEnchereException" runTimeClassModel="ArticleEnEnchereException(Ljava.lang.String;),ArticleEnEnchereException(),getMessage(),errMessage">
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="errMessage" id="axlomoso.ezbay.exceptions/ArticleEnEnchereException#errMessage"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="190,54">
+      <children xsi:type="editmodel:MethodEditModel" name="ArticleEnEnchereException" id="axlomoso.ezbay.exceptions/ArticleEnEnchereException#ArticleEnEnchereException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ArticleEnEnchereException" id="axlomoso.ezbay.exceptions/ArticleEnEnchereException#ArticleEnEnchereException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessage" id="axlomoso.ezbay.exceptions/ArticleEnEnchereException#getMessage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ArticlePasEnVenteException" location="50,50" size="265,124" id="axlomoso.ezbay.exceptions/ArticlePasEnVenteException" runTimeClassModel="ArticlePasEnVenteException(Ljava.lang.String;),getMessage(),errMessage,ArticlePasEnVenteException()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="errMessage" id="axlomoso.ezbay.exceptions/ArticlePasEnVenteException#errMessage"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="199,54">
+      <children xsi:type="editmodel:MethodEditModel" name="ArticlePasEnVenteException" id="axlomoso.ezbay.exceptions/ArticlePasEnVenteException#ArticlePasEnVenteException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ArticlePasEnVenteException" id="axlomoso.ezbay.exceptions/ArticlePasEnVenteException#ArticlePasEnVenteException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessage" id="axlomoso.ezbay.exceptions/ArticlePasEnVenteException#getMessage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ArticleEnVenteException" location="655,224" size="236,124" id="axlomoso.ezbay.exceptions/ArticleEnVenteException" runTimeClassModel="ArticleEnVenteException(Ljava.lang.String;),ArticleEnVenteException(),getMessage(),errMessage">
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="errMessage" id="axlomoso.ezbay.exceptions/ArticleEnVenteException#errMessage"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="176,54">
+      <children xsi:type="editmodel:MethodEditModel" name="ArticleEnVenteException" id="axlomoso.ezbay.exceptions/ArticleEnVenteException#ArticleEnVenteException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ArticleEnVenteException" id="axlomoso.ezbay.exceptions/ArticleEnVenteException#ArticleEnVenteException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessage" id="axlomoso.ezbay.exceptions/ArticleEnVenteException#getMessage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PseudoDejaUtiliseException" location="678,50" size="261,124" id="axlomoso.ezbay.exceptions/PseudoDejaUtiliseException" runTimeClassModel="PseudoDejaUtiliseException(Ljava.lang.String;),getMessage(),errMessage,PseudoDejaUtiliseException()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="errMessage" id="axlomoso.ezbay.exceptions/PseudoDejaUtiliseException#errMessage"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="195,54">
+      <children xsi:type="editmodel:MethodEditModel" name="PseudoDejaUtiliseException" id="axlomoso.ezbay.exceptions/PseudoDejaUtiliseException#PseudoDejaUtiliseException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="PseudoDejaUtiliseException" id="axlomoso.ezbay.exceptions/PseudoDejaUtiliseException#PseudoDejaUtiliseException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessage" id="axlomoso.ezbay.exceptions/PseudoDejaUtiliseException#getMessage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ArticleProprietaireException" location="365,50" size="263,124" id="axlomoso.ezbay.exceptions/ArticleProprietaireException" runTimeClassModel="ArticleProprietaireException(),getMessage(),ArticleProprietaireException(Ljava.lang.String;),errMessage">
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="errMessage" id="axlomoso.ezbay.exceptions/ArticleProprietaireException#errMessage"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="192,54">
+      <children xsi:type="editmodel:MethodEditModel" name="ArticleProprietaireException" id="axlomoso.ezbay.exceptions/ArticleProprietaireException#ArticleProprietaireException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ArticleProprietaireException" id="axlomoso.ezbay.exceptions/ArticleProprietaireException#ArticleProprietaireException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessage" id="axlomoso.ezbay.exceptions/ArticleProprietaireException#getMessage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="VendeurInconnuException" location="356,224" size="249,124" id="axlomoso.ezbay.exceptions/VendeurInconnuException" runTimeClassModel="VendeurInconnuException(),getMessage(),errMessage,VendeurInconnuException(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="errMessage" id="axlomoso.ezbay.exceptions/VendeurInconnuException#errMessage"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="182,54">
+      <children xsi:type="editmodel:MethodEditModel" name="VendeurInconnuException" id="axlomoso.ezbay.exceptions/VendeurInconnuException#VendeurInconnuException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="VendeurInconnuException" id="axlomoso.ezbay.exceptions/VendeurInconnuException#VendeurInconnuException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessage" id="axlomoso.ezbay.exceptions/VendeurInconnuException#getMessage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=7"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

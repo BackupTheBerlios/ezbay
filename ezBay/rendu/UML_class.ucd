@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="UML_class" size="994,559" id="axlomoso.ezbay.model" metadata="uml2-1.0" initialized="true" scrolledY="149" tag="10" key="323030353039323720554D4C5F657A426179">
+  <children xsi:type="editmodel:PackageEditModel" name="axlomoso.ezbay.exceptions" location="232,159" size="255,191" id="axlomoso.ezbay.exceptions">
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="axlomoso.ezbay.model.ejb" location="332,159" size="245,183" id="axlomoso.ezbay.model.ejb">
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="axlomoso.ezbay.model.interfaces" location="500,159" size="299,224" id="axlomoso.ezbay.model.interfaces">
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="axlomoso.ezbay.utils" location="532,159" size="203,152" id="axlomoso.ezbay.utils">
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=1" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

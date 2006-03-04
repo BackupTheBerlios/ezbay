@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="interfaces-aid" size="3095,4993" id="axlomoso.ezbay.model.interfaces" metadata="uml2-1.0" initialized="true" zoom="0.25" tag="10" key="323030353039323720554D4C5F657A426179">
+  <children xsi:type="editmodel:ClassEditModel" name="ActionTransactionUtil" location="2472,3517" size="211,88" id="axlomoso.ezbay.model.interfaces/ActionTransactionUtil" runTimeClassModel="getLocalHome(),generateGUID(Ljava.lang.Object;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="114,36">
+      <children xsi:type="editmodel:MethodEditModel" name="generateGUID" id="axlomoso.ezbay.model.interfaces/ActionTransactionUtil#generateGUID(Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLocalHome" id="axlomoso.ezbay.model.interfaces/ActionTransactionUtil#getLocalHome()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="TimerFinVenteBean" location="2227,3517" size="195,104" stereotype="interface" id="axlomoso.ezbay.model.interfaces/TimerFinVenteBean" runTimeClassModel="initializeTimer(JLjava.lang.String;),cancelTimer(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="110,36">
+      <children xsi:type="editmodel:MethodEditModel" name="cancelTimer" id="axlomoso.ezbay.model.interfaces/TimerFinVenteBean#cancelTimer(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initializeTimer" id="axlomoso.ezbay.model.interfaces/TimerFinVenteBean#initializeTimer(JLjava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ClientUtil" location="2733,3517" size="137,88" id="axlomoso.ezbay.model.interfaces/ClientUtil" runTimeClassModel="getLocalHome(),generateGUID(Ljava.lang.Object;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="114,36">
+      <children xsi:type="editmodel:MethodEditModel" name="generateGUID" id="axlomoso.ezbay.model.interfaces/ClientUtil#generateGUID(Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLocalHome" id="axlomoso.ezbay.model.interfaces/ClientUtil#getLocalHome()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="MembreFacadeLocalHome" location="1706,3517" size="247,122" stereotype="interface" id="axlomoso.ezbay.model.interfaces/MembreFacadeLocalHome" runTimeClassModel="cOMP_NAME,create(),jNDI_NAME">
+    <children xsi:type="editmodel:CompartmentEditModel" size="145,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="cOMP_NAME" id="axlomoso.ezbay.model.interfaces/MembreFacadeLocalHome#cOMP_NAME"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jNDI_NAME" id="axlomoso.ezbay.model.interfaces/MembreFacadeLocalHome#jNDI_NAME"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="67,18">
+      <children xsi:type="editmodel:MethodEditModel" name="create" id="axlomoso.ezbay.model.interfaces/MembreFacadeLocalHome#create()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="CategorieLocalHome" location="1451,3517" size="205,158" stereotype="interface" id="axlomoso.ezbay.model.interfaces/CategorieLocalHome" runTimeClassModel="findByPrimaryKey(Ljava.lang.String;),cOMP_NAME,findAll(),create(Laxlomoso.ezbay.model.interfaces.CategorieDTO;),jNDI_NAME">
+    <children xsi:type="editmodel:CompartmentEditModel" size="145,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="cOMP_NAME" id="axlomoso.ezbay.model.interfaces/CategorieLocalHome#cOMP_NAME"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jNDI_NAME" id="axlomoso.ezbay.model.interfaces/CategorieLocalHome#jNDI_NAME"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="135,54">
+      <children xsi:type="editmodel:MethodEditModel" name="create" id="axlomoso.ezbay.model.interfaces/CategorieLocalHome#create(Laxlomoso.ezbay.model.interfaces.CategorieDTO;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findAll" id="axlomoso.ezbay.model.interfaces/CategorieLocalHome#findAll()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByPrimaryKey" id="axlomoso.ezbay.model.interfaces/CategorieLocalHome#findByPrimaryKey(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="CategorieFacade" location="2003,3517" size="174,158" stereotype="interface" id="axlomoso.ezbay.model.interfaces/CategorieFacade" runTimeClassModel="createCategorie(Laxlomoso.ezbay.model.interfaces.CategorieDTO;),removeCategorie(Laxlomoso.ezbay.model.interfaces.CategorieDTO;),getCategorie(Ljava.lang.String;),getArticlesDTO(Ljava.lang.String;),getCategories()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="127,90">
+      <children xsi:type="editmodel:MethodEditModel" name="createCategorie" id="axlomoso.ezbay.model.interfaces/CategorieFacade#createCategorie(Laxlomoso.ezbay.model.interfaces.CategorieDTO;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getArticlesDTO" id="axlomoso.ezbay.model.interfaces/CategorieFacade#getArticlesDTO(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCategorie" id="axlomoso.ezbay.model.interfaces/CategorieFacade#getCategorie(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCategories" id="axlomoso.ezbay.model.interfaces/CategorieFacade#getCategories()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeCategorie" id="axlomoso.ezbay.model.interfaces/CategorieFacade#removeCategorie(Laxlomoso.ezbay.model.interfaces.CategorieDTO;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="MembreDTO" location="1129,3517" size="272,1456" id="axlomoso.ezbay.model.interfaces/MembreDTO" runTimeClassModel="setCodePostal(Ljava.lang.String;),pseudo,getId(),clone(),hashCode(),getCodePostal(),equals(Ljava.lang.Object;),villeHasBeenSet(),telephoneFixeHasBeenSet(),ville,equals(Laxlomoso.ezbay.model.interfaces.MembreDTO;),dateNaissanceHasBeenSet(),id,getPseudo(),primaryKey,setPassword(Ljava.lang.String;),passwordHasBeenSet(),prenomHasBeenSet,getPrenom(),paysHasBeenSet,telephonePortable,MembreDTO(Laxlomoso.ezbay.model.interfaces.MembreDTO;),adresseHasBeenSet(),toString(),getReadOnlyMembreDTO(),isIdentical(Ljava.lang.Object;),prenom,setPrimaryKey(Ljava.lang.String;),getNom(),nom,MembreDTO(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.util.Date;),setDateNaissance(Ljava.util.Date;),setTelephoneFixe(Ljava.lang.String;),getVille(),codePostalHasBeenSet,getTelephonePortable(),setId(Ljava.lang.String;),idHasBeenSet,villeHasBeenSet,getDateNaissance(),MembreDTO(),passwordHasBeenSet,getEmail(),setPrenom(Ljava.lang.String;),idHasBeenSet(),setPays(Ljava.lang.String;),pseudoHasBeenSet,paysHasBeenSet(),setEmail(Ljava.lang.String;),setTelephonePortable(Ljava.lang.String;),adresseHasBeenSet,getPays(),emailHasBeenSet(),getTelephoneFixe(),telephoneFixe,telephonePortableHasBeenSet(),getPrimaryKey(),codePostalHasBeenSet(),getAdresse(),nomHasBeenSet,emailHasBeenSet,pseudoHasBeenSet(),setVille(Ljava.lang.String;),password,codePostal,prenomHasBeenSet(),setPseudo(Ljava.lang.String;),setAdresse(Ljava.lang.String;),setNom(Ljava.lang.String;),telephonePortableHasBeenSet,dateNaissance,dateNaissanceHasBeenSet,getPassword(),telephoneFixeHasBeenSet,adresse,email,pays,nomHasBeenSet()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="249,486">
+      <children xsi:type="editmodel:AttributeEditModel" name="adresse" id="axlomoso.ezbay.model.interfaces/MembreDTO#adresse"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="adresseHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#adresseHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="codePostal" id="axlomoso.ezbay.model.interfaces/MembreDTO#codePostal"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="codePostalHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#codePostalHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="dateNaissance" id="axlomoso.ezbay.model.interfaces/MembreDTO#dateNaissance"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="dateNaissanceHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#dateNaissanceHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="email" id="axlomoso.ezbay.model.interfaces/MembreDTO#email"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="emailHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#emailHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="id" id="axlomoso.ezbay.model.interfaces/MembreDTO#id"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="idHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#idHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nom" id="axlomoso.ezbay.model.interfaces/MembreDTO#nom"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nomHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#nomHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="password" id="axlomoso.ezbay.model.interfaces/MembreDTO#password"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="passwordHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#passwordHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pays" id="axlomoso.ezbay.model.interfaces/MembreDTO#pays"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="paysHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#paysHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="prenom" id="axlomoso.ezbay.model.interfaces/MembreDTO#prenom"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="prenomHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#prenomHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="primaryKey" id="axlomoso.ezbay.model.interfaces/MembreDTO#primaryKey"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pseudo" id="axlomoso.ezbay.model.interfaces/MembreDTO#pseudo"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pseudoHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#pseudoHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="telephoneFixe" id="axlomoso.ezbay.model.interfaces/MembreDTO#telephoneFixe"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="telephoneFixeHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#telephoneFixeHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="telephonePortable" id="axlomoso.ezbay.model.interfaces/MembreDTO#telephonePortable"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="telephonePortableHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#telephonePortableHasBeenSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="ville" id="axlomoso.ezbay.model.interfaces/MembreDTO#ville"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="villeHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#villeHasBeenSet"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="208,918">
+      <children xsi:type="editmodel:MethodEditModel" name="MembreDTO" id="axlomoso.ezbay.model.interfaces/MembreDTO#MembreDTO(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="MembreDTO" id="axlomoso.ezbay.model.interfaces/MembreDTO#MembreDTO(Laxlomoso.ezbay.model.interfaces.MembreDTO;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="MembreDTO" id="axlomoso.ezbay.model.interfaces/MembreDTO#MembreDTO()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="adresseHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#adresseHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="clone" id="axlomoso.ezbay.model.interfaces/MembreDTO#clone()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="codePostalHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#codePostalHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="dateNaissanceHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#dateNaissanceHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="emailHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#emailHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="equals" id="axlomoso.ezbay.model.interfaces/MembreDTO#equals(Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="equals" id="axlomoso.ezbay.model.interfaces/MembreDTO#equals(Laxlomoso.ezbay.model.interfaces.MembreDTO;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAdresse" id="axlomoso.ezbay.model.interfaces/MembreDTO#getAdresse()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCodePostal" id="axlomoso.ezbay.model.interfaces/MembreDTO#getCodePostal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDateNaissance" id="axlomoso.ezbay.model.interfaces/MembreDTO#getDateNaissance()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEmail" id="axlomoso.ezbay.model.interfaces/MembreDTO#getEmail()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" id="axlomoso.ezbay.model.interfaces/MembreDTO#getId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNom" id="axlomoso.ezbay.model.interfaces/MembreDTO#getNom()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPassword" id="axlomoso.ezbay.model.interfaces/MembreDTO#getPassword()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPays" id="axlomoso.ezbay.model.interfaces/MembreDTO#getPays()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPrenom" id="axlomoso.ezbay.model.interfaces/MembreDTO#getPrenom()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPrimaryKey" id="axlomoso.ezbay.model.interfaces/MembreDTO#getPrimaryKey()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPseudo" id="axlomoso.ezbay.model.interfaces/MembreDTO#getPseudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getReadOnlyMembreDTO" id="axlomoso.ezbay.model.interfaces/MembreDTO#getReadOnlyMembreDTO()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTelephoneFixe" id="axlomoso.ezbay.model.interfaces/MembreDTO#getTelephoneFixe()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTelephonePortable" id="axlomoso.ezbay.model.interfaces/MembreDTO#getTelephonePortable()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getVille" id="axlomoso.ezbay.model.interfaces/MembreDTO#getVille()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="hashCode" id="axlomoso.ezbay.model.interfaces/MembreDTO#hashCode()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="idHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#idHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isIdentical" id="axlomoso.ezbay.model.interfaces/MembreDTO#isIdentical(Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="nomHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#nomHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="passwordHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#passwordHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="paysHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#paysHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="prenomHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#prenomHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="pseudoHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#pseudoHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAdresse" id="axlomoso.ezbay.model.interfaces/MembreDTO#setAdresse(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setCodePostal" id="axlomoso.ezbay.model.interfaces/MembreDTO#setCodePostal(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDateNaissance" id="axlomoso.ezbay.model.interfaces/MembreDTO#setDateNaissance(Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setEmail" id="axlomoso.ezbay.model.interfaces/MembreDTO#setEmail(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" id="axlomoso.ezbay.model.interfaces/MembreDTO#setId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setNom" id="axlomoso.ezbay.model.interfaces/MembreDTO#setNom(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPassword" id="axlomoso.ezbay.model.interfaces/MembreDTO#setPassword(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPays" id="axlomoso.ezbay.model.interfaces/MembreDTO#setPays(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPrenom" id="axlomoso.ezbay.model.interfaces/MembreDTO#setPrenom(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPrimaryKey" id="axlomoso.ezbay.model.interfaces/MembreDTO#setPrimaryKey(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPseudo" id="axlomoso.ezbay.model.interfaces/MembreDTO#setPseudo(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTelephoneFixe" id="axlomoso.ezbay.model.interfaces/MembreDTO#setTelephoneFixe(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTelephonePortable" id="axlomoso.ezbay.model.interfaces/MembreDTO#setTelephonePortable(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVille" id="axlomoso.ezbay.model.interfaces/MembreDTO#setVille(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="telephoneFixeHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#telephoneFixeHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="telephonePortableHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#telephonePortableHasBeenSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="toString" id="axlomoso.ezbay.model.interfaces/MembreDTO#toString()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="villeHasBeenSet" id="axlomoso.ezbay.model.interfaces/MembreDTO#villeHasBeenSet()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="ArticleFacadeLocalHome" location="353,3517" size="235,122" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocalHome" runTimeClassModel="cOMP_NAME,create(),jNDI_NAME">
+    <children xsi:type="editmodel:CompartmentEditModel" size="145,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="cOMP_NAME" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocalHome#cOMP_NAME"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jNDI_NAME" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocalHome#jNDI_NAME"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="67,18">
+      <children xsi:type="editmodel:MethodEditModel" name="create" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocalHome#create()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocalHome->axlomoso.ezbay.model.interfaces/ArticleFacadeLocal" source="//@children.7" target="//@children.8" targetEnd="//@children.7/@sourceConnections.0/@children.2" label="//@children.7/@sourceConnections.0/@children.0" sourceEnd="//@children.7/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,61" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="238,61"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.7/@sourceConnections.0" name="ArticleFacadeLocal" location="50,3517" size="238,392" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal" runTimeClassModel="mettreEnVenteArticle(Ljava.lang.String;),saveArticle(Ljava.lang.String;Laxlomoso.ezbay.model.interfaces.ArticleDTO;Ljava.lang.String;),encherir(Laxlomoso.ezbay.model.interfaces.ActionEnchereDTO;Ljava.lang.String;Ljava.lang.String;),terminerVente(Ljava.lang.String;),getArticlesEnAttenteByVendeur(Ljava.lang.String;),getDerniereEnchere(Ljava.lang.String;),isArticleVendu(Ljava.lang.String;),retirerArticle(Ljava.lang.String;),getTransaction(Ljava.lang.String;),getArticlesVendusByVendeur(Ljava.lang.String;),deposerTransactionAvis(Ljava.lang.String;Ljava.lang.String;),getArticlesEnVenteByVendeur(Ljava.lang.String;),removeArticle(Ljava.lang.String;),getAcquereur(Ljava.lang.String;),getNbEncheres(Ljava.lang.String;),getArticlesEnVenteByCategorie(Ljava.lang.String;),isArticleEnEnchere(Ljava.lang.String;),getDernierEncherisseur(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="215,324">
+      <children xsi:type="editmodel:MethodEditModel" name="deposerTransactionAvis" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#deposerTransactionAvis(Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="encherir" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#encherir(Laxlomoso.ezbay.model.interfaces.ActionEnchereDTO;Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAcquereur" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#getAcquereur(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getArticlesEnAttenteByVendeur" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#getArticlesEnAttenteByVendeur(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getArticlesEnVenteByCategorie" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#getArticlesEnVenteByCategorie(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getArticlesEnVenteByVendeur" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#getArticlesEnVenteByVendeur(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getArticlesVendusByVendeur" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#getArticlesVendusByVendeur(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDernierEncherisseur" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#getDernierEncherisseur(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDerniereEnchere" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#getDerniereEnchere(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNbEncheres" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#getNbEncheres(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTransaction" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#getTransaction(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isArticleEnEnchere" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#isArticleEnEnchere(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isArticleVendu" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#isArticleVendu(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mettreEnVenteArticle" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#mettreEnVenteArticle(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeArticle" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#removeArticle(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="retirerArticle" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#retirerArticle(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="saveArticle" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#saveArticle(Ljava.lang.String;Laxlomoso.ezbay.model.interfaces.ArticleDTO;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="terminerVente" id="axlomoso.ezbay.model.interfaces/ArticleFacadeLocal#terminerVente(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ClientFacadeUtil" location="910,3517" size="169,124" id="axlomoso.ezbay.model.interfaces/ClientFacadeUtil" runTimeClassModel="getLocalHome(),getHome(),generateGUID(Ljava.lang.Object;),getHome(Ljava.util.Hashtable;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="114,72">
+      <children xsi:type="editmodel:MethodEditModel" name="generateGUID" id="axlomoso.ezbay.model.interfaces/ClientFacadeUtil#generateGUID(Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHome" id="axlomoso.ezbay.model.interfaces/ClientFacadeUtil#getHome()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHome" id="axlomoso.ezbay.model.interfaces/ClientFacadeUtil#getHome(Ljava.util.Hashtable;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLocalHome" id="axlomoso.ezbay.model.interfaces/ClientFacadeUtil#getLocalHome()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ClientFacadeUtil->axlomoso.ezbay.model.interfaces/ClientFacadeHome" source="//@children.9" target="//@children.10" targetEnd="//@children.9/@sourceConnections.0/@children.2" label="//@children.9/@sourceConnections.0/@children.0" sourceEnd="//@children.9/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,60" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="188,60"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.9/@sourceConnections.0" name="ClientFacadeHome" location="638,3517" size="188,122" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ClientFacadeHome" runTimeClassModel="cOMP_NAME,create(),jNDI_NAME">
+    <children xsi:type="editmodel:CompartmentEditModel" size="145,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="cOMP_NAME" id="axlomoso.ezbay.model.interfaces/ClientFacadeHome#cOMP_NAME"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jNDI_NAME" id="axlomoso.ezbay.model.interfaces/ClientFacadeHome#jNDI_NAME"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="67,18">
+      <children xsi:type="editmodel:MethodEditModel" name="create" id="axlomoso.ezbay.model.interfaces/ClientFacadeHome#create()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.18/@sourceConnections.0" name="ActionEnchereLocalHome" location="1760,1688" size="244,158" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocalHome" runTimeClassModel="findByPrimaryKey(Ljava.lang.String;),cOMP_NAME,create(Laxlomoso.ezbay.model.interfaces.ActionEnchereDTO;Laxlomoso.ezbay.model.interfaces.ArticleLocal;Laxlomoso.ezbay.model.interfaces.ClientLocal;),findByArticleId(Ljava.lang.String;),jNDI_NAME">
+    <children xsi:type="editmodel:CompartmentEditModel" size="145,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="cOMP_NAME" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocalHome#cOMP_NAME"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jNDI_NAME" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocalHome#jNDI_NAME"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="135,54">
+      <children xsi:type="editmodel:MethodEditModel" name="create" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocalHome#create(Laxlomoso.ezbay.model.interfaces.ActionEnchereDTO;Laxlomoso.ezbay.model.interfaces.ArticleLocal;Laxlomoso.ezbay.model.interfaces.ClientLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByArticleId" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocalHome#findByArticleId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByPrimaryKey" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocalHome#findByPrimaryKey(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocalHome->axlomoso.ezbay.model.interfaces/ArticleLocal" source="//@children.11" target="//@children.13" targetEnd="//@children.11/@sourceConnections.0/@children.2" label="//@children.11/@sourceConnections.0/@children.0" sourceEnd="//@children.11/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="215,1102"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocalHome->axlomoso.ezbay.model.interfaces/ActionEnchereLocal" source="//@children.11" target="//@children.19" targetEnd="//@children.11/@sourceConnections.1/@children.2" label="//@children.11/@sourceConnections.1/@children.0" sourceEnd="//@children.11/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,158" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="199,10"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="ActionEnchereFacade" location="1600,140" size="217,122" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacade" runTimeClassModel="getActionEncheresByArticle(Ljava.lang.String;),getEncherisseur(Ljava.lang.String;),createActionEnchere(Laxlomoso.ezbay.model.interfaces.ActionEnchereDTO;Laxlomoso.ezbay.model.interfaces.ArticleLocal;Laxlomoso.ezbay.model.interfaces.ClientLocal;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="194,54">
+      <children xsi:type="editmodel:MethodEditModel" name="createActionEnchere" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacade#createActionEnchere(Laxlomoso.ezbay.model.interfaces.ActionEnchereDTO;Laxlomoso.ezbay.model.interfaces.ArticleLocal;Laxlomoso.ezbay.model.interfaces.ClientLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getActionEncheresByArticle" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacade#getActionEncheresByArticle(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEncherisseur" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacade#getEncherisseur(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacade->axlomoso.ezbay.model.interfaces/ArticleLocal" source="//@children.12" target="//@children.13" targetEnd="//@children.12/@sourceConnections.0/@children.2" label="//@children.12/@sourceConnections.0/@children.0" sourceEnd="//@children.12/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,122" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="215,10"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.15/@sourceConnections.0 //@children.17/@sourceConnections.0 //@children.16/@sourceConnections.0 //@children.12/@sourceConnections.0 //@children.19/@sourceConnections.0 //@children.14/@sourceConnections.0 //@children.11/@sourceConnections.0" name="ArticleLocal" location="1310,400" size="215,1112" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ArticleLocal" runTimeClassModel="getVendeurPseudo(),getCategorieLocal(),getId(),getTransactionAvis(),getModele(),setEncherisseurClientId(Ljava.lang.String;),getVendeurLocal(),setMarque(Ljava.lang.String;),getVendeurMembreId(),setAcheteurPseudo(Ljava.lang.String;),setAcheteurMembreId(Ljava.lang.String;),getNbEncheres(),setDerniereEnchereMontant(Ljava.lang.Double;),getEncherisseurMembreId(),setEnVente(Ljava.lang.Boolean;),setActionEnchereLocal(Ljava.util.Collection;),setEncherisseurPseudo(Ljava.lang.String;),getArticleDTO(),setVendeurPseudo(Ljava.lang.String;),getVendeurId(),setTransactionDate(Ljava.util.Date;),setAcheteurId(Ljava.lang.String;),setDateLimite(Ljava.util.Date;),setId(Ljava.lang.String;),getAcheteurPseudo(),getActionEnchereLocal(),getActionTransactionLocal(),getPrixVente(),setTransactionMontant(Ljava.lang.Double;),setCategorieLocal(Laxlomoso.ezbay.model.interfaces.CategorieLocal;),getTransactionMontant(),getEncherisseurClientId(),updateArticle(Laxlomoso.ezbay.model.interfaces.ArticleDTO;),setModele(Ljava.lang.String;),getDerniereEnchereDate(),getAcheteurMembreId(),setVendeurLocal(Laxlomoso.ezbay.model.interfaces.VendeurLocal;),setDerniereEnchereDate(Ljava.util.Date;),getEnVente(),setVendeurMembreId(Ljava.lang.String;),getAcheteurId(),setEncherisseurMembreId(Ljava.lang.String;),getEncherisseurPseudo(),getDerniereEnchereMontant(),getAnneeFabrication(),setVendeurId(Ljava.lang.String;),setNbEncheres(Ljava.lang.Integer;),getLibelle(),getTransactionDate(),setPrixVente(Ljava.lang.Double;),setTransactionAvis(Ljava.lang.String;),setLibelle(Ljava.lang.String;),setActionTransactionLocal(Laxlomoso.ezbay.model.interfaces.ActionTransactionLocal;),getDescription(),getDateLimite(),getMarque(),setDescription(Ljava.lang.String;),setAnneeFabrication(Ljava.lang.Integer;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="192,1044">
+      <children xsi:type="editmodel:MethodEditModel" name="getAcheteurId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getAcheteurId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAcheteurMembreId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getAcheteurMembreId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAcheteurPseudo" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getAcheteurPseudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getActionEnchereLocal" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getActionEnchereLocal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getActionTransactionLocal" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getActionTransactionLocal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAnneeFabrication" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getAnneeFabrication()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getArticleDTO" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getArticleDTO()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCategorieLocal" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getCategorieLocal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDateLimite" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getDateLimite()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDerniereEnchereDate" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getDerniereEnchereDate()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDerniereEnchereMontant" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getDerniereEnchereMontant()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDescription" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getDescription()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEnVente" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getEnVente()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEncherisseurClientId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getEncherisseurClientId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEncherisseurMembreId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getEncherisseurMembreId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEncherisseurPseudo" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getEncherisseurPseudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLibelle" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getLibelle()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMarque" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getMarque()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getModele" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getModele()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNbEncheres" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getNbEncheres()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPrixVente" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getPrixVente()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTransactionAvis" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getTransactionAvis()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTransactionDate" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getTransactionDate()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTransactionMontant" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getTransactionMontant()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getVendeurId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getVendeurId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getVendeurLocal" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getVendeurLocal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getVendeurMembreId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getVendeurMembreId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getVendeurPseudo" id="axlomoso.ezbay.model.interfaces/ArticleLocal#getVendeurPseudo()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAcheteurId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setAcheteurId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAcheteurMembreId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setAcheteurMembreId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAcheteurPseudo" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setAcheteurPseudo(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setActionEnchereLocal" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setActionEnchereLocal(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setActionTransactionLocal" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setActionTransactionLocal(Laxlomoso.ezbay.model.interfaces.ActionTransactionLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAnneeFabrication" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setAnneeFabrication(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setCategorieLocal" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setCategorieLocal(Laxlomoso.ezbay.model.interfaces.CategorieLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDateLimite" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setDateLimite(Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDerniereEnchereDate" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setDerniereEnchereDate(Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDerniereEnchereMontant" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setDerniereEnchereMontant(Ljava.lang.Double;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDescription" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setDescription(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setEnVente" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setEnVente(Ljava.lang.Boolean;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setEncherisseurClientId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setEncherisseurClientId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setEncherisseurMembreId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setEncherisseurMembreId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setEncherisseurPseudo" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setEncherisseurPseudo(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setLibelle" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setLibelle(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMarque" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setMarque(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setModele" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setModele(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setNbEncheres" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setNbEncheres(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPrixVente" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setPrixVente(Ljava.lang.Double;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTransactionAvis" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setTransactionAvis(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTransactionDate" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setTransactionDate(Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTransactionMontant" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setTransactionMontant(Ljava.lang.Double;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVendeurId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setVendeurId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVendeurLocal" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setVendeurLocal(Laxlomoso.ezbay.model.interfaces.VendeurLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVendeurMembreId" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setVendeurMembreId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVendeurPseudo" id="axlomoso.ezbay.model.interfaces/ArticleLocal#setVendeurPseudo(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="updateArticle" id="axlomoso.ezbay.model.interfaces/ArticleLocal#updateArticle(Laxlomoso.ezbay.model.interfaces.ArticleDTO;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ArticleLocal->axlomoso.ezbay.model.interfaces/ActionTransactionLocal" source="//@children.13" target="//@children.15" targetEnd="//@children.13/@sourceConnections.0/@children.2" label="//@children.13/@sourceConnections.0/@children.0" sourceEnd="//@children.13/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="227,292"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="ActionTransactionFacadeLocal" location="1740,980" size="283,140" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ActionTransactionFacadeLocal" runTimeClassModel="getAcquereur(Ljava.lang.String;),createActionTransaction(Laxlomoso.ezbay.model.interfaces.ActionTransactionDTO;Laxlomoso.ezbay.model.interfaces.ArticleLocal;Laxlomoso.ezbay.model.interfaces.ClientLocal;),setAvis(Ljava.lang.String;Ljava.lang.String;),getActionTransactionByArticle(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="206,72">
+      <children xsi:type="editmodel:MethodEditModel" name="createActionTransaction" id="axlomoso.ezbay.model.interfaces/ActionTransactionFacadeLocal#createActionTransaction(Laxlomoso.ezbay.model.interfaces.ActionTransactionDTO;Laxlomoso.ezbay.model.interfaces.ArticleLocal;Laxlomoso.ezbay.model.interfaces.ClientLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAcquereur" id="axlomoso.ezbay.model.interfaces/ActionTransactionFacadeLocal#getAcquereur(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getActionTransactionByArticle" id="axlomoso.ezbay.model.interfaces/ActionTransactionFacadeLocal#getActionTransactionByArticle(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAvis" id="axlomoso.ezbay.model.interfaces/ActionTransactionFacadeLocal#setAvis(Ljava.lang.String;Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ActionTransactionFacadeLocal->axlomoso.ezbay.model.interfaces/ArticleLocal" source="//@children.14" target="//@children.13" targetEnd="//@children.14/@sourceConnections.0/@children.2" label="//@children.14/@sourceConnections.0/@children.0" sourceEnd="//@children.14/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,69" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="215,649"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.13/@sourceConnections.0" name="ActionTransactionLocal" location="853,50" size="227,302" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal" runTimeClassModel="getId(),getArticleLocal(),getMontant(),setMontant(Ljava.lang.Double;),setDate(Ljava.util.Date;),getDate(),getActionTransactionDTO(),setId(Ljava.lang.String;),setAvis(Ljava.lang.String;),setClientLocal(Laxlomoso.ezbay.model.interfaces.ClientLocal;),getClientLocal(),setArticleLocal(Laxlomoso.ezbay.model.interfaces.ArticleLocal;),getAvis()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="179,234">
+      <children xsi:type="editmodel:MethodEditModel" name="getActionTransactionDTO" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#getActionTransactionDTO()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getArticleLocal" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#getArticleLocal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAvis" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#getAvis()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getClientLocal" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#getClientLocal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDate" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#getDate()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#getId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMontant" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#getMontant()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setArticleLocal" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#setArticleLocal(Laxlomoso.ezbay.model.interfaces.ArticleLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAvis" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#setAvis(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setClientLocal" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#setClientLocal(Laxlomoso.ezbay.model.interfaces.ClientLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDate" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#setDate(Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#setId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMontant" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal#setMontant(Ljava.lang.Double;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ActionTransactionLocal->axlomoso.ezbay.model.interfaces/ArticleLocal" source="//@children.15" target="//@children.13" targetEnd="//@children.15/@sourceConnections.0/@children.2" label="//@children.15/@sourceConnections.0/@children.0" sourceEnd="//@children.15/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="217,302" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,10"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="ActionEnchereFacadeLocal" location="780,870" size="255,140" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacadeLocal" runTimeClassModel="getActionEncheresByArticle(Ljava.lang.String;),getEncherisseur(Ljava.lang.String;),removeActionEnchere(Ljava.lang.String;),createActionEnchere(Laxlomoso.ezbay.model.interfaces.ActionEnchereDTO;Laxlomoso.ezbay.model.interfaces.ArticleLocal;Laxlomoso.ezbay.model.interfaces.ClientLocal;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="194,72">
+      <children xsi:type="editmodel:MethodEditModel" name="createActionEnchere" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacadeLocal#createActionEnchere(Laxlomoso.ezbay.model.interfaces.ActionEnchereDTO;Laxlomoso.ezbay.model.interfaces.ArticleLocal;Laxlomoso.ezbay.model.interfaces.ClientLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getActionEncheresByArticle" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacadeLocal#getActionEncheresByArticle(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEncherisseur" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacadeLocal#getEncherisseur(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeActionEnchere" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacadeLocal#removeActionEnchere(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ActionEnchereFacadeLocal->axlomoso.ezbay.model.interfaces/ArticleLocal" source="//@children.16" target="//@children.13" targetEnd="//@children.16/@sourceConnections.0/@children.2" label="//@children.16/@sourceConnections.0/@children.0" sourceEnd="//@children.16/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="255,70" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,540"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="ArticleLocalHome" location="868,1657" size="191,302" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome" runTimeClassModel="findByPrimaryKey(Ljava.lang.String;),cOMP_NAME,findByModele(Ljava.lang.String;),findByPrixVente(Ljava.lang.Double;),findByDescription(Ljava.lang.String;),findByAnneeFabrication(Ljava.lang.Integer;),jNDI_NAME,findByMarque(Ljava.lang.String;),findByLibelle(Ljava.lang.String;),findByDateLimite(Ljava.util.Date;),findAll(),create(Laxlomoso.ezbay.model.interfaces.ArticleDTO;Laxlomoso.ezbay.model.interfaces.VendeurLocal;),findByFields(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.Double;Ljava.lang.Double;Ljava.lang.Integer;Ljava.util.Date;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="145,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="cOMP_NAME" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#cOMP_NAME"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jNDI_NAME" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#jNDI_NAME"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="168,198">
+      <children xsi:type="editmodel:MethodEditModel" name="create" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#create(Laxlomoso.ezbay.model.interfaces.ArticleDTO;Laxlomoso.ezbay.model.interfaces.VendeurLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findAll" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#findAll()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByAnneeFabrication" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#findByAnneeFabrication(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByDateLimite" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#findByDateLimite(Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByDescription" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#findByDescription(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByFields" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#findByFields(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.Double;Ljava.lang.Double;Ljava.lang.Integer;Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByLibelle" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#findByLibelle(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByMarque" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#findByMarque(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByModele" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#findByModele(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByPrimaryKey" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#findByPrimaryKey(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="findByPrixVente" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome#findByPrixVente(Ljava.lang.Double;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ArticleLocalHome->axlomoso.ezbay.model.interfaces/ArticleLocal" source="//@children.17" target="//@children.13" targetEnd="//@children.17/@sourceConnections.0/@children.2" label="//@children.17/@sourceConnections.0/@children.0" sourceEnd="//@children.17/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="181,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,1102"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ActionEnchereUtil" location="2892,3379" size="183,88" id="axlomoso.ezbay.model.interfaces/ActionEnchereUtil" runTimeClassModel="getLocalHome(),generateGUID(Ljava.lang.Object;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="114,36">
+      <children xsi:type="editmodel:MethodEditModel" name="generateGUID" id="axlomoso.ezbay.model.interfaces/ActionEnchereUtil#generateGUID(Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLocalHome" id="axlomoso.ezbay.model.interfaces/ActionEnchereUtil#getLocalHome()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ActionEnchereUtil->axlomoso.ezbay.model.interfaces/ActionEnchereLocalHome" source="//@children.18" target="//@children.11" targetEnd="//@children.18/@sourceConnections.0/@children.2" label="//@children.18/@sourceConnections.0/@children.0" sourceEnd="//@children.18/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="234,158"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.11/@sourceConnections.1" name="ActionEnchereLocal" location="1326,1858" size="199,302" stereotype="interface" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal" runTimeClassModel="getId(),getArticleLocal(),getMontant(),setMontant(Ljava.lang.Double;),setDate(Ljava.util.Date;),getDate(),setDateLimite(Ljava.util.Date;),setId(Ljava.lang.String;),getDateLimite(),getClientLocal(),setClientLocal(Laxlomoso.ezbay.model.interfaces.ClientLocal;),getActionEnchereDTO(),setArticleLocal(Laxlomoso.ezbay.model.interfaces.ArticleLocal;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="160,234">
+      <children xsi:type="editmodel:MethodEditModel" name="getActionEnchereDTO" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#getActionEnchereDTO()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getArticleLocal" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#getArticleLocal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getClientLocal" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#getClientLocal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDate" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#getDate()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDateLimite" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#getDateLimite()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#getId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMontant" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#getMontant()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setArticleLocal" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#setArticleLocal(Laxlomoso.ezbay.model.interfaces.ArticleLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setClientLocal" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#setClientLocal(Laxlomoso.ezbay.model.interfaces.ClientLocal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDate" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#setDate(Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDateLimite" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#setDateLimite(Ljava.util.Date;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setId" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#setId(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMontant" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal#setMontant(Ljava.lang.Double;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="axlomoso.ezbay.model.interfaces/ActionEnchereLocal->axlomoso.ezbay.model.interfaces/ArticleLocal" source="//@children.19" target="//@children.13" targetEnd="//@children.19/@sourceConnections.0/@children.2" label="//@children.19/@sourceConnections.0/@children.0" sourceEnd="//@children.19/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="50,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="99,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="115,1112"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=7"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

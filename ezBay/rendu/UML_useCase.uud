@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:UseCaseDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="UML_useCase" size="1104,630" metadata="uml2-1.0" initialized="true" scrolledY="91" tag="10" key="323030353039323720554D4C5F657A426179">
+  <children xsi:type="editmodel:UseCaseActorEditModel" targetConnections="//@children.1/@sourceConnections.0" location="80,190" size="111,161" stereotype="abstract" itemName="Membre">
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" autoLocated="true" source="//@children.0" target="//@children.3/@children.2" targetEnd="//@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="111,5" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="16,69"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseGeneralizationEditModel" autoLocated="true" source="//@children.0" target="//@children.4" targetEnd="//@children.0/@sourceConnections.1/@children.1" sourceEnd="//@children.0/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="59,0" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="38,136"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" autoLocated="true" source="//@children.0" target="//@children.3/@children.3" targetEnd="//@children.0/@sourceConnections.2/@children.1" sourceEnd="//@children.0/@sourceConnections.2/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="111,22" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="0,39"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseActorEditModel" targetConnections="//@children.2/@sourceConnections.0" location="101,430" size="70,132" stereotype="" itemName="Client">
+    <sourceConnections xsi:type="editmodel:UseCaseGeneralizationEditModel" autoLocated="true" source="//@children.1" target="//@children.0" targetEnd="//@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="34,0" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="55,161"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" autoLocated="true" source="//@children.1" target="//@children.3/@children.4" targetEnd="//@children.1/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="70,25" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="0,55"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.1" target="//@children.3/@children.8" targetEnd="//@children.1/@sourceConnections.2/@children.1" sourceEnd="//@children.1/@sourceConnections.2/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="48,0" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="70,69"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.1" target="//@children.3/@children.9" targetEnd="//@children.1/@sourceConnections.3/@children.1" sourceEnd="//@children.1/@sourceConnections.3/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="60,0" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="0,64"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseActorEditModel" location="101,630" size="70,132" stereotype="" itemName="Vendeur">
+    <sourceConnections xsi:type="editmodel:UseCaseGeneralizationEditModel" autoLocated="true" source="//@children.2" target="//@children.1" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="35,0" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="35,132"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" autoLocated="true" source="//@children.2" target="//@children.3/@children.6" targetEnd="//@children.2/@sourceConnections.1/@children.1" sourceEnd="//@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="70,97" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="0,31"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.2" target="//@children.3/@children.5" targetEnd="//@children.2/@sourceConnections.2/@children.1" sourceEnd="//@children.2/@sourceConnections.2/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="70,25" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="32,65"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" autoLocated="true" source="//@children.2" target="//@children.3/@children.10" targetEnd="//@children.2/@sourceConnections.3/@children.1" sourceEnd="//@children.2/@sourceConnections.3/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="70,54" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="2,79"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.2" target="//@children.3/@children.11" targetEnd="//@children.2/@sourceConnections.4/@children.1" sourceEnd="//@children.2/@sourceConnections.4/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="70,69" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="0,46"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:SystemEditModel" location="230,0" size="846,767" itemName="ezBay">
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.4/@sourceConnections.0" location="64,9" size="214,67" description="" itemName="recherche d'articles" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank=""/>
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.4/@sourceConnections.1 //@children.3/@children.3/@sourceConnections.0 //@children.3/@children.2/@sourceConnections.0" location="289,64" size="245,64" description="" itemName="s'inscrire" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank=""/>
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.0" location="48,126" size="201,74" description="" itemName="se connecter" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank="">
+      <sourceConnections xsi:type="editmodel:IncludesEditModel" autoLocated="true" source="//@children.3/@children.2" target="//@children.3/@children.1" targetEnd="//@children.3/@children.2/@sourceConnections.0/@children.1" label="//@children.3/@children.2/@sourceConnections.0/@children.2" sourceEnd="//@children.3/@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="201,0" attachSource="true"/>
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="0,62"/>
+        <children xsi:type="editmodel:WireLabelEditModel" name="«includes»" size="62,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      </sourceConnections>
+    </children>
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.2" location="312,173" size="189,63" description="" itemName="se désinscrire" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank="">
+      <sourceConnections xsi:type="editmodel:IncludesEditModel" autoLocated="true" source="//@children.3/@children.3" target="//@children.3/@children.1" targetEnd="//@children.3/@children.3/@sourceConnections.0/@children.1" label="//@children.3/@children.3/@sourceConnections.0/@children.2" sourceEnd="//@children.3/@children.3/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="94,0" attachSource="true"/>
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="117,64"/>
+        <children xsi:type="editmodel:WireLabelEditModel" name="«includes»" size="62,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      </sourceConnections>
+    </children>
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.1/@sourceConnections.1 //@children.3/@children.7/@sourceConnections.0" location="59,400" size="230,81" description="" itemName="enchérir un article" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank=""/>
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.2/@sourceConnections.2" location="20,502" size="196,65" description="" itemName="mettre un article en vente" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank=""/>
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.2/@sourceConnections.1" location="53,696" size="247,64" description="" itemName="retirer de la vente un article non enchéri" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank=""/>
+    <children xsi:type="editmodel:UseCaseEditModel" location="339,374" size="210,73" description="" itemName="déposer un avis" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank="">
+      <sourceConnections xsi:type="editmodel:IncludesEditModel" autoLocated="true" source="//@children.3/@children.7" target="//@children.3/@children.4" targetEnd="//@children.3/@children.7/@sourceConnections.0/@children.1" label="//@children.3/@children.7/@sourceConnections.0/@children.2" sourceEnd="//@children.3/@children.7/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="0,49" attachSource="true"/>
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="230,23"/>
+        <children xsi:type="editmodel:WireLabelEditModel" name="«includes»" size="62,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      </sourceConnections>
+    </children>
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.1/@sourceConnections.2" location="26,245" size="239,69" description="" itemName="consulter ses achats" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank=""/>
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.1/@sourceConnections.3" location="283,259" size="198,68" description="" itemName="consulter ses enchères" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank=""/>
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.2/@sourceConnections.3" location="226,506" size="236,79" description="" itemName="consulter ses avis" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank=""/>
+    <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.2/@sourceConnections.4 //@children.3/@children.13/@sourceConnections.0 //@children.3/@children.14/@sourceConnections.0 //@children.3/@children.12/@sourceConnections.0" location="379,600" size="213,79" description="" itemName="consulter ses articles" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank=""/>
+    <children xsi:type="editmodel:UseCaseEditModel" location="557,460" size="154,39" description="" itemName="articles en attente" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank="">
+      <sourceConnections xsi:type="editmodel:ExtendsEditModel" source="//@children.3/@children.12" target="//@children.3/@children.11" targetEnd="//@children.3/@children.12/@sourceConnections.0/@children.1" label="//@children.3/@children.12/@sourceConnections.0/@children.2" sourceEnd="//@children.3/@children.12/@sourceConnections.0/@children.0" connectionRouterKind="Manual" condition="articles en attente">
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="17,39" attachSource="true"/>
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="143,2"/>
+        <children xsi:type="editmodel:WireLabelEditModel" name="«extends»&#xA;articles en attente" location="796,516" size="104,32" fontInfo="Arial-8-0" automaticRelocationAllowed="false" locationOnWireFromSource="-15.950371709857409" distanceFromWire="59.75437759961508" anchorKind="MiddlePart"/>
+      </sourceConnections>
+    </children>
+    <children xsi:type="editmodel:UseCaseEditModel" location="670,529" size="151,38" description="" itemName="articles en vente" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank="">
+      <sourceConnections xsi:type="editmodel:ExtendsEditModel" autoLocated="true" source="//@children.3/@children.13" target="//@children.3/@children.11" targetEnd="//@children.3/@children.13/@sourceConnections.0/@children.1" label="//@children.3/@children.13/@sourceConnections.0/@children.2" sourceEnd="//@children.3/@children.13/@sourceConnections.0/@children.0" connectionRouterKind="Manual" condition="articles en  vente">
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="21,38" attachSource="true"/>
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="213,2"/>
+        <children xsi:type="editmodel:WireLabelEditModel" name="«extends»&#xA;articles en  vente" location="868,578" size="98,32" fontInfo="Arial-8-0" automaticRelocationAllowed="false" locationOnWireFromSource="-42.49729170170963" distanceFromWire="41.230816121195105" anchorKind="MiddlePart"/>
+      </sourceConnections>
+    </children>
+    <children xsi:type="editmodel:UseCaseEditModel" location="665,685" size="144,39" description="" itemName="articles vendus" alternativeFlows="{}" normalFlow="" postCondition="" preCondition="" rank="">
+      <sourceConnections xsi:type="editmodel:ExtendsEditModel" autoLocated="true" source="//@children.3/@children.14" target="//@children.3/@children.11" targetEnd="//@children.3/@children.14/@sourceConnections.0/@children.1" label="//@children.3/@children.14/@sourceConnections.0/@children.2" sourceEnd="//@children.3/@children.14/@sourceConnections.0/@children.0" connectionRouterKind="Manual" condition="articles vendus">
+        <children xsi:type="editmodel:UseCaseEndEditModel" attachSource="true"/>
+        <children xsi:type="editmodel:UseCaseEndEditModel" location="213,67"/>
+        <children xsi:type="editmodel:WireLabelEditModel" name="«extends»&#xA;articles vendus" location="862,637" size="86,32" fontInfo="Arial-8-0" automaticRelocationAllowed="false" locationOnWireFromSource="-30.103939792180622" distanceFromWire="-42.3999152002544" anchorKind="MiddlePart"/>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:UseCaseActorEditModel" targetConnections="//@children.0/@sourceConnections.1" location="101,0" size="77,136" stereotype="" itemName="internaute">
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" autoLocated="true" source="//@children.4" target="//@children.3/@children.0" targetEnd="//@children.4/@sourceConnections.0/@children.1" sourceEnd="//@children.4/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="77,42" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="0,33"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" autoLocated="true" source="//@children.4" target="//@children.3/@children.1" targetEnd="//@children.4/@sourceConnections.1/@children.1" sourceEnd="//@children.4/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="77,96" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="0,32"/>
+    </sourceConnections>
+  </children>
+  <diagramOptions xsi:type="options:UseCaseDiagramOptions" level="0" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+</editmodel:UseCaseDiagramEditModel>
