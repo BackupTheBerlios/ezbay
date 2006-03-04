@@ -1,8 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:StateDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" metadata="uml2-1.0" tag="10" key="323030353039323720554D4C5F657A426179">
+<editmodel:StateDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="UML_etat" size="1405,681" metadata="uml2-1.0" initialized="true" tag="10" key="323030353039323720554D4C5F657A426179">
+  <children xsi:type="editmodel:StartEditModel" location="50,80" size="20,20" itemName="création">
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" autoLocated="true" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.1" label="//@children.0/@sourceConnections.0/@children.2" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual" eventName="saveArticle" eventArgument="" condition="" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="20,10" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="0,20"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="saveArticle" size="63,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:StateEditModel" targetConnections="//@children.0/@sourceConnections.0 //@children.1/@sourceConnections.1 //@children.2/@sourceConnections.2 //@children.2/@sourceConnections.3" location="250,70" size="191,110" itemName="article en attente" content="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" autoLocated="true" source="//@children.1" target="//@children.2" targetEnd="//@children.1/@sourceConnections.0/@children.1" label="//@children.1/@sourceConnections.0/@children.2" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual" eventName="mettreEnVente" eventArgument="" condition="" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="191,55" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="0,53"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="mettreEnVente" size="87,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" autoLocated="true" source="//@children.1" target="//@children.1" targetEnd="//@children.1/@sourceConnections.1/@children.1" label="//@children.1/@sourceConnections.1/@children.2" sourceEnd="//@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" eventName="saveArticle" eventArgument="" condition="" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="65,110" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="110,110"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="saveArticle" size="63,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" autoLocated="true" source="//@children.1" target="//@children.8" targetEnd="//@children.1/@sourceConnections.2/@children.1" label="//@children.1/@sourceConnections.2/@children.2" sourceEnd="//@children.1/@sourceConnections.2/@children.0" connectionRouterKind="Manual" eventName="supprimerArticle" eventArgument="" condition="" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="0,97" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="21,5"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="supprimerArticle" size="94,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:StateEditModel" targetConnections="//@children.1/@sourceConnections.0 //@children.2/@sourceConnections.1" location="700,72" size="196,106" itemName="article en vente" content="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" autoLocated="true" source="//@children.2" target="//@children.4" targetEnd="//@children.2/@sourceConnections.0/@children.1" label="//@children.2/@sourceConnections.0/@children.2" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual" eventName="encherirArticle" eventArgument="" condition="" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="97,106" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="97,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="encherirArticle" size="83,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" source="//@children.2" target="//@children.2" targetEnd="//@children.2/@sourceConnections.1/@children.1" label="//@children.2/@sourceConnections.1/@children.2" sourceEnd="//@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" eventName="" eventArgument="" condition="" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="196,36" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="196,79"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" source="//@children.2" target="//@children.1" targetEnd="//@children.2/@sourceConnections.2/@children.1" label="//@children.2/@sourceConnections.2/@children.2" sourceEnd="//@children.2/@sourceConnections.2/@children.0" connectionRouterKind="Manual" eventName="retirerArticle" eventArgument="" condition="" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="101,0" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="154,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="retirerArticle" size="70,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" source="//@children.2" target="//@children.1" targetEnd="//@children.2/@sourceConnections.3/@children.1" label="//@children.2/@sourceConnections.3/@children.2" sourceEnd="//@children.2/@sourceConnections.3/@children.0" connectionRouterKind="Manual" eventName="" eventArgument="" condition="dateCourante > dateLimite" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="0,88" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="191,93"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name=" [dateCourante > dateLimite]" size="165,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:StateEditModel" targetConnections="//@children.4/@sourceConnections.1" location="230,350" size="161,121" itemName="article vendu" content="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" autoLocated="true" source="//@children.3" target="//@children.7" targetEnd="//@children.3/@sourceConnections.0/@children.1" label="//@children.3/@sourceConnections.0/@children.2" sourceEnd="//@children.3/@sourceConnections.0/@children.0" connectionRouterKind="Manual" eventName="" eventArgument="" condition="" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="11,121" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="10,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:StateEditModel" targetConnections="//@children.2/@sourceConnections.0 //@children.4/@sourceConnections.0" location="700,320" size="221,126" itemName="article enchéri" content="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" source="//@children.4" target="//@children.4" targetEnd="//@children.4/@sourceConnections.0/@children.1" label="//@children.4/@sourceConnections.0/@children.2" sourceEnd="//@children.4/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" eventName="" eventArgument="" condition="dateCourante &lt; dateLimite" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="221,85" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="221,25"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name=" [dateCourante &lt; dateLimite]" size="165,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:TransitionEditModel" autoLocated="true" source="//@children.4" target="//@children.3" targetEnd="//@children.4/@sourceConnections.1/@children.1" label="//@children.4/@sourceConnections.1/@children.2" sourceEnd="//@children.4/@sourceConnections.1/@children.0" connectionRouterKind="Manual" eventName="" eventArgument="" condition="dateCourante > dateLimite" action="">
+      <children xsi:type="editmodel:StateEndEditModel" location="0,78" attachSource="true"/>
+      <children xsi:type="editmodel:StateEndEditModel" location="161,48"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name=" [dateCourante > dateLimite]" size="165,16" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:NotepadEditModel" location="271,240" size="149,42" fontInfo="Arial-8-0" note="L'article existe déjà : &#xD;&#xA;&#x9;updateArticle"/>
+  <children xsi:type="editmodel:NotepadEditModel" location="77,99" size="154,42" fontInfo="Arial-8-0" note="L'article n'existe pas : &#xD;&#xA;&#x9;créateArticle"/>
+  <children xsi:type="editmodel:EndEditModel" targetConnections="//@children.3/@sourceConnections.0" location="231,541" size="21,21" itemName="article vendu"/>
+  <children xsi:type="editmodel:EndEditModel" targetConnections="//@children.1/@sourceConnections.2" location="100,220" size="21,21"/>
   <diagramOptions xsi:type="options:StateDiagramOptions" level="0" autoName="false"/>
   <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
     <leftRuler/>
-    <topRuler/>
+    <topRuler>
+      <guides position="-17"/>
+    </topRuler>
   </boardSetting>
 </editmodel:StateDiagramEditModel>
