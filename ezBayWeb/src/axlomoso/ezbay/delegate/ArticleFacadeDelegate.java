@@ -57,10 +57,6 @@ public class ArticleFacadeDelegate {
 		return this.getArticlesDtoToView(articleFacade.getArticlesEnVenteByCategorie(categorieId));
 	}
 
-	public Collection getArticlesEnVenteByVendeur(String vendeurId) throws RemoteException, Exception {
-		return this.getArticlesDtoToView(articleFacade.getArticlesEnVenteByVendeur(vendeurId));
-	}
-
 	public CategorieDTO getCategorieDTO(String articleId) throws Exception, RemoteException {
 		return articleFacade.getCategorieDTO(articleId);
 	}
