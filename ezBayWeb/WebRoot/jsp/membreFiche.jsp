@@ -74,7 +74,7 @@
 			<tr>
 				<td>
 					<html:link action="article.do?do=showArticleFiche" paramName="article" paramProperty="id" paramId="id">
-					<bean:message key="articleList.libelle" />
+					<bean:write name="article" property="libelle" />
 					</html:link>
 				</td>
 				<td>
@@ -103,17 +103,50 @@
 				</td>
 			</tr>
 			</logic:iterate>
-			<tr>
-				<td></td>
-			</tr>
+			</table>
+			<br />
+			<hr width="50%;" color=" #FDF3BF" size="3" />
+			<logic:notEmpty name="membreForm" property="articlesViewVendus">
+				<h2><bean:message key="membreFiche.mesAvis" /></h2>
+				<table class="body_recherche_article">
+					<tr class="body_recherche_article">
+						<td>
+							<bean:message key="articleList.libelle" />
+						</td>
+						<td>
+							<bean:message key="articleList.transaction.dateAcquisition" />
+						</td>
+						<td>
+							<bean:message key="articleList.transaction.client.nom" />
+						</td>
+						<td>
+							<bean:message key="articleList.transaction.avis" />
+						</td>
+					</tr>
+					<logic:iterate name="membreForm" property="articlesViewVendus" id="article">
+					<tr>
+						<td>
+							<bean:write name="article" property="libelle" />
+						</td>
+						<td>
+							<bean:write name="article" property="transactionFormattedDate" />
+						</td>
+						<td>
+							<bean:write name="article" property="acheteurPseudo" />
+						</td>
+						<td>
+							<bean:write name="article" property="transactionAvis" />
+						</td>
+					</tr>
+					</logic:iterate>
+				</table>
+			</logic:notEmpty>
 			
-			
-		</table>
 		<br />
+		</logic:notEmpty>
 		<html:link href="javascript:history.back()">
 			<bean:message key="link.retour" />
 		</html:link>
-		</logic:notEmpty>
 	</center>
 </body>
 </html>

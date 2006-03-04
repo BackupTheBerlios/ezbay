@@ -33,6 +33,7 @@ public class MembreForm extends ActionForm {
 	private String stringDateNaissance = null;
 	private Util util = new Util();
 	private Collection articlesViewEnVente=null;
+	private Collection articlesViewVendus=null;
 	private String vendeurId = "";
 	private String clientId = "";
 	
@@ -299,5 +300,13 @@ public class MembreForm extends ActionForm {
 
 	public void setVendeurId(String vendeurId) {
 		this.vendeurId = vendeurId;
+	}
+
+	public Collection getArticlesViewVendus() {
+		return articlesViewVendus;
+	}
+
+	public void setArticlesViewVendus(Collection articlesViewVendus) {
+		this.articlesViewVendus = articlesViewVendus;
 	}
 }

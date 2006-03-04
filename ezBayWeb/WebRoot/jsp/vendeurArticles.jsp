@@ -32,11 +32,11 @@
 	</center>
 	
 	<html:errors />
-	<h2>
+	<h3>
 		<bean:message key="vendeurArticles.articlesEnAttente.titre" />
-	</h2>
+	</h3>
 	<logic:empty name="vendeurForm" property="articlesEnAttente">
-		<bean:message key="vendeurArticles.articlesEnAttente.noArticle" />
+		<div><bean:message key="vendeurArticles.articlesEnAttente.noArticle" /></div><br />
 	</logic:empty>
 	<logic:notEmpty name="vendeurForm" property="articlesEnAttente">
 		<table class="body_mes_articles">
@@ -80,11 +80,12 @@
 			</logic:iterate>
 		</table>
 	</logic:notEmpty>
-	<h2>
+	<br />
+	<h3>
 		<bean:message key="vendeurArticles.articlesEnVente.titre" />
-	</h2>
+	</h3>
 	<logic:empty name="vendeurForm" property="articlesEnVente">
-		<bean:message key="vendeurArticles.articlesEnVente.noArticle" />
+		<div><bean:message key="vendeurArticles.articlesEnVente.noArticle" /></div><br />
 	</logic:empty>
 	<logic:notEmpty name="vendeurForm" property="articlesEnVente">
 		<table class="body_mes_articles">
@@ -142,12 +143,13 @@
 			</logic:iterate>
 		</table>
 	</logic:notEmpty>
-	<h2>
+	<br />
+	<h3>
 		<bean:message key="vendeurArticles.articlesVendus.titre" />
-	</h2>
+	</h3>
 	<%-- set the header --%>
 	<logic:empty name="vendeurForm" property="articlesVendus">
-		<bean:message key="vendeurArticles.articlesVendus.noArticle" />
+		<div><bean:message key="vendeurArticles.articlesVendus.noArticle" /></div><br />
 	</logic:empty>
 	<logic:notEmpty name="vendeurForm" property="articlesVendus">
 		<table class="body_mes_articles">

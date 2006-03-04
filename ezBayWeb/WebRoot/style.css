@@ -12,6 +12,10 @@ h2
 	color:#000088;
 }
 
+div
+{
+	margin-left: 50px;
+}
 
 table
 {
@@ -106,6 +110,7 @@ a:hover
 
 table.body_mes_articles
 {
+	margin-left: 50px;
 	font-family:Verdana;
 	font-weight:bold;
 	text-align :center;
@@ -113,7 +118,6 @@ table.body_mes_articles
 	border-color: #FBE468;
 	border-style: solid;
 	border-width:thin;
-	margin: 50px;
 	width: 800px;
 }
 

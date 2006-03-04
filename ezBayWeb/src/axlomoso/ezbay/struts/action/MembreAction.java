@@ -98,6 +98,7 @@ public class MembreAction extends DispatchAction {
 			membreForm.setVendeurId(vendeurId);
 		}
 		membreForm.setArticlesViewEnVente(vendeurFacade.getArticlesEnVente(vendeurId));
+		membreForm.setArticlesViewVendus(vendeurFacade.getArticlesVendus(vendeurId));
 		membreForm.setClientId(clientId);
 		return (mapping.findForward("showMembreFiche"));
 	}

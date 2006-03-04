@@ -72,6 +72,9 @@
 					<td>
 						<html:text property="stringMontantEnchereCourante" />
 					</td>
+					<td>
+						<bean:message key="general.label.devise" />
+					</td>
 				</tr>
 			</table>
 			<br /><br />
