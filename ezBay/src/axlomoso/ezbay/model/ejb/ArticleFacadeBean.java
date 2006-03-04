@@ -355,7 +355,7 @@ public class ArticleFacadeBean implements SessionBean {
 	public Collection rechercherArticlesEnVente(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,
 			Double prixVenteMax, Integer anneeFabrication, Date dateLimite) {
 		//retourne une collection d'ArticleDTO
-		Collection tTemp = rechercherArticles(libcategorie, libelle, marque, modele, prixVenteMin, prixVenteMax, anneeFabrication, dateLimite);
+		Collection tTemp = this.rechercherArticles(libcategorie, libelle, marque, modele, prixVenteMin, prixVenteMax, anneeFabrication, dateLimite);
 		return this.getOnlyArticlesEnVente(tTemp);
 	}
 	
