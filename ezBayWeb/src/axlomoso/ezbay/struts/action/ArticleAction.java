@@ -191,7 +191,7 @@ public class ArticleAction extends DispatchAction {
 		return mapping.findForward(target);
 	}	
 	
-	public ActionForward encherirArticle(
+	/*public ActionForward encherirArticle(
 			//mise en vente d'un article existant
 			ActionMapping mapping,
 			ActionForm form,
@@ -220,7 +220,7 @@ public class ArticleAction extends DispatchAction {
 				target = "echecMiseEnVente";
 			}
 		return mapping.findForward(target);
-	}	
+	}	*/
 	
 	private void setArticleForm(String articleId, ActionForm form, HttpServletRequest request) throws Exception{
 		ArticleForm articleForm = (ArticleForm) form;	
