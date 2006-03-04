@@ -4,6 +4,8 @@
 	<comment></comment>
 	<projects>
 		<project>ezBay</project>
+		<project>UML_ezBay</project>
+		<project>ezBay_tout_en_un</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
