@@ -1,39 +1,27 @@
 package axlomoso.ezbay.test;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 
-import javax.ejb.CreateException;
 import javax.ejb.FinderException;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.rmi.PortableRemoteObject;
 
+import junit.framework.TestCase;
 import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
 import axlomoso.ezbay.exceptions.ArticleEnVenteException;
-import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
 import axlomoso.ezbay.exceptions.ArticleProprietaireException;
 import axlomoso.ezbay.exceptions.ArticleVenduException;
 import axlomoso.ezbay.exceptions.VendeurInconnuException;
-import axlomoso.ezbay.model.ejb.ArticleFacadeBean;
 import axlomoso.ezbay.model.ejb.CategorieFacadeBean;
 import axlomoso.ezbay.model.ejb.MembreFacadeBean;
 import axlomoso.ezbay.model.ejb.VendeurFacadeBean;
-import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
-import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
-import axlomoso.ezbay.model.interfaces.ArticleLocal;
-import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieFacade;
 import axlomoso.ezbay.model.interfaces.CategorieFacadeHome;
 import axlomoso.ezbay.model.interfaces.CategorieLocalHome;
-import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.MembreFacade;
 import axlomoso.ezbay.model.interfaces.MembreFacadeHome;
@@ -41,13 +29,9 @@ import axlomoso.ezbay.model.interfaces.MembreLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurFacade;
 import axlomoso.ezbay.model.interfaces.VendeurFacadeHome;
-import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
-import axlomoso.ezbay.struts.views.ArticleView;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
-
-import junit.framework.TestCase;
 
 /**
  */
