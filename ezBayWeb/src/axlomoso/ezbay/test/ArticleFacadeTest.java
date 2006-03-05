@@ -3,7 +3,6 @@ package axlomoso.ezbay.test;
 import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
@@ -12,11 +11,9 @@ import javax.ejb.RemoveException;
 
 import junit.framework.TestCase;
 import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
-import axlomoso.ezbay.exceptions.ArticleEnVenteException;
 import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
 import axlomoso.ezbay.exceptions.ArticleProprietaireException;
 import axlomoso.ezbay.exceptions.ArticleVenduException;
-import axlomoso.ezbay.exceptions.VendeurInconnuException;
 import axlomoso.ezbay.model.ejb.ActionEnchereFacadeBean;
 import axlomoso.ezbay.model.ejb.ActionTransactionFacadeBean;
 import axlomoso.ezbay.model.ejb.ArticleFacadeBean;
@@ -232,7 +229,7 @@ public class ArticleFacadeTest extends TestCase {
 			//récupération de id de l'article créé 
 			String idArticle=articleDTOcree1.getId();
 			VendeurDTO vendeurDTOrecup=articleFacade.getVendeurDTO(idArticle);			
-			assertTrue(VendeurFacadeTest_old.equalsDTO(vendeurDTOrecup,vendeurDTOcree1, true));
+			assertTrue(VendeurFacadeTest.equalsDTO(vendeurDTOrecup,vendeurDTOcree1, true));
 		} catch (RemoteException e) {			
 			e.printStackTrace();
 		} catch (Exception e) {			
@@ -433,7 +430,7 @@ public class ArticleFacadeTest extends TestCase {
 		//l'article n'est pas en vente, une ArticlePasEnVenteException doit être levée...
 		try {
 			articleFacade.encherir(enchereDTO, articleLocal.getId(), clientDTOcree1.getId());
-			//assertTrue(false); // ECHEC : ça ne doit pas fonctionner ==> l'article n'est pas en vente !
+			assertTrue(false); // ECHEC : ça ne doit pas fonctionner ==> l'article n'est pas en vente !
 		} catch (ArticlePasEnVenteException e) {
 			assertTrue(true); // SUCCESS : ça ne fonctionne pas ==> l'article n'est pas en vente !
 		} catch (RemoteException e) {
@@ -650,7 +647,7 @@ public class ArticleFacadeTest extends TestCase {
 	}
 	
 	
-	public boolean equalsDTO(ArticleDTO articleDTO1, ArticleDTO articleDTO2,boolean testerId){
+	public static boolean equalsDTO(ArticleDTO articleDTO1, ArticleDTO articleDTO2,boolean testerId){
 		boolean tRes = true;
 		if (testerId){
 			tRes = tRes && ( (articleDTO1.getId()).equals(articleDTO2.getId()) );
