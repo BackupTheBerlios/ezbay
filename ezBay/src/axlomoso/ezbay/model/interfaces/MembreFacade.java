@@ -23,9 +23,6 @@ public interface MembreFacade
    public axlomoso.ezbay.model.interfaces.MembreDTO getMembre( java.lang.String pseudo,java.lang.String password )
       throws java.rmi.RemoteException;
 
-   public boolean membreExists( java.lang.String pseudo )
-      throws java.rmi.RemoteException;
-
    public axlomoso.ezbay.model.interfaces.VendeurDTO getVendeurDTO( java.lang.String membreId )
       throws java.rmi.RemoteException;
 

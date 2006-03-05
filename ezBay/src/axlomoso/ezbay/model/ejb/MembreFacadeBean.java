@@ -157,12 +157,8 @@ public class MembreFacadeBean implements SessionBean {
 			return tRes;
 	}
 	
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param membreId
-	 * @throws FinderException 
-	 */
-	public boolean membreExists(String pseudo){
+	
+	private boolean membreExists(String pseudo){
 		boolean tRes = true;
 		try {
 				MembreLocalHome membreHome = getEntityHome();
