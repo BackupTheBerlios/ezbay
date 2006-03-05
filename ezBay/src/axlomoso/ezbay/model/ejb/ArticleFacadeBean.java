@@ -558,7 +558,12 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 
 	private boolean isArticleEnVente(ArticleDTO articleDTO) {
-		return articleDTO.getEnVente().booleanValue();
+		boolean tRes = false;
+		Boolean enVente =  articleDTO.getEnVente();
+		if( enVente != null ){
+			tRes = enVente.booleanValue();
+		}
+		return tRes;
 	}
 
 	 
