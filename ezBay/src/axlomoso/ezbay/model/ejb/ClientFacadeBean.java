@@ -67,7 +67,7 @@ public class ClientFacadeBean implements SessionBean {
 	}
 
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param vendeurDTO
 	 */
 	public ClientDTO createClient() throws Exception {
