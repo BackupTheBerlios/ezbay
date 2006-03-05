@@ -540,10 +540,6 @@ public class ArticleFacadeBean implements SessionBean {
 		boolean tRes = false;
 		try {
 			ArticleDTO articleDTO = getEntity(articleId).getArticleDTO();
-			if (this.isArticleEnVente(articleDTO)) {
-				tRes = false;
-				return tRes;
-			}
 			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleDTO.getId());
 			tRes = (articleLocal.getActionTransactionLocal() != null);
 		} catch (FinderException e) {
