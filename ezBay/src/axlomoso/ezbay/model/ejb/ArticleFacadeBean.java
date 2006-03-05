@@ -518,7 +518,7 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param articleDTO
 	 */
 	public boolean isArticleEnEnchere(String articleId) {
@@ -533,7 +533,7 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param articleDTO
 	 */
 	public boolean isArticleVendu(String articleId) {

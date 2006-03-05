@@ -47,12 +47,6 @@ public interface ArticleFacade
    public axlomoso.ezbay.model.interfaces.ClientDTO getDernierEncherisseur( java.lang.String articleId )
       throws java.rmi.RemoteException;
 
-   public boolean isArticleEnEnchere( java.lang.String articleId )
-      throws java.rmi.RemoteException;
-
-   public boolean isArticleVendu( java.lang.String articleId )
-      throws java.rmi.RemoteException;
-
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId )
       throws axlomoso.ezbay.exceptions.ArticlePasEnVenteException, java.rmi.RemoteException;
 
