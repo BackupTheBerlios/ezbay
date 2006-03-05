@@ -61,28 +61,28 @@ public class ArticleFacadeTest extends TestCase {
 	/**
 	 * The fixture
 	 */
-	ArticleDTO articleDTOcree1;
-	ArticleDTO articleDTOcree2;
-	VendeurDTO vendeurDTOcree1;
-	VendeurDTO vendeurDTOcree2;
-	ClientDTO clientDTOcree1;
-	ClientDTO clientDTOcree2;
-	CategorieDTO categorieDTO;
-	MembreDTO membreDTOcree1;
-	MembreDTO membreDTOcree2;
-	ArticleFacade articleFacade;
-	VendeurFacade vendeurFacade;
-	MembreFacade membreFacade;
-	CategorieFacade categorieFacade;	
+	private ArticleDTO articleDTOcree1;
+	private ArticleDTO articleDTOcree2;
+	private VendeurDTO vendeurDTOcree1;
+	private VendeurDTO vendeurDTOcree2;
+	private ClientDTO clientDTOcree1;
+	private ClientDTO clientDTOcree2;
+	private CategorieDTO categorieDTO;
+	private MembreDTO membreDTOcree1;
+	private MembreDTO membreDTOcree2;
+	private ArticleFacade articleFacade;
+	private VendeurFacade vendeurFacade;
+	private MembreFacade membreFacade;
+	private CategorieFacade categorieFacade;	
 	
-	String defaultNomCategorie = new String("Categorie ");
-	String defaultLibelleArticle = new String("article ");
-	String defaultModeleArticle = new String("marque ");
-	String defaultMarqueArticle = new String("modèle ");
-	Double defaultPrixVenteArticle = new Double(100);
-	Integer defaultAnneeFabricationArticle = new Integer(1900);	
-	String defaultDescriptionArticle = new String("description ");
-	Date defaultDateLimiteArticle = new Date(System.currentTimeMillis()); // date courante
+	private String defaultNomCategorie = new String("Categorie ");
+	private String defaultLibelleArticle = new String("article ");
+	private String defaultModeleArticle = new String("marque ");
+	private String defaultMarqueArticle = new String("modèle ");
+	private Double defaultPrixVenteArticle = new Double(100);
+	private Integer defaultAnneeFabricationArticle = new Integer(1900);	
+	private String defaultDescriptionArticle = new String("description ");
+	private Date defaultDateLimiteArticle = new Date(System.currentTimeMillis()); // date courante
 
 	/**
 	 */

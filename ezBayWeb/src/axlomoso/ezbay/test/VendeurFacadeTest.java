@@ -54,15 +54,15 @@ import axlomoso.ezbay.utils.ServiceLocator;
 
 public class VendeurFacadeTest extends TestCase {
 	//facades remote
-	VendeurFacade vendeurFacade;
-	MembreFacade membreFacade;
+	private VendeurFacade vendeurFacade;
+	private MembreFacade membreFacade;
 	//DTOs
-	MembreDTO membreDTOcree1;
-	MembreDTO membreDTOcree2;
-	ClientDTO clientDTOcree1;
-	ClientDTO clientDTOcree2;	
-	VendeurDTO vendeurDTOcree1;
-	VendeurDTO vendeurDTOcree2;
+	private MembreDTO membreDTOcree1;
+	private MembreDTO membreDTOcree2;
+	private ClientDTO clientDTOcree1;
+	private ClientDTO clientDTOcree2;	
+	private VendeurDTO vendeurDTOcree1;
+	private VendeurDTO vendeurDTOcree2;
 	
 	public VendeurFacadeTest(String arg0) {
 		super(arg0);
