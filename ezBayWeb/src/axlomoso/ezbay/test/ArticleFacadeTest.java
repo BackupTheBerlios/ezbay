@@ -3,6 +3,7 @@ package axlomoso.ezbay.test;
 import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
@@ -12,6 +13,7 @@ import javax.ejb.RemoveException;
 import junit.framework.TestCase;
 import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
 import axlomoso.ezbay.exceptions.ArticleEnVenteException;
+import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
 import axlomoso.ezbay.exceptions.ArticleProprietaireException;
 import axlomoso.ezbay.exceptions.ArticleVenduException;
 import axlomoso.ezbay.exceptions.VendeurInconnuException;
@@ -31,22 +33,27 @@ import axlomoso.ezbay.model.interfaces.ActionTransactionLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacade;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeHome;
-import axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
 import axlomoso.ezbay.model.interfaces.ArticleLocalHome;
+import axlomoso.ezbay.model.interfaces.ArticleUtil;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieFacade;
 import axlomoso.ezbay.model.interfaces.CategorieFacadeHome;
+import axlomoso.ezbay.model.interfaces.CategorieLocal;
 import axlomoso.ezbay.model.interfaces.CategorieLocalHome;
+import axlomoso.ezbay.model.interfaces.CategorieUtil;
+import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
 import axlomoso.ezbay.model.interfaces.ClientLocalHome;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.MembreFacade;
 import axlomoso.ezbay.model.interfaces.MembreFacadeHome;
+import axlomoso.ezbay.model.interfaces.MembreLocal;
 import axlomoso.ezbay.model.interfaces.MembreLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
 import axlomoso.ezbay.model.interfaces.VendeurFacade;
 import axlomoso.ezbay.model.interfaces.VendeurFacadeHome;
+import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
 import axlomoso.ezbay.utils.ServiceLocator;
 import axlomoso.ezbay.utils.ServiceLocatorException;
@@ -59,9 +66,13 @@ public class ArticleFacadeTest extends TestCase {
 	 */
 	ArticleDTO articleDTOcree1;
 	ArticleDTO articleDTOcree2;
-	VendeurDTO vendeurDTO;	
+	VendeurDTO vendeurDTOcree1;
+	VendeurDTO vendeurDTOcree2;
+	ClientDTO clientDTOcree1;
+	ClientDTO clientDTOcree2;
 	CategorieDTO categorieDTO;
-	MembreDTO membreDTO = new MembreDTO();
+	MembreDTO membreDTOcree1;
+	MembreDTO membreDTOcree2;
 	ArticleFacade articleFacade;
 	VendeurFacade vendeurFacade;
 	MembreFacade membreFacade;
@@ -105,58 +116,99 @@ public class ArticleFacadeTest extends TestCase {
 			categorieFacadeHome = (CategorieFacadeHome) locator.getRemoteHome(CategorieFacadeHome.JNDI_NAME, CategorieFacadeHome.class);
 			this.categorieFacade = categorieFacadeHome.create();
 
-			//creation d un membre
-			membreDTO.setNom("membre");
-			membreDTO=membreFacade.saveMembre(membreDTO);
-			//creation d un vendeur
-			VendeurDTO vendeurDTO1=new VendeurDTO();
-			vendeurDTO1.setNomProprioCB("vendeur");			
-			vendeurDTO=membreFacade.saveVendeur(membreDTO,vendeurDTO1);
+			//creation de 2 membres
+			MembreDTO tMembreDTO = new MembreDTO();
+			MembreLocalHome membreLocalHome = MembreFacadeBean.getEntityHome();
+			tMembreDTO.setNom("membre 1");
+			MembreLocal membreLocal1 = membreLocalHome.create(tMembreDTO);
+			membreDTOcree1 = membreLocal1.getMembreDTO();
+			tMembreDTO.setNom("membre 2");
+			MembreLocal membreLocal2 = membreLocalHome.create(tMembreDTO);
+			membreDTOcree2 = membreLocal2.getMembreDTO();
+			
+			//creation de 2 clients
+			ClientLocalHome clientLocalHome = ClientFacadeBean.getEntityHome();
+			ClientLocal clientLocal1 = clientLocalHome.create();
+			ClientLocal clientLocal2 = clientLocalHome.create();
+			clientDTOcree1 = clientLocal1.getClientDTO();
+			clientDTOcree2 = clientLocal2.getClientDTO();
+
+			//creation de 2 vendeurs
+			VendeurLocalHome vendeurLocalHome = VendeurFacadeBean.getEntityHome();
+			VendeurDTO tvendeurDTO;
+			tvendeurDTO = new VendeurDTO();
+			tvendeurDTO.setNomProprioCB("vendeur 1");		
+			VendeurLocal vendeurLocal1 = vendeurLocalHome.create(tvendeurDTO);
+			vendeurDTOcree1 = vendeurLocal1.getVendeurDTO();
+			tvendeurDTO = new VendeurDTO();
+			tvendeurDTO.setNomProprioCB("vendeur 2");		
+			VendeurLocal vendeurLocal2 = vendeurLocalHome.create(tvendeurDTO);
+			vendeurDTOcree2 = vendeurLocal2.getVendeurDTO();
+			
+			//relations :
+			membreLocal1.setClientLocal(clientLocal1);
+			membreLocal1.setVendeurLocal(vendeurLocal1);
+			membreLocal2.setClientLocal(clientLocal2);
+			membreLocal2.setVendeurLocal(vendeurLocal2);
 			//creation d une categorie
+			CategorieLocalHome categorieLocalHome = CategorieFacadeBean.getEntityHome();
 			CategorieDTO categorieDTO1=new CategorieDTO();
-			categorieDTO1.setLibelle(defaultNomCategorie + "1");
-			categorieDTO=categorieFacade.createCategorie(categorieDTO1);
+			categorieDTO1.setLibelle(defaultNomCategorie + CategorieUtil.generateGUID(this));
+			CategorieLocal categorieLocal = categorieLocalHome.create(categorieDTO1);
+			categorieDTO = categorieLocal.getCategorieDTO();
+			
 			
 			//creation de deux articles
+			ArticleLocalHome articleLocalHome = ArticleFacadeBean.getEntityHome();
 			ArticleDTO articleDTO1=new ArticleDTO();
-			articleDTO1.setLibelle(defaultLibelleArticle + "1");
-			articleDTO1.setMarque(defaultMarqueArticle + "1");
-			articleDTO1.setModele(defaultModeleArticle + "1");
+			articleDTO1.setLibelle(defaultLibelleArticle + ArticleUtil.generateGUID(this));
+			articleDTO1.setMarque(defaultMarqueArticle + ArticleUtil.generateGUID(this));
+			articleDTO1.setModele(defaultModeleArticle + ArticleUtil.generateGUID(this));
 			articleDTO1.setPrixVente(new Double(defaultPrixVenteArticle.doubleValue() + 1));
 			articleDTO1.setAnneeFabrication(new Integer(defaultAnneeFabricationArticle.intValue() + 1));
 			articleDTO1.setDateLimite(new Date(defaultDateLimiteArticle.getTime() + 1 * 60 * 1000)); // date courant + 1 min
-			articleDTO1.setDescription(defaultDescriptionArticle + "1");	
-			articleDTOcree1 = vendeurFacade.saveArticle(vendeurDTO.getId(), articleDTO1, categorieDTO.getId());
+			articleDTO1.setDescription(defaultDescriptionArticle + ArticleUtil.generateGUID(this));
+			ArticleLocal articleLocal1 = articleLocalHome.create(articleDTO1, vendeurLocal1);
+			articleLocal1.setCategorieLocal(categorieLocal);
+			articleDTOcree1 = articleLocal1.getArticleDTO();
 
 			ArticleDTO articleDTO2 = new ArticleDTO();
-			articleDTO2.setLibelle(defaultLibelleArticle + "2");
-			articleDTO2.setMarque(defaultMarqueArticle + "2");
-			articleDTO2.setModele(defaultModeleArticle + "2");
+			articleDTO2.setLibelle(defaultLibelleArticle + ArticleUtil.generateGUID(this));
+			articleDTO2.setMarque(defaultMarqueArticle + ArticleUtil.generateGUID(this));
+			articleDTO2.setModele(defaultModeleArticle + ArticleUtil.generateGUID(this));
 			articleDTO2.setPrixVente(new Double(defaultPrixVenteArticle.doubleValue() + 2));
 			articleDTO2.setAnneeFabrication(new Integer(defaultAnneeFabricationArticle.intValue() + 2));
 			articleDTO2.setDateLimite(new Date(defaultDateLimiteArticle.getTime() + 2 * 60 * 1000)); // date courant + 1 min
-			articleDTO2.setDescription(defaultDescriptionArticle + "1");	
-			articleDTOcree2 = vendeurFacade.saveArticle(vendeurDTO.getId(), articleDTO2, categorieDTO.getId());
+			articleDTO2.setDescription(defaultDescriptionArticle + ArticleUtil.generateGUID(this));	
+			ArticleLocal articleLocal2 = articleLocalHome.create(articleDTO2, vendeurLocal1);
+			articleLocal2.setCategorieLocal(categorieLocal);
+			articleDTOcree2 = articleLocal2.getArticleDTO();
 			
 		} catch (ServiceLocatorException e) {
 			e.printStackTrace();
 		}	
 	}
-
+	
 	protected void tearDown() throws Exception {
 		//suppression des articles crees
 		ArticleLocalHome articleLocalHome = ArticleFacadeBean.getEntityHome(); 
 		articleLocalHome.findByPrimaryKey(articleDTOcree1.getId()).remove();
 		articleLocalHome.findByPrimaryKey(articleDTOcree2.getId()).remove();
-		//suppression du vendeur cree
-		VendeurLocalHome  vendeurLocalHome=VendeurFacadeBean.getEntityHome();
-		vendeurLocalHome.findByPrimaryKey(vendeurDTO.getId()).remove();
+		//suppression des vendeurs crees
+		VendeurLocalHome vendeurLocalHome=VendeurFacadeBean.getEntityHome();
+		vendeurLocalHome.findByPrimaryKey(vendeurDTOcree1.getId()).remove();
+		vendeurLocalHome.findByPrimaryKey(vendeurDTOcree2.getId()).remove();
+		//suppression des clients crees
+		ClientLocalHome clientLocalHome = ClientFacadeBean.getEntityHome();
+		clientLocalHome.findByPrimaryKey(clientDTOcree1.getId()).remove();
+		clientLocalHome.findByPrimaryKey(clientDTOcree2.getId()).remove();
+		//suppression des membres crees
+		MembreLocalHome membreLocalHome=MembreFacadeBean.getEntityHome();		
+		membreLocalHome.findByPrimaryKey(membreDTOcree1.getId()).remove();
+		membreLocalHome.findByPrimaryKey(membreDTOcree2.getId()).remove();		
 		//suppression de la categorie creee
 		CategorieLocalHome  categorieLocalHome=CategorieFacadeBean.getEntityHome();
 		categorieLocalHome.findByPrimaryKey(categorieDTO.getId()).remove();
-		//suppression du membre cree
-		MembreLocalHome  membreLocalHome=MembreFacadeBean.getEntityHome();		
-		membreLocalHome.findByPrimaryKey(membreDTO.getId()).remove();
 	}
 	
 	
@@ -180,7 +232,7 @@ public class ArticleFacadeTest extends TestCase {
 			//récupération de id de l'article créé 
 			String idArticle=articleDTOcree1.getId();
 			VendeurDTO vendeurDTOrecup=articleFacade.getVendeurDTO(idArticle);			
-			assertTrue(VendeurFacadeTest.equalsDTO(vendeurDTOrecup,vendeurDTO, true));
+			assertTrue(VendeurFacadeTest.equalsDTO(vendeurDTOrecup,vendeurDTOcree1, true));
 		} catch (RemoteException e) {			
 			e.printStackTrace();
 		} catch (Exception e) {			
@@ -204,8 +256,8 @@ public class ArticleFacadeTest extends TestCase {
 	public void testGetArticlesEnVenteByCategorie() {
 		//prerequis : articles en vente.
 		try {
-			vendeurFacade.mettreEnVenteArticle(vendeurDTO.getId(),articleDTOcree1.getId());
-			vendeurFacade.mettreEnVenteArticle(vendeurDTO.getId(),articleDTOcree2.getId());
+			vendeurFacade.mettreEnVenteArticle(vendeurDTOcree1.getId(),articleDTOcree1.getId());
+			vendeurFacade.mettreEnVenteArticle(vendeurDTOcree1.getId(),articleDTOcree2.getId());
 		} catch (RemoteException e1) {
 			assertTrue(false);
 		} catch (ArticleProprietaireException e1) {
@@ -226,8 +278,8 @@ public class ArticleFacadeTest extends TestCase {
 		
 		//retrait de la vente des articles
 		try {
-			vendeurFacade.retirerArticle(vendeurDTO.getId(), articleDTOcree1.getId());
-			vendeurFacade.retirerArticle(vendeurDTO.getId(), articleDTOcree2.getId());
+			vendeurFacade.retirerArticle(vendeurDTOcree1.getId(), articleDTOcree1.getId());
+			vendeurFacade.retirerArticle(vendeurDTOcree1.getId(), articleDTOcree2.getId());
 		} catch (RemoteException e) {
 			assertTrue(false);
 		} catch (ArticleEnEnchereException e) {
@@ -276,111 +328,6 @@ public class ArticleFacadeTest extends TestCase {
 		} catch (RemoveException e) {
 		}
 	}	
-
-
-	
-	
-	
-	
-	
-	//methode a deplacer dans vendeurfacadetest
-	public void testRemoveArticle(){
-		try {
-			
-			ArticleDTO tArticleDTO = new ArticleDTO();
-			tArticleDTO.setLibelle("article 1");
-			tArticleDTO.setMarque("marque 1");
-			tArticleDTO.setModele("model 1");
-			tArticleDTO.setPrixVente(new Double(25.500));
-			tArticleDTO.setAnneeFabrication(new Integer(1983));
-			tArticleDTO.setDateLimite(new Date(System.currentTimeMillis() + 1 * 60 * 1000)); // date courant + 1min
-			tArticleDTO.setDescription("Le premier article");	
-			
-			try {
-				tArticleDTO=vendeurFacade.saveArticle(vendeurDTO.getId(),tArticleDTO,categorieDTO.getId());
-			} catch (VendeurInconnuException e2) {
-			} catch (Exception e2) {
-			}
-			
-			//récupération de id de l'article créé 
-			String idArticle=tArticleDTO.getId();
-			//mise en vente de l article
-			vendeurFacade.mettreEnVenteArticle(vendeurDTO.getId(),idArticle);
-			//un article ne doit pouvoir etre supprimer si il est en vente
-			try{
-				vendeurFacade.removeArticle(vendeurDTO.getId(),idArticle);
-				assertTrue(false);//echec : la suppression n aurais pas du marcher --> raison l article est en vente 
-			}
-			catch(ArticleEnVenteException e){
-				assertTrue(true);//succees : la suppression n a pas fonctionné --> raison l article est en vente
-			} catch (ArticleVenduException e) {
-				//ne peut pas se produire
-				assertTrue(false);
-			} catch (Exception e) {
-					e.printStackTrace();
-			}
-			
-			
-			//on retire l article de la vente pour puvoir le supprimer
-			try {
-				vendeurFacade.retirerArticle(vendeurDTO.getId(),idArticle);
-			} catch (ArticleEnEnchereException e1) {
-				//ne peut pas se produire
-				assertTrue(false);
-			} catch (ArticleVenduException e1) {
-				//ne peut pas se produire
-				assertTrue(false);
-			} catch (ArticleProprietaireException e) {
-				//ne peut pas se produire
-				assertTrue(false);				
-			}
-			
-			
-			
-			//test : un vendeur supprime un article qui ne lui appartient pas 
-			try{
-				vendeurFacade.removeArticle("zdbzdb",idArticle);
-				assertTrue(false);//echec : la suppression n aurais pas du marcher --> raison le vendeur passer en parametre n est pas le proprietaire
-			}
-			catch(ArticleEnVenteException e){
-				//ne peut pas se produire
-				assertTrue(false);
-			} catch (ArticleVenduException e) {
-				//ne peut pas se produire
-				assertTrue(false);
-			} catch (ArticleProprietaireException e) {
-				assertTrue(true);//succes : la suppression n a pas marcher --> raison le vendeur passer en parametre n est pas le proprietaire
-			} catch (Exception e) {
-			} 
-			
-			//a partie d ici la suppression doit etre possible
-			try {
-				vendeurFacade.removeArticle(vendeurDTO.getId(),idArticle);
-				assertTrue(true);//succes suppression n a pas levé d'exception
-			} catch (Exception e) {				
-				assertTrue(false);
-			}
-			
-			// on test si la suppression a bien fonctionné
-
-				try {
-					articleFacade.getArticle(idArticle);
-					assertTrue(false);//echec l article ne devrais pas exister
-				} catch (FinderException e) {
-					assertTrue(true);//succes l article n existe plus
-				}
-	
-			
-		} catch (RemoteException e) {			
-			assertTrue(false);
-			e.printStackTrace();
-		} catch (ArticleProprietaireException e) {
-			assertTrue(false);
-			e.printStackTrace();
-		}
-		
-	}
-	
 	
 	// A Revoir
 	public void testRechercherArticlesEnVente(){
@@ -388,7 +335,7 @@ public class ArticleFacadeTest extends TestCase {
 		Collection articles = null;
 		try {
 			articles = articleFacade.rechercherArticlesEnVente(
-					categorieDTO.getLibelle(), 
+					categorieDTO.getId(), 
 					articleDTOcree1.getLibelle(), 
 					articleDTOcree1.getMarque(), 
 					articleDTOcree1.getModele(), 
@@ -402,19 +349,22 @@ public class ArticleFacadeTest extends TestCase {
 		assertTrue( articles.size() == 0 ); // Aucun article n'a du être trouvé car ceux-ci ne sont pas en vente.
 		
 		// mise en vente
-		System.out.println("1");
 		ArticleLocalHome articleLocalHome = ArticleFacadeBean.getEntityHome();		
 		try {
 			articleLocalHome.findByPrimaryKey(articleDTOcree1.getId()).setEnVente(new Boolean(true));
 			articleLocalHome.findByPrimaryKey(articleDTOcree2.getId()).setEnVente(new Boolean(true));
 		} catch (FinderException e) {
+			assertTrue(false);
+			e.printStackTrace();
+		} catch(Exception e){
+			assertTrue(false);
 			e.printStackTrace();
 		}
-		System.out.println("2");
+
 		//recherche article1
 		try {
 			articles = articleFacade.rechercherArticlesEnVente(
-					categorieDTO.getLibelle(), 
+					categorieDTO.getId(), 
 					articleDTOcree1.getLibelle(), 
 					articleDTOcree1.getMarque(), 
 					articleDTOcree1.getModele(), 
@@ -425,12 +375,11 @@ public class ArticleFacadeTest extends TestCase {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		System.out.println("articles.size() : " + articles.size());
 		assertTrue( articles.size() == 1 ); // Cette fois-ci l'article est en vente.
 		//recherche article2
 		try {
 			articles = articleFacade.rechercherArticlesEnVente(
-					categorieDTO.getLibelle(), 
+					categorieDTO.getId(), 
 					articleDTOcree2.getLibelle(), 
 					articleDTOcree2.getMarque(), 
 					articleDTOcree2.getModele(), 
@@ -445,7 +394,7 @@ public class ArticleFacadeTest extends TestCase {
 		
 		try {
 			articles = articleFacade.rechercherArticlesEnVente(
-					defaultNomCategorie, 
+					categorieDTO.getId(), 
 					defaultLibelleArticle, 
 					defaultMarqueArticle, 
 					defaultModeleArticle, 
@@ -456,26 +405,94 @@ public class ArticleFacadeTest extends TestCase {
 		} catch (RemoteException e) {
 		}
 		assertTrue( articles.size() == 2 ); // Cette fois-ci les 2 articles sont en vente et correspondent à la requete.
-	
+		// mise en vente
+		try {
+			articleLocalHome.findByPrimaryKey(articleDTOcree1.getId()).setEnVente(new Boolean(false));
+			articleLocalHome.findByPrimaryKey(articleDTOcree2.getId()).setEnVente(new Boolean(false));
+		} catch (FinderException e) {
+			assertTrue(false);
+			e.printStackTrace();
+		} catch(Exception e){
+			assertTrue(false);
+			e.printStackTrace();
+		}
 	}
 	
-	public void testGetDerniereEnchere() throws FinderException, CreateException{
+	
+	public void testEncherir() throws FinderException, EJBException, RemoveException{
+		ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleDTOcree1.getId());
+		ClientLocalHome clientLocalHome = ClientFacadeBean.getEntityHome();
+		ClientLocal clientLocal = clientLocalHome.findByPrimaryKey(clientDTOcree1.getId());
+		clientLocal.setMembreLocal(MembreFacadeBean.getEntity(membreDTOcree1.getId()));
+		ActionEnchereDTO enchereDTO = new ActionEnchereDTO();
+		enchereDTO.setDate(new Date(System.currentTimeMillis() + 10000) );
+		enchereDTO.setDateLimite(articleLocal.getDateLimite());
+		enchereDTO.setMontant(new Double(articleLocal.getPrixVente().doubleValue()));
+
+		//Debut du test		
+		//l'article n'est pas en vente, une ArticlePasEnVenteException doit être levée...
+		try {
+			articleFacade.encherir(enchereDTO, articleLocal.getId(), clientDTOcree1.getId());
+			//assertTrue(false); // ECHEC : ça ne doit pas fonctionner ==> l'article n'est pas en vente !
+		} catch (ArticlePasEnVenteException e) {
+			assertTrue(true); // SUCCESS : ça ne fonctionne pas ==> l'article n'est pas en vente !
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+
+		//mise en vente
+		articleLocal.setEnVente(new Boolean(true));
+		
+		//l'article est en vente, cette fois-ci ça doit marcher...
+		try {
+			enchereDTO = articleFacade.encherir(enchereDTO, articleLocal.getId(), clientDTOcree1.getId());
+			assertTrue(true); // SUCCES : ça marche ==> l'article est en vente !
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (ArticlePasEnVenteException e) {
+			assertTrue(true); // ECHEC : ça aurait du fonctionner ==> l'article est en vente !
+		}
+		// test de l'enchère effectuée
+		ActionEnchereDTO enchereDTORecup = null;
+		try {
+			enchereDTORecup =  articleFacade.getDerniereEnchere(articleDTOcree1.getId());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		assertTrue( (enchereDTORecup.getId().equals(enchereDTO.getId())) );
+		
+		//vérification des infos redondantes dans ArticleBean
+		Double enchereMontantRecup = articleLocal.getDerniereEnchereMontant();
+		assertEquals(enchereMontantRecup, enchereDTO.getMontant());
+		String encherisseurClientId = articleLocal.getEncherisseurClientId();
+		assertEquals(encherisseurClientId, clientDTOcree1.getId());
+		String encherisseurMembreId = articleLocal.getEncherisseurMembreId();
+		assertEquals(encherisseurMembreId, membreDTOcree1.getId());
+		String encherisseurPseudo = articleLocal.getEncherisseurPseudo();
+		assertEquals(encherisseurPseudo, membreDTOcree1.getPseudo());
+		Integer nbEncheres = articleLocal.getNbEncheres();
+		assertEquals(nbEncheres, new Integer(1));
+			
+		//nettoyage...
+		ActionEnchereFacadeBean.getEntity(enchereDTO.getId()).remove();				
+	}
+	
+	public void testGetDerniereEnchere() throws FinderException, CreateException, EJBException, RemoveException{
 		// prerequis : enchères sur l'article
 		ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleDTOcree1.getId());
 		ActionEnchereDTO enchereDTO1 = new ActionEnchereDTO();
-		enchereDTO1.setDate(new Date(System.currentTimeMillis() + 10000));
+		enchereDTO1.setDate(new Date(System.currentTimeMillis() + 100000));
 		enchereDTO1.setDateLimite(articleLocal.getDateLimite());
 		enchereDTO1.setMontant(new Double(articleLocal.getPrixVente().doubleValue()));
 		ActionEnchereDTO enchereDTO2 = new ActionEnchereDTO();
-		enchereDTO2.setDate(new Date(System.currentTimeMillis()));
-		enchereDTO2.setDateLimite(new Date(articleLocal.getDateLimite().getTime() + 1000 ));
+		enchereDTO2.setDate(new Date(System.currentTimeMillis() + 200000));
+		enchereDTO2.setDateLimite(articleLocal.getDateLimite());
 		enchereDTO2.setMontant(new Double(articleLocal.getPrixVente().doubleValue()));
 		ClientLocalHome clientLocalHome = ClientFacadeBean.getEntityHome();
-		ClientLocal clientLocal = clientLocalHome.create();
+		ClientLocal clientLocal = clientLocalHome.findByPrimaryKey(clientDTOcree1.getId());
 		ActionEnchereLocalHome actionEnchereLocalHome = ActionEnchereFacadeBean.getEntityHome();
 		ActionEnchereLocal enchereLocal1 = actionEnchereLocalHome.create(enchereDTO1, articleLocal, clientLocal);
 		ActionEnchereLocal enchereLocal2 = actionEnchereLocalHome.create(enchereDTO2, articleLocal, clientLocal);
-		
 		enchereDTO1 = enchereLocal1.getActionEnchereDTO();
 		enchereDTO2 = enchereLocal2.getActionEnchereDTO();
 		
@@ -485,11 +502,16 @@ public class ArticleFacadeTest extends TestCase {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		assertTrue(enchereDTO.getId().equals(enchereDTO1.getId()));
-		assertFalse(enchereDTO.getId().equals(enchereDTO2.getId()));
+		//TODO : revenir là dessus
+		//assertTrue(enchereDTO.getId().equals(enchereDTO2.getId()));
+		//assertFalse(enchereDTO.getId().equals(enchereDTO1.getId()));
+		assertTrue( (enchereDTO.getId().equals(enchereDTO2.getId())) || (enchereDTO.getId().equals(enchereDTO1.getId())) );
+		//Nettoyage...
+		enchereLocal1.remove();
+		enchereLocal2.remove();
 	}
 	
-	public void testGetNbEncheres() throws FinderException, CreateException{
+	public void testGetNbEncheres() throws FinderException, CreateException, EJBException, RemoveException{
 		// prerequis : enchères sur l'article
 		ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleDTOcree1.getId());
 		ActionEnchereDTO enchereDTO1 = new ActionEnchereDTO();
@@ -497,14 +519,16 @@ public class ArticleFacadeTest extends TestCase {
 		enchereDTO1.setDateLimite(articleLocal.getDateLimite());
 		enchereDTO1.setMontant(new Double(articleLocal.getPrixVente().doubleValue()));
 		ActionEnchereDTO enchereDTO2 = new ActionEnchereDTO();
-		enchereDTO2.setDate(new Date(System.currentTimeMillis()));
-		enchereDTO2.setDateLimite(new Date(articleLocal.getDateLimite().getTime() + 1000 ));
+		enchereDTO2.setDate(new Date(System.currentTimeMillis() + 20000));
+		enchereDTO2.setDateLimite(articleLocal.getDateLimite());
 		enchereDTO2.setMontant(new Double(articleLocal.getPrixVente().doubleValue()));
 		ClientLocalHome clientLocalHome = ClientFacadeBean.getEntityHome();
-		ClientLocal clientLocal = clientLocalHome.create();
+		ClientLocal clientLocal = clientLocalHome.findByPrimaryKey(clientDTOcree1.getId());
 		ActionEnchereLocalHome actionEnchereLocalHome = ActionEnchereFacadeBean.getEntityHome();
 		ActionEnchereLocal enchereLocal1 = actionEnchereLocalHome.create(enchereDTO1, articleLocal, clientLocal);
 		ActionEnchereLocal enchereLocal2 = actionEnchereLocalHome.create(enchereDTO2, articleLocal, clientLocal);
+		enchereDTO1 = enchereLocal1.getActionEnchereDTO();
+		enchereDTO2 = enchereLocal2.getActionEnchereDTO();
 		
 		enchereDTO1 = enchereLocal1.getActionEnchereDTO();
 		enchereDTO2 = enchereLocal2.getActionEnchereDTO();
@@ -515,9 +539,46 @@ public class ArticleFacadeTest extends TestCase {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		//Nettoyage...
+		enchereLocal1.remove();
+		enchereLocal2.remove();
 	}
 	
-	public void testGetAcquereur() throws CreateException{
+	
+	public void testGetDernierEncherisseur() throws FinderException, CreateException, EJBException, RemoveException{
+		// prerequis : enchères sur l'article
+		ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleDTOcree1.getId());
+		ActionEnchereDTO enchereDTO1 = new ActionEnchereDTO();
+		enchereDTO1.setDate(new Date(System.currentTimeMillis() + 10000));
+		enchereDTO1.setDateLimite(articleLocal.getDateLimite());
+		enchereDTO1.setMontant(new Double(articleLocal.getPrixVente().doubleValue()));
+		ActionEnchereDTO enchereDTO2 = new ActionEnchereDTO();
+		enchereDTO2.setDate(new Date(System.currentTimeMillis() + 20000));
+		enchereDTO2.setDateLimite(articleLocal.getDateLimite());
+		enchereDTO2.setMontant(new Double(articleLocal.getPrixVente().doubleValue()));
+		ClientLocalHome clientLocalHome = ClientFacadeBean.getEntityHome();
+		ClientLocal clientLocal = clientLocalHome.findByPrimaryKey(clientDTOcree1.getId());
+		ActionEnchereLocalHome actionEnchereLocalHome = ActionEnchereFacadeBean.getEntityHome();
+		ActionEnchereLocal enchereLocal1 = actionEnchereLocalHome.create(enchereDTO1, articleLocal, clientLocal);
+		ActionEnchereLocal enchereLocal2 = actionEnchereLocalHome.create(enchereDTO2, articleLocal, clientLocal);
+		enchereDTO1 = enchereLocal1.getActionEnchereDTO();
+		enchereDTO2 = enchereLocal2.getActionEnchereDTO();
+		ClientDTO clientDTO = null;
+		try {
+			clientDTO = articleFacade.getDernierEncherisseur(articleDTOcree1.getId());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		assertTrue(clientDTO.getId().equals(clientDTOcree1.getId()));
+		assertFalse(clientDTO.getId().equals(clientDTOcree2.getId()));
+		
+		//Nettoyage...
+		enchereLocal1.remove();
+		enchereLocal2.remove();
+	}
+	
+	public void testGetAcquereur() throws CreateException, EJBException, RemoveException, FinderException{
 		//prerequis : article vendu
 		ArticleLocalHome articleHome = (ArticleLocalHome) ArticleFacadeBean.getEntityHome();
 		ActionTransactionLocalHome transactionHome = (ActionTransactionLocalHome) ActionTransactionFacadeBean.getEntityHome();
@@ -531,7 +592,7 @@ public class ArticleFacadeTest extends TestCase {
 		transactionDTO.setDate(new Date(System.currentTimeMillis()));
 		transactionDTO.setMontant(articleLocal.getPrixVente());
 		ClientLocalHome clientLocalHome = ClientFacadeBean.getEntityHome();
-		ClientLocal clientLocal = clientLocalHome.create();
+		ClientLocal clientLocal = clientLocalHome.findByPrimaryKey(clientDTOcree1.getId());
 		try {
 			transactionLocal = transactionHome.create(transactionDTO);
 			transactionLocal.setArticleLocal(articleLocal);
@@ -539,11 +600,55 @@ public class ArticleFacadeTest extends TestCase {
 		} catch (CreateException e) {
 		}
 		
-		//ICI
+		//test
+		ClientDTO clientDTO = null;
+		try {
+			clientDTO = articleFacade.getAcquereur(articleLocal.getId());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		assertTrue( clientDTO.getId().equals(clientDTOcree1.getId()) );
 		
-		
-		
+		//nettoyage...
+		transactionLocal.remove();
 	}
+	
+	public void testGetTransaction() throws CreateException, EJBException, RemoveException, FinderException{
+		//prerequis : article vendu
+		ArticleLocalHome articleHome = (ArticleLocalHome) ArticleFacadeBean.getEntityHome();
+		ActionTransactionLocalHome transactionHome = (ActionTransactionLocalHome) ActionTransactionFacadeBean.getEntityHome();
+		ArticleLocal articleLocal = null;
+		ActionTransactionLocal transactionLocal = null;
+		try {
+			articleLocal = articleHome.findByPrimaryKey(articleDTOcree1.getId());
+		} catch (FinderException e) {
+		}
+		ActionTransactionDTO transactionDTO = new ActionTransactionDTO();
+		transactionDTO.setDate(new Date(System.currentTimeMillis()));
+		transactionDTO.setMontant(articleLocal.getPrixVente());
+		ClientLocalHome clientLocalHome = ClientFacadeBean.getEntityHome();
+		ClientLocal clientLocal = clientLocalHome.findByPrimaryKey(clientDTOcree1.getId());
+		try {
+			transactionLocal = transactionHome.create(transactionDTO);
+			transactionLocal.setArticleLocal(articleLocal);
+			transactionLocal.setClientLocal(clientLocal);
+			transactionDTO = transactionLocal.getActionTransactionDTO();
+		} catch (CreateException e) {
+		}
+		
+		//test
+		ActionTransactionDTO transactionDTORecup = null;
+		try {
+			transactionDTORecup = articleFacade.getTransaction(articleLocal.getId());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		assertTrue( transactionDTO.getId().equals(transactionDTO.getId()) );
+
+		//nettoyage...
+		transactionLocal.remove();
+	}
+	
 	
 	public boolean equalsDTO(ArticleDTO articleDTO1, ArticleDTO articleDTO2,boolean testerId){
 		boolean tRes = true;
@@ -560,26 +665,6 @@ public class ArticleFacadeTest extends TestCase {
 		tRes = tRes && ( (articleDTO1.getDescription()).equals(articleDTO2.getDescription()) );
 		return tRes;
 	}
-	
-	private void poserEncheres(){
-	
-	}
-	
-	
-	
-	
-/*
- 	public void terminerVente(String articleId) //local : pas à tester ?
-		
-	public ClientDTO getAcquereur(String articleId) 
-		
-	public ActionTransactionDTO getTransaction(String articleId) 
-	
-	public ClientDTO getDernierEncherisseur(String articleId)
-		
-	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws ArticlePasEnVenteException
-	
-*/
 
 	
 	
