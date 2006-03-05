@@ -1,9 +1,7 @@
 package axlomoso.ezbay.test;
 
-
-
-
-
+import java.util.Collection;
+import java.util.Iterator;
 
 import axlomoso.ezbay.model.ejb.ActionEnchereFacadeBean;
 import axlomoso.ezbay.model.ejb.ActionTransactionFacadeBean;
@@ -109,7 +107,8 @@ public class ClientFacadeTest extends TestCase {
 			articleDTO1.setMarque("marque 1");
 			articleDTO1.setModele("model 1");
 			articleDTO1.setPrixVente(new Double(200));
-			articleDTO1.setAnneeFabrication(new Integer(2005));
+			articleDTO1.setAnneeFabrication(new Integer(2005));			
+			articleDTO1.setDescription("description 1");	
 			ArticleLocal articleLocal1 = articleLocalHome.create(articleDTO1, vendeurLocal1);
 			articleLocal1.setCategorieLocal(categorieLocal);
 			articleDTOcree1 = articleLocal1.getArticleDTO();
@@ -119,7 +118,8 @@ public class ClientFacadeTest extends TestCase {
 			articleDTO2.setMarque("marque 2");
 			articleDTO2.setModele("model 2");
 			articleDTO2.setPrixVente(new Double(201));
-			articleDTO2.setAnneeFabrication(new Integer(2005));			
+			articleDTO2.setAnneeFabrication(new Integer(2005));				
+			articleDTO2.setDescription("description 2");	
 			ArticleLocal articleLocal2 = articleLocalHome.create(articleDTO2, vendeurLocal1);
 			articleLocal2.setCategorieLocal(categorieLocal);
 			articleDTOcree2 = articleLocal2.getArticleDTO();
@@ -166,6 +166,14 @@ public class ClientFacadeTest extends TestCase {
 		CategorieLocalHome  categorieLocalHome=CategorieFacadeBean.getEntityHome();
 		categorieLocalHome.findByPrimaryKey(categorieDTO.getId()).remove();
 		
+		//suppression de l enchere creee
+		ActionEnchereLocalHome actionEnchereLocalHome = ActionEnchereFacadeBean.getEntityHome();
+		actionEnchereLocalHome.findByPrimaryKey(actionEnchereDTO.getId()).remove();
+		
+		//suppression de la transaction creee
+		ActionTransactionLocalHome actionTransactionLocalHome = ActionTransactionFacadeBean.getEntityHome();
+		actionTransactionLocalHome.findByPrimaryKey(actionTransactionDTO.getId()).remove();
+		
 	}
 	
 		 
@@ -180,22 +188,36 @@ public class ClientFacadeTest extends TestCase {
 	}
 	
 	
-	public static boolean equalsDTO(CategorieDTO categorieDTO1, CategorieDTO categorieDTO2){
-		boolean tRes = true;		
-			tRes = tRes && ( (categorieDTO1.getId()).equals(categorieDTO2.getId()) );		
-			tRes = tRes && ( (categorieDTO1.getLibelle()).equals(categorieDTO2.getLibelle()) );
-		
-		return tRes;
+	public void testGetArticlesEnEncheres(){		
+		try {
+			//on recupere la liste des articles encheris pour le client cree
+			Collection articlesEnEnchere =clientFacade.getArticlesEnEncheres(clientDTOcree.getId());
+			assertFalse(articlesEnEnchere.size()==0);//echec la liste doit contenir un article
+			for (Iterator it = articlesEnEnchere.iterator(); it.hasNext(); ) {
+				ArticleDTO artDTO = (ArticleDTO) it.next();
+				assertTrue(ArticleFacadeTest.equalsDTO(artDTO,articleDTOcree1,true));//succes l article existe bien dans la liste des articles encheris
+				}			
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}		
 	}
 	
+	public void testGetArticlesAchetes(){		
+		try {
+			//on recupere la liste des articles achetes pour le client cree
+			Collection articlesAchetes =clientFacade.getArticlesAchetes(clientDTOcree.getId());
+			assertFalse(articlesAchetes.size()==0);//echec la liste doit contenir un article
+			for (Iterator it = articlesAchetes.iterator(); it.hasNext(); ) {
+				ArticleDTO artDTO = (ArticleDTO) it.next();
+				assertTrue(ArticleFacadeTest.equalsDTO(artDTO,articleDTOcree2,true));//succes l article existe bien dans la liste des articles encheris
+				}			
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}		
+	}
+	
+	
 
-	/*
-	 
-	 	
-			
-		Collection getArticlesEnEncheres(String clientId) 
-		public Collection getArticlesAchetes(String clientId) 
-		
-	*/
+
 	
 }
