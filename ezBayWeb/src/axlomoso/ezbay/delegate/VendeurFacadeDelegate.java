@@ -60,10 +60,6 @@ public class VendeurFacadeDelegate {
 	public MembreDTO getMembreByVendeurId(String vendeurId) throws Exception, RemoteException {
 		return vendeurFacade.getMembre(vendeurId);
 	}
-	
-	public Collection getVendeurs() throws RemoteException {
-		return vendeurFacade.getVendeurs();
-	}
 
 	public Collection getArticlesEnAttente(String vendeurId) throws RemoteException, Exception {
 		Collection tRes;

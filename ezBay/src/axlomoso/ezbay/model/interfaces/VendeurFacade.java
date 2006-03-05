@@ -20,9 +20,6 @@ public interface VendeurFacade
    public axlomoso.ezbay.model.interfaces.MembreDTO getMembre( java.lang.String vendeurId )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.Collection getVendeurs(  )
-      throws java.rmi.RemoteException;
-
    public java.util.Collection getArticlesEnAttente( java.lang.String vendeurId )
       throws java.rmi.RemoteException;
 

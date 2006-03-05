@@ -189,27 +189,6 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param
-	 */
-	public Collection getVendeurs() {
-		Collection vendeurs = null;
-		ArrayList tRes = new ArrayList();
-		try {
-			VendeurLocalHome home = getEntityHome();
-			vendeurs = home.findAll();
-			for (Iterator it = vendeurs.iterator(); it.hasNext(); ) {
-				VendeurLocal vendeurLocal = (VendeurLocal) it.next();
-				tRes.add(vendeurLocal.getVendeurDTO());
-		    }			
-		}catch (FinderException e) {
-			System.out.println(e.getMessage()); 
-		}
-		return tRes;
-	}
-	
-
-	/**
-	 * @ejb.interface-method view-type = "both"
 	 * @param vendeurId
 	 */
 	public Collection getArticlesEnAttente(String vendeurId) {
