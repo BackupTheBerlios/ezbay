@@ -79,7 +79,11 @@ public class CategorieFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "remote"
+	 * 
+	/**
 	 * @param categorieDTO
+	 * @return categorieDTO
+	 * @throws Exception
 	 */
 	public CategorieDTO createCategorie(CategorieDTO categorieDTO) throws Exception {
 		try {
