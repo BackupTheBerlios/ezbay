@@ -4,6 +4,7 @@
 	<property name="sqldirnocomment" value="dist/sql/nocomment"/>	
 	<property name="sqlfileJeuTest" value="ezbayJeuTest.sql"/>
 	<property name="sqlfileFinal" value="ezbayFinal.sql"/>	
+	<property name="sqlfileClean" value="clean.sql"/>	
 	<property name="sqldriver" value="com.mysql.jdbc.Driver"/>
 	<property name="sqldriverclasspath" value="C:\J2EE\jboss-4.0.3SP1\server\default\lib\mysql-connector-java-3.1.12-bin.jar"/>
 	<property name="sqlurl" value="jdbc:mysql://localhost/ezbayaxlomoso?autoReconnect=true"/>
@@ -48,6 +49,27 @@
 	  	      password="${sqlpassword}"  
 		 	  userid="${sqluser}"
 		      src="${sqldirnocomment}/${sqlfileFinal}"
+		      classpath="${sqldriverclasspath}" />
+		</target>
+	
+	<target name="clean">
+		<copy todir="${sqldirnocomment}">
+		    <fileset dir="${sqldir}">
+		        <include name="${sqlfileClean}"/>
+		    </fileset>
+		    <filterchain>
+		        <striplinecomments>
+		            <comment value="#"/>
+		        </striplinecomments>
+		    </filterchain>
+	    </copy>
+		
+		<sql driver="${sqldriver}"
+			  keepformat= "yes "
+		 	  url="${sqlurl}"
+	  	      password="${sqlpassword}"  
+		 	  userid="${sqluser}"
+		      src="${sqldirnocomment}/${sqlfileClean}"
 		      classpath="${sqldriverclasspath}" />
 		</target>
 

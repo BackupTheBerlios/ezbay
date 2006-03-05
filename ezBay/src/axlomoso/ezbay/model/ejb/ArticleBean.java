@@ -560,6 +560,7 @@ public abstract class ArticleBean implements EntityBean {
 		this.setDescription(articleTO.getDescription());
 		this.setEnVente(articleTO.getEnVente());
 		this.setNbEncheres(new Integer(0));
+		this.setEnVente(new Boolean(false));
 		return tId;
 	}
 
