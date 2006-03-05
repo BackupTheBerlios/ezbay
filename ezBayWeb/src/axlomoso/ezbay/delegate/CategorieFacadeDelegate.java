@@ -43,11 +43,7 @@ public class CategorieFacadeDelegate {
 		}
 
 	}
-
-	public Collection getArticlesDTO(String categorieId) throws Exception, RemoteException {
-		return categorieFacade.getArticlesDTO(categorieId);
-	}
-
+	
 	public CategorieDTO getCategorie(String categorieId) throws Exception, RemoteException {
 		return categorieFacade.getCategorie(categorieId);
 	}
