@@ -89,31 +89,24 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 		try {
 			// Creation du Timer
 			TimerService ts = context.getTimerService();			
-			Timer timer = ts.createTimer(timeout, timerName);
-			System.out.println("Timer created at "
-					+ new Date(System.currentTimeMillis())
-					+ " with a timeout: " + timeout + " and with info: "
-					+ timerName);
-			
+			Timer timer = ts.createTimer(timeout, timerName);			
 			timerHandle = timer.getHandle();
 		} catch (Exception e) {
-			System.out.println("Exception after create timer : " + e.toString());
+			e.printStackTrace();
 
 		}		
 
 	}
 
-	public void ejbTimeout(Timer timer) {
-		System.out.println("ejbTimeout() called at: "
-				+ new Date(System.currentTimeMillis()) + " with info:");
+	public void ejbTimeout(Timer timer) {		
 		try{
 			ArticleFacadeLocalHome articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
 			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
 			articleFacade.terminerVente(timer.getInfo().toString());
 		} catch (ServiceLocatorException e) {
-			System.out.println(e.getMessage()); 
+			e.printStackTrace();
 		} catch (CreateException e) {
-			System.out.println(e.getMessage()); 
+			e.printStackTrace();
 		}
 	}
 	
@@ -130,13 +123,11 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 			while (it.hasNext()) {
 				Timer myTimer = (Timer) it.next();
 				if ((myTimer.getInfo().equals(timerName))) {
-					myTimer.cancel();
-					System.out.println("Successfully Cancelled " + timerName);
-
+					myTimer.cancel();					
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("Exception after cancelling timer : "+ e.toString());
+			e.printStackTrace();
 		}
 		return;
 	}
