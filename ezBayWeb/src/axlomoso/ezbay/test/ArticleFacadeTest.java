@@ -232,7 +232,7 @@ public class ArticleFacadeTest extends TestCase {
 			//récupération de id de l'article créé 
 			String idArticle=articleDTOcree1.getId();
 			VendeurDTO vendeurDTOrecup=articleFacade.getVendeurDTO(idArticle);			
-			assertTrue(VendeurFacadeTest.equalsDTO(vendeurDTOrecup,vendeurDTOcree1, true));
+			assertTrue(VendeurFacadeTest_old.equalsDTO(vendeurDTOrecup,vendeurDTOcree1, true));
 		} catch (RemoteException e) {			
 			e.printStackTrace();
 		} catch (Exception e) {			
