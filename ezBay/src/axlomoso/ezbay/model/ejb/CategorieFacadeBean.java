@@ -118,26 +118,7 @@ public class CategorieFacadeBean implements SessionBean {
 		}
 	}
 		
-	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param categorieId
-	 */
-	public Collection getArticlesDTO(String categorieId) throws Exception {
-		ArrayList tRes = new ArrayList();
-		try {
-			CategorieLocal categorieLocal = getEntity(categorieId);
-			Collection articles = categorieLocal.getArticleLocal();
-			for (Iterator it = articles.iterator(); it.hasNext(); ) {
-				ArticleLocal articleLocal = (ArticleLocal) it.next();
-				tRes.add(articleLocal.getArticleDTO());
-		    }	
-			return tRes;
-		} catch (Exception e) {
-			throw new Exception("Cannot get article", e);
-		}
-	}
-	
-	
+		
     /** Retrieves the local interface of the Customer entity bean. 
      * @throws Exception */
 	public static CategorieLocal getEntity(String id) throws Exception{
