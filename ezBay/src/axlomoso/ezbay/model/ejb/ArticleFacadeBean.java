@@ -612,12 +612,11 @@ public class ArticleFacadeBean implements SessionBean {
 				articleLocal.setEncherisseurPseudo(ClientFacadeBean.getEntity(clientId).getMembreLocal().getMembreDTO().getPseudo());
 				articleLocal.setNbEncheres( new Integer(articleLocal.getNbEncheres().intValue() + 1) );
 			}
+		} catch (ArticlePasEnVenteException e) {
+			throw e;
 		} catch (FinderException e) {
-			System.out.println(e.getMessage()); 
 		} catch (CreateException e) {
-			System.out.println(e.getMessage()); 
 		} catch (Exception e) {
-			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}
