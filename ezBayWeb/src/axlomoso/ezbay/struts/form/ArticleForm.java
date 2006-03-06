@@ -169,6 +169,11 @@ public class ArticleForm extends ActionForm {
 		}else{
 			try {
 				Date tDate = util.getStringToDate(stringDateLimite, "dd/MM/yyyy - kk:mm:ss");
+				long dateMiniMilli = System.currentTimeMillis() + 24 * 60 * 60 * 1000;
+				long dateRecupMilli = tDate.getTime();
+				if( dateRecupMilli <= dateMiniMilli){
+					errors.add("dateLimite", new ActionError("articleEdit.erreurs.dateLimiteTropPetite"));
+				}
 				this.setDateLimite(tDate);
 			} catch (ParseException e) {
 				// dateFormat incorrect

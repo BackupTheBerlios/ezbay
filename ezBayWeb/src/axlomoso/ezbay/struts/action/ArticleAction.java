@@ -5,6 +5,8 @@ package axlomoso.ezbay.struts.action;
 
 import java.rmi.RemoteException;
 import java.util.Collection;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -191,43 +193,17 @@ public class ArticleAction extends DispatchAction {
 		return mapping.findForward(target);
 	}	
 	
-	/*public ActionForward encherirArticle(
-			//mise en vente d'un article existant
-			ActionMapping mapping,
-			ActionForm form,
-			HttpServletRequest request,
-			HttpServletResponse response) {
-		String target = "showVendeurArticles";
-		ActionErrors erreurs = new ActionErrors();
-		String articleId = request.getParameter("id");
-			try {
-				MembreFacadeDelegate membreFacade = MembreFacadeDelegate.getInstance();
-				MembreDTO membreDTO = (MembreDTO) request.getSession().getAttribute("membre");
-				String vendeurId = membreFacade.getVendeurDTOByMembreId(membreDTO.getId()).getId();
-				VendeurFacadeDelegate vendeurFacade = VendeurFacadeDelegate.getInstance();
-				vendeurFacade.mettreEnVenteArticle(vendeurId, articleId);
-			} catch (ArticleProprietaireException e) {
-				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.nonProprietaire"));
-				e.printStackTrace();
-			} catch (ArticleVenduException e) {
-				erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleVendu"));
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			if (!erreurs.isEmpty()) {
-				saveErrors(request, erreurs);
-				target = "echecMiseEnVente";
-			}
-		return mapping.findForward(target);
-	}	*/
-	
 	private void setArticleForm(String articleId, ActionForm form, HttpServletRequest request) throws Exception{
 		ArticleForm articleForm = (ArticleForm) form;	
 		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
 		ArticleDTO articleDTO = new ArticleDTO();
 		if( (articleId != null) && (articleId.length() > 0) ){
 			articleDTO = articleFacade.getArticle(articleId);
+		}
+		else{
+			Date tDate = new Date(System.currentTimeMillis() + (5 * 24 * 60 * 60 * 1000) );
+			//date par défaut : Date courante + 5 jours
+			articleDTO.setDateLimite(tDate);
 		}
 		articleForm.setArticleView(articleFacade.getArticleViewFromArticleDTO(articleDTO));
 	}	
