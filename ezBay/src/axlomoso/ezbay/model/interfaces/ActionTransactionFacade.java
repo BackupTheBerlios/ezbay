@@ -14,9 +14,6 @@ public interface ActionTransactionFacade
    extends javax.ejb.EJBObject
 {
 
-   public axlomoso.ezbay.model.interfaces.ActionTransactionDTO getActionTransactionByArticle( java.lang.String articleId )
-      throws java.rmi.RemoteException;
-
    public axlomoso.ezbay.model.interfaces.ClientDTO getAcquereur( java.lang.String articleId )
       throws java.rmi.RemoteException;
 

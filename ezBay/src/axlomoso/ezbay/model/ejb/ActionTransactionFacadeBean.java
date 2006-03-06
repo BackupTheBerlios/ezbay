@@ -100,7 +100,7 @@ public class ActionTransactionFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "local"
 	 * @param vendeurDTO
 	 * @throws FinderException 
 	 * @throws CreateException 
