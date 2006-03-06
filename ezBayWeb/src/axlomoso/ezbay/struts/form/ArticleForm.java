@@ -169,13 +169,18 @@ public class ArticleForm extends ActionForm {
 		}else{
 			try {
 				Date tDate = util.getStringToDate(stringDateLimite, "dd/MM/yyyy - kk:mm:ss");
-				//ce code est commenté pour pouvoir tester le timer le jours de la soutenance
 				/*long dateMiniMilli = System.currentTimeMillis() + 24 * 60 * 60 * 1000;
 				long dateRecupMilli = tDate.getTime();
 				if( dateRecupMilli <= dateMiniMilli){
 					errors.add("dateLimite", new ActionError("articleEdit.erreurs.dateLimiteTropPetite"));
 				}
 				*/
+				// A la place
+				long dateMiniMilli = System.currentTimeMillis();
+				long dateRecupMilli = tDate.getTime();
+				if( dateRecupMilli <= dateMiniMilli){
+					errors.add("dateLimite", new ActionError("articleEdit.erreurs.dateLimiteTropPetite"));
+				}
 				this.setDateLimite(tDate);
 			} catch (ParseException e) {
 				// dateFormat incorrect
