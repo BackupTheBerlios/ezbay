@@ -5,7 +5,6 @@
 	<projects>
 		<project>UML_ezBay</project>
 		<project>ezBay_tout_en_un</project>
-		<project>CopezBay</project>
 		<project>ezBay</project>
 	</projects>
 	<buildSpec>

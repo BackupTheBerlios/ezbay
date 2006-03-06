@@ -58,19 +58,23 @@ public class MembreFacadeBean implements SessionBean {
 	
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "remote" 
+	 * cette methode permet de creer ou de mettre a jour un membre
 	 * @param membreDTO
-	 * @throws Exception 
+	 * @return MembreDTO
+	 * @throws Exception
+	 * @throws PseudoDejaUtiliseException
 	 */
+	
 	public MembreDTO saveMembre(MembreDTO membreDTO) throws Exception, PseudoDejaUtiliseException{
 		MembreDTO tRes = null;
 		boolean exists = false;
 		try {
 			if(membreDTO.getId() == null)
-				exists = false;
+				exists = false;//membre n'existe pas
 			else{
 				MembreLocal membreLocal = getEntity(membreDTO.getId()); //test de l'existence du membre
-				exists = true;
+				exists = true;//membre existant
 			}
 		} catch (FinderException e) {
 			exists = false;
@@ -92,12 +96,17 @@ public class MembreFacadeBean implements SessionBean {
 	}
 
 	
+	/**cette methode permet de creer un membre
+	 * @param membreDTO
+	 * @return MembreDTO
+	 * @throws Exception
+	 */
 	private MembreDTO createMembre(MembreDTO membreDTO) throws Exception{
 		MembreDTO tRes = null;
 		try {
 			MembreLocalHome membreHome = getEntityHome();
-			MembreLocal membre = membreHome.create(membreDTO);
-			this.createClient(membre.getMembreDTO());
+			MembreLocal membre = membreHome.create(membreDTO);//creation du membre
+			this.createClient(membre.getMembreDTO());//creation du client au meme temps que le membre
 			tRes = membre.getMembreDTO();
 		} catch (CreateException e) {
 			throw new CreateException("Cannot create membre" + e.getMessage());
@@ -107,11 +116,16 @@ public class MembreFacadeBean implements SessionBean {
 		return tRes;
 	}
 
+    /**cette methode permet de mettre a jour le membre
+     * @param membreDTO
+     * @return MembreDTO
+     * @throws Exception
+     */
     private MembreDTO updateMembre(MembreDTO membreDTO) throws Exception{
     	MembreDTO tRes = null;
 		MembreLocal membreLocal;
-		membreLocal = getEntity(membreDTO.getId());
-		String id = membreLocal.updateMembre(membreDTO);
+		membreLocal = getEntity(membreDTO.getId());//on recupere le membre local 
+		String id = membreLocal.updateMembre(membreDTO);//on le met a jour
 		MembreLocal membreLocalModified = getEntity(id);
 		tRes = membreLocalModified.getMembreDTO();
 		return tRes;
@@ -119,8 +133,12 @@ public class MembreFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * cette methode permet de retourner un membre en passant en parametre son identifiant
 	 * @param membreId
+	 * @return MembreDTO
+	 * @throws Exception
 	 */
+	
 	public MembreDTO getMembre(String membreId) throws Exception{
 		try {
 			return getEntity(membreId).getMembreDTO();
@@ -131,10 +149,13 @@ public class MembreFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param membreId
-	 * @throws FinderException 
-	 */
+	 * @ejb.interface-method view-type = "both"	 
+	 * cette methode permet de retourner un membre en passant en parametre son pseudo et son mot de passe
+	 * @param pseudo
+	 * @param password
+	 * @return MembreDTO
+	 */	
+	
 	public MembreDTO getMembre(String pseudo, String password){
 		MembreDTO tRes = null;
 		try {
@@ -146,18 +167,19 @@ public class MembreFacadeBean implements SessionBean {
 					MembreLocal membre = (MembreLocal)it.next();
 					if( membre.getPassword().equals(password) ){
 						tRes = membre.getMembreDTO();
-					}
-					//else
-						//throw new FinderException("Mauvais mot de passe !! ");
+					}					
 				}
 			} catch (FinderException e) {
-				System.out.println(e.getMessage()); 
-				//throw new FinderException("Membre n'existe pas " + e.getMessage());
+				System.out.println(e.getMessage()); 				
 			}
 			return tRes;
 	}
 	
 	
+	/**cette methode retourne vrai si le membre existe sinon elle retourne faux
+	 * @param pseudo
+	 * @return Boolean
+	 */
 	private boolean membreExists(String pseudo){
 		boolean tRes = true;
 		try {
@@ -173,16 +195,19 @@ public class MembreFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "remote"	
+	 * cette methode permet de chercher un vendeur en passant en parametre l'identifiant du membre qu'il est
 	 * @param membreId
-	 */
+	 * @return VendeurDTO
+	 */ 
+	
 	public VendeurDTO getVendeurDTO(String membreId){
 		VendeurDTO tRes = null;
 		try {
-			MembreLocal membre = getEntity(membreId);;
-			VendeurLocal vendeur = membre.getVendeurLocal();
+			MembreLocal membre = getEntity(membreId);
+			VendeurLocal vendeur = membre.getVendeurLocal();//on recupere le vendeur local 
 			if( vendeur != null)
-				tRes = vendeur.getVendeurDTO();
+				tRes = vendeur.getVendeurDTO();//on recupere le vendeurDTO
 		} catch (Exception e) {
 			System.out.println(e.getMessage()); 
 		}	
@@ -190,16 +215,18 @@ public class MembreFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "remote"	
+	 * cette methode permet de chercher un client en passant en parametre l'identifiant du membre qu'il est
 	 * @param membreId
-	 */
+	 * @return ClientDTO
+	 */ 	
 	public ClientDTO getClientDTO(String membreId){
 		ClientDTO tRes = null;
 		try {
 			MembreLocal membre = getEntity(membreId);;
-			ClientLocal vendeur = membre.getClientLocal();
-			if( vendeur != null)
-				tRes = vendeur.getClientDTO();
+			ClientLocal clientLocal = membre.getClientLocal();//on recupere le client local
+			if( clientLocal != null)
+				tRes = clientLocal.getClientDTO();//on recupere le clientDTO
 		} catch (Exception e) {
 			System.out.println(e.getMessage()); 
 		}	
@@ -207,9 +234,14 @@ public class MembreFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "remote"	
+	 * cette methode permet de creer ou de mettre a jour un vendeur
 	 * @param membreDTO
-	 */
+	 * @param vendeurDTO
+	 * @return VendeurDTO
+	 * @throws Exception
+	 */	
+	
 	public VendeurDTO saveVendeur(MembreDTO membreDTO, VendeurDTO vendeurDTO) throws Exception {
 		VendeurDTO tRes = null;
 		try {
@@ -218,27 +250,31 @@ public class MembreFacadeBean implements SessionBean {
 	        //creation du vendeur
 	        VendeurFacadeLocalHome vendeurFacadeHome = (VendeurFacadeLocalHome) locator.getLocalHome(VendeurFacadeLocalHome.JNDI_NAME);
 	        VendeurFacadeLocal vendeurFacade = (VendeurFacadeLocal) vendeurFacadeHome.create();
-	        tRes = (VendeurDTO) vendeurFacade.saveVendeur(vendeurDTO);
+	        tRes = (VendeurDTO) vendeurFacade.saveVendeur(vendeurDTO);//on apelle une methode local du VendeurFacadeBean pour la sauvegarde du vendeur
 	        VendeurLocal vendeurLocal = VendeurFacadeBean.getEntity(tRes.getId());
 	        // association vendeur-membre			
-			membre.setVendeurLocal(vendeurLocal);
+			membre.setVendeurLocal(vendeurLocal);//on met a jour le vendeur local
 		} catch (Exception e) {
 			throw new Exception("Cannot save vendeur", e);
 		}
 		return tRes;
 	}
 
+	/**cette memthode privée permet de creer un client 
+	 * @param membreDTO
+	 * @throws Exception
+	 */
 	private void createClient(MembreDTO membreDTO) throws Exception {
 		try {
 	        ServiceLocator locator = ServiceLocator.getInstance();
 	        //creation du client
 	        ClientFacadeLocalHome clientFacadeHome = (ClientFacadeLocalHome) locator.getLocalHome(ClientFacadeLocalHome.JNDI_NAME);
 	        ClientFacadeLocal clientFacade = (ClientFacadeLocal) clientFacadeHome.create();
-	        ClientDTO clientDTO = (ClientDTO) clientFacade.createClient();
+	        ClientDTO clientDTO = (ClientDTO) clientFacade.createClient();//creation du client en local
 	        ClientLocal client = ClientFacadeBean.getEntity(clientDTO.getId());
 	        // association client-membre
 			MembreLocal membre = getEntity(membreDTO.getId());
-			membre.setClientLocal(client);
+			membre.setClientLocal(client);//mise a jour du client local pour le bean membre
 		} catch (Exception e) {
 			throw new Exception("Cannot create client", e);
 		}
@@ -276,9 +312,12 @@ public class MembreFacadeBean implements SessionBean {
 
 	}
 	
-
-    /** Retrieves the local interface of the Customer entity bean. 
-     * @throws Exception */
+  
+     /** cette methode retourne une instance de l'interface local du membre entity bean
+	 * @param id
+	 * @return MembreLocal
+	 * @throws FinderException
+	 */
 	public static MembreLocal getEntity(String id)  throws FinderException{
         try {
         	MembreLocalHome home = getEntityHome();
@@ -288,7 +327,7 @@ public class MembreFacadeBean implements SessionBean {
         }
     }
     
-     /** Retrieves the local home interface of the Customer intity bean. */
+	/** cette methode retourne une instance de l'interface local Home du membre entity bean  */
     public static MembreLocalHome getEntityHome(){
     	MembreLocalHome home = null;
     	try {

@@ -79,12 +79,12 @@ public class CategorieFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "remote"
-	 * 
-	/**
+	 * cette methode permet de creer une categorie
 	 * @param categorieDTO
-	 * @return categorieDTO
+	 * @return CategorieDTO
 	 * @throws Exception
-	 */
+	 */	 
+	
 	public CategorieDTO createCategorie(CategorieDTO categorieDTO) throws Exception {
 		try {
 			CategorieLocalHome home = getEntityHome();
@@ -96,10 +96,12 @@ public class CategorieFacadeBean implements SessionBean {
 	}
 
 	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param
-	 * @throws Exception 
-	 */
+	 * @ejb.interface-method view-type = "remote" 
+	 * cette methode permet de supprimer une categorie
+     * @param categorieDTO
+     * @throws Exception
+     */	
+    
     public void removeCategorie(CategorieDTO categorieDTO) throws Exception {
 		try {
 			CategorieLocal categorieLocal = getEntity(categorieDTO.getId());
@@ -110,9 +112,14 @@ public class CategorieFacadeBean implements SessionBean {
     }	
 
     /**
-	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.interface-method view-type = "remote" 
+	 * cette methode permet de retourner une categorie en passant en parametre
+	 * l'identifiant de la categorie
 	 * @param categorieId
-	 */
+	 * @return CategorieDTO
+	 * @throws Exception
+	 */	
+	
 	public CategorieDTO getCategorie(String categorieId) throws Exception {
 		try {
 			CategorieLocal categorieLocal = getEntity(categorieId);
@@ -123,8 +130,13 @@ public class CategorieFacadeBean implements SessionBean {
 	}
 		
 		
-    /** Retrieves the local interface of the Customer entity bean. 
-     * @throws Exception */
+    
+   
+	/**cette methode retourne une instance de l'interface local du categorie entity bean 
+	 * @param id
+	 * @return CategorieLocal
+	 * @throws Exception
+	 */
 	public static CategorieLocal getEntity(String id) throws Exception{
         try {
             CategorieLocalHome home = getEntityHome();
@@ -134,7 +146,7 @@ public class CategorieFacadeBean implements SessionBean {
         }
     }
     
-     /** Retrieves the local home interface of the Customer intity bean. */
+     /** cette methode retourne une instance de l'interface local Home du categorie entity bean  */
 	public static CategorieLocalHome getEntityHome(){
     	CategorieLocalHome home = null;
     	try {
@@ -147,15 +159,17 @@ public class CategorieFacadeBean implements SessionBean {
     }
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"
-	 * @param
-	 */
+	 * @ejb.interface-method view-type = "remote" 
+	 * cette methode permet de retourner la liste des categories existantes
+	 * @return Collection
+	 */	 
+	
 	public Collection getCategories() {
 		Collection categories = null;
 		ArrayList tRes = new ArrayList();
 		try {
 			CategorieLocalHome home = getEntityHome();
-			categories = home.findAll();
+			categories = home.findAll();//retourne une liste de categories locales
 			for (Iterator it = categories.iterator(); it.hasNext(); ) {
 				CategorieLocal categorieLocal = (CategorieLocal) it.next();
 				tRes.add(categorieLocal.getCategorieDTO());
@@ -163,7 +177,7 @@ public class CategorieFacadeBean implements SessionBean {
 		} catch (FinderException e) {
 			System.out.println(e.getMessage()); 
 		}
-		return tRes;
+		return tRes;//on retourne une liste de categorieDTO
 	}
 	
 }

@@ -82,9 +82,12 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 	
 	
 	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param
-	 */
+	 * @ejb.interface-method view-type = "local" 
+	 * cette methode per,et de creer un timer avec un temps de validite et un identifiant
+	 * @param timeout
+	 * @param timerName
+	 */	 
+	
 	public void initializeTimer(long timeout, String timerName) {
 		try {
 			// Creation du Timer
@@ -92,42 +95,46 @@ public class TimerFinVenteBean implements SessionBean, TimedObject {
 			Timer timer = ts.createTimer(timeout, timerName);			
 			timerHandle = timer.getHandle();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 
 		}		
 
 	}
 
+	//cette methode s'execute une fois le temps limite du timer est atteind
 	public void ejbTimeout(Timer timer) {		
 		try{
 			ArticleFacadeLocalHome articleFacadeLocalHome = (ArticleFacadeLocalHome) locator.getLocalHome(ArticleFacadeLocalHome.JNDI_NAME);
 			articleFacade = (ArticleFacadeLocal) articleFacadeLocalHome.create();
+			//on apelle la methode qui permet de finir la vente et qui se trouve dans ArticleFacadeBean
 			articleFacade.terminerVente(timer.getInfo().toString());
 		} catch (ServiceLocatorException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		} catch (CreateException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param
-	 */
-
+	 * @ejb.interface-method view-type = "local" 
+	 * cette methode permet d'annuler un timer en passant en parametre l'identifiant du ce dernier
+	 * @param timerName
+	 */	 
+	
 	public void cancelTimer(String timerName) {
 		try {
 			TimerService ts = context.getTimerService();
-			Collection timers = ts.getTimers();
+			Collection timers = ts.getTimers();//la liste des timers disponibles			
 			Iterator it = timers.iterator();
 			while (it.hasNext()) {
 				Timer myTimer = (Timer) it.next();
 				if ((myTimer.getInfo().equals(timerName))) {
+					//si on trouve le timer on l'arrete
 					myTimer.cancel();					
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		return;
 	}

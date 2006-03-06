@@ -68,8 +68,11 @@ public class ClientFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param vendeurDTO
-	 */
+	 * cette methode permet de creer un client
+	 * @return ClientDTO
+	 * @throws Exception
+	 */	 
+	
 	public ClientDTO createClient() throws Exception {
 		try {
 			ClientLocalHome home = getEntityHome();
@@ -82,8 +85,12 @@ public class ClientFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * cette methode retourne un membre en passant en parametre l'identifiant du client
 	 * @param clientId
-	 */
+	 * @return MembreDTO
+	 * @throws Exception
+	 */	 
+	
 	public MembreDTO getMembre(String clientId) throws Exception {
 		MembreDTO tRes = null;
 		try {
@@ -96,45 +103,51 @@ public class ClientFacadeBean implements SessionBean {
 	}	
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "both" 
+	 * cette methode permet de retourner la liste des articles en encheres pour une client
 	 * @param clientId
-	 */
+	 * @return Collection
+	 */	 
+	
 	public Collection getArticlesEnEncheres(String clientId) {
 		Collection tRes = new ArrayList();
-		Collection transactions = null;
+		Collection encheres = null;
 		try {
 			ClientLocal clientLocal = getEntity(clientId);
-			transactions = clientLocal.getActionEnchereLocal();
-			for (Iterator it = transactions.iterator(); it.hasNext();) {
-				ActionEnchereLocal encheres = (ActionEnchereLocal) it.next();
-				ArticleLocal articleLocal = encheres.getArticleLocal();
-				tRes.add(articleLocal.getArticleDTO());
+			encheres = clientLocal.getActionEnchereLocal();//liste des encheres locales pour le client
+			for (Iterator it = encheres.iterator(); it.hasNext();) {
+				ActionEnchereLocal enchere = (ActionEnchereLocal) it.next();
+				ArticleLocal articleLocal = enchere.getArticleLocal();//on recupere l article lie a l'enchere
+				tRes.add(articleLocal.getArticleDTO());//on ajoute l article recupere dans la liste
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage()); 
 		}
-		return tRes;
+		return tRes;//on retourne une collection d'articles encheris par le client 
 	}	
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
+	 * @ejb.interface-method view-type = "both"	 
+	 * cette methode permet de retourner la liste des articles achetes pour une client
 	 * @param clientId
+	 * @return Collection
 	 */
+	 
 	public Collection getArticlesAchetes(String clientId) {
 		Collection tRes = new ArrayList();
 		Collection transactions = null;
 		try {
 			ClientLocal clientLocal = getEntity(clientId);
-			transactions = clientLocal.getActionTransactionLocal();
+			transactions = clientLocal.getActionTransactionLocal();//liste des transactions locales pour le client
 			for (Iterator it = transactions.iterator(); it.hasNext();) {
 				ActionTransactionLocal transaction = (ActionTransactionLocal) it.next();
-				ArticleLocal articleLocal = transaction.getArticleLocal();
+				ArticleLocal articleLocal = transaction.getArticleLocal();//on ajoute l article recupere dans la liste
 				tRes.add(articleLocal.getArticleDTO());
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage()); 
 		}
-		return tRes;
+		return tRes;//on retourne une collection d'articles achetes par le client 
 	}	
 	
 	
@@ -169,9 +182,12 @@ public class ClientFacadeBean implements SessionBean {
 
 	}
 	
-
-    /** Retrieves the local interface of the Customer entity bean. 
-     * @throws Exception */
+    
+     /** cette methode retourne une instance de l'interface local du client entity bean 
+	 * @param id
+	 * @return ClientLocal
+	 * @throws Exception
+	 */
 	public static ClientLocal getEntity(String id) throws Exception{
         try {
         	ClientLocalHome home = getEntityHome();
@@ -181,7 +197,7 @@ public class ClientFacadeBean implements SessionBean {
         }
     }
     
-     /** Retrieves the local home interface of the Customer intity bean. */
+	/** cette methode retourne une instance de l'interface local Home du client entity bean  */
     public static ClientLocalHome getEntityHome(){
     	ClientLocalHome home = null;
     	try {
