@@ -3,8 +3,8 @@
 	<name>ezBayEAR</name>
 	<comment></comment>
 	<projects>
-		<project>ezBayWeb</project>
 		<project>ezBay</project>
+		<project>ezBayWeb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
