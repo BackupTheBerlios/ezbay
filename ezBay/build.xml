@@ -1,5 +1,5 @@
 <?xml version='1.0'?>
-<project name="ezbay" default="baseJeuTest" basedir=".">
+<project name="ezbay" default="baseFinal" basedir=".">
 	<property name="sqldir" value="dist/sql"/>	
 	<property name="sqldirnocomment" value="dist/sql/nocomment"/>	
 	<property name="sqlfileJeuTest" value="ezbayJeuTest.sql"/>
