@@ -10,6 +10,7 @@ import java.util.Random;
 import javax.ejb.CreateException;
 import javax.ejb.FinderException;
 
+import junit.framework.TestCase;
 import axlomoso.ezbay.model.ejb.ActionEnchereFacadeBean;
 import axlomoso.ezbay.model.ejb.ArticleFacadeBean;
 import axlomoso.ezbay.model.ejb.CategorieFacadeBean;
@@ -32,22 +33,18 @@ import axlomoso.ezbay.model.interfaces.ClientDTO;
 import axlomoso.ezbay.model.interfaces.ClientLocal;
 import axlomoso.ezbay.model.interfaces.ClientLocalHome;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
-import axlomoso.ezbay.model.interfaces.MembreFacade;
-import axlomoso.ezbay.model.interfaces.MembreFacadeHome;
 import axlomoso.ezbay.model.interfaces.MembreLocal;
 import axlomoso.ezbay.model.interfaces.MembreLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
-import axlomoso.ezbay.model.interfaces.VendeurFacade;
-import axlomoso.ezbay.model.interfaces.VendeurFacadeHome;
 import axlomoso.ezbay.model.interfaces.VendeurLocal;
 import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurUtil;
 import axlomoso.ezbay.utils.ServiceLocator;
-import junit.framework.TestCase;
 
 public class ActionEnchereFacadeTest extends TestCase {
 	//	facades remote
 	private ActionEnchereFacade enchereFacade;
+	//fields
 	private MembreDTO membreDTOcree1;
 	private MembreDTO membreDTOcree2;
 	private ClientDTO clientDTOcree1;
@@ -169,7 +166,6 @@ public class ActionEnchereFacadeTest extends TestCase {
 
 	public void testCreateActionEnchere() throws Exception {
 		ArticleLocal articleLocal1 = ArticleFacadeBean.getEntity(articleDTOcree1.getId());
-		ArticleLocal articleLocal2 = ArticleFacadeBean.getEntity(articleDTOcree2.getId());
 		ClientLocal clientLocal = ClientFacadeBean.getEntity(clientDTOcree1.getId());
 		ActionEnchereDTO enchereDTO = new ActionEnchereDTO();
 		enchereDTO.setDate(articleDTOcree1.getDateLimite());
