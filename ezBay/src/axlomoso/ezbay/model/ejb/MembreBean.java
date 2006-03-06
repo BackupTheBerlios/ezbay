@@ -50,7 +50,6 @@ import axlomoso.ezbay.utils.ServiceLocatorException;
  * 			table-name = "membre"
  * @jboss.persistence table-name = "membre" 
  * 			    create-table = "true" 
- *				remove-table = "true"
  * @ejb:util generate="physical"
  * @ejb.value-object match = "*"
  * @ejb.finder

@@ -18,7 +18,6 @@
       <entity>
          <ejb-name>Membre</ejb-name>
          <create-table>true</create-table>
-         <remove-table>true</remove-table>
          <table-name>membre</table-name>
 
          <cmp-field>
@@ -94,7 +93,6 @@
       <entity>
          <ejb-name>Client</ejb-name>
          <create-table>true</create-table>
-         <remove-table>true</remove-table>
          <table-name>client</table-name>
 
          <cmp-field>
@@ -110,7 +108,6 @@
       <entity>
          <ejb-name>ActionEnchere</ejb-name>
          <create-table>true</create-table>
-         <remove-table>true</remove-table>
          <table-name>actionenchere</table-name>
 
          <cmp-field>
@@ -141,7 +138,6 @@
       <entity>
          <ejb-name>Categorie</ejb-name>
          <create-table>true</create-table>
-         <remove-table>true</remove-table>
          <table-name>categorie</table-name>
 
          <cmp-field>
@@ -162,7 +158,6 @@
       <entity>
          <ejb-name>Vendeur</ejb-name>
          <create-table>true</create-table>
-         <remove-table>true</remove-table>
          <table-name>vendeur</table-name>
 
          <cmp-field>
@@ -198,7 +193,6 @@
       <entity>
          <ejb-name>Article</ejb-name>
          <create-table>true</create-table>
-         <remove-table>true</remove-table>
          <table-name>article</table-name>
 
          <cmp-field>
@@ -329,7 +323,6 @@
       <entity>
          <ejb-name>ActionTransaction</ejb-name>
          <create-table>true</create-table>
-         <remove-table>true</remove-table>
          <table-name>actiontransaction</table-name>
 
          <cmp-field>

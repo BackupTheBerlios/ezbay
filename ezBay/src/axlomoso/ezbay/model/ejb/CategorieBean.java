@@ -43,8 +43,8 @@ import axlomoso.ezbay.model.interfaces.VendeurLocal;
  * @ejb.persistence 
  * 			table-name = "categorie"
  * @jboss.persistence table-name = "categorie" 
- * 			    create-table = "true" 
- *				remove-table = "true"
+ * 			    create-table = "true"
+ * 
  * @ejb:util generate="physical"
  * 
  * @ejb.value-object match = "*"

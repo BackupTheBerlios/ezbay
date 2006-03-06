@@ -46,7 +46,6 @@ import axlomoso.ezbay.model.interfaces.VendeurLocal;
  * 
  * @jboss.persistence table-name = "actionenchere" 
  * 			    create-table = "true" 
- *				remove-table = "true"
  *
  * @ejb:util generate="physical"
  * 

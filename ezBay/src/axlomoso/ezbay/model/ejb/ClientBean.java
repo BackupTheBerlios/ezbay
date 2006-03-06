@@ -41,7 +41,6 @@ import axlomoso.ezbay.model.interfaces.MembreLocal;
  * 			table-name = "client"
  * @jboss.persistence table-name = "client" 
  * 			    create-table = "true" 
- *				remove-table = "true"
  * @ejb:util generate="physical"
  * @ejb.value-object match = "*"
  */

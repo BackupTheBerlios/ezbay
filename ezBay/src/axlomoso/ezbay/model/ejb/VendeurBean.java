@@ -41,7 +41,6 @@ import axlomoso.ezbay.model.interfaces.VendeurUtil;
  * 			table-name = "vendeur"
  * @jboss.persistence table-name = "vendeur" 
  * 			    create-table = "true" 
- *				remove-table = "true"
  * @ejb:util generate="physical"
  * @ejb.value-object match = "*"
  *       

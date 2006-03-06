@@ -49,7 +49,6 @@ import axlomoso.ezbay.model.interfaces.ClientLocal;
  * 
  * @jboss.persistence table-name = "actiontransaction" 
  * 			    create-table = "true" 
- *				remove-table = "true"
  *
  * @ejb:util generate="physical"
  * 
