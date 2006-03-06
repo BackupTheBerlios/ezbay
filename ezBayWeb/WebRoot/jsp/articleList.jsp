@@ -68,12 +68,9 @@
 									<bean:write name="article" property="prixVente" />
 								</logic:empty>
 								<logic:notEmpty name="article" property="derniereEnchereMontant">
-									<b>
-										<bean:write name="article" property="derniereEnchereMontant" />
-										&nbsp;
-										<bean:message key="general.label.devise" />
-									</b>
+									<bean:write name="article" property="derniereEnchereMontant" />
 								</logic:notEmpty>
+								<bean:message key="general.label.devise" />
 							</td>
 							<td>
 								<bean:write name="article" property="nbEncheres" />
