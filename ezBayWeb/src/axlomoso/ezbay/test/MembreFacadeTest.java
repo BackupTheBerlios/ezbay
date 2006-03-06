@@ -4,17 +4,21 @@ import java.rmi.RemoteException;
 
 import axlomoso.ezbay.exceptions.PseudoDejaUtiliseException;
 import axlomoso.ezbay.model.ejb.CategorieFacadeBean;
+import axlomoso.ezbay.model.ejb.ClientFacadeBean;
 import axlomoso.ezbay.model.ejb.MembreFacadeBean;
+import axlomoso.ezbay.model.ejb.VendeurFacadeBean;
 import axlomoso.ezbay.model.interfaces.CategorieDTO;
 import axlomoso.ezbay.model.interfaces.CategorieFacadeHome;
 import axlomoso.ezbay.model.interfaces.CategorieLocalHome;
 import axlomoso.ezbay.model.interfaces.ClientDTO;
+import axlomoso.ezbay.model.interfaces.ClientLocalHome;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
 import axlomoso.ezbay.model.interfaces.MembreFacade;
 import axlomoso.ezbay.model.interfaces.MembreFacadeHome;
 import axlomoso.ezbay.model.interfaces.MembreLocal;
 import axlomoso.ezbay.model.interfaces.MembreLocalHome;
 import axlomoso.ezbay.model.interfaces.VendeurDTO;
+import axlomoso.ezbay.model.interfaces.VendeurLocalHome;
 import axlomoso.ezbay.utils.ServiceLocator;
 
 
@@ -31,6 +35,9 @@ public class MembreFacadeTest extends TestCase {
 	VendeurDTO vendeurDTO;
 	ClientDTO clientDTO ;
 	MembreDTO membreDTOcree=null;
+	MembreDTO membreDTOcree2=null;
+	VendeurDTO vendeurDTOcree;
+	
 	
 	/**
 	 */
@@ -71,11 +78,22 @@ public class MembreFacadeTest extends TestCase {
 	/**
 	 */
 	protected void tearDown() throws Exception {
-		//suppression de la categorie cree
-		MembreLocalHome membreLocalHome=MembreFacadeBean.getEntityHome();	
+		//suppression des membres crees et des clients crees au meme temps
+		MembreLocalHome membreLocalHome=MembreFacadeBean.getEntityHome();		
 		if (membreDTOcree!=null){
-			membreLocalHome.findByPrimaryKey(membreDTOcree.getId()).remove();
+			MembreLocal membreLocal=membreLocalHome.findByPrimaryKey(membreDTOcree.getId());
+			membreLocal.getClientLocal().remove();
+			if (membreLocal.getVendeurLocal()!=null)	membreLocal.getVendeurLocal().remove();
+			membreLocal.remove();						
+			
 		}
+		if (membreDTOcree2!=null){
+			MembreLocal membreLocal=membreLocalHome.findByPrimaryKey(membreDTOcree2.getId());
+			membreLocal.getClientLocal().remove();
+			if (membreLocal.getVendeurLocal()!=null) membreLocal.getVendeurLocal().remove();
+			membreLocal.remove();						
+			
+		}			
 		
 	}
 		
@@ -87,7 +105,7 @@ public class MembreFacadeTest extends TestCase {
 			assertTrue(equalsDTO(membreDTO, membreDTOcree,testerId));//le membre est bien ajouté
 			
 			//tester si on ajoute un membre avec un pseudo qui existe deja
-			MembreDTO membreDTOcree2 = membreFacade.saveMembre(this.membreDTO);
+			this.membreDTOcree2 = membreFacade.saveMembre(this.membreDTO);
 			assertTrue(false);//echec du test le membre est ajouté avec un pseudo qui existe déja
 		} catch (RemoteException e) {			
 			e.printStackTrace();
@@ -132,13 +150,13 @@ public class MembreFacadeTest extends TestCase {
 			//Creation d un membre
 			 membreDTOcree = membreFacade.saveMembre(this.membreDTO);			 
 			 //creation du vendeur
-			 membreFacade.saveVendeur(membreDTOcree,this.vendeurDTO);
+			 vendeurDTOcree=membreFacade.saveVendeur(membreDTOcree,this.vendeurDTO);
 			 //verification si le vendeur est bien ajouté
 			 MembreLocalHome membreLocalHome=MembreFacadeBean.getEntityHome();
 			 MembreLocal membreLocal =membreLocalHome.findByPrimaryKey(membreDTOcree.getId());
 			 VendeurDTO vendeurDTOrecup=membreLocal.getVendeurLocal().getVendeurDTO();
 			 boolean testerId=false;
-			 assertTrue(VendeurFacadeTest.equalsDTO(vendeurDTOrecup,this.vendeurDTO,testerId));
+			 assertTrue(VendeurFacadeTest.equalsDTO(vendeurDTOrecup,this.vendeurDTO,testerId));			 
 			 
 		} catch (RemoteException e) {			
 			e.printStackTrace();
