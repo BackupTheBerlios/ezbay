@@ -115,9 +115,12 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param String articleId
-	 * @throws Exception
-	 */
+	 * cette methode est déclenché a la date limite de l'article 
+	 * permet de finir la vente et creer une transaction si l article est encheri
+	 * si non de remettre l article en attente
+	 * @param articleId
+	 */	 
+	
 	public void terminerVente(String articleId){
 		System.out.println("FIN DE LA VENTE de l'article : id=" + articleId);
 		try {
@@ -163,9 +166,11 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param String articleId
-	 * @throws Exception
-	 */
+	 * cette methode permet de poser un avis a la fin de la transaction
+	 * @param articleId
+	 * @param avis
+	 */	 
+	
 	public void deposerTransactionAvis(String articleId, String avis){
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
@@ -186,9 +191,15 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param vendeurDTO
+	 * cette methode permet de creer au mettre a jour un article
+	 * elle est appelé en local par une methode dans VendeurFacadeBean
+	 * @param vendeurId
+	 * @param articleDTO
+	 * @param categorieId
+	 * @return ArticleDTO
 	 * @throws Exception
 	 */
+	
 	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO,
 			String categorieId) throws Exception {
 		ArticleDTO tRes = null;
@@ -213,6 +224,13 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;
 	}
 
+	/**cette methode permet de creer un article en passant en parametre l identifiant du vendeur et l identifiant de la categorie
+	 * @param vendeurId
+	 * @param articleDTO
+	 * @param categorieId
+	 * @return ArticleDTO
+	 * @throws Exception
+	 */
 	private ArticleDTO createArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws Exception {
 		ArticleDTO tRes = null;
 		try {
@@ -237,6 +255,12 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;
 	}
 
+	/**cette methode permet de mettre a jour l article
+	 * @param articleDTO
+	 * @param categorieId
+	 * @return ArticleDTO
+	 * @throws Exception
+	 */
 	private ArticleDTO updateArticle(ArticleDTO articleDTO, String categorieId)
 			throws Exception {
 		ArticleDTO tRes = null;
@@ -257,8 +281,13 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param
-	 */
+	 * cette methode permet de supprimer un article si il n'est pas encheri ou si il n'est pas vendu
+	 * @param articleId
+	 * @throws ArticleEnVenteException
+	 * @throws ArticleVenduException
+	 * @throws Exception
+	 */	
+	
 	public void removeArticle(String articleId) throws ArticleEnVenteException, ArticleVenduException,Exception {		
 		
 		ArticleLocal articleLocal = getEntity(articleId);
@@ -277,14 +306,19 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param
+	 * cette methode permet de retirer un article si il n'est pas encheri pour le remettre en attente
+	 * cette mehode annule le timer qu on a mis au moment de la mise en vente de l article
+	 * @param articleId
+	 * @throws Exception
 	 */
+	
+	
 	public void retirerArticle(String articleId) throws Exception {		
 		
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
 			articleLocal.setEnVente(new Boolean(false));
-			this.annulerTimer(articleId);
+			this.annulerTimer(articleId);//on annule le timer
 		} catch (Exception e) {
 			throw new Exception("Impossible de retirer l'article de la vente", e);
 		}
@@ -292,8 +326,12 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param
+	 * cette methode permet de mettre en vente un article
+	 * @param articleId
+	 * @throws ArticleVenduException
+	 * @throws Exception
 	 */
+	
 	public void mettreEnVenteArticle(String articleId) throws ArticleVenduException,Exception {		
 		ArticleLocal articleLocal = getEntity(articleId);
 		if( this.isArticleVendu(articleLocal.getArticleDTO()) ){
@@ -310,8 +348,12 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "remote"
+	 * cette methode permet de retourner un article en passant en parametre son identifiant
 	 * @param articleId
+	 * @return ArticleDTO
+	 * @throws FinderException
 	 */
+	
 	public ArticleDTO getArticle(String articleId) throws FinderException {
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
@@ -323,8 +365,12 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "remote"
+	 * cette methode permet de reourner le vendeur de l article en parametre l identifiant de ce dernier
 	 * @param articleId
+	 * @return VendeurDTO
+	 * @throws Exception
 	 */
+	
 	public VendeurDTO getVendeurDTO(String articleId) throws Exception {
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
@@ -336,8 +382,12 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "remote"
+	 * cette methode permet de reourner la categorie de l article en parametre l identifiant de ce dernier
 	 * @param articleId
+	 * @return CategorieDTO
+	 * @throws Exception
 	 */
+	
 	public CategorieDTO getCategorieDTO(String articleId) throws Exception {
 		try {
 			ArticleLocal articleLocal = getEntity(articleId);
@@ -350,19 +400,32 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "remote"
-	 * @param
+	 * cette methode permet une recherche multicritere des articles
+	 * @param libcategorie
+	 * @param libelle
+	 * @param marque
+	 * @param modele
+	 * @param prixVenteMin
+	 * @param prixVenteMax
+	 * @param anneeFabrication
+	 * @param dateLimite
+	 * @return Collection
 	 */
+	
 	public Collection rechercherArticlesEnVente(String libcategorie, String libelle, String marque, String modele, Double prixVenteMin,
 			Double prixVenteMax, Integer anneeFabrication, Date dateLimite) {
 		//retourne une collection d'ArticleDTO
-		Collection tTemp = this.rechercherArticles(libcategorie, libelle, marque, modele, prixVenteMin, prixVenteMax, anneeFabrication, dateLimite);
-		return this.getOnlyArticlesEnVente(tTemp);
+		Collection tTemp = this.rechercherArticles(libcategorie, libelle, marque, modele, prixVenteMin, prixVenteMax, anneeFabrication, dateLimite);//retourne tous les aricles selon les parametres
+		return this.getOnlyArticlesEnVente(tTemp);//retourne que les articles qui sont en vente
 	}
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
+	 * cette methode permet de retourner la liste des articles en vente pour un vendeur
 	 * @param vendeurId
+	 * @return Collection
 	 */
+	
 	public Collection getArticlesEnVenteByVendeur(String vendeurId) {
 		//	retourne une collection d'ArticleDTO
 		return this.getOnlyArticlesEnVente(this.getArticlesByVendeur(vendeurId));
@@ -370,7 +433,9 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
+	 * cette methode permet de retourner la liste des articles en attente pour un vendeur
 	 * @param vendeurId
+	 * @return Collection
 	 */
 	public Collection getArticlesEnAttenteByVendeur(String vendeurId) {
 		//	retourne une collection d'ArticleDTO
@@ -379,7 +444,9 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
+	 * cette methode permet de retourner la liste des articles en vendus pour un vendeur
 	 * @param vendeurId
+	 * @return Collection
 	 */
 	public Collection getArticlesVendusByVendeur(String vendeurId) {
 		//	retourne une collection d'ArticleDTO
@@ -388,7 +455,9 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param categorieId
+	 * cette methode permet de retourner la liste des articles en vente pour une categorie bien defini
+	 * @param vendeurId
+	 * @return Collection
 	 */
 	public Collection getArticlesEnVenteByCategorie(String categorieId) {
 		//	retourne une collection d'ArticleDTO		
@@ -403,11 +472,12 @@ public class ArticleFacadeBean implements SessionBean {
 		Collection tRes = new ArrayList();
 		try {
 			ArticleLocalHome home = getEntityHome();
+			//on fait refernce a un finder pour la recherche multicritere
 			articles = home.findByFields(libcategorie, "%" + libelle + "%", "%" + marque + "%", "%" + modele + "%", prixVenteMin,					prixVenteMax, anneeFabrication, dateLimite);
 			for (Iterator it = articles.iterator(); it.hasNext();) {
 				ArticleLocal articleLocal = (ArticleLocal) it.next();
 				ArticleDTO articleDTO = articleLocal.getArticleDTO();
-				tRes.add(articleDTO);
+				tRes.add(articleDTO);//on construit une collection d'articleDTO
 			}
 		} catch (FinderException e) {
 			System.out.println(e.getMessage()); 
@@ -420,8 +490,8 @@ public class ArticleFacadeBean implements SessionBean {
 		Collection tRes = new ArrayList();
 		try {
 			VendeurLocalHome vendeurHome = VendeurFacadeBean.getEntityHome();
-			VendeurLocal vendeur = vendeurHome.findByPrimaryKey(vendeurId);
-			articles = vendeur.getArticle();
+			VendeurLocal vendeur = vendeurHome.findByPrimaryKey(vendeurId);//on recupere le vendeur local
+			articles = vendeur.getArticle();//on recupere la liste des articles pour ce vendeur
 			for (Iterator it = articles.iterator(); it.hasNext();) {
 				ArticleLocal articleLocal = (ArticleLocal) it.next();
 				ArticleDTO articleDTO = articleLocal.getArticleDTO();
@@ -430,7 +500,7 @@ public class ArticleFacadeBean implements SessionBean {
 		} catch (FinderException e) {
 			System.out.println(e.getMessage()); 
 		}
-		return tRes;
+		return tRes;//on retourne une collection d'articleDTO
 	}
 
 	
@@ -438,8 +508,8 @@ public class ArticleFacadeBean implements SessionBean {
 		Collection articles = null;
 		Collection tRes = new ArrayList();
 		try {
-			CategorieLocal categorie = CategorieFacadeBean.getEntity(categorieId);
-			articles = categorie.getArticleLocal();			
+			CategorieLocal categorie = CategorieFacadeBean.getEntity(categorieId);//on recupere la categorie local
+			articles = categorie.getArticleLocal();	//on recupere la liste d'articles pour cette categorie		
 			for (Iterator it = articles.iterator(); it.hasNext();) {
 				ArticleLocal articleLocal = (ArticleLocal) it.next();
 				ArticleDTO articleDTO = articleLocal.getArticleDTO();
@@ -452,26 +522,31 @@ public class ArticleFacadeBean implements SessionBean {
 		} catch (Exception e) {
 			System.out.println(e.getMessage()); 
 		}	
-		return tRes;
+		return tRes;//on retourne une collection d'articleDTO
 	}
 
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * cette methode permet de retourner la derniere enchere passée sur un article en passant en parametre son identifiant
 	 * @param articleId
+	 * @return ActionEnchereDTO
 	 */
 	public ActionEnchereDTO getDerniereEnchere(String articleId){
 		ActionEnchereDTO tRes = null;
 		ArrayList encheres = this.getEncheres(articleId);
 		if( encheres.size() > 0 ){
-			tRes = (ActionEnchereDTO)encheres.get(0);
+			tRes = (ActionEnchereDTO)encheres.get(0);//l enchere la plus recente
 		}
 		return tRes;
 	}
 
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 /**cette methode permet de retourner le nombre d'enchere passé sur un article
 	 * @param articleId
+	 * @return Integer
 	 */
+	
 	public Integer getNbEncheres(String articleId){
 		return new Integer(this.getEncheres(articleId).size());
 	}
@@ -483,8 +558,11 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 /**cette methode permet de retourner le client qui gagné l'enchere dur l article concerné
 	 * @param articleId
+	 * @return ClientDTO
 	 */
+	
 	public ClientDTO getAcquereur(String articleId) {
 		ClientDTO tRes = null;
 		ActionTransactionDTO transactionDTO = this.getTransaction(articleId);
@@ -496,7 +574,9 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 /**cette methode permet de retourner la transaction passé sur un article
 	 * @param articleId
+	 * @return ActionTransactionDTO
 	 */
 	public ActionTransactionDTO getTransaction(String articleId) {
 		return actionTransactionFacade.getActionTransactionByArticle(articleId);
@@ -505,8 +585,11 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * cette methode permet de retourner le client qui a passé la plus recente enchere
 	 * @param articleId
+	 * @return ClientDTO
 	 */
+	
 	public ClientDTO getDernierEncherisseur(String articleId){
 		ClientDTO tRes = null;
 		ActionEnchereDTO enchereDTO = this.getDerniereEnchere(articleId);
@@ -519,8 +602,11 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param articleDTO
+	 * cette methode permet de voir si l article est en enchere ou pas elle est appelé en local
+	 * @param articleId
+	 * @return boolean
 	 */
+	
 	public boolean isArticleEnEnchere(String articleId) {
 		boolean tRes = false;
 		try{
@@ -534,7 +620,9 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param articleDTO
+	 * cette methode permet de voir si l article est vendu ou pas elle est appelé en local
+	 * @param articleId
+	 * @return boolean
 	 */
 	public boolean isArticleVendu(String articleId) {
 		boolean tRes = false;
@@ -593,18 +681,25 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param articleDTO
+	 * cette methode permet de passer une enchere
+	 * @param enchereDTO
+	 * @param articleId
+	 * @param clientId
+	 * @return ActionEnchereDTO
+	 * @throws ArticlePasEnVenteException
 	 */
+	
 	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws ArticlePasEnVenteException{
 		ActionEnchereDTO tRes = null;
 		try {
 			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
 			if( !this.isArticleEnVente(articleLocal.getArticleDTO()) ) {
-				throw new ArticlePasEnVenteException();
+				throw new ArticlePasEnVenteException();//on ne peut pas une enchere ur un article qui n'est pas en vente
 			}
 			else{
 				ClientLocal clientLocal = ClientFacadeBean.getEntity(clientId);
-				tRes = actionEnchereFacade.createActionEnchere(enchereDTO, articleLocal, clientLocal);
+				tRes = actionEnchereFacade.createActionEnchere(enchereDTO, articleLocal, clientLocal);//creation de l'enchere
+				//informations redondante
 				articleLocal.setDerniereEnchereDate(tRes.getDate());
 				articleLocal.setDerniereEnchereMontant(tRes.getMontant());
 				articleLocal.setEncherisseurClientId(clientId);
@@ -634,7 +729,7 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 	
 	private Collection getOnlyArticlesVendus(Collection allArticlesLocal){
-//		 retourne une Collection d'ArticlesDTO
+		//retourne une Collection d'ArticlesDTO
 		Collection tRes = new ArrayList();
 		for (Iterator it = allArticlesLocal.iterator(); it.hasNext();) {
 			ArticleDTO articleDTO = (ArticleDTO) it.next();
@@ -646,7 +741,7 @@ public class ArticleFacadeBean implements SessionBean {
 	}
 	
 	private Collection getOnlyArticlesEnAttente(Collection allArticlesLocal){
-//		 retourne une Collection d'ArticlesDTO
+		//retourne une Collection d'ArticlesDTO
 		Collection tRes = new ArrayList();
 		for (Iterator it = allArticlesLocal.iterator(); it.hasNext();) {
 			ArticleDTO articleDTO = (ArticleDTO) it.next();
@@ -657,11 +752,10 @@ public class ArticleFacadeBean implements SessionBean {
 		return tRes;
 	}
 	
-	/**
-	 * Retrieves the local interface of the Customer entity bean.
-	 * 
+	/**cette methode retourne une instance de l'interface local du Article entity bean 
+	 * @param id
+	 * @return ArticleLocal
 	 * @throws FinderException
-	 * @throws Exception
 	 */
 	public static ArticleLocal getEntity(String id) throws FinderException {
 		try {
@@ -672,7 +766,7 @@ public class ArticleFacadeBean implements SessionBean {
 		}
 	}
 
-	/** Retrieves the local home interface of the Customer intity bean. */
+	/** cette methode retourne une instance de l'interface local Home du Article entity bean  */
 	public static ArticleLocalHome getEntityHome() {
 		ArticleLocalHome home = null;
 		try {
@@ -684,7 +778,9 @@ public class ArticleFacadeBean implements SessionBean {
 		}
 		return home;
 	}
-	
+	/** cette methode retourne une instance local du timer session bean
+	 * utilisation du design pattern singleton
+	 */
 	private TimerFinVenteLocal getTimerInstance(){	
 		if( timerFinVente != null){
 			return timerFinVente;
@@ -701,7 +797,9 @@ public class ArticleFacadeBean implements SessionBean {
 				return timerFinVente;
 		}
 	}
-	
+	/** cette methode permet d'initialiser le timer 
+	 * @param articleId
+	 */
 	private void intialiserTimer(String articleId){
 		TimerFinVenteLocal timer=this.getTimerInstance();		
 		try {
@@ -714,7 +812,9 @@ public class ArticleFacadeBean implements SessionBean {
 			System.out.println(e.getMessage()); 
 		}
 	}
-	
+	/** cette methode permet d'annuler le timer 
+	 * @param articleId
+	 */
 	private void annulerTimer(String articleId) {
 		TimerFinVenteLocal timer = this.getTimerInstance();	
 		timer.cancelTimer(articleId);		

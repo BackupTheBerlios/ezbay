@@ -79,18 +79,23 @@ public class ActionTransactionFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param vendeurDTO
-	 * @throws CreateException 
-	 */
+	 * @ejb.interface-method view-type = "local"	
+	 * cette methode permet de creer une transaction a la fin de la vente en passant en parametre un article et un client 
+	 * @param transactionDTO
+	 * @param articleLocal
+	 * @param clientLocal
+	 * @return ActionTransactionDTO
+	 * @throws CreateException
+	 */ 	
+	
 	public ActionTransactionDTO createActionTransaction(ActionTransactionDTO transactionDTO, ArticleLocal articleLocal, ClientLocal clientLocal) throws CreateException{
 		ActionTransactionDTO tRes = null;
 		try {
 			ActionTransactionLocalHome home = (ActionTransactionLocalHome) getEntityHome();
 			ActionTransactionLocal transactionLocal;
-			transactionLocal = home.create(transactionDTO);
-			transactionLocal.setArticleLocal(articleLocal);
-			transactionLocal.setClientLocal(clientLocal);
+			transactionLocal = home.create(transactionDTO);//creation de la transaction
+			transactionLocal.setArticleLocal(articleLocal);//pour les relation cmr on ajoute l article local 
+			transactionLocal.setClientLocal(clientLocal);//pour les relation cmr on ajoute le client local 
 			tRes = transactionLocal.getActionTransactionDTO();
 		} catch (CreateException e) {
 			System.out.println(e.getMessage()); 
@@ -100,17 +105,18 @@ public class ActionTransactionFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "local"
-	 * @param vendeurDTO
-	 * @throws FinderException 
-	 * @throws CreateException 
-	 */
+	 * @ejb.interface-method view-type = "local"	
+	 * cette methode permet de retourner une transaction en passant en parametre l'identifiant de l'article
+	 * @param articleId
+	 * @return ActionTransactionDTO
+	 */ 	 
+	
 	public ActionTransactionDTO getActionTransactionByArticle(String articleId){
 		ActionTransactionDTO tRes = null;
 		try {
 			ActionTransactionLocalHome home = getEntityHome();
 			ActionTransactionLocal transactionLocal = home.findByArticleLocal(articleId);
-			tRes = transactionLocal.getActionTransactionDTO(); //erreur
+			tRes = transactionLocal.getActionTransactionDTO(); 
 		} catch (FinderException e) {
 			System.out.println("cannot get ActionTransaction for article id=" + articleId);
 		}
@@ -119,17 +125,18 @@ public class ActionTransactionFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param vendeurDTO
-	 * @throws FinderException 
-	 * @throws CreateException 
-	 */
+	 /**cette methode permet de retourner le client qui a gagné l'enchere
+	 * @param articleId
+	 * @return ClientDTO
+	 */	 
+	
 	public ClientDTO getAcquereur(String articleId){
 		ClientDTO tRes = null;
 		try {
 			ActionTransactionLocalHome home = getEntityHome();
 			ActionTransactionLocal transactionLocal = home.findByArticleLocal(articleId);
-			ClientLocal clientLocal = transactionLocal.getClientLocal();
-			tRes = clientLocal.getClientDTO();
+			ClientLocal clientLocal = transactionLocal.getClientLocal();//on recuper le client local
+			tRes = clientLocal.getClientDTO();//on retourne le clientDTO
 		} catch (FinderException e) {
 			System.out.println("cannot get ClientLocal Acquéreur for article id=" + articleId);		
 		}
@@ -138,10 +145,11 @@ public class ActionTransactionFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurDTO
-	 * @throws FinderException 
-	 * @throws CreateException 
+	 * cette methode permet au client de donner un avis sur la transaction 
+	 * @param transactionId
+	 * @param avis
 	 */
+	
 	public void setAvis(String transactionId, String avis){
 		try {
 			ActionTransactionLocal transactionLocal = getEntity(transactionId);
@@ -152,11 +160,10 @@ public class ActionTransactionFacadeBean implements SessionBean {
 	}
 	
 	
-	/**
-	 * Retrieves the local interface of the Customer entity bean.
-	 * 
+	/**cette methode retourne une instance de l'interface local du ActionTransaction entity bean 
+	 * @param id
+	 * @return ActionEnchereLocal
 	 * @throws FinderException
-	 * @throws Exception
 	 */
 	public static ActionTransactionLocal getEntity(String id) throws FinderException {
 		try {
@@ -167,7 +174,7 @@ public class ActionTransactionFacadeBean implements SessionBean {
 		}
 	}
 
-	/** Retrieves the local home interface of the Customer intity bean. */
+	/** cette methode retourne une instance de l'interface local Home du ActionTransaction entity bean  */
 	public static ActionTransactionLocalHome getEntityHome() {
 		ActionTransactionLocalHome home = null;
 		try {

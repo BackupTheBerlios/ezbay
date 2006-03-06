@@ -113,9 +113,12 @@ public class VendeurFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "local"
+	 * cette methode permet de creer ou de mettre a jour les informations concernant le vendeur
 	 * @param vendeurDTO
-	 * @throws Exception 
+	 * @return VendeurDTO
+	 * @throws Exception
 	 */
+	
 	public VendeurDTO saveVendeur(VendeurDTO vendeurDTO) throws Exception{
 		VendeurDTO tRes = null;
 		boolean exists = false;
@@ -163,8 +166,12 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * cette methode permet de retourner le vendeur en passant en parametre son identifiant
 	 * @param vendeurId
+	 * @return VendeurDTO
+	 * @throws Exception
 	 */
+	
 	public VendeurDTO getVendeur(String vendeurId) throws Exception {
 		try {
 			VendeurLocal vendeurLocal = getEntity(vendeurId);
@@ -176,8 +183,12 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * cette methode permet de retourner le membre en passant le vendeurId
 	 * @param vendeurId
+	 * @return
+	 * @throws Exception
 	 */
+	
 	public MembreDTO getMembre(String vendeurId) throws Exception {
 		try {
 			VendeurLocal vendeurLocal = getEntity(vendeurId);
@@ -188,24 +199,21 @@ public class VendeurFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurId
+	 * @ejb.interface-method view-type = "both"	 
 	 */
 	public Collection getArticlesEnAttente(String vendeurId) {
 		return articleFacade.getArticlesEnAttenteByVendeur(vendeurId);
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurId
+	 * @ejb.interface-method view-type = "both"	
 	 */
 	public Collection getArticlesEnVente(String vendeurId) {
 		return articleFacade.getArticlesEnVenteByVendeur(vendeurId);
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurId
+	 * @ejb.interface-method view-type = "both"	
 	 */
 	public Collection getArticlesVendus(String vendeurId) {
 		return articleFacade.getArticlesVendusByVendeur(vendeurId);
@@ -213,9 +221,13 @@ public class VendeurFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurId, ArticleDTO
-	 * @throws VendeurInconnuException 
-	 * @throws Exception 
+	 * cette methode permet de creer un article ou le mettre a jour 
+	 * @param vendeurId
+	 * @param articleDTO
+	 * @param categorieId
+	 * @return ArticleDTO
+	 * @throws VendeurInconnuException
+	 * @throws Exception
 	 */
 	public ArticleDTO saveArticle(String vendeurId, ArticleDTO articleDTO, String categorieId) throws VendeurInconnuException, Exception{
 		ArticleDTO tRes = null;
@@ -235,16 +247,15 @@ public class VendeurFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurId, ArticleDTO
-	 * @throws Exception 
-	 * @throws ArticleVenduException 
-	 * @throws ArticleEnVenteException 
-	 * @throws ArticleEnVenteException 
-	 * @throws ArticleVenduException 
-	 * @throws VendeurInconnuException 
-	 * @throws Exception 
+	 * @ejb.interface-method view-type = "both"	 
+	 * cette methode permet de supprimer un article
+	 * @param vendeurId
+	 * @param articleId
+	 * @throws ArticleEnVenteException
+	 * @throws ArticleVenduException
+	 * @throws Exception
 	 */
+	
 	public void removeArticle(String vendeurId, String articleId) throws ArticleEnVenteException, ArticleVenduException, Exception {
 		if( !this.possedeArticle(vendeurId, articleId) ) {
 			throw new ArticleProprietaireException();
@@ -257,6 +268,7 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * cette methode permet de retirer un article de la vente si il y n'est pas encheri 
 	 * @param vendeurId, ArticleDTO
 	 * @throws ArticleEnEnchereException 
 	 * @throws ArticleVenduException 
@@ -284,11 +296,12 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurId, articleId
-	 * @throws ArticleVenduException 
-	 * @throws VendeurInconnuException 
-	 * @throws Exception 
+	 * cette methode permet de mettre un article en vente
+	 * @param vendeurId
+	 * @param articleId
+	 * @throws ArticleProprietaireException
 	 */
+	
 	public void mettreEnVenteArticle(String vendeurId, String articleId) throws ArticleProprietaireException{
 		if( !this.possedeArticle(vendeurId, articleId) ) {
 			throw new ArticleProprietaireException();
@@ -302,8 +315,11 @@ public class VendeurFacadeBean implements SessionBean {
 		}
 	}
 	
-   /** Retrieves the local interface of the Customer entity bean. 
-  * @throws Exception */
+	/**cette methode retourne une instance de l'interface local du Vendeur entity bean 
+	 * @param id
+	 * @return ActionEnchereLocal
+	 * @throws FinderException
+	 */
 	public static VendeurLocal getEntity(String id) throws FinderException{
      try {
      	VendeurLocalHome home = getEntityHome();
@@ -313,8 +329,8 @@ public class VendeurFacadeBean implements SessionBean {
      }
  }
  
-  /** Retrieves the local home interface of the Customer intity bean. */
- public static VendeurLocalHome getEntityHome(){
+	/** cette methode retourne une instance de l'interface local Home du Vendeur entity bean  */
+	public static VendeurLocalHome getEntityHome(){
  	VendeurLocalHome home = null;
  	try {
 	        ServiceLocator locator = ServiceLocator.getInstance();

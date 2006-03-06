@@ -85,16 +85,22 @@ public class ActionEnchereFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurDTO
-	 * @throws CreateException 
+	 * @ejb.interface-method view-type = "both"	 
+	 * cette methode permet de creer une enchere en passant en parametre l article a encherir et le client qui effectue l enchere
+	 * @param enchereDTO
+	 * @param articleLocal
+	 * @param clientLocal
+	 * @return ActionEnchereDTO
+	 * @throws CreateException
 	 */
+	 
+	
 	public ActionEnchereDTO createActionEnchere(ActionEnchereDTO enchereDTO, ArticleLocal articleLocal, ClientLocal clientLocal) throws CreateException{
 		ActionEnchereDTO tRes = null;
 		try {
 			ActionEnchereLocalHome home = (ActionEnchereLocalHome) getEntityHome();
 			ActionEnchereLocal enchereLocal;
-			enchereLocal = home.create(enchereDTO, articleLocal, clientLocal);
+			enchereLocal = home.create(enchereDTO, articleLocal, clientLocal);//creation de l'enchere
 			tRes = enchereLocal.getActionEnchereDTO();
 		} catch (CreateException e) {
 			System.out.println(e.getMessage()); 
@@ -105,13 +111,14 @@ public class ActionEnchereFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
-	 * @param vendeurDTO
-	 * @throws CreateException 
-	 */
+	 * cette methode permet d'enlever une enchere à la fin de la vente
+	 * @param enchereId
+	 */ 
+	
 	public void removeActionEnchere(String enchereId){
 		try {
 			ActionEnchereLocal enchereLocal = getEntity(enchereId);
-			enchereLocal.remove();
+			enchereLocal.remove();//suppression de l enchere
 		} catch (FinderException e) {
 			System.out.println(e.getMessage()); 
 		} catch (EJBException e) {
@@ -123,47 +130,51 @@ public class ActionEnchereFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * cette methode permet de retourner une liste des enchers pour un articles
 	 * @param articleId
-	 * @throws Exception
-	 */
+	 * @return Collection
+	 */	 
+	
 	public Collection getActionEncheresByArticle(String articleId){
 		Collection encheres = null;
 		ArrayList tRes = new ArrayList();
 		try {
 			ActionEnchereLocalHome home = getEntityHome();
-			encheres = home.findByArticleId(articleId);
+			encheres = home.findByArticleId(articleId);//on utilise un finder qui retourne la liste des encheres pour un article 
 			for (Iterator it = encheres.iterator(); it.hasNext();) {
 				ActionEnchereLocal actionEnchereLocal = (ActionEnchereLocal) it.next();
-				tRes.add(actionEnchereLocal.getActionEnchereDTO());
+				tRes.add(actionEnchereLocal.getActionEnchereDTO());//on ajout dans la collection des articleDTOs
 			}
 		} catch (FinderException e) {
 			//System.out.println(e.getMessage()); 
 		}
-		return tRes;
+		return tRes;//on retourne une collection d articleDTOs
 	}
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
-	 * @param vendeurDTO
-	 * @throws CreateException 
+	 * Cette methode permet de retourner le client qui a effectuer une enchere en passant en parametre l enchereId
+	 * @param enchereId
+	 * @return ClientDTO
 	 */
+	 
+	
 	public ClientDTO getEncherisseur(String enchereId){
 		ClientDTO tRes = null;
 		try {
 			ActionEnchereLocal enchereLocal = getEntity(enchereId);
-			tRes = enchereLocal.getClientLocal().getClientDTO();
-		} catch (FinderException e) {
-			//System.out.println("ActionEnchereFacadeBean.getEncherisseur(). Cannot get client.");
-			//System.out.println(e.getMessage()); 
+			tRes = enchereLocal.getClientLocal().getClientDTO();//on retourne l objet DTO du client Local
+		} catch (FinderException e) {			
+			System.out.println(e.getMessage()); 
 		}
 		return tRes;
 	}	
 	
-	/**
-	 * Retrieves the local interface of the Customer entity bean.
-	 * 
+
+	/**cette methode retourne une instance de l'interface local du ActionEnchere entity bean 
+	 * @param id
+	 * @return ActionEnchereLocal
 	 * @throws FinderException
-	 * @throws Exception
 	 */
 	public static ActionEnchereLocal getEntity(String id) throws FinderException {
 		try {
@@ -174,7 +185,7 @@ public class ActionEnchereFacadeBean implements SessionBean {
 		}
 	}
 
-	/** Retrieves the local home interface of the Customer intity bean. */
+	/** cette methode retourne une instance de l'interface local Home du ActionEnchere entity bean  */
 	public static ActionEnchereLocalHome getEntityHome() {
 		ActionEnchereLocalHome home = null;
 		try {
