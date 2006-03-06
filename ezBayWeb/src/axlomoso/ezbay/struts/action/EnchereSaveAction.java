@@ -68,8 +68,8 @@ public class EnchereSaveAction extends Action {
 			articleFacade.encherir(actionEnchereDTO, articleId, clientId);
 			next = new ActionForward("/article.do?do=showArticleFiche&id=" + articleId);
 		} catch (ArticlePasEnVenteException e) {
-			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articleEnVente"));
-			e.printStackTrace();
+			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articlePasEnVente"));
+			//e.printStackTrace();
 			next = mapping.getInputForward();
 		} catch (RemoteException e) {
 			e.printStackTrace();

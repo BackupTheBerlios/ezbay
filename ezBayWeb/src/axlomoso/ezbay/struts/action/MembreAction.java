@@ -4,6 +4,7 @@
 package axlomoso.ezbay.struts.action;
 
 import java.rmi.RemoteException;
+import java.util.Collection;
 
 import javax.ejb.CreateException;
 import javax.naming.InitialContext;
@@ -94,11 +95,11 @@ public class MembreAction extends DispatchAction {
 		String clientId = membreFacade.getClientDTOByMembreId(membreId).getId();
 		VendeurDTO vendeurDTO = membreFacade.getVendeurDTOByMembreId(membreId);
 		if (vendeurDTO!=null){
-			vendeurId = vendeurDTO.getId();
-			membreForm.setVendeurId(vendeurId);
-		}
-		membreForm.setArticlesViewEnVente(vendeurFacade.getArticlesEnVente(vendeurId));
-		membreForm.setArticlesViewVendus(vendeurFacade.getArticlesVendus(vendeurId));
+			vendeurId = vendeurDTO.getId();			
+			membreForm.setVendeurId(vendeurId);		
+			membreForm.setArticlesViewEnVente(vendeurFacade.getArticlesEnVente(vendeurId));			
+			membreForm.setArticlesViewVendus(vendeurFacade.getArticlesVendus(vendeurId));					
+		}				
 		membreForm.setClientId(clientId);
 		return (mapping.findForward("showMembreFiche"));
 	}

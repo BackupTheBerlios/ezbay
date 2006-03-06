@@ -81,9 +81,9 @@ public class VendeurFacadeDelegate {
 
 	public Collection getArticlesVendus(String vendeurId) throws RemoteException, Exception {
 		Collection tRes;
-		Collection articles = vendeurFacade.getArticlesVendus(vendeurId);
+		Collection articles = vendeurFacade.getArticlesVendus(vendeurId);		
 		ArticleFacadeDelegate articleFacade = ArticleFacadeDelegate.getInstance();
-		tRes = articleFacade.getArticlesDtoToView(articles);
+		tRes = articleFacade.getArticlesDtoToView(articles);		
 		return tRes;
 	}
 

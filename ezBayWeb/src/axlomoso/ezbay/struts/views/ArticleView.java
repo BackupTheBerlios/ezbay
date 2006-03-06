@@ -237,5 +237,9 @@ public class ArticleView {
 	public void setAcheteurMembreId(String acheteurMembreId) {
 		articleDTO.setAcheteurMembreId(acheteurMembreId);
 	}
+
+	public String toString() {
+		return articleDTO.toString();
+	}
 	
 }

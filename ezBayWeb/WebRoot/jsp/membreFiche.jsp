@@ -41,10 +41,9 @@
 				</td>
 			</tr>
 		</table>
-		<br /><br />
-		
-		<hr width="50%;" color=" #FDF3BF" size="3" />
+		<br /><br />		
 		<logic:notEmpty name="membreForm" property="articlesViewEnVente">
+		<hr width="50%;" color=" #FDF3BF" size="3" />
 		<h2><bean:message key="membreFiche.mesArticles" /></h2>
 		<table class="body_recherche_article">
 			<tr class="body_recherche_article">
@@ -104,9 +103,10 @@
 			</tr>
 			</logic:iterate>
 			</table>
-			<br />
-			<hr width="50%;" color=" #FDF3BF" size="3" />
+		</logic:notEmpty>
+		<br />
 			<logic:notEmpty name="membreForm" property="articlesViewVendus">
+			<hr width="50%;" color=" #FDF3BF" size="3" />			
 				<h2><bean:message key="membreFiche.mesAvis" /></h2>
 				<table class="body_recherche_article">
 					<tr class="body_recherche_article">
@@ -140,10 +140,9 @@
 					</tr>
 					</logic:iterate>
 				</table>
-			</logic:notEmpty>
-			
+			</logic:notEmpty>			
 		<br />
-		</logic:notEmpty>
+		
 		<html:link href="javascript:history.back()">
 			<bean:message key="link.retour" />
 		</html:link>
