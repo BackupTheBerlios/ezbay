@@ -52,9 +52,9 @@
 			<html:hidden property="next" value="<%= next %>"/>
 		</logic:present>
 		<%-- submit and back button --%>
-		<html:button property="home"  onclick="location.href='default.do'">Cancel</html:button>
+		<html:button property="home"  onclick="location.href='default.do'"><bean:message key="bouton.label.annuler"/></html:button>
 		&nbsp;
-		<html:submit>Connect</html:submit>	
+		<html:submit><bean:message key="bouton.label.valider"/></html:submit>	
 	</html:form>
 	
 	<html:link action="/membre.do?do=showInscription"><bean:message key="link.inscription"/></html:link><br>
