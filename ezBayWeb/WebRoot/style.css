@@ -64,15 +64,19 @@ tr.menu_ligne_fonce
 
 
 
-a
-{
-	font-family:Verdana;
-	color:#004080;
-	text-decoration:none;
-	cursor:pointer;
-	font-size: 10;
+	a
+	{
+		font-family:Verdana;
+		color:#004080;
+		text-decoration:none;
+		cursor:pointer;
+		font-size: 10;	
+	}
 	
-}
+	a:hover
+	{
+		color:#FF5555; 
+	}
 
 a.header
 {
@@ -103,10 +107,7 @@ a.logo
 	
 }
 
-a:hover
-{
-	color:#FF5555; 
-}
+
 
 table.body_mes_articles
 {
