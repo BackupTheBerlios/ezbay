@@ -27,7 +27,7 @@ public class EnchereForm extends ActionForm {
 	private ArticleDTO articleDTO = new ArticleDTO();
 	private String stringMontantEnchereCourante = "";
 	private Double montantEnchereCourante = null;
-	private ActionEnchereView enchereView = null;
+	private ActionEnchereView enchereView ; // = null;
 
 	
 	
@@ -96,6 +96,7 @@ public class EnchereForm extends ActionForm {
 	}
 
 	public void setEnchereView(ActionEnchereView enchereView) {
+		System.out.println("ActionEnchereView.setEnchereView()");
 		this.enchereView = enchereView;
 	}
 	
@@ -108,6 +109,7 @@ public class EnchereForm extends ActionForm {
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
 		ActionErrors errors = new ActionErrors();
+		System.out.println("MONTANT : " + enchereView.getMontant());
 		if ((this.getStringMontantEnchereCourante() == null)||(this.getStringMontantEnchereCourante().length() == 0)) {
 			errors.add("stringMontant", new ActionError("articleEnchereEdit.erreurs.montantVide"));
 		}
@@ -115,7 +117,7 @@ public class EnchereForm extends ActionForm {
 			try {				
 					 Double d = new Double(Double.parseDouble(this.getStringMontantEnchereCourante()));
 					 this.setMontantEnchereCourante(d);
-					 System.out.println("MONTANT : " + this.getMontant());
+					 System.out.println("MONTANT : " + enchereView.getMontant());
 					 if( this.getMontant().doubleValue() > 0 ){
 						 // l'article a déjà été enchéri
 						 if( d.doubleValue() <= this.getMontant().doubleValue() ){
