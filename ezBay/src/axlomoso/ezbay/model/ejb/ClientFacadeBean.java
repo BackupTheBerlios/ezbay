@@ -12,6 +12,7 @@ import javax.ejb.SessionContext;
 
 import axlomoso.ezbay.model.interfaces.ActionEnchereLocal;
 import axlomoso.ezbay.model.interfaces.ActionTransactionLocal;
+import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeLocal;
 import axlomoso.ezbay.model.interfaces.ArticleFacadeLocalHome;
 import axlomoso.ezbay.model.interfaces.ArticleLocal;
@@ -118,7 +119,10 @@ public class ClientFacadeBean implements SessionBean {
 			for (Iterator it = encheres.iterator(); it.hasNext();) {
 				ActionEnchereLocal enchere = (ActionEnchereLocal) it.next();
 				ArticleLocal articleLocal = enchere.getArticleLocal();//on recupere l article lie a l'enchere
-				tRes.add(articleLocal.getArticleDTO());//on ajoute l article recupere dans la liste
+				ArticleDTO tArticleDTO = articleLocal.getArticleDTO();
+				if(!tRes.contains(tArticleDTO)){
+					tRes.add(tArticleDTO);//on ajoute l article recupere dans la liste
+				}
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage()); 
