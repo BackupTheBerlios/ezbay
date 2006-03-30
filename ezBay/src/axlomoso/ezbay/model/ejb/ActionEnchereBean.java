@@ -50,7 +50,6 @@ import axlomoso.ezbay.model.interfaces.VendeurLocal;
  * @ejb:util generate="physical"
  * 
  * @ejb.value-object match = "*"
- * 
  * @ejb.finder
 * 		description="findByArticleId"
 * 		signature="java.util.Collection findByArticleId(java.lang.String articleId)" 
