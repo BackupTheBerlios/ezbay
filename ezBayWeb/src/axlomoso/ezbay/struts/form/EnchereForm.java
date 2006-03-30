@@ -115,6 +115,7 @@ public class EnchereForm extends ActionForm {
 			try {				
 					 Double d = new Double(Double.parseDouble(this.getStringMontantEnchereCourante()));
 					 this.setMontantEnchereCourante(d);
+					 System.out.println("MONTANT : " + this.getMontant());
 					 if( this.getMontant().doubleValue() > 0 ){
 						 // l'article a déjà été enchéri
 						 if( d.doubleValue() <= this.getMontant().doubleValue() ){
