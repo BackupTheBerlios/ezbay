@@ -14,6 +14,8 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.config.ActionConfig;
+import org.apache.struts.config.ForwardConfig;
 
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.delegate.MembreFacadeDelegate;
@@ -68,11 +70,12 @@ public class EnchereSaveAction extends Action {
 			//action
 			articleFacade.encherir(actionEnchereDTO, articleId, clientId);
 			next = new ActionForward("/article.do?do=showArticleFiche&id=" + articleId);
-		} catch (ArticlePasEnVenteException e) {
-			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articlePasEnVente"));
-			next = mapping.getInputForward();
+			next.setRedirect(true);
 		} catch (EnchereInsuffisanteException e) {
 			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleEnchereEdit.erreurs.montantInferieurADerniereEnchere"));
+			next = mapping.getInputForward();
+		} catch (ArticlePasEnVenteException e) {
+			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articlePasEnVente"));
 			next = mapping.getInputForward();
 		} catch (RemoteException e) {
 			e.printStackTrace();
