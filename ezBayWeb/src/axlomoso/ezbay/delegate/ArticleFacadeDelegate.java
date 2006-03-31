@@ -9,6 +9,7 @@ import java.util.Iterator;
 import javax.ejb.CreateException;
 
 import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
+import axlomoso.ezbay.exceptions.EnchereInsuffisanteException;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
@@ -81,7 +82,7 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getNbEncheres(articleId);
 	}
 	
-	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws RemoteException, ArticlePasEnVenteException{
+	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws RemoteException, ArticlePasEnVenteException, EnchereInsuffisanteException{
 		return articleFacade.encherir(enchereDTO, articleId, clientId);
 	}
 	

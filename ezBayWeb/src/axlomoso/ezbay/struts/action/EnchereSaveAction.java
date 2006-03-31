@@ -18,6 +18,7 @@ import org.apache.struts.action.ActionMapping;
 import axlomoso.ezbay.delegate.ArticleFacadeDelegate;
 import axlomoso.ezbay.delegate.MembreFacadeDelegate;
 import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
+import axlomoso.ezbay.exceptions.EnchereInsuffisanteException;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ArticleDTO;
 import axlomoso.ezbay.model.interfaces.MembreDTO;
@@ -69,7 +70,9 @@ public class EnchereSaveAction extends Action {
 			next = new ActionForward("/article.do?do=showArticleFiche&id=" + articleId);
 		} catch (ArticlePasEnVenteException e) {
 			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleRetrait.erreurs.articlePasEnVente"));
-			//e.printStackTrace();
+			next = mapping.getInputForward();
+		} catch (EnchereInsuffisanteException e) {
+			erreurs.add(ActionErrors.GLOBAL_ERROR, new ActionError("articleEnchereEdit.erreurs.montantInferieurADerniereEnchere"));
 			next = mapping.getInputForward();
 		} catch (RemoteException e) {
 			e.printStackTrace();

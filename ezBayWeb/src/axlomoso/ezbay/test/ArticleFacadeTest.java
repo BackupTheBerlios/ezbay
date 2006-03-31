@@ -14,6 +14,7 @@ import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
 import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
 import axlomoso.ezbay.exceptions.ArticleProprietaireException;
 import axlomoso.ezbay.exceptions.ArticleVenduException;
+import axlomoso.ezbay.exceptions.EnchereInsuffisanteException;
 import axlomoso.ezbay.model.ejb.ActionEnchereFacadeBean;
 import axlomoso.ezbay.model.ejb.ActionTransactionFacadeBean;
 import axlomoso.ezbay.model.ejb.ArticleFacadeBean;
@@ -435,6 +436,9 @@ public class ArticleFacadeTest extends TestCase {
 			assertTrue(true); // SUCCESS : ça ne fonctionne pas ==> l'article n'est pas en vente !
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		} catch (EnchereInsuffisanteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		//mise en vente
@@ -448,6 +452,9 @@ public class ArticleFacadeTest extends TestCase {
 			e.printStackTrace();
 		} catch (ArticlePasEnVenteException e) {
 			assertTrue(true); // ECHEC : ça aurait du fonctionner ==> l'article est en vente !
+		} catch (EnchereInsuffisanteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		// test de l'enchère effectuée
 		ActionEnchereDTO enchereDTORecup = null;
