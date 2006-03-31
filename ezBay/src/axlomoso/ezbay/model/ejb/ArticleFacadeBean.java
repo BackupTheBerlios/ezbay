@@ -117,6 +117,7 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "local"
+	 * @ejb.transaction type="Required" 
 	 * cette methode est déclenché a la date limite de l'article 
 	 * permet de finir la vente et creer une transaction si l article est encheri
 	 * si non de remettre l article en attente
@@ -683,6 +684,7 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * @ejb.transaction type="Required" 
 	 * cette methode permet de passer une enchere
 	 * @param enchereDTO
 	 * @param articleId
@@ -697,7 +699,7 @@ public class ArticleFacadeBean implements SessionBean {
 		ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
 		
 		if( !this.isArticleEnVente(articleLocal.getArticleDTO()) ) {
-			throw new ArticlePasEnVenteException();//on ne peut pas une enchere ur un article qui n'est pas en vente
+			throw new ArticlePasEnVenteException();//on ne peut pas poser une enchere sur un article qui n'est pas en vente
 		}
 		else{
 			ActionEnchereDTO derniereEnchere = this.getDerniereEnchere(articleId);
