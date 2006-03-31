@@ -44,7 +44,7 @@
 	<logic:messagesNotPresent>
 		<tr>
 			<td colspan="2">
-				<bean:message key="articleRetrait.messageConfirm" /> <bean:write name="articleForm" property="libelle" /> ?
+				<bean:message key="articleRetrait.messageConfirm" /> <b><bean:write name="articleForm" property="libelle" /></b> ?
 			</td>
 		</tr>
 		<tr>
