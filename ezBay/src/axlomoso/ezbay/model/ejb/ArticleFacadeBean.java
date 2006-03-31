@@ -688,41 +688,33 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @param articleId
 	 * @param clientId
 	 * @return ActionEnchereDTO
-	 * @throws ArticlePasEnVenteException
+	 * @throws Exception 
 	 */
 	
-	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws ArticlePasEnVenteException, EnchereInsuffisanteException{
+	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws Exception{
 		ActionEnchereDTO tRes = null;
-		try {
-			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
-			if( !this.isArticleEnVente(articleLocal.getArticleDTO()) ) {
-				throw new ArticlePasEnVenteException();//on ne peut pas une enchere ur un article qui n'est pas en vente
-			}
-			else{
-				ActionEnchereDTO derniereEnchere = this.getDerniereEnchere(articleId);
-				if( (derniereEnchere != null) && (enchereDTO.getMontant().doubleValue() <= derniereEnchere.getMontant().doubleValue())){
-					System.out.println("EnchereInsuffisanteException");					
-					throw new EnchereInsuffisanteException();//on ne peut pas une enchere ur un article qui n'est pas en vente
-				}
-				ClientLocal clientLocal = ClientFacadeBean.getEntity(clientId);
-				tRes = actionEnchereFacade.createActionEnchere(enchereDTO, articleLocal, clientLocal);//creation de l'enchere
-				//informations redondante
-				articleLocal.setDerniereEnchereDate(tRes.getDate());
-				articleLocal.setDerniereEnchereMontant(tRes.getMontant());
-				articleLocal.setEncherisseurClientId(clientId);
-				articleLocal.setEncherisseurMembreId(clientLocal.getMembreLocal().getId());
-				articleLocal.setEncherisseurPseudo(ClientFacadeBean.getEntity(clientId).getMembreLocal().getMembreDTO().getPseudo());
-				articleLocal.setNbEncheres( new Integer(articleLocal.getNbEncheres().intValue() + 1) );
-			}
-		} catch (ArticlePasEnVenteException e) {
-			throw e;
-		} catch (EnchereInsuffisanteException e) {
-			throw e;
-		}catch (FinderException e) {
-		} catch (CreateException e) {
-		} catch (Exception e) {
+		ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
+		
+		if( !this.isArticleEnVente(articleLocal.getArticleDTO()) ) {
+			throw new ArticlePasEnVenteException();//on ne peut pas une enchere ur un article qui n'est pas en vente
 		}
-		return tRes;
+		else{
+			ActionEnchereDTO derniereEnchere = this.getDerniereEnchere(articleId);
+			if( (derniereEnchere != null) && (enchereDTO.getMontant().doubleValue() <= derniereEnchere.getMontant().doubleValue())){
+				System.out.println("EnchereInsuffisanteException");					
+				throw new EnchereInsuffisanteException();//on ne peut pas une enchere ur un article qui n'est pas en vente
+			}
+			ClientLocal clientLocal = ClientFacadeBean.getEntity(clientId);
+			tRes = actionEnchereFacade.createActionEnchere(enchereDTO, articleLocal, clientLocal);//creation de l'enchere
+			//informations redondante
+			articleLocal.setDerniereEnchereDate(tRes.getDate());
+			articleLocal.setDerniereEnchereMontant(tRes.getMontant());
+			articleLocal.setEncherisseurClientId(clientId);
+			articleLocal.setEncherisseurMembreId(clientLocal.getMembreLocal().getId());
+			articleLocal.setEncherisseurPseudo(ClientFacadeBean.getEntity(clientId).getMembreLocal().getMembreDTO().getPseudo());
+			articleLocal.setNbEncheres( new Integer(articleLocal.getNbEncheres().intValue() + 1) );
+		}
+		return tRes;			
 	}
 	
 	private Collection getOnlyArticlesEnVente(Collection allArticlesLocal){
