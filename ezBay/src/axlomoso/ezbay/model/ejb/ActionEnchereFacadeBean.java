@@ -85,7 +85,8 @@ public class ActionEnchereFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "both"	 
+	 * @ejb.interface-method view-type = "both"
+	 * @ejb.transaction type="Required" 
 	 * cette methode permet de creer une enchere en passant en parametre l article a encherir et le client qui effectue l enchere
 	 * @param enchereDTO
 	 * @param articleLocal
