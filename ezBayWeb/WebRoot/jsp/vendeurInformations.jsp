@@ -43,7 +43,7 @@
 						</b>
 					</td>
 					<td>
-						<bean:write name="vendeurForm" property="numCB" />
+						<bean:write name="vendeurForm" property="numCBSimpleFormat" />
 					</td>
 				</tr>
 				<tr>
