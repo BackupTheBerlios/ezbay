@@ -37,7 +37,8 @@ public class VendeurForm extends ActionForm {
 	private Collection articlesEnAttente = null;
 	private Collection articlesEnVente = null;
 	private Collection articlesVendus = null;
-
+	private String numCBSimpleFormat = null;
+	
 	// --------------------------------------------------------- Methods
 
 	// ---------------- delegate methods for vendeurDTO
@@ -62,6 +63,7 @@ public class VendeurForm extends ActionForm {
 		return vendeurDTO.getNumCB();
 	}
 
+	
 	public void setCodeSecuCB(String codeSecuCB) {
 		vendeurDTO.setCodeSecuCB(codeSecuCB);
 	}
@@ -188,6 +190,15 @@ public class VendeurForm extends ActionForm {
 
 	public void setArticlesVendus(Collection articlesVendus) {
 		this.articlesVendus = articlesVendus;
+	}
+
+	public String getNumCBSimpleFormat() {
+		numCBSimpleFormat = this.getNumCB().substring(0,4) + "XXXXXXXX" + this.getNumCB().substring(12,16);
+		return numCBSimpleFormat;
+	}
+
+	public void setNumCBSimpleFormat(String numCBSimpleFormat) {
+		this.numCBSimpleFormat = numCBSimpleFormat;
 	}
 
 }
