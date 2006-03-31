@@ -439,6 +439,9 @@ public class ArticleFacadeTest extends TestCase {
 		} catch (EnchereInsuffisanteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		//mise en vente
@@ -453,6 +456,9 @@ public class ArticleFacadeTest extends TestCase {
 		} catch (ArticlePasEnVenteException e) {
 			assertTrue(true); // ECHEC : ça aurait du fonctionner ==> l'article est en vente !
 		} catch (EnchereInsuffisanteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -79,6 +79,8 @@ public class EnchereSaveAction extends Action {
 			next = mapping.getInputForward();
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		if (!erreurs.isEmpty()) {
 			saveErrors(request, erreurs);

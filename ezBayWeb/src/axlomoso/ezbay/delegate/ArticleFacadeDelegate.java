@@ -82,7 +82,7 @@ public class ArticleFacadeDelegate {
 		return articleFacade.getNbEncheres(articleId);
 	}
 	
-	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws RemoteException, ArticlePasEnVenteException, EnchereInsuffisanteException{
+	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws ArticlePasEnVenteException, EnchereInsuffisanteException, RemoteException, Exception{
 		return articleFacade.encherir(enchereDTO, articleId, clientId);
 	}
 	

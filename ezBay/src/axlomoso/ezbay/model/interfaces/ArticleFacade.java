@@ -48,6 +48,6 @@ public interface ArticleFacade
       throws java.rmi.RemoteException;
 
    public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId )
-      throws java.lang.Exception, java.rmi.RemoteException;
+      throws axlomoso.ezbay.exceptions.ArticlePasEnVenteException, axlomoso.ezbay.exceptions.EnchereInsuffisanteException, java.lang.Exception, java.rmi.RemoteException;
 
 }

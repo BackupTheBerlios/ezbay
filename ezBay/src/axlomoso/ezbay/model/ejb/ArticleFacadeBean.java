@@ -688,10 +688,11 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @param articleId
 	 * @param clientId
 	 * @return ActionEnchereDTO
+	 * @throws CreateException 
 	 * @throws Exception 
 	 */
 	
-	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws Exception{
+	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws ArticlePasEnVenteException, EnchereInsuffisanteException, Exception{
 		ActionEnchereDTO tRes = null;
 		ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
 		
@@ -700,9 +701,8 @@ public class ArticleFacadeBean implements SessionBean {
 		}
 		else{
 			ActionEnchereDTO derniereEnchere = this.getDerniereEnchere(articleId);
-			if( (derniereEnchere != null) && (enchereDTO.getMontant().doubleValue() <= derniereEnchere.getMontant().doubleValue())){
-				System.out.println("EnchereInsuffisanteException");					
-				throw new EnchereInsuffisanteException();//on ne peut pas une enchere ur un article qui n'est pas en vente
+			if( (derniereEnchere != null) && (enchereDTO.getMontant().doubleValue() <= derniereEnchere.getMontant().doubleValue())){					
+				throw new EnchereInsuffisanteException();
 			}
 			ClientLocal clientLocal = ClientFacadeBean.getEntity(clientId);
 			tRes = actionEnchereFacade.createActionEnchere(enchereDTO, articleLocal, clientLocal);//creation de l'enchere
