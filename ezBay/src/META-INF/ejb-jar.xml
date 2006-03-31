@@ -906,9 +906,154 @@
      -->
    <container-transaction >
       <method >
+         <ejb-name>VendeurFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>saveVendeur</method-name>
+         <method-params>
+            <method-param>axlomoso.ezbay.model.interfaces.VendeurDTO</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>VendeurFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>saveArticle</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>axlomoso.ezbay.model.interfaces.ArticleDTO</method-param>
+            <method-param>java.lang.String</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>VendeurFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>saveArticle</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>axlomoso.ezbay.model.interfaces.ArticleDTO</method-param>
+            <method-param>java.lang.String</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>VendeurFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>retirerArticle</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>VendeurFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>retirerArticle</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>VendeurFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>mettreEnVenteArticle</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>VendeurFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>mettreEnVenteArticle</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>MembreFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>saveMembre</method-name>
+         <method-params>
+            <method-param>axlomoso.ezbay.model.interfaces.MembreDTO</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>MembreFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>saveVendeur</method-name>
+         <method-params>
+            <method-param>axlomoso.ezbay.model.interfaces.MembreDTO</method-param>
+            <method-param>axlomoso.ezbay.model.interfaces.VendeurDTO</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>ActionTransactionFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>createActionTransaction</method-name>
+         <method-params>
+            <method-param>axlomoso.ezbay.model.interfaces.ActionTransactionDTO</method-param>
+            <method-param>axlomoso.ezbay.model.interfaces.ArticleLocal</method-param>
+            <method-param>axlomoso.ezbay.model.interfaces.ClientLocal</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
          <ejb-name>ArticleFacade</ejb-name>
          <method-intf>Local</method-intf>
          <method-name>terminerVente</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>ArticleFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>saveArticle</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>axlomoso.ezbay.model.interfaces.ArticleDTO</method-param>
+            <method-param>java.lang.String</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>ArticleFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>retirerArticle</method-name>
          <method-params>
             <method-param>java.lang.String</method-param>
          </method-params>

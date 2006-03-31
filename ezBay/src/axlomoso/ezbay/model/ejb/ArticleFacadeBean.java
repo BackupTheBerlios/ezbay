@@ -194,6 +194,7 @@ public class ArticleFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "local"
+	 * @ejb.transaction type="Required" 
 	 * cette methode permet de creer au mettre a jour un article
 	 * elle est appelé en local par une methode dans VendeurFacadeBean
 	 * @param vendeurId
@@ -309,6 +310,7 @@ public class ArticleFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "local"
+	 * @ejb.transaction type="Required" 
 	 * cette methode permet de retirer un article si il n'est pas encheri pour le remettre en attente
 	 * cette mehode annule le timer qu on a mis au moment de la mise en vente de l article
 	 * @param articleId

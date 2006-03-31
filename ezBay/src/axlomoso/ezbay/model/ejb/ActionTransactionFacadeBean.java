@@ -79,7 +79,8 @@ public class ActionTransactionFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "local"	
+	 * @ejb.interface-method view-type = "local"
+	 * @ejb.transaction type="Required" 	
 	 * cette methode permet de creer une transaction a la fin de la vente en passant en parametre un article et un client 
 	 * @param transactionDTO
 	 * @param articleLocal

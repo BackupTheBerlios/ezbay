@@ -58,7 +58,8 @@ public class MembreFacadeBean implements SessionBean {
 	
 	
 	/**
-	 * @ejb.interface-method view-type = "remote" 
+	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.transaction type="Required" 
 	 * cette methode permet de creer ou de mettre a jour un membre
 	 * @param membreDTO
 	 * @return MembreDTO
@@ -234,7 +235,8 @@ public class MembreFacadeBean implements SessionBean {
 	}
 	
 	/**
-	 * @ejb.interface-method view-type = "remote"	
+	 * @ejb.interface-method view-type = "remote"
+	 * @ejb.transaction type="Required" 
 	 * cette methode permet de creer ou de mettre a jour un vendeur
 	 * @param membreDTO
 	 * @param vendeurDTO

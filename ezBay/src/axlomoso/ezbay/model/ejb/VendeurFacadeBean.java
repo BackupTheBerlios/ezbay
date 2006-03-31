@@ -113,6 +113,7 @@ public class VendeurFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "local"
+	 * @ejb.transaction type="Required" 
 	 * cette methode permet de creer ou de mettre a jour les informations concernant le vendeur
 	 * @param vendeurDTO
 	 * @return VendeurDTO
@@ -221,6 +222,7 @@ public class VendeurFacadeBean implements SessionBean {
 
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * @ejb.transaction type="Required" 
 	 * cette methode permet de creer un article ou le mettre a jour 
 	 * @param vendeurId
 	 * @param articleDTO
@@ -268,6 +270,7 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * @ejb.transaction type="Required" 
 	 * cette methode permet de retirer un article de la vente si il y n'est pas encheri 
 	 * @param vendeurId, ArticleDTO
 	 * @throws ArticleEnEnchereException 
@@ -296,6 +299,7 @@ public class VendeurFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method view-type = "both"
+	 * @ejb.transaction type="Required" 
 	 * cette methode permet de mettre un article en vente
 	 * @param vendeurId
 	 * @param articleId
