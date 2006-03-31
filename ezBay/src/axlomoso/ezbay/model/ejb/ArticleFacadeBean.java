@@ -716,7 +716,9 @@ public class ArticleFacadeBean implements SessionBean {
 			}
 		} catch (ArticlePasEnVenteException e) {
 			throw e;
-		} catch (FinderException e) {
+		} catch (EnchereInsuffisanteException e) {
+			throw e;
+		}catch (FinderException e) {
 		} catch (CreateException e) {
 		} catch (Exception e) {
 		}
