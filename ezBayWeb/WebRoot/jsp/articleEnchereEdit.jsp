@@ -38,7 +38,7 @@
 						<bean:write name="enchereForm" property="libelle" />
 					</td>	
 				</tr>
-				<logic:empty name="enchereForm" property="enchereView">
+				<logic:equal name="enchereForm" property="montantDerniereEnchere" value="0">
 				<tr>
 					<td class="intitule">
 						<bean:message key="articleEnchereEdit.prixDepart" /> :
@@ -50,20 +50,20 @@
 						<bean:message key="general.label.devise" />
 					</td>
 				</tr>
-				</logic:empty>
-				<logic:notEmpty name="enchereForm" property="enchereView">
+				</logic:equal>
+				<logic:notEqual name="enchereForm" property="montantDerniereEnchere" value="0">
 				<tr>
 					<td class="intitule">
 						<bean:message key="articleEnchereEdit.derniereEnchere" /> :
 					</td>
 					<td>
-						<bean:write name="enchereForm" property="enchereView.montant" />
+						<bean:write name="enchereForm" property="montantDerniereEnchere" />
 					</td>
 					<td>
 						<bean:message key="general.label.devise" />
 					</td>
 				</tr>
-				</logic:notEmpty>
+				</logic:notEqual>
 				<tr>	
 					<td class="intitule">
 						<bean:message key="articleEnchereEdit.montant" /> :
@@ -77,7 +77,7 @@
 				</tr>
 			</table>
 			<br /><br />
-			<html:hidden property="montant" />
+			<html:hidden property="montantDerniereEnchere" />
 			<html:hidden property="id" />
 			<html:hidden property="prixVente" />
 			<html:hidden property="libelle" />

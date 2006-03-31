@@ -25,8 +25,9 @@ import axlomoso.ezbay.struts.views.ArticleView;
 public class EnchereForm extends ActionForm {
 	// --------------------------------------------------------- Instance Variables
 	private ArticleDTO articleDTO = new ArticleDTO();
-	private String stringMontantEnchereCourante = "";
+	private String stringMontantEnchereCourante = null;
 	private Double montantEnchereCourante = null;
+	private Double montantDerniereEnchere = new Double(0);
 	private ActionEnchereView enchereView ; // = null;
 
 	
@@ -57,6 +58,7 @@ public class EnchereForm extends ActionForm {
 
 	public void setMontantEnchereCourante(Double montant) {
 		montantEnchereCourante = montant;
+		System.out.println("setMontantEnchereCourante");
 	}
 
 	public ArticleDTO getArticleDTO() {
@@ -109,19 +111,21 @@ public class EnchereForm extends ActionForm {
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
 		ActionErrors errors = new ActionErrors();
-		System.out.println("MONTANT : " + getMontant());
+		boolean tSuccess = true;
+		Double d = null;
 		if ((this.getStringMontantEnchereCourante() == null)||(this.getStringMontantEnchereCourante().length() == 0)) {
 			errors.add("stringMontant", new ActionError("articleEnchereEdit.erreurs.montantVide"));
+			tSuccess = false;
 		}
 		else{
 			try {				
-					 Double d = new Double(Double.parseDouble(this.getStringMontantEnchereCourante()));
-					 this.setMontantEnchereCourante(d);
+					 d = new Double(Double.parseDouble(this.getStringMontantEnchereCourante()));
 					 if( this.getMontant().doubleValue() > 0 ){
 						 // l'article a déjà été enchéri
 						 if( d.doubleValue() <= this.getMontant().doubleValue() ){
 							 // montant de l'enchère courante <= montant de la dernière enchère
 							 errors.add("prixVente", new ActionError("articleEnchereEdit.erreurs.montantInferieurADerniereEnchere"));
+							 tSuccess = false;
 						 }
 					 }
 					 else{
@@ -129,14 +133,27 @@ public class EnchereForm extends ActionForm {
 						 if( d.doubleValue() <= this.getPrixVente().doubleValue() ){
 							 //montant de l'enchère courante <= prix vente de départ
 							 errors.add("prixVente", new ActionError("articleEnchereEdit.erreurs.montantInferieurAPrixDepart"));
+							 tSuccess = false;
 						 }
 					 }
 				}				
 			 catch (NumberFormatException e) {
 				errors.add("prixVente", new ActionError("articleEnchereEdit.erreurs.montantInvalide"));
+				tSuccess = false;
 			}
-		}		
+		}
+		if(tSuccess){
+			this.setMontantEnchereCourante(d);
+		}
 		return errors;
+	}
+
+	public Double getMontantDerniereEnchere() {
+		return montantDerniereEnchere;
+	}
+
+	public void setMontantDerniereEnchere(Double montantDerniereEnchere) {
+		this.montantDerniereEnchere = montantDerniereEnchere;
 	}
 }
 

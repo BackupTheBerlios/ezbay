@@ -64,11 +64,15 @@ public class EnchereAction extends DispatchAction {
 			try {
 				ArticleDTO articleDTO = articleDelegate.getArticle(articleId);
 				ActionEnchereDTO actionEnchereDTO = articleDelegate.getDerniereEnchere(articleDTO.getId());
-				ActionEnchereView enchereView = null;
+				/*ActionEnchereView enchereView = null;
 				if( actionEnchereDTO != null ){
 					enchereView = new ActionEnchereView(actionEnchereDTO);
 					enchereForm.setEnchereView(enchereView);
+				}*/
+				if( actionEnchereDTO != null ){
+					enchereForm.setMontantDerniereEnchere(actionEnchereDTO.getMontant());
 				}
+								
 				enchereForm.setArticleDTO(articleDTO);
 				target = "showEnchereForm";
 			} catch (RemoteException e) {
