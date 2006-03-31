@@ -18,9 +18,11 @@ import axlomoso.ezbay.exceptions.ArticleEnVenteException;
 import axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
 import axlomoso.ezbay.exceptions.ArticleProprietaireException;
 import axlomoso.ezbay.exceptions.ArticleVenduException;
+import axlomoso.ezbay.exceptions.EnchereInsuffisanteException;
 import axlomoso.ezbay.model.interfaces.ActionEnchereDTO;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocal;
 import axlomoso.ezbay.model.interfaces.ActionEnchereFacadeLocalHome;
+import axlomoso.ezbay.model.interfaces.ActionEnchereLocal;
 import axlomoso.ezbay.model.interfaces.ActionTransactionDTO;
 import axlomoso.ezbay.model.interfaces.ActionTransactionFacadeLocal;
 import axlomoso.ezbay.model.interfaces.ActionTransactionFacadeLocalHome;
@@ -689,7 +691,7 @@ public class ArticleFacadeBean implements SessionBean {
 	 * @throws ArticlePasEnVenteException
 	 */
 	
-	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws ArticlePasEnVenteException{
+	public ActionEnchereDTO encherir(ActionEnchereDTO enchereDTO, String articleId, String clientId) throws ArticlePasEnVenteException, EnchereInsuffisanteException{
 		ActionEnchereDTO tRes = null;
 		try {
 			ArticleLocal articleLocal = ArticleFacadeBean.getEntity(articleId);
@@ -697,6 +699,11 @@ public class ArticleFacadeBean implements SessionBean {
 				throw new ArticlePasEnVenteException();//on ne peut pas une enchere ur un article qui n'est pas en vente
 			}
 			else{
+				ActionEnchereDTO derniereEnchere = this.getDerniereEnchere(articleId);
+				if( (derniereEnchere != null) && (enchereDTO.getMontant().doubleValue() <= derniereEnchere.getMontant().doubleValue())){
+					System.out.println("EnchereInsuffisanteException");					
+					throw new EnchereInsuffisanteException();//on ne peut pas une enchere ur un article qui n'est pas en vente
+				}
 				ClientLocal clientLocal = ClientFacadeBean.getEntity(clientId);
 				tRes = actionEnchereFacade.createActionEnchere(enchereDTO, articleLocal, clientLocal);//creation de l'enchere
 				//informations redondante

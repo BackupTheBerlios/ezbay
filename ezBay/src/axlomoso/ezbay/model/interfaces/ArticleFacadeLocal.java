@@ -48,6 +48,6 @@ public interface ArticleFacadeLocal
 
    public boolean isArticleVendu( java.lang.String articleId ) ;
 
-   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId ) throws axlomoso.ezbay.exceptions.ArticlePasEnVenteException;
+   public axlomoso.ezbay.model.interfaces.ActionEnchereDTO encherir( axlomoso.ezbay.model.interfaces.ActionEnchereDTO enchereDTO,java.lang.String articleId,java.lang.String clientId ) throws axlomoso.ezbay.exceptions.ArticlePasEnVenteException, axlomoso.ezbay.exceptions.EnchereInsuffisanteException;
 
 }
