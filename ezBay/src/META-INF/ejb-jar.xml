@@ -991,6 +991,32 @@
    </container-transaction>
    <container-transaction >
       <method >
+         <ejb-name>ActionEnchereFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>createActionEnchere</method-name>
+         <method-params>
+            <method-param>axlomoso.ezbay.model.interfaces.ActionEnchereDTO</method-param>
+            <method-param>axlomoso.ezbay.model.interfaces.ArticleLocal</method-param>
+            <method-param>axlomoso.ezbay.model.interfaces.ClientLocal</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>ActionEnchereFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>createActionEnchere</method-name>
+         <method-params>
+            <method-param>axlomoso.ezbay.model.interfaces.ActionEnchereDTO</method-param>
+            <method-param>axlomoso.ezbay.model.interfaces.ArticleLocal</method-param>
+            <method-param>axlomoso.ezbay.model.interfaces.ClientLocal</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
          <ejb-name>MembreFacade</ejb-name>
          <method-intf>Remote</method-intf>
          <method-name>saveMembre</method-name>

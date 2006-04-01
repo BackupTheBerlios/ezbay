@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>UML_ezBay</name>
-	<comment></comment>
+	<name>ezBay</name>
+	<comment>@key 323030353039323720657A4261792F536F6669 </comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -30,10 +30,22 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>net.sourceforge.metrics.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.omondo.uml.std.Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>com.genuitec.eclipse.ast.deploy.core.deploymentnature</nature>
 		<nature>com.genuitec.eclipse.j2eedt.core.ejbnature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>net.sourceforge.metrics.nature</nature>
+		<nature>com.omondo.uml.std.Nature</nature>
 	</natures>
 </projectDescription>
