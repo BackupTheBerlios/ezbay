@@ -1,0 +1,55 @@
+1 - ENREGISTREMENT CLIENT
+1.1 Création d'un compte utilisateur
+	Homer Simpson
+	Exemple de verif de saisie : mauvais email
+1.2 Affichage des infos
+1.3 Modif des infos
+	
+2 - ENREGISTREMENT VENDEUR
+2.1 Inscription en tant que vendeur
+2.2 Affichage des infos
+2.3 Modif des infos
+
+3 - AJOUT D'ARTICLE
+3.1 Création d'un article : caisse de Bud
+3.2 Modif de l'article : le prix
+3.3 Mise en vente
+3.4 Retirer de la vente
+3.5 Supprimer l'article, mais pas confirmer...
+3.6 Remettre en vente
+
+4- ACCES aux articles
+4.1 Par les catégories
+4.2 Par la recherche
+4.3 Visualisation de la fiche
+
+5- ENCHERES
+5.1 Un utilisateur anonyme essaye de poser une enchère ==> Erreur
+5.2 Connexion : Sofi
+5.3 Montant invalide
+5.3 Enchère inférieur au prix de départ ==> erreur
+5.4 Enchère correcte ==> Explication fiche article avec Historique
+
+6 - ENCHERES AVANCEES
+6.1 Homer se connecte pour récupérer ses Bud 
+6.2 Essaie de retirer de la vente : ne peut pas
+6.3 Essaie de mettre une enchère inférieure
+
+7 - TRANSACTION
+7.1 Connexion d'axel
+7.2 Modif 2 carticles pour fin de vente proche
+7.3 Mise en vente des 2 + mise en vente d'un autre avec date Limite loin. (pour 8.1)
+7.4 Sofi enchéri sur un des 2. ==> montre sa rubrique "mes enchères"
+On attend la fin de la vente
+7.5 Ventes terminée
+7.6 Compte Axel : rubrique "Mes articles" 
+	L'article enchéri a été vendu
+	L'article non-enchéri est retourné dans les articles en attente.
+7.7 Sofi montre sa rubrique "Mes enchères" ==> plus d'article
+7.8 Sofi montre sa rubrique "Mes achats" ==> nouvel article
+
+8 - AVIS
+8.1 Sofi visualise la fiche vendeur
+8.1 Sofi pose un avis sur l'achat qu'elle vient de faire
+8.2 Axel montre sa rubrique "Mes articles" avec la liste des avis
+

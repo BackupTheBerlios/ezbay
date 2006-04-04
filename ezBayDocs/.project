@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>ezBayDocs</name>
-	<comment></comment>
+	<comment>@key 323030353039323720657A426179446F63732F536F6669 </comment>
 	<projects>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>com.omondo.uml.std.Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>com.omondo.uml.std.Nature</nature>
 	</natures>
 </projectDescription>
