@@ -1,14 +1,10 @@
 package axlomoso.ezbay.test;
 
-import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Random;
 
-import javax.ejb.CreateException;
-import javax.ejb.EJBException;
 import javax.ejb.FinderException;
-import javax.ejb.RemoveException;
 
 import junit.framework.TestCase;
 import axlomoso.ezbay.exceptions.ArticleEnEnchereException;
@@ -138,7 +134,7 @@ public class VendeurFacadeTest extends TestCase {
 		membreLocalHome.findByPrimaryKey(membreDTOcree2.getId()).remove();		
 	}
 
-	public void testGetMembre() throws RemoteException, Exception{
+	public void testGetMembre() throws Exception{
 		MembreDTO membreDTORecup ;
 		membreDTORecup = vendeurFacade.getMembre(vendeurDTOcree1.getId());
 		assertTrue( membreDTORecup.getId().equals(membreDTOcree1.getId()) );
@@ -146,7 +142,7 @@ public class VendeurFacadeTest extends TestCase {
 		assertTrue( membreDTORecup.getId().equals(membreDTOcree2.getId()) );
 	}
 	
-	public void testGetVendeur() throws RemoteException, Exception{
+	public void testGetVendeur() throws Exception{
 		VendeurDTO vendeurDTORecup = null;
 		vendeurDTORecup = vendeurFacade.getVendeur(vendeurDTOcree1.getId());
 		assertTrue( equalsDTO(vendeurDTORecup, vendeurDTOcree1, true) );
@@ -300,7 +296,7 @@ public class VendeurFacadeTest extends TestCase {
 	}
 
 	//méthode de test de vendeurFacade.mettreEnVenteArticle() et vendeurFacade.retirerArticle()
-	public void testMettreEnVenteArticle() throws FinderException, CreateException, EJBException, RemoveException{
+	public void testMettreEnVenteArticle() throws Exception{
 		//prerequis : articles créés
 		//Création des objets
 		VendeurLocal vendeurLocal1 = VendeurFacadeBean.getEntity(vendeurDTOcree1.getId());
@@ -351,27 +347,22 @@ public class VendeurFacadeTest extends TestCase {
 		//DEBUT du test mettreEnVente
 		try {
 			vendeurFacade.mettreEnVenteArticle(vendeurDTOcree2.getId(), articleLocal1.getId());
-			assertTrue(false); //ECHEC : le vendeur n'aurait pas du povoir,  les articles ne lui appartiennent pas
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (ArticleProprietaireException e) {
+			fail("L'article n'appartient pas au vendeur !"); //ECHEC : le vendeur n'aurait pas du pouvoir,  les articles ne lui appartiennent pas
+		}catch (ArticleProprietaireException e) {
 			assertTrue(true); //SUCCES : le vendeur n'a pas pu, les articles ne lui appartiennent pas
 		}
 		
 		try {
 			vendeurFacade.mettreEnVenteArticle(vendeurDTOcree2.getId(), articleLocal2.getId());
-			assertTrue(false); //ECHEC : le vendeur n'aurait pas du povoir,  les articles ne lui appartiennent pas
-		} catch (RemoteException e) {
-			e.printStackTrace();
+			fail("L'article n'appartient pas au vendeur !"); //ECHEC : le vendeur n'aurait pas du pouvoir,  les articles ne lui appartiennent pas
 		} catch (ArticleProprietaireException e) {
 			assertTrue(true); //SUCCES : le vendeur n'a pas pu, les articles ne lui appartiennent pas
 		}
+		
 		try {
 			vendeurFacade.mettreEnVenteArticle(vendeurDTOcree1.getId(), articleLocal3.getId());
-			assertTrue(false); //ECHEC : le vendeur n'aurait pas du povoir,  les articles ne lui appartiennent pas
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (ArticleProprietaireException e) {
+			fail("L'article n'appartient pas au vendeur !"); //ECHEC : le vendeur n'aurait pas du pouvoir,  les articles ne lui appartiennent pas
+		}catch (ArticleProprietaireException e) {
 			assertTrue(true); //SUCCES : le vendeur n'a pas pu, les articles ne lui appartiennent pas
 		}
 		
@@ -383,10 +374,8 @@ public class VendeurFacadeTest extends TestCase {
 			assertTrue(articleLocal1.getEnVente().booleanValue() == true);
 			assertTrue(articleLocal2.getEnVente().booleanValue() == true);
 			assertTrue(articleLocal3.getEnVente().booleanValue() == true);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (ArticleProprietaireException e) {
-			assertTrue(false); //ECHEC : e vendeur aurait du pouvoir, les articles lui appartiennent
+		}catch (ArticleProprietaireException e) {
+			fail("L'article n'appartient pas au vendeur !"); //ECHEC : le vendeur n'aurait pas du pouvoir,  les articles ne lui appartiennent pas
 		}
 		
 		// Nettoyage...
@@ -396,8 +385,7 @@ public class VendeurFacadeTest extends TestCase {
 		categorieLocal.remove();
 	}
 	
-	
-	public void testRetirerArticle() throws CreateException, FinderException, Exception{
+public void testRetirerArticle() throws Exception{
 		//prerequis : articles créés
 		//Création des objets
 		VendeurLocal vendeurLocal1 = VendeurFacadeBean.getEntity(vendeurDTOcree1.getId());
@@ -466,82 +454,32 @@ public class VendeurFacadeTest extends TestCase {
 		
 		try {
 			vendeurFacade.retirerArticle(vendeurDTOcree1.getId(), articleLocal1.getId());
-			assertTrue(false); // ECHEC : n'aurait pas du focntionner ==> l'article est vendu
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (ArticleEnEnchereException e) {
-			e.printStackTrace();
-		} catch (ArticleVenduException e) {
-			assertTrue(true);// SUCCES : n'a pas focntionné ==> l'article est vendu
-		} catch (ArticleProprietaireException e) {
-			e.printStackTrace();
+			fail("Le Vendeur ne doit pas pouvoir supprimer l'Article, il est déjà vendu !");
+		}catch (ArticleVenduException e) {
+			assertTrue(true);// SUCCES : Exception levée ==> l'article est vendu
 		}
 		
 		try {
 			vendeurFacade.retirerArticle(vendeurDTOcree1.getId(), articleLocal2.getId());
-			assertTrue(false); // ECHEC : n'aurait pas du focntionner ==> l'article est enchéri
-		} catch (RemoteException e) {
-			e.printStackTrace();
+			fail("L'article n'aurait pas du être retiré : il était déjà enchéri !"); // ECHEC : n'aurait pas du focntionner ==> l'article est enchéri
 		} catch (ArticleEnEnchereException e) {
 			assertTrue(true);// SUCCES : n'a pas focntionné ==> l'article est enchéri
-		} catch (ArticleVenduException e) {
-			e.printStackTrace();
-		} catch (ArticleProprietaireException e) {
-			e.printStackTrace();
 		}
 		//suppression des transactions et encheres
 		transactionLocal.remove();
 		enchereLocal.remove();
-		try {
-			vendeurFacade.retirerArticle(vendeurDTOcree1.getId(), articleLocal1.getId());
-			assertTrue(true); // SUCCES : a focntionné ==> l'article n'est plus vendu
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (ArticleEnEnchereException e) {
-			e.printStackTrace();
-		} catch (ArticleVenduException e) {
-			assertTrue(false);// ECHEC : aurait du focntionner ==> l'article n'est plus vendu
-		} catch (ArticleProprietaireException e) {
-			e.printStackTrace();
-		}
-		try {
-			vendeurFacade.retirerArticle(vendeurDTOcree1.getId(), articleLocal2.getId());
-			assertTrue(true); // SUCCES : a focntionné ==> l'article n'est plus enchéri
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (ArticleEnEnchereException e) {
-			assertTrue(false);// ECHEC : aurait du focntionner ==> l'article n'est plus enchéri
-		} catch (ArticleVenduException e) {
-			e.printStackTrace();
-		} catch (ArticleProprietaireException e) {
-			e.printStackTrace();
-		}
+		
+		vendeurFacade.retirerArticle(vendeurDTOcree1.getId(), articleLocal1.getId());
+		vendeurFacade.retirerArticle(vendeurDTOcree1.getId(), articleLocal2.getId());
+
 		try {
 			vendeurFacade.retirerArticle(vendeurDTOcree1.getId(), articleLocal3.getId());
-			assertTrue(false); // ECHEC : n'aurait pas du focntionner ==> l'article ne lui appartient pas
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (ArticleEnEnchereException e) {
-			e.printStackTrace();
-		} catch (ArticleVenduException e) {
-			e.printStackTrace();
+			fail("l'Article n'appartient pas au Vendeur, n'aurait pas du pouvoir être retiré"); // ECHEC : n'aurait pas du focntionner ==> l'article ne lui appartient pas
 		} catch (ArticleProprietaireException e) {
 			assertTrue(true);// SUCCES : n'a pas focntionné ==> l'article ne lui appartient pas
 		}
-		try {
-			vendeurFacade.retirerArticle(vendeurDTOcree2.getId(), articleLocal3.getId());
-			assertTrue(true); // SUCCES : a focntionné ==> l'article lui appartient
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (ArticleEnEnchereException e) {
-			e.printStackTrace();
-		} catch (ArticleVenduException e) {
-			e.printStackTrace();
-		} catch (ArticleProprietaireException e) {
-			assertTrue(false);// ECHEC : aurait du focntionner ==> l'article lui appartient
-		}
 		
-		
+		vendeurFacade.retirerArticle(vendeurDTOcree2.getId(), articleLocal3.getId());
 		// Nettoyage...
 		articleLocal1.remove();
 		articleLocal2.remove();
@@ -550,7 +488,7 @@ public class VendeurFacadeTest extends TestCase {
 	}
 	
 	
-	public void testSaveArticle() throws FinderException, CreateException, EJBException, RemoveException {
+	public void testSaveArticle() throws Exception {
 		CategorieLocalHome categorieLocalHome = CategorieFacadeBean.getEntityHome();
 		CategorieDTO categorieDTO1 = new CategorieDTO();
 		categorieDTO1.setLibelle("reererere");
@@ -574,34 +512,18 @@ public class VendeurFacadeTest extends TestCase {
 		//test avec un vendeur inconnu
 		try {
 			articleDTOCreated = vendeurFacade.saveArticle("dfdfdf", tArticleDTO, categorieDTO1.getId());
-			assertTrue(false); // ECHEC : n'aurait pas du fonctionner ==> le vendeur n'existe pas
-		} catch (RemoteException e) {
+			fail("Le vendeur n'existe pas !!"); // ECHEC : n'aurait pas du fonctionner ==> le vendeur n'existe pas
 		} catch (VendeurInconnuException e) {
 			assertTrue(true); // SUCCES : n'a pas fonctionné ==> le vendeur n'exxiste pas
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		
-		try {
-			articleDTOCreated = vendeurFacade.saveArticle(vendeurDTOcree1.getId(), tArticleDTO, categorieDTO1.getId());
-			assertTrue(true); // SUCCES : a fonctionné ==> le vendeur exxiste
-		} catch (RemoteException e) {
-		} catch (VendeurInconnuException e) {
-			assertTrue(false); // ECHEC : aurait du fonctionner ==> le vendeur existe
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
+		articleDTOCreated = vendeurFacade.saveArticle(vendeurDTOcree1.getId(), tArticleDTO, categorieDTO1.getId());
+	
 		// on vérifie que la création a bien fonctionné
 		assertNotNull(articleDTOCreated);
 		assertNotNull(articleDTOCreated.getId());
-		try {
-			ArticleFacadeBean.getEntity(articleDTOCreated.getId()).getArticleDTO();
-			assertTrue(true); // l'article existe bien : il a été créé
-		} catch (FinderException e) {
-			assertTrue(false); // pb : l'article n' pas été créé.
-		}
+
+		ArticleFacadeBean.getEntity(articleDTOCreated.getId()).getArticleDTO();
 				
 		//TEST DE LA MODIFICATION D'ARTICLE
 		ArticleDTO tArticleDTO2 = new ArticleDTO();
@@ -616,14 +538,8 @@ public class VendeurFacadeTest extends TestCase {
 		
 		//on modifie
 		ArticleDTO articleDTOCreated2 = null;
-		try {
-			articleDTOCreated2 = vendeurFacade.saveArticle(vendeurDTOcree1.getId(), tArticleDTO2, categorieDTO2.getId());
-			
-		} catch (RemoteException e) {
-		} catch (VendeurInconnuException e) {
-			
-		} catch (Exception e) {
-		}
+		articleDTOCreated2 = vendeurFacade.saveArticle(vendeurDTOcree1.getId(), tArticleDTO2, categorieDTO2.getId());
+
 		//on vérifie que la mise à jour a bien fonctionné
 		assertNotNull(articleDTOCreated2);
 		assertNotNull(articleDTOCreated2.getId());
@@ -643,7 +559,7 @@ public class VendeurFacadeTest extends TestCase {
 		categorieLocal2.remove();		
 	}
 	
-	public void testRemoveArticle() throws EJBException, RemoveException, CreateException, FinderException, Exception{
+	public void testRemoveArticle() throws Exception{
 		CategorieLocalHome categorieLocalHome = CategorieFacadeBean.getEntityHome();
 		CategorieDTO categorieDTO = new CategorieDTO();
 		categorieDTO.setLibelle("reererere");
@@ -669,18 +585,12 @@ public class VendeurFacadeTest extends TestCase {
 		//un article ne doit pouvoir etre supprimer si il est en vente
 		try{
 			vendeurFacade.removeArticle(vendeurDTOcree1.getId(),idArticle);
-			assertTrue(false);//echec : la suppression n aurais pas du marcher --> raison l article est en vente 
-		}
-		catch(ArticleEnVenteException e){
-			assertTrue(true);//succees : la suppression n a pas fonctionné --> raison l article est en vente
-		} catch (ArticleVenduException e) {
-			//ne peut pas se produire
-			assertTrue(false);
-		} catch (Exception e) {
-				e.printStackTrace();
+			fail("L'article est en vente !");//echec : la suppression n aurais pas du marcher --> raison l article est en vente 
+		}catch(ArticleEnVenteException e){
+			assertTrue(true);//succes : la suppression n a pas fonctionné --> raison l article est en vente
 		}
 		
-		//on retire l article de la vente pour puvoir le supprimer
+		//on retire l article de la vente pour pouvoir le supprimer
 		articleLocal.setEnVente(new Boolean(false));
 		
 		//vente de l'article
@@ -695,15 +605,9 @@ public class VendeurFacadeTest extends TestCase {
 		//un article ne doit pouvoir etre supprimer si il est vendu
 		try{
 			vendeurFacade.removeArticle(vendeurDTOcree1.getId(),idArticle);
-			assertTrue(false);//echec : la suppression n aurais pas du marcher --> raison l article est vendu 
-		}
-		catch(ArticleEnVenteException e){
-			//ne peut pas se produire
-			assertTrue(false);
+			fail("L'Article est déjà vendu !!");//echec : la suppression n aurais pas du marcher --> raison l article est vendu 
 		} catch (ArticleVenduException e) {
-			assertTrue(true);//succees : la suppression n a pas fonctionné --> raison l article est vendu
-		} catch (Exception e) {
-				e.printStackTrace();
+			assertTrue(true);//succes : la suppression n a pas fonctionné --> raison l article est vendu
 		}
 		
 		//suppression de la transaction : l'article n'est plus vendu
@@ -712,39 +616,24 @@ public class VendeurFacadeTest extends TestCase {
 		//test : un vendeur supprime un article qui ne lui appartient pas 
 		try{
 			vendeurFacade.removeArticle(vendeurDTOcree2.getId(),idArticle);
-			assertTrue(false);//echec : la suppression n aurais pas du marcher --> raison le vendeur passer en parametre n est pas le proprietaire
-		}
-		catch(ArticleEnVenteException e){
-			//ne peut pas se produire
-			assertTrue(false);
-		} catch (ArticleVenduException e) {
-			//ne peut pas se produire
-			assertTrue(false);
-		} catch (ArticleProprietaireException e) {
+			fail("L'Article ne lui appartient pas !!!");//echec : la suppression n aurais pas du marcher --> raison le vendeur passer en parametre n est pas le proprietaire
+		}catch (ArticleProprietaireException e) {
 			assertTrue(true);//succes : la suppression n a pas marcher --> raison le vendeur passé en parametre n est pas le proprietaire
-		} catch (Exception e) {
-		} 
-		
-		//a partie d ici la suppression doit etre possible
-		try {
-			vendeurFacade.removeArticle(vendeurDTOcree1.getId(),idArticle);
-			assertTrue(true);//succes suppression n a pas levé d'exception
-		} catch (Exception e) {				
-			assertTrue(false);
 		}
+		
+		vendeurFacade.removeArticle(vendeurDTOcree1.getId(),idArticle);
 		
 		// on teste si la suppression a bien fonctionné
-
-			try {
-				articleLocalHome.findByPrimaryKey(idArticle);
-				articleLocal.remove();
-				assertTrue(false);//echec l article ne devrait pas exister
-			} catch (FinderException e) {
-				assertTrue(true);//succes l article n existe plus
-			}
+		try {
+			articleLocalHome.findByPrimaryKey(idArticle);
+			articleLocal.remove();
+			fail("L'Article aurait dèjà du être supprimé !!!!");//echec l article ne devrait pas exister
+		} catch (FinderException e) {
+			assertTrue(true);//succes l article n existe plus
+		}
 			
-			//Nettoyage
-			categorieLocal.remove();
+		//Nettoyage
+		categorieLocal.remove();
 	}
 
 	
